@@ -86,9 +86,11 @@ Route::match(['get', 'post'], '/signout', 'Usercontroller@signout');
 
 Route::get('/user/detail', 'UserController@getUserDetailInfo');
 
-Route::post('/user/modifyPwd', 'UserController@modifyUserPwd');
+Route::post('/user/modifyUserPwd', 'UserController@modifyUserPwd');
 
 Route::match(['get', 'post'], '/user/modifyUserInfo', 'UserController@modifyUserInfo');
+
+Route::post('/user/uploadicon', 'UserController@uploadIcon');
 //User End
 
 
