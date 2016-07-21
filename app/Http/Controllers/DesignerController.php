@@ -59,7 +59,7 @@ class DesignerController extends BaseController
             'recid' => '100004',
             'pagenum' => 1,
             'pagesize' => 50,
-            'uuid' => $this->UUID(),
+            'uuid' => $_COOKIE['uid'],
             'extra_kv' => 'designerId:' . $id,
             'pin' => Session::get('user.pin'),
         );
@@ -77,7 +77,7 @@ class DesignerController extends BaseController
                         'nickname' => $request->input('name'),
                         'pin' => $request->input('pin'),
                         'token' => $request->input('token'),
-                        'uuid' => $this->UUID(),
+                        'uuid' => $_COOKIE['uid'],
                     ));
                 } else {
                     Session::put('user', array(
@@ -111,13 +111,40 @@ class DesignerController extends BaseController
 
 
     /**
-     * 移除
+     * 关注或取消设计师
      *
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function follow($id)
     {
-        //
+        $followParams = array(
+            'cmd' => 'is',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'did' => $id,
+        );
+        $follow = $this->request('follow', $followParams);
+        if ($follow['data']['isFC']) {
+            //取消关注
+            $followParams = array(
+                'cmd' => 'del',
+                'pin' => Session::get('user.pin'),
+                'token' => Session::get('user.token'),
+                'did' => $id,
+            );
+            $follow = $this->request('follow', $followParams);
+        } else {
+            //关注
+            $followParams = array(
+                'cmd' => 'add',
+                'pin' => Session::get('user.pin'),
+                'token' => Session::get('user.token'),
+                'did' => $id,
+            );
+            $follow = $this->request('follow', $followParams);
+        }
+        return $follow;
+
     }
 }

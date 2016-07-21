@@ -20,6 +20,13 @@ class BaseController extends Controller
         'openapi' => array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me'),//生产
     ];
 
+    function __construct()
+    {
+        if (empty($_COOKIE['uid'])) {
+            setcookie('uid', md5($_SERVER['HTTP_USER_AGENT'] . time() . rand(1, 1000)), time() + 86400 * 300);
+        }
+    }
+
     protected function request($service, array $params, $path = null, $method = true, $cacheTime = 0)
     {
 
@@ -46,16 +53,5 @@ class BaseController extends Controller
     {
         $curl = Curl::to($Api)->withData($params);
         return $method ? $curl->get() : $curl->post();
-    }
-
-    protected function UUID()
-    {
-        if ($_COOKIE['uid']) {
-            return $_COOKIE['uid'];
-        } else {
-            $UUID = md5($_SERVER['HTTP_USER_AGENT'].time().rand(1,1000));
-            setcookie('uid',$UUID,time()+86400*300);
-            return $UUID;
-        }
     }
 }
