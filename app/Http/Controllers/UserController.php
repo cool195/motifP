@@ -52,6 +52,23 @@ class UserController extends BaseController
         return redirect('/login');
     }
 
+    public function forgetPassword(Request $request)
+    {
+        $params = array(
+            'cmd' => "forgetpwd",
+            'uuid' => $_COOKIE['uid'],
+            'email' => $request->input('email'),
+            'token' => self::Token,
+            //'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('user', $params);
+        if (!empty($result) && $result['success']) {
+            $result['redirectUrl'] = "/login";
+            $result['prompt_msg'] = "We have send you an email to your email address";
+        }
+        return $result;
+    }
+
     public function modifyUserPwd(Request $request)
     {
         $params = array(
@@ -97,7 +114,7 @@ class UserController extends BaseController
             'nick' => $request->input('nick'),
             'token' => $user['token']
         );
-        $result = $this->request('openapi', self::API_SYSTEM, self::API_SERVICE, $params);
+        $result = $this->request('user', $params);
         if (empty($result)) {
             $result['success'] = false;
             $result['error_msg'] = "Data access failed";
@@ -134,8 +151,43 @@ class UserController extends BaseController
         }
     }
 
+    public function modifyForgetPwd(Request $request)
+    {
+        if ($request->input('pw')) {
+            if ($request->input('pw') != $request->input('lastpw')) {
+                return array('success' => false, 'error_msg' => 'Passwords do not match');
+            }
+            $params = array(
+                'cmd' => 'modifyfgtpwd',
+                'pw' => md5($request->input('pw')),
+                'tp' => $request->input('tp'),
+                'sig' => $request->input('sig'),
+                'token' => self::Token
+            );
+            $result = $this->request('user', $params);
+            if ($result['success']) {
+                $result['redirectUrl'] = "/login";
+            }
+            return $result;
+        } else {
+            $params = array(
+                'tp' => $request->input('tp'),
+                'sig' => $request->input('sig'),
+            );
+            return View('shopping.forgetpwd', ['params' => $params]);
+        }
+    }
 
-
+    public function uploadIcon(Request $request)
+    {
+        $params = array(
+            'cmd' => 'uploadicon',
+            'pin' => Session::get('user.pin'),
+            'token' => self::Token
+        );
+        $result = $this->request('user', $params);
+        return $result;
+    }
 
 
 
