@@ -20,23 +20,23 @@ class BaseController extends Controller
         'openapi' => array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me'),//生产
     ];
 
-    protected function request($service, array $params,$path = null, $method = true, $cacheTime = 0)
+    protected function request($service, array $params, $path = null, $method = true, $cacheTime = 0)
     {
 
         $ApiName = $_SERVER['SERVER_NAME'] == 'motif.me' ? 'openapi' : ($_SERVER['SERVER_NAME'] == 'test.motif.me' ? 'openapi_test' : 'openapi_local');
         $Api = $service == 'rec' ? $this->ApiUrl[$ApiName]['rec'] : $this->ApiUrl[$ApiName]['api'];
-        $Api = $path == null ? $Api : $Api.'/'.$path.'/';
-        $Api .= '/'.$service;
+        $Api = $path == null ? $Api : $Api . '/' . $path . '/';
+        $Api .= '/' . $service;
         if ($cacheTime > 0) {
             $key = md5(json_encode($params));
             if (!$return = Cache::get($key)) {
                 $return = $this->send($Api, $params, $method);
-                $return['cache'] = array('cache'=>true,'date'=>date('Y-m-d H:i:s',time()));
+                $return['cache'] = array('cache' => true, 'date' => date('Y-m-d H:i:s', time()));
                 Cache::put($key, $return, $cacheTime / 60);
             }
         } else {
             $return = $this->send($Api, $params, $method);
-            $return['cache'] = array('cache'=>false,'date'=>date('Y-m-d H:i:s',time()));
+            $return['cache'] = array('cache' => false, 'date' => date('Y-m-d H:i:s', time()));
         }
 
         return $return;
@@ -46,5 +46,16 @@ class BaseController extends Controller
     {
         $curl = Curl::to($Api)->withData($params);
         return $method ? $curl->get() : $curl->post();
+    }
+
+    protected function UUID()
+    {
+        if ($_COOKIE['uid']) {
+            return $_COOKIE['uid'];
+        } else {
+            $UUID = md5($_SERVER['HTTP_USER_AGENT'].time().rand(1,1000));
+            setcookie('uid',$UUID,time()+86400*300);
+            return $UUID;
+        }
     }
 }

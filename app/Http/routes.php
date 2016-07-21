@@ -16,7 +16,13 @@ Route::get('/', 'DailyController@index');
 
 Route::get('/daily', 'DailyController@index');
 
-Route::get('/topic/{id}', 'DailyController@show');//专题动态模版
+Route::get('/topic/{id}', 'DailyController@show')->where(['id' => '[0-9]+']);//专题动态模版
 
-Route::get('service/{id}', 'DailyController@service');//商品详情服务动态模版
+Route::get('service/{id}', 'DailyController@service')->where(['id' => '[0-9]+']);//商品详情服务动态模版
 //Daily End
+
+//Designer Start
+Route::get('/designer', 'DesignerController@index');
+
+Route::get('/designer/{id}', 'DesignerController@show')->where(['id' => '[0-9]+']);
+//Designer End

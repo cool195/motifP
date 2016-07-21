@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
-
-
-
+        <title>NotFound 404</title>
         <style>
             html, body {
                 height: 100%;
@@ -14,6 +11,7 @@
                 margin: 0;
                 padding: 0;
                 width: 100%;
+                color: #B0BEC5;
                 display: table;
                 font-weight: 100;
                 font-family: 'Lato', sans-serif;
@@ -31,14 +29,15 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 72px;
+                margin-bottom: 40px;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">404</div>
             </div>
         </div>
     </body>

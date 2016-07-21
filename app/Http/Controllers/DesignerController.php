@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 
 class DesignerController extends BaseController
@@ -13,34 +12,24 @@ class DesignerController extends BaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Session::get();
-        $params = array('recid' => '100000', 'pin' => 'xuzhijie', 'uuid' => 'asdfasdfasdfasdf', 'pagesize' => 20, 'cid' => 0);
+        $params = array(
+            'cmd' => 'designerinfolist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'size' => $request->input('size', 10),
+            'start' => $request->input('start', 1),
+        );
 
-        return $this->request('rec', $params, false, 15);
+        $result = $this->request('designer', $params);
+
+        if ($request->input('ajax')) {
+            return $result;
+        }
+        return $result;//View('designer.index');
     }
 
-    /**
-     * 创建新表单
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * 存储器
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * 显示
@@ -48,34 +37,78 @@ class DesignerController extends BaseController
      * @param int $id
      * @return Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        Cache::add('juchao', 'value', 10);
-        return Cache::get('juchao');
+        //设计师详情
+        $params = array(
+            'cmd' => 'designerdetail',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'd_id' => $id,
+        );
+
+        $result = $this->request('designer', $params);
+        //设计师商品动态模版
+        $params = array(
+            'id' => $id,
+        );
+        $result['product'] = $this->request('content', $params, 'designerf');
+
+        //设计师商品
+        $params = array(
+            'recid' => '100004',
+            'pagenum' => 1,
+            'pagesize' => 50,
+            'uuid' => $this->UUID(),
+            'extra_kv' => 'designerId:' . $id,
+            'pin' => Session::get('user.pin'),
+        );
+        $result['productAll'] = $this->request('rec', $params);
+
+
+        $view = '';
+        $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
+        if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+
+            if ($request->input('token') || !empty($_COOKIE['PIN'])) {
+                if ($request->input('token')) {
+                    Session::put('user', array(
+                        'login_email' => $request->input('email'),
+                        'nickname' => $request->input('name'),
+                        'pin' => $request->input('pin'),
+                        'token' => $request->input('token'),
+                        'uuid' => $this->UUID(),
+                    ));
+                } else {
+                    Session::put('user', array(
+                        'login_email' => $_COOKIE['EMAIL'],
+                        'nickname' => urldecode($_COOKIE['NAME']),
+                        'pin' => $_COOKIE['PIN'],
+                        'token' => $_COOKIE['TOKEN'],
+                        'uuid' => $_COOKIE['UUID'],
+                    ));
+                }
+
+                $followParams = array(
+                    'cmd' => 'is',
+                    'pin' => Session::get('user.pin'),
+                    'token' => Session::get('user.token'),
+                    'did' => $result['data']['designer_id'],
+                );
+                $follow = $this->request('follow', $followParams);
+                $result['data']['followStatus'] = $follow['data']['isFC'];
+
+
+            } else {
+                Session::forget('user');
+            }
+            $view = 'designer.showApp';
+        } else {
+            $view = 'designer.show';
+        }
+        return $result;//View($view, ['designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
     }
 
-    /**
-     * 显示编辑页面
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * 更新
-     *
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * 移除
