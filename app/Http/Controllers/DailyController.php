@@ -13,12 +13,21 @@ class DailyController extends BaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Session::get();
-        $params = array('recid' => '100000', 'pin' => 'xuzhijie', 'uuid' => 'asdfasdfasdfasdf', 'pagesize' => 20, 'cid' => 0);
+        $params = array(
+            'cmd' => 'list',
+            'token' => Session::get('user.token'),
+            'pagesize' => $request->input('pagesize', 10),
+            'pagenum' => $request->input('pagenum', 1),
+        );
 
-        return $this->request('rec', $params, false, 15);
+        $result = $this->request('daily', $params);
+
+        if ($request->input('ajax')) {
+            return $result;
+        }
+        return $result;//View('daily.index');
     }
 
     /**
@@ -50,8 +59,19 @@ class DailyController extends BaseController
      */
     public function show($id)
     {
-        Cache::add('juchao', 'value', 10);
-        return Cache::get('juchao');
+        $params = array(
+            'id' => $id
+        );
+
+        $result = $this->request('openapi', 'topicf', "content", $params);
+        $view = '';
+        if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+            $view = 'daily.topicApp';
+        } else {
+            $view = 'daily.topic';
+        }
+
+        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>true]);
     }
 
     /**

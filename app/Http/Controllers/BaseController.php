@@ -20,11 +20,12 @@ class BaseController extends Controller
         'openapi' => array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me'),//生产
     ];
 
-    protected function request($service, array $params, $method = true, $cacheTime = 0)
+    protected function request($service, array $params,$path = null, $method = true, $cacheTime = 0)
     {
 
         $ApiName = $_SERVER['SERVER_NAME'] == 'motif.me' ? 'openapi' : ($_SERVER['SERVER_NAME'] == 'test.motif.me' ? 'openapi_test' : 'openapi_local');
         $Api = $service == 'rec' ? $this->ApiUrl[$ApiName]['rec'] : $this->ApiUrl[$ApiName]['api'];
+        $Api = $path == null ? $Api : $Api.'/'.$path.'/';
         $Api .= '/'.$service;
         if ($cacheTime > 0) {
             $key = md5(json_encode($params));
