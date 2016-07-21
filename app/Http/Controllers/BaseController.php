@@ -9,16 +9,6 @@ error_reporting(0);
 
 class BaseController extends Controller
 {
-    /**
-     * 接口环境地址数组
-     *
-     * @var array
-     */
-    protected $ApiUrl = [
-        'openapi_local' => array('api' => 'http://192.168.0.230', 'rec' => 'http://192.168.0.230'),//本地
-        'openapi_test' => array('api' => 'http://54.222.233.255', 'rec' => 'http://54.222.233.255'),//预发布
-        'openapi' => array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me'),//生产
-    ];
 
     function __construct()
     {
@@ -29,9 +19,8 @@ class BaseController extends Controller
 
     protected function request($service, array $params, $path = null, $method = true, $cacheTime = 0)
     {
-
-        $ApiName = $_SERVER['SERVER_NAME'] == 'motif.me' ? 'openapi' : ($_SERVER['SERVER_NAME'] == 'test.motif.me' ? 'openapi_test' : 'openapi_local');
-        $Api = $service == 'rec' ? $this->ApiUrl[$ApiName]['rec'] : $this->ApiUrl[$ApiName]['api'];
+        $ApiURL = config('runtime.API_URL');
+        $Api = $service == 'rec' ? $ApiURL['rec'] : $ApiURL['api'];
         $Api = $path == null ? $Api : $Api . '/' . $path . '/';
         $Api .= '/' . $service;
         if ($cacheTime > 0) {
