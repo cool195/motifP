@@ -23,7 +23,7 @@ class BaseController extends Controller
     function __construct()
     {
         if (empty($_COOKIE['uid'])) {
-            setcookie('uid', md5($_SERVER['HTTP_USER_AGENT'] . time() . rand(1, 1000)), time() + 86400 * 300);
+            setcookie('uid', md5($_SERVER['HTTP_USER_AGENT'] . time() . rand(1, 1000)), time() + 86400 * 300, '/');
         }
     }
 
