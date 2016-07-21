@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Daily Start
+Route::get('/', 'DailyController@index');
 
-Route::resource('daily','DailyController');
+Route::get('/daily', 'DailyController@index');
+
+Route::get('/topic/{id}', 'DailyController@show');//专题动态模版
+
+Route::get('service/{id}', 'DailyController@service');//商品详情服务动态模版
+//Daily End

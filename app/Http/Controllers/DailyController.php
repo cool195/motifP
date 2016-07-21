@@ -31,27 +31,6 @@ class DailyController extends BaseController
     }
 
     /**
-     * 创建新表单
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * 存储器
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * 显示
      *
      * @param int $id
@@ -63,7 +42,7 @@ class DailyController extends BaseController
             'id' => $id
         );
 
-        $result = $this->request('openapi', 'topicf', "content", $params);
+        $result = $this->request("content", $params, 'topicf');
         $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
             $view = 'daily.topicApp';
@@ -71,40 +50,30 @@ class DailyController extends BaseController
             $view = 'daily.topic';
         }
 
-        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>true]);
+        return $result;//View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>true]);
     }
 
     /**
-     * 显示编辑页面
+     * 商品详情服务模版
      *
      * @param int $id
      * @return Response
      */
-    public function edit($id)
+    public function service($id)
     {
-        //
+        $params = array(
+            'id' => $id
+        );
+
+        $result = $this->request("template", $params, 'topicf');
+        $view = '';
+        if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
+            $view = 'daily.topicApp';
+        } else {
+            $view = 'daily.topic';
+        }
+
+        return $result;//View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
     }
 
-    /**
-     * 更新
-     *
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * 移除
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
