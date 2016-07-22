@@ -113,7 +113,7 @@ class AddressController extends BaseController
         return $result;
     }
 
-    public function getCountry(Request $request)
+    public function getCountry()
     {
         $params = array(
             'cmd' => 'country',
