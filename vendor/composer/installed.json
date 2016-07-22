@@ -2935,80 +2935,6 @@
         ]
     },
     {
-        "name": "phpunit/phpunit",
-        "version": "4.8.26",
-        "version_normalized": "4.8.26.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/phpunit.git",
-            "reference": "fc1d8cd5b5de11625979125c5639347896ac2c74"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fc1d8cd5b5de11625979125c5639347896ac2c74",
-            "reference": "fc1d8cd5b5de11625979125c5639347896ac2c74",
-            "shasum": ""
-        },
-        "require": {
-            "ext-dom": "*",
-            "ext-json": "*",
-            "ext-pcre": "*",
-            "ext-reflection": "*",
-            "ext-spl": "*",
-            "php": ">=5.3.3",
-            "phpspec/prophecy": "^1.3.1",
-            "phpunit/php-code-coverage": "~2.1",
-            "phpunit/php-file-iterator": "~1.4",
-            "phpunit/php-text-template": "~1.2",
-            "phpunit/php-timer": "^1.0.6",
-            "phpunit/phpunit-mock-objects": "~2.3",
-            "sebastian/comparator": "~1.1",
-            "sebastian/diff": "~1.2",
-            "sebastian/environment": "~1.3",
-            "sebastian/exporter": "~1.2",
-            "sebastian/global-state": "~1.0",
-            "sebastian/version": "~1.0",
-            "symfony/yaml": "~2.1|~3.0"
-        },
-        "suggest": {
-            "phpunit/php-invoker": "~1.1"
-        },
-        "time": "2016-05-17 03:09:28",
-        "bin": [
-            "phpunit"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "4.8.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de",
-                "role": "lead"
-            }
-        ],
-        "description": "The PHP Unit Testing framework.",
-        "homepage": "https://phpunit.de/",
-        "keywords": [
-            "phpunit",
-            "testing",
-            "xunit"
-        ]
-    },
-    {
         "name": "symfony/css-selector",
         "version": "v3.0.8",
         "version_normalized": "3.0.8.0",
@@ -3122,18 +3048,63 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "laravel/framework",
-        "version": "v5.2.40",
-        "version_normalized": "5.2.40.0",
+        "name": "ixudra/curl",
+        "version": "6.3.0",
+        "version_normalized": "6.3.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/laravel/framework.git",
-            "reference": "6195211140ed0881e89d79a296f893abc56987be"
+            "url": "https://github.com/ixudra/curl.git",
+            "reference": "1a3de28dc07376a5a587ebdb7e092c266db07ae1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/6195211140ed0881e89d79a296f893abc56987be",
-            "reference": "6195211140ed0881e89d79a296f893abc56987be",
+            "url": "https://api.github.com/repos/ixudra/curl/zipball/1a3de28dc07376a5a587ebdb7e092c266db07ae1",
+            "reference": "1a3de28dc07376a5a587ebdb7e092c266db07ae1",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": ">=4.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2016-06-15 20:08:37",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Ixudra\\Curl\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jan Oris",
+                "email": "jan.oris@ixudra.be"
+            }
+        ],
+        "description": "Custom PHP Curl library for the Laravel 5 framework - developed by Ixudra",
+        "homepage": "http://ixudra.be",
+        "keywords": [
+            "Ixudra",
+            "curl",
+            "laravel"
+        ]
+    },
+    {
+        "name": "laravel/framework",
+        "version": "5.2.41",
+        "version_normalized": "5.2.41.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravel/framework.git",
+            "reference": "29ba2e310cfeb42ab6545bcd81ff4c2ec1f6b5c2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/laravel/framework/29ba2e310cfeb42ab6545bcd81ff4c2ec1f6b5c2.zip",
+            "reference": "29ba2e310cfeb42ab6545bcd81ff4c2ec1f6b5c2",
             "shasum": ""
         },
         "require": {
@@ -3216,7 +3187,7 @@
             "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (2.8.*|3.0.*).",
             "symfony/psr-http-message-bridge": "Required to psr7 bridging features (0.2.*)."
         },
-        "time": "2016-07-19 19:46:25",
+        "time": "2016-07-20 13:13:06",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3254,48 +3225,77 @@
         ]
     },
     {
-        "name": "ixudra/curl",
-        "version": "6.3.0",
-        "version_normalized": "6.3.0.0",
+        "name": "phpunit/phpunit",
+        "version": "4.8.27",
+        "version_normalized": "4.8.27.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/ixudra/curl.git",
-            "reference": "1a3de28dc07376a5a587ebdb7e092c266db07ae1"
+            "url": "https://github.com/sebastianbergmann/phpunit.git",
+            "reference": "c062dddcb68e44b563f66ee319ddae2b5a322a90"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ixudra/curl/zipball/1a3de28dc07376a5a587ebdb7e092c266db07ae1",
-            "reference": "1a3de28dc07376a5a587ebdb7e092c266db07ae1",
+            "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/phpunit/c062dddcb68e44b563f66ee319ddae2b5a322a90.zip",
+            "reference": "c062dddcb68e44b563f66ee319ddae2b5a322a90",
             "shasum": ""
         },
         "require": {
-            "illuminate/support": ">=4.0",
-            "php": ">=5.4.0"
+            "ext-dom": "*",
+            "ext-json": "*",
+            "ext-pcre": "*",
+            "ext-reflection": "*",
+            "ext-spl": "*",
+            "php": ">=5.3.3",
+            "phpspec/prophecy": "^1.3.1",
+            "phpunit/php-code-coverage": "~2.1",
+            "phpunit/php-file-iterator": "~1.4",
+            "phpunit/php-text-template": "~1.2",
+            "phpunit/php-timer": "^1.0.6",
+            "phpunit/phpunit-mock-objects": "~2.3",
+            "sebastian/comparator": "~1.1",
+            "sebastian/diff": "~1.2",
+            "sebastian/environment": "~1.3",
+            "sebastian/exporter": "~1.2",
+            "sebastian/global-state": "~1.0",
+            "sebastian/version": "~1.0",
+            "symfony/yaml": "~2.1|~3.0"
         },
-        "time": "2016-06-15 20:08:37",
+        "suggest": {
+            "phpunit/php-invoker": "~1.1"
+        },
+        "time": "2016-07-21 06:48:14",
+        "bin": [
+            "phpunit"
+        ],
         "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.8.x-dev"
+            }
+        },
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "Ixudra\\Curl\\": "src/"
-            }
+            "classmap": [
+                "src/"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT"
+            "BSD-3-Clause"
         ],
         "authors": [
             {
-                "name": "Jan Oris",
-                "email": "jan.oris@ixudra.be"
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
             }
         ],
-        "description": "Custom PHP Curl library for the Laravel 5 framework - developed by Ixudra",
-        "homepage": "http://ixudra.be",
+        "description": "The PHP Unit Testing framework.",
+        "homepage": "https://phpunit.de/",
         "keywords": [
-            "Ixudra",
-            "curl",
-            "laravel"
+            "phpunit",
+            "testing",
+            "xunit"
         ]
     }
 ]

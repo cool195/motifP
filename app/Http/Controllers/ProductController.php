@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 class ProductController extends BaseController
 {
@@ -29,10 +30,11 @@ class ProductController extends BaseController
             'spu' => $spu,
         );
         $result = $this->request('product', $params);
-        if($result['success'] && isset($result['data']['spuAttrs'])){
+        if ($result['success'] && isset($result['data']['spuAttrs'])) {
             $result['data']['spuAttrs'] = $this->getSpuAttrsStockStatus($result['data']['spuAttrs'], $result['data']['skuExps']);
         }
-        return $result;
+        //return $result;
+        return View('juchao.view', ['jsonResult' => json_encode($result['data']), 'result' => $result['data']]);
     }
 
     private function getSpuAttrsStockStatus(Array $spuAttrs, Array $skuExps)

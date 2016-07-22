@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "96cec2a0d640fb65e563e74487b1f077",
-    "content-hash": "ec0e1abce02c1ed9e25a24d05f3ef353",
+    "hash": "5a8309e1b377261602e60d16cfe62c54",
+    "content-hash": "080f97a170bb9aad73e909671ac970a0",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -351,16 +351,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.40",
+            "version": "5.2.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "6195211140ed0881e89d79a296f893abc56987be"
+                "reference": "29ba2e310cfeb42ab6545bcd81ff4c2ec1f6b5c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/6195211140ed0881e89d79a296f893abc56987be",
-                "reference": "6195211140ed0881e89d79a296f893abc56987be",
+                "url": "https://packagist.phpcomposer.com/files/laravel/framework/29ba2e310cfeb42ab6545bcd81ff4c2ec1f6b5c2.zip",
+                "reference": "29ba2e310cfeb42ab6545bcd81ff4c2ec1f6b5c2",
                 "shasum": ""
             },
             "require": {
@@ -477,7 +477,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-07-19 19:46:25"
+            "time": "2016-07-20 13:13:06"
         },
         {
             "name": "league/flysystem",
@@ -2489,16 +2489,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.26",
+            "version": "4.8.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "fc1d8cd5b5de11625979125c5639347896ac2c74"
+                "reference": "c062dddcb68e44b563f66ee319ddae2b5a322a90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fc1d8cd5b5de11625979125c5639347896ac2c74",
-                "reference": "fc1d8cd5b5de11625979125c5639347896ac2c74",
+                "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/phpunit/c062dddcb68e44b563f66ee319ddae2b5a322a90.zip",
+                "reference": "c062dddcb68e44b563f66ee319ddae2b5a322a90",
                 "shasum": ""
             },
             "require": {
@@ -2557,7 +2557,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-05-17 03:09:28"
+            "time": "2016-07-21 06:48:14"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
