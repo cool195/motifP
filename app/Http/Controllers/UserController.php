@@ -178,7 +178,7 @@ class UserController extends BaseController
         }
     }
 
-    public function uploadIcon(Request $request)
+    public function uploadIcon()
     {
         $params = array(
             'cmd' => 'uploadicon',

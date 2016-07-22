@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\View;
-
 class ProductController extends BaseController
 {
 
@@ -23,7 +19,7 @@ class ProductController extends BaseController
         return $result;
     }
 
-    public function getProductDetail(Request $request, $spu)
+    public function getProductDetail($spu)
     {
         $params = array(
             'cmd' => 'productdetail',

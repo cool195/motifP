@@ -12,7 +12,7 @@ class CartController extends BaseController
 
     }
 
-    public function getCartAmount(Request $request)
+    public function getCartAmount()
     {
         $params = array(
             'cmd' => 'amount',
@@ -31,7 +31,7 @@ class CartController extends BaseController
         return $result;
     }
 
-    public function getCartList(Request $request)
+    public function getCartList()
     {
         $params = array(
             'cmd' =>"cartlist",
@@ -42,7 +42,7 @@ class CartController extends BaseController
         return $result;
     }
 
-    public function getCartSaveList(Request $request)
+    public function getCartSaveList()
     {
         $params = array(
             'cmd' => 'savelist',

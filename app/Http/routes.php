@@ -39,6 +39,8 @@ Route::get('/products', 'ShoppingController@getShoppingProductList');
 
 
 //Product Start
+
+//todo delete
 Route::get('/products/{spu}', 'ProductController@getProductDetail')->where(['spu' => '[0-9]+']);
 //Product End
 
@@ -93,6 +95,9 @@ Route::match(['get', 'post'], '/user/modifyUserInfo', 'UserController@modifyUser
 Route::post('/user/uploadicon', 'UserController@uploadIcon');
 //User End
 
+//Address Start
+
+//Address End
 
 
 

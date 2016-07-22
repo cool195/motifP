@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 
 class ShoppingController extends BaseController
 {
-    public function getShoppingCategoryList(Request $request)
+    public function getShoppingCategoryList()
     {
         $params = array(
             'cmd' => 'categorylist',
