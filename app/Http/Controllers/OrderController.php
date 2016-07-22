@@ -60,8 +60,6 @@ class OrderController extends BaseController
             'pin' => Session::get('user.pin'),
             'subno' => $subno,
         );
-        $system = "";
-        $service = "order";
         $result = $this->request('order', $params);
         if (!empty($result) && $result['success']) {
             $result = $this->jsonDecodeOrderDetailResult($result);
