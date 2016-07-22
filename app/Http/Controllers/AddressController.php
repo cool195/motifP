@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 
 class AddressController extends BaseController
 {
-    public function getUserAddrList(Request $request)
+    public function getUserAddrList()
     {
         $params = array(
             'cmd' => 'list',
@@ -19,7 +19,7 @@ class AddressController extends BaseController
         return $result;
     }
 
-    public function getUserDefaultAddr(Request $request)
+    public function getUserDefaultAddr()
     {
         $params = array(
             'cmd' => 'gdefault',

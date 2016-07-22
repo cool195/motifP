@@ -22,7 +22,7 @@ class ProductController extends BaseController
         return $result;
     }
 
-    public function getProductDetail(Request $request, $spu)
+    public function getProductDetail($spu)
     {
         $params = array(
             'cmd' => 'productdetail',
