@@ -29,11 +29,10 @@ class UserController extends BaseController
 
     public function loginCheck(Request $request)
     {
-        $email = $request->input('email');
         $params = array(
             'cmd' => "login",
             'uuid' => $_COOKIE['uid'],
-            'email' => $email,
+            'email' => $request->input('email'),
             'pw' => md5($request->input('pw')),
             'token' => self::Token,
         );

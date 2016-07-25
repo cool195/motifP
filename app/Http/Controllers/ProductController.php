@@ -9,8 +9,9 @@ class ProductController extends BaseController
         $result = $this->getProductDetail($spu);
         // todo $view = "";
         if ($result['success']) {
+            //todo
             $recommended = $this->recommended($spu, current($result['data']['front_category_ids']));
-            $view = View('juchao.view', ['jsonResult' => json_encode($result['data']), 'data' => $result['data'], 'recommended' => $recommended['data']]);
+            $view = View('product.product', ['jsonResult' => json_encode($result['data']), 'data' => $result['data'], 'recommended' => $recommended['data']]);
         }
         return $view;
     }
