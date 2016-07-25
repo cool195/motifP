@@ -4,6 +4,16 @@ namespace App\Http\Controllers;
 
 class ProductController extends BaseController
 {
+    public function index($spu)
+    {
+        $result = $this->getProductDetail($spu);
+        // todo $view = "";
+        if ($result['success']) {
+            $recommended = $this->recommended($spu, current($result['data']['front_category_ids']));
+            $view = View('juchao.view', ['jsonResult' => json_encode($result['data']), 'data' => $result['data'], 'recommended' => $recommended['data']]);
+        }
+        return $view;
+    }
 
     public function recommended($spu, $cid)
     {
@@ -29,8 +39,7 @@ class ProductController extends BaseController
         if ($result['success'] && isset($result['data']['spuAttrs'])) {
             $result['data']['spuAttrs'] = $this->getSpuAttrsStockStatus($result['data']['spuAttrs'], $result['data']['skuExps']);
         }
-        //return $result;
-        return View('juchao.view', ['jsonResult' => json_encode($result['data']), 'result' => $result['data']]);
+        return $result;
     }
 
     private function getSpuAttrsStockStatus(Array $spuAttrs, Array $skuExps)

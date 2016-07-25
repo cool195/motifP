@@ -39,9 +39,10 @@ Route::get('/products', 'ShoppingController@getShoppingProductList');
 
 
 //Product Start
+Route::get('/products/{spu}', 'ProductController@index')->where(['spu' => '[0-9]+']);
 
 //todo delete
-Route::get('/products/{spu}', 'ProductController@getProductDetail')->where(['spu' => '[0-9]+']);
+Route::get('/detail/{spu}', 'ProductController@getProductDetail')->where(['spu' => '[0-9]+']);
 //Product End
 
 
