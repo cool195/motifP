@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="/styles/vendor.css">
 
     <link rel="stylesheet" href="/styles/common.css">
-
-    <script src="/scripts/vendor/modernizr.js"></script>
+    
 </head>
 <body>
 
@@ -156,9 +155,11 @@
         @foreach($recommended['list'] as $list)
         <div class="col-md-3 col-xs-6">
             <div class="productList-item">
+                <a href="/products/{{$list['spu']}}">
                 <div class="image-container">
                     <img class="img-fluid" src="{{config('common.APP_Api_Image')}}/n1/{{ $list['main_image_url']}}" alt="商品的名称">
                 </div>
+                </a>
                 <div class="price-caption helveBold">
                     <div class="text-center font-size-md text-primary">{{ $list['main_title'] }}</div>
                     <div class="text-center">
