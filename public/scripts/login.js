@@ -6,7 +6,7 @@
 'use strict';
 (function ($) {
     // loading 打开
-    function openLoading() {
+    function loginOpenLoading() {
         $('.loading').toggleClass('loading-hidden');
         setTimeout(function () {
             $('.loading').toggleClass('loading-open');
@@ -14,7 +14,7 @@
     }
 
     // loading 隐藏
-    function closeLoading() {
+    function loginCloseLoading() {
         $('.loading').addClass('loading-close');
         setTimeout(function () {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
@@ -39,7 +39,7 @@
                 }
             })
             .always(function () {
-                closeLoading();
+                loginCloseLoading();
             });
     }
 
@@ -47,7 +47,7 @@
      *  验证 Email 格式
      * @param $Email
      */
-    function validationEmail($Email) {
+    function loginValidationEmail($Email) {
         var EmailNull = 'Please enter your email',
             EmailStyle = 'Please enter a valid email address';
         var $WarningInfo = $('.warning-info');
@@ -72,7 +72,7 @@
      * 验证 Password 格式
      * @param $Password
      */
-    function validationPassword($Password) {
+    function loginValidationPassword($Password) {
         var PasswordNull = 'Please enter your password',
             PasswordLength = "Oops, that's not a match.";
         var $WarningInfo = $('.warning-info');
@@ -109,7 +109,7 @@
 
     // 验证密码的情况
     $('input[name="pw"]').on('keyup blur', function () {
-        if (validationPassword($(this))) {
+        if (loginValidationPassword($(this))) {
             $('div[data-role="submit"]').removeClass('disabled');
         } else {
             $('div[data-role="submit"]').addClass('disabled');
@@ -120,10 +120,10 @@
         var $Email = $('input[name="email"]'),
             $Password = $('input[name="pw"]');
 
-        if (!validationEmail($Email)) {
+        if (!loginValidationEmail($Email)) {
             $('div[data-role="submit"]').addClass('disabled');
             return;
-        } else if (!validationPassword($Password)) {
+        } else if (!loginValidationPassword($Password)) {
             $('div[data-role="submit"]').addClass('disabled');
             return;
         }
