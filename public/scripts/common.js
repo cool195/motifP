@@ -52,10 +52,16 @@ window.onload = function () {
     });
 
     // 选择 商品属性
-    $('input[type="radio"]').on('click', function () {
-        var RadioName = $(this).attr('name');
-        $('input[name=' + RadioName + ']').next().removeClass('active');
-        $(this).next().addClass('active');
+    $('.btn-itemProperty').on('click', function () {
+        var ItemType = $(this).data('type');
+        if (ItemType !== '') {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+            } else {
+                $('.btn-itemProperty[data-type=' + ItemType + ']').removeClass('active');
+                $(this).addClass('active');
+            }
+        }
     });
 
     // 选择 商品增值服务
