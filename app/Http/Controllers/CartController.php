@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends BaseController
 {
-    public function index(Request $request)
+    public function index()
     {
-
+        $cartList = $this->getCartList();
+        $saveList = $this->getCartSaveList();
+        //todo @return
     }
 
     public function getCartAmount()

@@ -22,10 +22,10 @@
         </nav>
         <nav class="navbar-right">
             <ul class="nav navbar-primary">
-                <li class="nav-item p-x-10x"><a href="#" class="nav-link">yinlinghui</a></li>
+                <li class="nav-item p-x-10x"><a href="#" class="nav-link">{{Session::get('user.nickname')}}</a></li>
                 <li class="nav-item p-x-10x">
                     <a href="#" class="nav-link">
-                        <img class="img-circle" src="/images/icon/apple-touch-icon.png" width="40" height="40" alt="">
+                        <img class="img-circle" src="@if(Session::has('user')) {{config('common.APP_Api_Image')}}/n1/{{Session::get('user.icon')}} @else /images/icon/apple-touch-icon.png @endif" width="40" height="40" alt="">
                     </a>
                 </li>
                 <li class="nav-item p-x-20x"><a href="#" class="nav-link"><i class="iconfont icon-shopbag font-size-lg text-primary"></i></a></li>
