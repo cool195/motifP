@@ -6,11 +6,11 @@ if (env('APP_ENV') == 'production') {
     $API_URL = array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me');
 } elseif (env('APP_ENV') == 'publish') {
     //预发布
-    $CDN_URL = 'http://test.motif.me';
+    $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';
     $API_URL = array('api' => 'http://54.222.233.255', 'rec' => 'http://54.222.233.255');
 } else {
     //测试
-    $CDN_URL = $_SERVER['SERVER_NAME'];
+    $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';
     $API_URL = array('api' => 'http://192.168.0.230', 'rec' => 'http://192.168.0.230');
 }
 return [
