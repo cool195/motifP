@@ -10,7 +10,6 @@ class CartController extends BaseController
     public function cart(Request $request)
     {
         $cartList = $this->getCartList();
-        //$saveList = $this->getCartSaveList();
         if($request->input('ajax')){
             return $cartList;
         }
