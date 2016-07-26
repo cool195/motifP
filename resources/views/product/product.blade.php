@@ -25,7 +25,7 @@
             <div class="col-lg-6 col-md-12">
                 <div class="p-a-20x box-shadow bg-white">
                     <img class="img-fluid product-bigImg"
-                         src="{{config('runtime.APP_Api_Image')}}/n1/{{$data['main_image_url']}}" alt="">
+                         src="{{config('runtime.CDN_URL')}}/n1/{{$data['main_image_url']}}" alt="">
                     <div class="swiper-container">
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @if(isset($data['productImages']))
