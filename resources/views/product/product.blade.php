@@ -135,8 +135,8 @@
 @if(isset($data['designer']))
     <div class="container m-t-30x">
         <span class="sanBold font-size-md p-x-20x">Designer:</span>
-        <span class="p-r-10x"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png" width="40" height="40"
-                                   alt=""></span>
+{{--        <span class="p-r-10x"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png" width="40" height="40"
+                                   alt=""></span>--}}
         <span class="sanBold text-main">{{ $data['designer']['designer_name'] }}</span>
     </div>
 @endif
