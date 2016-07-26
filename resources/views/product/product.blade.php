@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/styles/vendor.css">
 
     <link rel="stylesheet" href="/styles/common.css">
-    
+
 </head>
 <body>
 
@@ -30,8 +30,7 @@
                             @if(isset($data['productImages']))
                                 @foreach($data['productImages'] as $image)
                                     <div class="productImg-item swiper-slide p-r-10x">
-                                        <img class="img-thumbnail active" src="{{config('common.APP_Api_Image')}}/n1/{{$image['img_path']}}" width="110"
-                                             height="110" alt="商品图片">
+                                        <img class="img-thumbnail active" src="{{config('common.APP_Api_Image')}}/n1/{{$image['img_path']}}" width="110" height="110" alt="商品图片">
                                     </div>
                                 @endforeach
                             @endif
@@ -77,20 +76,19 @@
                                 <div class="text-primary font-size-md">{{$vas['vas_describe']}} +${{number_format(($vas['vas_price'] / 100), 2)}}</div>
                                 <div class="m-l-15x">
                                     <div class="p-y-5x flex flex-alignCenter">
-                                        <input type="text"
-                                               class="input-engraving form-control m-r-20x text-primary disabled">
+                                        <input type="text" class="input-engraving form-control m-r-20x text-primary disabled">
                                         <i class="iconfont icon-checkcircle text-primary font-size-lg"></i>
                                     </div>
                                 </div>
                             </fieldset>
                         @endforeach
                     @endif
-                    <fieldset class="text-left m-b-20x">
+{{--                    <fieldset class="text-left m-b-20x">
                         <div class="flex flex-alignCenter">
                             <div class="text-primary font-size-md m-r-20x">Gift package+＄4.5(optional)</div>
                             <i class="iconfont icon-checkcircle text-primary font-size-lg"></i>
                         </div>
-                    </fieldset>
+                    </fieldset>--}}
                     <fieldset class="text-left m-b-20x">
                         <div class="flex flex-alignCenter">
                             <span class="text-primary font-size-md m-r-20x">Qty:</span>
@@ -107,9 +105,9 @@
                         </div>
                     </fieldset>
                     <hr class="hr-common">
-                    <div class="text-center p-t-15x p-b-10x"><a href="#"
-                                                                class="btn btn-block btn-primary btn-lg btn-addToBag">Add
-                            to Bag</a></div>
+                    <div class="text-center p-t-15x p-b-10x">
+                        <a href="#" class="btn btn-block btn-primary btn-lg btn-addToBag">Add to Bag</a>
+                    </div>
                 </div>
             </div>
         </div>

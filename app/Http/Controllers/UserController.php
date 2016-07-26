@@ -48,7 +48,7 @@ class UserController extends BaseController
     public function signout()
     {
         Session::forget('user');
-        return redirect('/login');
+       //todo return redirect('/login');
     }
 
     public function forgetPassword(Request $request)
