@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/styles/vendor.css">
 
     <link rel="stylesheet" href="/styles/common.css">
-    
+
 </head>
 <body>
 
@@ -24,27 +24,32 @@
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="p-a-20x box-shadow bg-white">
-                    <img class="img-fluid product-bigImg" src="{{config('common.APP_Api_Image')}}/n1/{{$data['main_image_url']}}" alt="">
+                    <img class="img-fluid product-bigImg"
+                         src="{{config('common.APP_Api_Image')}}/n1/{{$data['main_image_url']}}" alt="">
                     <div class="swiper-container">
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @if(isset($data['productImages']))
                                 @foreach($data['productImages'] as $image)
                                     <div class="productImg-item swiper-slide p-r-10x">
-                                        <img class="img-thumbnail active" src="{{config('common.APP_Api_Image')}}/n1/{{$image['img_path']}}" width="110"
+                                        <img class="img-thumbnail active"
+                                             src="{{config('common.APP_Api_Image')}}/n1/{{$image['img_path']}}"
+                                             width="110"
                                              height="110" alt="商品图片">
                                     </div>
                                 @endforeach
                             @endif
                         </div>
-                        <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
-                        <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i></div>
+                        <div class="swiper-button-next"><i
+                                    class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
+                        <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="p-a-20x box-shadow bg-white">
                     <h4 class="product-title helveBold">{{ $data['main_title'] }}</h4>
-                    <p class="m-b-15x text-primary"><?php  echo str_replace("\n", "<br/>",  $data['intro_short']) ?></p>
+                    <p class="m-b-15x text-primary">{!! str_replace("\n", "<br>",$data['intro_short']) !!}</p>
                     <div class="product-price">
                         @if(isset($data['skuPrice']['skuPromotion']))
                             <span class="sanBold p-r-10x text-primary">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
@@ -54,27 +59,42 @@
                         @endif
                     </div>
                     <hr class="hr-common">
+
                     @if(isset($data['spuAttrs']))
+                        <input hidden id="jsonStr" value="{{$jsonResult}}">
+                        <input hidden id="productsku">
                         @foreach($data['spuAttrs'] as $spuAttr)
                             <fieldset class="text-left m-b-20x">
                                 <div class="text-primary font-size-md">{{$spuAttr['attr_type_value']}}:</div>
                                 <div class="m-l-15x">
                                     <div class="option-item">
                                         @foreach($spuAttr['skuAttrValues'] as $skuAttrValue )
-                                        <div class="p-y-5x p-r-10x">
-                                            <input type="radio" name="size" value="xxl" id="xxl" @if(!$skuAttrValue['stock']) disabled="disabled" @endif hidden>
-                                            <label for="xxl" class="btn btn-itemProperty btn-sm @if(!$skuAttrValue['stock']) disabled @endif" data-spa="" data-ska="">{{$skuAttrValue['attr_value']}}</label>
-                                        </div>
+                                            <div class="p-y-5x p-r-10x">
+                                                @if($skuAttrValue['stock'])
+                                                    <div class="btn btn-itemProperty btn-sm"
+                                                         data-type="{{'attr_type'.$spuAttr['attr_type']}}"
+                                                         data-attr-type="{{$spuAttr['attr_type']}}"
+                                                         data-attr-value-id="{{$skuAttrValue['attr_value_id']}}"
+                                                         data-id="{{'skutype'.$skuAttrValue['attr_value_id']}}">{{$skuAttrValue['attr_value']}}
+                                                    </div>
+                                                @else
+                                                    <div class="btn btn-itemProperty btn-sm disabled">{{$skuAttrValue['attr_value']}}
+                                                    </div>
+                                                @endif
+                                            </div>
                                         @endforeach
                                     </div>
                                 </div>
                             </fieldset>
                         @endforeach
+                    @else
+                        <input hidden id="productsku" value="{{$data['skuPrice']['sku']}}">
                     @endif
                     @if(isset($data['vasBases']))
                         @foreach($data['vasBases'] as $vas)
                             <fieldset class="text-left m-b-20x">
-                                <div class="text-primary font-size-md">{{$vas['vas_describe']}} +${{number_format(($vas['vas_price'] / 100), 2)}}</div>
+                                <div class="text-primary font-size-md">{{$vas['vas_describe']}}
+                                    +${{number_format(($vas['vas_price'] / 100), 2)}}</div>
                                 <div class="m-l-15x">
                                     <div class="p-y-5x flex flex-alignCenter">
                                         <input type="text"
@@ -117,11 +137,12 @@
 </section>
 
 @if(isset($data['designer']))
-<div class="container m-t-30x">
-    <span class="sanBold font-size-md p-x-20x">Designer:</span>
-    <span class="p-r-10x"><img class="img-circle" src="/images/icon/apple-touch-icon.png" width="40" height="40" alt=""></span>
-    <span class="sanBold text-main">{{ $data['designer']['designer_name'] }}</span>
-</div>
+    <div class="container m-t-30x">
+        <span class="sanBold font-size-md p-x-20x">Designer:</span>
+        <span class="p-r-10x"><img class="img-circle" src="/images/icon/apple-touch-icon.png" width="40" height="40"
+                                   alt=""></span>
+        <span class="sanBold text-main">{{ $data['designer']['designer_name'] }}</span>
+    </div>
 @endif
 
 <div class="container m-t-30x">
@@ -153,24 +174,25 @@
     <h4 class="helveBold text-main p-l-10x">You May Also Like</h4>
     <div class="row p-t-20x">
         @foreach($recommended['list'] as $list)
-        <div class="col-md-3 col-xs-6">
-            <div class="productList-item">
-                <a href="/products/{{$list['spu']}}">
-                <div class="image-container">
-                    <img class="img-fluid" src="{{config('common.APP_Api_Image')}}/n1/{{ $list['main_image_url']}}" alt="商品的名称">
-                </div>
-                </a>
-                <div class="price-caption helveBold">
-                    <div class="text-center font-size-md text-primary">{{ $list['main_title'] }}</div>
-                    <div class="text-center">
-                        <span class="font-size-md text-primary p-r-5x">${{ number_format(($list['skuPrice']['sale_price'] / 100), 2) }}</span>
-                        @if($list['skuPrice']['sale_price'] != $list['skuPrice']['price'])
-                            <span class="font-size-base text-common text-throughLine">${{ number_format(($list['skuPrice']['price'] / 100), 2) }}</span>
-                        @endif
+            <div class="col-md-3 col-xs-6">
+                <div class="productList-item">
+                    <a href="/products/{{$list['spu']}}">
+                        <div class="image-container">
+                            <img class="img-fluid"
+                                 src="{{config('common.APP_Api_Image')}}/n1/{{ $list['main_image_url']}}" alt="商品的名称">
+                        </div>
+                    </a>
+                    <div class="price-caption helveBold">
+                        <div class="text-center font-size-md text-primary">{{ $list['main_title'] }}</div>
+                        <div class="text-center">
+                            <span class="font-size-md text-primary p-r-5x">${{ number_format(($list['skuPrice']['sale_price'] / 100), 2) }}</span>
+                            @if($list['skuPrice']['sale_price'] != $list['skuPrice']['price'])
+                                <span class="font-size-base text-common text-throughLine">${{ number_format(($list['skuPrice']['price'] / 100), 2) }}</span>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         @endforeach
     </div>
     <div class="text-center m-y-30x">
