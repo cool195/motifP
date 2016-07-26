@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Shopping Detail</title>
-    <link rel="apple-touch-icon" href="/images/icon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png">
 
     <link rel="stylesheet" href="/styles/vendor.css">
 
@@ -135,7 +135,7 @@
 @if(isset($data['designer']))
     <div class="container m-t-30x">
         <span class="sanBold font-size-md p-x-20x">Designer:</span>
-        <span class="p-r-10x"><img class="img-circle" src="/images/icon/apple-touch-icon.png" width="40" height="40"
+        <span class="p-r-10x"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png" width="40" height="40"
                                    alt=""></span>
         <span class="sanBold text-main">{{ $data['designer']['designer_name'] }}</span>
     </div>
@@ -175,7 +175,7 @@
                     <a href="/products/{{$list['spu']}}">
                         <div class="image-container">
                             <img class="img-fluid"
-                                 src="{{config('common.APP_Api_Image')}}/n1/{{ $list['main_image_url']}}" alt="商品的名称">
+                                 src="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}" alt="商品的名称">
                         </div>
                     </a>
                     <div class="price-caption helveBold">
