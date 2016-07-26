@@ -10,7 +10,8 @@ class CartController extends BaseController
     public function index()
     {
         $cartList = $this->getCartList();
-        $saveList = $this->getCartSaveList();
+        //$saveList = $this->getCartSaveList();
+        return $cartList;
         //todo @return
     }
 
