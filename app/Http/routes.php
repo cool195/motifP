@@ -35,6 +35,7 @@ Route::get('/category', 'ShoppingController@getShoppingCategoryList');
 
 Route::get('/products', 'ShoppingController@getShoppingProductList');
 
+Route::post('/checkStock', 'ShoppingController@checkStock');
 //Shopping End
 
 

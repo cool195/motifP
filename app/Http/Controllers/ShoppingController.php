@@ -39,6 +39,7 @@ class ShoppingController extends BaseController
             'skus' => $request->input('skus')
         );
         $result = $this->request('stock', $params);
+        $result['params'] = $params;
         return $result;
     }
 }

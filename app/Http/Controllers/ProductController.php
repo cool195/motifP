@@ -13,7 +13,7 @@ class ProductController extends BaseController
             return $result;
         }
         $recommended = $this->recommended($spu, current($result['data']['front_category_ids']));
-        return View('product.product', ['jsonResult' => json_encode($result['data']['spuAttrs']), 'data' => $result['data'], 'recommended' => $recommended['data']]);
+        return View('product.product', ['jsonResult' => json_encode($result['data']), 'data' => $result['data'], 'recommended' => $recommended['data']]);
     }
 
     public function recommended($spu, $cid)
