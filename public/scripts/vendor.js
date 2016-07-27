@@ -17847,783 +17847,788 @@ else if (typeof define === 'function' && define.amd) {
 }
 //# sourceMappingURL=maps/swiper.js.map
 
-/*!
-  Wookmark plugin
-  @name wookmark.js
-  @author Christoph Ono (chri@sto.ph or @gbks)
-  @author Sebastian Helzle (me@helzle.it or @sebobo)
-  @version 2.1.2
-  @date 05/05/2016
-  @category jQuery plugin
-  @copyright (c) 2009-2016 Christoph Ono (www.wookmark.com)
-  @license Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
-*/
-/*global define, window, jQuery*/
-/*jslint plusplus: true, bitwise: true */
-(function (factory) {
+/*
+ *  Remodal - v1.1.0
+ *  Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
+ *  http://vodkabears.github.io/remodal/
+ *
+ *  Made by Ilya Makarov
+ *  Under MIT License
+ */
+
+!(function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['window', 'document'], factory);
+    define(['jquery'], function($) {
+      return factory(root, $);
+    });
+  } else if (typeof exports === 'object') {
+    factory(root, require('jquery'));
   } else {
-    factory(window, document);
+    factory(root, root.jQuery || root.Zepto);
   }
-}(function (window, document) {
+})(this, function(global, $) {
 
-  // Wookmark default options
-  // ------------------------
-  var defaultOptions = {
-    align: 'center',
-    autoResize: true,
-    comparator: null,
-    direction: undefined,
-    ignoreInactiveItems: true,
-    inactiveClass: 'wookmark-inactive',
-    itemSelector: undefined,
-    itemWidth: 0,
-    fillEmptySpace: false,
-    flexibleWidth: 0,
-    offset: 5,
-    outerOffset: 0,
-    onLayoutChanged: undefined,
-    placeholderClass: 'wookmark-placeholder',
-    possibleFilters: [],
-    resizeDelay: 50,
-    verticalOffset: undefined
+  'use strict';
+
+  /**
+   * Name of the plugin
+   * @private
+   * @const
+   * @type {String}
+   */
+  var PLUGIN_NAME = 'remodal';
+
+  /**
+   * Namespace for CSS and events
+   * @private
+   * @const
+   * @type {String}
+   */
+  var NAMESPACE = global.REMODAL_GLOBALS && global.REMODAL_GLOBALS.NAMESPACE || PLUGIN_NAME;
+
+  /**
+   * Animationstart event with vendor prefixes
+   * @private
+   * @const
+   * @type {String}
+   */
+  var ANIMATIONSTART_EVENTS = $.map(
+    ['animationstart', 'webkitAnimationStart', 'MSAnimationStart', 'oAnimationStart'],
+
+    function(eventName) {
+      return eventName + '.' + NAMESPACE;
+    }
+
+  ).join(' ');
+
+  /**
+   * Animationend event with vendor prefixes
+   * @private
+   * @const
+   * @type {String}
+   */
+  var ANIMATIONEND_EVENTS = $.map(
+    ['animationend', 'webkitAnimationEnd', 'MSAnimationEnd', 'oAnimationEnd'],
+
+    function(eventName) {
+      return eventName + '.' + NAMESPACE;
+    }
+
+  ).join(' ');
+
+  /**
+   * Default settings
+   * @private
+   * @const
+   * @type {Object}
+   */
+  var DEFAULTS = $.extend({
+    hashTracking: true,
+    closeOnConfirm: true,
+    closeOnCancel: true,
+    closeOnEscape: true,
+    closeOnOutsideClick: true,
+    modifier: '',
+    appendTo: null
+  }, global.REMODAL_GLOBALS && global.REMODAL_GLOBALS.DEFAULTS);
+
+  /**
+   * States of the Remodal
+   * @private
+   * @const
+   * @enum {String}
+   */
+  var STATES = {
+    CLOSING: 'closing',
+    CLOSED: 'closed',
+    OPENING: 'opening',
+    OPENED: 'opened'
   };
 
-  // Helper functions
-  // ----------------
+  /**
+   * Reasons of the state change.
+   * @private
+   * @const
+   * @enum {String}
+   */
+  var STATE_CHANGE_REASONS = {
+    CONFIRMATION: 'confirmation',
+    CANCELLATION: 'cancellation'
+  };
 
-  // Bind function to set the context for the Wookmark instance function
-  function __bind(fn, me) {
-    return function () {
-      return fn.apply(me, arguments);
+  /**
+   * Is animation supported?
+   * @private
+   * @const
+   * @type {Boolean}
+   */
+  var IS_ANIMATION = (function() {
+    var style = document.createElement('div').style;
+
+    return style.animationName !== undefined ||
+      style.WebkitAnimationName !== undefined ||
+      style.MozAnimationName !== undefined ||
+      style.msAnimationName !== undefined ||
+      style.OAnimationName !== undefined;
+  })();
+
+  /**
+   * Is iOS?
+   * @private
+   * @const
+   * @type {Boolean}
+   */
+  var IS_IOS = /iPad|iPhone|iPod/.test(navigator.platform);
+
+  /**
+   * Current modal
+   * @private
+   * @type {Remodal}
+   */
+  var current;
+
+  /**
+   * Scrollbar position
+   * @private
+   * @type {Number}
+   */
+  var scrollTop;
+
+  /**
+   * Returns an animation duration
+   * @private
+   * @param {jQuery} $elem
+   * @returns {Number}
+   */
+  function getAnimationDuration($elem) {
+    if (
+      IS_ANIMATION &&
+      $elem.css('animation-name') === 'none' &&
+      $elem.css('-webkit-animation-name') === 'none' &&
+      $elem.css('-moz-animation-name') === 'none' &&
+      $elem.css('-o-animation-name') === 'none' &&
+      $elem.css('-ms-animation-name') === 'none'
+    ) {
+      return 0;
+    }
+
+    var duration = $elem.css('animation-duration') ||
+      $elem.css('-webkit-animation-duration') ||
+      $elem.css('-moz-animation-duration') ||
+      $elem.css('-o-animation-duration') ||
+      $elem.css('-ms-animation-duration') ||
+      '0s';
+
+    var delay = $elem.css('animation-delay') ||
+      $elem.css('-webkit-animation-delay') ||
+      $elem.css('-moz-animation-delay') ||
+      $elem.css('-o-animation-delay') ||
+      $elem.css('-ms-animation-delay') ||
+      '0s';
+
+    var iterationCount = $elem.css('animation-iteration-count') ||
+      $elem.css('-webkit-animation-iteration-count') ||
+      $elem.css('-moz-animation-iteration-count') ||
+      $elem.css('-o-animation-iteration-count') ||
+      $elem.css('-ms-animation-iteration-count') ||
+      '1';
+
+    var max;
+    var len;
+    var num;
+    var i;
+
+    duration = duration.split(', ');
+    delay = delay.split(', ');
+    iterationCount = iterationCount.split(', ');
+
+    // The 'duration' size is the same as the 'delay' size
+    for (i = 0, len = duration.length, max = Number.NEGATIVE_INFINITY; i < len; i++) {
+      num = parseFloat(duration[i]) * parseInt(iterationCount[i], 10) + parseFloat(delay[i]);
+
+      if (num > max) {
+        max = num;
+      }
+    }
+
+    return max;
+  }
+
+  /**
+   * Returns a scrollbar width
+   * @private
+   * @returns {Number}
+   */
+  function getScrollbarWidth() {
+    if ($(document.body).height() <= $(window).height()) {
+      return 0;
+    }
+
+    var outer = document.createElement('div');
+    var inner = document.createElement('div');
+    var widthNoScroll;
+    var widthWithScroll;
+
+    outer.style.visibility = 'hidden';
+    outer.style.width = '100px';
+    document.body.appendChild(outer);
+
+    widthNoScroll = outer.offsetWidth;
+
+    // Force scrollbars
+    outer.style.overflow = 'scroll';
+
+    // Add inner div
+    inner.style.width = '100%';
+    outer.appendChild(inner);
+
+    widthWithScroll = inner.offsetWidth;
+
+    // Remove divs
+    outer.parentNode.removeChild(outer);
+
+    return widthNoScroll - widthWithScroll;
+  }
+
+  /**
+   * Locks the screen
+   * @private
+   */
+  function lockScreen() {
+    if (IS_IOS) {
+      return;
+    }
+
+    var $html = $('html');
+    var lockedClass = namespacify('is-locked');
+    var paddingRight;
+    var $body;
+
+    if (!$html.hasClass(lockedClass)) {
+      $body = $(document.body);
+
+      // Zepto does not support '-=', '+=' in the `css` method
+      paddingRight = parseInt($body.css('padding-right'), 10) + getScrollbarWidth();
+
+      $body.css('padding-right', paddingRight + 'px');
+      $html.addClass(lockedClass);
+    }
+  }
+
+  /**
+   * Unlocks the screen
+   * @private
+   */
+  function unlockScreen() {
+    if (IS_IOS) {
+      return;
+    }
+
+    var $html = $('html');
+    var lockedClass = namespacify('is-locked');
+    var paddingRight;
+    var $body;
+
+    if ($html.hasClass(lockedClass)) {
+      $body = $(document.body);
+
+      // Zepto does not support '-=', '+=' in the `css` method
+      paddingRight = parseInt($body.css('padding-right'), 10) - getScrollbarWidth();
+
+      $body.css('padding-right', paddingRight + 'px');
+      $html.removeClass(lockedClass);
+    }
+  }
+
+  /**
+   * Sets a state for an instance
+   * @private
+   * @param {Remodal} instance
+   * @param {STATES} state
+   * @param {Boolean} isSilent If true, Remodal does not trigger events
+   * @param {String} Reason of a state change.
+   */
+  function setState(instance, state, isSilent, reason) {
+
+    var newState = namespacify('is', state);
+    var allStates = [namespacify('is', STATES.CLOSING),
+                     namespacify('is', STATES.OPENING),
+                     namespacify('is', STATES.CLOSED),
+                     namespacify('is', STATES.OPENED)].join(' ');
+
+    instance.$bg
+      .removeClass(allStates)
+      .addClass(newState);
+
+    instance.$overlay
+      .removeClass(allStates)
+      .addClass(newState);
+
+    instance.$wrapper
+      .removeClass(allStates)
+      .addClass(newState);
+
+    instance.$modal
+      .removeClass(allStates)
+      .addClass(newState);
+
+    instance.state = state;
+    !isSilent && instance.$modal.trigger({
+      type: state,
+      reason: reason
+    }, [{ reason: reason }]);
+  }
+
+  /**
+   * Synchronizes with the animation
+   * @param {Function} doBeforeAnimation
+   * @param {Function} doAfterAnimation
+   * @param {Remodal} instance
+   */
+  function syncWithAnimation(doBeforeAnimation, doAfterAnimation, instance) {
+    var runningAnimationsCount = 0;
+
+    var handleAnimationStart = function(e) {
+      if (e.target !== this) {
+        return;
+      }
+
+      runningAnimationsCount++;
     };
-  }
 
-  // Function for executing css writes to dom on the next animation frame if supported
-  var executeNextFrame = window.requestAnimationFrame || function (callback) { callback(); };
-
-  // Update multiple css values on an object
-  function setCSS(el, properties) {
-    var key;
-    for (key in properties) {
-      if (properties.hasOwnProperty(key)) {
-        el.style[key] = properties[key];
-      }
-    }
-  }
-
-  // Update the css properties of multiple elements at the same time
-  // befor the browsers next animation frame.
-  // The parameter `data` has to be an array containing objects, each
-  // with the element and the desired css properties.
-  function bulkUpdateCSS(data, callback) {
-    executeNextFrame(function () {
-      var i, item;
-      for (i = 0; i < data.length; i++) {
-        item = data[i];
-        setCSS(item.el, item.css);
-      }
-      // Run optional callback
-      if (typeof callback === 'function') {
-        executeNextFrame(callback);
-      }
-    });
-  }
-
-  // Remove whitespace around filter names
-  function cleanFilterName(filterName) {
-    return filterName.replace(/^\s+|\s+$/g, '').toLowerCase();
-  }
-
-  // Remove listener from an element (IE8 compatible)
-  function removeEventListener(el, eventName, handler) {
-    if (window.jQuery) {
-      $(el).off(eventName, handler);
-    } else if (el.removeEventListener) {
-      el.removeEventListener(eventName, handler);
-    } else {
-      el.detachEvent('on' + eventName, handler);
-    }
-  }
-
-  // Add listener to an element (IE8 compatible)
-  function addEventListener(el, eventName, handler) {
-    removeEventListener(el, eventName, handler);
-
-    if (window.jQuery) {
-      $(el).on(eventName, handler);
-    } else if (el.addEventListener) {
-      el.addEventListener(eventName, handler);
-    } else {
-      el.attachEvent('on' + eventName, function () {
-        handler.call(el);
-      });
-    }
-  }
-
-  // Checks if element `el` is not visible in the browser
-  function isHidden(el) {
-    return el.offsetParent === null;
-  }
-
-  // Returns the elements height without margin
-  function getHeight(el) {
-    return el.offsetHeight;
-  }
-
-  // Returns the elements width without margin
-  function getWidth(el) {
-    return el.offsetWidth;
-  }
-
-  // Return true if element has class
-  function hasClass(el, className) {
-    if (el.classList) {
-      return el.classList.contains(className);
-    }
-    return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
-  }
-
-  // Add class to element (IE8+)
-  function addClass(el, className) {
-    if (el.classList) {
-      el.classList.add(className);
-    } else {
-      el.className += ' ' + className;
-    }
-  }
-
-  // Remove class from element (IE8+)
-  function removeClass(el, className) {
-    if (el.classList) {
-      el.classList.remove(className);
-    } else {
-      el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-    }
-  }
-
-  // Get value of specified data attribute
-  function getData(el, attr, isInt, prefix) {
-    if (prefix === undefined) {
-      prefix = 'wookmark-';
-    }
-    var val = el.getAttribute('data-' + prefix + attr);
-    if (isInt === true) {
-      return parseInt(val, 10);
-    }
-    return val;
-  }
-
-  // Set value of specified data attribute
-  function setData(el, attr, val, prefix) {
-    if (prefix === undefined) {
-      prefix = 'wookmark-';
-    }
-    el.setAttribute('data-' + prefix + attr, val);
-  }
-
-  // Remove duplicates from given array
-  function removeDuplicates(items) {
-    var temp = {}, result = [], x, i = items.length;
-    while (i--) {
-      x = getData(items[i], 'id', true);
-      if (!temp.hasOwnProperty(x)) {
-        temp[x] = 1;
-        result.push(items[i]);
-      }
-    }
-    return result;
-  }
-
-  // Get the computed style from an element (IE 8 compatible)
-  function getStyle(el, prop) {
-    return window.getComputedStyle !== undefined ? window.getComputedStyle(el, null).getPropertyValue(prop) : el.currentStyle[prop];
-  }
-
-
-  // IE 8 compatible indexOf
-  function indexOf(items, item) {
-    var len = items.length, i;
-    for (i = 0; i < len; i++) {
-      if (items[i] === item) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  // Main wookmark plugin class
-  // --------------------------
-  function Wookmark(container, options) {
-    options = options || {};
-
-    if (typeof container === 'string') {
-      container = document.querySelector(container);
-    }
-
-    // Instance variables.
-    this.container = container;
-    this.columns = this.resizeTimer = null;
-    this.activeItemCount = 0;
-    this.placeholders = [];
-    this.itemHeightsInitialized = false;
-    this.itemHeightsDirty = false;
-    this.elementTag = 'div';
-
-    // Bind instance methods
-    this.initItems = __bind(this.initItems, this);
-    this.updateOptions = __bind(this.updateOptions, this);
-    this.onResize = __bind(this.onResize, this);
-    this.onRefresh = __bind(this.onRefresh, this);
-    this.getItemWidth = __bind(this.getItemWidth, this);
-    this.layout = __bind(this.layout, this);
-    this.layoutFull = __bind(this.layoutFull, this);
-    this.layoutColumns = __bind(this.layoutColumns, this);
-    this.filter = __bind(this.filter, this);
-    this.clear = __bind(this.clear, this);
-    this.getActiveItems = __bind(this.getActiveItems, this);
-    this.refreshPlaceholders = __bind(this.refreshPlaceholders, this);
-    this.sortElements = __bind(this.sortElements, this);
-    this.updateFilterClasses = __bind(this.updateFilterClasses, this);
-
-    // Initialize children of the container
-    this.initItems();
-
-    // Initial update and layout
-    this.container.style.display = 'block';
-    this.updateOptions(options);
-
-    // Collect filter classes after items have been initialized
-    this.updateFilterClasses();
-
-    // Listen to resize event of the browser if enabled
-    if (this.autoResize) {
-      addEventListener(window, 'resize', this.onResize);
-    }
-
-    // Listen to external refresh event
-    addEventListener(this.container, 'refreshWookmark', this.onRefresh);
-  }
-
-  // Get all valid children of the container object and store them
-  Wookmark.prototype.initItems = function () {
-    // By select all children of the container if no selector is specified
-    if (this.itemSelector === undefined) {
-      var items = [], child, children = this.container.children,
-          i = children.length;
-      while (i--) {
-        child = children[i];
-        // Skip comment nodes on IE8
-        if (child.nodeType !== 8) {
-          // Show item
-          child.style.display = '';
-          setData(child, 'id', i);
-          items.unshift(child);
-        }
-      }
-      this.items = items;
-    } else {
-      this.items = this.container.querySelectorAll(this.itemSelector);
-    }
-
-    if (this.items.length) {
-      this.elementTag = this.items[0].tagName;
-    }
-    this.itemHeightsDirty = true;
-  };
-
-  // Reload all filter classes from all items and cache them
-  Wookmark.prototype.updateFilterClasses = function () {
-    // Collect filter data
-    var i = this.items.length, j, filterClasses = {}, itemFilterClasses,
-      item, filterClass, possibleFilters = this.possibleFilters,
-      k = possibleFilters.length, possibleFilter;
-
-    while (i--) {
-      item = this.items[i];
-
-      // Read filter classes and globally store each filter class as object and the fitting items in the array
-      itemFilterClasses = JSON.parse(getData(item, 'filter-class', false, ''));
-      if (itemFilterClasses && typeof itemFilterClasses === 'object') {
-        j = itemFilterClasses.length;
-        while (j--) {
-          filterClass = cleanFilterName(itemFilterClasses[j]);
-          if (!filterClasses.hasOwnProperty(filterClass)) {
-            filterClasses[filterClass] = [];
-          }
-          filterClasses[filterClass].push(item);
-        }
-      }
-    }
-
-    while (k--) {
-      possibleFilter = cleanFilterName(possibleFilters[k]);
-      if (!filterClasses.hasOwnProperty(possibleFilter)) {
-        filterClasses[possibleFilter] = [];
-      }
-    }
-
-    this.filterClasses = filterClasses;
-  };
-
-  // Method for updating the plugins options
-  Wookmark.prototype.updateOptions = function (options) {
-    var key;
-    this.itemHeightsDirty = true;
-    options = options || {};
-
-    // Overwrite non existing instance variables with the ones from options or the defaults
-    for (key in defaultOptions) {
-      if (defaultOptions.hasOwnProperty(key)) {
-        if (options.hasOwnProperty(key)) {
-          this[key] = options[key];
-        } else if (!this.hasOwnProperty(key)) {
-          this[key] = defaultOptions[key];
-        }
-      }
-    }
-
-    // Vertical offset uses a fallback to offset
-    this.verticalOffset = this.verticalOffset || this.offset;
-
-    // Update layout so changes apply
-    this.layout(true);
-  };
-
-  // This timer ensures that layout is not continuously called as window is being dragged.
-  Wookmark.prototype.onResize = function () {
-    clearTimeout(this.resizeTimer);
-    this.itemHeightsDirty = this.flexibleWidth !== 0;
-    this.resizeTimer = setTimeout(this.layout, this.resizeDelay);
-  };
-
-  // Marks the items heights as dirty and does a relayout
-  Wookmark.prototype.onRefresh = function () {
-    this.itemHeightsDirty = true;
-    this.layout();
-  };
-
-  // Filters the active items with the given string filters.
-  // @param filters array of string
-  // @param mode 'or' or 'and'
-  Wookmark.prototype.filter = function (filters, mode, dryRun) {
-    var activeFilters = [], activeFiltersLength, activeItems = [],
-      i, j, k, filter;
-
-    filters = filters || [];
-    mode = mode || 'or';
-    dryRun = dryRun || false;
-
-    if (filters.length) {
-      // Collect active filters
-      for (i = 0; i < filters.length; i++) {
-        filter = cleanFilterName(filters[i]);
-        if (this.filterClasses.hasOwnProperty(filter)) {
-          activeFilters.push(this.filterClasses[filter]);
-        }
+    var handleAnimationEnd = function(e) {
+      if (e.target !== this) {
+        return;
       }
 
-      // Get items for active filters with the selected mode
-      i = activeFiltersLength = activeFilters.length;
-      if (mode === 'or' || activeFiltersLength === 1) {
-        // Set all items in all active filters active
-        while (i--) {
-          activeItems = activeItems.concat(activeFilters[i]);
-        }
-      } else if (mode === 'and') {
-        var shortestFilter = activeFilters[0], itemValid = true,
-          foundInFilter, currentItem, currentFilter;
+      if (--runningAnimationsCount === 0) {
 
-        // Find shortest filter class
-        while (i--) {
-          if (activeFilters[i].length < shortestFilter.length) {
-            shortestFilter = activeFilters[i];
-          }
-        }
-
-        // Iterate over shortest filter and find elements in other filter classes
-        shortestFilter = shortestFilter || [];
-        i = shortestFilter.length;
-        while (i--) {
-          currentItem = shortestFilter[i];
-          j = activeFiltersLength;
-          itemValid = true;
-
-          while (j-- && itemValid) {
-            currentFilter = activeFilters[j];
-            if (shortestFilter !== currentFilter) {
-              // Search for current item in each active filter class
-              foundInFilter = false;
-              k = currentFilter.length;
-              while (k-- && !foundInFilter) {
-                foundInFilter = currentFilter[k] === currentItem;
-              }
-              itemValid &= foundInFilter;
-            }
-          }
-
-          if (itemValid) {
-            activeItems = activeItems.concat(shortestFilter[i]);
-          }
-        }
-      }
-
-      // Remove duplicates from active items
-      if (activeFiltersLength > 1) {
-        activeItems = removeDuplicates(activeItems);
-      }
-
-      // Hide inactive items
-      if (!dryRun) {
-        i = this.items.length;
-        while (i--) {
-          if (indexOf(activeItems, this.items[i]) === -1) {
-            addClass(this.items[i], this.inactiveClass);
-          }
-        }
-      }
-    } else {
-      // Show all items if no filter is selected
-      activeItems = this.items;
-    }
-
-    // Show active items
-    if (!dryRun) {
-      i = activeItems.length;
-      while (i--) {
-        removeClass(activeItems[i], this.inactiveClass);
-      }
-      // Unset columns and refresh grid for a full layout
-      this.columns = null;
-      this.layout();
-    }
-    return activeItems;
-  };
-
-  // Creates or updates existing placeholders to create columns of even height
-  Wookmark.prototype.refreshPlaceholders = function (columnWidth, sideOffset) {
-    var i,
-      containerHeight = getHeight(this.container),
-      columnsLength = this.columns.length,
-      column,
-      height,
-      innerOffset,
-      lastColumnItem,
-      placeholdersHtml = '',
-      placeholder,
-      top;
-
-    // Add more placeholders if necessary
-    if (this.placeholders.length < columnsLength) {
-      for (i = 0; i < columnsLength - this.placeholders.length; i++) {
-        placeholdersHtml += '<' + this.elementTag + ' class="' + this.placeholderClass + '"/>';
-      }
-      this.container.insertAdjacentHTML('beforeend', placeholdersHtml);
-      this.placeholders = this.container.querySelectorAll('.' + this.placeholderClass);
-    }
-
-    innerOffset = (this.offset + parseInt(getStyle(this.placeholders[0], 'border-left-width'), 10) * 2) || 0;
-    innerOffset += (parseInt(getStyle(this.placeholders[0], 'padding-left'), 10) * 2)  || 0;
-
-    // Update each placeholder
-    for (i = 0; i < this.placeholders.length; i++) {
-      placeholder = this.placeholders[i];
-      column = this.columns[i];
-
-      if (i >= columnsLength || column.length === 0) {
-        placeholder.style.display = 'none';
-      } else {
-        lastColumnItem = column[column.length - 1];
-        top = getData(lastColumnItem, 'top', true) + getData(lastColumnItem, 'height', true) + this.verticalOffset;
-        height = Math.max(0, containerHeight - top - innerOffset);
-
-        setCSS(placeholder, {
-          position: 'absolute',
-          display: height > 0 ? 'block' : 'none',
-          left: (i * columnWidth + sideOffset) + 'px',
-          top: top + 'px',
-          width: (columnWidth - innerOffset) + 'px',
-          height: height + 'px'
+        // Remove event listeners
+        $.each(['$bg', '$overlay', '$wrapper', '$modal'], function(index, elemName) {
+          instance[elemName].off(ANIMATIONSTART_EVENTS + ' ' + ANIMATIONEND_EVENTS);
         });
-      }
-    }
-  };
 
-  // Method the get active items which are not disabled and visible
-  Wookmark.prototype.getActiveItems = function () {
-    var inactiveClass = this.inactiveClass,
-      i,
-      result = [],
-      item,
-      items = this.items;
-
-    if (this.ignoreInactiveItems) {
-      for (i = 0; i < items.length; i++) {
-        item = items[i];
-        if (!hasClass(item, inactiveClass)) {
-          result.push(item);
-        }
+        doAfterAnimation();
       }
-    } else {
-      return items;
+    };
+
+    $.each(['$bg', '$overlay', '$wrapper', '$modal'], function(index, elemName) {
+      instance[elemName]
+        .on(ANIMATIONSTART_EVENTS, handleAnimationStart)
+        .on(ANIMATIONEND_EVENTS, handleAnimationEnd);
+    });
+
+    doBeforeAnimation();
+
+    // If the animation is not supported by a browser or its duration is 0
+    if (
+      getAnimationDuration(instance.$bg) === 0 &&
+      getAnimationDuration(instance.$overlay) === 0 &&
+      getAnimationDuration(instance.$wrapper) === 0 &&
+      getAnimationDuration(instance.$modal) === 0
+    ) {
+
+      // Remove event listeners
+      $.each(['$bg', '$overlay', '$wrapper', '$modal'], function(index, elemName) {
+        instance[elemName].off(ANIMATIONSTART_EVENTS + ' ' + ANIMATIONEND_EVENTS);
+      });
+
+      doAfterAnimation();
     }
+  }
+
+  /**
+   * Closes immediately
+   * @private
+   * @param {Remodal} instance
+   */
+  function halt(instance) {
+    if (instance.state === STATES.CLOSED) {
+      return;
+    }
+
+    $.each(['$bg', '$overlay', '$wrapper', '$modal'], function(index, elemName) {
+      instance[elemName].off(ANIMATIONSTART_EVENTS + ' ' + ANIMATIONEND_EVENTS);
+    });
+
+    instance.$bg.removeClass(instance.settings.modifier);
+    instance.$overlay.removeClass(instance.settings.modifier).hide();
+    instance.$wrapper.hide();
+    unlockScreen();
+    setState(instance, STATES.CLOSED, true);
+  }
+
+  /**
+   * Parses a string with options
+   * @private
+   * @param str
+   * @returns {Object}
+   */
+  function parseOptions(str) {
+    var obj = {};
+    var arr;
+    var len;
+    var val;
+    var i;
+
+    // Remove spaces before and after delimiters
+    str = str.replace(/\s*:\s*/g, ':').replace(/\s*,\s*/g, ',');
+
+    // Parse a string
+    arr = str.split(',');
+    for (i = 0, len = arr.length; i < len; i++) {
+      arr[i] = arr[i].split(':');
+      val = arr[i][1];
+
+      // Convert a string value if it is like a boolean
+      if (typeof val === 'string' || val instanceof String) {
+        val = val === 'true' || (val === 'false' ? false : val);
+      }
+
+      // Convert a string value if it is like a number
+      if (typeof val === 'string' || val instanceof String) {
+        val = !isNaN(val) ? +val : val;
+      }
+
+      obj[arr[i][0]] = val;
+    }
+
+    return obj;
+  }
+
+  /**
+   * Generates a string separated by dashes and prefixed with NAMESPACE
+   * @private
+   * @param {...String}
+   * @returns {String}
+   */
+  function namespacify() {
+    var result = NAMESPACE;
+
+    for (var i = 0; i < arguments.length; ++i) {
+      result += '-' + arguments[i];
+    }
+
     return result;
-  };
+  }
 
-  // Method to get the standard item width
-  Wookmark.prototype.getItemWidth = function () {
-    var itemWidth = this.itemWidth,
-      innerWidth = getWidth(this.container) - 2 * this.outerOffset,
-      flexibleWidth = this.flexibleWidth;
+  /**
+   * Handles the hashchange event
+   * @private
+   * @listens hashchange
+   */
+  function handleHashChangeEvent() {
+    var id = location.hash.replace('#', '');
+    var instance;
+    var $elem;
 
-    if (typeof itemWidth === 'function') {
-      itemWidth = this.itemWidth();
-    }
+    if (!id) {
 
-    if (this.items.length > 0 && (itemWidth === undefined || (itemWidth === 0 && !this.flexibleWidth))) {
-      itemWidth = getWidth(this.items[0]);
-    } else if (typeof itemWidth === 'string' && itemWidth.indexOf('%') >= 0) {
-      itemWidth = parseFloat(itemWidth) / 100 * innerWidth;
-    }
-
-    // Calculate flexible item width if option is set
-    if (flexibleWidth) {
-      if (typeof flexibleWidth === 'function') {
-        flexibleWidth = flexibleWidth();
+      // Check if we have currently opened modal and animation was completed
+      if (current && current.state === STATES.OPENED && current.settings.hashTracking) {
+        current.close();
       }
-
-      if (typeof flexibleWidth === 'string' && flexibleWidth.indexOf('%') >= 0) {
-        flexibleWidth = parseFloat(flexibleWidth) / 100 * innerWidth;
-      }
-
-      // Find highest column count
-      var paddedInnerWidth = (innerWidth + this.offset),
-        flexibleColumns = Math.floor(0.5 + paddedInnerWidth / (flexibleWidth + this.offset)),
-        fixedColumns = Math.floor(paddedInnerWidth / (itemWidth + this.offset)),
-        columns = Math.max(flexibleColumns, fixedColumns),
-        columnWidth = Math.min(flexibleWidth, Math.floor((innerWidth - (columns - 1) * this.offset) / columns));
-
-      itemWidth = Math.max(itemWidth, columnWidth);
-    }
-
-    return itemWidth;
-  };
-
-  // Main layout method.
-  Wookmark.prototype.layout = function (force, callback) {
-    // Do nothing if container isn't visible
-    if (!force && isHidden(this.container)) { return; }
-
-    // Calculate basic layout parameters.
-    var calculatedItemWidth = this.getItemWidth(),
-      columnWidth = calculatedItemWidth + this.offset,
-      containerWidth = getWidth(this.container),
-      innerWidth = containerWidth - 2 * this.outerOffset,
-      columns = Math.floor((innerWidth + this.offset) / columnWidth),
-      offset,
-      maxHeight = 0,
-      activeItems = this.getActiveItems(),
-      activeItemsLength = activeItems.length,
-      item;
-
-    // Cache item heights
-    if (force || this.itemHeightsDirty || !this.itemHeightsInitialized) {
-      for (var i = 0; i < activeItemsLength; i++) {
-        item = activeItems[i];
-
-        if (this.flexibleWidth) {
-          // Stretch items to fill calculated width
-          item.style.width = calculatedItemWidth + 'px';
-        }
-        setData(item, 'height', item.offsetHeight);
-      }
-      this.itemHeightsDirty = false;
-      this.itemHeightsInitialized = true;
-    }
-
-    // Use less columns if there are to few items
-    columns = Math.max(1, Math.min(columns, activeItemsLength));
-
-    // Calculate the offset based on the alignment of columns to the parent container
-    offset = this.outerOffset;
-    if (this.align === 'center') {
-      offset += Math.floor(0.5 + (innerWidth - (columns * columnWidth - this.offset)) >> 1);
-    }
-
-    // Get direction for positioning
-    this.direction = this.direction || (this.align === 'right' ? 'right' : 'left');
-
-    // If container and column count hasn't changed, we can only update the columns.
-    if (!force && this.columns !== null && this.columns.length === columns && this.activeItemCount === activeItemsLength) {
-      maxHeight = this.layoutColumns(columnWidth, offset);
     } else {
-      maxHeight = this.layoutFull(columnWidth, columns, offset);
-    }
-    this.activeItemCount = activeItemsLength;
 
-    // Set container height to height of the grid.
-    this.container.style.height = maxHeight + 'px';
+      // Catch syntax error if your hash is bad
+      try {
+        $elem = $(
+          '[data-' + PLUGIN_NAME + '-id="' + id + '"]'
+        );
+      } catch (err) {}
 
-    // Update placeholders
-    if (this.fillEmptySpace) {
-      this.refreshPlaceholders(columnWidth, offset);
-    }
+      if ($elem && $elem.length) {
+        instance = $[PLUGIN_NAME].lookup[$elem.data(PLUGIN_NAME)];
 
-    if (this.onLayoutChanged !== undefined && typeof this.onLayoutChanged === 'function') {
-      this.onLayoutChanged();
-    }
-
-    // Run optional callback
-    if (typeof callback === 'function') {
-      callback();
-    }
-  };
-
-  // Sort elements with configurable comparator
-  Wookmark.prototype.sortElements = function (elements) {
-    return typeof this.comparator === 'function' ? elements.sort(this.comparator) : elements;
-  };
-
-  // Perform a full layout update.
-  Wookmark.prototype.layoutFull = function (columnWidth, columns, offset) {
-    var item, k = 0, i = 0, activeItems, activeItemCount, shortest = null, shortestIndex = null,
-        sideOffset, heights = [], itemBulkCSS = [], leftAligned = this.align === 'left', self = this;
-
-    this.columns = [];
-
-    // Sort elements before layouting
-    activeItems = this.sortElements(this.getActiveItems());
-    activeItemCount = activeItems.length;
-
-    // Prepare arrays to store height of columns and items.
-    while (heights.length < columns) {
-      heights.push(this.outerOffset);
-      this.columns.push([]);
-    }
-
-    // Loop over items.
-    while (i < activeItemCount) {
-      item = activeItems[i];
-
-      // Find the shortest column.
-      shortest = heights[0];
-      shortestIndex = 0;
-      for (k = 0; k < columns; k++) {
-        if (heights[k] < shortest) {
-          shortest = heights[k];
-          shortestIndex = k;
+        if (instance && instance.settings.hashTracking) {
+          instance.open();
         }
       }
-      setData(item, 'top', shortest);
 
-      // stick to left side if alignment is left and this is the first column
-      sideOffset = offset;
-      if (shortestIndex > 0 || !leftAligned) {
-        sideOffset += shortestIndex * columnWidth;
-      }
+    }
+  }
 
-      // Position the item.
-      itemBulkCSS[i] = {
-        el: item,
-        css: {
-          position: 'absolute',
-          top: shortest + 'px'
-        }
-      };
-      itemBulkCSS[i].css[this.direction] = sideOffset + 'px';
+  /**
+   * Remodal constructor
+   * @constructor
+   * @param {jQuery} $modal
+   * @param {Object} options
+   */
+  function Remodal($modal, options) {
+    var $body = $(document.body);
+    var $appendTo = $body;
+    var remodal = this;
 
-      // Update column height and store item in shortest column
-      heights[shortestIndex] += getData(item, 'height', true) + this.verticalOffset;
-      this.columns[shortestIndex].push(item);
-      i++;
+    remodal.settings = $.extend({}, DEFAULTS, options);
+    remodal.index = $[PLUGIN_NAME].lookup.push(remodal) - 1;
+    remodal.state = STATES.CLOSED;
+
+    remodal.$overlay = $('.' + namespacify('overlay'));
+
+    if (remodal.settings.appendTo !== null && remodal.settings.appendTo.length) {
+      $appendTo = $(remodal.settings.appendTo);
     }
 
-    // Update all css in the next frame and mark container as initalised
-    bulkUpdateCSS(itemBulkCSS, function () {
-      // Initialisation done
-      if (!hasClass(self.container, 'wookmark-initialised')) {
-        addClass(self.container, 'wookmark-initialised');
+    if (!remodal.$overlay.length) {
+      remodal.$overlay = $('<div>').addClass(namespacify('overlay') + ' ' + namespacify('is', STATES.CLOSED)).hide();
+      $appendTo.append(remodal.$overlay);
+    }
+
+    remodal.$bg = $('.' + namespacify('bg')).addClass(namespacify('is', STATES.CLOSED));
+
+    remodal.$modal = $modal
+      .addClass(
+        NAMESPACE + ' ' +
+        namespacify('is-initialized') + ' ' +
+        remodal.settings.modifier + ' ' +
+        namespacify('is', STATES.CLOSED))
+      .attr('tabindex', '-1');
+
+    remodal.$wrapper = $('<div>')
+      .addClass(
+        namespacify('wrapper') + ' ' +
+        remodal.settings.modifier + ' ' +
+        namespacify('is', STATES.CLOSED))
+      .hide()
+      .append(remodal.$modal);
+    $appendTo.append(remodal.$wrapper);
+
+    // Add the event listener for the close button
+    remodal.$wrapper.on('click.' + NAMESPACE, '[data-' + PLUGIN_NAME + '-action="close"]', function(e) {
+      e.preventDefault();
+
+      remodal.close();
+    });
+
+    // Add the event listener for the cancel button
+    remodal.$wrapper.on('click.' + NAMESPACE, '[data-' + PLUGIN_NAME + '-action="cancel"]', function(e) {
+      e.preventDefault();
+
+      remodal.$modal.trigger(STATE_CHANGE_REASONS.CANCELLATION);
+
+      if (remodal.settings.closeOnCancel) {
+        remodal.close(STATE_CHANGE_REASONS.CANCELLATION);
       }
     });
 
-    // Return longest column
-    return Math.max.apply(Math, heights);
-  };
+    // Add the event listener for the confirm button
+    remodal.$wrapper.on('click.' + NAMESPACE, '[data-' + PLUGIN_NAME + '-action="confirm"]', function(e) {
+      e.preventDefault();
 
-  // This layout method only updates the vertical position of the
-  // existing column assignments.
-  Wookmark.prototype.layoutColumns = function (columnWidth, offset) {
-    var heights = [], itemBulkCSS = [], k = 0, j = 0,
-      i = this.columns.length, currentHeight,
-      column, item, sideOffset;
+      remodal.$modal.trigger(STATE_CHANGE_REASONS.CONFIRMATION);
 
-    while (i--) {
-      currentHeight = this.outerOffset;
-      heights.push(currentHeight);
-      column = this.columns[i];
-      sideOffset = i * columnWidth + offset;
-
-      for (k = 0; k < column.length; k++, j++) {
-        item = column[k];
-        setData(item, 'top', currentHeight);
-        itemBulkCSS[j] = {
-          el: item,
-          css: {
-            top: currentHeight + 'px'
-          }
-        };
-        itemBulkCSS[j].css[this.direction] = sideOffset + 'px';
-
-        currentHeight += getData(item, 'height', true) + this.verticalOffset;
+      if (remodal.settings.closeOnConfirm) {
+        remodal.close(STATE_CHANGE_REASONS.CONFIRMATION);
       }
-      heights[i] = currentHeight;
-    }
+    });
 
-    bulkUpdateCSS(itemBulkCSS);
+    // Add the event listener for the overlay
+    remodal.$wrapper.on('click.' + NAMESPACE, function(e) {
+      var $target = $(e.target);
 
-    // Return longest column
-    return Math.max.apply(Math, heights);
-  };
-
-  // Clear event listeners and time outs and the instance itself
-  Wookmark.prototype.clear = function () {
-    clearTimeout(this.resizeTimer);
-    var i = this.placeholders.length;
-    while (i--) {
-      this.container.removeChild(this.placeholders[i]);
-    }
-    removeEventListener(window, 'resize', this.onResize);
-    removeEventListener(this.container, 'refreshWookmark', this.onRefresh);
-  };
-
-  // Register as jQuery plugin if jQuery is loaded
-  if (window.jQuery !== undefined) {
-    jQuery.fn.wookmark = function (options) {
-      var i = this.length;
-
-      // Use first element if container is an jQuery object
-      if (options !== undefined && options.container instanceof jQuery) {
-        options.container = options.container[0];
+      if (!$target.hasClass(namespacify('wrapper'))) {
+        return;
       }
 
-      // Call plugin multiple times if there are multiple elements selected
-      if (i > 1) {
-        while (i--) {
-          $(this).eq(i).wookmark(options);
-        }
-      } else if (i === 1) {
-        // Create a wookmark instance or update an existing one
-        if (!this.wookmarkInstance) {
-          this.wookmarkInstance = new Wookmark(this[0], options || {});
-        } else {
-          this.wookmarkInstance.updateOptions(options || {});
-        }
+      if (remodal.settings.closeOnOutsideClick) {
+        remodal.close();
       }
-      return this;
-    };
+    });
   }
 
-  window.Wookmark = Wookmark;
-  return Wookmark;
-}));
+  /**
+   * Opens a modal window
+   * @public
+   */
+  Remodal.prototype.open = function() {
+    var remodal = this;
+    var id;
+
+    // Check if the animation was completed
+    if (remodal.state === STATES.OPENING || remodal.state === STATES.CLOSING) {
+      return;
+    }
+
+    id = remodal.$modal.attr('data-' + PLUGIN_NAME + '-id');
+
+    if (id && remodal.settings.hashTracking) {
+      scrollTop = $(window).scrollTop();
+      location.hash = id;
+    }
+
+    if (current && current !== remodal) {
+      halt(current);
+    }
+
+    current = remodal;
+    lockScreen();
+    remodal.$bg.addClass(remodal.settings.modifier);
+    remodal.$overlay.addClass(remodal.settings.modifier).show();
+    remodal.$wrapper.show().scrollTop(0);
+    remodal.$modal.focus();
+
+    syncWithAnimation(
+      function() {
+        setState(remodal, STATES.OPENING);
+      },
+
+      function() {
+        setState(remodal, STATES.OPENED);
+      },
+
+      remodal);
+  };
+
+  /**
+   * Closes a modal window
+   * @public
+   * @param {String} reason
+   */
+  Remodal.prototype.close = function(reason) {
+    var remodal = this;
+
+    // Check if the animation was completed
+    if (remodal.state === STATES.OPENING || remodal.state === STATES.CLOSING) {
+      return;
+    }
+
+    if (
+      remodal.settings.hashTracking &&
+      remodal.$modal.attr('data-' + PLUGIN_NAME + '-id') === location.hash.substr(1)
+    ) {
+      location.hash = '';
+      $(window).scrollTop(scrollTop);
+    }
+
+    syncWithAnimation(
+      function() {
+        setState(remodal, STATES.CLOSING, false, reason);
+      },
+
+      function() {
+        remodal.$bg.removeClass(remodal.settings.modifier);
+        remodal.$overlay.removeClass(remodal.settings.modifier).hide();
+        remodal.$wrapper.hide();
+        unlockScreen();
+
+        setState(remodal, STATES.CLOSED, false, reason);
+      },
+
+      remodal);
+  };
+
+  /**
+   * Returns a current state of a modal
+   * @public
+   * @returns {STATES}
+   */
+  Remodal.prototype.getState = function() {
+    return this.state;
+  };
+
+  /**
+   * Destroys a modal
+   * @public
+   */
+  Remodal.prototype.destroy = function() {
+    var lookup = $[PLUGIN_NAME].lookup;
+    var instanceCount;
+
+    halt(this);
+    this.$wrapper.remove();
+
+    delete lookup[this.index];
+    instanceCount = $.grep(lookup, function(instance) {
+      return !!instance;
+    }).length;
+
+    if (instanceCount === 0) {
+      this.$overlay.remove();
+      this.$bg.removeClass(
+        namespacify('is', STATES.CLOSING) + ' ' +
+        namespacify('is', STATES.OPENING) + ' ' +
+        namespacify('is', STATES.CLOSED) + ' ' +
+        namespacify('is', STATES.OPENED));
+    }
+  };
+
+  /**
+   * Special plugin object for instances
+   * @public
+   * @type {Object}
+   */
+  $[PLUGIN_NAME] = {
+    lookup: []
+  };
+
+  /**
+   * Plugin constructor
+   * @constructor
+   * @param {Object} options
+   * @returns {JQuery}
+   */
+  $.fn[PLUGIN_NAME] = function(opts) {
+    var instance;
+    var $elem;
+
+    this.each(function(index, elem) {
+      $elem = $(elem);
+
+      if ($elem.data(PLUGIN_NAME) == null) {
+        instance = new Remodal($elem, opts);
+        $elem.data(PLUGIN_NAME, instance.index);
+
+        if (
+          instance.settings.hashTracking &&
+          $elem.attr('data-' + PLUGIN_NAME + '-id') === location.hash.substr(1)
+        ) {
+          instance.open();
+        }
+      } else {
+        instance = $[PLUGIN_NAME].lookup[$elem.data(PLUGIN_NAME)];
+      }
+    });
+
+    return instance;
+  };
+
+  $(document).ready(function() {
+
+    // data-remodal-target opens a modal window with the special Id
+    $(document).on('click', '[data-' + PLUGIN_NAME + '-target]', function(e) {
+      e.preventDefault();
+
+      var elem = e.currentTarget;
+      var id = elem.getAttribute('data-' + PLUGIN_NAME + '-target');
+      var $target = $('[data-' + PLUGIN_NAME + '-id="' + id + '"]');
+
+      $[PLUGIN_NAME].lookup[$target.data(PLUGIN_NAME)].open();
+    });
+
+    // Auto initialization of modal windows
+    // They should have the 'remodal' class attribute
+    // Also you can write the `data-remodal-options` attribute to pass params into the modal
+    $(document).find('.' + NAMESPACE).each(function(i, container) {
+      var $container = $(container);
+      var options = $container.data(PLUGIN_NAME + '-options');
+
+      if (!options) {
+        options = {};
+      } else if (typeof options === 'string' || options instanceof String) {
+        options = parseOptions(options);
+      }
+
+      $container[PLUGIN_NAME](options);
+    });
+
+    // Handles the keydown event
+    $(document).on('keydown.' + NAMESPACE, function(e) {
+      if (current && current.settings.closeOnEscape && current.state === STATES.OPENED && e.keyCode === 27) {
+        current.close();
+      }
+    });
+
+    // Handles the hashchange event
+    $(window).on('hashchange.' + NAMESPACE, handleHashChangeEvent);
+  });
+});
