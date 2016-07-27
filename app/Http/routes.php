@@ -51,7 +51,7 @@ Route::get('/cart', 'CartController@index');
 
 Route::get('/cart/amount', 'CartController@getCartAmount');
 
-Route::get('/cart/list', 'CartController@getCartList');
+Route::get('/cart/list', 'CartController@getCartList');//test
 
 Route::get('/cart/accountlist', 'CartController@getCartAccountList');
 

@@ -1,3 +1,4 @@
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <header class="">
     <div class="container">
         <nav class="navbar-left">
@@ -28,7 +29,7 @@
                         <img class="img-circle" src="@if(Session::has('user')) {{config('runtime.CDN_URL')}}/n1/{{Session::get('user.icon')}} @else /images/icon/apple-touch-icon.png @endif" width="40" height="40" alt="">
                     </a>
                 </li>
-                <li class="nav-item p-x-20x"><a href="#" class="nav-link"><i class="iconfont icon-shopbag font-size-lg text-primary"></i></a></li>
+                <li class="nav-item p-x-20x"><a href="/cart" class="nav-link"><i class="iconfont icon-shopbag font-size-lg text-primary"></i></a></li>
             </ul>
         </nav>
     </div>

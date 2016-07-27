@@ -163,5 +163,48 @@ window.onload = function () {
             $(this).siblings('.input-engraving').addClass('disabled');
         }
     });
+
+    //修改购买数量
+    $('.btn-cartCount').on('click', function (e) {
+        var skuQty = $('#skuQty').data('num') + $(this).data('num')
+        if (skuQty > 0) {
+            $('#skuQty').data('num', skuQty)
+            $('#skuQty').html(skuQty)
+        }
+    });
+
+    // 添加购物车
+    $('.btn-addToBag').on('click', function (e) {
+        var operate = {
+            'sale_qtty': $('#skuQty').data('num'),
+            'select': true,
+            'sku': $('#productsku').val(),
+            'VAList': []
+        };
+        $.ajax({
+            url: '/cart/add',
+            type: 'POST',
+            data: {
+                operate: operate
+            }
+        })
+            .done(function (data) {
+                if (data.success) {
+                    //成功的情况
+                } else {
+                    //失败的情况
+                }
+                console.log(data)
+            });
+    });
 })(jQuery, Swiper);
 //# sourceMappingURL=common.js.map
+
+
+//public start
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+//public end
