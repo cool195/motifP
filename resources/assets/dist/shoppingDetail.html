@@ -80,9 +80,9 @@
       </div>
       <div class="col-lg-6">
         <div class="p-a-20x box-shadow bg-white">
-          <div>
-            <span class="product-title helveBold text-left">Aurora Ring</span>
-            <span class="btn-heart text-right"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+          <div class="flex flex-fullJustified">
+            <span class="product-title helveBold">Aurora Ring</span>
+            <span class="product-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
           </div>
           <p class="m-b-15x text-primary">Boasting a spectacular display of color, the titanium Aurora ring stands out
             as a beautiful
@@ -91,9 +91,19 @@
             <span class="sanBold p-r-10x text-primary">$ 199.95</span>
             <span class="sanBold font-size-lxx text-common text-throughLine">$299.95</span>
           </div>
+          <div class="p-y-5x">
+            <span class="font-size-md">40%OFF&nbsp;&nbsp;</span>
+            <span>Boasting a spectacular display of color !</span>
+          </div>
           <hr class="hr-common">
           <fieldset class="text-left m-b-20x">
-            <div class="text-primary font-size-md">Size</div>
+            <div class="text-primary font-size-md flex">
+              <span class="p-r-20x">Size</span>
+              <span class="warning-info off flex flex-alignCenter text-warning">
+                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                <span class="font-size-base">Please select size !</span>
+              </span>
+            </div>
             <div class="m-l-15x">
               <div class="option-item">
                 <div class="p-y-5x p-r-10x">
@@ -118,32 +128,32 @@
             </div>
           </fieldset>
           <fieldset class="text-left m-b-20x">
-            <div class="text-primary font-size-md">Color</div>
+            <div class="text-primary font-size-md flex">
+              <span class="p-r-20x">Color</span>
+              <span class="warning-info flex flex-alignCenter text-warning">
+                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                <span class="font-size-base">Please select size !</span>
+              </span>
+            </div>
             <div class="m-l-15x">
               <div class="option-item">
                 <div class="p-y-5x p-r-10x">
-                  <input type="radio" name="color" value="red" id="red" hidden>
-                  <label for="red" class="btn btn-itemProperty btn-sm" data-spa="" data-ska="">Red</label>
+                  <div class="btn btn-itemProperty btn-sm" data-type="color" data-spa="" data-ska="">Red</div>
                 </div>
                 <div class="p-y-5x p-r-10x">
-                  <input type="radio" name="color" value="blue" id="blue" hidden>
-                  <label for="blue" class="btn btn-itemProperty btn-sm" data-spa="" data-ska="">Blue</label>
+                  <div class="btn btn-itemProperty btn-sm disabled" data-type="" data-spa="" data-ska="">Blue</div>
                 </div>
                 <div class="p-y-5x p-r-10x">
-                  <input type="radio" name="color" value="black" id="black" disabled="disabled" hidden>
-                  <label for="black" class="btn btn-itemProperty btn-sm disabled" data-spa="" data-ska="">Black</label>
+                  <div class="btn btn-itemProperty btn-sm active" data-type="color" data-spa="" data-ska="">Black</div>
                 </div>
                 <div class="p-y-5x p-r-10x">
-                  <input type="radio" name="color" value="green" id="green" hidden>
-                  <label for="green" class="btn btn-itemProperty btn-sm" data-spa="" data-ska="">Green</label>
+                  <div class="btn btn-itemProperty btn-sm" data-type="color" data-spa="" data-ska="">Green</div>
                 </div>
                 <div class="p-y-5x p-r-10x">
-                  <input type="radio" name="color" value="gold" id="gold" hidden>
-                  <label for="gold" class="btn btn-itemProperty btn-sm" data-spa="" data-ska="">Gold</label>
+                  <div class="btn btn-itemProperty btn-sm" data-type="color" data-spa="" data-ska="">Gold</div>
                 </div>
                 <div class="p-y-5x p-r-10x">
-                  <input type="radio" name="color" value="darkBlue" id="darkBlue" hidden>
-                  <label for="darkBlue" class="btn btn-itemProperty btn-sm" data-spa="" data-ska="">Dark Blue</label>
+                  <div class="btn btn-itemProperty btn-sm" data-type="color" data-spa="" data-ska="">Dark Blue</div>
                 </div>
               </div>
             </div>
@@ -220,11 +230,49 @@
   <h4 class="helveBold text-main p-l-10x">You May Also Like</h4>
   <div class="row p-t-20x">
     <div class="col-md-3 col-xs-6">
+      <a href="#">
+        <div class="productList-item">
+          <div class="image-container">
+            <img class="img-fluid" src="/images/product/product.jpg" alt="商品的名称">
+            <!--<div class="bg-heart">-->
+            <!--<span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>-->
+            <!--</div>-->
+          </div>
+          <div class="price-caption helveBold">
+            <div class="text-center font-size-md text-primary">New Rings</div>
+            <div class="text-center">
+              <span class="font-size-md text-primary p-r-5x">$199.95</span>
+              <span class="font-size-base text-common text-throughLine">$299.95</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3 col-xs-6">
+      <a href="#">
+        <div class="productList-item">
+          <div class="image-container">
+            <img class="img-fluid" src="/images/product/product.jpg" alt="商品的名称">
+            <!--<div class="bg-heart">-->
+            <!--<span class="product-heart btn-heart active"><i class="iconfont icon-onheart font-size-lxx"></i></span>-->
+            <!--</div>-->
+          </div>
+          <div class="price-caption helveBold">
+            <div class="text-center font-size-md text-primary">New Rings</div>
+            <div class="text-center">
+              <span class="font-size-md text-primary p-r-5x">$199.95</span>
+              <span class="font-size-base text-common text-throughLine">$299.95</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3 col-xs-6">
       <div class="productList-item">
         <div class="image-container">
           <img class="img-fluid" src="/images/product/product.jpg" alt="商品的名称">
           <div class="bg-heart">
-            <span class="btn-heart active"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+            <span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
           </div>
         </div>
         <div class="price-caption helveBold">
@@ -241,41 +289,7 @@
         <div class="image-container">
           <img class="img-fluid" src="/images/product/product.jpg" alt="商品的名称">
           <div class="bg-heart">
-            <span class="btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
-          </div>
-        </div>
-        <div class="price-caption helveBold">
-          <div class="text-center font-size-md text-primary">New Rings</div>
-          <div class="text-center">
-            <span class="font-size-md text-primary p-r-5x">$199.95</span>
-            <span class="font-size-base text-common text-throughLine">$299.95</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-xs-6">
-      <div class="productList-item">
-        <div class="image-container">
-          <img class="img-fluid" src="/images/product/product.jpg" alt="商品的名称">
-          <div class="bg-heart">
-            <span class="btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
-          </div>
-        </div>
-        <div class="price-caption helveBold">
-          <div class="text-center font-size-md text-primary">New Rings</div>
-          <div class="text-center">
-            <span class="font-size-md text-primary p-r-5x">$199.95</span>
-            <span class="font-size-base text-common text-throughLine">$299.95</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-xs-6">
-      <div class="productList-item">
-        <div class="image-container">
-          <img class="img-fluid" src="/images/product/product.jpg" alt="商品的名称">
-          <div class="bg-heart">
-            <span class="btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+            <span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
           </div>
         </div>
         <div class="price-caption helveBold">
