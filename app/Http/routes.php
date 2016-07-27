@@ -63,7 +63,7 @@ Route::post('/cart/add', 'CartController@addCart');
 
 Route::post('/cart/proBuy', 'CartController@promptlyBuy');
 
-Route::post('CartController@addBatchCart');
+Route::post('/cart/addBatch', 'CartController@addBatchCart');
 
 Route::post('/cart/alterQtty', 'CartController@alterCartProQtty');
 
