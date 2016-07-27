@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="/styles/common.css">
 
-    <script src="/scripts/vendor/modernizr.js"></script>
 </head>
 <body>
 
@@ -30,7 +29,7 @@
                 @foreach($cart['showSkus'] as $showSku)
                 <div class="row p-y-20x flex flex-alignCenter">
                     <div class="col-md-6 col-xs-12 flex flex-alignCenter">
-                        <div><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
+                        <a href="/product/{{$showSku['spu']}}"><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></a>
                         <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
                         <div class="p-l-20x">
                             @if(isset($showSku['attrValues']))
@@ -90,8 +89,8 @@
                     </div>
                     <div class="col-md-2 col-xs-4">
                         <div class="p-l-20x">
-                            <div class="font-size-md text-primary">$199.95</div>
-                            <div class="font-size-base text-common text-throughLine">$299.95</div>
+                            <div class="font-size-md text-primary">${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
+                            {{--<div class="font-size-base text-common text-throughLine">$299.95</div>--}}
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-4">
@@ -149,6 +148,5 @@
 </body>
 <script src="/scripts/vendor.js"></script>
 
-{{--<script src="/scripts/common.js"></script>--}}
-<script src="/scripts/cart.js"></script>
+<script src="/scripts/common.js"></script>
 </html>

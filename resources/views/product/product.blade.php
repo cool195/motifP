@@ -121,7 +121,7 @@
                     <hr class="hr-common">
                     <div class="text-center p-t-15x p-b-10x">
                         @if(Session::has('user'))
-                            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-addToBag">Add to Bag</a>
+                            <a href="javascript:void(0);" class="btn btn-block btn-primary btn-lg btn-addToBag">Add to Bag</a>
                         @else
                             <a href="/login" class="btn btn-block btn-primary btn-lg btn-addToBag">Add to Bag</a>
                         @endif
@@ -172,7 +172,7 @@
         @foreach($recommended['list'] as $list)
             <div class="col-md-3 col-xs-6">
                 <div class="productList-item">
-                    <a href="/products/{{$list['spu']}}">
+                    <a href="/product/{{$list['spu']}}">
                         <div class="image-container">
                             <img class="img-fluid"
                                  src="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}"
