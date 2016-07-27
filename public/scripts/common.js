@@ -232,7 +232,7 @@ window.onload = function () {
 
 
             $.each(product_data.vasBases, function (index, val) {
-                if (!$('#vas_id' + val.vas_id).hasClass('disabled')) {
+                if (!$('#vas_id' + val.vas_id).hasClass('disabled') && $('#vas_id' + val.vas_id).val()) {
                     operate.VAList.push({'vas_id': val.vas_id, 'user_remark': $('#vas_id' + val.vas_id).val()});
                 }
             });
