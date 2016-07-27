@@ -37,6 +37,11 @@
                                     {{$attrValue['attr_type_value']}}:{{$attrValue['attr_value']}}<br>
                                 @endforeach
                             @endif
+                            @if(isset($showSku['showVASes']))
+                                @foreach($showSku['showVASes'] as $key => $vas)
+                                    {{ $vas['vas_name'] }}:{{ $vas['user_remark'] }}
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-4">
@@ -83,6 +88,11 @@
                             @if(isset($showSku['attrValues']))
                                 @foreach($showSku['attrValues'] as $key => $attrValue)
                                     {{$attrValue['attr_type_value']}}:{{$attrValue['attr_value']}}<br>
+                                @endforeach
+                            @endif
+                            @if(isset($showSku['showVASes']))
+                                @foreach($showSku['showVASes'] as $key => $vas)
+                                    {{ $vas['vas_name'] }}:{{ $vas['user_remark'] }}
                                 @endforeach
                             @endif
                         </div>
