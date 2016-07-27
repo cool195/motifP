@@ -10,12 +10,14 @@ class CartController extends BaseController
     public function cart(Request $request)
     {
         $cartList = $this->getCartList();
+        $saveList = $this->getCartSaveList();
         if($request->input('ajax')){
-            return $cartList;
+            $result = array();
+            $result['cart'] = $cartList['data'];
+            $result['save'] = $cartList['data'];
+            return $result;
         }
-        //$saveList = $this->getCartSaveList();
-        return $cartList;
-        //todo @return view
+        return view('cart.cart', ['cart' => $cartList['data'], 'save' => $saveList['data']]);
     }
 
     public function getCartAmount()
