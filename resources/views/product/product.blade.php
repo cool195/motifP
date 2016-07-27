@@ -111,7 +111,7 @@
                                 <div class="btn btn-cartCount btn-xs disabled" id="delQtySku" data-num="-1">
                                     <i class="iconfont icon-minus font-size-lg"></i>
                                 </div>
-                                <div class="btn btn-cartCount btn-md font-size-base" id="skuQty" data-num="1">1</div>
+                                <div class="btn btn-cartCount btn-md font-size-base p-x-20x" id="skuQty" data-num="1">1</div>
                                 <div class="btn btn-cartCount btn-xs" id="addQtySku" data-num="1">
                                     <i class="iconfont icon-add font-size-lg"></i>
                                 </div>
