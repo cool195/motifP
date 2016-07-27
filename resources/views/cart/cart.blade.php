@@ -114,7 +114,7 @@
             <div class="p-a-20x font-size-md">
                 <div class="text-right"><span>Items({{$cart['total_sku_qtty'] }}):</span><span class="sanBold cart-price">${{number_format($cart['total_amount'] /100, 2)}}</span></div>
                 @if($cart['vas_amount'] > 0)
-                <div class="text-right"><span>Extra:</span><span class="sanBold cart-price">${{ number_format($cart['vas_amount'] / 100, 2) }}</span></div>
+                <div class="text-right"><span>>Additional Services:</span><span class="sanBold cart-price">${{ number_format($cart['vas_amount'] / 100, 2) }}</span></div>
                 @endif
                 <div class="text-right"><span>Bag Subtotal:</span><span class="sanBold cart-price">${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
             </div>
