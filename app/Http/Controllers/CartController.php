@@ -70,6 +70,7 @@ class CartController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('cart', $params);
+        $result['params'] = $params;
         return $result;
     }
 

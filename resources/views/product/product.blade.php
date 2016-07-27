@@ -96,7 +96,7 @@
                                     +${{number_format(($vas['vas_price'] / 100), 2)}}</div>
                                 <div class="m-l-15x">
                                     <div class="p-y-5x flex flex-alignCenter">
-                                        <input type="text"
+                                        <input type="text" id="{{'vas_id'.$vas['vas_id']}}"
                                                class="input-engraving form-control m-r-20x text-primary disabled">
                                         <i class="iconfont icon-checkcircle text-primary font-size-lg"></i>
                                     </div>
@@ -121,7 +121,7 @@
                     <hr class="hr-common">
                     <div class="text-center p-t-15x p-b-10x">
                         @if(Session::has('user'))
-                            <a href="javascript:void(0);" class="btn btn-block btn-primary btn-lg btn-addToBag">Add to Bag</a>
+                            <a href="javascript:void(0);" class="btn btn-block btn-primary btn-lg btn-addToBag @if($data['isPutOn']==0){{'disabled'}}@endif">Add to Bag</a>
                         @else
                             <a href="/login" class="btn btn-block btn-primary btn-lg btn-addToBag">Add to Bag</a>
                         @endif

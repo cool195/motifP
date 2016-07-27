@@ -53,7 +53,7 @@ window.onload = function () {
 
     // 选择 商品属性
     var product_data = eval('(' + $('#jsonStr').val() + ')')
-    var spuAttrs = typeof(product_data)!="undefined" ? product_data.spuAttrs : '';
+    var spuAttrs = typeof(product_data) != "undefined" ? product_data.spuAttrs : '';
     var product_arrayTemp_click = [] //被选中的总数组
 
     //点击属性事件
@@ -66,7 +66,7 @@ window.onload = function () {
             if ($(this).hasClass('active')) {
                 $(this).removeClass('active');
                 delete product_arrayTemp_click['key' + $(this).attr('data-attr-type')];
-                if($('#productsku').val()){
+                if ($('#productsku').val()) {
                     $('#productsku').val('')
                 }
             } else {
@@ -222,13 +222,20 @@ window.onload = function () {
 
     // 添加购物车
     $('.btn-addToBag').on('click', function (e) {
-        if($('#productsku').val()){
+        if ($('#productsku').val()) {
             var operate = {
                 'sale_qtty': $('#skuQty').data('num'),
                 'select': true,
                 'sku': $('#productsku').val(),
                 'VAList': []
             };
+
+
+            $.each(product_data.vasBases, function (index, val) {
+                if (!$('#vas_id' + val.vas_id).hasClass('disabled')) {
+                    operate.VAList.push({'vas_id': val.vas_id, 'user_remark': $('#vas_id' + val.vas_id).val()});
+                }
+            });
             $.ajax({
                 url: '/cart/add',
                 type: 'POST',
@@ -243,7 +250,7 @@ window.onload = function () {
                         alert('error')
                     }
                 });
-        }else{
+        } else {
             alert('请选择属性')
         }
     });
@@ -276,7 +283,6 @@ window.onload = function () {
         hashTracking: false
     };
     var Modal = $('[data-remodal-id=modal]').remodal(options);
-
 
 
     // 触发删除 购物车商品
