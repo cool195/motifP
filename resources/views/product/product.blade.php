@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Shopping Detail</title>
-    <link rel="apple-touch-icon" href="/images/icon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png">
 
     <link rel="stylesheet" href="/styles/vendor.css">
 
@@ -135,8 +135,8 @@
 @if(isset($data['designer']))
     <div class="container m-t-30x">
         <span class="sanBold font-size-md p-x-20x">Designer:</span>
-        <span class="p-r-10x"><img class="img-circle" src="/images/icon/apple-touch-icon.png" width="40" height="40"
-                                   alt=""></span>
+        {{--        <span class="p-r-10x"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png" width="40" height="40"
+                                           alt=""></span>--}}
         <span class="sanBold text-main">{{ $data['designer']['designer_name'] }}</span>
     </div>
 @endif
@@ -175,7 +175,8 @@
                     <a href="/products/{{$list['spu']}}">
                         <div class="image-container">
                             <img class="img-fluid"
-                                 src="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}" alt="{{ $list['main_title'] }}">
+                                 src="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}"
+                                 alt="{{ $list['main_title'] }}">
                         </div>
                     </a>
                     <div class="price-caption helveBold">
@@ -192,11 +193,11 @@
         @endforeach
     </div>
     {{--<div class="text-center m-y-30x">--}}
-        {{--<a class="btn btn-block btn-gray btn-lg btn-seeMore" href="#">See more of all</a>--}}
+    {{--<a class="btn btn-block btn-gray btn-lg btn-seeMore" href="#">See more of all</a>--}}
     {{--</div>--}}
     {{--<div class="loading" style="display: none">--}}
-        {{--<div class="loader">--}}
-        {{--</div>--}}
+    {{--<div class="loader">--}}
+    {{--</div>--}}
     {{--</div>--}}
 </div>
 

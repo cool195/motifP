@@ -1,6 +1,6 @@
 <footer>
     <div class="container p-x-40x">
-        <div class="text-center m-b-40x p-t-10x"><img class="" src="/images/logo/logo-white.png" alt="logo"></div>
+        <div class="text-center m-b-40x p-t-10x"><img class="" src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png" alt="logo"></div>
         <div class="row">
             <div class="col-md-3 col-xs-6">
                 <div class="list-group text-white m-b-20x">
@@ -24,12 +24,12 @@
                     <div class="sanBold font-size-sm m-b-20x">Download</div>
                     <div class="list-group-item">
                         <a href="#" class="btn btn-black">
-                            <img class="img-fluid m-x-auto" src="/images/icon/icon-appStore.png" srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x">
+                            <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png 3x">
                         </a>
                     </div>
                     <div class="list-group-item">
                         <a href="#" class="btn btn-black">
-                            <img class="img-fluid m-x-auto" src="/images/icon/icon-googlePlay.png" srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x">
+                            <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png 3x">
                         </a>
                     </div>
                 </div>
@@ -38,13 +38,13 @@
                 <div class="list-group text-white m-b-20x">
                     <div class="sanBold font-size-sm m-b-20x">Follow Us</div>
                     <a href="#" class="btn btn-share btn-circle m-r-20x">
-                        <img class="img-fluid m-x-auto" src="/images/icon/icon-fac.png">
+                        <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-fac.png">
                     </a>
                     <a href="#" class="btn btn-share btn-circle m-r-20x">
-                        <img class="img-fluid m-x-auto" src="/images/icon/icon-pin.png">
+                        <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-pin.png">
                     </a>
                     <a href="#" class="btn btn-share btn-circle m-r-20x">
-                        <img class="img-fluid m-x-auto" src="/images/icon/icon-ins.png">
+                        <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-ins.png">
                     </a>
                 </div>
             </div>

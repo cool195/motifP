@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class ProductController extends BaseController
 {
-    public function index($spu)
+    public function product(Request $request, $spu)
     {
         $result = $this->getProductDetail($spu);
-        // todo $view = "";
-        if ($result['success']) {
-            //todo
-            $recommended = $this->recommended($spu, current($result['data']['front_category_ids']));
-            $view = View('product.product', ['jsonResult' => json_encode($result['data']['spuAttrs']), 'data' => $result['data'], 'recommended' => $recommended['data']]);
+        if ($request->input('ajax')) {
+            return $result;
         }
-        return $view;
+        $recommended = $this->recommended($spu, current($result['data']['front_category_ids']));
+        return View('product.product', ['jsonResult' => json_encode($result['data']['spuAttrs']), 'data' => $result['data'], 'recommended' => $recommended['data']]);
     }
 
     public function recommended($spu, $cid)

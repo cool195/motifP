@@ -39,35 +39,37 @@ Route::get('/products', 'ShoppingController@getShoppingProductList');
 
 
 //Product Start
-Route::get('/products/{spu}', 'ProductController@index')->where(['spu' => '[0-9]+']);
+Route::get('/product/{spu}', 'ProductController@product')->where(['spu' => '[0-9]+']);
 
 //todo delete
-Route::get('/detail/{spu}', 'ProductController@getProductDetail')->where(['spu' => '[0-9]+']);
+Route::get('/detail/{spu}', 'ProductController@getProductDetail')->where(['spu' => '[0-9]+']); //test
 //Product End
 
 
 //Cart Start
-Route::get('/cart', 'CartController@index');
+Route::get('/cart', 'CartController@cart');
 
 Route::get('/cart/amount', 'CartController@getCartAmount');
 
-Route::get('/cart/list', 'CartController@getCartList');//test
+
+//todo delete
+Route::get('/cart/list', 'CartController@getCartList');
 
 Route::get('/cart/accountlist', 'CartController@getCartAccountList');
 
 Route::get('/cart/savelist', 'CartController@getCartSaveList');
 
-Route::match(['get', 'post'], '/cart/add', 'CartController@addCart');
+Route::post('/cart/add', 'CartController@addCart');
 
-Route::match(['get', 'post'], '/cart/proBuy', 'CartController@promptlyBuy');
+Route::post('/cart/proBuy', 'CartController@promptlyBuy');
 
-Route::match(['get', 'post'], '/cart/addBatch', 'CartController@addBatchCart');
+Route::post('CartController@addBatchCart');
 
-Route::match(['get', 'post'], '/cart/alterQtty', 'CartController@alterCartProQtty');
+Route::post('/cart/alterQtty', 'CartController@alterCartProQtty');
 
-Route::match(['get', 'post'], '/cart/operate', 'CartController@operateCartProduct');
+Route::post('/cart/operate', 'CartController@operateCartProduct');
 
-Route::match(['get', 'post'], '/cart/verifycoupon', 'CartController@verifyCoupon');
+Route::post('/cart/verifycoupon', 'CartController@verifyCoupon');
 //Cart End
 
 

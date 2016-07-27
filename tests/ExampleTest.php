@@ -13,7 +13,10 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
+        $this->withoutMiddleware();
+
         $this->visit('/')
-             ->see('Laravel 5');
+             ->see('Laravel 5')
+             ->dontSee('Rails');
     }
 }

@@ -6,7 +6,7 @@
 'use strict';
 (function ($) {
     // loading 打开
-    function loginOpenLoading() {
+    function login_openLoading() {
         $('.loading').toggleClass('loading-hidden');
         setTimeout(function () {
             $('.loading').toggleClass('loading-open');
@@ -14,7 +14,7 @@
     }
 
     // loading 隐藏
-    function loginCloseLoading() {
+    function login_closeLoading() {
         $('.loading').addClass('loading-close');
         setTimeout(function () {
             $('.loading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
@@ -24,7 +24,7 @@
     // TODO 登录后跳转
     // ajax
     function loginCheck() {
-        openLoading();
+        login_openLoading();
         $.ajax({
                 url: '/logincheck',
                 type: 'POST',
@@ -39,7 +39,7 @@
                 }
             })
             .always(function () {
-                loginCloseLoading();
+                login_closeLoading();
             });
     }
 
@@ -47,7 +47,7 @@
      *  验证 Email 格式
      * @param $Email
      */
-    function loginValidationEmail($Email) {
+    function login_validationEmail($Email) {
         var EmailNull = 'Please enter your email',
             EmailStyle = 'Please enter a valid email address';
         var $WarningInfo = $('.warning-info');
@@ -72,7 +72,7 @@
      * 验证 Password 格式
      * @param $Password
      */
-    function loginValidationPassword($Password) {
+    function login_validationPassword($Password) {
         var PasswordNull = 'Please enter your password',
             PasswordLength = "Oops, that's not a match.";
         var $WarningInfo = $('.warning-info');
@@ -100,7 +100,7 @@
         } else {
             $(this).siblings('.input-clear').removeClass('hidden');
         }
-        if (validationEmail($(this))) {
+        if (login_validationEmail($(this))) {
             $('div[data-role="submit"]').removeClass('disabled');
         } else {
             $('div[data-role="submit"]').addClass('disabled');
@@ -109,7 +109,7 @@
 
     // 验证密码的情况
     $('input[name="pw"]').on('keyup blur', function () {
-        if (loginValidationPassword($(this))) {
+        if (login_validationPassword($(this))) {
             $('div[data-role="submit"]').removeClass('disabled');
         } else {
             $('div[data-role="submit"]').addClass('disabled');
@@ -120,10 +120,10 @@
         var $Email = $('input[name="email"]'),
             $Password = $('input[name="pw"]');
 
-        if (!loginValidationEmail($Email)) {
+        if (!login_validationEmail($Email)) {
             $('div[data-role="submit"]').addClass('disabled');
             return;
-        } else if (!loginValidationPassword($Password)) {
+        } else if (!login_validationPassword($Password)) {
             $('div[data-role="submit"]').addClass('disabled');
             return;
         }

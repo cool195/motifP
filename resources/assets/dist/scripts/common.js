@@ -90,54 +90,6 @@ window.onload = function () {
     hashTracking: false
   };
   var Modal = $('[data-remodal-id=modal]').remodal(options);
-    
-    // 选择 商品增值服务
-    $('.input-engraving').on('click', function () {
-        $(this).removeClass('disabled');
-        $(this).siblings('.icon-checkcircle').addClass('active');
-    });
-    $('.icon-checkcircle').on('click', function () {
-        $(this).toggleClass('active');
-        if ($(this).hasClass('active')) {
-            $(this).siblings('.input-engraving').removeClass('disabled');
-        } else {
-            $(this).siblings('.input-engraving').addClass('disabled');
-        }
-    });
-
-    //修改购买数量
-    $('.btn-cartCount').on('click', function (e) {
-        var skuQty = $('#skuQty').data('num') + $(this).data('num')
-        if (skuQty > 0) {
-            $('#skuQty').data('num', skuQty)
-            $('#skuQty').html(skuQty)
-        }
-    });
-
-    // 添加购物车
-    $('.btn-addToBag').on('click', function (e) {
-        var operate = {
-            'sale_qtty': $('#skuQty').data('num'),
-            'select': true,
-            'sku': $('#productsku').val(),
-            'VAList': []
-        };
-        $.ajax({
-            url: '/cart/add',
-            type: 'POST',
-            data: {
-                operate: operate
-            }
-        })
-            .done(function (data) {
-                if (data.success) {
-                    //成功的情况
-                } else {
-                    //失败的情况
-                }
-                console.log(data)
-            });
-    });
 
   // 触发删除 购物车商品
   $('[data-type="remove"]').on('click', function () {
@@ -145,12 +97,3 @@ window.onload = function () {
   });
 })(jQuery, Swiper);
 //# sourceMappingURL=common.js.map
-
-
-//public start
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-//public end

@@ -7,11 +7,15 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends BaseController
 {
-    public function index()
+    public function cart(Request $request)
     {
         $cartList = $this->getCartList();
-        $saveList = $this->getCartSaveList();
-        //todo @return
+        if($request->input('ajax')){
+            return $cartList;
+        }
+        //$saveList = $this->getCartSaveList();
+        return $cartList;
+        //todo @return view
     }
 
     public function getCartAmount()
@@ -75,8 +79,6 @@ class CartController extends BaseController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );
-        $system = "";
-        $service = "cart";
         $result = $this->request('cart', $params);
         if(!empty($result) && $result['success']){
             $result['redirectUrl'] = '/cart';
@@ -117,7 +119,6 @@ class CartController extends BaseController
     {
         $cmdSelector = array("select", "cancal", "delsku", "save", "movetocart", "delsave");
         $cmd = $request->input('cmd');
-        $result = "";
         if(in_array($cmd, $cmdSelector))
         {
             $params = array(
