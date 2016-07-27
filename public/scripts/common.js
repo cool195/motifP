@@ -53,7 +53,7 @@ window.onload = function () {
 
     // 选择 商品属性
     var product_data = eval('(' + $('#jsonStr').val() + ')')
-    var spuAttrs = product_data.spuAttrs
+    var spuAttrs = typeof(product_data)!="undefined" ? product_data.spuAttrs : '';
     var product_arrayTemp_click = [] //被选中的总数组
 
     //点击属性事件
@@ -158,49 +158,6 @@ window.onload = function () {
         return product_array_remove_repeat(result);
     }
 
-    // 选择 商品增值服务
-    $('.input-engraving').on('click', function () {
-        $(this).removeClass('disabled');
-        $(this).siblings('.icon-checkcircle').addClass('active');
-    });
-    $('.icon-checkcircle').on('click', function () {
-        $(this).toggleClass('active');
-        if ($(this).hasClass('active')) {
-            $(this).siblings('.input-engraving').removeClass('disabled');
-        } else {
-            $(this).siblings('.input-engraving').val('');
-            $(this).siblings('.input-engraving').addClass('disabled');
-        }
-    });
-
-    // 点击 "心" 关注商品
-    $('.product-heart').on('click', function () {
-        $(this).toggleClass('active');
-    });
-
-    // Shopping Cart
-    // 初始化 确认删除 弹出框
-    var options = {
-        closeOnOutsideClick: false,
-        closeOnCancel: false,
-        hashTracking: false
-    };
-    var Modal = $('[data-remodal-id=modal]').remodal(options);
-
-    // 选择 商品增值服务
-    $('.input-engraving').on('click', function () {
-        $(this).removeClass('disabled');
-        $(this).siblings('.icon-checkcircle').addClass('active');
-    });
-    $('.icon-checkcircle').on('click', function () {
-        $(this).toggleClass('active');
-        if ($(this).hasClass('active')) {
-            $(this).siblings('.input-engraving').removeClass('disabled');
-        } else {
-            $(this).siblings('.input-engraving').addClass('disabled');
-        }
-    });
-
     //sku库存临时缓存
     var product_cache_skuQty = []
     //获取sku库存
@@ -241,7 +198,7 @@ window.onload = function () {
             alert('请选择属性')
         }
     });
-
+    //检查库存
     function checkStock(skus) {
         $.ajax({
             url: '/checkStock',
@@ -281,15 +238,46 @@ window.onload = function () {
             })
                 .done(function (data) {
                     if (data.success) {
-                        //成功的情况
+                        alert('ok')
                     } else {
-                        //失败的情况
+                        alert('error')
                     }
                 });
         }else{
             alert('请选择属性')
         }
     });
+
+    // 选择 商品增值服务
+    $('.input-engraving').on('click', function () {
+        $(this).removeClass('disabled');
+        $(this).siblings('.icon-checkcircle').addClass('active');
+    });
+    $('.icon-checkcircle').on('click', function () {
+        $(this).toggleClass('active');
+        if ($(this).hasClass('active')) {
+            $(this).siblings('.input-engraving').removeClass('disabled');
+        } else {
+            $(this).siblings('.input-engraving').val('');
+            $(this).siblings('.input-engraving').addClass('disabled');
+        }
+    });
+
+    // 点击 "心" 关注商品
+    $('.product-heart').on('click', function () {
+        $(this).toggleClass('active');
+    });
+
+    // Shopping Cart
+    // 初始化 确认删除 弹出框
+    var options = {
+        closeOnOutsideClick: false,
+        closeOnCancel: false,
+        hashTracking: false
+    };
+    var Modal = $('[data-remodal-id=modal]').remodal(options);
+
+
 
     // 触发删除 购物车商品
     $('[data-type="remove"]').on('click', function () {
