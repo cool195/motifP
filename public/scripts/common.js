@@ -201,12 +201,12 @@ window.onload = function () {
     //检查库存
     function checkStock(skus) {
         $.ajax({
-            url: '/checkStock',
-            type: 'POST',
-            data: {
-                skus: skus
-            }
-        })
+                url: '/checkStock',
+                type: 'POST',
+                data: {
+                    skus: skus
+                }
+            })
             .done(function (data) {
                 if (data.success) {
                     if (data.data.list[0].stockStatus === 1) {
@@ -237,12 +237,12 @@ window.onload = function () {
                 }
             });
             $.ajax({
-                url: '/cart/add',
-                type: 'POST',
-                data: {
-                    operate: operate
-                }
-            })
+                    url: '/cart/add',
+                    type: 'POST',
+                    data: {
+                        operate: operate
+                    }
+                })
                 .done(function (data) {
                     if (data.success) {
                         alert('ok')
@@ -277,17 +277,58 @@ window.onload = function () {
 
     // Shopping Cart
     // 初始化 确认删除 弹出框
-    var options = {
-        closeOnOutsideClick: false,
-        closeOnCancel: false,
-        hashTracking: false
-    };
-    var Modal = $('[data-remodal-id=modal]').remodal(options);
-
+    try {
+        var CartOptions = {
+            closeOnOutsideClick: false,
+            closeOnCancel: false,
+            hashTracking: false
+        };
+        var CartModal = $('[data-remodal-id=cartmodal]').remodal(CartOptions);
+    } catch (e) {
+    }
 
     // 触发删除 购物车商品
-    $('[data-type="remove"]').on('click', function () {
-        Modal.open();
+    $('[data-type="cart-remove"]').on('click', function () {
+        CartModal.open();
+    });
+
+    // Checkout
+    // 控制 div 显示隐藏
+    $('.btn-showHide').on('click', function () {
+        if ($(this).children('.showHide-simpleInfo').length > 0) {
+            var $AddressContent = $(this).siblings('.showHide-body');
+            if ($AddressContent.hasClass('active')) {
+                $AddressContent.slideUp(500);
+                $AddressContent.removeClass('active');
+                $(this).removeClass('active');
+            } else {
+                $AddressContent.slideDown(500);
+                $AddressContent.addClass('active');
+                $(this).addClass('active');
+            }
+        } else {
+            var $AddressContent = $(this).siblings('.showHide-body');
+            var $SimpleInfo = $(this).siblings('.showHide-simpleInfo');
+            if ($AddressContent.hasClass('active')) {
+                $AddressContent.slideUp(500);
+                $AddressContent.removeClass('active');
+                $(this).removeClass('active');
+                $AddressContent.css('display','none');
+                $SimpleInfo.css('display','block');
+            } else {
+                $AddressContent.slideDown(500);
+                $AddressContent.addClass('active');
+                $(this).addClass('active');
+                $AddressContent.css('display','flex');
+                $SimpleInfo.css('display','none');
+            }
+        }
+    });
+
+    // 选择地址
+    $('.address-item').on('click', function () {
+        $('.address-item').removeClass('active');
+        $(this).addClass('active');
     });
 })(jQuery, Swiper);
 //# sourceMappingURL=common.js.map

@@ -50,7 +50,7 @@
                             <div class="btn btn-cartCount btn-xs" data-item="minus">
                                 <i class="iconfont icon-minus font-size-lg"></i>
                             </div>
-                            <div class="btn btn-cartCount btn-md font-size-base" data-num="num">{{$showSku['sale_qtty']}}</div>
+                            <div class="btn btn-cartCount btn-md font-size-base p-x-20x" data-num="num">{{$showSku['sale_qtty']}}</div>
                             <div class="btn btn-cartCount btn-xs" data-item="add">
                                 <i class="iconfont icon-add font-size-lg"></i>
                             </div>
@@ -59,7 +59,7 @@
                     <div class="col-md-2 col-xs-4">
                         <div class="p-l-20x">
                             <a class="btn-block" href="#">Save for Later</a>
-                            <a class="btn-block" data-type="removeCart" href="#">Remove</a>
+                            <a class="btn-block" data-type="cart-remove" href="#">Remove</a>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
     </div>
 </section>
 
-<div class="remodal modal-content remodal-md" data-remodal-id="modal" id="modalDialog" data-spu="">
+<div class="remodal modal-content remodal-md" data-remodal-id="cartmodal" id="modalDialog" data-spu="">
     <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Bag?</div>
     <hr class="hr-common m-a-0">
     <div class="text-center dialog-info">Are you sure you want to remove this item?</div>
