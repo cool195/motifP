@@ -108,11 +108,11 @@
                         <div class="flex flex-alignCenter">
                             <span class="text-primary font-size-md m-r-20x">Qty:</span>
                             <div class="btn-group flex" id="item-count">
-                                <div class="btn btn-cartCount btn-xs disabled" data-num="-1">
+                                <div class="btn btn-cartCount btn-xs disabled" id="delQtySku" data-num="-1">
                                     <i class="iconfont icon-minus font-size-lg"></i>
                                 </div>
                                 <div class="btn btn-cartCount btn-md font-size-base" id="skuQty" data-num="1">1</div>
-                                <div class="btn btn-cartCount btn-xs" data-num="1">
+                                <div class="btn btn-cartCount btn-xs" id="addQtySku" data-num="1">
                                     <i class="iconfont icon-add font-size-lg"></i>
                                 </div>
                             </div>
