@@ -50,7 +50,7 @@
                             <div class="btn btn-cartCount btn-xs" data-item="minus">
                                 <i class="iconfont icon-minus font-size-lg"></i>
                             </div>
-                            <div class="btn btn-cartCount btn-md font-size-base p-x-20x" data-num="num">{{$showSku['sale_qtty']}}</div>
+                            <div class="btn btn-cartCount btn-xs font-size-base p-x-20x" data-num="num">{{$showSku['sale_qtty']}}</div>
                             <div class="btn btn-cartCount btn-xs" data-item="add">
                                 <i class="iconfont icon-add font-size-lg"></i>
                             </div>
