@@ -95,10 +95,10 @@
         <div class="box-shadow bg-white m-t-20x">
             <div class="font-size-md p-x-20x p-y-15x btn-showHide active">
                 <span class="sanBold">1 / 2 Shipping Address</span>
-        <span class="pull-right showHide-simpleInfo">
-          <span>10086</span>
-          <a class="p-l-40x">Edit</a>
-        </span>
+                <span class="pull-right showHide-simpleInfo">
+                    <span>10086</span>
+                    <a class="p-l-40x">Edit</a>
+                </span>
             </div>
             <hr class="hr-common m-a-0">
             <div class="showHide-body address-content active">
@@ -169,9 +169,9 @@
                 <div class="p-a-20x select-address disabled">
                     <div class="flex flex-alignCenter flex-fullJustified">
                         <span class="font-size-md">Selecy Shipping Address</span>
-            <span class="font-size-md pull-right">
-              <a class="btn btn-secondary btn-md" href="#"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add New
-                  Address</a></span>
+                        <span class="font-size-md pull-right">
+                            <a class="btn btn-secondary btn-md" href="#"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add NewAddress</a>
+                        </span>
                     </div>
                     <div class="row p-x-10x p-t-20x">
                         <div class="col-md-6">
@@ -245,10 +245,10 @@
         <div class="box-shadow bg-white m-t-20x">
             <div class="font-size-md p-x-20x p-y-15x btn-showHide active">
                 <span class="sanBold">2 / 2 Shipping Method</span>
-        <span class="pull-right showHide-simpleInfo">
-          <span>Beijing China</span>
-          <a class="p-l-40x">Edit</a>
-        </span>
+                <span class="pull-right showHide-simpleInfo">
+                    <span>Beijing China</span>
+                    <a class="p-l-40x">Edit</a>
+                </span>
             </div>
             <hr class="hr-common m-a-0">
             <div class="showHide-body method-content active">
@@ -256,10 +256,11 @@
                 <div class="p-a-20x">
                     <div class="row p-x-20x p-t-20x">
                         @foreach($logisticsList['list'] as $list)
-                        <div class="col-md-6 p-b-10x">
-                            <input type="radio" value="" id="" name="shipping-method">
-                            <label for="" class="p-l-10x">{{ $list['logistics_name'] }} +${{ number_format(($list['price'] / 100), 2) }}</label>
-                        </div>
+                            <div class="col-md-6 p-b-10x">
+                                <input type="radio" value="" id="" name="shipping-method">
+                                <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
+                                    +${{ number_format(($list['price'] / 100), 2) }}</label>
+                            </div>
                         @endforeach
                     </div>
                     <div class="text-right"><a href="#" class="btn btn-primary btn-md">Continue</a></div>
@@ -277,10 +278,10 @@
                     <div><input type="text" class="form-control contrlo-lg text-primary input-promotion disabled"></div>
                     <div class="p-l-20x"><a href="#" class="btn btn-primary btn-md">Continue</a></div>
                 </div>
-        <span class="pull-right showHide-simpleInfo promotion-info">
-          <span>B320847398247</span>
-          <a class="p-l-40x">Edit</a>
-        </span>
+                <span class="pull-right showHide-simpleInfo promotion-info">
+                    <span>B320847398247</span>
+                    <a class="p-l-40x">Edit</a>
+                </span>
             </div>
         </div>
 
@@ -288,10 +289,10 @@
         <div class="box-shadow bg-white m-t-20x">
             <div class="p-x-20x p-y-15x font-size-md btn-showHide active">
                 <span class="sanBold">Special Request (optional)</span>
-        <span class="pull-right showHide-simpleInfo">
-          <span>I want Buy</span>
-          <a class="p-l-40x">Edit</a>
-        </span>
+                <span class="pull-right showHide-simpleInfo">
+                    <span>I want Buy</span>
+                    <a class="p-l-40x">Edit</a>
+                </span>
             </div>
             <div class="showHide-body p-x-20x p-b-20x active">
                 <div class="p-x-20x p-b-20x">
@@ -299,7 +300,6 @@
                 </div>
                 <div class="text-right"><a href="#" class="btn btn-primary btn-md">Save</a></div>
             </div>
-
         </div>
 
         <!-- 购物袋总价 -->

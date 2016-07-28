@@ -31,17 +31,13 @@
                             @if(isset($data['productImages']))
                                 @foreach($data['productImages'] as $image)
                                     <div class="productImg-item swiper-slide p-r-10x">
-                                        <img class="img-thumbnail active"
-                                             src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}" width="110"
-                                             height="110">
+                                        <img class="img-thumbnail active" src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}" width="110" height="110">
                                     </div>
                                 @endforeach
                             @endif
                         </div>
-                        <div class="swiper-button-next"><i
-                                    class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
-                        <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i>
-                        </div>
+                        <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
+                        <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i></div>
                     </div>
                 </div>
             </div>
@@ -58,8 +54,7 @@
                     </div>
                     <div class="p-y-5x">
                         @if(isset($data['skuPrice']['skuPromotion']))
-                            <span class="font-size-md">{{ $data['skuPrice']['skuPromotion']['display'] }}
-                                &nbsp;&nbsp;</span>
+                            <span class="font-size-md">{{ $data['skuPrice']['skuPromotion']['display'] }}&nbsp;&nbsp;</span>
                         @endif
                         <span>{{$data['prompt_words']}}</span>
                     </div>
@@ -71,11 +66,9 @@
                             <fieldset class="text-left m-b-20x">
                                 <div class="text-primary font-size-md flex">
                                     <span class="p-r-20x">{{$spuAttr['attr_type_value']}}:</span>
-                                  <span class="warning-info flex flex-alignCenter text-warning off"
-                                        id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
+                                  <span class="warning-info flex flex-alignCenter text-warning off" id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
                                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                    <span class="font-size-base">{{'Please select '.$spuAttr['attr_type_value']}}
-                                        !</span>
+                                    <span class="font-size-base">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
                                   </span>
                                 </div>
                                 <div class="m-l-15x">
@@ -90,8 +83,7 @@
                                                          data-id="{{'skutype'.$skuAttrValue['attr_value_id']}}">{{$skuAttrValue['attr_value']}}
                                                     </div>
                                                 @else
-                                                    <div class="btn btn-itemProperty btn-sm disabled">{{$skuAttrValue['attr_value']}}
-                                                    </div>
+                                                    <div class="btn btn-itemProperty btn-sm disabled">{{$skuAttrValue['attr_value']}}</div>
                                                 @endif
                                             </div>
                                         @endforeach

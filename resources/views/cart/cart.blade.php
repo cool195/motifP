@@ -29,7 +29,7 @@
                 @foreach($cart['showSkus'] as $showSku)
                 <div class="row p-y-20x flex flex-alignCenter">
                     <div class="col-md-6 col-xs-12 flex flex-alignCenter">
-                        <a href="/product/{{$showSku['spu']}}"><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></a>
+                        <div><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
                         <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
                         <div class="p-l-20x">
                             @if(isset($showSku['attrValues']))
