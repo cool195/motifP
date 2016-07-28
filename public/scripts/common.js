@@ -77,13 +77,13 @@ window.onload = function () {
                     $('#p_a_w' + $(this).data('attr-type')).addClass('off')
                 }
             }
-            product_onclickStatic(product_onSkuClick($(this).attr('data-attr-type'), $(this).attr('data-attr-value-id'),$(this).hasClass('active')), $(this).attr('data-attr-type'),$(this).hasClass('active'));
+            product_onclickStatic(product_onSkuClick($(this).attr('data-attr-type'), $(this).attr('data-attr-value-id'), $(this).hasClass('active')), $(this).attr('data-attr-type'), $(this).hasClass('active'));
             product_setLastSku()
         }
     });
 
     //将当前点击的SKU数组添加到要进行计算的总数组中
-    function product_onSkuClick(attr_type, attr_value_id,status) {
+    function product_onSkuClick(attr_type, attr_value_id, status) {
         var nowClickArray = []
         for (var i = 0; i < spuAttrs.length; i++) {
             if (attr_type == spuAttrs[i].attr_type) {
@@ -112,7 +112,7 @@ window.onload = function () {
     }
 
     //操作后的可用状态
-    function product_onclickStatic(nowClickArray, nowAT,clickStatus) {
+    function product_onclickStatic(nowClickArray, nowAT, clickStatus) {
         for (var i = 0; i < spuAttrs.length; i++) {
             if (nowAT != spuAttrs[i].attr_type) {
                 for (var y = 0; y < spuAttrs[i].skuAttrValues.length; y++) {
@@ -183,7 +183,7 @@ window.onload = function () {
     }
 
     //修改购买数量
-    $('.btn-cartCount.btn-xs').on('click', function (e) {
+    $('.patb').on('click', function (e) {
         if ($('#productsku').val()) {
             var skuQty = $('#skuQty').data('num') + $(this).data('num');
             var product_stock_qtty = product_cache_skuQty[$('#productsku').val()] ? product_cache_skuQty[$('#productsku').val()] : product_getSkuQty($('#productsku').val());
@@ -294,7 +294,16 @@ window.onload = function () {
 
     // 点击 "心" 关注商品
     $('.product-heart').on('click', function () {
-        $(this).toggleClass('active');
+        $.ajax({
+            url: '/wishlist/' + $(this).data('spu'),
+            type: 'GET',
+        })
+            .done(function (data) {
+                if (data.success) {
+                    $('.product-heart').toggleClass('active');
+                }
+            });
+
     });
 
     // Shopping Cart

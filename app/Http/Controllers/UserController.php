@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Cache;
 
 class UserController extends BaseController
 {
@@ -53,7 +54,7 @@ class UserController extends BaseController
     public function signout()
     {
         Session::forget('user');
-       //todo return redirect('/login');
+        //todo return redirect('/login');
     }
 
     public function forgetPassword(Request $request)
@@ -193,7 +194,59 @@ class UserController extends BaseController
         return $result;
     }
 
+    //我收藏的商品
+    public function wishlist()
+    {
+        if (Session::get('user.pin')) {
 
+            $value = Cache::rememberForever(Session::get('user.pin') . 'wishlist', function () {
+                $params = array(
+                    'cmd' => 'list',
+                    'num' => 1,
+                    'size' => 500,
+                    'pin' => Session::get('user.pin'),
+                    'token' => Session::get('user.token')
+                );
+                $result = $this->request('wishlist', $params);
+                $result['cacheList'] = array();
+                if ($result['success'] && $result['data']['amount'] > 0) {
+                    foreach ($result['data']['list'] as $value) {
+                        $result['cacheList'][] = $value['spu'];
+                    }
+                }
+                return $result['cacheList'];
+            });
+            return $value;
+        }
+        return false;
+    }
 
+    //添加删除收藏
+    public function updateWishList($spu)
+    {
+        $params = array(
+            'cmd' => $this->isWishList($spu) ? 'del' : 'add',
+            'spu' => $spu,
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token')
+        );
+        $result = $this->request('wishlist', $params);
+        if ($result['success']) {
+            Cache::forget(Session::get('user.pin') . 'wishlist');
+        }
+        return $result;
+    }
 
+    //是否收藏
+    public function isWishList($spu)
+    {
+        $params = array(
+            'cmd' => 'is',
+            'spu' => $spu,
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token')
+        );
+        $result = $this->request('wishlist', $params);
+        return $result['data']['isFC'];
+    }
 }

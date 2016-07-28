@@ -8,25 +8,35 @@
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="p-a-20x box-shadow bg-white">
-                    <img class="img-fluid product-bigImg" src="{{config('runtime.CDN_URL')}}/n1/{{$data['main_image_url']}}" alt="">
+                    <img class="img-fluid product-bigImg"
+                         src="{{config('runtime.CDN_URL')}}/n1/{{$data['main_image_url']}}" alt="">
                     <div class="swiper-container">
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @if(isset($data['productImages']))
                                 @foreach($data['productImages'] as $key => $image)
                                     <div class="productImg-item swiper-slide p-r-10x">
-                                        <img class="img-thumbnail @if(0 == $key) active @endif" src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}" width="110" height="110">
+                                        <img class="img-thumbnail @if(0 == $key) active @endif"
+                                             src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}" width="110"
+                                             height="110">
                                     </div>
                                 @endforeach
                             @endif
                         </div>
-                        <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
-                        <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i></div>
+                        <div class="swiper-button-next"><i
+                                    class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
+                        <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="p-a-20x box-shadow bg-white">
-                    <h4 class="product-title helveBold">{{ $data['main_title'] }}</h4>
+                    @inject('wishlist', 'App\Http\Controllers\UserController')
+                    <div class="flex flex-fullJustified">
+                        <span class="product-title helveBold">{{ $data['main_title'] }}</span>
+                        <span class="product-heart @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$data['spu']}}"><i
+                                    class="iconfont icon-onheart font-size-lxx"></i></span>
+                    </div>
                     <div class="product-price">
                         @if(isset($data['skuPrice']['skuPromotion']))
                             <span class="sanBold p-r-10x text-primary">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
@@ -37,7 +47,8 @@
                     </div>
                     <div class="p-y-5x">
                         @if(isset($data['skuPrice']['skuPromotion']))
-                            <span class="font-size-md">{{ $data['skuPrice']['skuPromotion']['display'] }}&nbsp;&nbsp;</span>
+                            <span class="font-size-md">{{ $data['skuPrice']['skuPromotion']['display'] }}
+                                &nbsp;&nbsp;</span>
                         @endif
                         <span>{{$data['prompt_words']}}</span>
                     </div>
@@ -49,9 +60,11 @@
                             <fieldset class="text-left m-b-20x">
                                 <div class="text-primary font-size-md flex">
                                     <span class="p-r-20x">{{$spuAttr['attr_type_value']}}:</span>
-                                  <span class="warning-info flex flex-alignCenter text-warning off" id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
+                                  <span class="warning-info flex flex-alignCenter text-warning off"
+                                        id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
                                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                    <span class="font-size-base">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
+                                    <span class="font-size-base">{{'Please select '.$spuAttr['attr_type_value']}}
+                                        !</span>
                                   </span>
                                 </div>
                                 <div class="m-l-15x">
@@ -97,13 +110,13 @@
                         <div class="flex flex-alignCenter">
                             <span class="text-primary font-size-md m-r-20x">Qty:</span>
                             <div class="btn-group flex" id="item-count">
-                                <div class="btn btn-cartCount btn-xs disabled" id="delQtySku" data-num="-1">
+                                <div class="btn btn-cartCount btn-xs patb disabled" id="delQtySku" data-num="-1">
                                     <i class="iconfont icon-minus font-size-lg"></i>
                                 </div>
                                 <div class="btn btn-cartCount btn-xs font-size-base p-x-20x" id="skuQty" data-num="1">
                                     1
                                 </div>
-                                <div class="btn btn-cartCount btn-xs" id="addQtySku" data-num="1">
+                                <div class="btn btn-cartCount btn-xs patb" id="addQtySku" data-num="1">
                                     <i class="iconfont icon-add font-size-lg"></i>
                                 </div>
                             </div>

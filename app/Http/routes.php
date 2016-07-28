@@ -99,6 +99,8 @@ Route::post('/user/modifyUserPwd', 'UserController@modifyUserPwd');
 Route::match(['get', 'post'], '/user/modifyUserInfo', 'UserController@modifyUserInfo');
 
 Route::post('/user/uploadicon', 'UserController@uploadIcon');
+
+Route::get('/wishlist/{spu}', 'UserController@updateWishList')->where(['spu' => '[0-9]+']);
 //User End
 
 //Address Start
