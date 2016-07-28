@@ -1,4 +1,20 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Shopping Cart</title>
+    <link rel="apple-touch-icon" href="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="/styles/vendor.css">
+
+    <link rel="stylesheet" href="/styles/common.css">
+
+</head>
+<body>
 <header class="">
     <div class="container">
         <nav class="navbar-left">
