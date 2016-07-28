@@ -352,6 +352,60 @@ window.onload = function () {
         $('.address-item').removeClass('active');
         $(this).addClass('active');
     });
+
+    // Login
+    // 验证电子邮件的情况
+    $('input[name="email"]').on('keyup blur', function () {
+        var InputText = $(this).val();
+        if (InputText === '' || InputText === undefined) {
+            $(this).siblings('.input-clear').addClass('hidden');
+        } else {
+            $(this).siblings('.input-clear').removeClass('hidden');
+        }
+    });
+
+    // 清除输入
+    $('.input-clear').on('click', function (e) {
+        $(e.target).siblings('input').val('');
+        $(this).addClass('hidden');
+    });
+
+    // 查看密码
+    $('.input-show').on('click', function (e) {
+        var $Password = $(e.target).siblings('input');
+
+        if ($(e.target).hasClass('off')) {
+            $Password.attr('type', 'text');
+            $(e.target).removeClass('off');
+        } else {
+            $Password.attr('type', 'password');
+            $(e.target).addClass('off');
+        }
+    });
+
+    // 点击登录
+    $('[data-role="login-submit"]').on('click', function () {
+        console.info('登录');
+    });
+
+    // 点击 忘记忘记 发送邮件
+    $('[data-role="restPwd-submit"]').on('click', function () {
+        console.info('Rest Password');
+    });
+
+    // 忘记密码入口
+    $('.btn-forgotPwd').on('click', function () {
+        $('.login-content').addClass('hidden').removeClass('active');
+        $('.restPwd-content').removeClass('hidden').addClass('active');
+        $('.login-title').text('Forget Password?');
+    });
+
+    // 返回登录入口
+    $('.btn-backLogin').on('click', function () {
+        $('.restPwd-content').addClass('hidden').removeClass('active');
+        $('.login-content').removeClass('hidden').addClass('active');
+        $('.login-title').text('Sign in with Motif Account');
+    });
 })(jQuery, Swiper);
 //# sourceMappingURL=common.js.map
 
