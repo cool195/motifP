@@ -59,7 +59,7 @@ window.onload = function () {
     //点击属性事件
     $('.btn-itemProperty').on('click', function () {
         var ItemType = $(this).data('type');
-        if (ItemType !== '') {
+        if (ItemType !== '' && !$(this).hasClass('disabled')) {
             $('#skuQty').data('num', 1);
             $('#skuQty').html(1);
             $('#delQtySku').addClass('disabled');
@@ -68,7 +68,7 @@ window.onload = function () {
                 delete product_arrayTemp_click['key' + $(this).attr('data-attr-type')];
                 $('#p_a_w' + $(this).attr('data-attr-type')).data('sel', 0);
                 if ($('#productsku').val()) {
-                    $('#productsku').val('')
+                    $('#productsku').val('');
                 }
             } else {
                 $('.btn-itemProperty[data-type=' + ItemType + ']').removeClass('active');
@@ -77,23 +77,25 @@ window.onload = function () {
                 if (!$('#p_a_w' + $(this).data('attr-type')).hasClass('off')) {
                     $('#p_a_w' + $(this).data('attr-type')).addClass('off')
                 }
-                product_onSkuClick($(this).attr('data-attr-type'), $(this).attr('data-attr-value-id'));
             }
-            product_onclickStatic(product_setLastSku());
+            product_onclickStatic(product_onSkuClick($(this).attr('data-attr-type'), $(this).attr('data-attr-value-id'),$(this).hasClass('active')), $(this).attr('data-attr-type'),$(this).hasClass('active'));
+            product_setLastSku()
         }
     });
 
     //将当前点击的SKU数组添加到要进行计算的总数组中
-    function product_onSkuClick(attr_type, attr_value_id) {
+    function product_onSkuClick(attr_type, attr_value_id,status) {
+        var nowClickArray = []
         for (var i = 0; i < spuAttrs.length; i++) {
             if (attr_type == spuAttrs[i].attr_type) {
                 for (var y = 0; y < spuAttrs[i].skuAttrValues.length; y++) {
                     if (attr_value_id == spuAttrs[i].skuAttrValues[y].attr_value_id) {
-                        product_arrayTemp_click['key' + attr_type] = spuAttrs[i].skuAttrValues[y].skus;
+                        !status ? nowClickArray = spuAttrs[i].skuAttrValues[y].skus : product_arrayTemp_click['key' + attr_type] = nowClickArray = spuAttrs[i].skuAttrValues[y].skus;
                     }
                 }
             }
         }
+        return nowClickArray;
     }
 
     //设置被选中属性后的SKU交集数组
@@ -107,24 +109,30 @@ window.onload = function () {
         if (product_lastSkuArray.length == 1) {
             $('#productsku').val(product_lastSkuArray[0])
         }
-        return product_lastSkuArray
+        console.log(product_lastSkuArray);
     }
 
     //操作后的可用状态
-    function product_onclickStatic(lastSkuArray) {
+    function product_onclickStatic(nowClickArray, nowAT,clickStatus) {
         for (var i = 0; i < spuAttrs.length; i++) {
-            for (var y = 0; y < spuAttrs[i].skuAttrValues.length; y++) {
-                for (var i = 0; i < lastSkuArray.length; i++) {
-                    if (spuAttrs[i].skuAttrValues[y].skus.indexOf(lastSkuArray[i]) >= 0) {
-                        //找到交集,结束循环
-                        if ($('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).hasClass('disabled')) {
-                            $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
+            if (nowAT != spuAttrs[i].attr_type) {
+                for (var y = 0; y < spuAttrs[i].skuAttrValues.length; y++) {
+                    var is = false;
+                    for (var x = 0; x < spuAttrs[i].skuAttrValues[y].skus.length; x++) {
+                        $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
+                        if (nowClickArray.indexOf(spuAttrs[i].skuAttrValues[y].skus[x]) >= 0) {
+                            //找到交集,结束循环
+                            if ($('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).hasClass('disabled')) {
+                                $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
+                            }
+                            is = true;
+                            break;
                         }
-                        return true
+                    }
+                    if (!is) {
+                        clickStatus ? $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).addClass('disabled') : $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
                     }
                 }
-                $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).addClass('disabled');
-                return false
             }
         }
     }

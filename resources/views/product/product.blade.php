@@ -82,8 +82,9 @@
                                     <div class="option-item">
                                         @foreach($spuAttr['skuAttrValues'] as $skuAttrValue )
                                             <div class="p-y-5x p-r-10x">
-                                                @if($skuAttrValue['stock'])
+                                                @if(!empty($skuAttrValue['skus']))
                                                     <div class="btn btn-itemProperty btn-sm"
+                                                         id="{{'skutype'.$skuAttrValue['attr_value_id']}}"
                                                          data-type="{{'attr_type'.$spuAttr['attr_type']}}"
                                                          data-attr-type="{{$spuAttr['attr_type']}}"
                                                          data-attr-value-id="{{$skuAttrValue['attr_value_id']}}"
@@ -169,10 +170,7 @@
     </ul>
     <div class="tab-content bg-white p-a-20x">
         <div class="tab-pane text-primary active" id="Descripyion">
-            <p class="m-b-0">111 Yueqing Yang is an international fashion designer whose collections focus on the use of
-                almost totally abandoned traditional craftsmanship techniques combined with modern inspirations. Her
-                work has
-                been celebrated in fashion festivals and museums in London, Beijing and Shanghai.</p>
+            <p class="m-b-0">{!! str_replace("\n", "<br>",  $data['intro_short']) !!}</p>
         </div>
         <div class="tab-pane text-primary" id="Free">
             <p class="m-b-0">222 Yueqing Yang is an international fashion designer whose collections focus on the use of
