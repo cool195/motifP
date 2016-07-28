@@ -64,7 +64,13 @@
                         <input hidden id="productsku">
                         @foreach($data['spuAttrs'] as $spuAttr)
                             <fieldset class="text-left m-b-20x">
-                                <div class="text-primary font-size-md">{{$spuAttr['attr_type_value']}}:</div>
+                                <div class="text-primary font-size-md flex">
+                                    <span class="p-r-20x">{{$spuAttr['attr_type_value']}}:</span>
+                                  <span class="warning-info flex flex-alignCenter text-warning off" id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
+                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                    <span class="font-size-base">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
+                                  </span>
+                                </div>
                                 <div class="m-l-15x">
                                     <div class="option-item">
                                         @foreach($spuAttr['skuAttrValues'] as $skuAttrValue )
@@ -111,7 +117,9 @@
                                 <div class="btn btn-cartCount btn-xs disabled" id="delQtySku" data-num="-1">
                                     <i class="iconfont icon-minus font-size-lg"></i>
                                 </div>
-                                <div class="btn btn-cartCount btn-xs font-size-base p-x-20x" id="skuQty" data-num="1">1</div>
+                                <div class="btn btn-cartCount btn-xs font-size-base p-x-20x" id="skuQty" data-num="1">
+                                    1
+                                </div>
                                 <div class="btn btn-cartCount btn-xs" id="addQtySku" data-num="1">
                                     <i class="iconfont icon-add font-size-lg"></i>
                                 </div>
@@ -121,7 +129,9 @@
                     <hr class="hr-common">
                     <div class="text-center p-t-15x p-b-10x">
                         @if(Session::has('user'))
-                            <a href="javascript:void(0);" class="btn btn-block btn-primary btn-lg btn-addToBag @if($data['isPutOn']==0){{'disabled'}}@endif">Add to Bag</a>
+                            <a href="javascript:void(0);" id="productAddBag"
+                               class="btn btn-block btn-primary btn-lg btn-addToBag @if($data['isPutOn']==0){{'disabled'}}@endif">Add
+                                to Bag</a>
                         @else
                             <a href="/login" class="btn btn-block btn-primary btn-lg btn-addToBag">Add to Bag</a>
                         @endif
