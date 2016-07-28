@@ -41,12 +41,11 @@ window.onload = function () {
     }
 
     // 点击选择图片
-    $('.productImg-item img').on('click', function (e) {
+    $('.productImg-item img').on('click', function () {
         if (!$(this).hasClass('active')) {
-            var ImgUrl;
+            var ImgUrl = $(this).attr('src');
             $('.productImg-item img').removeClass('active');
             $(this).addClass('active');
-            ImgUrl = $(this).attr('src');
             $('.product-bigImg').attr('src', ImgUrl);
         }
     });

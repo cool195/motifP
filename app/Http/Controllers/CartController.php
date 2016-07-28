@@ -20,6 +20,13 @@ class CartController extends BaseController
         return view('cart.cart', ['cart' => $cartList['data'], 'save' => $saveList['data']]);
     }
 
+    public function checkout(Request $request)
+    {
+        $accountList = $this->getCartAccountList($request);
+        $logisticsList = $this->getLogisticsList();
+        return view('cart.checkout', ['accountList' => $accountList['data'], 'logisticsList' => $logisticsList['data']]);
+    }
+
     public function getCartAmount()
     {
         $params = array(
@@ -58,6 +65,30 @@ class CartController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('cart', $params);
+        return $result;
+    }
+
+    public function getCartAccountList(Request $request, $logisticstype = 1, $couponcode = "", $paytype = "")
+    {
+        $params = array(
+            'cmd'=>'accountlist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'logisticstype' => $request->input('logisticstype', $logisticstype),
+            'paytype' => $request->input('paytype', $paytype),
+            'couponcode' => $request->input('couponcode', $couponcode )
+        );
+        $result = $this->request('cart', $params);
+        return $result;
+    }
+
+    private function getLogisticsList()
+    {
+        $params = array(
+            'cmd' => 'logis',
+            'token' => Session::get('user.token')
+        );
+        $result = $this->request('general', $params);
         return $result;
     }
 

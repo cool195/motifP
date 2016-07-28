@@ -50,6 +50,8 @@ Route::get('/detail/{spu}', 'ProductController@getProductDetail')->where(['spu' 
 //Cart Start
 Route::get('/cart', 'CartController@cart');
 
+Route::get('/checkout', 'CartController@checkout');
+
 Route::get('/cart/amount', 'CartController@getCartAmount');
 
 

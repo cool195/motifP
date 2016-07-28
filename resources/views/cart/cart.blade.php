@@ -29,7 +29,7 @@
                 @foreach($cart['showSkus'] as $showSku)
                 <div class="row p-y-20x flex flex-alignCenter">
                     <div class="col-md-6 col-xs-12 flex flex-alignCenter">
-                        <a href="/product/{{$showSku['spu']}}"><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></a>
+                        <div><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
                         <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
                         <div class="p-l-20x">
                             @if(isset($showSku['attrValues']))
@@ -124,7 +124,7 @@
             <div class="p-a-20x font-size-md">
                 <div class="text-right"><span>Items({{$cart['total_sku_qtty'] }}):</span><span class="sanBold cart-price">${{number_format($cart['total_amount'] /100, 2)}}</span></div>
                 @if($cart['vas_amount'] > 0)
-                <div class="text-right"><span>>Additional Services:</span><span class="sanBold cart-price">${{ number_format($cart['vas_amount'] / 100, 2) }}</span></div>
+                <div class="text-right"><span>Additional Services:</span><span class="sanBold cart-price">${{ number_format($cart['vas_amount'] / 100, 2) }}</span></div>
                 @endif
                 <div class="text-right"><span>Bag Subtotal:</span><span class="sanBold cart-price">${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
             </div>
@@ -132,7 +132,7 @@
 
         <!-- 提交按钮 -->
         <div class="p-y-40x text-right">
-            <a href="#" class="btn btn-block btn-primary btn-lg btn-toCheckout">Proceed To Checkout</a>
+            <a href="/checkout" class="btn btn-block btn-primary btn-lg btn-toCheckout">Proceed To Checkout</a>
         </div>
     </div>
 </section>
