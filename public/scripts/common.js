@@ -414,7 +414,6 @@ window.onload = function () {
             passwordLength = "Oops, that's not a match.";
         var $warningInfo = $('.warning-info');
         var inputText = $password.val();
-
         if ("" == inputText || undefined == inputText || null == inputText) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(passwordNull);
@@ -424,7 +423,8 @@ window.onload = function () {
             $warningInfo.children('span').html(passwordLength);
             flag = false;
         } else{
-            $warningInfo.removeClass('off');
+            $warningInfo.addClass('off');
+            flag = true
         }
         return flag;
     }
@@ -445,6 +445,12 @@ window.onload = function () {
     });
 
     $('input[name="pw"]').on('keyup blur', function () {
+/*        var inputText = $(this).val();
+        if (inputText === '' || inputText === undefined) {
+            $(this).siblings('.input-clear').addClass('hidden');
+        } else {
+            $(this).siblings('.input-clear').removeClass('hidden');
+        }*/
         if (login_validationPassword($(this))) {
             $('div[data-role="login-submit"]').removeClass('disabled');
         } else {
