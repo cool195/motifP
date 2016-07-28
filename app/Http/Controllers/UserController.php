@@ -27,6 +27,11 @@ class UserController extends BaseController
         return $result;
     }
 
+    public function login()
+    {
+        return view('user.login');
+    }
+
     public function loginCheck(Request $request)
     {
         $params = array(

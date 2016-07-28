@@ -354,6 +354,72 @@ window.onload = function () {
     });
 
     // Login
+
+    function login_check(){
+        $.ajax({
+                url: '/logincheck',
+                type: 'POST',
+                data: $('#login').serialize()
+            })
+            .done(function (data) {
+                if (data.success) {
+                   // window.location.href = data.redirectUrl;
+                } else {
+                    $('.warning-info').removeClass('off');
+                    $('.warning-info').children('span').html(data.error_msg);
+                }
+            })
+            .always(function () {
+            });
+    }
+
+    /**
+     *  验证 Email 格式
+     * @param $email
+     */
+    function login_validationEmail($email) {
+        var flag = false;
+        var emailNull = "Please enter your email",
+            emailStyle = "Please enter a valid email address";
+        var $warningInfo = $('.warning-info');
+        var inputText = $email.val();
+        var reg = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        if ("" == inputText || undefined == inputText || null == inputText) {
+            $warningInfo.removeClass('off');
+            $warningInfo.children('span').html(emailNull);
+            flag = false;
+        } else if(!reg.test(inputText)) {
+            $warningInfo.removeClass('off');
+            $warningInfo.children('span').html(emailStyle);
+            flag = false;
+        } else {
+            $warningInfo.addClass('off');
+            flag = true;
+        }
+        return flag;
+    }
+
+    function login_validationPassword($password) {
+        var flag = false;
+        var passwordNull = "Please enter your password",
+            passwordLength = "Oops, that's not a match.";
+        var $warningInfo = $('.warning-info');
+        var inputText = $password.val();
+
+        if ("" == inputText || undefined == inputText || null == inputText) {
+            $warningInfo.removeClass('off');
+            $warningInfo.children('span').html(passwordNull);
+            flag = false;
+        } else if(inputText.length < 6 || inputText.length > 32) {
+            $warningInfo.removeClass('off');
+            $warningInfo.children('span').html(passwordLength);
+            flag = false;
+        } else{
+            $warningInfo.removeClass('off');
+        }
+        return flag;
+    }
+
     // 验证电子邮件的情况
     $('input[name="email"]').on('keyup blur', function () {
         var InputText = $(this).val();
@@ -361,6 +427,19 @@ window.onload = function () {
             $(this).siblings('.input-clear').addClass('hidden');
         } else {
             $(this).siblings('.input-clear').removeClass('hidden');
+        }
+        if(login_validationEmail($(this))) {
+            $('div[data-role="login-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="login-submit"]').addClass('disabled');
+        }
+    });
+
+    $('input[name="pw"]').on('keyup blur', function () {
+        if (login_validationPassword($(this))) {
+            $('div[data-role="login-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="login-submit"]').addClass('disabled');
         }
     });
 
@@ -386,6 +465,11 @@ window.onload = function () {
     // 点击登录
     $('[data-role="login-submit"]').on('click', function () {
         console.info('登录');
+        if($(this.hasClass('disabled'))){
+            return;
+        }else {
+            login_check();
+        }
     });
 
     // 点击 忘记忘记 发送邮件

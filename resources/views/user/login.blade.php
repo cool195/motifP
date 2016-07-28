@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Login</title>
+    <link rel="apple-touch-icon" href="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="/styles/vendor.css">
+
+    <link rel="stylesheet" href="/styles/common.css">
+
+</head>
+<body>
+
+<!-- 头部 -->
+<header class="">
+    <div class="container">
+        <nav class="navbar-left">
+            <ul class="nav navbar-primary">
+                <li class="nav-item nav-logo"><a href="#">
+                        <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png" alt="logo"></a></li>
+            </ul>
+        </nav>
+        <nav class="navbar-right">
+            <ul class="nav navbar-primary">
+                <li class="nav-item p-x-10x"><a href="#" class="nav-link">Sign up</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<hr class="hr-common m-a-0">
+<!-- 内容 -->
+<section class="bg-white">
+    <div class="helve login-title text-center text-main p-y-20x">Sign in with Motif Account</div>
+    <div class="row">
+        <div class="col-lg-6 p-r-0 login-ad-container">1</div>
+        <div class="col-lg-6 login-container">
+            <!-- 登录 -->
+            <div class="login-content">
+                <form id="login">
+                    <fieldset class="p-t-15x login-text">
+                        <div class="login-text">
+                            <input type="text" class="input-login form-control contrlo-lg text-primary" name="email" placeholder="Email">
+                            <i class="iconfont icon-delete font-size-lg input-clear text-common hidden"></i>
+                        </div>
+                        <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
+                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                            <span class="font-size-base">Please select size !</span>
+                        </div>
+                    </fieldset>
+                    <fieldset class="p-t-15x login-text">
+                        <div class="login-text">
+                            <input type="password" class="input-login form-control contrlo-lg text-primary" name="pw" placeholder="Password">
+                            <i class="iconfont icon-show font-size-lg input-show text-common off"></i>
+                        </div>
+                        <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
+                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                            <span class="font-size-base">Please select size !</span>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="p-t-30x">
+                    <div class="btn btn-primary btn-lg btn-block" data-role="login-submit">Login</div>
+                </div>
+                <div class="p-y-15x text-center">
+                    <a class="text-link btn-forgotPwd" href="#">Forgot password?</a>
+                </div>
+                <div class="text-center login-or">
+                    <hr class="hr-login m-a-0">
+                    <span class="p-x-5x">or</span>
+                </div>
+                <div class="p-t-15x">
+                    <a class="btn btn-block btn-lg btn-facebook" id="facebookLogin">
+                        <i class="iconfont icon-facebook-o icon-size-md"></i> Signin with Facebook
+                    </a>
+                    <a class="btn btn-block btn-lg btn-google m-t-15x" id="googleLogin">
+                        <i class="iconfont icon-google-o icon-size-md"></i> Sign in with Google
+                    </a>
+                </div>
+                <div class="p-y-15x text-center">
+                    <div class="text-main">Don’t have an account? <a class="text-link" href="#">Sign up</a></div>
+                </div>
+            </div>
+
+            <!-- Forget Password -->
+            <div class="restPwd-content hidden">
+                <div class="m-b-20x">Enter the email address associated with your Motif account, then click Reset
+                    Password.
+                    We’ll send you a link to reset your password.
+                </div>
+                <form id="forgetPassword">
+                    <fieldset class="p-t-15x login-text">
+                        <div class="login-text">
+                            <input type="text" class="input-login form-control contrlo-lg text-primary" name="email"
+                                   placeholder="Email">
+                            <i class="iconfont icon-delete font-size-lg input-clear text-common hidden"></i>
+                        </div>
+                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x">
+                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                            <span class="font-size-base">Please select size !</span>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="p-t-30x">
+                    <div class="btn btn-primary btn-lg btn-block" data-role="restPwd-submit">Reset Password</div>
+                </div>
+                <div class="p-y-15x text-center">
+                    <a class="text-link btn-backLogin" href="#">Back to sign in</a>
+                </div>
+                <div class="text-center login-or">
+                    <hr class="hr-login m-a-0">
+                </div>
+                <div class="p-y-20x text-center">
+                    <div class="text-main">Don’t have an account? <a class="text-link" href="#">Sign up</a></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer class="login-footer">
+    <div class="container p-x-40x">
+        <div class="text-center p-t-20x m-b-40x"><a href="#" class="text-link">Contact Us</a></div>
+        <div class="text-center p-t-10x m-b-10x text-primary font-size-xs">Copyright © 2016 MOTIF Inc. All rights
+            reserved.
+        </div>
+    </div>
+</footer>
+
+</body>
+<script src="/scripts/vendor.js"></script>
+
+<script src="/scripts/common.js"></script>
+</html>
