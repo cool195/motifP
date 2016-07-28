@@ -24,14 +24,13 @@
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="p-a-20x box-shadow bg-white">
-                    <img class="img-fluid product-bigImg"
-                         src="{{config('runtime.CDN_URL')}}/n1/{{$data['main_image_url']}}" alt="">
+                    <img class="img-fluid product-bigImg" src="{{config('runtime.CDN_URL')}}/n1/{{$data['main_image_url']}}" alt="">
                     <div class="swiper-container">
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @if(isset($data['productImages']))
-                                @foreach($data['productImages'] as $image)
+                                @foreach($data['productImages'] as $key => $image)
                                     <div class="productImg-item swiper-slide p-r-10x">
-                                        <img class="img-thumbnail active" src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}" width="110" height="110">
+                                        <img class="img-thumbnail @if(0 == $key) active @endif" src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}" width="110" height="110">
                                     </div>
                                 @endforeach
                             @endif

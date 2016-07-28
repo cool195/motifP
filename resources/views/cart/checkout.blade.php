@@ -258,8 +258,7 @@
                         @foreach($logisticsList['list'] as $list)
                             <div class="col-md-6 p-b-10x">
                                 <input type="radio" value="" id="" name="shipping-method">
-                                <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
-                                    +${{ number_format(($list['price'] / 100), 2) }}</label>
+                                <label for="" class="p-l-10x">{{ $list['logistics_name'] }} +${{ number_format(($list['price'] / 100), 2) }}</label>
                             </div>
                         @endforeach
                     </div>
