@@ -183,7 +183,7 @@ window.onload = function () {
     }
 
     //修改购买数量
-    $('.btn-cartCount.btn-xs').on('click', function (e) {
+    $('.patb').on('click', function (e) {
         if ($('#productsku').val()) {
             var skuQty = $('#skuQty').data('num') + $(this).data('num');
             var product_stock_qtty = product_cache_skuQty[$('#productsku').val()] ? product_cache_skuQty[$('#productsku').val()] : product_getSkuQty($('#productsku').val());
