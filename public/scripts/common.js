@@ -179,10 +179,9 @@ window.onload = function () {
     $('.btn-cartCount.btn-xs').on('click', function (e) {
         if ($('#productsku').val()) {
             var skuQty = $('#skuQty').data('num') + $(this).data('num');
-
             var product_stock_qtty = product_cache_skuQty[$('#productsku').val()] ? product_cache_skuQty[$('#productsku').val()] : product_getSkuQty($('#productsku').val());
             if (skuQty > 0 && skuQty <= product_stock_qtty) {
-                $('#delQtySku').hasClass('disabled') ? $('#delQtySku').removeClass('disabled') : '';
+                $('#delQtySku').hasClass('disabled') ? $('#delQtySku').removeClass('disabled') : false;
                 $('#skuQty').data('num', skuQty);
                 $('#skuQty').html(skuQty);
             }
@@ -191,16 +190,14 @@ window.onload = function () {
                     checkStock($('#productsku').val() + '_' + skuQty);
                 }
                 $('#addQtySku').addClass('disabled');
-            } else if (skuQty > product_stock_qtty) {
+            } else if (skuQty > product_stock_qtty && $(this).data('num') > 0) {
                 alert('库存不足');
             }
             if (skuQty <= 1) {
-                !$('#delQtySku').hasClass('disabled') ? $('#delQtySku').addClass('disabled') : '';
+                !$('#delQtySku').hasClass('disabled') ? $('#delQtySku').addClass('disabled') : false;
             }
-
-
         } else {
-            alert('请选择属性')
+            !$('#delQtySku').hasClass('disabled') || $(this).data('num') > 0 ? pSelAttr() : false;
         }
     });
     //检查库存
@@ -217,7 +214,8 @@ window.onload = function () {
                     if (data.data.list[0].stockStatus === 1) {
                         $('#skuQty').data('num', $('#skuQty').data('num') + 1);
                         $('#skuQty').html($('#skuQty').data('num'));
-                        $('#addQtySku').removeClass('disabled')
+                        product_cache_skuQty[data.data.list[0].sku] = product_cache_skuQty[data.data.list[0].sku] + 1;
+                        $('#addQtySku').removeClass('disabled');
                     }
                 } else {
                     alert('库存不足')
@@ -256,16 +254,21 @@ window.onload = function () {
                     }
                 });
         } else {
-            $.each(product_data.spuAttrs, function (index, val) {
-                if ($('#p_a_w' + val.attr_type).data('sel') == 0) {
-                    $('#p_a_w' + val.attr_type).focus();
-                    $('#p_a_w' + val.attr_type).removeClass('off');
-                    $("html,body").animate({scrollTop: $('#p_a_w' + val.attr_type).offset().top}, 200);
-                    return false;
-                }
-            });
+            pSelAttr();
         }
     });
+
+    // 属性验证
+    function pSelAttr() {
+        $.each(product_data.spuAttrs, function (index, val) {
+            if ($('#p_a_w' + val.attr_type).data('sel') == 0) {
+                $('#p_a_w' + val.attr_type).focus();
+                $('#p_a_w' + val.attr_type).removeClass('off');
+                $("html,body").animate({scrollTop: $('#p_a_w' + val.attr_type).offset().top}, 200);
+                return false;
+            }
+        });
+    }
 
     // 选择 商品增值服务
     $('.input-engraving').on('click', function () {

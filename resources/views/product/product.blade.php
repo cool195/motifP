@@ -33,7 +33,7 @@
                                     <div class="productImg-item swiper-slide p-r-10x">
                                         <img class="img-thumbnail active"
                                              src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}" width="110"
-                                             height="110" alt="商品图片">
+                                             height="110">
                                     </div>
                                 @endforeach
                             @endif
@@ -48,7 +48,6 @@
             <div class="col-lg-6">
                 <div class="p-a-20x box-shadow bg-white">
                     <h4 class="product-title helveBold">{{ $data['main_title'] }}</h4>
-                    <p class="m-b-15x text-primary">{!! str_replace("\n", "<br>",$data['intro_short']) !!}</p>
                     <div class="product-price">
                         @if(isset($data['skuPrice']['skuPromotion']))
                             <span class="sanBold p-r-10x text-primary">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
@@ -57,8 +56,14 @@
                             <span class="sanBold p-r-10x text-primary">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                         @endif
                     </div>
+                    <div class="p-y-5x">
+                        @if(isset($data['skuPrice']['skuPromotion']))
+                            <span class="font-size-md">{{ $data['skuPrice']['skuPromotion']['display'] }}
+                                &nbsp;&nbsp;</span>
+                        @endif
+                        <span>{{$data['prompt_words']}}</span>
+                    </div>
                     <hr class="hr-common">
-
                     @if(isset($data['spuAttrs']))
                         <input hidden id="jsonStr" value="{{$jsonResult}}">
                         <input hidden id="productsku">
@@ -66,9 +71,11 @@
                             <fieldset class="text-left m-b-20x">
                                 <div class="text-primary font-size-md flex">
                                     <span class="p-r-20x">{{$spuAttr['attr_type_value']}}:</span>
-                                  <span class="warning-info flex flex-alignCenter text-warning off" id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
+                                  <span class="warning-info flex flex-alignCenter text-warning off"
+                                        id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
                                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                    <span class="font-size-base">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
+                                    <span class="font-size-base">{{'Please select '.$spuAttr['attr_type_value']}}
+                                        !</span>
                                   </span>
                                 </div>
                                 <div class="m-l-15x">
