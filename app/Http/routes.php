@@ -90,7 +90,9 @@ Route::match(['get', 'post'], '/logincheck', 'UserController@loginCheck');
 
 Route::match(['get', 'post'], '/signup', 'UserController@signup');
 
-Route::match(['get', 'post'], '/signout', 'Usercontroller@signout');
+Route::match(['get', 'post'], '/signout', 'UserController@signout');
+
+Route::post('/forget', 'UserController@forgetPassword');
 
 Route::get('/user/detail', 'UserController@getUserDetailInfo');
 

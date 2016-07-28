@@ -372,15 +372,39 @@ window.onload = function () {
             })
             .done(function (data) {
                 if (data.success) {
-                   // window.location.href = data.redirectUrl;
+                    window.location.href = data.redirectUrl;
                 } else {
                     $('.warning-info').removeClass('off');
-                    $('.warning-info').children('span').html(data.error_msg);
+                    $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
             .always(function () {
             });
     }
+
+    function login_forgetPassword(){
+
+    }
+
+    function login_forgetPassword(){
+        $.ajax({
+            url: '/forget',
+            type: 'POST',
+            data: $('#forgetPassword').serialize()
+        })
+            .done(function (data) {
+                if(data.success){
+                    $('.restPwd-content').addClass('hidden').removeClass('active');
+                    $('.login-content').removeClass('hidden').addClass('active');
+                    $('.login-title').text('Sign in with Motif Account');
+                }else {
+                    $('.warning-info').removeClass('off');
+                    $('.warining-info').children('span').html(data.prompt_msg);
+                }
+             })
+
+    }
+
 
     /**
      *  验证 Email 格式
@@ -439,8 +463,10 @@ window.onload = function () {
         }
         if(login_validationEmail($(this))) {
             $('div[data-role="login-submit"]').removeClass('disabled');
+            $('div[data-role="restPwd-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="login-submit"]').addClass('disabled');
+            $('div[data-role="restPwd-submit"]').addClass('disabled');
         }
     });
 
@@ -480,7 +506,7 @@ window.onload = function () {
     // 点击登录
     $('[data-role="login-submit"]').on('click', function () {
         console.info('登录');
-        if($(this.hasClass('disabled'))){
+        if($(this).hasClass('disabled')){
             return;
         }else {
             login_check();
@@ -490,7 +516,15 @@ window.onload = function () {
     // 点击 忘记忘记 发送邮件
     $('[data-role="restPwd-submit"]').on('click', function () {
         console.info('Rest Password');
+        if($(this).hasClass('disabled')){
+            return;
+        }else {
+            login_forgetPassword();
+        }
+
     });
+
+
 
     // 忘记密码入口
     $('.btn-forgotPwd').on('click', function () {
