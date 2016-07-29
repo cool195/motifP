@@ -7,7 +7,7 @@
       <form id="reset">
         <fieldset class="p-t-15x login-text">
           <div class="login-text">
-            <input type="password" class="input-login form-control contrlo-lg text-primary" name="pw" placeholder="New Password">
+            <input type="password" class="input-login form-control contrlo-lg text-primary reset-pw" name="pw" placeholder="New Password">
             <i class="iconfont icon-show font-size-lg input-show text-common off"></i>
           </div>
           <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
@@ -17,7 +17,7 @@
         </fieldset>
         <fieldset class="p-t-15x login-text">
           <div class="login-text">
-            <input type="password" class="input-login form-control contrlo-lg text-primary" name="lastpw" placeholder="Confirm New Password">
+            <input type="password" class="input-login form-control contrlo-lg text-primary reset-lastpw" name="lastpw" placeholder="Confirm New Password">
             <i class="iconfont icon-show font-size-lg input-show text-common off"></i>
           </div>
           <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">

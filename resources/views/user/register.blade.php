@@ -7,7 +7,7 @@
             <form id="register">
                 <fieldset class="p-t-15x login-text">
                     <div class="login-text">
-                        <input type="text" class="input-login form-control contrlo-lg text-primary" name="nick" placeholder="Your Name">
+                        <input type="text" class="input-login form-control contrlo-lg text-primary register-nick" name="nick" placeholder="Your Name">
                         <i class="iconfont icon-delete font-size-lg input-clear text-common hidden"></i>
                     </div>
                     <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
@@ -17,7 +17,7 @@
                 </fieldset>
                 <fieldset class="p-t-15x login-text">
                     <div class="login-text">
-                        <input type="text" class="input-login form-control contrlo-lg text-primary" name="email" placeholder="Email">
+                        <input type="text" class="input-login form-control contrlo-lg text-primary register-email" name="email" placeholder="Email">
                         <i class="iconfont icon-delete font-size-lg input-clear text-common hidden"></i>
                     </div>
                     <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
@@ -27,7 +27,7 @@
                 </fieldset>
                 <fieldset class="p-t-15x login-text">
                     <div class="login-text">
-                        <input type="password" class="input-login form-control contrlo-lg text-primary" name="pw" placeholder="Password">
+                        <input type="password" class="input-login form-control contrlo-lg text-primary register-pw" name="pw" placeholder="Password">
                         <i class="iconfont icon-show font-size-lg input-show text-common off"></i>
                     </div>
                     <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
