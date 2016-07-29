@@ -440,7 +440,7 @@ window.onload = function () {
         })
             .done(function (data) {
                 if (data.success) {
-                    window.location.href = data.redirectUrl;
+                    //window.location.href = data.redirectUrl;
                 } else {
                     $('.warning-info').removeClass('off');
                     $('.warning-info').children('span').html(data.prompt_msg);
@@ -485,6 +485,7 @@ window.onload = function () {
         var $warningInfo = $('.warning-info');
         var inputText = $email.val();
         var reg = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        console.log(inputText);
         if ("" == inputText || undefined == inputText || null == inputText) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(emailNull);
@@ -506,6 +507,7 @@ window.onload = function () {
             passwordLength = "Oops, that's not a match.";
         var $warningInfo = $('.warning-info');
         var inputText = $password.val();
+        console.log(inputText);
         if ("" == inputText || undefined == inputText || null == inputText) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(passwordNull);
@@ -532,9 +534,11 @@ window.onload = function () {
         if (login_validationEmail($(this))) {
             $('div[data-role="login-submit"]').removeClass('disabled');
             $('div[data-role="restPwd-submit"]').removeClass('disabled');
+            $('div[data-role="register-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="login-submit"]').addClass('disabled');
             $('div[data-role="restPwd-submit"]').addClass('disabled');
+            $('div[data-role="register-submit"]').addClass('disabled');
         }
     });
 
@@ -606,6 +610,63 @@ window.onload = function () {
         $('.login-content').removeClass('hidden').addClass('active');
         $('.login-title').text('Sign in with Motif Account');
     });
+
+    //register start
+
+    function register_validationNick($nickname) {
+        var flag = false;
+        var nicknameNull = "Please enter your nickname";
+        var $warningInfo = $('.warning-info');
+        var inputText = $nickname.val();
+        console.log(inputText);
+        if ("" == inputText || undefined == inputText || null == inputText) {
+            $warningInfo.removeClass('off');
+            $warningInfo.children('span').html(nicknameNull);
+            flag = false;
+        }  else{
+            $warningInfo.addClass('off');
+            flag = true
+        }
+        return flag;
+    }
+
+    function register_signup() {
+        $.ajax({
+            url: '/signup',
+            type: 'POST',
+            data: $('#register').serialize()
+        })
+        .done(function(data) {
+            if(data.success){
+
+            }else{
+                $('.warning-info').removeClass('off');
+                $('.warning-info').children('span').html(data.prompt_msg);
+            }
+        })
+        .always(function() {
+
+        });
+    }
+
+    $('input[name="nick"]').on('keyup blur', function() {
+        if (register_validationNick($(this))) {
+            $('div[data-role="register-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="register-submit"]').addClass('disabled');
+        }
+    });
+    
+    $('[data-role="register-submit"]').on('click', function () {
+        console.info('Register');
+        if($(this).hasClass('disabled')){
+            return;
+        }else {
+            register_signup();
+        }
+
+    });
+    //register end
 })(jQuery, Swiper);
 //# sourceMappingURL=common.js.map
 
