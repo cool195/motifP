@@ -108,7 +108,7 @@ Route::get('/wishlist/{spu}', 'UserController@updateWishList')->where(['spu' => 
 //User End
 
 //Address Start
-
+Route::resource('/address','AddressController');
 //Address End
 
 

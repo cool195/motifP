@@ -378,7 +378,7 @@ window.onload = function () {
                 if (data.success) {
                     if (action == 'movetocart' || action == 'save') {
                         location.reload();
-                    }else{
+                    } else {
                         thisParent.remove();
                         cart_update_info();
                     }
@@ -391,7 +391,20 @@ window.onload = function () {
         CartModal.open();
     });
 
-    // Checkout
+    // Checkout Start
+    $('#addAddress').on('click', function () {
+        $.ajax({
+            url: '/address',
+            type: 'POST',
+            data: $('#addAddressForm').serialize()
+        })
+            .done(function (data) {
+                if (data.success) {
+                    alert('ok')
+                }
+            })
+    });
+
     // 控制 div 显示隐藏
     $('.btn-showHide').on('click', function () {
         if ($(this).children('.showHide-simpleInfo').length > 0) {
@@ -429,6 +442,8 @@ window.onload = function () {
         $('.address-item').removeClass('active');
         $(this).addClass('active');
     });
+    // Checkout End
+
 
     // Login
 
@@ -619,7 +634,7 @@ window.onload = function () {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(nicknameNull);
             flag = false;
-        }  else{
+        } else {
             $warningInfo.addClass('off');
             flag = true
         }
@@ -632,32 +647,32 @@ window.onload = function () {
             type: 'POST',
             data: $('#register').serialize()
         })
-        .done(function(data) {
-            if(data.success){
+            .done(function (data) {
+                if (data.success) {
 
-            }else{
-                $('.warning-info').removeClass('off');
-                $('.warning-info').children('span').html(data.prompt_msg);
-            }
-        })
-        .always(function() {
+                } else {
+                    $('.warning-info').removeClass('off');
+                    $('.warning-info').children('span').html(data.prompt_msg);
+                }
+            })
+            .always(function () {
 
-        });
+            });
     }
 
-    $('input[name="nick"]').on('keyup blur', function() {
+    $('input[name="nick"]').on('keyup blur', function () {
         if (register_validationNick($(this))) {
             $('div[data-role="register-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="register-submit"]').addClass('disabled');
         }
     });
-    
+
     $('[data-role="register-submit"]').on('click', function () {
         console.info('Register');
-        if($(this).hasClass('disabled')){
+        if ($(this).hasClass('disabled')) {
             return;
-        }else {
+        } else {
             register_signup();
         }
     });

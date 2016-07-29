@@ -81,158 +81,155 @@
             </div>
         </div>
 
-        <!-- Shipping Address -->
+        {{--Shipping Address--}}
+        {{--Address 注入服务--}}
+        @inject('Address', 'App\Http\Controllers\AddressController')
+        {{--*/ $address = $Address->index() /*--}}
         <div class="box-shadow bg-white m-t-20x">
             <div class="font-size-md p-x-20x p-y-15x btn-showHide active">
                 <span class="sanBold">1 / 2 Shipping Address</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span>10086</span>
+                    <span>
+                        @foreach($address['data']['list'] as $value)
+                            @if($value['isDefault'])
+                                {{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}
+                            @endif
+                            @break($value['isDefault'])
+                                {{$value['country']}}
+                        @endforeach
+                    </span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
             <hr class="hr-common m-a-0">
             <div class="showHide-body address-content active">
-                <!-- 添加地址 -->
-                <div class="p-a-20x add-address">
-                    <div class="inline">
-                        <span class="font-size-md">Add Shipping Address</span>
+                @if($address['data']['amount'] > 0)
+                    {{--选择地址--}}
+                    <div class="p-a-20x select-address">
+                        <div class="flex flex-alignCenter flex-fullJustified">
+                            <span class="font-size-md">Selecy Shipping Address</span>
+                                <span class="font-size-md pull-right">
+                                    <a class="btn btn-secondary btn-md" href="#"><i
+                                                class="iconfont icon-add font-size-md p-r-5x"></i>Add NewAddress</a>
+                                </span>
+                        </div>
+                        <div class="row p-x-10x p-t-20x">
+                            @foreach($address['data']['list'] as $value)
+                                <div class="col-md-6">
+                                    <div class="p-a-10x">
+                                        <div class="address-item p-x-20x p-y-15x @if($value['isDefault']){{'active'}}@endif"
+                                             data-aid="{{$value['receiving_id']}}">
+                                            <div class="address-info">
+                                                {{$value['name']}}<br>
+                                                {{$value['zip']}}<br>
+                                                {{$value['city']}}<br>
+                                                {{$value['country']}}
+                                            </div>
+                                            <div class="bg-address"></div>
+                                            @if($value['isDefault'])
+                                                <div class="primary-address font-size-md">Primary</div>
+                                            @endif
+                                            <div class="btn-edit font-size-md">Edit</div>
+                                            <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="text-right p-t-10x"><a href="#" class="btn btn-primary btn-md">Continue</a></div>
+                    </div>
+                @else
+                    {{--添加地址--}}
+                    <div class="p-a-20x add-address">
+                        <div class="inline">
+                            <span class="font-size-md">Add Shipping Address</span>
                         <span class="font-size-md pull-right"><i
                                     class="iconfont icon-checkcircle text-primary font-size-lg"></i><a class="p-l-10x"
                                                                                                        href="#">Make
                                 Primary</a></span>
-                    </div>
-                    <div class="row p-t-30x">
-                        <div class="col-md-5">
-                            <div class="p-l-20x m-b-20x">
-                                <input type="text" class="form-control contrlo-lg text-primary disabled"
-                                       placeholder="Full name">
-                                <div class="warning-info flex flex-alignCenter text-warning p-t-5x">
-                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                    <span class="font-size-base">Please select size !</span>
-                                </div>
-                            </div>
-                            <div class="p-l-20x m-b-20x">
-                                <input type="text" class="form-control contrlo-lg text-primary disabled"
-                                       placeholder="Street 1">
-                            </div>
-                            <div class="p-l-20x m-b-20x">
-                                <input type="text" class="form-control contrlo-lg text-primary disabled"
-                                       placeholder="City">
-                            </div>
-                            <div class="p-l-20x m-b-20x">
-                                <input type="text" class="form-control contrlo-lg text-primary disabled"
-                                       placeholder="State (optional)">
-                            </div>
-                            <div class="p-l-20x m-b-20x">
-                                <input type="text" class="form-control contrlo-lg text-primary disabled"
-                                       placeholder="Phone (optional)">
-                            </div>
                         </div>
-                        <div class="col-md-1"></div>
-                        <div class="col-md-5">
-                            <div class="p-l-20x m-b-20x">
-                                <input type="text" class="form-control contrlo-lg text-primary disabled"
-                                       placeholder="Street 2">
-                            </div>
-                            <div class="p-l-20x m-b-20x">
-                                <select name="" id="" class="form-control contrlo-lg select-country disabled">
-                                    <option value="1">Country</option>
-                                    <option value="2">beijing</option>
-                                    <option value="3">shanghai</option>
-                                </select>
-                            </div>
-                            <div class="p-l-20x m-b-20x">
-                                <input type="text" class="form-control contrlo-lg text-primary disabled"
-                                       placeholder="Zip Code">
-                            </div>
-                            <div class="p-l-20x m-b-20x">
-                                <input type="text" class="form-control contrlo-lg text-primary disabled"
-                                       placeholder="IDnumber">
-                            </div>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <div class="text-right"><a href="#" class="btn btn-primary btn-md">Save</a></div>
-                </div>
-
-                <!-- 选择地址 -->
-                <div class="p-a-20x select-address disabled">
-                    <div class="flex flex-alignCenter flex-fullJustified">
-                        <span class="font-size-md">Selecy Shipping Address</span>
-                        <span class="font-size-md pull-right">
-                            <a class="btn btn-secondary btn-md" href="#"><i
-                                        class="iconfont icon-add font-size-md p-r-5x"></i>Add NewAddress</a>
-                        </span>
-                    </div>
-                    <div class="row p-x-10x p-t-20x">
-                        <div class="col-md-6">
-                            <div class="p-a-10x">
-                                <div class="address-item p-x-20x p-y-15x active">
-                                    <div class="address-info">
-                                        UserName<br>
-                                        New York<br>
-                                        12030<br>
-                                        United States
+                        <div class="row p-t-30x">
+                            <form id="addAddressForm">
+                                <div class="col-md-5">
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="addremail" class="form-control contrlo-lg text-primary"
+                                               placeholder="Email" value="{{Session::get('user.login_email')}}">
+                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">Please enter your email !</span>
+                                        </div>
                                     </div>
-                                    <div class="bg-address"></div>
-                                    <div class="primary-address font-size-md">Primary</div>
-                                    <div class="btn-edit font-size-md">Edit</div>
-                                    <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-a-10x">
-                                <div class="address-item p-x-20x p-y-15x">
-                                    <div class="address-info">
-                                        UserName<br>
-                                        New York<br>
-                                        12030<br>
-                                        United States
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="name" class="form-control contrlo-lg text-primary"
+                                               placeholder="Full name">
+                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">Please enter your name !</span>
+                                        </div>
                                     </div>
-                                    <div class="bg-address"></div>
-                                    <div class="btn-edit font-size-md">Edit</div>
-                                    <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-a-10x">
-                                <div class="address-item p-x-20x p-y-15x">
-                                    <div class="address-info">
-                                        UserName<br>
-                                        New York<br>
-                                        12030<br>
-                                        United States
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="city" class="form-control contrlo-lg text-primary"
+                                               placeholder="City">
+                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">Please enter your city !</span>
+                                        </div>
                                     </div>
-                                    <div class="bg-address"></div>
-                                    <div class="btn-edit font-size-md">Edit</div>
-                                    <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-a-10x">
-                                <div class="address-item p-x-20x p-y-15x">
-                                    <div class="address-info">
-                                        UserName<br>
-                                        New York<br>
-                                        12030<br>
-                                        United States
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="state" class="form-control contrlo-lg text-primary"
+                                               placeholder="State (optional)">
                                     </div>
-                                    <div class="bg-address"></div>
-                                    <div class="btn-edit font-size-md">Edit</div>
-                                    <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="tel" class="form-control contrlo-lg text-primary"
+                                               placeholder="Phone">
+                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">Please enter your Phone !</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5">
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="addr1" class="form-control contrlo-lg text-primary"
+                                               placeholder="Street 1">
+                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">Please enter your street !</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="addr2" class="form-control contrlo-lg text-primary"
+                                               placeholder="Street 2 (optional)">
+                                    </div>
+                                    <div class="p-l-20x m-b-20x">
+                                        <select name="country" id="" class="form-control contrlo-lg select-country">
+                                            @foreach($Address->getCountry() as $value)
+                                                <option value="{{$value['country_id']}}">{{$value['country_name_en']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="zip" class="form-control contrlo-lg text-primary"
+                                               placeholder="Zip Code">
+                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">Please enter your zip code !</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </form>
                         </div>
+                        <div class="text-right"><a href="javascript:;" id="addAddress"
+                                                   class="btn btn-primary btn-md">Save</a></div>
                     </div>
-                    <div class="text-right p-t-10x"><a href="#" class="btn btn-primary btn-md">Continue</a></div>
-                </div>
+                @endif
             </div>
         </div>
 
-        <!-- Shipping Method -->
+        {{--Shipping Method--}}
         <div class="box-shadow bg-white m-t-20x">
             <div class="font-size-md p-x-20x p-y-15x btn-showHide active">
                 <span class="sanBold">2 / 2 Shipping Method</span>
