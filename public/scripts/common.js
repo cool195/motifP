@@ -522,11 +522,7 @@ window.onload = function () {
     // 点击登录
     $('[data-role="login-submit"]').on('click', function () {
         console.info('登录');
-<<<<<<< HEAD
-        if ($(this.hasClass('disabled'))) {
-=======
         if($(this).hasClass('disabled')){
->>>>>>> 3193401f7efd3618512b361796e52d5ae8f0f8ae
             return;
         } else {
             login_check();
