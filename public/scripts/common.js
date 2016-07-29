@@ -318,6 +318,22 @@ window.onload = function () {
     } catch (e) {
     }
 
+    //购物车修改购买数量
+    $('.cupn').on('click', function (e) {
+        var nowsku = $(this).data('sku');
+        if (nowsku && !$(this).hasClass('disabled')) {
+            var skuQty = $('#csku' + nowsku).html() * 1 + $(this).data('num');
+            if (skuQty < 1) {
+                $('#cdsku' + nowsku).addClass('disabled');
+            } else {
+                $('#csku' + nowsku).html(skuQty)
+                if (skuQty > 1 && $('#cdsku' + nowsku).hasClass('disabled')) {
+                    $('#cdsku' + nowsku).removeClass('disabled');
+                }
+            }
+        }
+    });
+
     // 触发删除 购物车商品
     $('[data-type="cart-remove"]').on('click', function () {
         CartModal.open();
@@ -364,15 +380,15 @@ window.onload = function () {
 
     // Login
 
-    function login_check(){
+    function login_check() {
         $.ajax({
-                url: '/logincheck',
-                type: 'POST',
-                data: $('#login').serialize()
-            })
+            url: '/logincheck',
+            type: 'POST',
+            data: $('#login').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
-                   // window.location.href = data.redirectUrl;
+                    // window.location.href = data.redirectUrl;
                 } else {
                     $('.warning-info').removeClass('off');
                     $('.warning-info').children('span').html(data.error_msg);
@@ -397,7 +413,7 @@ window.onload = function () {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(emailNull);
             flag = false;
-        } else if(!reg.test(inputText)) {
+        } else if (!reg.test(inputText)) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(emailStyle);
             flag = false;
@@ -418,11 +434,11 @@ window.onload = function () {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(passwordNull);
             flag = false;
-        } else if(inputText.length < 6 || inputText.length > 32) {
+        } else if (inputText.length < 6 || inputText.length > 32) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(passwordLength);
             flag = false;
-        } else{
+        } else {
             $warningInfo.addClass('off');
             flag = true
         }
@@ -437,7 +453,7 @@ window.onload = function () {
         } else {
             $(this).siblings('.input-clear').removeClass('hidden');
         }
-        if(login_validationEmail($(this))) {
+        if (login_validationEmail($(this))) {
             $('div[data-role="login-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="login-submit"]').addClass('disabled');
@@ -445,12 +461,12 @@ window.onload = function () {
     });
 
     $('input[name="pw"]').on('keyup blur', function () {
-/*        var inputText = $(this).val();
-        if (inputText === '' || inputText === undefined) {
-            $(this).siblings('.input-clear').addClass('hidden');
-        } else {
-            $(this).siblings('.input-clear').removeClass('hidden');
-        }*/
+        /*        var inputText = $(this).val();
+         if (inputText === '' || inputText === undefined) {
+         $(this).siblings('.input-clear').addClass('hidden');
+         } else {
+         $(this).siblings('.input-clear').removeClass('hidden');
+         }*/
         if (login_validationPassword($(this))) {
             $('div[data-role="login-submit"]').removeClass('disabled');
         } else {
@@ -480,9 +496,9 @@ window.onload = function () {
     // 点击登录
     $('[data-role="login-submit"]').on('click', function () {
         console.info('登录');
-        if($(this.hasClass('disabled'))){
+        if ($(this.hasClass('disabled'))) {
             return;
-        }else {
+        } else {
             login_check();
         }
     });

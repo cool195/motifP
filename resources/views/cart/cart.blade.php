@@ -38,14 +38,14 @@
                         </div>
                         <div class="col-md-2 col-xs-4">
                             <div class="btn-group flex">
-                                <div class="btn btn-cartCount btn-xs @if($showSku['sale_qtty']==1 || !$showSku['select']){{'disabled'}}@endif"
-                                     data-item="minus">
+                                <div id="{{'cdsku'.$showSku['sku']}}" class="btn btn-cartCount btn-xs @if($showSku['sale_qtty']==1 || !$showSku['select']){{'disabled'}}@endif cupn"
+                                     data-num="-1" data-sku="{{$showSku['sku']}}">
                                     <i class="iconfont icon-minus font-size-lg"></i>
                                 </div>
-                                <div class="btn btn-cartCount btn-xs font-size-base p-x-20x"
-                                     data-num="num">{{$showSku['sale_qtty']}}</div>
-                                <div class="btn btn-cartCount btn-xs @if(!$showSku['select']){{'disabled'}}@endif"
-                                     data-item="add">
+                                <div id="{{'csku'.$showSku['sku']}}"
+                                     class="btn btn-cartCount btn-xs font-size-base p-x-20x">{{$showSku['sale_qtty']}}</div>
+                                <div id="{{'casku'.$showSku['sku']}}" class="btn btn-cartCount btn-xs @if(!$showSku['select']){{'disabled'}}@endif cupn"
+                                     data-num="1" data-sku="{{$showSku['sku']}}">
                                     <i class="iconfont icon-add font-size-lg"></i>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                             <div class="col-md-2 col-xs-4">
                                 <div class="p-l-20x">
                                     <a class="btn-block" href="#">Move to Bag</a>
-                                    <a class="btn-block" href="#" data-type="remove">Remove</a>
+                                    <a class="btn-block" href="#" data-type="cart-remove">Remove</a>
                                 </div>
                             </div>
                         </div>
