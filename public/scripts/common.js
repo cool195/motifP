@@ -380,9 +380,9 @@ window.onload = function () {
 
     // Login
 
-    function login_check() {
+    function login_signin() {
         $.ajax({
-            url: '/logincheck',
+            url: '/signin',
             type: 'POST',
             data: $('#login').serialize()
         })
@@ -396,10 +396,6 @@ window.onload = function () {
             })
             .always(function () {
             });
-    }
-
-    function login_forgetPassword(){
-
     }
 
     function login_forgetPassword(){
@@ -529,7 +525,7 @@ window.onload = function () {
         if($(this).hasClass('disabled')){
             return;
         } else {
-            login_check();
+            login_signin();
         }
     });
 
@@ -613,7 +609,6 @@ window.onload = function () {
         }else {
             register_signup();
         }
-
     });
     //register end
 })(jQuery, Swiper);

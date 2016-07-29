@@ -84,15 +84,15 @@ Route::post('/cart/verifycoupon', 'CartController@verifyCoupon');
 //User Start
 Route::match(['get', 'post'], '/rsynclogin', 'UserController@rsyncLogin');
 
-Route::match(['get', 'post'], '/login', 'UserController@login');
+Route::get('/login', 'UserController@login');
 
-Route::match(['get', 'post'], '/logincheck', 'UserController@loginCheck');
+Route::post('/signin', 'UserController@signin');
 
 Route::get('/register', 'UserController@register');
 
-Route::match(['get', 'post'], '/signup', 'UserController@signup');
+Route::post('/signup', 'UserController@signup');
 
-Route::match(['get', 'post'], '/signout', 'UserController@signout');
+Route::get('/signout', 'UserController@signout');
 
 Route::post('/forget', 'UserController@forgetPassword');
 

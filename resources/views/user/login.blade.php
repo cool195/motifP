@@ -98,7 +98,7 @@
                                    placeholder="Email">
                             <i class="iconfont icon-delete font-size-lg input-clear text-common hidden"></i>
                         </div>
-                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x">
+                        <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                             <span class="font-size-base">Please select size !</span>
                         </div>
@@ -114,7 +114,7 @@
                     <hr class="hr-login m-a-0">
                 </div>
                 <div class="p-y-20x text-center">
-                    <div class="text-main">Don’t have an account? <a class="text-link" href="#">Sign up</a></div>
+                    <div class="text-main">Don’t have an account? <a class="text-link" href="/register">Sign up</a></div>
                 </div>
             </div>
 
