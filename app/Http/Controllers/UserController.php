@@ -59,7 +59,28 @@ class UserController extends BaseController
     public function signout()
     {
         Session::forget('user');
-        //todo return redirect('/login');
+        return redirect('/login');
+    }
+
+    public function reset(Request $request)
+    {
+        if($request->input('pw')) {
+            if($request->input('pw') != $request->input('lastpw')) {
+                return array('success' => false, 'error_msg' => 'Passwords do not match');
+            }
+            $params = array(
+                'cmd' => 'modifyfgtpwd',
+                'pw' => md5($request->input('pw')),
+                'tp' => $request->input('tp'),
+                'sig' => $request->input('sig'),
+                'token' => self::Token
+            );
+            $result = $this->request('user', $params);
+            $result['redirectUrl'] ="/login";
+            return $result;
+        } else {
+            return view('user.resetpassword', ['tp' => $request->input('tp'), 'sig' => $request->input('sig')]);
+        }
     }
 
     public function forgetPassword(Request $request)

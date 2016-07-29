@@ -563,6 +563,7 @@ window.onload = function () {
         if (login_validationPassword($(this))) {
             $('div[data-role="login-submit"]').removeClass('disabled');
         } else {
+            $('div[data-role="reset-submit"]').addClass('disabled')
             $('div[data-role="login-submit"]').addClass('disabled');
         }
     });
@@ -677,6 +678,62 @@ window.onload = function () {
         }
     });
     //register end
+
+
+    //reset start
+
+    function reset_password() {
+        $.ajax({
+            type: 'POST',
+            url: '/reset',
+            data: $('#reset').serialize()
+        })
+        .done(function(data) {
+            if(data.success) {
+                window.location.href = data.redirectUrl;
+            } else {
+                $('.warning-info').removeClass('off');
+                $('.warning-info').children('span').html('Oops something went wrong, please go to the sign-in page and reset your password.');
+            }
+        })
+    }
+
+    function reset_validateConfirmPwd(newPwd, confirmPwd) {
+        var flag = true;
+        var passwordConfirm = 'New password does not match';
+        var $warningInfo = $('.warning-info');
+        if(newPwd !== confirmPwd) {
+            $warningInfo.removeClass('off');
+            $warningInfo.children('span').html(passwordConfirm);
+            flag = false;
+        }else{
+            $warningInfo.addClass('off');
+        }
+        return flag;
+    }
+
+    $('input[name="lastpw"]').on('keyup blur', function() {
+        var newPwd = $('input[name="pw"]').val(),
+            confirmPwd = $(this).val();
+        if (reset_validateConfirmPwd(newPwd, confirmPwd)) {
+            $('div[data-role="reset-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="reset-submit"]').addClass('disabled');
+        }
+    })
+
+    $('[data-role="reset-submit"]').on('click', function() {
+        if($(this).hasClass('disabled')){
+            console.log($(this));
+            return;
+        }else{
+            reset_password();
+        }
+    });
+
+
+
+    //reset end
 })(jQuery, Swiper);
 //# sourceMappingURL=common.js.map
 
