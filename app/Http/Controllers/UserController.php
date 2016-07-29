@@ -10,6 +10,11 @@ class UserController extends BaseController
 {
     const Token = 'eeec7a32dcb6115abfe4a871c6b08b47';
 
+    public function register()
+    {
+        return view('user.register');
+    }
+
     public function signup(Request $request)
     {
         $email = $request->input('email');

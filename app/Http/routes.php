@@ -88,6 +88,8 @@ Route::match(['get', 'post'], '/login', 'UserController@login');
 
 Route::match(['get', 'post'], '/logincheck', 'UserController@loginCheck');
 
+Route::get('/register', 'UserController@register');
+
 Route::match(['get', 'post'], '/signup', 'UserController@signup');
 
 Route::match(['get', 'post'], '/signout', 'UserController@signout');
