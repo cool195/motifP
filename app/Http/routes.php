@@ -96,6 +96,8 @@ Route::get('/signout', 'UserController@signout');
 
 Route::post('/forget', 'UserController@forgetPassword');
 
+Route::match(['get', 'post'], '/reset', 'UserController@reset');
+
 Route::get('/user/detail', 'UserController@getUserDetailInfo');
 
 Route::post('/user/modifyUserPwd', 'UserController@modifyUserPwd');

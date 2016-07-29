@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Reset Password</title>
-  <link rel="apple-touch-icon" href="/images/icon/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png">
 
-  <link rel="stylesheet" href="styles/vendor.css">
+  <link rel="stylesheet" href="/styles/vendor.css">
 
-  <link rel="stylesheet" href="styles/common.css">
-
-  <script src="scripts/vendor/modernizr.js"></script>
+  <link rel="stylesheet" href="/styles/common.css">
 </head>
 <body>
 
@@ -21,7 +20,7 @@
     <nav class="navbar-left">
       <ul class="nav navbar-primary">
         <li class="nav-item nav-logo"><a href="#">
-          <img class="img-fluid" src="/images/logo/logo.png" alt="logo"></a></li>
+          <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png" alt="logo"></a></li>
       </ul>
     </nav>
     <nav class="navbar-right">
@@ -37,10 +36,10 @@
   <div class="helve login-title text-center text-main p-y-20x">Reset Password</div>
   <div class="register-container">
     <div class="register-content">
-      <form id="register">
+      <form id="reset">
         <fieldset class="p-t-15x login-text">
           <div class="login-text">
-            <input type="password" class="input-login form-control contrlo-lg text-primary" placeholder="New Password">
+            <input type="password" class="input-login form-control contrlo-lg text-primary" name="pw" placeholder="New Password">
             <i class="iconfont icon-show font-size-lg input-show text-common off"></i>
           </div>
           <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
@@ -50,7 +49,7 @@
         </fieldset>
         <fieldset class="p-t-15x login-text">
           <div class="login-text">
-            <input type="password" class="input-login form-control contrlo-lg text-primary" placeholder="Confirm  New Password">
+            <input type="password" class="input-login form-control contrlo-lg text-primary" name="lastpw" placeholder="Confirm New Password">
             <i class="iconfont icon-show font-size-lg input-show text-common off"></i>
           </div>
           <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
@@ -58,9 +57,11 @@
             <span class="font-size-base">Please select size !</span>
           </div>
         </fieldset>
+        <input hidden name="tp" value="{{$tp}}">
+        <input hidden name="sig" value="{{$sig}}">
       </form>
       <div class="p-t-30x">
-        <div class="btn btn-primary btn-lg btn-block" data-role="register-submit">Submit</div>
+        <div class="btn btn-primary btn-lg btn-block" data-role="reset-submit">Submit</div>
       </div>
     </div>
   </div>
@@ -74,7 +75,7 @@
 </footer>
 
 </body>
-<script src="scripts/vendor.js"></script>
+<script src="/scripts/vendor.js"></script>
 
-<script src="scripts/common.js"></script>
+<script src="/scripts/common.js"></script>
 </html>
