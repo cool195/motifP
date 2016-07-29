@@ -12,66 +12,71 @@
             <hr class="hr-base m-a-0">
             <div class="p-a-20x">
                 @foreach($accountList['showSkus'] as $showSku)
-                <div class="checkout-Item">
-                    <div class="media">
-                        <div class="media-left m-r-15x">
-                            <img class="" src="{{config('runtime.CDN_URL')}}/n1/{{$showSku['main_image_url']}}" width="120" height="120" alt="">
-                        </div>
-                        <div class="media-body @if(empty($showSku['showVASes'])) no-border @endif">
-                            <div class="row flex flex-alignCenter">
-                                <div class="col-md-3">
-                                    <div class="font-size-md text-main p-l-20x">{{ $showSku['main_title'] }}</div>
-                                </div>
-                                <div class="col-md-3">
-                                    @if(isset($showSku['attrValues']))
-                                        @foreach($showSku['attrValues'] as $attr)
-                                            {{$attr['attr_type_value']}}:{{$attr['attr_value']}}<br>
-                                        @endforeach
-                                    @endif
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="text-center">${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="text-center">X{{$showSku['sale_qtty']}}</div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="text-center">${{number_format(($showSku['total_amount'] / 100), 2)}}</div>
+                    <div class="checkout-Item">
+                        <div class="media">
+                            <div class="media-left m-r-15x">
+                                <img class="" src="{{config('runtime.CDN_URL')}}/n1/{{$showSku['main_image_url']}}"
+                                     width="120" height="120" alt="">
+                            </div>
+                            <div class="media-body @if(empty($showSku['showVASes'])) no-border @endif">
+                                <div class="row flex flex-alignCenter">
+                                    <div class="col-md-3">
+                                        <div class="font-size-md text-main p-l-20x">{{ $showSku['main_title'] }}</div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @if(isset($showSku['attrValues']))
+                                            @foreach($showSku['attrValues'] as $attr)
+                                                {{$attr['attr_type_value']}}:{{$attr['attr_value']}}<br>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="text-center">
+                                            ${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="text-center">X{{$showSku['sale_qtty']}}</div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="text-center">
+                                            ${{number_format(($showSku['total_amount'] / 100), 2)}}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    @if(isset($showSku['showVASes']))
-                    <div class="media">
-                        @foreach($showSku['showVASes'] as $vas)
-                        <div class="media-left m-r-15x">
-                            &nbsp;
-                        </div>
-                        <div class="media-body no-border">
-                            <div class="row flex flex-alignCenter">
-                                <div class="col-md-3">
-                                    <div class="p-l-20x">{{ $vas['vas_name'] }}</div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div>{{ $vas['user_remark'] }}</div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="text-center">${{number_format(($vas['vas_price'] / 100), 2)}}</div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="text-center">X{{ $showSku['sale_qtty']  }}</div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="text-center">+${{number_format(($vas['vas_price'] / 100 * $showSku['sale_qtty']), 2)}}</div>
-                                </div>
+                        @if(isset($showSku['showVASes']))
+                            <div class="media">
+                                @foreach($showSku['showVASes'] as $vas)
+                                    <div class="media-left m-r-15x">
+                                        &nbsp;
+                                    </div>
+                                    <div class="media-body no-border">
+                                        <div class="row flex flex-alignCenter">
+                                            <div class="col-md-3">
+                                                <div class="p-l-20x">{{ $vas['vas_name'] }}</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div>{{ $vas['user_remark'] }}</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="text-center">
+                                                    ${{number_format(($vas['vas_price'] / 100), 2)}}</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="text-center">X{{ $showSku['sale_qtty']  }}</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="text-center">
+                                                    +${{number_format(($vas['vas_price'] / 100 * $showSku['sale_qtty']), 2)}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                @endforeach
                             </div>
-                        </div>
-                        <br />
-                        @endforeach
+                        @endif
                     </div>
-                    @endif
-                </div>
-                <hr class="hr-base">
+                    <hr class="hr-base">
                 @endforeach
             </div>
         </div>
@@ -155,7 +160,8 @@
                     <div class="flex flex-alignCenter flex-fullJustified">
                         <span class="font-size-md">Selecy Shipping Address</span>
                         <span class="font-size-md pull-right">
-                            <a class="btn btn-secondary btn-md" href="#"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add NewAddress</a>
+                            <a class="btn btn-secondary btn-md" href="#"><i
+                                        class="iconfont icon-add font-size-md p-r-5x"></i>Add NewAddress</a>
                         </span>
                     </div>
                     <div class="row p-x-10x p-t-20x">
@@ -243,7 +249,8 @@
                         @foreach($logisticsList['list'] as $list)
                             <div class="col-md-6 p-b-10x">
                                 <input type="radio" value="" id="" name="shipping-method">
-                                <label for="" class="p-l-10x">{{ $list['logistics_name'] }} +${{ number_format(($list['price'] / 100), 2) }}</label>
+                                <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
+                                    +${{ number_format(($list['price'] / 100), 2) }}</label>
                             </div>
                         @endforeach
                     </div>
@@ -289,9 +296,15 @@
         <!-- 购物袋总价 -->
         <div class="box-shadow bg-white m-t-20x">
             <div class="p-a-20x font-size-md">
-                <div class="text-right"><span>Items(3):</span><span class="sanBold cart-price">${{number_format(($accountList['total_amount'] / 100), 2)}}</span></div>
-                <div class="text-right"><span>Additional Services:</span><span class="sanBold cart-price">${{ number_format(($accountList['vas_amount'] / 100), 2) }}</span></div>
-                <div class="text-right"><span>Bag Subtotal:</span><span class="sanBold cart-price">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span></div>
+                <div class="text-right"><span>Items(3):</span><span
+                            class="sanBold cart-price">${{number_format(($accountList['total_amount'] / 100), 2)}}</span>
+                </div>
+                <div class="text-right"><span>Additional Services:</span><span
+                            class="sanBold cart-price">${{ number_format(($accountList['vas_amount'] / 100), 2) }}</span>
+                </div>
+                <div class="text-right"><span>Bag Subtotal:</span><span
+                            class="sanBold cart-price">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
+                </div>
             </div>
         </div>
 
@@ -312,7 +325,8 @@
             <div class="m-y-20x m-l-20x"><a href="#" class="btn btn-block btn-secondary btn-lg">Remove</a></div>
         </div>
         <div class="col-md-6">
-            <div class="m-y-20x m-r-20x"><a href="#" class="btn btn-block btn-primary btn-lg" data-remodal-action="close">Cancel</a></div>
+            <div class="m-y-20x m-r-20x"><a href="#" class="btn btn-block btn-primary btn-lg"
+                                            data-remodal-action="close">Cancel</a></div>
         </div>
     </div>
 </div>
