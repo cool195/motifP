@@ -11,7 +11,7 @@
             <hr class="hr-common m-a-0">
             <div class="p-x-20x">
                 @foreach($cart['showSkus'] as $showSku)
-                    <div class="row p-y-20x flex flex-alignCenter">
+                    <div class="row p-y-20x flex flex-alignCenter cartProduct-item">
                         <div class="col-md-6 col-xs-12 flex flex-alignCenter">
                             <div><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}"
                                       width="120" height="120" alt=""></div>
@@ -33,18 +33,19 @@
                             <div class="p-l-20x">
                                 <div class="font-size-md text-primary">
                                     ${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
-                                {{--<div class="font-size-base text-common text-throughLine">$299.95</div>--}}
                             </div>
                         </div>
                         <div class="col-md-2 col-xs-4">
                             <div class="btn-group flex">
-                                <div id="{{'cdsku'.$showSku['sku']}}" class="btn btn-cartCount btn-xs @if($showSku['sale_qtty']==1 || !$showSku['select']){{'disabled'}}@endif cupn"
+                                <div id="{{'cdsku'.$showSku['sku']}}"
+                                     class="btn btn-cartCount btn-xs @if($showSku['sale_qtty']==1 || !$showSku['select']){{'disabled'}}@endif cupn"
                                      data-num="-1" data-sku="{{$showSku['sku']}}">
                                     <i class="iconfont icon-minus font-size-lg"></i>
                                 </div>
                                 <div id="{{'csku'.$showSku['sku']}}"
                                      class="btn btn-cartCount btn-xs font-size-base p-x-20x">{{$showSku['sale_qtty']}}</div>
-                                <div id="{{'casku'.$showSku['sku']}}" class="btn btn-cartCount btn-xs @if(!$showSku['select']){{'disabled'}}@endif cupn"
+                                <div id="{{'casku'.$showSku['sku']}}"
+                                     class="btn btn-cartCount btn-xs @if(!$showSku['select']){{'disabled'}}@endif cupn"
                                      data-num="1" data-sku="{{$showSku['sku']}}">
                                     <i class="iconfont icon-add font-size-lg"></i>
                                 </div>
@@ -52,8 +53,10 @@
                         </div>
                         <div class="col-md-2 col-xs-4">
                             <div class="p-l-20x">
-                                <a class="btn-block" href="#">Save for Later</a>
-                                <a class="btn-block" data-type="cart-remove" href="#">Remove</a>
+                                <a class="btn-block cartManage" data-action="save" data-sku="{{$showSku['sku']}}"
+                                   href="javascript:;">Save for Later</a>
+                                <a class="btn-block cartManage" data-action="delsku" data-sku="{{$showSku['sku']}}"
+                                   href="javascript:;">Remove</a>
                             </div>
                         </div>
                     </div>
@@ -63,13 +66,13 @@
         </div>
 
         <!-- Saved List -->
-        @if(!empty($save['showSkus']))
+        @if($save['showSkus'])
             <div class="box-shadow bg-white m-t-20x">
                 <div class="sanBold font-size-md p-x-20x p-y-15x">Saved</div>
                 <hr class="hr-common m-a-0">
                 <div class="p-x-20x">
                     @foreach($save['showSkus'] as $showSku)
-                        <div class="row p-y-20x flex flex-alignCenter">
+                        <div class="row p-y-20x flex flex-alignCenter cartProduct-item">
                             <div class="col-md-6 col-xs-12 flex flex-alignCenter">
                                 <div><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}"
                                           width="120" height="120" alt=""></div>
@@ -91,7 +94,6 @@
                                 <div class="p-l-20x">
                                     <div class="font-size-md text-primary">
                                         ${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
-                                    {{--<div class="font-size-base text-common text-throughLine">$299.95</div>--}}
                                 </div>
                             </div>
                             <div class="col-md-2 col-xs-4">
@@ -99,8 +101,10 @@
                             </div>
                             <div class="col-md-2 col-xs-4">
                                 <div class="p-l-20x">
-                                    <a class="btn-block" href="#">Move to Bag</a>
-                                    <a class="btn-block" href="#" data-type="cart-remove">Remove</a>
+                                    <a class="btn-block cartManage" data-action="movetocart"
+                                       data-sku="{{$showSku['sku']}}" href="javascript:;">Move to Bag</a>
+                                    <a class="btn-block cartManage" data-action="delsave" data-sku="{{$showSku['sku']}}"
+                                       href="javascript:;">Remove</a>
                                 </div>
                             </div>
                         </div>
@@ -108,20 +112,23 @@
                     @endforeach
                 </div>
             </div>
-    @endif
+        @endif
 
     <!-- 购物袋总价 -->
         <div class="box-shadow bg-white m-t-20x">
             <div class="p-a-20x font-size-md">
-                <div class="text-right"><span>Items({{$cart['total_sku_qtty'] }}):</span><span
-                            class="sanBold cart-price">${{number_format($cart['total_amount'] /100, 2)}}</span></div>
+                <div class="text-right"><span id="total_sku_qtty">Items({{$cart['total_sku_qtty'] }}):</span><span
+                            class="sanBold cart-price"
+                            id="total_amount">${{number_format($cart['total_amount'] /100, 2)}}</span></div>
                 @if($cart['vas_amount'] > 0)
                     <div class="text-right"><span>Additional Services:</span><span
-                                class="sanBold cart-price">${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
+                                class="sanBold cart-price"
+                                id="vas_amount">${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
                     </div>
                 @endif
                 <div class="text-right"><span>Bag Subtotal:</span><span
-                            class="sanBold cart-price">${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
+                            class="sanBold cart-price"
+                            id="pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
             </div>
         </div>
 

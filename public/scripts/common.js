@@ -320,18 +320,70 @@ window.onload = function () {
 
     //购物车修改购买数量
     $('.cupn').on('click', function (e) {
-        var nowsku = $(this).data('sku');
-        if (nowsku && !$(this).hasClass('disabled')) {
-            var skuQty = $('#csku' + nowsku).html() * 1 + $(this).data('num');
-            if (skuQty < 1) {
-                $('#cdsku' + nowsku).addClass('disabled');
-            } else {
-                $('#csku' + nowsku).html(skuQty)
-                if (skuQty > 1 && $('#cdsku' + nowsku).hasClass('disabled')) {
-                    $('#cdsku' + nowsku).removeClass('disabled');
+        var tObj = $(this);
+        var nowsku = tObj.data('sku');
+        if (nowsku && !tObj.hasClass('disabled')) {
+            tObj.addClass('disabled');
+            var skuQty = $('#csku' + nowsku).html() * 1 + tObj.data('num');
+            $.ajax({
+                url: 'cart/alterQtty',
+                type: 'POST',
+                data: {
+                    sku: nowsku,
+                    qtty: skuQty,
                 }
-            }
+            })
+                .done(function (data) {
+                    if (data.success) {
+                        $('#csku' + nowsku).html(skuQty);
+                        tObj.removeClass('disabled');
+                        if (skuQty == 2) $('#cdsku' + nowsku).removeClass('disabled');
+                        if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');
+                        cart_update_info();
+                    } else {
+                        alert('error')
+                    }
+                });
+
         }
+    });
+
+    //动态更新购物车价格总数量
+    function cart_update_info() {
+        $.ajax({
+            url: '/cart/list',
+            type: 'GET',
+        })
+            .done(function (data) {
+                if (data.success) {
+                    $('#total_amount').html(data.data.total_amount / 100);
+                    $('#total_sku_qtty').html('Items(' + data.data.total_sku_qtty + '):');
+                    $('#vas_amount').html('$' + data.data.vas_amount / 100);
+                    $('#pay_amount').html('$' + data.data.pay_amount / 100);
+                }
+            });
+    }
+
+    //购物车相关操作
+    $('.cartManage').on('click', function (e) {
+        var action = $(this).data('action');
+        var sku = $(this).data('sku');
+        var thisParent = $(this).parents('.cartProduct-item');
+        $.ajax({
+            url: '/cart/operate',
+            type: 'POST',
+            data: {cmd: action, sku: sku}
+        })
+            .done(function (data) {
+                if (data.success) {
+                    if (action == 'movetocart' || action == 'save') {
+                        location.reload();
+                    }else{
+                        thisParent.remove();
+                        cart_update_info();
+                    }
+                }
+            });
     });
 
     // 触发删除 购物车商品
@@ -398,26 +450,26 @@ window.onload = function () {
             });
     }
 
-    function login_forgetPassword(){
+    function login_forgetPassword() {
 
     }
 
-    function login_forgetPassword(){
+    function login_forgetPassword() {
         $.ajax({
             url: '/forget',
             type: 'POST',
             data: $('#forgetPassword').serialize()
         })
             .done(function (data) {
-                if(data.success){
+                if (data.success) {
                     $('.restPwd-content').addClass('hidden').removeClass('active');
                     $('.login-content').removeClass('hidden').addClass('active');
                     $('.login-title').text('Sign in with Motif Account');
-                }else {
+                } else {
                     $('.warning-info').removeClass('off');
                     $('.warining-info').children('span').html(data.prompt_msg);
                 }
-             })
+            })
 
     }
 
@@ -522,7 +574,7 @@ window.onload = function () {
     // 点击登录
     $('[data-role="login-submit"]').on('click', function () {
         console.info('登录');
-        if($(this).hasClass('disabled')){
+        if ($(this).hasClass('disabled')) {
             return;
         } else {
             login_check();
@@ -532,14 +584,13 @@ window.onload = function () {
     // 点击 忘记忘记 发送邮件
     $('[data-role="restPwd-submit"]').on('click', function () {
         console.info('Rest Password');
-        if($(this).hasClass('disabled')){
+        if ($(this).hasClass('disabled')) {
             return;
-        }else {
+        } else {
             login_forgetPassword();
         }
 
     });
-
 
 
     // 忘记密码入口
