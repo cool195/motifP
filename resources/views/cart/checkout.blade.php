@@ -86,24 +86,25 @@
         @inject('Address', 'App\Http\Controllers\AddressController')
         {{--*/ $address = $Address->index() /*--}}
         <div class="box-shadow bg-white m-t-20x">
-            <div class="font-size-md p-x-20x p-y-15x btn-showHide active">
-                <span class="sanBold">1 / 2 Shipping Address</span>
+            <div class="font-size-md p-x-20x p-y-15x btn-showHide @if(empty($address['data']['list'])){{'active'}}@endif"
+                 id="addrShowHide">
+                <span class="sanBold">Shipping Address</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span>
+                    <span id="defaultAddr">
                         @foreach($address['data']['list'] as $value)
                             @if($value['isDefault'])
                                 {{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}
                             @endif
                             @break($value['isDefault'])
-                                {{$value['country']}}
+                            {{$value['country']}}
                         @endforeach
                     </span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
             <hr class="hr-common m-a-0">
-            <div class="showHide-body address-content active">
-                @if($address['data']['amount'] > 0)
+            <div class="showHide-body address-content @if(empty($address['data']['list'])){{'active'}}@endif">
+                @if(!empty($address['data']['list']))
                     {{--选择地址--}}
                     <div class="p-a-20x select-address">
                         <div class="flex flex-alignCenter flex-fullJustified">
@@ -118,6 +119,7 @@
                                 <div class="col-md-6">
                                     <div class="p-a-10x">
                                         <div class="address-item p-x-20x p-y-15x @if($value['isDefault']){{'active'}}@endif"
+                                             data-info="{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}"
                                              data-aid="{{$value['receiving_id']}}">
                                             <div class="address-info">
                                                 {{$value['name']}}<br>
@@ -137,27 +139,28 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="text-right p-t-10x"><a href="#" class="btn btn-primary btn-md">Continue</a></div>
+                        <div class="text-right p-t-10x"><a href="javascript:;"
+                                                           class="btn btn-primary btn-md"
+                                                           id="btnAddrShowHide">Continue</a></div>
                     </div>
                 @else
                     {{--添加地址--}}
                     <div class="p-a-20x add-address">
                         <div class="inline">
                             <span class="font-size-md">Add Shipping Address</span>
-                        <span class="font-size-md pull-right"><i
-                                    class="iconfont icon-checkcircle text-primary font-size-lg"></i><a class="p-l-10x"
-                                                                                                       href="#">Make
-                                Primary</a></span>
+                        <span class="font-size-md pull-right">
+                            <i class="iconfont icon-checkcircle text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
+                            <a class="p-l-10x" href="javascript:;">Make Primary</a></span>
                         </div>
                         <div class="row p-t-30x">
                             <form id="addAddressForm">
                                 <div class="col-md-5">
                                     <div class="p-l-20x m-b-20x">
-                                        <input type="text" name="addremail" class="form-control contrlo-lg text-primary"
+                                        <input type="text" name="email" class="form-control contrlo-lg text-primary"
                                                placeholder="Email" value="{{Session::get('user.login_email')}}">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                            <span class="font-size-base">Please enter your email !</span>
+                                            <span class="font-size-base">Please enter a valid email address !</span>
                                         </div>
                                     </div>
                                     <div class="p-l-20x m-b-20x">
@@ -204,14 +207,14 @@
                                                placeholder="Street 2 (optional)">
                                     </div>
                                     <div class="p-l-20x m-b-20x">
-                                        <select name="country" id="" class="form-control contrlo-lg select-country">
+                                        <select name="country" class="form-control contrlo-lg select-country">
                                             @foreach($Address->getCountry() as $value)
                                                 <option value="{{$value['country_id']}}">{{$value['country_name_en']}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="p-l-20x m-b-20x">
-                                        <input type="text" name="zip" class="form-control contrlo-lg text-primary"
+                                        <input type="text" name="zip" id="zip" class="form-control contrlo-lg text-primary"
                                                placeholder="Zip Code">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -231,21 +234,21 @@
 
         {{--Shipping Method--}}
         <div class="box-shadow bg-white m-t-20x">
-            <div class="font-size-md p-x-20x p-y-15x btn-showHide active">
-                <span class="sanBold">2 / 2 Shipping Method</span>
+            <div class="font-size-md p-x-20x p-y-15x btn-showHide">
+                <span class="sanBold">Shipping Method</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span>Beijing China</span>
+                    <span>{{$logisticsList['list'][0]['logistics_name']}}</span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
             <hr class="hr-common m-a-0">
-            <div class="showHide-body method-content active">
+            <div class="showHide-body method-content">
                 <!-- 选择 物流方式 -->
                 <div class="p-a-20x">
                     <div class="row p-x-20x p-t-20x">
-                        @foreach($logisticsList['list'] as $list)
+                        @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
-                                <input type="radio" value="" id="" name="shipping-method">
+                                <input type="radio" @if($k==0){{'checked'}}@endif value="" id="" name="shipping-method">
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
                                     +${{ number_format(($list['price'] / 100), 2) }}</label>
                             </div>
@@ -259,15 +262,15 @@
         <!-- Promotion Code -->
         <div class="box-shadow bg-white m-t-20x">
             <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-                <div class="font-size-md btn-showHide active">
+                <div class="font-size-md btn-showHide">
                     <span class="sanBold">Promotion Code</span>
                 </div>
-                <div class="showHide-body flex flex-alignCenter pull-right active">
+                <div class="showHide-body flex flex-alignCenter pull-right">
                     <div><input type="text" class="form-control contrlo-lg text-primary input-promotion disabled"></div>
                     <div class="p-l-20x"><a href="#" class="btn btn-primary btn-md">Continue</a></div>
                 </div>
                 <span class="pull-right showHide-simpleInfo promotion-info">
-                    <span>B320847398247</span>
+                    <span id="pcode"></span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
@@ -275,14 +278,14 @@
 
         <!-- Special Request (optional) -->
         <div class="box-shadow bg-white m-t-20x">
-            <div class="p-x-20x p-y-15x font-size-md btn-showHide active">
+            <div class="p-x-20x p-y-15x font-size-md btn-showHide">
                 <span class="sanBold">Special Request (optional)</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span>I want Buy</span>
+                    <span id="srmessage"></span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
-            <div class="showHide-body p-x-20x p-b-20x active">
+            <div class="showHide-body p-x-20x p-b-20x">
                 <div class="p-x-20x p-b-20x">
                     <textarea name="" class="form-control disabled" cols="30" rows="4"></textarea>
                 </div>

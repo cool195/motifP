@@ -391,18 +391,43 @@ window.onload = function () {
         CartModal.open();
     });
 
+    //验证表单
+    function checkValid($input) {
+        var value = $input.val();
+        if (value == '' || value == undefined) {
+            $input.siblings('.warning-info').removeClass('off');
+            return false;
+        }
+        return true;
+    }
+
     // Checkout Start
     $('#addAddress').on('click', function () {
-        $.ajax({
-            url: '/address',
-            type: 'POST',
-            data: $('#addAddressForm').serialize()
-        })
-            .done(function (data) {
-                if (data.success) {
-                    alert('ok')
-                }
+        var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        var $email = $('input[name="email"]'),
+            $name = $('input[name="name"]'),
+            $city = $('input[name="city"]'),
+            $tel = $('input[name="tel"]'),
+            $addr1 = $('input[name="addr1"]'),
+            $zip = $('input[name="zip"]');
+        if (reg.test($email.val()) && checkValid($email) && checkValid($name) && checkValid($city) && checkValid($tel) && checkValid($addr1) && checkValid($zip)) {
+            $.ajax({
+                url: '/address',
+                type: 'POST',
+                data: $('#addAddressForm').serialize()
             })
+                .done(function (data) {
+                    if (data.success) {
+                        alert('ok')
+                    }
+                })
+        }
+        return false;
+    });
+
+    //焦点事件去掉warning
+    $('#addAddressForm input[type="text"]').on('focus',function(){
+        $(this).siblings('.warning-info').addClass('off');
     });
 
     // 控制 div 显示隐藏
@@ -437,10 +462,27 @@ window.onload = function () {
         }
     });
 
+    // 控制 div 显示隐藏
+    $('#btnAddrShowHide').on('click', function () {
+        if ($('#addrShowHide').children('.showHide-simpleInfo').length > 0) {
+            var $AddressContent = $('#addrShowHide').siblings('.showHide-body');
+            if ($AddressContent.hasClass('active')) {
+                $AddressContent.slideUp(500);
+                $AddressContent.removeClass('active');
+                $('#addrShowHide').removeClass('active');
+            } else {
+                $AddressContent.slideDown(500);
+                $AddressContent.addClass('active');
+                $('#addrShowHide').addClass('active');
+            }
+        }
+    });
+
     // 选择地址
     $('.address-item').on('click', function () {
         $('.address-item').removeClass('active');
         $(this).addClass('active');
+        $('#defaultAddr').html($(this).data('info'));
     });
     // Checkout End
 
@@ -495,7 +537,7 @@ window.onload = function () {
             emailStyle = "Please enter a valid email address";
         var $warningInfo = $('.warning-info');
         var inputText = $email.val();
-        var reg = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
         console.log(inputText);
         if ("" == inputText || undefined == inputText || null == inputText) {
             $warningInfo.removeClass('off');
@@ -688,31 +730,31 @@ window.onload = function () {
             url: '/reset',
             data: $('#reset').serialize()
         })
-        .done(function(data) {
-            if(data.success) {
-                window.location.href = data.redirectUrl;
-            } else {
-                $('.warning-info').removeClass('off');
-                $('.warning-info').children('span').html('Oops something went wrong, please go to the sign-in page and reset your password.');
-            }
-        })
+            .done(function (data) {
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                } else {
+                    $('.warning-info').removeClass('off');
+                    $('.warning-info').children('span').html('Oops something went wrong, please go to the sign-in page and reset your password.');
+                }
+            })
     }
 
     function reset_validateConfirmPwd(newPwd, confirmPwd) {
         var flag = true;
         var passwordConfirm = 'New password does not match';
         var $warningInfo = $('.warning-info');
-        if(newPwd !== confirmPwd) {
+        if (newPwd !== confirmPwd) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(passwordConfirm);
             flag = false;
-        }else{
+        } else {
             $warningInfo.addClass('off');
         }
         return flag;
     }
 
-    $('input[name="lastpw"]').on('keyup blur', function() {
+    $('input[name="lastpw"]').on('keyup blur', function () {
         var newPwd = $('input[name="pw"]').val(),
             confirmPwd = $(this).val();
         if (reset_validateConfirmPwd(newPwd, confirmPwd)) {
@@ -722,15 +764,14 @@ window.onload = function () {
         }
     })
 
-    $('[data-role="reset-submit"]').on('click', function() {
-        if($(this).hasClass('disabled')){
+    $('[data-role="reset-submit"]').on('click', function () {
+        if ($(this).hasClass('disabled')) {
             console.log($(this));
             return;
-        }else{
+        } else {
             reset_password();
         }
     });
-
 
 
     //reset end
