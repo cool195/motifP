@@ -6,19 +6,44 @@
 <section class="m-t-40x">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-12">
+            <div class="col-lg-6 col-md-6">
                 <div class="p-a-20x box-shadow bg-white">
-                    <img class="img-fluid product-bigImg"
-                         src="{{config('runtime.CDN_URL')}}/n1/{{$data['main_image_url']}}" alt="">
+
+                    <div class="product-bigImg gallery">
+                        @if(isset($data['productImages']))
+                            @foreach($data['productImages'] as $key => $image)
+                                @if(0 == $key)
+                                    <li style="display:block">
+                                        <a href="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}"
+                                           class="jqzoom" rel="gal1" title="triumph" id="jqzoom">
+                                            <img class="img-fluid product-bigImg"
+                                                 src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}">
+                                        </a>
+                                    </li>
+                                @else
+                                    <li style="display:none">
+                                        <a title="" class="imgmore"
+                                           href="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}"><img
+                                                    src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}"></a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        @endif
+                    </div>
+                    <div class="clearfix"></div>
+
                     <div class="swiper-container">
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @if(isset($data['productImages']))
                                 @foreach($data['productImages'] as $key => $image)
-                                    <div class="productImg-item swiper-slide p-r-10x">
-                                        <img class="img-thumbnail @if(0 == $key) active @endif"
-                                             src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}" width="110"
-                                             height="110">
-                                    </div>
+                                        <div class="productImg-item swiper-slide p-r-10x">
+                                            <a href="javascript:void(0);"
+                                               rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n3/{{$image['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$image['img_path']."'}"}}">
+                                                <img class="img-thumbnail small-img active"
+                                                     src="{{config('runtime.CDN_URL')}}/n3/{{$image['img_path']}}"
+                                                     width="110" height="110" alt="{{ $data['main_title'] }}">
+                                            </a>
+                                        </div>
                                 @endforeach
                             @endif
                         </div>
@@ -29,13 +54,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-6">
                 <div class="p-a-20x box-shadow bg-white">
                     @inject('wishlist', 'App\Http\Controllers\UserController')
                     <div class="flex flex-fullJustified">
                         <span class="product-title helveBold">{{ $data['main_title'] }}</span>
-                        <span class="product-heart @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$data['spu']}}"><i
-                                    class="iconfont icon-onheart font-size-lxx"></i></span>
+                        <span class="product-heart @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                              data-spu="{{$data['spu']}}"><i class="iconfont icon-onheart font-size-lxx"></i></span>
                     </div>
                     <div class="product-price">
                         @if(isset($data['skuPrice']['skuPromotion']))
@@ -141,8 +166,6 @@
 @if(isset($data['designer']))
     <div class="container m-t-30x">
         <span class="sanBold font-size-md p-x-20x">Designer:</span>
-        {{--        <span class="p-r-10x"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png" width="40" height="40"
-                                           alt=""></span>--}}
         <span class="sanBold text-main">{{ $data['designer']['designer_name'] }}</span>
     </div>
 @endif
@@ -174,41 +197,44 @@
     <div class="row p-t-20x">
         @foreach($recommended['list'] as $list)
             <div class="col-md-3 col-xs-6">
-                <div class="productList-item">
-                    <a href="/product/{{$list['spu']}}">
+                <a href="/product/{{$list['spu']}}">
+                    <div class="productList-item">
                         <div class="image-container">
-                            <img class="img-fluid"
-                                 src="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}"
+                            <img class="img-fluid img-lazy"
+                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}"
+                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@70.png"
                                  alt="{{ $list['main_title'] }}">
+                            <div class="bg-heart">
+                                <span class="product-heart btn-heart @if(in_array($list['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$list['spu']}}"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                            </div>
                         </div>
-                    </a>
-                    <div class="price-caption helveBold">
-                        <div class="text-center font-size-md text-primary">{{ $list['main_title'] }}</div>
-                        <div class="text-center">
-                            <span class="font-size-md text-primary p-r-5x">${{ number_format(($list['skuPrice']['sale_price'] / 100), 2) }}</span>
-                            @if($list['skuPrice']['sale_price'] != $list['skuPrice']['price'])
-                                <span class="font-size-base text-common text-throughLine">${{ number_format(($list['skuPrice']['price'] / 100), 2) }}</span>
-                            @endif
+                        <div class="price-caption helveBold">
+                            <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{ $list['main_title'] }}</div>
+                            <div class="text-center">
+                                <span class="font-size-md text-primary p-r-5x">${{ number_format(($list['skuPrice']['sale_price'] / 100), 2) }}</span>
+                                @if($list['skuPrice']['sale_price'] != $list['skuPrice']['price'])
+                                    <span class="font-size-base text-common text-throughLine">${{ number_format(($list['skuPrice']['price'] / 100), 2) }}</span>
+                                @endif
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         @endforeach
     </div>
-    {{--<div class="text-center m-y-30x">--}}
-    {{--<a class="btn btn-block btn-gray btn-lg btn-seeMore" href="#">See more of all</a>--}}
-    {{--</div>--}}
-    {{--<div class="loading" style="display: none">--}}
-    {{--<div class="loader">--}}
-    {{--</div>--}}
-    {{--</div>--}}
+</div>
+
+<!-- 购买成功提示 -->
+<div class="remodal modal-content remodal-xs" data-remodal-id="additem-modal" id="addItem-modalDialog" data-spu="">
+    <div class="text-center font-size-md p-a-30x">Item Added</div>
+</div>
+
+<!-- 购买失败提示 -->
+<div class="remodal modal-content remodal-xs" data-remodal-id="additemfail-modal" id="addItemFail-modalDialog"
+     data-spu="">
+    <div class="text-center font-size-md p-a-30x">Added Failled</div>
 </div>
 
 <!-- footer start -->
 @include('footer')
 <!-- footer end -->
-
-</body>
-<script src="/scripts/vendor.js"></script>
-<script src="/scripts/common.js"></script>
-</html>

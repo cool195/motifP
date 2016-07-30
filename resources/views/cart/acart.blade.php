@@ -1,25 +1,22 @@
-<!-- header start-->
+<!-- 头部 Start-->
 @include('header')
-<!-- header end-->
+<!-- 头部 End -->
 
 <!-- 内容 -->
 <section class="m-t-40x">
     <div class="container">
         <h4 class="helveBold text-main p-l-10x">My Bag</h4>
-        <!-- My Bag List -->
         <div class="box-shadow bg-white m-t-20x">
             <div class="sanBold font-size-md p-x-20x p-y-15x">In Bag</div>
             <hr class="hr-common m-a-0">
             <div class="p-x-20x">
                 @foreach($cart['showSkus'] as $showSku)
-                <div class="p-y-20x">
-                    <div class="row flex flex-alignCenter cartProduct-item">
-                        <div class="col-md-3 flex flex-alignCenter">
-                            <div><img src="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
+                    <div class="row p-y-20x flex flex-alignCenter cartProduct-item">
+                        <div class="col-md-6 col-xs-12 flex flex-alignCenter">
+                            <div><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}"
+                                      width="120" height="120" alt=""></div>
                             <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="p-l-30x">
+                            <div class="p-l-20x">
                                 @if(isset($showSku['attrValues']))
                                     @foreach($showSku['attrValues'] as $key => $attrValue)
                                         {{$attrValue['attr_type_value']}}:{{$attrValue['attr_value']}}<br>
@@ -32,15 +29,13 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-xs-4">
                             <div class="p-l-20x">
-                                <div class="font-size-md text-primary">${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
-                                @if($showSku['price']>$showSku['sale_price'])
-                                    <div class="font-size-base text-common text-throughLine">${{number_format(($showSku['price'] / 100), 2)}}</div>
-                                @endif
+                                <div class="font-size-md text-primary">
+                                    ${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-xs-4">
                             <div class="btn-group flex">
                                 <div id="{{'cdsku'.$showSku['sku']}}"
                                      class="btn btn-cartCount btn-xs @if($showSku['sale_qtty']==1 || !$showSku['select']){{'disabled'}}@endif cupn"
@@ -56,29 +51,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-xs-4">
                             <div class="p-l-20x">
-                                <a class="btn-block cartManage" data-action="save" data-sku="{{$showSku['sku']}}" href="javascript:;">Save for Later</a>
-                                <a class="btn-block cartManage" data-action="delsku" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
+                                <a class="btn-block cartManage" data-action="save" data-sku="{{$showSku['sku']}}"
+                                   href="javascript:;">Save for Later</a>
+                                <a class="btn-block cartManage" data-action="delsku" data-sku="{{$showSku['sku']}}"
+                                   href="javascript:;">Remove</a>
                             </div>
                         </div>
-                        @if($showSku['isPutOn']!=1)
-                            <div class="mask"></div>
-                        @endif
                     </div>
-                    @if($showSku['isPutOn']!=1)
-                        <div class="warning-info flex flex-alignCenter text-warning">
-                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                            <span class="font-size-base">Please select size !</span>
-                        </div>
-                    @endif
-                </div>
-
-                <hr class="hr-common m-a-0">
+                    <hr class="hr-common m-a-0">
                 @endforeach
             </div>
         </div>
-
 
         <!-- Saved List -->
         @if($save['showSkus'])
@@ -91,7 +76,7 @@
                             <div class="col-md-6 col-xs-12 flex flex-alignCenter">
                                 <div><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
                                 <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
-                                <div class="p-l-30x">
+                                <div class="p-l-20x">
                                     @if(isset($showSku['attrValues']))
                                         @foreach($showSku['attrValues'] as $key => $attrValue)
                                             {{$attrValue['attr_type_value']}}:{{$attrValue['attr_value']}}<br>
@@ -128,7 +113,7 @@
             </div>
         @endif
 
-        <!-- 购物袋总价 -->
+    <!-- 购物袋总价 -->
         <div class="box-shadow bg-white m-t-20x">
             <div class="p-a-20x font-size-md">
                 <div class="text-right"><span id="total_sku_qtty">Items({{$cart['total_sku_qtty'] }}):</span><span
@@ -145,6 +130,7 @@
                             id="pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
             </div>
         </div>
+
         <!-- 提交按钮 -->
         <div class="p-y-40x text-right">
             <a href="/checkout" class="btn btn-block btn-primary btn-lg btn-toCheckout">Proceed To Checkout</a>
@@ -152,7 +138,6 @@
     </div>
 </section>
 
-<!-- 删除确认框 -->
 <div class="remodal modal-content remodal-md" data-remodal-id="cartmodal" id="modalDialog" data-spu="">
     <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Bag?</div>
     <hr class="hr-common m-a-0">
@@ -163,13 +148,11 @@
             <div class="m-y-20x m-l-20x"><a href="#" class="btn btn-block btn-secondary btn-lg">Remove</a></div>
         </div>
         <div class="col-md-6">
-            <div class="m-y-20x m-r-20x"><a href="#" class="btn btn-block btn-primary btn-lg" data-remodal-action="close">Cancel</a>
+            <div class="m-y-20x m-r-20x"><a href="#" class="btn btn-block btn-primary btn-lg"
+                                            data-remodal-action="close">Cancel</a>
             </div>
         </div>
     </div>
 </div>
 
-
-<!-- footer start -->
 @include('footer')
-<!-- footer end -->

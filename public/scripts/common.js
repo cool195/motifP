@@ -255,7 +255,11 @@ window.onload = function () {
             })
                 .done(function (data) {
                     if (data.success) {
-                        alert('ok')
+                        // 弹出 成功添加购物车 提示
+                        AddItemModal.open();
+                        setTimeout(function () {
+                            AddItemModal.close();
+                        }, 1500);
                     } else {
                         alert('error')
                     }
@@ -300,7 +304,7 @@ window.onload = function () {
         })
             .done(function (data) {
                 if (data.success) {
-                    $('.product-heart').toggleClass('active');
+                    $(this).toggleClass('active');
                 }
             });
 
@@ -309,14 +313,18 @@ window.onload = function () {
     // Shopping Cart
     // 初始化 确认删除 弹出框
     try {
-        var CartOptions = {
+        var Options = {
             closeOnOutsideClick: false,
             closeOnCancel: false,
             hashTracking: false
         };
-        var CartModal = $('[data-remodal-id=cartmodal]').remodal(CartOptions);
-    } catch (e) {
-    }
+        // 删除购物车商品 提示框
+        var CartModal = $('[data-remodal-id=cartmodal]').remodal(Options);
+        // Shopping Detail 添加购物车成功 提示框
+        var AddItemModal = $('[data-remodal-id=additem-modal]').remodal(Options);
+        // Shopping Detail 添加购物车失败 提示框
+        var AddItemFailModal = $('[data-remodal-id=additemfail-modal]').remodal(Options);
+    } catch (e) {}
 
     //购物车修改购买数量
     $('.cupn').on('click', function (e) {
@@ -356,7 +364,7 @@ window.onload = function () {
         })
             .done(function (data) {
                 if (data.success) {
-                    $('#total_amount').html(data.data.total_amount / 100);
+                    $('#total_amount').html('$' + data.data.total_amount / 100);
                     $('#total_sku_qtty').html('Items(' + data.data.total_sku_qtty + '):');
                     $('#vas_amount').html('$' + data.data.vas_amount / 100);
                     $('#pay_amount').html('$' + data.data.pay_amount / 100);
@@ -805,6 +813,26 @@ window.onload = function () {
 
 
     //reset end
+
+    // 图片延迟加载
+    $('img.img-lazy').lazyload({
+        threshold: 200,
+        effect: 'fadeIn'
+    });
+
+    // 图片放大镜
+    jQuery_1_6(function () {
+        jQuery_1_6('#jqzoom').jqzoom({
+            zoomType: 'standard',
+            xOffset: 40,
+            title: false,
+            lens: true,
+            preloadImages: false,
+            alwaysOn: false,
+            zoomWidth: 550,
+            zoomHeight: 550
+        });
+    });
 })(jQuery, Swiper);
 //# sourceMappingURL=common.js.map
 
