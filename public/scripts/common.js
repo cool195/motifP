@@ -520,7 +520,7 @@ window.onload = function () {
                     $('.login-title').text('Sign in with Motif Account');
                 } else {
                     $('.warning-info').removeClass('off');
-                    $('.warining-info').children('span').html(data.prompt_msg);
+                    $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
 
@@ -535,7 +535,8 @@ window.onload = function () {
         var flag = false;
         var emailNull = "Please enter your email",
             emailStyle = "Please enter a valid email address";
-        var $warningInfo = $('.warning-info');
+        //var $warningInfo = $('.warning-info');
+        var $warningInfo = $email.parent().siblings('.warning-info');
         var inputText = $email.val();
         var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
         console.log(inputText);
@@ -558,7 +559,7 @@ window.onload = function () {
         var flag = false;
         var passwordNull = "Please enter your password",
             passwordLength = "Oops, that's not a match.";
-        var $warningInfo = $('.warning-info');
+        var $warningInfo = $password.parent().siblings('.warning-info');
         var inputText = $password.val();
         console.log(inputText);
         if ("" == inputText || undefined == inputText || null == inputText) {
@@ -577,7 +578,7 @@ window.onload = function () {
     }
 
     // 验证电子邮件的情况
-    $('input[name="email"]').on('keyup blur', function () {
+    $('.login-email').on('keyup blur', function () {
         var InputText = $(this).val();
         if (InputText === '' || InputText === undefined) {
             $(this).siblings('.input-clear').addClass('hidden');
@@ -586,16 +587,12 @@ window.onload = function () {
         }
         if (login_validationEmail($(this))) {
             $('div[data-role="login-submit"]').removeClass('disabled');
-            $('div[data-role="restPwd-submit"]').removeClass('disabled');
-            $('div[data-role="register-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="login-submit"]').addClass('disabled');
-            $('div[data-role="restPwd-submit"]').addClass('disabled');
-            $('div[data-role="register-submit"]').addClass('disabled');
         }
     });
 
-    $('input[name="pw"]').on('keyup blur', function () {
+    $('.login-pw').on('keyup blur', function () {
         /*        var inputText = $(this).val();
          if (inputText === '' || inputText === undefined) {
          $(this).siblings('.input-clear').addClass('hidden');
@@ -605,7 +602,6 @@ window.onload = function () {
         if (login_validationPassword($(this))) {
             $('div[data-role="login-submit"]').removeClass('disabled');
         } else {
-            $('div[data-role="reset-submit"]').addClass('disabled')
             $('div[data-role="login-submit"]').addClass('disabled');
         }
     });
@@ -639,9 +635,17 @@ window.onload = function () {
         }
     });
 
+    $('.forget-email').on('keyup blur', function () {
+        if (login_validationEmail($(this))) {
+            $('div[data-role="resetPwd-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="resetPwd-submit"]').addClass('disabled');
+        }
+    });
+
     // 点击 忘记忘记 发送邮件
     $('[data-role="restPwd-submit"]').on('click', function () {
-        console.info('Rest Password');
+        console.info('Reset Password');
         if ($(this).hasClass('disabled')) {
             return;
         } else {
@@ -670,7 +674,7 @@ window.onload = function () {
     function register_validationNick($nickname) {
         var flag = false;
         var nicknameNull = "Please enter your nickname";
-        var $warningInfo = $('.warning-info');
+        var $warningInfo = $nickname.parent().siblings('.warning-info');
         var inputText = $nickname.val();
         console.log(inputText);
         if ("" == inputText || undefined == inputText || null == inputText) {
@@ -703,13 +707,29 @@ window.onload = function () {
             });
     }
 
-    $('input[name="nick"]').on('keyup blur', function () {
+    $('.register-nick').on('keyup blur', function () {
         if (register_validationNick($(this))) {
             $('div[data-role="register-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="register-submit"]').addClass('disabled');
         }
     });
+    
+    $('.register-email').on('keyup blur', function () {
+        if(login_validationEmail($(this))) {
+            $('div[data-role="register-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="register-submit"]').addClass('disabled');
+        }
+    })
+
+    $('.register-pw').on('keyup blur', function () {
+        if(login_validationPassword($(this))) {
+            $('div[data-role="register-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="register-submit"]').addClass('disabled');
+        }
+    })
 
     $('[data-role="register-submit"]').on('click', function () {
         console.info('Register');
@@ -740,11 +760,12 @@ window.onload = function () {
             })
     }
 
-    function reset_validateConfirmPwd(newPwd, confirmPwd) {
+    function reset_validateConfirmPwd($pw, newPwd, confirmPwd) {
         var flag = true;
         var passwordConfirm = 'New password does not match';
-        var $warningInfo = $('.warning-info');
-        if (newPwd !== confirmPwd) {
+        //var $warningInfo = $('.warning-info');
+        var $warningInfo = $pw.parent().siblings('.warning-info');
+        if(newPwd !== confirmPwd) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(passwordConfirm);
             flag = false;
@@ -754,19 +775,28 @@ window.onload = function () {
         return flag;
     }
 
-    $('input[name="lastpw"]').on('keyup blur', function () {
-        var newPwd = $('input[name="pw"]').val(),
-            confirmPwd = $(this).val();
-        if (reset_validateConfirmPwd(newPwd, confirmPwd)) {
+
+    $('.reset-pw').on('keyup blur', function() {
+        if (login_validationPassword($(this))) {
             $('div[data-role="reset-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="reset-submit"]').addClass('disabled');
         }
     })
 
-    $('[data-role="reset-submit"]').on('click', function () {
-        if ($(this).hasClass('disabled')) {
-            console.log($(this));
+    $('.reset-lastpw').on('keyup blur', function() {
+        var newPwd = $('input[name="pw"]').val(),
+            confirmPwd = $(this).val();
+        if (login_validationPassword($(this)) && reset_validateConfirmPwd($(this), newPwd, confirmPwd) ) {
+            $('div[data-role="reset-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="reset-submit"]').addClass('disabled');
+        }
+    })
+
+
+    $('[data-role="reset-submit"]').on('click', function() {
+        if($(this).hasClass('disabled')){
             return;
         } else {
             reset_password();

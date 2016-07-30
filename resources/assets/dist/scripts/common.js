@@ -39,13 +39,10 @@ window.onload = function () {
   } catch (e) {}
 
   // 点击选择图片
-  $('.productImg-item img').on('click', function (e) {
+  $('.small-img').on('click', function (e) {
     if (!$(this).hasClass('active')) {
-      var ImgUrl;
       $('.productImg-item img').removeClass('active');
       $(this).addClass('active');
-      ImgUrl = $(this).attr('src');
-      $('.product-bigImg').attr('src', ImgUrl);
     }
   });
 
@@ -82,15 +79,31 @@ window.onload = function () {
     $(this).toggleClass('active');
   });
 
+  // 点击 购买 商品
+  $('.btn-addToBag').on('click', function () {
+    // TODO 添加购物车
+
+    // 弹出 成功添加购物车 提示
+    AddItemModal.open();
+    setTimeout(function () {
+      AddItemModal.close();
+    }, 1500);
+  });
+
   // Shopping Cart
   // 初始化 确认删除 弹出框
   try {
-    var CartOptions = {
+    var Options = {
       closeOnOutsideClick: false,
       closeOnCancel: false,
       hashTracking: false
     };
-    var CartModal = $('[data-remodal-id=cartmodal]').remodal(CartOptions);
+    // 删除购物车商品 提示框
+    var CartModal = $('[data-remodal-id=cartmodal]').remodal(Options);
+    // Shopping Detail 添加购物车成功 提示框
+    var AddItemModal = $('[data-remodal-id=additem-modal]').remodal(Options);
+    // Shopping Detail 添加购物车失败 提示框
+    var AddItemFailModal = $('[data-remodal-id=additemfail-modal]').remodal(Options);
   } catch (e) {}
 
   // 触发删除 购物车商品
@@ -189,6 +202,26 @@ window.onload = function () {
     $('.restPwd-content').addClass('hidden').removeClass('active');
     $('.login-content').removeClass('hidden').addClass('active');
     $('.login-title').text('Sign in with Motif Account');
+  });
+
+  // 图片延迟加载
+  $('img.img-lazy').lazyload({
+    threshold: 200,
+    effect: 'fadeIn'
+  });
+
+  // 图片放大镜
+  jQuery_1_6(function () {
+    jQuery_1_6('#jqzoom').jqzoom({
+      zoomType: 'standard',
+      xOffset: 40,
+      title: false,
+      lens: true,
+      preloadImages: false,
+      alwaysOn: false,
+      zoomWidth: 550,
+      zoomHeight: 550
+    });
   });
 })(jQuery, Swiper);
 //# sourceMappingURL=common.js.map
