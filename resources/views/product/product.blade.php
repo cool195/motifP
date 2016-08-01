@@ -197,28 +197,27 @@
     <div class="row p-t-20x">
         @foreach($recommended['list'] as $list)
             <div class="col-md-3 col-xs-6">
-                <a href="/product/{{$list['spu']}}">
-                    <div class="productList-item">
-                        <div class="image-container">
-                            <img class="img-fluid img-lazy"
-                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}"
-                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@70.png"
-                                 alt="{{ $list['main_title'] }}">
-                            <div class="bg-heart">
-                                <span class="product-heart btn-heart @if(in_array($list['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$list['spu']}}"><i class="iconfont icon-onheart font-size-lxx"></i></span>
-                            </div>
-                        </div>
-                        <div class="price-caption helveBold">
-                            <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{ $list['main_title'] }}</div>
-                            <div class="text-center">
-                                <span class="font-size-md text-primary p-r-5x">${{ number_format(($list['skuPrice']['sale_price'] / 100), 2) }}</span>
-                                @if($list['skuPrice']['sale_price'] != $list['skuPrice']['price'])
-                                    <span class="font-size-base text-common text-throughLine">${{ number_format(($list['skuPrice']['price'] / 100), 2) }}</span>
-                                @endif
-                            </div>
+                <div class="productList-item">
+                    <div class="image-container">
+                        <a href="/product/{{$list['spu']}}">
+                        <img class="img-fluid img-lazy"
+                             data-original="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}"
+                             src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                             alt="{{ $list['main_title'] }}">
+                        <div class="bg-heart"></div>
+                        </a>
+                        <span class="product-heart btn-heart @if(in_array($list['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$list['spu']}}"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                    </div>
+                    <div class="price-caption helveBold">
+                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{ $list['main_title'] }}</div>
+                        <div class="text-center">
+                            <span class="font-size-md text-primary p-r-5x">${{ number_format(($list['skuPrice']['sale_price'] / 100), 2) }}</span>
+                            @if($list['skuPrice']['sale_price'] != $list['skuPrice']['price'])
+                                <span class="font-size-base text-common text-throughLine">${{ number_format(($list['skuPrice']['price'] / 100), 2) }}</span>
+                            @endif
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         @endforeach
     </div>
