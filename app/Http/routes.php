@@ -123,6 +123,8 @@ Route::get('/addFacebookEmail', 'AuthController@addFacebookEmail');
 
 //Address Start
 Route::resource('/address','AddressController');
+
+Route::get('/address/{aid}', 'AddressController@getAddrDetail')->where(['spu' => '[0-9]+']);
 //Address End
 
 

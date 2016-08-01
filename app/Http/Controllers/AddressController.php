@@ -23,6 +23,13 @@ class AddressController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('useraddr', $params);
+        if($result['success'] && !empty($result['data']['list'])){
+            $addrList = array();
+            foreach($result['data']['success'] as $list){
+                $addrList[$list['receiving_id']] = $list['receiving_id'];
+            }
+            $result['data']['list'] = $addrList;
+        }
         return $result;
     }
 
@@ -100,6 +107,19 @@ class AddressController extends BaseController
         );
         $result = $this->request('useraddr', $params);
         return $result;
+    }
+    
+    public function getAddrDetail($aid)
+    {
+        $result = $this->index();
+        $addr = array();
+        if(!empty($result['data']['list'][$aid])){
+            $addr = $result['data']['list'][$aid];
+        }else{
+            $result = $this->getUserDefaultAddr();
+            $addr = $result['data'];
+        }
+        return $addr;
     }
 
     //获取默认地址
