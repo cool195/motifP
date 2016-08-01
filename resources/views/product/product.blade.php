@@ -1,5 +1,5 @@
 <!-- header start-->
-@include('header')
+@include('header',['title'=>$data['main_title'],'description'=>$data['intro_short']])
 <!-- header end-->
 
 <!-- 内容 -->

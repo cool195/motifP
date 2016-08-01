@@ -2,16 +2,14 @@
 <html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{$title or 'Exclusive Fashion Accessories Designed by the World’s Top Fashion Bloggers, Instagrammers and Digital Influencers'}}</title>
+    <meta name="description" content="{{$description or 'Your style is unique and cutting edge - your fashion should be too.Exclusive, limited edition accessories designed by the world’s top fashion bloggers, Instagrammers and digital influencers.'}}">
+    <meta name="keywords" content="{{$keywords or 'fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy'}}">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Shopping Cart</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="apple-touch-icon" href="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png">
-
     <link rel="stylesheet" href="{{config('runtime.Image_URL')}}/styles/vendor.css">
-
     <link rel="stylesheet" href="{{config('runtime.Image_URL')}}/styles/common.css">
-
 </head>
 <body>
 <!-- 头部 -->
