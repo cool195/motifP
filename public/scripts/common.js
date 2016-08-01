@@ -298,13 +298,14 @@ window.onload = function () {
 
     // 点击 "心" 关注商品
     $('.product-heart').on('click', function () {
+        var $this = $(this);
         $.ajax({
-            url: '/wishlist/' + $(this).data('spu'),
+            url: '/wishlist/' + $this.data('spu'),
             type: 'GET',
         })
             .done(function (data) {
                 if (data.success) {
-                    $(this).toggleClass('active');
+                    $this.toggleClass('active');
                 }
             });
 
