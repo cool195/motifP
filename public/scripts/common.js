@@ -492,6 +492,25 @@ window.onload = function () {
         $(this).addClass('active');
         $('#defaultAddr').html($(this).data('info'));
     });
+
+    // 生成订单
+    $('.btn-toCheckout').on('click', function () {
+        $.ajax({
+            url: '/order',
+            type: 'POST',
+            data: {
+                aid:$('#defaultAddr').data('aid'),
+                cps:$('input[name="ccps"]').val(),
+                remark:$('input[name="cremark"]').val(),
+                stype:$('input[name="shippingMethod"]:checked').val(),
+            }
+        })
+            .done(function (data) {
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                }
+            })
+    });
     // Checkout End
 
 

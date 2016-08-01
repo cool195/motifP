@@ -90,15 +90,14 @@
                  id="addrShowHide">
                 <span class="sanBold">Shipping Address</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span id="defaultAddr">
-                        @foreach($address['data']['list'] as $value)
-                            @if($value['isDefault'])
-                                {{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}
-                            @endif
-                            @break($value['isDefault'])
-                            {{$value['country']}}
-                        @endforeach
-                    </span>
+                    @forelse ($address['data']['list'] as $value)
+                        @if($value['isDefault'])
+                            <span id="defaultAddr" data-aid="{{$value['receiving_id']}}">{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}</span>
+                        @endif
+                        @break($value['isDefault'])
+                    @empty
+                        <span id="defaultAddr" data-aid="0"></span>
+                    @endforelse
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
@@ -248,7 +247,7 @@
                     <div class="row p-x-20x p-t-20x">
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
-                                <input type="radio" @if($k==0){{'checked'}}@endif value="" id="" name="shipping-method">
+                                <input type="radio" @if($k==0){{'checked'}}@endif name="shippingMethod" value="{{$list['logistics_type']}}">
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
                                     +${{ number_format(($list['price'] / 100), 2) }}</label>
                             </div>
@@ -266,7 +265,7 @@
                     <span class="sanBold">Promotion Code</span>
                 </div>
                 <div class="showHide-body flex flex-alignCenter pull-right">
-                    <div><input type="text" class="form-control contrlo-lg text-primary input-promotion disabled"></div>
+                    <div><input type="text" name="ccps" class="form-control contrlo-lg text-primary input-promotion disabled"></div>
                     <div class="p-l-20x"><a href="#" class="btn btn-primary btn-md">Continue</a></div>
                 </div>
                 <span class="pull-right showHide-simpleInfo promotion-info">
@@ -287,7 +286,7 @@
             </div>
             <div class="showHide-body p-x-20x p-b-20x">
                 <div class="p-x-20x p-b-20x">
-                    <textarea name="" class="form-control disabled" cols="30" rows="4"></textarea>
+                    <textarea name="cremark" class="form-control disabled" cols="30" rows="4"></textarea>
                 </div>
                 <div class="text-right"><a href="#" class="btn btn-primary btn-md">Save</a></div>
             </div>
@@ -307,7 +306,6 @@
                 </div>
             </div>
         </div>
-
         <!-- 提交按钮 -->
         <div class="p-y-40x text-right">
             <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout">Proceed To Checkout</a>
