@@ -25,8 +25,8 @@ class AddressController extends BaseController
         $result = $this->request('useraddr', $params);
         if($result['success'] && !empty($result['data']['list'])){
             $addrList = array();
-            foreach($result['data']['success'] as $list){
-                $addrList[$list['receiving_id']] = $list['receiving_id'];
+            foreach($result['data']['list'] as $list){
+                $addrList[$list['receiving_id']] = $list;
             }
             $result['data']['list'] = $addrList;
         }
@@ -108,8 +108,15 @@ class AddressController extends BaseController
         $result = $this->request('useraddr', $params);
         return $result;
     }
-    
-    public function getAddrDetail($aid)
+
+    /*
+     * 查看地址详情 GET
+     *
+     * @params int $aid
+     * @return array;
+     *
+     * */
+    public function show($aid)
     {
         $result = $this->index();
         $addr = array();
