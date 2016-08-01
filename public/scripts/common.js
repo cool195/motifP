@@ -581,7 +581,6 @@ window.onload = function () {
         var $warningInfo = $email.parent().siblings('.warning-info');
         var inputText = $email.val();
         var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
-        console.log(inputText);
         if ("" == inputText || undefined == inputText || null == inputText) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(emailNull);
@@ -603,7 +602,6 @@ window.onload = function () {
             passwordLength = "Oops, that's not a match.";
         var $warningInfo = $password.parent().siblings('.warning-info');
         var inputText = $password.val();
-        console.log(inputText);
         if ("" == inputText || undefined == inputText || null == inputText) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(passwordNull);
@@ -718,7 +716,6 @@ window.onload = function () {
         var nicknameNull = "Please enter your nickname";
         var $warningInfo = $nickname.parent().siblings('.warning-info');
         var inputText = $nickname.val();
-        console.log(inputText);
         if ("" == inputText || undefined == inputText || null == inputText) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(nicknameNull);
