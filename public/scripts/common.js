@@ -748,8 +748,8 @@ window.onload = function () {
                         if (data.success) {
                             window.location.href = data.redirectUrl;
                         } else {
-                            $('.warning-info').removeClass('off');
-                            $('.warning-info').children('span').html(data.prompt_msg);
+                            $('.login-pw').parent().siblings('.warning-info').removeClass('off');
+                            $('.login-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
                         }
                     })
                     .fail(function() {
@@ -849,8 +849,8 @@ window.onload = function () {
                         if (data.success) {
                             window.location.href = data.redirectUrl;
                         } else {
-                            $('.warning-info').removeClass('off');
-                            $('.warning-info').children('span').html(data.prompt_msg);
+                            $('.login-pw').parent().siblings('.warning-info').removeClass('off');
+                            $('.login-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
                         }
                     })
                     .fail(function() {
