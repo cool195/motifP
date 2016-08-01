@@ -479,10 +479,6 @@ window.onload = function () {
                 $AddressContent.slideUp(500);
                 $AddressContent.removeClass('active');
                 $('#addrShowHide').removeClass('active');
-            } else {
-                $AddressContent.slideDown(500);
-                $AddressContent.addClass('active');
-                $('#addrShowHide').addClass('active');
             }
         }
     });
@@ -492,14 +488,33 @@ window.onload = function () {
         $('.address-item').removeClass('active');
         $(this).addClass('active');
         $('#defaultAddr').html($(this).data('info'));
+        $('#defaultAddr').data('city',$(this).data('city'));
         $('#defaultAddr').data('aid',$(this).data('aid'));
     });
 
     // 选择地址增值服务
     $('input[type="radio"]').on('click', function () {
         if($(this).data('price') != 0){
-            $('.shipMto').html('Ship to');
-            $('.shipMtoprice').html('$'+$(this).data('price')/100);
+            $('.shipMto').html('Ship to '+$('#defaultAddr').data('city')+':');
+            $('.shipMtoprice').html('$'+($(this).data('price')/100).toFixed(2));
+            $('.totalPrice').html('$'+(($(this).data('price')+$('.totalPrice').data('price'))/100).toFixed(2));
+            $('.shopping-methodPrice').removeClass('hidden');
+        }else{
+            $('.totalPrice').html('$'+(($('.totalPrice').data('price')-$(this).data('price'))/100).toFixed(2));
+            $('.shopping-methodPrice').addClass('hidden');
+        }
+        $('.shippingMethodShow').html($(this).data('show'));
+    });
+
+    // 收起地址增值服务
+    $('#smsubmit').on('click',function(){
+        if ($('#smShowHide').children('.showHide-simpleInfo').length > 0) {
+            var $sm = $('#smShowHide').siblings('.showHide-body');
+            if ($sm.hasClass('active')) {
+                $sm.slideUp(500);
+                $sm.removeClass('active');
+                $('#smShowHide').removeClass('active');
+            }
         }
     });
 

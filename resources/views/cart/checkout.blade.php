@@ -92,7 +92,7 @@
                 <span class="pull-right showHide-simpleInfo">
                     @forelse ($address['data']['list'] as $value)
                         @if($value['isDefault'])
-                            <span id="defaultAddr"
+                            <span id="defaultAddr" data-city="{{$value['detail_address1']}}"
                                   data-aid="{{$value['receiving_id']}}">{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}</span>
                         @endif
                         @break($value['isDefault'])
@@ -120,6 +120,7 @@
                                     <div class="p-a-10x">
                                         <div class="address-item p-x-20x p-y-15x @if($value['isDefault']){{'active'}}@endif"
                                              data-info="{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}"
+                                             data-city="{{$value['detail_address1']}}"
                                              data-aid="{{$value['receiving_id']}}">
                                             <div class="address-info">
                                                 {{$value['name']}}<br>
@@ -235,10 +236,10 @@
 
         {{--Shipping Method--}}
         <div class="box-shadow bg-white m-t-20x">
-            <div class="font-size-md p-x-20x p-y-15x btn-showHide">
+            <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="smShowHide">
                 <span class="sanBold">Shipping Method</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span>{{$logisticsList['list'][0]['logistics_name']}}</span>
+                    <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}}</span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
@@ -250,13 +251,13 @@
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
                                 <input type="radio" @if($k==0){{'checked'}}@endif name="shippingMethod" data-price="{{$list['price']}}"
-                                       value="{{$list['logistics_type']}}">
+                                       value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
                                     +${{ number_format(($list['price'] / 100), 2) }}</label>
                             </div>
                         @endforeach
                     </div>
-                    <div class="text-right"><a href="#" class="btn btn-primary btn-md">Continue</a></div>
+                    <div class="text-right"><a href="javascript:;" id="smsubmit" class="btn btn-primary btn-md">Continue</a></div>
                 </div>
             </div>
         </div>
@@ -274,7 +275,7 @@
                 </div>
                 <span class="pull-right showHide-simpleInfo promotion-info">
                     <span id="pcode"></span>
-                    <a class="p-l-40x">Edit</a>
+                    <a class="p-l-40x font-size-md ">Edit</a>
                 </span>
             </div>
         </div>
@@ -308,13 +309,13 @@
                     </div>
                 @endif
 
-                <div class="text-right">
+                <div class="text-right shopping-methodPrice hidden">
                     <span class="shipMto"></span>
                     <span class="sanBold cart-price shipMtoprice"></span>
                 </div>
 
                 <div class="text-right"><span>Bag Subtotal:</span><span
-                            class="sanBold cart-price">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
+                            class="sanBold cart-price totalPrice" data-price="{{$accountList['pay_amount']}}">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
                 </div>
             </div>
         </div>
