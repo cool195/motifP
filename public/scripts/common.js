@@ -550,7 +550,7 @@ window.onload = function () {
         })
             .done(function (data) {
                 if (data.success) {
-                    //window.location.href = data.redirectUrl;
+                    window.location.href = data.redirectUrl;
                 } else {
                     $('.login-pw').parent().siblings('.warning-info').removeClass('off');
                     $('.login-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
@@ -750,7 +750,7 @@ window.onload = function () {
         })
             .done(function (data) {
                 if (data.success) {
-
+                    window.location.href = data.redirectUrl;
                 } else {
                     $('.register-pw').parent().siblings('.warning-info').removeClass('off');
                     $('.register-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);

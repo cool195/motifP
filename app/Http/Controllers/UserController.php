@@ -10,9 +10,10 @@ class UserController extends BaseController
 {
     const Token = 'eeec7a32dcb6115abfe4a871c6b08b47';
 
-    public function register()
+    public function register(Request $request)
     {
-        return view('user.register');
+        $referer = $request->input('referer');
+        return view('user.register', ['referer' => $referer]);
     }
 
     public function signup(Request $request)
@@ -28,14 +29,24 @@ class UserController extends BaseController
         );
         $result = $this->request('user', $params);
         if ($result['success']) {
-            $result['redirectUrl'] = "/login";
+            Session::forget('user');
+            Session::put('user', $result['data']);
+            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'login')) ? $request->input('referer') : "/daily";
+        } else {
+            $result['prompt_msg'] = $result['error_msg'];
         }
         return $result;
     }
 
-    public function login()
+    public function login(Request $request)
     {
-        return view('user.login');
+        if(Session::has('user')){
+            //return redirect('daily');
+        }
+
+        $referer = $request->input('url') ? $request->input('url') : $request->header('referer');
+        Session::put('redirectUrl', $referer);
+        return view('user.login', ['referer' => $referer]);
     }
 
     public function signin(Request $request)
