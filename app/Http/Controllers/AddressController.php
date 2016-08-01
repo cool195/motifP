@@ -108,8 +108,15 @@ class AddressController extends BaseController
         $result = $this->request('useraddr', $params);
         return $result;
     }
-    
-    public function getAddrDetail($aid)
+
+    /*
+     * 查看地址详情 GET
+     *
+     * @params int $aid
+     * @return array;
+     *
+     * */
+    public function show($aid)
     {
         $result = $this->index();
         $addr = array();

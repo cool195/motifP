@@ -121,7 +121,6 @@ Route::get('/addFacebookEmail', 'AuthController@addFacebookEmail');
 //第三方登录End
 
 //Address Start
-Route::get('/address/{aid}', 'AddressController@getAddrDetail')->where(['spu' => '[0-9]+']);
 
 Route::resource('/address','AddressController');
 
