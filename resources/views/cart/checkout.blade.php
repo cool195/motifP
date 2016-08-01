@@ -92,7 +92,8 @@
                 <span class="pull-right showHide-simpleInfo">
                     @forelse ($address['data']['list'] as $value)
                         @if($value['isDefault'])
-                            <span id="defaultAddr" data-aid="{{$value['receiving_id']}}">{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}</span>
+                            <span id="defaultAddr"
+                                  data-aid="{{$value['receiving_id']}}">{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}</span>
                         @endif
                         @break($value['isDefault'])
                     @empty
@@ -213,7 +214,8 @@
                                         </select>
                                     </div>
                                     <div class="p-l-20x m-b-20x">
-                                        <input type="text" name="zip" id="zip" class="form-control contrlo-lg text-primary"
+                                        <input type="text" name="zip" id="zip"
+                                               class="form-control contrlo-lg text-primary"
                                                placeholder="Zip Code">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -247,7 +249,8 @@
                     <div class="row p-x-20x p-t-20x">
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
-                                <input type="radio" @if($k==0){{'checked'}}@endif name="shippingMethod" value="{{$list['logistics_type']}}">
+                                <input type="radio" @if($k==0){{'checked'}}@endif name="shippingMethod" data-price="{{$list['price']}}"
+                                       value="{{$list['logistics_type']}}">
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
                                     +${{ number_format(($list['price'] / 100), 2) }}</label>
                             </div>
@@ -265,7 +268,8 @@
                     <span class="sanBold">Promotion Code</span>
                 </div>
                 <div class="showHide-body flex flex-alignCenter pull-right">
-                    <div><input type="text" name="ccps" class="form-control contrlo-lg text-primary input-promotion disabled"></div>
+                    <div><input type="text" name="ccps"
+                                class="form-control contrlo-lg text-primary input-promotion disabled"></div>
                     <div class="p-l-20x"><a href="#" class="btn btn-primary btn-md">Continue</a></div>
                 </div>
                 <span class="pull-right showHide-simpleInfo promotion-info">
@@ -303,9 +307,12 @@
                                 class="sanBold cart-price">${{ number_format(($accountList['vas_amount'] / 100), 2) }}</span>
                     </div>
                 @endif
-                <div class="text-right"><span>Ship to:</span><span
-                            class="sanBold cart-price">$20.00</span>
+
+                <div class="text-right">
+                    <span class="shipMto"></span>
+                    <span class="sanBold cart-price shipMtoprice"></span>
                 </div>
+
                 <div class="text-right"><span>Bag Subtotal:</span><span
                             class="sanBold cart-price">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
                 </div>

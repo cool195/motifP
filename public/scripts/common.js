@@ -495,6 +495,14 @@ window.onload = function () {
         $('#defaultAddr').data('aid',$(this).data('aid'));
     });
 
+    // 选择地址增值服务
+    $('input[type="radio"]').on('click', function () {
+        if($(this).data('price') != 0){
+            $('.shipMto').html('Ship to');
+            $('.shipMtoprice').html('$'+$(this).data('price')/100);
+        }
+    });
+
     // 生成订单
     $('.btn-toCheckout').on('click', function () {
         $.ajax({
