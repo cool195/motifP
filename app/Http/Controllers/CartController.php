@@ -172,7 +172,7 @@ class CartController extends BaseController
     {
         $params = array(
             'cmd' => 'verifycoupon',
-            'couponcode' => $request->input('couponcode', $request->input('cps')),
+            'couponcode' => $request->input('cps'),
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );
