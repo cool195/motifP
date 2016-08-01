@@ -532,6 +532,7 @@ window.onload = function () {
                 .done(function (data) {
                     if (data.success) {
                         //初始化 需要修改的地址信息
+                        console.info(data.data);
                     }
                 })
         }
@@ -602,6 +603,7 @@ window.onload = function () {
 
     // 进入添加地址界面
     $('.btn-addNewAddress').on('click', function () {
+        initAddAddressForm();
         $('.select-address').addClass('disabled');
         $('.add-address').removeClass('disabled');
         $('#addAddressForm').data('aid', '');

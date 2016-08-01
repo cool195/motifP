@@ -105,7 +105,7 @@
             <hr class="hr-common m-a-0">
             <div class="showHide-body address-content @if(empty($address['data']['list'])){{'active'}}@endif">
                 {{--选择地址--}}
-                <div class="p-a-20x select-address @if(empty($address['data']['list'])) disabled @endif">
+                <div class="p-a-20x select-address @if(empty($address['data']['list'])){{'disabled'}}@endif">
                     <div class="flex flex-alignCenter flex-fullJustified">
                         <span class="font-size-md">Selecy Shipping Address</span>
                                 <span class="font-size-md pull-right">
@@ -145,7 +145,7 @@
                                                        id="btnAddrShowHide">Continue</a></div>
                 </div>
                 {{--添加\修改 地址--}}
-                <div class="p-a-20x add-address @if(!empty($address['data']['list'])) disabled @endif">
+                <div class="p-a-20x add-address @if(!empty($address['data']['list'])){{'disabled'}}@endif">
                     <div class="inline">
                         <span class="font-size-md">Add Shipping Address</span>
                         <span class="font-size-md pull-right">
