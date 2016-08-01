@@ -448,6 +448,7 @@ window.onload = function () {
     // Login
 
     function login_signin() {
+        $('[data-role="login-submit"]').addClass('disabled');
         $.ajax({
             url: '/signin',
             type: 'POST',
@@ -462,6 +463,7 @@ window.onload = function () {
                 }
             })
             .always(function () {
+                $('[data-role="login-submit"]').removeClass('disabled');
             });
     }
 

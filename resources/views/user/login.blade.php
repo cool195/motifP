@@ -48,7 +48,7 @@
                     </a>
                 </div>
                 <div class="p-y-15x text-center">
-                    <div class="text-main">Don’t have an account? <a class="text-link" href="#">Sign up</a></div>
+                    <div class="text-main">Don’t have an account? <a class="text-link" href="/register">Sign up</a></div>
                 </div>
             </div>
 
