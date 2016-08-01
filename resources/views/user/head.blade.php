@@ -29,7 +29,7 @@
         </nav>
         <nav class="navbar-right">
             <ul class="nav navbar-primary">
-                <li class="nav-item p-x-10x"><a href="#" class="nav-link">Sign up</a></li>
+                {{--<li class="nav-item p-x-10x"><a href="/register" class="nav-link">Sign up</a></li>--}}
             </ul>
         </nav>
     </div>

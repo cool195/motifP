@@ -498,6 +498,7 @@ window.onload = function () {
     // Login
 
     function login_signin() {
+        $('[data-role="login-submit"]').addClass('disabled');
         $.ajax({
             url: '/signin',
             type: 'POST',
@@ -507,11 +508,12 @@ window.onload = function () {
                 if (data.success) {
                     //window.location.href = data.redirectUrl;
                 } else {
-                    $('.warning-info').removeClass('off');
-                    $('.warning-info').children('span').html(data.prompt_msg);
+                    $('.login-pw').parent().siblings('.warning-info').removeClass('off');
+                    $('.login-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
             .always(function () {
+                $('[data-role="login-submit"]').removeClass('disabled');
             });
     }
 
@@ -531,6 +533,9 @@ window.onload = function () {
                     $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
+            .always(function() {
+
+            });
 
     }
 
@@ -706,8 +711,8 @@ window.onload = function () {
                 if (data.success) {
 
                 } else {
-                    $('.warning-info').removeClass('off');
-                    $('.warning-info').children('span').html(data.prompt_msg);
+                    $('.register-pw').parent().siblings('.warning-info').removeClass('off');
+                    $('.register-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
             .always(function () {
@@ -762,8 +767,9 @@ window.onload = function () {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
-                    $('.warning-info').removeClass('off');
-                    $('.warning-info').children('span').html('Oops something went wrong, please go to the sign-in page and reset your password.');
+                    $('.reset-lastpw').parent().siblings('.warning-info').removeClass('off');
+                    $('.reset-lastpw').parent().siblings('.warning-info').children('span').html('Oops something went wrong, please go to the sign-in page and reset your password.');
+
                 }
             })
     }
