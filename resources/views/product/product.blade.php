@@ -40,7 +40,7 @@
                                         <div class="productImg-item swiper-slide p-r-10x">
                                             <a href="javascript:void(0);"
                                                rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$image['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$image['img_path']."'}"}}">
-                                                <img class="img-thumbnail small-img img-lazy active"
+                                                <img class="img-thumbnail small-img img-lazy @if(0 == $key) active @endif"
                                                      src="/images/product/bg-product@140.png"
                                                      data-original="{{config('runtime.CDN_URL')}}/n3/{{$image['img_path']}}"
                                                      width="110" height="110" alt="{{ $data['main_title'] }}">
