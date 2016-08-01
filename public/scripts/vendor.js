@@ -18983,7 +18983,7 @@ else if (typeof define === 'function' && define.amd) {
             if (e.which == 37 && !i.hasClass("zoom")) a();
             if (e.which == 39 && !i.hasClass("zoom")) f();
         });
-        if (e(".gallery li a").length == 1) e(".gallery li a")[0].addClass("zoom");
+        if (e(".gallery li a").length == 1) e(".gallery li a").addClass("zoom");
         e(".zoom, .gallery li a").on("click", u);
     })();
     (function () {
