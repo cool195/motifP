@@ -841,10 +841,14 @@ window.onload = function () {
     //reset end
 
     // 图片延迟加载
-    $('img.img-lazy').lazyload({
-        threshold: 200,
-        effect: 'fadeIn'
-    });
+    try {
+        $('img.img-lazy').lazyload({
+            threshold: 200,
+            effect: 'fadeIn'
+        });
+    }
+    catch (e) {
+    }
 
     // 图片放大镜
     jQuery_1_6(function () {
