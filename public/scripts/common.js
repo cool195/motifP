@@ -497,10 +497,10 @@ window.onload = function () {
         if($(this).data('price') != 0){
             $('.shipMto').html('Ship to '+$('#defaultAddr').data('city')+':');
             $('.shipMtoprice').html('$'+($(this).data('price')/100).toFixed(2));
-            $('.totalPrice').html('$'+(($(this).data('price')+$('.totalPrice').data('price'))/100).toFixed(2));
+            $('.totalPrice').html('$'+(($(this).data('price')+$('.totalPrice').data('price')-$('.code-price').data('price'))/100).toFixed(2));
             $('.shopping-methodPrice').removeClass('hidden');
         }else{
-            $('.totalPrice').html('$'+(($('.totalPrice').data('price')-$(this).data('price'))/100).toFixed(2));
+            $('.totalPrice').html('$'+(($('.totalPrice').data('price')-$(this).data('price')-$('.code-price').data('price'))/100).toFixed(2));
             $('.shopping-methodPrice').addClass('hidden');
         }
         $('.shippingMethodShow').html($(this).data('show'));
@@ -516,6 +516,23 @@ window.onload = function () {
                 $('#smShowHide').removeClass('active');
             }
         }
+    });
+
+    // 验证code
+    $('#pcsubmit').on('click',function(){
+        $.ajax({
+            url: '/cart/accountlist?couponcode='+$('input[name="ccps"]').val()+'&logisticstype='+$('input[name="shippingMethod"]:checked').val(),
+            type: 'GET',
+        })
+            .done(function (data) {
+                if(data.success){
+                    $('.promotion-code').removeClass('hidden');
+                    $('#pcode').html($('input[name="ccps"]').val()+ ' -$'+(data.data.cps_amount/100).toFixed(2));
+                    $('.code-price').html('-$'+(data.data.cps_amount/100).toFixed(2));
+                    $('.code-price').data('price',data.data.cps_amount);
+                    $('.totalPrice').html('$'+(data.data.pay_amount/100).toFixed(2));
+                }
+            })
     });
 
     // 生成订单

@@ -271,7 +271,7 @@
                 <div class="showHide-body flex flex-alignCenter pull-right">
                     <div><input type="text" name="ccps"
                                 class="form-control contrlo-lg text-primary input-promotion disabled"></div>
-                    <div class="p-l-20x"><a href="#" class="btn btn-primary btn-md">Continue</a></div>
+                    <div class="p-l-20x"><a href="javascript:;" id="pcsubmit" class="btn btn-primary btn-md">Continue</a></div>
                 </div>
                 <span class="pull-right showHide-simpleInfo promotion-info">
                     <span id="pcode"></span>
@@ -312,6 +312,11 @@
                 <div class="text-right shopping-methodPrice hidden">
                     <span class="shipMto"></span>
                     <span class="sanBold cart-price shipMtoprice"></span>
+                </div>
+                {{--promotion-code 添加 hidden样式--}}
+                <div class="text-right promotion-code hidden">
+                    <span>Promotion code:</span>
+                    <span class="sanBold cart-price code-price" data-price="0"></span>
                 </div>
 
                 <div class="text-right"><span>Bag Subtotal:</span><span

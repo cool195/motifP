@@ -72,9 +72,8 @@ Route::post('/cart/alterQtty', 'CartController@alterCartProQtty');
 
 Route::post('/cart/operate', 'CartController@operateCartProduct');
 
-Route::post('/cart/verifycoupon', 'CartController@verifyCoupon');
+Route::post('coupon','CartController@verifyCoupon');
 //Cart End
-
 
 //Order Start
 Route::post('/order', 'OrderController@orderSubmit');
