@@ -298,8 +298,13 @@
                 <div class="text-right"><span>Items(3):</span><span
                             class="sanBold cart-price">${{number_format(($accountList['total_amount'] / 100), 2)}}</span>
                 </div>
-                <div class="text-right"><span>Additional Services:</span><span
-                            class="sanBold cart-price">${{ number_format(($accountList['vas_amount'] / 100), 2) }}</span>
+                @if($accountList['vas_amount'] !=0)
+                    <div class="text-right"><span>Additional Services:</span><span
+                                class="sanBold cart-price">${{ number_format(($accountList['vas_amount'] / 100), 2) }}</span>
+                    </div>
+                @endif
+                <div class="text-right"><span>Ship to:</span><span
+                            class="sanBold cart-price">$20.00</span>
                 </div>
                 <div class="text-right"><span>Bag Subtotal:</span><span
                             class="sanBold cart-price">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>

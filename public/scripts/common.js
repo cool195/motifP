@@ -491,6 +491,7 @@ window.onload = function () {
         $('.address-item').removeClass('active');
         $(this).addClass('active');
         $('#defaultAddr').html($(this).data('info'));
+        $('#defaultAddr').data('aid',$(this).data('aid'));
     });
 
     // 生成订单
