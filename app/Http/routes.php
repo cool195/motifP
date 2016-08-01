@@ -121,9 +121,7 @@ Route::get('/addFacebookEmail', 'AuthController@addFacebookEmail');
 //第三方登录End
 
 //Address Start
-
 Route::resource('/address','AddressController');
-
 //Address End
 
 
