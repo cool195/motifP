@@ -711,8 +711,8 @@ window.onload = function () {
                 if (data.success) {
 
                 } else {
-                    $('.warning-info').removeClass('off');
-                    $('.warning-info').children('span').html(data.prompt_msg);
+                    $('.register-pw').parent().siblings('.warning-info').removeClass('off');
+                    $('.register-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
             .always(function () {
@@ -767,8 +767,9 @@ window.onload = function () {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
-                    $('.warning-info').removeClass('off');
-                    $('.warning-info').children('span').html('Oops something went wrong, please go to the sign-in page and reset your password.');
+                    $('.reset-lastpw').parent().siblings('.warning-info').removeClass('off');
+                    $('.reset-lastpw').parent().siblings('.warning-info').children('span').html('Oops something went wrong, please go to the sign-in page and reset your password.');
+
                 }
             })
     }
