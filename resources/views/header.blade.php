@@ -22,7 +22,6 @@
                 <li class="nav-item nav-logo"><a href="/daily">
                         <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png" alt="logo"></a>
                 </li>
-                <li class="nav-item"><a class="nav-link active" href="/daily">DAILY</a></li>
                 <li class="nav-item"><a class="nav-link" href="/designer">DESIGNER</a></li>
                 <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
