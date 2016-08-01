@@ -1,3 +1,5 @@
+/*global jQuery Swiper template*/
+
 'use strict';
 
 window.onload = function () {
@@ -210,12 +212,12 @@ window.onload = function () {
     //检查库存
     function checkStock(skus) {
         $.ajax({
-            url: '/checkStock',
-            type: 'POST',
-            data: {
-                skus: skus
-            }
-        })
+                url: '/checkStock',
+                type: 'POST',
+                data: {
+                    skus: skus
+                }
+            })
             .done(function (data) {
                 if (data.success) {
                     if (data.data.list[0].stockStatus === 1) {
@@ -247,12 +249,12 @@ window.onload = function () {
                 }
             });
             $.ajax({
-                url: '/cart/add',
-                type: 'POST',
-                data: {
-                    operate: operate
-                }
-            })
+                    url: '/cart/add',
+                    type: 'POST',
+                    data: {
+                        operate: operate
+                    }
+                })
                 .done(function (data) {
                     if (data.success) {
                         // 弹出 成功添加购物车 提示
@@ -300,9 +302,9 @@ window.onload = function () {
     $('.product-heart').on('click', function () {
         var $this = $(this);
         $.ajax({
-            url: '/wishlist/' + $this.data('spu'),
-            type: 'GET',
-        })
+                url: '/wishlist/' + $this.data('spu'),
+                type: 'GET',
+            })
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
@@ -325,7 +327,8 @@ window.onload = function () {
         var AddItemModal = $('[data-remodal-id=additem-modal]').remodal(Options);
         // Shopping Detail 添加购物车失败 提示框
         var AddItemFailModal = $('[data-remodal-id=additemfail-modal]').remodal(Options);
-    } catch (e) {}
+    } catch (e) {
+    }
 
     //购物车修改购买数量
     $('.cupn').on('click', function (e) {
@@ -335,13 +338,13 @@ window.onload = function () {
             tObj.addClass('disabled');
             var skuQty = $('#csku' + nowsku).html() * 1 + tObj.data('num');
             $.ajax({
-                url: 'cart/alterQtty',
-                type: 'POST',
-                data: {
-                    sku: nowsku,
-                    qtty: skuQty,
-                }
-            })
+                    url: 'cart/alterQtty',
+                    type: 'POST',
+                    data: {
+                        sku: nowsku,
+                        qtty: skuQty,
+                    }
+                })
                 .done(function (data) {
                     if (data.success) {
                         $('#csku' + nowsku).html(skuQty);
@@ -360,9 +363,9 @@ window.onload = function () {
     //动态更新购物车价格总数量
     function cart_update_info() {
         $.ajax({
-            url: '/cart/list',
-            type: 'GET',
-        })
+                url: '/cart/list',
+                type: 'GET',
+            })
             .done(function (data) {
                 if (data.success) {
                     $('#total_amount').html('$' + data.data.total_amount / 100);
@@ -379,10 +382,10 @@ window.onload = function () {
         var sku = $(this).data('sku');
         var thisParent = $(this).parents('.cartProduct-item');
         $.ajax({
-            url: '/cart/operate',
-            type: 'POST',
-            data: {cmd: action, sku: sku}
-        })
+                url: '/cart/operate',
+                type: 'POST',
+                data: {cmd: action, sku: sku}
+            })
             .done(function (data) {
                 if (data.success) {
                     if (action == 'movetocart' || action == 'save') {
@@ -421,13 +424,16 @@ window.onload = function () {
             $zip = $('input[name="zip"]');
         if (reg.test($email.val()) && checkValid($email) && checkValid($name) && checkValid($city) && checkValid($tel) && checkValid($addr1) && checkValid($zip)) {
             $.ajax({
-                url: '/address',
-                type: 'POST',
-                data: $('#addAddressForm').serialize()
-            })
+                    url: '/address',
+                    type: 'POST',
+                    data: $('#addAddressForm').serialize()
+                })
                 .done(function (data) {
                     if (data.success) {
-                        alert('ok')
+                        $('.select-address').removeClass('disabled');
+                        $('.add-address').addClass('disabled');
+                        $('#addAddressForm').find('input[type="text"]').val('');
+                        getAddressList();
                     }
                 })
         }
@@ -435,7 +441,7 @@ window.onload = function () {
     });
 
     //焦点事件去掉warning
-    $('#addAddressForm input[type="text"]').on('focus',function(){
+    $('#addAddressForm input[type="text"]').on('focus', function () {
         $(this).siblings('.warning-info').addClass('off');
     });
 
@@ -471,6 +477,15 @@ window.onload = function () {
         }
     });
 
+    // 设置地址为默认地址
+    $('.btn-makePrimary').on('click', function () {
+        if ($(this).hasClass('active')) {
+            $('input[name="isd"]:eq(1)').attr("checked", 'checked');
+        } else {
+            $('input[name="isd"]:eq(0)').attr("checked", 'checked');
+        }
+    });
+
     // 控制 div 显示隐藏
     $('#btnAddrShowHide').on('click', function () {
         if ($('#addrShowHide').children('.showHide-simpleInfo').length > 0) {
@@ -484,30 +499,60 @@ window.onload = function () {
     });
 
     // 选择地址
-    $('.address-item').on('click', function () {
+    $('.address-list').on('click', '.address-item', function () {
         $('.address-item').removeClass('active');
         $(this).addClass('active');
         $('#defaultAddr').html($(this).data('info'));
-        $('#defaultAddr').data('city',$(this).data('city'));
-        $('#defaultAddr').data('aid',$(this).data('aid'));
+        $('#defaultAddr').data('city', $(this).data('city'));
+        $('#defaultAddr').data('aid', $(this).data('aid'));
     });
+
+    // 修改地址
+    $('.address-list').on('click', '.btn-editAddress', function () {
+        $('.select-address').addClass('disabled');
+        $('.add-address').removeClass('disabled');
+        // 修改的地址 ID
+        var AddressId = $(this).parent('.address-item').data('aid');
+        $('#addAddressForm').data('aid', AddressId);
+
+
+    });
+
+    // 初始化 添加地址表单
+    function initAddAddressForm() {
+        var AddressId = $('#addAddressForm').data('aid');
+        if (AddressId === '' || AddressId === undefined) {
+            // 添加地址
+        } else {
+            // 修改地址
+            $.ajax({
+                    url: '/address/' + AddressId,
+                    type: 'GET'
+                })
+                .done(function (data) {
+                    if (data.success) {
+                        //初始化 需要修改的地址信息
+                    }
+                })
+        }
+    }
 
     // 选择地址增值服务
     $('input[type="radio"]').on('click', function () {
-        if($(this).data('price') != 0){
-            $('.shipMto').html('Ship to '+$('#defaultAddr').data('city')+':');
-            $('.shipMtoprice').html('$'+($(this).data('price')/100).toFixed(2));
-            $('.totalPrice').html('$'+(($(this).data('price')+$('.totalPrice').data('price'))/100).toFixed(2));
+        if ($(this).data('price') != 0) {
+            $('.shipMto').html('Ship to ' + $('#defaultAddr').data('city') + ':');
+            $('.shipMtoprice').html('$' + ($(this).data('price') / 100).toFixed(2));
+            $('.totalPrice').html('$' + (($(this).data('price') + $('.totalPrice').data('price')) / 100).toFixed(2));
             $('.shopping-methodPrice').removeClass('hidden');
-        }else{
-            $('.totalPrice').html('$'+(($('.totalPrice').data('price')-$(this).data('price'))/100).toFixed(2));
+        } else {
+            $('.totalPrice').html('$' + (($('.totalPrice').data('price') - $(this).data('price')) / 100).toFixed(2));
             $('.shopping-methodPrice').addClass('hidden');
         }
         $('.shippingMethodShow').html($(this).data('show'));
     });
 
     // 收起地址增值服务
-    $('#smsubmit').on('click',function(){
+    $('#smsubmit').on('click', function () {
         if ($('#smShowHide').children('.showHide-simpleInfo').length > 0) {
             var $sm = $('#smShowHide').siblings('.showHide-body');
             if ($sm.hasClass('active')) {
@@ -521,21 +566,54 @@ window.onload = function () {
     // 生成订单
     $('.btn-toCheckout').on('click', function () {
         $.ajax({
-            url: '/order',
-            type: 'POST',
-            data: {
-                aid:$('#defaultAddr').data('aid'),
-                cps:$('input[name="ccps"]').val(),
-                remark:$('input[name="cremark"]').val(),
-                stype:$('input[name="shippingMethod"]:checked').val(),
-            }
-        })
+                url: '/order',
+                type: 'POST',
+                data: {
+                    aid: $('#defaultAddr').data('aid'),
+                    cps: $('input[name="ccps"]').val(),
+                    remark: $('input[name="cremark"]').val(),
+                    stype: $('input[name="shippingMethod"]:checked').val(),
+                }
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 }
             })
     });
+
+    // 进入添加地址界面
+    $('.btn-addNewAddress').on('click', function () {
+        $('.select-address').addClass('disabled');
+        $('.add-address').removeClass('disabled');
+        $('#addAddressForm').data('aid', '');
+    });
+
+    // 加载地址列表
+    function getAddressList() {
+        $.ajax({
+                url: '/address',
+                type: 'GET'
+            })
+            .done(function (data) {
+                if (data.success) {
+                    appendAddressList(data.data);
+                }
+            })
+    }
+
+    // 遍历模板, 插入数据到指定位置
+    function appendAddressList(AddressList) {
+        var TplHtml = template('tpl-address', AddressList);
+        var StageCache = $.parseHTML(TplHtml);
+        $('.address-list').html(StageCache);
+    }
+
+    // 首次加载 图片列表信息
+    $(function () {
+        getAddressList();
+    });
+
     // Checkout End
 
 
@@ -544,10 +622,10 @@ window.onload = function () {
     function login_signin() {
         $('[data-role="login-submit"]').addClass('disabled');
         $.ajax({
-            url: '/signin',
-            type: 'POST',
-            data: $('#login').serialize()
-        })
+                url: '/signin',
+                type: 'POST',
+                data: $('#login').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     //window.location.href = data.redirectUrl;
@@ -563,10 +641,10 @@ window.onload = function () {
 
     function login_forgetPassword() {
         $.ajax({
-            url: '/forget',
-            type: 'POST',
-            data: $('#forgetPassword').serialize()
-        })
+                url: '/forget',
+                type: 'POST',
+                data: $('#forgetPassword').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     $('.restPwd-content').addClass('hidden').removeClass('active');
@@ -577,7 +655,7 @@ window.onload = function () {
                     $('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
-            .always(function() {
+            .always(function () {
 
             });
 
@@ -744,10 +822,10 @@ window.onload = function () {
 
     function register_signup() {
         $.ajax({
-            url: '/signup',
-            type: 'POST',
-            data: $('#register').serialize()
-        })
+                url: '/signup',
+                type: 'POST',
+                data: $('#register').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
 
@@ -768,9 +846,9 @@ window.onload = function () {
             $('div[data-role="register-submit"]').addClass('disabled');
         }
     });
-    
+
     $('.register-email').on('keyup blur', function () {
-        if(login_validationEmail($(this))) {
+        if (login_validationEmail($(this))) {
             $('div[data-role="register-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="register-submit"]').addClass('disabled');
@@ -778,7 +856,7 @@ window.onload = function () {
     })
 
     $('.register-pw').on('keyup blur', function () {
-        if(login_validationPassword($(this))) {
+        if (login_validationPassword($(this))) {
             $('div[data-role="register-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="register-submit"]').addClass('disabled');
@@ -800,10 +878,10 @@ window.onload = function () {
 
     function reset_password() {
         $.ajax({
-            type: 'POST',
-            url: '/reset',
-            data: $('#reset').serialize()
-        })
+                type: 'POST',
+                url: '/reset',
+                data: $('#reset').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -820,7 +898,7 @@ window.onload = function () {
         var passwordConfirm = 'New password does not match';
         //var $warningInfo = $('.warning-info');
         var $warningInfo = $pw.parent().siblings('.warning-info');
-        if(newPwd !== confirmPwd) {
+        if (newPwd !== confirmPwd) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(passwordConfirm);
             flag = false;
@@ -831,7 +909,7 @@ window.onload = function () {
     }
 
 
-    $('.reset-pw').on('keyup blur', function() {
+    $('.reset-pw').on('keyup blur', function () {
         if (login_validationPassword($(this))) {
             $('div[data-role="reset-submit"]').removeClass('disabled');
         } else {
@@ -839,10 +917,10 @@ window.onload = function () {
         }
     })
 
-    $('.reset-lastpw').on('keyup blur', function() {
+    $('.reset-lastpw').on('keyup blur', function () {
         var newPwd = $('input[name="pw"]').val(),
             confirmPwd = $(this).val();
-        if (login_validationPassword($(this)) && reset_validateConfirmPwd($(this), newPwd, confirmPwd) ) {
+        if (login_validationPassword($(this)) && reset_validateConfirmPwd($(this), newPwd, confirmPwd)) {
             $('div[data-role="reset-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="reset-submit"]').addClass('disabled');
@@ -850,8 +928,8 @@ window.onload = function () {
     })
 
 
-    $('[data-role="reset-submit"]').on('click', function() {
-        if($(this).hasClass('disabled')){
+    $('[data-role="reset-submit"]').on('click', function () {
+        if ($(this).hasClass('disabled')) {
             return;
         } else {
             reset_password();

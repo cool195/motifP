@@ -178,7 +178,7 @@
             <a class="nav-link font-size-md active" href="#Descripyion" data-toggle="tab">Descripyion</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link font-size-md" href="#Free" data-toggle="tab">Free Shipping & Free Return</a>
+            <a class="nav-link font-size-md btn-free" href="#Free" data-toggle="tab">Free Shipping & Free Return</a>
         </li>
     </ul>
     <div class="tab-content bg-white p-a-20x">
@@ -186,10 +186,10 @@
             <p class="m-b-0">{!! str_replace("\n", "<br>",  $data['intro_short']) !!}</p>
         </div>
         <div class="tab-pane text-primary" id="Free">
-            <p class="m-b-0">222 Yueqing Yang is an international fashion designer whose collections focus on the use of
-                almost totally abandoned traditional craftsmanship techniques combined with modern inspirations. Her
-                work has
-                been celebrated in fashion festivals and museums in London, Beijing and Shanghai.</p>
+            <div class="loading" style="display: block;">
+                <div class="loader"></div>
+                <div class="text-center p-t-10x">Loading...</div>
+            </div>
         </div>
     </div>
 </div>
