@@ -92,16 +92,16 @@ class OrderController extends BaseController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'aid' => $request->input('aid'),
-            'paym' => $request->input('paym', "PayPal"),
-            'cps' => $request->input('cps', ""),
+            'paym' => "PayPal",
+            'cps' => $request->input('cps'),
             'remark' => $request->input('remark'),
             'stype' => $request->input('stype'),
-            'src' => $request->input('src', "H5"),
-            'ver' => $request->input('ver', 1)
+            'src' => "H5",
+            'ver' => 1
         );
         $result = $this->request("order", $params);
         if (!empty($result) && $result['success']) {
-            $result['redirectUrl'] = "/paypalorder?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
+            $result['redirectUrl'] = "/paypal?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
             return $result;
         } else {
             return $result;

@@ -77,9 +77,12 @@ Route::post('/cart/verifycoupon', 'CartController@verifyCoupon');
 
 
 //Order Start
-
+Route::post('/order', 'OrderController@orderSubmit');
 //Order End
 
+//Paypal Start
+Route::get('/paypal', 'PaypalController@index');
+//Paypal End
 
 //User Start
 Route::match(['get', 'post'], '/rsynclogin', 'UserController@rsyncLogin');

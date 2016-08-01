@@ -14,7 +14,7 @@
                             @foreach($data['productImages'] as $key => $image)
                                 @if(0 == $key)
                                     <li style="display:block">
-                                        <a href="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}"
+                                        <a href="{{config('runtime.CDN_URL')}}/n0/{{$image['img_path']}}"
                                            class="jqzoom" rel="gal1" title="triumph" id="jqzoom">
                                             <img class="img-fluid product-bigImg"
                                                  src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}">
@@ -23,8 +23,8 @@
                                 @else
                                     <li style="display:none">
                                         <a title="" class="imgmore"
-                                           href="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}"><img
-                                                    src="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}"></a>
+                                           href="{{config('runtime.CDN_URL')}}/n0/{{$image['img_path']}}"><img
+                                                    src="{{config('runtime.CDN_URL')}}/n4/{{$image['img_path']}}"></a>
                                     </li>
                                 @endif
                             @endforeach
@@ -38,7 +38,7 @@
                                 @foreach($data['productImages'] as $key => $image)
                                         <div class="productImg-item swiper-slide p-r-10x">
                                             <a href="javascript:void(0);"
-                                               rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n3/{{$image['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$image['img_path']."'}"}}">
+                                               rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$image['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$image['img_path']."'}"}}">
                                                 <img class="img-thumbnail small-img active"
                                                      src="{{config('runtime.CDN_URL')}}/n3/{{$image['img_path']}}"
                                                      width="110" height="110" alt="{{ $data['main_title'] }}">

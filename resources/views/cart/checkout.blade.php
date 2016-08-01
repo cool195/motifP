@@ -310,7 +310,7 @@
 
         <!-- 提交按钮 -->
         <div class="p-y-40x text-right">
-            <a href="#" class="btn btn-block btn-primary btn-lg btn-toCheckout">Proceed To Checkout</a>
+            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout">Proceed To Checkout</a>
         </div>
     </div>
 </section>
@@ -332,9 +332,3 @@
 </div>
 
 @include('footer')
-
-</body>
-<script src="/scripts/vendor.js"></script>
-
-<script src="/scripts/common.js"></script>
-</html>
