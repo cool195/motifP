@@ -425,19 +425,37 @@ window.onload = function () {
             $addr1 = $('input[name="addr1"]'),
             $zip = $('input[name="zip"]');
         if (reg.test($email.val()) && checkValid($email) && checkValid($name) && checkValid($city) && checkValid($tel) && checkValid($addr1) && checkValid($zip)) {
-            $.ajax({
-                    url: '/address',
-                    type: 'POST',
-                    data: $('#addAddressForm').serialize()
-                })
-                .done(function (data) {
-                    if (data.success) {
-                        $('.select-address').removeClass('disabled');
-                        $('.add-address').addClass('disabled');
-                        $('#addAddressForm').find('input[type="text"]').val('');
-                        getAddressList();
-                    }
-                })
+            var Aid = $('#addAddressForm').data('aid');
+            if (Aid === '' || Aid === undefined) {
+                $.ajax({
+                        url: '/address',
+                        type: 'POST',
+                        data: $('#addAddressForm').serialize()
+                    })
+                    .done(function (data) {
+                        if (data.success) {
+                            $('.select-address').removeClass('disabled');
+                            $('.add-address').addClass('disabled');
+                            $('#addAddressForm').find('input[type="text"]').val('');
+                            getAddressList();
+                        }
+                    })
+            } else {
+                $.ajax({
+                        url: '/address/' + Aid,
+                        type: 'PUT',
+                        data: $('#addAddressForm').serialize()
+                    })
+                    .done(function (data) {
+                        if (data.success) {
+                            $('.select-address').removeClass('disabled');
+                            $('.add-address').addClass('disabled');
+                            $('#addAddressForm').find('input[type="text"]').val('');
+                            getAddressList();
+                        }
+                    })
+            }
+
         }
         return false;
     });
@@ -516,8 +534,7 @@ window.onload = function () {
         // 修改的地址 ID
         var AddressId = $(this).parent('.address-item').data('aid');
         $('#addAddressForm').data('aid', AddressId);
-
-
+        initAddAddressForm();
     });
 
     // 初始化 添加地址表单
@@ -532,10 +549,17 @@ window.onload = function () {
                     type: 'GET'
                 })
                 .done(function (data) {
-                    if (data.success) {
-                        //初始化 需要修改的地址信息
-                        console.info(data.data);
-                    }
+                    //初始化 修改地址 from 表单
+                    $('input[name="email"]').val(data.email);
+                    $('input[name="name"]').val(data.name);
+                    $('input[name="city"]').val(data.city);
+                    $('input[name="state"]').val(data.state);
+                    $('input[name="tel"]').val(data.tel);
+                    $('input[name="addr1"]').val(data.addr1);
+                    $('input[name="addr2"]').val(data.addr2);
+                    $('input[name="zip"]').val(data.zip);
+                    // TODO
+                    //$('select[name="country"]').val();  设置 城市
                 })
         }
     }
@@ -543,13 +567,13 @@ window.onload = function () {
     // 选择地址增值服务
     $('input[type="radio"]').on('click', function () {
 
-        if($(this).data('price') != 0){
-            $('.shipMto').html('Ship to '+$('#defaultAddr').data('city')+':');
-            $('.shipMtoprice').html('$'+($(this).data('price')/100).toFixed(2));
-            $('.totalPrice').html('$'+(($(this).data('price')+$('.totalPrice').data('price')-$('.code-price').data('price'))/100).toFixed(2));
+        if ($(this).data('price') != 0) {
+            $('.shipMto').html('Ship to ' + $('#defaultAddr').data('city') + ':');
+            $('.shipMtoprice').html('$' + ($(this).data('price') / 100).toFixed(2));
+            $('.totalPrice').html('$' + (($(this).data('price') + $('.totalPrice').data('price') - $('.code-price').data('price')) / 100).toFixed(2));
             $('.shopping-methodPrice').removeClass('hidden');
-        }else{
-            $('.totalPrice').html('$'+(($('.totalPrice').data('price')-$(this).data('price')-$('.code-price').data('price'))/100).toFixed(2));
+        } else {
+            $('.totalPrice').html('$' + (($('.totalPrice').data('price') - $(this).data('price') - $('.code-price').data('price')) / 100).toFixed(2));
             $('.shopping-methodPrice').addClass('hidden');
         }
         $('.shippingMethodShow').html($(this).data('show'));
@@ -568,24 +592,24 @@ window.onload = function () {
     });
 
     // 添加code
-    $('#pcsubmit').on('click',function(){
+    $('#pcsubmit').on('click', function () {
         $.ajax({
-            url: '/cart/accountlist?couponcode='+$('input[name="ccps"]').val()+'&logisticstype='+$('input[name="shippingMethod"]:checked').val(),
-            type: 'GET',
-        })
+                url: '/cart/accountlist?couponcode=' + $('input[name="ccps"]').val() + '&logisticstype=' + $('input[name="shippingMethod"]:checked').val(),
+                type: 'GET',
+            })
             .done(function (data) {
-                if(data.success){
+                if (data.success) {
                     $('.promotion-code').removeClass('hidden');
-                    $('#pcode').html($('input[name="ccps"]').val()+ ' -$'+(data.data.cps_amount/100).toFixed(2));
-                    $('.code-price').html('-$'+(data.data.cps_amount/100).toFixed(2));
-                    $('.code-price').data('price',data.data.cps_amount);
-                    $('.totalPrice').html('$'+(data.data.pay_amount/100).toFixed(2));
+                    $('#pcode').html($('input[name="ccps"]').val() + ' -$' + (data.data.cps_amount / 100).toFixed(2));
+                    $('.code-price').html('-$' + (data.data.cps_amount / 100).toFixed(2));
+                    $('.code-price').data('price', data.data.cps_amount);
+                    $('.totalPrice').html('$' + (data.data.pay_amount / 100).toFixed(2));
                 }
             })
     });
 
     // 添加备注
-    $('#crsubmit').on('click',function(){
+    $('#crsubmit').on('click', function () {
         $('#srmessage').html($('textarea[name="cremark"]').val());
         if ($('#crShowHide').children('.showHide-simpleInfo').length > 0) {
             var $sm = $('#crShowHide').siblings('.showHide-body');
@@ -844,7 +868,7 @@ window.onload = function () {
     function attachSignin(element) {
         console.log(element.id);
         auth2.attachClickHandler(element, {},
-            function(googleUser) {
+            function (googleUser) {
                 var profile = googleUser.getBasicProfile();
                 $.ajax({
                         url: '/googlelogin',
@@ -856,7 +880,7 @@ window.onload = function () {
                             avatar: profile.getImageUrl()
                         }
                     })
-                    .done(function(data) {
+                    .done(function (data) {
                         console.log("success");
                         if (data.success) {
                             window.location.href = data.redirectUrl;
@@ -865,15 +889,15 @@ window.onload = function () {
                             $('.login-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
                         }
                     })
-                    .fail(function() {
+                    .fail(function () {
                         console.log("error");
                     })
-                    .always(function() {
+                    .always(function () {
                         console.log("complete");
                     });
 
             },
-            function(error) {
+            function (error) {
                 console.error(JSON.stringify(error, undefined, 2));
             });
     }
@@ -881,8 +905,8 @@ window.onload = function () {
     var ClientID = '21307862595-iabkmrtg7r2ioq6qmu1e81de66thp4p2.apps.googleusercontent.com';
     // var googleUser = {};
     var auth2 = {};
-    var initGoogle = function() {
-        gapi.load('auth2', function() {
+    var initGoogle = function () {
+        gapi.load('auth2', function () {
             // Retrieve the singleton for the GoogleAuth library and set up the client.
             auth2 = gapi.auth2.init({
                 client_id: ClientID,
@@ -917,7 +941,7 @@ window.onload = function () {
         }
     }
 
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
             appId: '270298046670851',
             cookie: true, // enable cookies to allow the server to access
@@ -929,7 +953,7 @@ window.onload = function () {
     };
 
     // Load the SDK asynchronously
-    (function(d, s, id) {
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s);
@@ -942,7 +966,7 @@ window.onload = function () {
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
         console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me?fields=id,name,picture,email', function(response) {
+        FB.api('/me?fields=id,name,picture,email', function (response) {
             console.log(response);
             if (response.email === '' && response === undefined) {
                 window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
@@ -957,7 +981,7 @@ window.onload = function () {
                             avatar: response.picture.data.url
                         }
                     })
-                    .done(function(data) {
+                    .done(function (data) {
                         console.log("success");
                         if (data.success) {
                             window.location.href = data.redirectUrl;
@@ -966,10 +990,10 @@ window.onload = function () {
                             $('.login-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
                         }
                     })
-                    .fail(function() {
+                    .fail(function () {
                         console.log("error");
                     })
-                    .always(function() {
+                    .always(function () {
                         console.log("complete");
                     });
 
@@ -978,9 +1002,9 @@ window.onload = function () {
         });
     }
 
-    $('#facebookLogin').click(function() {
+    $('#facebookLogin').click(function () {
         /* Act on the event */
-        FB.login(function(response) {
+        FB.login(function (response) {
             // handle the response
             statusChangeCallback(response);
         }, {
