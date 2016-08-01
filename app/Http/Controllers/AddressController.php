@@ -73,7 +73,7 @@ class AddressController extends BaseController
             'cmd' => 'modify',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'aid' => $request->input('aid'),
+            'aid' => $id,
             'email' => $request->input('email'),
             'tel' => $request->input('tel'),
             'name' => $request->input("name"),
@@ -82,7 +82,7 @@ class AddressController extends BaseController
             'city' => $request->input("city"),
             'state' => $request->input("state"),
             'zip' => $request->input("zip"),
-            'idnum' => $id,
+            'idnum' => $request->input("idnum"),
             'country' => $request->input("country"),
             'isd' => $request->input("isd", 0),
         );

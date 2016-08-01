@@ -1031,6 +1031,7 @@ window.onload = function () {
     }
 
     function register_signup() {
+        $('[data-role="register-submit"]').addClass('disabled');
         $.ajax({
                 url: '/signup',
                 type: 'POST',
@@ -1045,7 +1046,7 @@ window.onload = function () {
                 }
             })
             .always(function () {
-
+                $('[data-role="register-submit"]').removeClass('disabled');
             });
     }
 
@@ -1087,6 +1088,7 @@ window.onload = function () {
     //reset start
 
     function reset_password() {
+        $('[data-role="reset-submit"]').addClass('disabled');
         $.ajax({
                 type: 'POST',
                 url: '/reset',
@@ -1100,6 +1102,9 @@ window.onload = function () {
                     $('.reset-lastpw').parent().siblings('.warning-info').children('span').html('Oops something went wrong, please go to the sign-in page and reset your password.');
 
                 }
+            })
+            .always(function (){
+                $('[data-role="reset-submit"]').removeClass('disabled');
             })
     }
 
