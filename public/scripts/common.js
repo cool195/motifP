@@ -255,7 +255,11 @@ window.onload = function () {
             })
                 .done(function (data) {
                     if (data.success) {
-                        alert('ok')
+                        // 弹出 成功添加购物车 提示
+                        AddItemModal.open();
+                        setTimeout(function () {
+                            AddItemModal.close();
+                        }, 1500);
                     } else {
                         alert('error')
                     }
@@ -300,7 +304,7 @@ window.onload = function () {
         })
             .done(function (data) {
                 if (data.success) {
-                    $('.product-heart').toggleClass('active');
+                    $(this).toggleClass('active');
                 }
             });
 
@@ -309,14 +313,18 @@ window.onload = function () {
     // Shopping Cart
     // 初始化 确认删除 弹出框
     try {
-        var CartOptions = {
+        var Options = {
             closeOnOutsideClick: false,
             closeOnCancel: false,
             hashTracking: false
         };
-        var CartModal = $('[data-remodal-id=cartmodal]').remodal(CartOptions);
-    } catch (e) {
-    }
+        // 删除购物车商品 提示框
+        var CartModal = $('[data-remodal-id=cartmodal]').remodal(Options);
+        // Shopping Detail 添加购物车成功 提示框
+        var AddItemModal = $('[data-remodal-id=additem-modal]').remodal(Options);
+        // Shopping Detail 添加购物车失败 提示框
+        var AddItemFailModal = $('[data-remodal-id=additemfail-modal]').remodal(Options);
+    } catch (e) {}
 
     //购物车修改购买数量
     $('.cupn').on('click', function (e) {
@@ -356,7 +364,7 @@ window.onload = function () {
         })
             .done(function (data) {
                 if (data.success) {
-                    $('#total_amount').html(data.data.total_amount / 100);
+                    $('#total_amount').html('$' + data.data.total_amount / 100);
                     $('#total_sku_qtty').html('Items(' + data.data.total_sku_qtty + '):');
                     $('#vas_amount').html('$' + data.data.vas_amount / 100);
                     $('#pay_amount').html('$' + data.data.pay_amount / 100);
@@ -391,18 +399,43 @@ window.onload = function () {
         CartModal.open();
     });
 
+    //验证表单
+    function checkValid($input) {
+        var value = $input.val();
+        if (value == '' || value == undefined) {
+            $input.siblings('.warning-info').removeClass('off');
+            return false;
+        }
+        return true;
+    }
+
     // Checkout Start
     $('#addAddress').on('click', function () {
-        $.ajax({
-            url: '/address',
-            type: 'POST',
-            data: $('#addAddressForm').serialize()
-        })
-            .done(function (data) {
-                if (data.success) {
-                    alert('ok')
-                }
+        var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        var $email = $('input[name="email"]'),
+            $name = $('input[name="name"]'),
+            $city = $('input[name="city"]'),
+            $tel = $('input[name="tel"]'),
+            $addr1 = $('input[name="addr1"]'),
+            $zip = $('input[name="zip"]');
+        if (reg.test($email.val()) && checkValid($email) && checkValid($name) && checkValid($city) && checkValid($tel) && checkValid($addr1) && checkValid($zip)) {
+            $.ajax({
+                url: '/address',
+                type: 'POST',
+                data: $('#addAddressForm').serialize()
             })
+                .done(function (data) {
+                    if (data.success) {
+                        alert('ok')
+                    }
+                })
+        }
+        return false;
+    });
+
+    //焦点事件去掉warning
+    $('#addAddressForm input[type="text"]').on('focus',function(){
+        $(this).siblings('.warning-info').addClass('off');
     });
 
     // 控制 div 显示隐藏
@@ -437,10 +470,27 @@ window.onload = function () {
         }
     });
 
+    // 控制 div 显示隐藏
+    $('#btnAddrShowHide').on('click', function () {
+        if ($('#addrShowHide').children('.showHide-simpleInfo').length > 0) {
+            var $AddressContent = $('#addrShowHide').siblings('.showHide-body');
+            if ($AddressContent.hasClass('active')) {
+                $AddressContent.slideUp(500);
+                $AddressContent.removeClass('active');
+                $('#addrShowHide').removeClass('active');
+            } else {
+                $AddressContent.slideDown(500);
+                $AddressContent.addClass('active');
+                $('#addrShowHide').addClass('active');
+            }
+        }
+    });
+
     // 选择地址
     $('.address-item').on('click', function () {
         $('.address-item').removeClass('active');
         $(this).addClass('active');
+        $('#defaultAddr').html($(this).data('info'));
     });
     // Checkout End
 
@@ -498,7 +548,7 @@ window.onload = function () {
         //var $warningInfo = $('.warning-info');
         var $warningInfo = $email.parent().siblings('.warning-info');
         var inputText = $email.val();
-        var reg = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
         console.log(inputText);
         if ("" == inputText || undefined == inputText || null == inputText) {
             $warningInfo.removeClass('off');
@@ -710,14 +760,14 @@ window.onload = function () {
             url: '/reset',
             data: $('#reset').serialize()
         })
-        .done(function(data) {
-            if(data.success) {
-                window.location.href = data.redirectUrl;
-            } else {
-                $('.warning-info').removeClass('off');
-                $('.warning-info').children('span').html('Oops something went wrong, please go to the sign-in page and reset your password.');
-            }
-        })
+            .done(function (data) {
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                } else {
+                    $('.warning-info').removeClass('off');
+                    $('.warning-info').children('span').html('Oops something went wrong, please go to the sign-in page and reset your password.');
+                }
+            })
     }
 
     function reset_validateConfirmPwd($pw, newPwd, confirmPwd) {
@@ -729,11 +779,12 @@ window.onload = function () {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(passwordConfirm);
             flag = false;
-        }else{
+        } else {
             $warningInfo.addClass('off');
         }
         return flag;
     }
+
 
     $('.reset-pw').on('keyup blur', function() {
         if (login_validationPassword($(this))) {
@@ -753,17 +804,37 @@ window.onload = function () {
         }
     })
 
+
     $('[data-role="reset-submit"]').on('click', function() {
         if($(this).hasClass('disabled')){
             return;
-        }else{
+        } else {
             reset_password();
         }
     });
 
 
-
     //reset end
+
+    // 图片延迟加载
+    $('img.img-lazy').lazyload({
+        threshold: 200,
+        effect: 'fadeIn'
+    });
+
+    // 图片放大镜
+    jQuery_1_6(function () {
+        jQuery_1_6('#jqzoom').jqzoom({
+            zoomType: 'standard',
+            xOffset: 40,
+            title: false,
+            lens: true,
+            preloadImages: false,
+            alwaysOn: false,
+            zoomWidth: 550,
+            zoomHeight: 550
+        });
+    });
 })(jQuery, Swiper);
 //# sourceMappingURL=common.js.map
 

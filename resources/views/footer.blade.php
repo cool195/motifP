@@ -52,3 +52,8 @@
         <div class="p-t-10x text-center text-common font-size-xs">Copyright © 2016 MOTIF Inc. All rights reserved.</div>
     </div>
 </footer>
+
+</body>
+<script src="/scripts/vendor.js"></script>
+<script src="/scripts/common.js"></script>
+</html>
