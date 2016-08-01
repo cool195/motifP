@@ -81,6 +81,7 @@ Route::post('/order', 'OrderController@orderSubmit');
 
 //Paypal Start
 Route::get('/paypal', 'PaypalController@index');
+Route::get('/paypalStatus', 'PaypalController@paypal');
 //Paypal End
 
 //User Start

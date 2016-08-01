@@ -248,6 +248,7 @@ window.onload = function () {
                     operate.VAList.push({'vas_id': val.vas_id, 'user_remark': $('#vas_id' + val.vas_id).val()});
                 }
             });
+            $('#productAddBag').addClass('disabled');
             $.ajax({
                     url: '/cart/add',
                     type: 'POST',
@@ -256,6 +257,7 @@ window.onload = function () {
                     }
                 })
                 .done(function (data) {
+                    $('#productAddBag').removeClass('disabled');
                     if (data.success) {
                         // 弹出 成功添加购物车 提示
                         AddItemModal.open();

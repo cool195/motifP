@@ -30,12 +30,13 @@ class PaypalController extends BaseController
                     'paytype' => 'PayPalNative',
                     'showname' => 'PayPal',
                     'devicedata' => "H5",
-                    'nonce' => '{"response_type":"payment","response":{"id":"'.$result->id.'","state":"'.$result->state.'","create_time":"'.$result->create_time.'","intent":"'.$result->intent.'"}}',
+                    'nonce' => '{"response_type":"payment","response":{"id":"' . $result->id . '","state":"' . $result->state . '","create_time":"' . $result->create_time . '","intent":"' . $result->intent . '"}}',
                 );
                 $content = $this->request("pay", $params);
+                $content['params'] = $params;
                 return $content;
-                if(!empty($content) && $content['success']){
-                    return redirect('/success?orderid='.$params['orderid']);
+                if (!empty($content) && $content['success']) {
+                    return redirect('/success?orderid=' . $params['orderid']);
                 }
             }
         }
