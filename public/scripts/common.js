@@ -565,7 +565,7 @@ window.onload = function () {
         }
     });
 
-    // 验证code
+    // 添加code
     $('#pcsubmit').on('click',function(){
         $.ajax({
             url: '/cart/accountlist?couponcode='+$('input[name="ccps"]').val()+'&logisticstype='+$('input[name="shippingMethod"]:checked').val(),
@@ -580,6 +580,19 @@ window.onload = function () {
                     $('.totalPrice').html('$'+(data.data.pay_amount/100).toFixed(2));
                 }
             })
+    });
+
+    // 添加备注
+    $('#crsubmit').on('click',function(){
+        $('#srmessage').html($('textarea[name="cremark"]').val());
+        if ($('#crShowHide').children('.showHide-simpleInfo').length > 0) {
+            var $sm = $('#crShowHide').siblings('.showHide-body');
+            if ($sm.hasClass('active')) {
+                $sm.slideUp(500);
+                $sm.removeClass('active');
+                $('#crShowHide').removeClass('active');
+            }
+        }
     });
 
     // 生成订单
@@ -846,8 +859,8 @@ window.onload = function () {
                         if (data.success) {
                             window.location.href = data.redirectUrl;
                         } else {
-                            $('.warning-info').removeClass('off');
-                            $('.warning-info').children('span').html(data.prompt_msg);
+                            $('.login-pw').parent().siblings('.warning-info').removeClass('off');
+                            $('.login-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
                         }
                     })
                     .fail(function() {
@@ -947,8 +960,8 @@ window.onload = function () {
                         if (data.success) {
                             window.location.href = data.redirectUrl;
                         } else {
-                            $('.warning-info').removeClass('off');
-                            $('.warning-info').children('span').html(data.prompt_msg);
+                            $('.login-pw').parent().siblings('.warning-info').removeClass('off');
+                            $('.login-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
                         }
                     })
                     .fail(function() {

@@ -291,7 +291,7 @@
 
         <!-- Special Request (optional) -->
         <div class="box-shadow bg-white m-t-20x">
-            <div class="p-x-20x p-y-15x font-size-md btn-showHide">
+            <div class="p-x-20x p-y-15x font-size-md btn-showHide"  id="crShowHide">
                 <span class="sanBold">Special Request (optional)</span>
                 <span class="pull-right showHide-simpleInfo">
                     <span id="srmessage"></span>
@@ -302,7 +302,7 @@
                 <div class="p-x-20x p-b-20x">
                     <textarea name="cremark" class="form-control disabled" cols="30" rows="4"></textarea>
                 </div>
-                <div class="text-right"><a href="#" class="btn btn-primary btn-md">Save</a></div>
+                <div class="text-right"><a href="javascript:;" id="crsubmit" class="btn btn-primary btn-md">Save</a></div>
             </div>
         </div>
 
