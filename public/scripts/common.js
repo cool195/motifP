@@ -552,12 +552,13 @@ window.onload = function () {
                     $('input[name="name"]').val(data.name);
                     $('input[name="city"]').val(data.city);
                     $('input[name="state"]').val(data.state);
-                    $('input[name="tel"]').val(data.tel);
-                    $('input[name="addr1"]').val(data.addr1);
-                    $('input[name="addr2"]').val(data.addr2);
+                    $('input[name="tel"]').val(data.telephone);
+                    $('input[name="addr1"]').val(data.detail_address1);
+                    $('input[name="addr2"]').val(data.detail_address2);
                     $('input[name="zip"]').val(data.zip);
                     // TODO
-                    //$('select[name="country"]').val();  设置 城市
+                    $('select[name="country"]').val();  //设置 城市
+                    $("select").find("option[text='" + data.country + "']").attr("selected", true);
                 })
         }
     }
@@ -1103,7 +1104,7 @@ window.onload = function () {
 
                 }
             })
-            .always(function (){
+            .always(function () {
                 $('[data-role="reset-submit"]').removeClass('disabled');
             })
     }
