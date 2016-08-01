@@ -29,7 +29,7 @@ class AuthController extends BaseController
         );
         $result = $this->request("user", $params);
         if ($result['success']) {
-            $result['redirectUrl'] = "/daily";
+            $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
         }
@@ -56,7 +56,7 @@ class AuthController extends BaseController
         );
         $result = $this->request("user", $params);
         if ($result['success']) {
-            $result['redirectUrl'] = "/daily";
+            $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
         }
