@@ -30,6 +30,10 @@
                     </fieldset>
                 </form>
                 <div class="p-t-30x">
+                    <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
+                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                        <span class="font-size-base">Please select size !</span>
+                    </div>
                     <div class="btn btn-primary btn-lg btn-block" data-role="login-submit">Login</div>
                 </div>
                 <div class="p-y-15x text-center">
