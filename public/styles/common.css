@@ -363,6 +363,10 @@ footer {
   display: none;
 }
 
+.promotion-code.hidden {
+  display: none;
+}
+
 .login-title {
   font-size: 3.125rem;
   overflow: hidden;
