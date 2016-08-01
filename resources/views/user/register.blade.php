@@ -35,6 +35,7 @@
                         <span class="font-size-base">Please select size !</span>
                     </div>
                 </fieldset>
+                <input type="hidden" name="referer" value="{{$referer}}">
             </form>
             <div class="p-t-30x">
                 <div class="btn btn-primary btn-lg btn-block" data-role="register-submit">Sign up</div>

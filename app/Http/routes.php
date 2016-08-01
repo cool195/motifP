@@ -112,8 +112,19 @@ Route::post('/user/uploadicon', 'UserController@uploadIcon');
 Route::get('/wishlist/{spu}', 'UserController@updateWishList')->where(['spu' => '[0-9]+']);
 //User End
 
+//第三方登录Start
+Route::post('/googlelogin', 'AuthController@googleLogin');
+
+Route::post('/facebooklogin', 'AuthController@facebookLogin');
+
+Route::get('/addFacebookEmail', 'AuthController@addFacebookEmail');
+
+//第三方登录End
+
 //Address Start
 Route::resource('/address','AddressController');
+
+Route::get('/address/{aid}', 'AddressController@getAddrDetail')->where(['spu' => '[0-9]+']);
 //Address End
 
 

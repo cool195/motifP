@@ -28,6 +28,7 @@
                             <span class="font-size-base">Please select size !</span>
                         </div>
                     </fieldset>
+                    <input type="hidden" name="referer" value="{{$referer}}">
                 </form>
                 <div class="p-t-30x">
                     <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
@@ -52,7 +53,7 @@
                     </a>
                 </div>
                 <div class="p-y-15x text-center">
-                    <div class="text-main">Don’t have an account? <a class="text-link" href="/register">Sign up</a></div>
+                    <div class="text-main">Don’t have an account? <a class="text-link" href="/register?referer={{$referer}}">Sign up</a></div>
                 </div>
             </div>
 
