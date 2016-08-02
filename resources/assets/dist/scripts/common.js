@@ -90,6 +90,9 @@ window.onload = function () {
     }, 1500);
   });
 
+  // 获取 Free Shipping & Free Return
+  $('.btn-free').on('click', function () {});
+
   // Shopping Cart
   // 初始化 确认删除 弹出框
   try {
@@ -114,34 +117,45 @@ window.onload = function () {
   // Checkout
   // 控制 div 显示隐藏
   $('.btn-showHide').on('click', function () {
-    if ($(this).children('.showHide-simpleInfo').length > 0) {
-      var $AddressContent = $(this).siblings('.showHide-body');
-      if ($AddressContent.hasClass('active')) {
-        $AddressContent.slideUp(500);
-        $AddressContent.removeClass('active');
-        $(this).removeClass('active');
-      } else {
-        $AddressContent.slideDown(500);
-        $AddressContent.addClass('active');
-        $(this).addClass('active');
-      }
+    var $AddressContent = $(this).siblings('.showHide-body');
+    if ($AddressContent.hasClass('active')) {
+      $AddressContent.slideUp(500);
+      $AddressContent.removeClass('active');
+      $(this).removeClass('active');
     } else {
-      var $AddressContent = $(this).siblings('.showHide-body');
-      var $SimpleInfo = $(this).siblings('.showHide-simpleInfo');
-      if ($AddressContent.hasClass('active')) {
-        $AddressContent.slideUp(500);
-        $AddressContent.removeClass('active');
-        $(this).removeClass('active');
-        $AddressContent.css('display', 'none');
-        $SimpleInfo.css('display', 'block');
-      } else {
-        $AddressContent.slideDown(500);
-        $AddressContent.addClass('active');
-        $(this).addClass('active');
-        $AddressContent.css('display', 'flex');
-        $SimpleInfo.css('display', 'none');
-      }
+      $AddressContent.slideDown(500);
+      $AddressContent.addClass('active');
+      $(this).addClass('active');
     }
+  });
+  // 单独控制 Promotion Code div 的显示隐藏
+  $('.btn-codeShowHide').on('click', function () {
+    var $AddressContent = $(this).siblings('.showHide-body');
+    var $SimpleInfo = $(this).siblings('.showHide-simpleInfo');
+    if ($AddressContent.hasClass('active')) {
+      $AddressContent.slideUp(500);
+      $AddressContent.removeClass('active');
+      $(this).removeClass('active');
+      $AddressContent.css('display', 'none');
+      $SimpleInfo.css('display', 'block');
+    } else {
+      $AddressContent.slideDown(500);
+      $AddressContent.addClass('active');
+      $(this).addClass('active');
+      $AddressContent.css('display', 'flex');
+      $SimpleInfo.css('display', 'none');
+    }
+  });
+
+  // 提交 Promotion Code
+  $('#pcsubmit').on('click', function () {
+    var $AddressContent = $(this).parent().parent('.showHide-body');
+    var $SimpleInfo = $(this).parent().parent().siblings('.showHide-simpleInfo');
+    $AddressContent.slideUp(500);
+    $AddressContent.removeClass('active');
+    $(this).removeClass('active');
+    $AddressContent.css('display', 'none');
+    $SimpleInfo.css('display', 'block');
   });
 
   // 选择地址
@@ -205,10 +219,12 @@ window.onload = function () {
   });
 
   // 图片延迟加载
-  $('img.img-lazy').lazyload({
-    threshold: 200,
-    effect: 'fadeIn'
-  });
+  try {
+    $('img.img-lazy').lazyload({
+      threshold: 200,
+      effect: 'fadeIn'
+    });
+  } catch (e) {}
 
   // 图片放大镜
   jQuery_1_6(function () {

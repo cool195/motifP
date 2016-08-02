@@ -42,7 +42,14 @@
         <li class="nav-item p-x-10x"><a href="#" class="nav-link">
           <img class="img-circle" src="/images/icon/apple-touch-icon.png" width="40" height="40" alt=""></a>
         </li>
-        <li class="nav-item p-x-20x"><a href="#" class="nav-link"><i class="iconfont icon-shopbag font-size-lg text-primary"></i></a></li>
+        <li class="nav-item p-x-20x">
+          <a href="#">
+            <div class="nav-shoppingCart">
+              <i class="iconfont icon-shopbag font-size-lg text-primary"></i>
+              <span class="shoppingCart-number"></span>
+            </div>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -183,7 +190,7 @@
       <hr class="hr-common m-a-0">
       <div class="showHide-body address-content">
         <!-- 添加地址 -->
-        <div class="p-a-20x add-address">
+        <div class="p-a-20x add-address disabled">
           <div class="inline">
             <span class="font-size-md">Add Shipping Address</span>
             <span class="font-size-md pull-right"><i class="iconfont icon-checkcircle text-primary font-size-lg"></i><a class="p-l-10x" href="#">Make Primary</a></span>
@@ -235,7 +242,7 @@
         </div>
 
         <!-- 选择地址 -->
-        <div class="p-a-20x select-address disabled">
+        <div class="p-a-20x select-address">
           <div class="flex flex-alignCenter flex-fullJustified">
             <span class="font-size-md">Selecy Shipping Address</span>
             <span class="font-size-md pull-right">
@@ -343,18 +350,23 @@
 
     <!-- Promotion Code -->
     <div class="box-shadow bg-white m-t-20x">
-      <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-        <div class="font-size-md btn-showHide active">
+      <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified promotionCode">
+        <div class="btn-codeShowHide"></div>
+        <div class="font-size-md">
           <span class="sanBold">Promotion Code</span>
         </div>
-        <div class="showHide-body flex flex-alignCenter pull-right active">
-          <div><input type="text" class="form-control contrlo-lg text-primary input-promotion"></div>
-          <div class="p-l-20x"><a href="#" class="btn btn-primary btn-md">Continue</a></div>
+        <div class="showHide-body flex flex-alignCenter">
+          <div class="warning-info flex flex-alignCenter text-warning p-r-5x">
+            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+            <span class="font-size-base">Please select size !</span>
+          </div>
+          <div><input type="text" name="ccps" class="form-control contrlo-lg text-primary input-promotion disabled"></div>
+          <div class="p-l-20x"><a href="javascript:;" id="pcsubmit" class="btn btn-primary btn-md">Continue</a></div>
         </div>
-        <span class="pull-right showHide-simpleInfo promotion-info">
-          <span>B320847398247</span>
-          <a class="p-l-40x">Edit</a>
-        </span>
+                <span class="pull-right showHide-simpleInfo promotion-info">
+                    <span id="pcode"></span>
+                    <a class="p-l-40x font-size-md">Edit</a>
+                </span>
       </div>
     </div>
 
@@ -381,6 +393,7 @@
       <div class="p-a-20x font-size-md">
         <div class="text-right"><span>Items(3):</span><span class="sanBold cart-price">$130</span></div>
         <div class="text-right"><span>Extra:</span><span class="sanBold cart-price">-$21</span></div>
+        <div class="text-right shopping-methodPrice hidden"><span>Ship to:</span><span class="sanBold cart-price">-$21</span></div>
         <div class="text-right"><span>Bag Subtotal:</span><span class="sanBold cart-price">$120.95</span></div>
       </div>
     </div>

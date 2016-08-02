@@ -42,7 +42,14 @@
         <li class="nav-item p-x-10x"><a href="#" class="nav-link">
           <img class="img-circle" src="/images/icon/apple-touch-icon.png" width="40" height="40" alt=""></a>
         </li>
-        <li class="nav-item p-x-20x"><a href="#" class="nav-link"><i class="iconfont icon-shopbag font-size-lg text-primary"></i></a></li>
+        <li class="nav-item p-x-20x">
+          <a href="#">
+            <div class="nav-shoppingCart">
+              <i class="iconfont icon-shopbag font-size-lg text-primary"></i>
+              <span class="shoppingCart-number"></span>
+            </div>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -51,8 +58,16 @@
 <!-- 内容 -->
 <section class="m-t-40x">
   <div class="container">
-    <h4 class="helveBold text-main p-l-10x">My Bag</h4>
+    <!-- 空购物车 提示信息 -->
+    <div class="shopbag-empty-content m-b-40x">
+      <div class="container shopbag-emptyInfo">
+        <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-shopbag"></i></div>
+        <p class="text-primary m-b-20x p-b-20x font-size-llxx">Your bag is empty ,fill it up ! </p>
+        <a href="#" class="btn btn-block btn-primary btn-lg btn-320">Go Shopping</a>
+      </div>
+    </div>
 
+    <h4 class="helveBold text-main p-l-10x">My Bag</h4>
     <!-- My Bag List -->
     <div class="box-shadow bg-white m-t-20x">
       <div class="sanBold font-size-md p-x-20x p-y-15x">In Bag</div>
@@ -184,48 +199,48 @@
         </div>
 
         <!--<div class="p-y-20x">-->
-          <!--<div class="row flex flex-alignCenter cartProduct-item">-->
-            <!--<div class="col-lg-3 col-sm-8 flex flex-alignCenter">-->
-              <!--<div><img src="/images/product/product.jpg" width="120" height="120" alt=""></div>-->
-              <!--<div class="cart-product-title font-size-md text-main">Aurora Ring ring</div>-->
-            <!--</div>-->
-            <!--<div class="col-lg-3 col-sm-4 col-xs-6">-->
-              <!--<div class="p-l-20x">-->
-                <!--Size:11<br/>-->
-                <!--Color:Black<br/>-->
-                <!--Material:Gold<br/>-->
-                <!--Inside Engraving:MY LOVE-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-lg-2 col-sm-4 col-xs-6">-->
-              <!--<div class="p-l-20x">-->
-                <!--<div class="font-size-md text-primary">$199.95</div>-->
-                <!--<div class="font-size-base text-common text-throughLine">$299.95</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-lg-2 col-sm-4 col-xs-6">-->
-              <!--<div class="btn-group flex">-->
-                <!--<div class="btn btn-cartCount btn-xs" data-item="minus">-->
-                  <!--<i class="iconfont icon-minus font-size-lg"></i>-->
-                <!--</div>-->
-                <!--<div class="btn btn-cartCount btn-xs font-size-base p-x-20x" data-num="num">2</div>-->
-                <!--<div class="btn btn-cartCount btn-xs" data-item="add">-->
-                  <!--<i class="iconfont icon-add font-size-lg"></i>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-lg-2 col-sm-4 col-xs-6">-->
-              <!--<div class="p-l-20x">-->
-                <!--<a class="btn-block" href="#">Save for Later</a>-->
-                <!--<a class="btn-block" data-type="cart-remove" href="#">Remove</a>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="mask"></div>-->
-          <!--</div>-->
-          <!--<div class="warning-info flex flex-alignCenter text-warning">-->
-            <!--<i class="iconfont icon-caveat icon-size-md p-r-5x"></i>-->
-            <!--<span class="font-size-base">Please select size !</span>-->
-          <!--</div>-->
+        <!--<div class="row flex flex-alignCenter cartProduct-item">-->
+        <!--<div class="col-lg-3 col-sm-8 flex flex-alignCenter">-->
+        <!--<div><img src="/images/product/product.jpg" width="120" height="120" alt=""></div>-->
+        <!--<div class="cart-product-title font-size-md text-main">Aurora Ring ring</div>-->
+        <!--</div>-->
+        <!--<div class="col-lg-3 col-sm-4 col-xs-6">-->
+        <!--<div class="p-l-20x">-->
+        <!--Size:11<br/>-->
+        <!--Color:Black<br/>-->
+        <!--Material:Gold<br/>-->
+        <!--Inside Engraving:MY LOVE-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-lg-2 col-sm-4 col-xs-6">-->
+        <!--<div class="p-l-20x">-->
+        <!--<div class="font-size-md text-primary">$199.95</div>-->
+        <!--<div class="font-size-base text-common text-throughLine">$299.95</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-lg-2 col-sm-4 col-xs-6">-->
+        <!--<div class="btn-group flex">-->
+        <!--<div class="btn btn-cartCount btn-xs" data-item="minus">-->
+        <!--<i class="iconfont icon-minus font-size-lg"></i>-->
+        <!--</div>-->
+        <!--<div class="btn btn-cartCount btn-xs font-size-base p-x-20x" data-num="num">2</div>-->
+        <!--<div class="btn btn-cartCount btn-xs" data-item="add">-->
+        <!--<i class="iconfont icon-add font-size-lg"></i>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-lg-2 col-sm-4 col-xs-6">-->
+        <!--<div class="p-l-20x">-->
+        <!--<a class="btn-block" href="#">Save for Later</a>-->
+        <!--<a class="btn-block" data-type="cart-remove" href="#">Remove</a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="mask"></div>-->
+        <!--</div>-->
+        <!--<div class="warning-info flex flex-alignCenter text-warning">-->
+        <!--<i class="iconfont icon-caveat icon-size-md p-r-5x"></i>-->
+        <!--<span class="font-size-base">Please select size !</span>-->
+        <!--</div>-->
         <!--</div>-->
 
       </div>
