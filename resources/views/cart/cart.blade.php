@@ -69,7 +69,7 @@
                         <div class="col-md-2">
                             <div class="p-l-20x">
                                 <a class="btn-block cartManage" data-action="save" data-sku="{{$showSku['sku']}}" href="javascript:;">Save for Later</a>
-                                <a class="btn-block cartManage" data-action="delsku" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
+                                <a class="btn-block cartManage" data-type="cart-remove" data-action="delsku" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
                             </div>
                         </div>
                         @if($showSku['isPutOn']!=1)
@@ -126,7 +126,7 @@
                                 <div class="p-l-20x">
                                     <a class="btn-block cartManage" data-action="movetocart"
                                        data-sku="{{$showSku['sku']}}" href="javascript:;">Move to Bag</a>
-                                    <a class="btn-block cartManage" data-action="delsave" data-sku="{{$showSku['sku']}}"
+                                    <a class="btn-block cartManage" data-type="cart-remove" data-action="delsave" data-sku="{{$showSku['sku']}}"
                                        href="javascript:;">Remove</a>
                                 </div>
                             </div>
@@ -172,10 +172,10 @@
     <hr class="hr-common m-a-0">
     <div class="row">
         <div class="col-md-6">
-            <div class="m-y-20x m-l-20x"><a href="#" class="btn btn-block btn-secondary btn-lg">Remove</a></div>
+            <div class="m-y-20x m-l-20x"><a href="javascript:;" class="btn btn-block btn-secondary btn-lg">Remove</a></div>
         </div>
         <div class="col-md-6">
-            <div class="m-y-20x m-r-20x"><a href="#" class="btn btn-block btn-primary btn-lg" data-remodal-action="close">Cancel</a>
+            <div class="m-y-20x m-r-20x"><a href="javascript:;" class="btn btn-block btn-primary btn-lg" data-remodal-action="close">Cancel</a>
             </div>
         </div>
     </div>

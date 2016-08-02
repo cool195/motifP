@@ -110,7 +110,6 @@ window.onload = function () {
         if (product_lastSkuArray.length == 1) {
             $('#productsku').val(product_lastSkuArray[0])
         }
-        console.log(product_lastSkuArray);
     }
 
     //操作后的可用状态
@@ -200,7 +199,7 @@ window.onload = function () {
                 }
                 $('#addQtySku').addClass('disabled');
             } else if (skuQty > product_stock_qtty && $(this).data('num') > 0) {
-                alert('库存不足');
+                AddItemFailModal.open();
             }
             if (skuQty <= 1) {
                 !$('#delQtySku').hasClass('disabled') ? $('#delQtySku').addClass('disabled') : false;
@@ -227,7 +226,7 @@ window.onload = function () {
                         $('#addQtySku').removeClass('disabled');
                     }
                 } else {
-                    alert('库存不足')
+                    AddItemFailModal.open();
                 }
             });
     }
@@ -264,8 +263,11 @@ window.onload = function () {
                         setTimeout(function () {
                             AddItemModal.close();
                         }, 1500);
+                        if($('.shoppingCart-number').hasClass('hidden')){
+                            $('.shoppingCart-number').removeClass('hidden');
+                        }
                     } else {
-                        alert('error')
+                        AddItemFailModal.open();
                     }
                 });
         } else {
@@ -355,7 +357,7 @@ window.onload = function () {
                         if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');
                         cart_update_info();
                     } else {
-                        alert('error')
+                        AddItemFailModal.open();
                     }
                 });
 
@@ -370,10 +372,15 @@ window.onload = function () {
             })
             .done(function (data) {
                 if (data.success) {
-                    $('#total_amount').html('$' + data.data.total_amount / 100);
-                    $('#total_sku_qtty').html('Items(' + data.data.total_sku_qtty + '):');
-                    $('#vas_amount').html('$' + data.data.vas_amount / 100);
-                    $('#pay_amount').html('$' + data.data.pay_amount / 100);
+                    if(data.data != ''){
+                        $('#total_amount').html('$' + data.data.total_amount / 100);
+                        $('#total_sku_qtty').html('Items(' + data.data.total_sku_qtty + '):');
+                        $('#vas_amount').html('$' + data.data.vas_amount / 100);
+                        $('#pay_amount').html('$' + data.data.pay_amount / 100);
+                    }else{
+                        location.reload();
+                    }
+
                 }
             });
     }
@@ -396,6 +403,8 @@ window.onload = function () {
                         thisParent.remove();
                         cart_update_info();
                     }
+                }else{
+                    AddItemFailModal.open();
                 }
             });
     });
