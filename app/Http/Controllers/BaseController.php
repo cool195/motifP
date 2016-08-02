@@ -40,7 +40,9 @@ class BaseController extends Controller
 
     private function send($Api, $params, $method)
     {
-        $curl = Curl::to($Api)->withData($params);//->enableDebug()添加日志
+        $curl = Curl::to($Api)->withData($params);
+        //添加日志
+        //$curl = Curl::to($Api)->withData($params)->enableDebug();
         return $method ? $curl->get() : $curl->post();
     }
 }

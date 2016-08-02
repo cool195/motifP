@@ -500,30 +500,41 @@ window.onload = function () {
     // 提交 Promotion Code
     $('#pcsubmit').on('click', function () {
         var $this = $(this);
-        $.ajax({
-            url: '/cart/accountlist?couponcode=' + $('input[name="ccps"]').val() + '&logisticstype=' + $('input[name="shippingMethod"]:checked').val(),
-            type: 'GET',
-        })
-            .done(function (data) {
-                if (data.success) {
-                    $('.promotion-code').removeClass('hidden');
-                    $('#pcode').html($('input[name="ccps"]').val() + ' -$' + (data.data.cps_amount / 100).toFixed(2));
-                    $('.code-price').html('-$' + (data.data.cps_amount / 100).toFixed(2));
-                    $('.code-price').data('price', data.data.cps_amount);
-                    $('.totalPrice').html('$' + (data.data.pay_amount / 100).toFixed(2));
-                    //收起
-                    var $AddressContent = $this.parent().parent('.showHide-body');
-                    var $SimpleInfo = $this.parent().parent().siblings('.showHide-simpleInfo');
-                    $AddressContent.slideUp(500);
-                    $AddressContent.removeClass('active');
-                    $this.removeClass('active');
-                    $AddressContent.css('display', 'none');
-                    $SimpleInfo.css('display', 'block');
-                    $this.parent().siblings('.warning-info').addClass('off');
-                }else{
-                    $this.parent().siblings('.warning-info').removeClass('off');
-                }
+        if($('input[name="ccps"]').val() != ''){
+            $.ajax({
+                url: '/cart/accountlist?couponcode=' + $('input[name="ccps"]').val() + '&logisticstype=' + $('input[name="shippingMethod"]:checked').val(),
+                type: 'GET',
             })
+                .done(function (data) {
+                    if (data.success) {
+                        $('.promotion-code').removeClass('hidden');
+                        $('#pcode').html($('input[name="ccps"]').val() + ' -$' + (data.data.cps_amount / 100).toFixed(2));
+                        $('.code-price').html('-$' + (data.data.cps_amount / 100).toFixed(2));
+                        $('.code-price').data('price', data.data.cps_amount);
+                        $('.totalPrice').html('$' + (data.data.pay_amount / 100).toFixed(2));
+                        //收起
+                        var $AddressContent = $this.parent().parent('.showHide-body');
+                        var $SimpleInfo = $this.parent().parent().siblings('.showHide-simpleInfo');
+                        $AddressContent.slideUp(500);
+                        $AddressContent.removeClass('active');
+                        $this.removeClass('active');
+                        $AddressContent.css('display', 'none');
+                        $SimpleInfo.css('display', 'block');
+                        $this.parent().siblings('.warning-info').addClass('off');
+                    }else{
+                        $this.parent().siblings('.warning-info').removeClass('off');
+                        setTimeout(function () {
+                            $this.parent().siblings('.warning-info').addClass('off');
+                        }, 1500);
+                    }
+                })
+        }else{
+            $this.parent().siblings('.warning-info').removeClass('off');
+            setTimeout(function () {
+                $this.parent().siblings('.warning-info').addClass('off');
+            }, 1500);
+        }
+
 
     });
 

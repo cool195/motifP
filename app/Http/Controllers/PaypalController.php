@@ -33,7 +33,6 @@ class PaypalController extends BaseController
                     'nonce' => '{"response_type":"payment","response":{"id":"' . $result->id . '","state":"' . $result->state . '","create_time":"' . $result->create_time . '","intent":"' . $result->intent . '"}}',
                 );
                 $content = $this->request("pay", $params);
-                $content['params'] = $params;
                 return $content;
                 if (!empty($content) && $content['success']) {
                     return redirect('/success?orderid=' . $params['orderid']);
