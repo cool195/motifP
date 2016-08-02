@@ -607,9 +607,9 @@ window.onload = function () {
     });
 
     // 选择地址
-    $('.address-list').on('click', '.address-item', function () {
+    $('.address-list').on('click', '.bg-address', function () {
         $('.address-item').removeClass('active');
-        $(this).addClass('active');
+        $(this).parent('.address-item').addClass('active');
         $('#defaultAddr').html($(this).data('info'));
         $('#defaultAddr').data('city', $(this).data('city'));
         $('#defaultAddr').data('aid', $(this).data('aid'));

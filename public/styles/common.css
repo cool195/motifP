@@ -411,7 +411,8 @@ footer {
 }
 
 .address-item:hover .bg-address, .address-item.active .bg-address {
-  display: none;
+  /*display: none;*/
+  opacity: 0;
 }
 
 .address-item:hover .btn-edit, .address-item:hover .btn-addPrimary, .address-item:hover .primary-address, .address-item.active .btn-edit, .address-item.active .btn-addPrimary, .address-item.active .primary-address {
