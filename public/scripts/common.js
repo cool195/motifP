@@ -467,34 +467,64 @@ window.onload = function () {
 
     // 控制 div 显示隐藏
     $('.btn-showHide').on('click', function () {
-        if ($(this).children('.showHide-simpleInfo').length > 0) {
-            var $AddressContent = $(this).siblings('.showHide-body');
-            if ($AddressContent.hasClass('active')) {
-                $AddressContent.slideUp(500);
-                $AddressContent.removeClass('active');
-                $(this).removeClass('active');
-            } else {
-                $AddressContent.slideDown(500);
-                $AddressContent.addClass('active');
-                $(this).addClass('active');
-            }
+        var $AddressContent = $(this).siblings('.showHide-body');
+        if ($AddressContent.hasClass('active')) {
+            $AddressContent.slideUp(500);
+            $AddressContent.removeClass('active');
+            $(this).removeClass('active');
         } else {
-            var $AddressContent = $(this).siblings('.showHide-body');
-            var $SimpleInfo = $(this).siblings('.showHide-simpleInfo');
-            if ($AddressContent.hasClass('active')) {
-                $AddressContent.slideUp(500);
-                $AddressContent.removeClass('active');
-                $(this).removeClass('active');
-                $AddressContent.css('display', 'none');
-                $SimpleInfo.css('display', 'block');
-            } else {
-                $AddressContent.slideDown(500);
-                $AddressContent.addClass('active');
-                $(this).addClass('active');
-                $AddressContent.css('display', 'flex');
-                $SimpleInfo.css('display', 'none');
-            }
+            $AddressContent.slideDown(500);
+            $AddressContent.addClass('active');
+            $(this).addClass('active');
         }
+    });
+    // 单独控制 Promotion Code div 的显示隐藏
+    $('.btn-codeShowHide').on('click', function () {
+        var $AddressContent = $(this).siblings('.showHide-body');
+        var $SimpleInfo = $(this).siblings('.showHide-simpleInfo');
+        if ($AddressContent.hasClass('active')) {
+            $AddressContent.slideUp(500);
+            $AddressContent.removeClass('active');
+            $(this).removeClass('active');
+            $AddressContent.css('display', 'none');
+            $SimpleInfo.css('display', 'block');
+        } else {
+            $AddressContent.slideDown(500);
+            $AddressContent.addClass('active');
+            $(this).addClass('active');
+            $AddressContent.css('display', 'flex');
+            $SimpleInfo.css('display', 'none');
+        }
+    });
+
+    // 提交 Promotion Code
+    $('#pcsubmit').on('click', function () {
+        var $this = $(this);
+        $.ajax({
+            url: '/cart/accountlist?couponcode=' + $('input[name="ccps"]').val() + '&logisticstype=' + $('input[name="shippingMethod"]:checked').val(),
+            type: 'GET',
+        })
+            .done(function (data) {
+                if (data.success) {
+                    $('.promotion-code').removeClass('hidden');
+                    $('#pcode').html($('input[name="ccps"]').val() + ' -$' + (data.data.cps_amount / 100).toFixed(2));
+                    $('.code-price').html('-$' + (data.data.cps_amount / 100).toFixed(2));
+                    $('.code-price').data('price', data.data.cps_amount);
+                    $('.totalPrice').html('$' + (data.data.pay_amount / 100).toFixed(2));
+                    //收起
+                    var $AddressContent = $this.parent().parent('.showHide-body');
+                    var $SimpleInfo = $this.parent().parent().siblings('.showHide-simpleInfo');
+                    $AddressContent.slideUp(500);
+                    $AddressContent.removeClass('active');
+                    $this.removeClass('active');
+                    $AddressContent.css('display', 'none');
+                    $SimpleInfo.css('display', 'block');
+                    $this.parent().siblings('.warning-info').addClass('off');
+                }else{
+                    $this.parent().siblings('.warning-info').removeClass('off');
+                }
+            })
+
     });
 
     // 设置地址为默认地址
@@ -592,23 +622,6 @@ window.onload = function () {
         }
     });
 
-    // 添加code
-    $('#pcsubmit').on('click', function () {
-        $.ajax({
-                url: '/cart/accountlist?couponcode=' + $('input[name="ccps"]').val() + '&logisticstype=' + $('input[name="shippingMethod"]:checked').val(),
-                type: 'GET',
-            })
-            .done(function (data) {
-                if (data.success) {
-                    $('.promotion-code').removeClass('hidden');
-                    $('#pcode').html($('input[name="ccps"]').val() + ' -$' + (data.data.cps_amount / 100).toFixed(2));
-                    $('.code-price').html('-$' + (data.data.cps_amount / 100).toFixed(2));
-                    $('.code-price').data('price', data.data.cps_amount);
-                    $('.totalPrice').html('$' + (data.data.pay_amount / 100).toFixed(2));
-                }
-            })
-    });
-
     // 添加备注
     $('#crsubmit').on('click', function () {
         $('#srmessage').html($('textarea[name="cremark"]').val());
@@ -670,7 +683,7 @@ window.onload = function () {
     }
 
     // 首次加载 图片列表信息
-    if($('#checkoutView').data('status')==true){
+    if ($('#checkoutView').data('status') == true) {
         getAddressList();
     }
 
