@@ -414,7 +414,7 @@ window.onload = function () {
         var action = $('#modalDialog').data('action');
         var sku = $('#modalDialog').data('sku');
         var id = $('#modalDialog').data('id');
-        
+
         $.ajax({
             url: '/cart/operate',
             type: 'POST',
@@ -476,6 +476,12 @@ window.onload = function () {
                         }
                     })
             } else {
+                if($('.isDefault').hasClass('active')){
+                    $('input[name="isd"]').val(1);
+                }else{
+                    $('input[name="isd"]').val(0);
+                }
+
                 $.ajax({
                         url: '/address/' + Aid,
                         type: 'PUT',
@@ -618,6 +624,16 @@ window.onload = function () {
         var AddressId = $('#addAddressForm').data('aid');
         if (AddressId === '' || AddressId === undefined) {
             // 添加地址
+            //初始化 修改地址 from 表单
+            $('input[name="email"]').val('');
+            $('input[name="name"]').val('');
+            $('input[name="city"]').val('');
+            $('input[name="state"]').val('');
+            $('input[name="tel"]').val('');
+            $('input[name="addr1"]').val('');
+            $('input[name="addr2"]').val('');
+            $('input[name="zip"]').val('');
+            $('.isDefault').removeClass('active');
         } else {
             // 修改地址
             $.ajax({
@@ -634,9 +650,13 @@ window.onload = function () {
                     $('input[name="addr1"]').val(data.detail_address1);
                     $('input[name="addr2"]').val(data.detail_address2);
                     $('input[name="zip"]').val(data.zip);
-                    // TODO
-                    $('select[name="country"]').val();  //设置 城市
-                    $("select").find("option[text='" + data.country + "']").attr("selected", true);
+                    $('select[name="country"]').val(data.country);
+                    if(data.isDefault==1){
+                        $('.isDefault').addClass('active');
+                    }else{
+                        $('.isDefault').removeClass('active');
+                    }
+
                 })
         }
     }
@@ -702,10 +722,11 @@ window.onload = function () {
 
     // 进入添加地址界面
     $('.btn-addNewAddress').on('click', function () {
-        initAddAddressForm();
+
         $('.select-address').addClass('disabled');
         $('.add-address').removeClass('disabled');
         $('#addAddressForm').data('aid', '');
+        initAddAddressForm();
     });
 
     // 加载地址列表

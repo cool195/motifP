@@ -126,7 +126,7 @@
                     <div class="inline">
                         <span class="font-size-md">Add Shipping Address</span>
                         <span class="font-size-md pull-right">
-                            <i class="iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
+                            <i class="isDefault iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
                             <a class="p-l-10x" href="javascript:;">Make Primary</a></span>
                     </div>
                     <div class="row p-t-30x">
@@ -186,7 +186,7 @@
                                 <div class="p-l-20x m-b-20x">
                                     <select name="country" class="form-control contrlo-lg select-country">
                                         @foreach($Address->getCountry() as $value)
-                                            <option value="{{$value['country_id']}}">{{$value['country_name_en']}}</option>
+                                            <option value="{{$value['country_name_en']}}">{{$value['country_name_en']}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -200,13 +200,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    @if(empty($address['data']['list']))
-                                    <input type="radio" name="isd" id="address-default" hidden value="0">
-                                    <input type="radio" name="isd" id="address-primary" hidden value="1" checked="checked">
-                                    @else
-                                    <input type="radio" name="isd" id="address-default" hidden value="0" checked="checked">
-                                    <input type="radio" name="isd" id="address-primary" hidden value="1">
-                                    @endif
+                                    <input type="hidden" name="isd" value="@if(empty($address['data']['list'])){{'1'}}@else{{'0'}}@endif">
                                 </div>
                             </div>
                             <div class="col-md-1"></div>
