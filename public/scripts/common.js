@@ -670,9 +670,9 @@ window.onload = function () {
     }
 
     // 首次加载 图片列表信息
-    $(function () {
+    if($('#checkoutView').data('status')==true){
         getAddressList();
-    });
+    }
 
     // Checkout End
 

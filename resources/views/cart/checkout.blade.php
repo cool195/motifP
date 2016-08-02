@@ -3,7 +3,7 @@
 
         <!-- 内容 -->
 <section class="m-t-40x">
-    <div class="container">
+    <div class="container" id="checkoutView" data-status="true">
         <h4 class="helveBold text-main p-l-10x">Checkout</h4>
 
         <!-- Checkout Product Item -->
@@ -356,9 +356,6 @@
         </div>
     </div>
 </div>
-
-@include('footer')
-
 <template id="tpl-address">
     @{{ each list }}
     <div class="col-md-6">
@@ -385,3 +382,6 @@
     </div>
     @{{ /each }}
 </template>
+@include('footer')
+
+
