@@ -497,6 +497,17 @@ window.onload = function () {
         }
     });
 
+    // 提交 Promotion Code
+    $('#pcsubmit').on('click', function () {
+        var $AddressContent = $(this).parent().parent('.showHide-body');
+        var $SimpleInfo = $(this).parent().parent().siblings('.showHide-simpleInfo');
+        $AddressContent.slideUp(500);
+        $AddressContent.removeClass('active');
+        $(this).removeClass('active');
+        $AddressContent.css('display', 'none');
+        $SimpleInfo.css('display', 'block');
+    });
+
     // 设置地址为默认地址
     $('.btn-makePrimary').on('click', function () {
         if ($(this).hasClass('active')) {

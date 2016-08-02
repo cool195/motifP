@@ -259,10 +259,6 @@ footer {
   height: 2.625rem;
 }
 
-.promotion-info {
-  display: none;
-}
-
 .btn-showHide .showHide-simpleInfo {
   opacity: 1;
   -webkit-transition: all .3s ease;
