@@ -837,7 +837,7 @@ window.onload = function () {
         } else {
             $(this).siblings('.input-clear').removeClass('hidden');
         }
-        if (login_validationEmail($(this))) {
+        if (login_validationEmail($(this)) && login_validationPassword($('.login-pw'))) {
             $('div[data-role="login-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="login-submit"]').addClass('disabled');
@@ -851,7 +851,7 @@ window.onload = function () {
          } else {
          $(this).siblings('.input-clear').removeClass('hidden');
          }*/
-        if (login_validationPassword($(this))) {
+        if (login_validationPassword($(this)) && login_validationEmail($('.login-email'))) {
             $('div[data-role="login-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="login-submit"]').addClass('disabled');
@@ -1113,7 +1113,7 @@ window.onload = function () {
     }
 
     $('.register-nick').on('keyup blur', function () {
-        if (register_validationNick($(this))) {
+        if (register_validationNick($(this)) && login_validationEmail($('.register-email')) && login_validationPassword($('.register-pw'))) {
             $('div[data-role="register-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="register-submit"]').addClass('disabled');
@@ -1121,7 +1121,7 @@ window.onload = function () {
     });
 
     $('.register-email').on('keyup blur', function () {
-        if (login_validationEmail($(this))) {
+        if (login_validationEmail($(this)) && register_validationNick($('.register-nick')) && login_validationPassword($('.register-pw'))) {
             $('div[data-role="register-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="register-submit"]').addClass('disabled');
@@ -1129,7 +1129,7 @@ window.onload = function () {
     })
 
     $('.register-pw').on('keyup blur', function () {
-        if (login_validationPassword($(this))) {
+        if (login_validationPassword($(this)) && register_validationNick($('.register-nick')) && login_validationEmail($('.register-email'))) {
             $('div[data-role="register-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="register-submit"]').addClass('disabled');
@@ -1187,7 +1187,9 @@ window.onload = function () {
 
 
     $('.reset-pw').on('keyup blur', function () {
-        if (login_validationPassword($(this))) {
+        var newPwd = $(this).val(),
+            confirmPwd = $('input[name="lastpw"]').val();
+        if (login_validationPassword($(this)) && reset_validateConfirmPwd($('.reset-lastpw'), newPwd, confirmPwd) ) {
             $('div[data-role="reset-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="reset-submit"]').addClass('disabled');
