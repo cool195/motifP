@@ -5,8 +5,18 @@
 <!-- 内容 -->
 <section class="m-t-40x">
     <div class="container">
+        @if(empty($cart['showSkus']))
+        {{--空购物车 提示信息--}}
+        <div class="shopbag-empty-content m-b-40x">
+            <div class="container shopbag-emptyInfo">
+                <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-shopbag"></i></div>
+                <p class="text-primary m-b-20x p-b-20x font-size-llxx">Your bag is empty ,fill it up ! </p>
+                <a href="/daily" class="btn btn-block btn-primary btn-lg btn-320">Go Shopping</a>
+            </div>
+        </div>
+        @else
         <h4 class="helveBold text-main p-l-10x">My Bag</h4>
-        <!-- My Bag List -->
+        {{--My Bag List--}}
         <div class="box-shadow bg-white m-t-20x">
             <div class="sanBold font-size-md p-x-20x p-y-15x">In Bag</div>
             <hr class="hr-common m-a-0">
@@ -78,9 +88,8 @@
                 @endforeach
             </div>
         </div>
-
-
-        <!-- Saved List -->
+        @endif
+        {{--Saved List--}}
         @if($save['showSkus'])
             <div class="box-shadow bg-white m-t-20x">
                 <div class="sanBold font-size-md p-x-20x p-y-15x">Saved</div>
@@ -127,27 +136,30 @@
                 </div>
             </div>
         @endif
-
-        <!-- 购物袋总价 -->
-        <div class="box-shadow bg-white m-t-20x">
-            <div class="p-a-20x font-size-md">
-                <div class="text-right"><span id="total_sku_qtty">Items({{$cart['total_sku_qtty'] }}):</span><span
-                            class="sanBold cart-price"
-                            id="total_amount">${{number_format($cart['total_amount'] /100, 2)}}</span></div>
-                @if($cart['vas_amount'] > 0)
-                    <div class="text-right"><span>Additional Services:</span><span
+        @if(!empty($cart['showSkus']))
+            {{--购物袋总价--}}
+            <div class="box-shadow bg-white m-t-20x">
+                <div class="p-a-20x font-size-md">
+                    <div class="text-right"><span id="total_sku_qtty">Items({{$cart['total_sku_qtty'] }}):</span><span
                                 class="sanBold cart-price"
-                                id="vas_amount">${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
-                    </div>
-                @endif
-                <div class="text-right"><span>Bag Subtotal:</span><span
-                            class="sanBold cart-price"
-                            id="pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
+                                id="total_amount">${{number_format($cart['total_amount'] /100, 2)}}</span></div>
+                    @if($cart['vas_amount'] > 0)
+                        <div class="text-right"><span>Additional Services:</span><span
+                                    class="sanBold cart-price"
+                                    id="vas_amount">${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
+                        </div>
+                    @endif
+                    <div class="text-right"><span>Bag Subtotal:</span><span
+                                class="sanBold cart-price"
+                                id="pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
+                </div>
             </div>
-        </div>
-        <!-- 提交按钮 -->
+        @endif
+        {{--提交按钮--}}
         <div class="p-y-40x text-right">
-            <a href="/checkout" class="btn btn-block btn-primary btn-lg btn-toCheckout">Proceed To Checkout</a>
+            @if(!empty($cart['showSkus']))
+                <a href="/checkout" class="btn btn-block btn-primary btn-lg btn-toCheckout">Proceed To Checkout</a>
+            @endif
         </div>
     </div>
 </section>

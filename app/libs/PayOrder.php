@@ -23,7 +23,7 @@ Class PayOrder
         //lijiang.hou-buyer2@gmail.com
         //gsx12345
         $mode = 'sandbox';//sandbox / live
-        if ($_SERVER['SERVER_NAME'] == 'motif.me' || $_SERVER['SERVER_NAME'] == 'www.motif.me') {
+        if (env('APP_ENV') == 'production') {
             $clientID = 'AeJ0JypMpSkBh2pvVrWMSg8Km_l6fcmWXUQ0oWxom2tz8nPzBB1rWu71bkL1j4S-TGsjGYrbfDZYiWWe';
             $secret = 'ECmKQFY0UdanCEXHr6bHQ1PCwivwmtEMWma30r3ejfOlvQVlSW6_rwuXp4leydeHrcqSCthauqka1BYU';
         } else {
