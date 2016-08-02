@@ -227,6 +227,9 @@ window.onload = function () {
                     }
                 } else {
                     AddItemFailModal.open();
+                    setTimeout(function () {
+                        AddItemFailModal.close();
+                    }, 1500);
                 }
             });
     }
@@ -268,6 +271,9 @@ window.onload = function () {
                         }
                     } else {
                         AddItemFailModal.open();
+                        setTimeout(function () {
+                            AddItemFailModal.close();
+                        }, 1500);
                     }
                 });
         } else {
@@ -340,7 +346,7 @@ window.onload = function () {
         var nowsku = tObj.data('sku');
         if (nowsku && !tObj.hasClass('disabled')) {
             tObj.addClass('disabled');
-            var skuQty = $('#csku' + nowsku).html() * 1 + tObj.data('num');
+            var skuQty = $('#cskunum' + nowsku).html() * 1 + tObj.data('num');
             $.ajax({
                     url: 'cart/alterQtty',
                     type: 'POST',
@@ -351,7 +357,7 @@ window.onload = function () {
                 })
                 .done(function (data) {
                     if (data.success) {
-                        $('#csku' + nowsku).html(skuQty);
+                        $('#cskunum' + nowsku).html(skuQty);
                         tObj.removeClass('disabled');
                         if (skuQty == 2) $('#cdsku' + nowsku).removeClass('disabled');
                         if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');

@@ -57,7 +57,7 @@
                                      data-num="-1" data-sku="{{$showSku['sku']}}">
                                     <i class="iconfont icon-minus font-size-lg"></i>
                                 </div>
-                                <div id="{{'csku'.$showSku['sku']}}"
+                                <div id="{{'cskunum'.$showSku['sku']}}"
                                      class="btn btn-cartCount btn-xs font-size-base p-x-20x">{{$showSku['sale_qtty']}}</div>
                                 <div id="{{'casku'.$showSku['sku']}}"
                                      class="btn btn-cartCount btn-xs @if(!$showSku['select']){{'disabled'}}@endif cupn"
@@ -83,7 +83,6 @@
                         </div>
                     @endif
                 </div>
-
                 <hr class="hr-common m-a-0">
                 @endforeach
             </div>

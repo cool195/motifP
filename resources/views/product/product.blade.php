@@ -80,8 +80,8 @@
                         <span>{{$data['prompt_words']}}</span>
                     </div>
                     <hr class="hr-common">
+                    <input hidden id="jsonStr" value="{{$jsonResult}}">
                     @if(isset($data['spuAttrs']))
-                        <input hidden id="jsonStr" value="{{$jsonResult}}">
                         <input hidden id="productsku">
                         @foreach($data['spuAttrs'] as $spuAttr)
                             <fieldset class="text-left m-b-20x">
