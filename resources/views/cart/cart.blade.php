@@ -23,7 +23,7 @@
             <div class="p-x-20x">
                 @foreach($cart['showSkus'] as $showSku)
                 <div class="p-y-20x">
-                    <div class="row flex flex-alignCenter cartProduct-item">
+                    <div class="row flex flex-alignCenter cartProduct-item" id="{{'csku'.$showSku['sku']}}">
                         <div class="col-md-3 flex flex-alignCenter">
                             <div><img src="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
                             <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
@@ -69,7 +69,7 @@
                         <div class="col-md-2">
                             <div class="p-l-20x">
                                 <a class="btn-block cartManage" data-action="save" data-sku="{{$showSku['sku']}}" href="javascript:;">Save for Later</a>
-                                <a class="btn-block cartManage" data-type="cart-remove" data-action="delsku" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
+                                <a class="btn-block" data-type="cart-remove" data-action="delsku" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
                             </div>
                         </div>
                         @if($showSku['isPutOn']!=1)
@@ -79,7 +79,7 @@
                     @if($showSku['isPutOn']!=1)
                         <div class="warning-info flex flex-alignCenter text-warning">
                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                            <span class="font-size-base">Please select size !</span>
+                            <span class="font-size-base">Error !</span>
                         </div>
                     @endif
                 </div>
@@ -96,7 +96,7 @@
                 <hr class="hr-common m-a-0">
                 <div class="p-x-20x">
                     @foreach($save['showSkus'] as $showSku)
-                        <div class="row p-y-20x flex flex-alignCenter cartProduct-item">
+                        <div class="row p-y-20x flex flex-alignCenter cartProduct-item" id="{{'csku'.$showSku['sku']}}">
                             <div class="col-md-6 col-xs-12 flex flex-alignCenter">
                                 <div><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
                                 <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
@@ -126,7 +126,7 @@
                                 <div class="p-l-20x">
                                     <a class="btn-block cartManage" data-action="movetocart"
                                        data-sku="{{$showSku['sku']}}" href="javascript:;">Move to Bag</a>
-                                    <a class="btn-block cartManage" data-type="cart-remove" data-action="delsave" data-sku="{{$showSku['sku']}}"
+                                    <a class="btn-block" data-type="cart-remove" data-action="delsave" data-sku="{{$showSku['sku']}}"
                                        href="javascript:;">Remove</a>
                                 </div>
                             </div>
@@ -165,14 +165,14 @@
 </section>
 
 <!-- 删除确认框 -->
-<div class="remodal modal-content remodal-md" data-remodal-id="cartmodal" id="modalDialog" data-spu="">
+<div class="remodal modal-content remodal-md" data-remodal-id="cartmodal" id="modalDialog" data-action="" data-id="" data-sku="">
     <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Bag?</div>
     <hr class="hr-common m-a-0">
     <div class="text-center dialog-info">Are you sure you want to remove this item?</div>
     <hr class="hr-common m-a-0">
     <div class="row">
         <div class="col-md-6">
-            <div class="m-y-20x m-l-20x"><a href="javascript:;" class="btn btn-block btn-secondary btn-lg">Remove</a></div>
+            <div class="m-y-20x m-l-20x"><a href="javascript:;" class="btn btn-block btn-secondary btn-lg delCartM">Remove</a></div>
         </div>
         <div class="col-md-6">
             <div class="m-y-20x m-r-20x"><a href="javascript:;" class="btn btn-block btn-primary btn-lg" data-remodal-action="close">Cancel</a>

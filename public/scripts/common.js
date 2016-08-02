@@ -409,8 +409,34 @@ window.onload = function () {
             });
     });
 
+    //购物车删除操作
+    $('.delCartM').on('click',function(){
+        var action = $('#modalDialog').data('action');
+        var sku = $('#modalDialog').data('sku');
+        var id = $('#modalDialog').data('id');
+        
+        $.ajax({
+            url: '/cart/operate',
+            type: 'POST',
+            data: {cmd: action, sku: sku}
+        })
+            .done(function (data) {
+                if (data.success) {
+                    if (action == 'movetocart' || action == 'save') {
+                        location.reload();
+                    } else {
+                        $('#csku'+sku).remove();
+                        cart_update_info();
+                    }
+                }
+                CartModal.close();
+            });
+    });
+
     // 触发删除 购物车商品
     $('[data-type="cart-remove"]').on('click', function () {
+        $('#modalDialog').data('action',$(this).data('action'));
+        $('#modalDialog').data('sku',$(this).data('sku'));
         CartModal.open();
     });
 
