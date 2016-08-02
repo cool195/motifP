@@ -735,8 +735,8 @@ window.onload = function () {
                     $('.login-content').removeClass('hidden').addClass('active');
                     $('.login-title').text('Sign in with Motif Account');
                 } else {
-                    $('.warning-info').removeClass('off');
-                    $('.warning-info').children('span').html(data.prompt_msg);
+                    $('.forget-email').parent().siblings('.warning-info').removeClass('off');
+                    $('.forget-email').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
             .always(function () {
@@ -854,14 +854,14 @@ window.onload = function () {
 
     $('.forget-email').on('keyup blur', function () {
         if (login_validationEmail($(this))) {
-            $('div[data-role="resetPwd-submit"]').removeClass('disabled');
+            $('div[data-role="forget-submit"]').removeClass('disabled');
         } else {
-            $('div[data-role="resetPwd-submit"]').addClass('disabled');
+            $('div[data-role="forget-submit"]').addClass('disabled');
         }
     });
 
     // 点击 忘记忘记 发送邮件
-    $('[data-role="restPwd-submit"]').on('click', function () {
+    $('[data-role="forget-submit"]').on('click', function () {
         console.info('Reset Password');
         if ($(this).hasClass('disabled')) {
             return;
