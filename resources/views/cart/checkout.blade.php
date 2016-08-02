@@ -115,30 +115,7 @@
                                 </span>
                     </div>
                     <div class="row p-x-10x p-t-20x address-list">
-                        {{--@foreach($address['data']['list'] as $value)--}}
-                        {{--<div class="col-md-6">--}}
-                        {{--<div class="p-a-10x">--}}
-                        {{--<div class="address-item p-x-20x p-y-15x @if($value['isDefault']){{'active'}}@endif"--}}
-                        {{--data-info="{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}"--}}
-                        {{--data-city="{{$value['detail_address1']}}"--}}
-                        {{--data-aid="{{$value['receiving_id']}}">--}}
-                        {{--<div class="address-info">--}}
-                        {{--{{$value['name']}}<br>--}}
-                        {{--{{$value['zip']}}<br>--}}
-                        {{--{{$value['city']}}<br>--}}
-                        {{--{{$value['country']}}--}}
-                        {{--</div>--}}
-                        {{--<div class="bg-address"></div>--}}
-                        {{--@if($value['isDefault'])--}}
-                        {{--<div class="primary-address font-size-md">Primary</div>--}}
-                        {{--@endif--}}
-                        {{--<div class="btn-edit font-size-md">Edit</div>--}}
-                        {{--<div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--@endforeach--}}
+
                     </div>
                     <div class="text-right p-t-10x"><a href="javascript:;"
                                                        class="btn btn-primary btn-md"
@@ -279,9 +256,9 @@
                     <span class="sanBold">Promotion Code</span>
                 </div>
                 <div class="showHide-body flex flex-alignCenter">
-                    <div class="warning-info flex flex-alignCenter text-warning p-r-5x">
+                    <div class="warning-info flex flex-alignCenter text-warning p-r-5x off">
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                        <span class="font-size-base">Please select size !</span>
+                        <span class="font-size-base">Invalid Code !</span>
                     </div>
                     <div><input type="text" name="ccps"
                                 class="form-control contrlo-lg text-primary input-promotion disabled"></div>

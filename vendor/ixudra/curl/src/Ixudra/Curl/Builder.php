@@ -1,6 +1,6 @@
 <?php namespace Ixudra\Curl;
 
-
+use Illuminate\Support\Facades\Log;
 use stdClass;
 
 class Builder {
@@ -203,11 +203,9 @@ class Builder {
      * @param   string $logFile    The full path to the log file you want to use
      * @return Builder
      */
-    public function enableDebug($logFile)
+    public function enableDebug()
     {
-        return $this->withPackageOption( 'enableDebug', true )
-            ->withPackageOption( 'debugFile', $logFile )
-            ->withOption('VERBOSE', true);
+        return $this->withPackageOption( 'enableDebug', true );
     }
 
     /**
@@ -303,14 +301,10 @@ class Builder {
             $this->withHeader( 'Content-Type: application/json' );
         }
 
-        if( $this->packageOptions[ 'enableDebug' ] ) {
-            $debugFile = fopen( $this->packageOptions[ 'debugFile' ], 'w');
-            $this->withOption('STDERR', $debugFile);
-        }
-
         // Create the request with all specified options
         $this->curlObject = curl_init();
         $options = $this->forgeOptions();
+
         curl_setopt_array( $this->curlObject, $options );
 
         // Send the request
@@ -324,20 +318,13 @@ class Builder {
 
         curl_close( $this->curlObject );
 
-        if( $this->packageOptions[ 'saveFile' ] ) {
-            // Save to file if a filename was specified
-            $file = fopen($this->packageOptions[ 'saveFile' ], 'w');
-            fwrite($file, $response);
-            fclose($file);
-        } else if( $this->packageOptions[ 'asJsonResponse' ] ) {
+        if( $this->packageOptions[ 'asJsonResponse' ] ) {
             // Decode the request if necessary
             $response = json_decode($response, $this->packageOptions[ 'returnAsArray' ]);
         }
-
         if( $this->packageOptions[ 'enableDebug' ] ) {
-            fclose( $debugFile );
+            Log::info($options);
         }
-
         // Return the result
         return $this->returnResponse( $response, $responseData );
     }
