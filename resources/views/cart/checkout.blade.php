@@ -183,6 +183,7 @@
                                     <input type="text" name="addr2" class="form-control contrlo-lg text-primary"
                                            placeholder="Street 2 (optional)">
                                 </div>
+
                                 <div class="p-l-20x m-b-20x">
                                     <select name="country" class="form-control contrlo-lg select-country">
                                         @foreach($Address->getCountry() as $value)
@@ -206,8 +207,9 @@
                             <div class="col-md-1"></div>
                         </form>
                     </div>
-                    <div class="text-right"><a href="javascript:;" id="addAddress"
-                                               class="btn btn-primary btn-md">Save</a></div>
+                    <div class="text-right">
+                        <a href="javascript:;" id="addAddress-cancel" class="btn btn-secondary btn-md m-r-10x">Cancel</a>
+                        <a href="javascript:;" id="addAddress" class="btn btn-primary btn-md">Save</a></div>
                 </div>
             </div>
         </div>

@@ -266,7 +266,7 @@ window.onload = function () {
                         setTimeout(function () {
                             AddItemModal.close();
                         }, 1500);
-                        if($('.shoppingCart-number').hasClass('hidden')){
+                        if ($('.shoppingCart-number').hasClass('hidden')) {
                             $('.shoppingCart-number').removeClass('hidden');
                         }
                     } else {
@@ -378,12 +378,12 @@ window.onload = function () {
             })
             .done(function (data) {
                 if (data.success) {
-                    if(data.data != ''){
+                    if (data.data != '') {
                         $('#total_amount').html('$' + data.data.total_amount / 100);
                         $('#total_sku_qtty').html('Items(' + data.data.total_sku_qtty + '):');
                         $('#vas_amount').html('$' + data.data.vas_amount / 100);
                         $('#pay_amount').html('$' + data.data.pay_amount / 100);
-                    }else{
+                    } else {
                         location.reload();
                     }
 
@@ -409,29 +409,29 @@ window.onload = function () {
                         thisParent.remove();
                         cart_update_info();
                     }
-                }else{
+                } else {
                     AddItemFailModal.open();
                 }
             });
     });
 
     //购物车删除操作
-    $('.delCartM').on('click',function(){
+    $('.delCartM').on('click', function () {
         var action = $('#modalDialog').data('action');
         var sku = $('#modalDialog').data('sku');
         var id = $('#modalDialog').data('id');
 
         $.ajax({
-            url: '/cart/operate',
-            type: 'POST',
-            data: {cmd: action, sku: sku}
-        })
+                url: '/cart/operate',
+                type: 'POST',
+                data: {cmd: action, sku: sku}
+            })
             .done(function (data) {
                 if (data.success) {
                     if (action == 'movetocart' || action == 'save') {
                         location.reload();
                     } else {
-                        $('#csku'+sku).remove();
+                        $('#csku' + sku).remove();
                         cart_update_info();
                     }
                 }
@@ -441,8 +441,8 @@ window.onload = function () {
 
     // 触发删除 购物车商品
     $('[data-type="cart-remove"]').on('click', function () {
-        $('#modalDialog').data('action',$(this).data('action'));
-        $('#modalDialog').data('sku',$(this).data('sku'));
+        $('#modalDialog').data('action', $(this).data('action'));
+        $('#modalDialog').data('sku', $(this).data('sku'));
         CartModal.open();
     });
 
@@ -482,9 +482,9 @@ window.onload = function () {
                         }
                     })
             } else {
-                if($('.isDefault').hasClass('active')){
+                if ($('.isDefault').hasClass('active')) {
                     $('input[name="isd"]').val(1);
-                }else{
+                } else {
                     $('input[name="isd"]').val(0);
                 }
 
@@ -505,6 +505,15 @@ window.onload = function () {
 
         }
         return false;
+    });
+
+    //  取消 添加/修改地址
+    $('#addAddress-cancel').on('click', function () {
+        $('.select-address').removeClass('disabled');
+        $('.add-address').addClass('disabled');
+        $('#addAddressForm').find('input[type="text"]').val('');
+        $('select[name="country"]').prop('selectedIndex', 0);
+
     });
 
     //焦点事件去掉warning
@@ -547,11 +556,11 @@ window.onload = function () {
     // 提交 Promotion Code
     $('#pcsubmit').on('click', function () {
         var $this = $(this);
-        if($('input[name="ccps"]').val() != ''){
+        if ($('input[name="ccps"]').val() != '') {
             $.ajax({
-                url: '/cart/accountlist?couponcode=' + $('input[name="ccps"]').val() + '&logisticstype=' + $('input[name="shippingMethod"]:checked').val(),
-                type: 'GET',
-            })
+                    url: '/cart/accountlist?couponcode=' + $('input[name="ccps"]').val() + '&logisticstype=' + $('input[name="shippingMethod"]:checked').val(),
+                    type: 'GET',
+                })
                 .done(function (data) {
                     if (data.success) {
                         $('.promotion-code').removeClass('hidden');
@@ -568,14 +577,14 @@ window.onload = function () {
                         $AddressContent.css('display', 'none');
                         $SimpleInfo.css('display', 'block');
                         $this.parent().siblings('.warning-info').addClass('off');
-                    }else{
+                    } else {
                         $this.parent().siblings('.warning-info').removeClass('off');
                         setTimeout(function () {
                             $this.parent().siblings('.warning-info').addClass('off');
                         }, 1500);
                     }
                 })
-        }else{
+        } else {
             $this.parent().siblings('.warning-info').removeClass('off');
             setTimeout(function () {
                 $this.parent().siblings('.warning-info').addClass('off');
@@ -610,9 +619,9 @@ window.onload = function () {
     $('.address-list').on('click', '.bg-address', function () {
         $('.address-item').removeClass('active');
         $(this).parent('.address-item').addClass('active');
-        $('#defaultAddr').html($(this).data('info'));
-        $('#defaultAddr').data('city', $(this).data('city'));
-        $('#defaultAddr').data('aid', $(this).data('aid'));
+        $('#defaultAddr').html($(this).parent('.address-item').data('info'));
+        $('#defaultAddr').data('city', $(this).parent('.address-item').data('city'));
+        $('#defaultAddr').data('aid', $(this).parent('.address-item').data('aid'));
     });
 
     // 修改地址
@@ -657,9 +666,9 @@ window.onload = function () {
                     $('input[name="addr2"]').val(data.detail_address2);
                     $('input[name="zip"]').val(data.zip);
                     $('select[name="country"]').val(data.country);
-                    if(data.isDefault==1){
+                    if (data.isDefault == 1) {
                         $('.isDefault').addClass('active');
-                    }else{
+                    } else {
                         $('.isDefault').removeClass('active');
                     }
 
@@ -1216,7 +1225,7 @@ window.onload = function () {
     $('.reset-pw').on('keyup blur', function () {
         var newPwd = $(this).val(),
             confirmPwd = $('input[name="lastpw"]').val();
-        if (login_validationPassword($(this)) && reset_validateConfirmPwd($('.reset-lastpw'), newPwd, confirmPwd) ) {
+        if (login_validationPassword($(this)) && reset_validateConfirmPwd($('.reset-lastpw'), newPwd, confirmPwd)) {
             $('div[data-role="reset-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="reset-submit"]').addClass('disabled');

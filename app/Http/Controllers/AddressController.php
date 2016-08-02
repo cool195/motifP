@@ -160,7 +160,7 @@ class AddressController extends BaseController
     //获取国家列表
     public function getCountry()
     {
-        $value = Cache::remember('countrylist', 1000, function () {
+        $value = Cache::remember('countrylists', 1000, function () {
             $params = array(
                 'cmd' => 'country',
                 'token' => Session::get('user.token'),
