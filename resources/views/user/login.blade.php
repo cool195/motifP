@@ -76,7 +76,7 @@
                     </fieldset>
                 </form>
                 <div class="p-t-30x">
-                    <div class="btn btn-primary btn-lg btn-block" data-role="restPwd-submit">Reset Password</div>
+                    <div class="btn btn-primary btn-lg btn-block" data-role="forget-submit">Reset Password</div>
                 </div>
                 <div class="p-y-15x text-center">
                     <a class="text-link btn-backLogin" href="#">Back to sign in</a>

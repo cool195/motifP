@@ -23,7 +23,7 @@ class ShoppingController extends BaseController
             'pin' => Session::get('user.pin'),
             'recid' => $request->input('recid', '100000'),
             'uuid' => $_COOKIE['uid'],
-            'cid' => $request->input('cid', '0'),
+            'cid' => $request->input('cid', '368'),
             'pagenum' => $request->input('pagenum', 1),
             'pagesize' => $request->input('pagesize', 5),
             'extra' => $request->input('extra_kv', "")
