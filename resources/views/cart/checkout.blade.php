@@ -273,11 +273,16 @@
 
         <!-- Promotion Code -->
         <div class="box-shadow bg-white m-t-20x">
-            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-                <div class="font-size-md btn-showHide">
+            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified promotionCode">
+                <div class="btn-codeShowHide"></div>
+                <div class="font-size-md">
                     <span class="sanBold">Promotion Code</span>
                 </div>
-                <div class="showHide-body flex flex-alignCenter pull-right">
+                <div class="showHide-body flex flex-alignCenter">
+                    <div class="warning-info flex flex-alignCenter text-warning p-r-5x">
+                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                        <span class="font-size-base">Please select size !</span>
+                    </div>
                     <div><input type="text" name="ccps"
                                 class="form-control contrlo-lg text-primary input-promotion disabled"></div>
                     <div class="p-l-20x"><a href="javascript:;" id="pcsubmit" class="btn btn-primary btn-md">Continue</a></div>
@@ -288,6 +293,7 @@
                 </span>
             </div>
         </div>
+
 
         <!-- Special Request (optional) -->
         <div class="box-shadow bg-white m-t-20x">

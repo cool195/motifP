@@ -467,33 +467,33 @@ window.onload = function () {
 
     // 控制 div 显示隐藏
     $('.btn-showHide').on('click', function () {
-        if ($(this).children('.showHide-simpleInfo').length > 0) {
-            var $AddressContent = $(this).siblings('.showHide-body');
-            if ($AddressContent.hasClass('active')) {
-                $AddressContent.slideUp(500);
-                $AddressContent.removeClass('active');
-                $(this).removeClass('active');
-            } else {
-                $AddressContent.slideDown(500);
-                $AddressContent.addClass('active');
-                $(this).addClass('active');
-            }
+        var $AddressContent = $(this).siblings('.showHide-body');
+        if ($AddressContent.hasClass('active')) {
+            $AddressContent.slideUp(500);
+            $AddressContent.removeClass('active');
+            $(this).removeClass('active');
         } else {
-            var $AddressContent = $(this).siblings('.showHide-body');
-            var $SimpleInfo = $(this).siblings('.showHide-simpleInfo');
-            if ($AddressContent.hasClass('active')) {
-                $AddressContent.slideUp(500);
-                $AddressContent.removeClass('active');
-                $(this).removeClass('active');
-                $AddressContent.css('display', 'none');
-                $SimpleInfo.css('display', 'block');
-            } else {
-                $AddressContent.slideDown(500);
-                $AddressContent.addClass('active');
-                $(this).addClass('active');
-                $AddressContent.css('display', 'flex');
-                $SimpleInfo.css('display', 'none');
-            }
+            $AddressContent.slideDown(500);
+            $AddressContent.addClass('active');
+            $(this).addClass('active');
+        }
+    });
+    // 单独控制 Promotion Code div 的显示隐藏
+    $('.btn-codeShowHide').on('click', function () {
+        var $AddressContent = $(this).siblings('.showHide-body');
+        var $SimpleInfo = $(this).siblings('.showHide-simpleInfo');
+        if ($AddressContent.hasClass('active')) {
+            $AddressContent.slideUp(500);
+            $AddressContent.removeClass('active');
+            $(this).removeClass('active');
+            $AddressContent.css('display', 'none');
+            $SimpleInfo.css('display', 'block');
+        } else {
+            $AddressContent.slideDown(500);
+            $AddressContent.addClass('active');
+            $(this).addClass('active');
+            $AddressContent.css('display', 'flex');
+            $SimpleInfo.css('display', 'none');
         }
     });
 
@@ -670,7 +670,7 @@ window.onload = function () {
     }
 
     // 首次加载 图片列表信息
-    if($('#checkoutView').data('status')==true){
+    if ($('#checkoutView').data('status') == true) {
         getAddressList();
     }
 
