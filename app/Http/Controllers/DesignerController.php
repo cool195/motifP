@@ -27,7 +27,7 @@ class DesignerController extends BaseController
         if ($request->input('ajax')) {
             return $result;
         }
-        return $result;//View('designer.index');
+        return view('designer.index', ['list' => $result['data']['list']]);
     }
 
 
