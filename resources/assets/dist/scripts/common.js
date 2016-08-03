@@ -7,7 +7,8 @@ window.onload = function () {
       container: $('#wookmark1'),
       align: 'center',
       offset: 20,
-      itemWidth: "23.5%"
+      // itemWidth: "23.5%"
+      itemWidth: 272
     });
   } catch (e) {}
 };
@@ -35,6 +36,14 @@ window.onload = function () {
       freeMode: true,
       slidesPerView: 'auto',
       freeModeMomentumRatio: .5
+    });
+
+    var swiper1 = new Swiper('.bannerSwiper-container', {
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      spaceBetween: 30,
+      effect: 'fade'
+      // autoplay: 2500
     });
   } catch (e) {}
 

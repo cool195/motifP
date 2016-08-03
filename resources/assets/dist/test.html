@@ -1,51 +1,108 @@
-<!DOCTYPE HTML>
+<!doctype html>
+<html class="no-js" lang="">
 <head>
-  <script src="jquery-1.8.2.min.js"></script>
-  <style>
-    #showDiv {
-      background-color:red;
-      width:300px;
-      height:300px;
-      display:none;
-    }
-    .from-below,
-    .from-below-to-below .effeckt-modal {
-      -webkit-transform: translateX(100%);
-      -ms-transform: scale(0.5);
-      -o-transform: scale(0.5);
-      transform: scale(0.5);
-      opacity: 0;
-      -webkit-transition: all 500ms;
-      -o-transition: 500ms;
-      transition: 500ms;
-    }
-    .effeckt-show,
-    .effeckt-show.from-below-to-below .effeckt-modal {
-      -webkit-transform: translateX(0);
-      -ms-transform: scale(1);
-      -o-transform: scale(1);
-      transform: scale(1);
-      opacity: 1;
-    }
-    .effeckt-show .effeckt-modal {
-      visibility: visible;
-    }
-  </style>
-  <script>
-    function show(){
-      $("#showDiv").show();
-      $("#showDiv").addClass("from-below");
-      setTimeout(function(){$("#showDiv").addClass("effeckt-show");},300);
-    }
-    function hide(){
-      $("#showDiv").removeClass("effeckt-show");
-    }
-  </script>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>pc project</title>
+
 </head>
-<body class="sapUiBody">
-<input type="button" id="bt" value="show" onclick="show()">
-<input type="button" id="bt" value="hide" onclick="hide()">
-<div id="showDiv" class="">
-  <h1>aaaaa</h1>
+<body>
+
+<header>
+  <div class="container">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="/images/logo/logo.png" alt=""></a>
+        </div>
+        <div id="navbar">
+          <ul class="nav nav-pills navbar-left">
+            <li class="active"><a href="#">DAILY</a></li>
+            <li><a href="#">DESIGNER</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Rings</a></li>
+                <li><a href="#">Necklaces</a></li>
+                <li><a href="#">Bracelets</a></li>
+                <li><a href="#">Earrings</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav nav-pills navbar-right">
+            <li><a href="#" class="p-x-10x">yinlinghui</a></li>
+            <li><a href="#" class="p-x-10x"><img class="img-circle" src="/images/icon/apple-touch-icon.png" width="60" height="60" alt=""></a></li>
+            <li><a href="#" class="p-x-10x">bag</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+<!--<div class="container">-->
+  <!--<div style="position: relative;">-->
+    <!--<button type="button" class="btn" data-placement="bottom left" data-toggle="popover" title="Popover title"-->
+            <!--data-content="">点-->
+    <!--</button>-->
+    <!--<div id="popover-content">-->
+      <!--<span>今天是个好日子-->
+      <!--<p>我的名字是什么</p>-->
+      <!--</span>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<div role="main">
+
+  <ul class="tiles-wrap animated" id="wookmark1">
+    <!-- These are our grid blocks -->
+    <li><img src="/images/icon/apple-touch-icon.png" class="img-responsive" width="200" height="83"><p>1</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" class="img-responsive" width="200" height="23"><p>1</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" class="img-thumbnail" width="200" height="83"><p>1</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" class="img-thumbnail" width="200" height="28"><p>1</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" class="img-thumbnail" width="200" height="283"><p>1</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" class="img-thumbnail" width="200" height="283"><p>1</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" class="img-thumbnail" width="200" height="183"><p>1</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" class="img-thumbnail" width="200" height="283"><p>1</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" class="img-thumbnail" width="200" height="483"><p>1</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" width="200" height="283"><p>2</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" width="200" height="283"><p>2</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" width="200" height="23"><p>2</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" width="200" height="283"><p>2</p></li>
+    <li><img src="/images/icon/apple-touch-icon.png" width="200" height="83"><p>2</p></li>
+  </ul>
+
 </div>
+
+
+<script>
+
+  $(function () {
+    $("[data-toggle='popover']").popover({
+      html: true,
+      title: function () {
+        return $("#popover-head").html();
+      },
+      content: function () {
+        return $("#popover-content").html();
+      }
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var wookmark1 = new Wookmark('#wookmark1', {
+      outerOffset: 10, // Optional, the distance to the containers border
+      itemWidth: 210 // Optional, the width of a grid item
+    });
+  };
+</script>
 </body>
+</html>
