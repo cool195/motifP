@@ -26,7 +26,7 @@ class DailyController extends BaseController
         if ($request->input('ajax')) {
             return $result;
         }
-        return $result;//View('daily.index');
+        return View('daily.index', ['list' => $result['data']['list']]);
     }
 
     /**
