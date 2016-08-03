@@ -31,6 +31,8 @@ Route::get('/follow/{id}', 'DesignerController@follow')->where(['id' => '[0-9]+'
 
 
 //Shopping Start
+Route::get('/shopping', 'ShoppingController@index');
+
 Route::get('/category', 'ShoppingController@getShoppingCategoryList');
 
 Route::get('/products', 'ShoppingController@getShoppingProductList');
