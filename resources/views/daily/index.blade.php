@@ -4,9 +4,9 @@
 <section>
     <div class="bannerSwiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(/resources/assets/dist/images/banner/banner1.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(/resources/assets/dist/images/banner/banner1.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(/resources/assets/dist/images/banner/banner1.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>
         </div>
         <div class="container banner-container">
             <div class="swiper-button-next">
@@ -24,29 +24,7 @@
 <div class="container m-b-40x" role="main">
     @if(!empty($list))
         <ul class="tiles-wrap animated row" id="wookmark1">
-            <!-- 图片 -->
-            <li>
-                <div class="daily-item">
-                    <a href="#">
-                        <img src="{{config('runtime.Image_URL')}}/images/daily/daily.jpg" class="img-fluid img-daily">
-                    </a>
-                </div>
-            </li>
-
-            <!-- 图 & 文 -->
-            <li>
-                <div class="daily-item">
-                    <img src="{{config('runtime.Image_URL')}}/images/daily/daily1.jpg" class="img-fluid img-daily">
-                    <div class="daily-info p-a-10x text-left">
-                        <div>
-                            <h6 class="text-main helveBold font-size-md m-b-5x">Boho Beaded Tassel Necklace</h6>
-                            <p class="text-primary m-b-0">Boasting a spectacular display of color, the titanium</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
             @foreach($list as $daily)
-            <!-- 图 & 文 & 设计师 -->
             <li>
                 <div class="daily-item">
                     <img src="{{config('runtime.CDN_URL')}}/n0/{{$daily['imgPath']}}" class="img-fluid img-daily">
@@ -56,9 +34,9 @@
                             <h6 class="text-main helveBold font-size-md m-b-5x">{{$daily['title']}}</h6>
                             <p class="text-primary m-b-0">{{ $daily['subTitle'] }}</p>
                         </div>
-                        <hr class="hr-base m-y-10x">
                         @endif
-{{--                        <div class="flex flex-fullJustified flex-alignCenter">
+                            {{--<hr class="hr-base m-y-10x">
+                        <div class="flex flex-fullJustified flex-alignCenter">
                             <div class="flex flex-alignCenter">
                                 <img src="{{config('runtime.Image_URL')}}/images/daily/daily.jpg" class="img-circle" width="30" height="30">
                                 <span class="p-l-15x">
@@ -75,7 +53,7 @@
         </ul>
     @endif
         <div class="text-center m-y-30x">
-            <a class="btn btn-block btn-gray btn-lg btn-seeMore" href="#">See more ofall</a>
+            <a class="btn btn-block btn-gray btn-lg btn-seeMore" href="#">See more of all</a>
         </div>
         <div class="loading" style="display: block">
             <div class="loader"></div>
