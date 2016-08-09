@@ -1254,6 +1254,69 @@ window.onload = function () {
 
     //reset end
 
+    // changepassword start
+
+    function change_password() {
+        $('.change-save').addClass('disabled');
+        $.ajax({
+            url: '/user/modifyUserPwd',
+            type: 'POST',
+            data: $('#changepassword').serialize()
+        })
+            .done(function(data){
+                if(data.success){
+                    alert(data.prompt_msg);
+                }else{
+                    //$('.warning-info').removeClass('off');
+                    //$('.warning-info').children('span').html(data.prompt_msg);
+                }
+            })
+            .always(function() {
+                $('.change-save').removeClass('disabled');
+            })
+    }
+
+    $('.change-oldpw').on('keyup blur', function() {
+        var pw = $('.change-pw').val(),
+            confirmPwd = $('.change-cpw').val();
+
+        if ( login_validationPassword( $(this) ) && login_validationPassword($('.change-pw')) && reset_validateConfirmPwd($('.change-cpw'), pw, confirmPwd)) {
+            $('.change-save').removeClass('disabled');
+        } else {
+            $('.change-save').addClass('disabled');
+        }
+    });
+
+    $('.change-pw').on('keyup blur', function() {
+        var pw = $(this).val(),
+            confirmPwd = $('.change-cpw').val();
+        if ( login_validationPassword( $(this) ) && login_validationPassword($('.change-oldpw')) && reset_validateConfirmPwd($('.change-cpw'), pw, confirmPwd)) {
+            $('.change-save').removeClass('disabled');
+        } else {
+            $('.change-save').addClass('disabled');
+        }
+    });
+
+    $('.change-cpw').on('keyup blur', function() {
+        var newPwd = $('.change-pw').val(),
+            confirmPwd = $(this).val();
+        if ( login_validationPassword( $(this) ) && reset_validateConfirmPwd($(this), newPwd, confirmPwd) && login_validationPassword($('.change-oldpw')) && login_validationPassword($('.change-pw'))) {
+            $('.change-save').removeClass('disabled');
+        } else {
+            $('.change-save').addClass('disabled');
+        }
+    });
+
+    $('.change-save').on('click', function(event) {
+        if(!$(event.target).hasClass('disabled')){
+            change_password();
+        }
+    });
+
+
+
+    // changepassword end
+
     // 图片延迟加载
     try {
         $('img.img-lazy').lazyload({

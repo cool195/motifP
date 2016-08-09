@@ -121,17 +121,11 @@ class UserController extends BaseController
             'pw' => md5($request->input('pw')),
         );
         $result = $this->request('user', $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
-        } else {
-            $result['prompt_msg'] = "Password change failed, Please try agian!";
-            if ($result['success']) {
-                Session::forget('user');
-                $result['prompt_msg'] = "Your password has been changed. Please login agian";
-                $result['redirectUrl'] = "/login";
-            }
+        $result['prompt_msg'] = "Password change failed, Please try agian!";
+        if ($result['success']) {
+            Session::forget('user');
+            $result['prompt_msg'] = "Your password has been changed. Please login agian";
+            $result['redirectUrl'] = "/login";
         }
         return $result;
     }
@@ -286,4 +280,22 @@ class UserController extends BaseController
         $result = $this->request('wishlist', $params);
         return $result['data']['isFC'];
     }
+    
+    public function password(Request $request)
+    {
+        return view('user.changepassword');
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

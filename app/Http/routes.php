@@ -112,6 +112,8 @@ Route::match(['get', 'post'], '/user/modifyUserInfo', 'UserController@modifyUser
 Route::post('/user/uploadicon', 'UserController@uploadIcon');
 
 Route::get('/wishlist/{spu}', 'UserController@updateWishList')->where(['spu' => '[0-9]+']);
+
+Route::get('/user/password', 'UserController@password');
 //User End
 
 //第三方登录Start
