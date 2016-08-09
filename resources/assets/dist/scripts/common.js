@@ -6,7 +6,7 @@ window.onload = function () {
     var wookmark1 = new Wookmark('#wookmark1', {
       container: $('#wookmark1'),
       align: 'center',
-      offset: 20,
+      offset: 0,
       // itemWidth: "23.5%"
       itemWidth: 272
     });
