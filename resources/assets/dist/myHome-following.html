@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Order Detail</title>
+  <title>Following</title>
   <link rel="apple-touch-icon" href="/images/icon/apple-touch-icon.png">
 
   <link rel="stylesheet" href="styles/vendor.css">
@@ -59,7 +59,6 @@
 <section class="m-y-40x">
   <div class="container">
     <div class="myHome-content">
-      <!-- 左侧菜单 -->
       <div class="leftMeun">
         <div class="box-shadow bg-white">
           <!-- 个人头像、用户名 -->
@@ -79,7 +78,7 @@
                   </div>
                 </a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a href="#">
                   <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                     <i class="iconfont icon-book font-size-lg p-r-10x"></i><span class="font-size-md">Orders</span>
@@ -93,7 +92,7 @@
                   </div>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a href="#">
                   <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                     <i class="iconfont icon-follow font-size-lg p-r-10x"></i><span class="font-size-md">Following</span>
@@ -144,195 +143,142 @@
           </nav>
         </div>
       </div>
-
-      <!-- 左侧内容 -->
       <div class="right">
         <div class="rightContent">
-          <!-- Order Detail -->
-          <div class="p-t-5x p-b-10x">
-            <a href="#">
-              <strong><i class="iconfont icon-arrow-left font-size-lx p-x-15x"></i></strong>
-              <span class="helveBold font-size-lxx">Order Details</span>
-            </a>
-          </div>
-          <!-- 下单日期、订单号、订单金额 -->
-          <div class="box-shadow bg-white m-b-20x">
-            <div class="p-x-20x p-y-15x">
-              <div>
-                <span class="orderDetail-title">Order date</span>
-                <span>March 11, 2015</span>
-              </div>
-              <div>
-                <span class="orderDetail-title">Order #</span>
-                <span>109-138937478-457395943789</span>
-              </div>
-              <div>
-                <span class="orderDetail-title">Order total</span>
-                <span>$25.98(1 items)</span>
-              </div>
-            </div>
-          </div>
-          <!-- 商品列表 (被取消订单、已发货订单) -->
-          <div class="box-shadow bg-white m-b-20x">
-            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-              <div>
-                <h5 class="sanBold font-size-md">Order Created: July 7,2016</h5>
-              </div>
-              <!-- 被取消订单 -->
-              <!--<span>-->
-                <!--<a class="btn btn-primary btn-md" href="#">Buy Again</a>-->
-              <!--</span>-->
-              <!-- 已发货订单 -->
-              <!--<span>-->
-                <!--<a class="btn btn-primary btn-md" href="#">Track Shipment</a>-->
-              <!--</span>-->
 
-            </div>
-            <hr class="hr-base m-a-0">
-            <div class="p-a-20x">
-              <div class="checkout-Item">
-                <div class="media">
-                  <div class="media-left m-r-15x">
-                    <img class="img-thumbnail" src="/images/product/product.jpg" width="120" height="120" alt="">
+          <!-- Following List -->
+          <div class="box-shadow bg-white m-b-20x p-a-20x">
+            <div class="row designer-item">
+              <div class="col-lg-7 col-md-12 col-xs-12">
+                <div class="">
+                  <div class="product-bigImg">
+                    <a href="#">
+                      <img class="img-fluid product-bigImg img-lazy" data-original="/images/designer/designer1.jpg" src="/images/product/bg-product@750.png" alt="商品的名称">
+                    </a>
                   </div>
-                  <div class="media-body">
-                    <div class="row flex flex-alignCenter">
-                      <div class="col-md-3">
-                        <div class="font-size-md text-main p-l-20x">Aurora Ring rings</div>
+                  <div class="swiper-container">
+                    <div class="productImg-list p-t-20x swiper-wrapper">
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy active" src="/images/product/bg-product@140.png" data-original="/images/product/product.jpg" width="110" height="110" alt="商品图片">
+                        </a>
                       </div>
-                      <div class="col-md-3">
-                        Size:11<br>
-                        Color:Black<br>
-                        Material:Gold
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="/images/product/product1.jpg" width="110" height="110" alt="商品图片">
+                        </a>
                       </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$199.95</div>
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="/images/product/product.jpg" width="110" height="110" alt="商品图片">
+                        </a>
                       </div>
-                      <div class="col-md-2">
-                        <div class="text-center">X2</div>
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="/images/product/product1.jpg" width="110" height="110" alt="商品图片">
+                        </a>
                       </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$499.95</div>
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="/images/product/product.jpg" width="110" height="110" alt="商品图片">
+                        </a>
+                      </div>
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="/images/product/product1.jpg" width="110" height="110" alt="商品图片">
+                        </a>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div class="media">
-                  <div class="media-left m-r-15x">
-                    &nbsp;
-                  </div>
-                  <div class="media-body no-border">
-                    <div class="row flex flex-alignCenter">
-                      <div class="col-md-3">
-                        <div class="p-l-20x">Inside Engraving</div>
-                      </div>
-                      <div class="col-md-3">
-                        <div>I Love You Charles</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$4.5</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">X2</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">+$9</div>
-                      </div>
+                    <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i>
+                    </div>
+                    <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i>
                     </div>
                   </div>
                 </div>
               </div>
-              <hr class="hr-base">
-              <div class="checkout-Item">
-                <div class="media">
-                  <div class="media-left m-r-15x">
-                    <img class="" src="/images/product/product.jpg" width="120" height="120" alt="">
+              <div class="col-lg-5 col-md-12 col-xs-12">
+                <div class="text-center">
+                  <div class="m-b-10x"><img class="img-circle" src="/images/designer/designer-head.jpg" width="120" height="120" alt=""></div>
+                  <div class="font-size-md helveBold">PISCES</div>
+                  <div class="p-t-15x"><a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x">Follow</a>
                   </div>
-                  <div class="media-body no-border">
-                    <div class="row flex flex-alignCenter">
-                      <div class="col-md-3">
-                        <div class="font-size-md text-main p-l-20x">Aurora Ring rings</div>
+                  <div class="p-t-15x">Shinya Kimura @ chabott engineering - redesign concept for a custom motorcycle
+                    builder
+                    and designer Shinya Kimura.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box-shadow bg-common m-b-20x p-a-20x">
+            <div class="row designer-item">
+              <div class="col-lg-5 col-md-12 col-xs-12">
+                <div class="text-center">
+                  <div class="m-b-10x"><img class="img-circle" src="/images/designer/designer-head.jpg" width="120" height="120" alt=""></div>
+                  <div class="font-size-md helveBold">PISCES</div>
+                  <div class="p-t-15x"><a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x active">Follow</a>
+                  </div>
+                  <div class="p-t-15x">Shinya Kimura @ chabott engineering - redesign concept for a custom motorcycle
+                    builder
+                    and designer Shinya Kimura.
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-7 col-md-12 col-xs-12">
+                <div class="">
+                  <div class="product-bigImg">
+                    <a href="#">
+                      <img class="img-fluid product-bigImg img-lazy" data-original="/images/designer/designer1.jpg" src="/images/product/bg-product@750.png" alt="商品的名称">
+                    </a>
+                  </div>
+                  <div class="swiper-container">
+                    <div class="productImg-list p-t-20x swiper-wrapper">
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy active" src="/images/product/bg-product@140.png" data-original="/images/product/product.jpg" width="110" height="110" alt="商品图片">
+                        </a>
                       </div>
-                      <div class="col-md-3">
-                        Size:11<br>
-                        Color:Black<br>
-                        Material:Gold
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="/images/product/product1.jpg" width="110" height="110" alt="商品图片">
+                        </a>
                       </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$199.95</div>
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="/images/product/product.jpg" width="110" height="110" alt="商品图片">
+                        </a>
                       </div>
-                      <div class="col-md-2">
-                        <div class="text-center">X2</div>
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="/images/product/product1.jpg" width="110" height="110" alt="商品图片">
+                        </a>
                       </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$499.95</div>
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="/images/product/product.jpg" width="110" height="110" alt="商品图片">
+                        </a>
                       </div>
+                      <div class="productImg-item swiper-slide p-r-10x">
+                        <a href="javascript:void(0);">
+                          <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="/images/product/product1.jpg" width="110" height="110" alt="商品图片">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i>
+                    </div>
+                    <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <hr class="hr-base m-a-0">
-            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-              <div>
-                Order # 109-138937478-457395943789
-              </div>
-          <span>
-          <span class="p-r-30x">Order total</span>
-          <span class="sanBold">$25.98</span>
-          </span>
-            </div>
           </div>
-          <!-- 订单详情 -->
-          <div class="box-shadow bg-white m-b-20x">
-            <div class="p-a-20x">
-              <div class="media">
-                <div class="media-left sanBold orderInfo-title">Ships to</div>
-                <div class="media-right">
-                  UserName<br>
-                  New York<br>
-                  12030<br>
-                  United States
-                </div>
-              </div>
-              <hr class="hr-base">
-              <div class="media">
-                <div class="media-left sanBold orderInfo-title">Shipping Method</div>
-                <div class="media-right">Registered Airmail / 7-20 working days $0.00</div>
-              </div>
-              <hr class="hr-base">
-              <div class="media">
-                <div class="media-left sanBold orderInfo-title">Pay with</div>
-                <div class="media-right">Paypal</div>
-              </div>
-              <hr class="hr-base">
-              <div class="media">
-                <div class="media-left sanBold orderInfo-title">Promotion Code</div>
-                <div class="media-right">328939284</div>
-              </div>
-              <hr class="hr-base">
-              <div class="media">
-                <div class="media-left sanBold orderInfo-title">Special Request</div>
-                <div class="media-right">Registered Airmail / 7-20 working days $0.00Registered Airmail / 7-20 working
-                  days $0.00Registered Airmail / 7-20 working days $0.00Registered Airmail / 7-20 working days
-                  $0.00Registered Airmail / 7-20 working days $0.00Registered Airmail / 7-20 working days
-                  $0.00Registered Airmail / 7-20 working days $0.00Registered Airmail
-                </div>
-              </div>
-            </div>
+
+          <!-- see more btn -->
+          <div class="text-center m-t-30x"><a class="btn btn-block btn-gray btn-lg btn-seeMore" href="#">See more of all</a>
           </div>
-          <!-- 订单价格 -->
-          <div class="box-shadow bg-white m-t-20x">
-            <div class="p-a-20x font-size-md">
-              <div class="text-right"><span>Items(3):</span><span class="sanBold cart-price">$130</span></div>
-              <div class="text-right"><span>Extra:</span><span class="sanBold cart-price">-$21</span></div>
-              <div class="text-right"><span class="sanBold text-main">Bag Subtotal:</span><span class="sanBold text-main cart-price">$120.95</span></div>
-            </div>
-          </div>
-          <!-- 按钮 -->
-          <div class="text-right p-t-30x">
-            <a href="#" class="btn btn-primary btn-lg btn-300">Contact Service</a>
-          </div>
+
         </div>
       </div>
 
