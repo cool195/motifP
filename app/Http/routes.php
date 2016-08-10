@@ -114,6 +114,8 @@ Route::post('/user/uploadicon', 'UserController@uploadIcon');
 Route::get('/wishlist/{spu}', 'UserController@updateWishList')->where(['spu' => '[0-9]+']);
 
 Route::get('/user/password', 'UserController@password');
+
+Route::get('/user/address', 'UserController@address');
 //User End
 
 //第三方登录Start
@@ -129,6 +131,12 @@ Route::get('/addFacebookEmail', 'AuthController@addFacebookEmail');
 Route::resource('/address','AddressController');
 //Address End
 
+
+//Order Start
+Route::get('/orderlist', 'OrderController@getOrderList');
+
+Route::get('/orderdetail/{subno}', 'OrderController@orderDetail')->where(['subno' => '[0-9]+']);
+//Order End
 
 
 

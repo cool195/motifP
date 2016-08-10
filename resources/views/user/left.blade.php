@@ -81,7 +81,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="/signout">
                         <div class="flex flex-alignCenter p-y-5x p-x-40x">
                             <span class="font-size-md">Log Out</span>
                         </div>

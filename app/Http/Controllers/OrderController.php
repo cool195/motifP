@@ -52,7 +52,7 @@ class OrderController extends BaseController
         return $result;
     }
 
-    public function getOrderDetail($subno)
+    public function orderDetail(Request $request, $subno)
     {
         $params = array(
             'cmd' => 'detail',
@@ -64,7 +64,10 @@ class OrderController extends BaseController
         if (!empty($result) && $result['success']) {
             $result = $this->jsonDecodeOrderDetailResult($result);
         }
-        return $result;
+        if ($request->input('ajax')){
+            return $result;
+        }
+        return view('order.orderdetail', ['data' => $result['data']]);
     }
 
     private function jsonDecodeOrderDetailResult(Array $result)

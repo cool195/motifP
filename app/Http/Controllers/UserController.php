@@ -286,7 +286,10 @@ class UserController extends BaseController
         return view('user.changepassword');
     }
     
-    
+    public function address(Request $request)
+    {
+        return view('user.address');
+    }
     
     
     
