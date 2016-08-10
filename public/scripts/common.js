@@ -1314,6 +1314,10 @@
 
     // changepassword end
 
+    //User Address Start
+
+    //User Address End
+
     // 图片延迟加载
     try {
         $('img.img-lazy').lazyload({
