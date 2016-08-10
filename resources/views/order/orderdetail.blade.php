@@ -144,11 +144,13 @@
                                 <div class="media-left sanBold orderInfo-title">Pay with</div>
                                 <div class="media-right">{{$data['pay_type']}}</div>
                             </div>
+                            @if($data['cps_amount'] > 0)
                             <hr class="hr-base">
                             <div class="media">
                                 <div class="media-left sanBold orderInfo-title">Promotion Code</div>
-                                <div class="media-right">328939284</div>
+                                <div class="media-right">-${{ number_format(($data['cps_amount'] / 100), 2)}}</div>
                             </div>
+                            @endif
                             @if(!empty($data['order_remark']))
                             <hr class="hr-base">
                             <div class="media">
@@ -185,8 +187,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </section>
