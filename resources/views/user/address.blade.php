@@ -20,7 +20,7 @@
                                 <div class="inline">
                                     <span class="font-size-md">Add Shipping Address</span>
                                     <span class="font-size-md pull-right">
-                                        <i class="iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
+                                        <i class="isDefault iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
                                         <a class="p-l-10x" href="javascript:void(0)">Make Primary</a>
                                     </span>
                                 </div>
@@ -107,7 +107,8 @@
                                     @foreach($address['data']['list'] as $value)
                                     <div class="col-md-6">
                                         <div class="p-a-10x">
-                                            <div class="address-item p-x-20x p-y-15x @if($value['isDefault']){{'active'}}@endif">
+                                            <div class="address-item p-x-20x p-y-15x @if($value['isDefault']){{'active'}}@endif"
+                                            data-aid="{{$value['receiving_id']}}">
                                                 <div class="address-info">
                                                     {{$value['name']}}<br>
                                                     {{$value['city']}}<br>
@@ -118,15 +119,14 @@
                                                 @if($value['isDefault'])
                                                     <div class="primary-address font-size-md">Primary</div>
                                                 @endif
-                                                <div class="btn-edit font-size-md">Edit</div>
+                                                <div class="btn-edit font-size-md btn-editAddress">Edit</div>
                                                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                                             </div>
                                         </div>
                                     </div>
                                     @endforeach
                                 </div>
-                                <div class="text-right p-t-10x"><a href="#" class="btn btn-primary btn-lg btn-200">Continue</a>
-                                </div>
+                                {{--<div class="text-right p-t-10x"><a href="javascript:void(0)" class="btn btn-primary btn-lg btn-200">Continue</a></div>--}}
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,8 @@
     @{{ each list }}
     <div class="col-md-6">
         <div class="p-a-10x">
-            <div class="address-item p-x-20x p-y-15x @{{ if $value.isDefault == 1 }} active @{{ /if }}">
+            <div class="address-item p-x-20x p-y-15x @{{ if $value.isDefault == 1 }} active @{{ /if }}"
+                 data-aid="@{{ $value.receiving_id }}">
                 <div class="address-info">
                     @{{ $value.name }}<br>
                     @{{ $value.zip }}<br>
