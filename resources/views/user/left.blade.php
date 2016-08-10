@@ -74,7 +74,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="/user/address">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                             <span class="font-size-md">Shipping Address</span>
                         </div>
