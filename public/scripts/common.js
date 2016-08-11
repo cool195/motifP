@@ -2,19 +2,6 @@
 
 'use strict';
 
-window.onload = function () {
-    // 初始化瀑布流
-    try {
-        var wookmark1 = new Wookmark('#wookmark1', {
-            container: $('#wookmark1'),
-            align: 'center',
-            offset: 20,
-            itemWidth: "23.5%"
-        });
-    } catch (e) {
-    }
-};
-
 (function ($, Swiper) {
 
     // ShoppingDetail.html
@@ -31,6 +18,7 @@ window.onload = function () {
 
     // 初始化商品图片列表 Swiper
     try {
+        // 设计师 产品列表
         var swiper = new Swiper('.swiper-container', {
             pagination: '.swiper-pagination',
             nextButton: '.swiper-button-next',
@@ -38,6 +26,15 @@ window.onload = function () {
             freeMode: true,
             slidesPerView: 'auto',
             freeModeMomentumRatio: .5
+        });
+
+        // daily 页面 banner 轮播
+        var swiper1 = new Swiper('.bannerSwiper-container', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 30,
+            effect: 'fade'
+            // autoplay: 2500
         });
     } catch (e) {
     }
@@ -1355,3 +1352,29 @@ $.ajaxSetup({
     }
 });
 //public end
+
+// 瀑布流
+$(function(){
+    try {
+        var wookmark1 = new Wookmark('#daily-wookmark', {
+            container: $('#daily-wookmark'),
+            align: 'center',
+            offset: 0,
+            itemWidth: 272
+        });
+    } catch (e) {
+    }
+});
+
+window.onload = function () {
+    // 初始化瀑布流
+    try {
+        var wookmark1 = new Wookmark('#daily-wookmark', {
+            container: $('#daily-wookmark'),
+            align: 'center',
+            offset: 0,
+            itemWidth: 272
+        });
+    } catch (e) {
+    }
+};
