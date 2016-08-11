@@ -86,14 +86,12 @@
         @inject('Address', 'App\Http\Controllers\AddressController')
         {{--*/ $address = $Address->index() /*--}}
         <div class="box-shadow bg-white m-t-20x">
-            <div class="font-size-md p-x-20x p-y-15x btn-showHide @if(empty($address['data']['list'])){{'active'}}@endif"
-                 id="addrShowHide">
+            <div class="font-size-md p-x-20x p-y-15x btn-showHide @if(empty($address['data']['list'])){{'active'}}@endif" id="addrShowHide">
                 <span class="sanBold">Shipping Address</span>
                 <span class="pull-right showHide-simpleInfo">
                     @forelse ($address['data']['list'] as $value)
                         @if($value['isDefault'])
-                            <span id="defaultAddr" data-city="{{$value['detail_address1']}}"
-                                  data-aid="{{$value['receiving_id']}}">{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}</span>
+                            <span id="defaultAddr" data-city="{{$value['detail_address1']}}" data-aid="{{$value['receiving_id']}}">{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}</span>
                         @endif
                         @break($value['isDefault'])
                     @empty
@@ -107,19 +105,15 @@
                 {{--选择地址--}}
                 <div class="p-a-20x select-address @if(empty($address['data']['list'])){{'disabled'}}@endif">
                     <div class="flex flex-alignCenter flex-fullJustified">
-                        <span class="font-size-md">Selecy Shipping Address</span>
-                                <span class="font-size-md pull-right">
-                                    <div class="btn btn-secondary btn-md btn-addNewAddress" href="#"><i
-                                                class="iconfont icon-add font-size-md p-r-5x"></i>Add NewAddress
-                                    </div>
-                                </span>
+                        <span class="font-size-md">Select Shipping Address</span>
+                        <span class="font-size-md pull-right">
+                            <div class="btn btn-secondary btn-md btn-addNewAddress" href="#"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address</div>
+                        </span>
                     </div>
-                    <div class="row p-x-10x p-t-20x address-list">
-
+                    <div class="row p-x-10x p-t-20x address-list"></div>
+                    <div class="text-right p-t-10x">
+                        <a href="javascript:;" class="btn btn-primary btn-md" id="btnAddrShowHide">Continue</a>
                     </div>
-                    <div class="text-right p-t-10x"><a href="javascript:;"
-                                                       class="btn btn-primary btn-md"
-                                                       id="btnAddrShowHide">Continue</a></div>
                 </div>
                 {{--添加\修改 地址--}}
                 <div class="p-a-20x add-address @if(!empty($address['data']['list'])){{'disabled'}}@endif">
@@ -133,36 +127,31 @@
                         <form id="addAddressForm" data-aid="">
                             <div class="col-md-5">
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="email" class="form-control contrlo-lg text-primary"
-                                           placeholder="Email" value="{{Session::get('user.login_email')}}">
+                                    <input type="text" name="email" class="form-control contrlo-lg text-primary" placeholder="Email" value="{{Session::get('user.login_email')}}">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter a valid email address !</span>
                                     </div>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="name" class="form-control contrlo-lg text-primary"
-                                           placeholder="Full name">
+                                    <input type="text" name="name" class="form-control contrlo-lg text-primary" placeholder="Full name">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your name !</span>
                                     </div>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="city" class="form-control contrlo-lg text-primary"
-                                           placeholder="City">
+                                    <input type="text" name="city" class="form-control contrlo-lg text-primary" placeholder="City">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your city !</span>
                                     </div>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="state" class="form-control contrlo-lg text-primary"
-                                           placeholder="State (optional)">
+                                    <input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="tel" class="form-control contrlo-lg text-primary"
-                                           placeholder="Phone">
+                                    <input type="text" name="tel" class="form-control contrlo-lg text-primary" placeholder="Phone">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your Phone !</span>
@@ -172,16 +161,14 @@
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="addr1" class="form-control contrlo-lg text-primary"
-                                           placeholder="Street 1">
+                                    <input type="text" name="addr1" class="form-control contrlo-lg text-primary" placeholder="Street 1">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your street !</span>
                                     </div>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="addr2" class="form-control contrlo-lg text-primary"
-                                           placeholder="Street 2 (optional)">
+                                    <input type="text" name="addr2" class="form-control contrlo-lg text-primary" placeholder="Street 2 (optional)">
                                 </div>
 
                                 <div class="p-l-20x m-b-20x">
@@ -192,9 +179,7 @@
                                     </select>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="zip" id="zip"
-                                           class="form-control contrlo-lg text-primary"
-                                           placeholder="Zip Code">
+                                    <input type="text" name="zip" id="zip" class="form-control contrlo-lg text-primary" placeholder="Zip Code">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your zip code !</span>

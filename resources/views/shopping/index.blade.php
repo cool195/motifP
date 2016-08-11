@@ -22,14 +22,14 @@
     </div>
 
     <!-- 商品列表 -->
-    <div class="container m-t-30x m-b-40x">
+    <div class="container m-t-30x m-b-40x" id="productList">
         <div class="row">
             @foreach($productAll['list'] as $product)
             <div class="col-md-3 col-xs-6">
                 <div class="productList-item">
                     <div class="image-container">
                         <a href="/product/{{$product['spu']}}">
-                            <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n0/{{$product['main_image_url']}}" alt="商品的名称">
+                            <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['main_image_url']}}" alt="商品的名称">
                             <div class="bg-heart"></div>
                         </a>
                         <span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
@@ -49,9 +49,10 @@
             </div>
             @endforeach
         </div>
-        <div class="text-center m-y-30x"><a class="btn btn-block btn-gray btn-lg btn-seeMore" href="#">See more of all</a>
+        <div class="text-center m-y-30x">
+            <div class="btn btn-block btn-gray btn-lg btn-380 btn-seeMore">See more of all</div>
         </div>
-        <div class="loading" style="display: block">
+        <div class="loading" style="display: none">
             <div class="loader">
             </div>
             <div class="text-center p-t-10x">Loading...</div>

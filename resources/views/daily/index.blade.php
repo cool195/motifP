@@ -23,12 +23,12 @@
 <!-- 内容 -->
 <div class="container m-b-40x" role="main">
     @if(!empty($list))
-        <ul class="tiles-wrap animated row" id="wookmark1">
+        <ul class="tiles-wrap animated row" id="daily-wookmark">
             @foreach($list as $daily)
             <li>
                 <div class="daily-item">
                     <a href="@if(1 == $daily['skipType'])/product/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@else/shopping/@endif{{ $daily['skipId'] }}">
-                        <img src="{{config('runtime.CDN_URL')}}/n0/{{$daily['imgPath']}}" class="img-fluid img-daily">
+                        <img src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$daily['imgPath']}}" class="img-fluid img-daily img-lazy">
                     </a>
                     <div class="daily-info p-a-10x text-left">
                         @if(!empty($daily['title'] || !empty($daily['subTitle'])))
@@ -55,7 +55,7 @@
         </ul>
     @endif
         <div class="text-center m-y-30x">
-            <a class="btn btn-block btn-gray btn-lg btn-seeMore" href="#">See more of all</a>
+            <a class="btn btn-block btn-gray btn-lg btn-380 btn-seeMore" href="#">See more of all</a>
         </div>
         <div class="loading" style="display: block">
             <div class="loader"></div>
