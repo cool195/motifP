@@ -291,14 +291,11 @@ class UserController extends BaseController
         return view('user.address');
     }
     
+    public function profile(Request $request)
+    {
+        return view('user.profile');
+    }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+
 }

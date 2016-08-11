@@ -116,6 +116,8 @@ Route::get('/wishlist/{spu}', 'UserController@updateWishList')->where(['spu' => 
 Route::get('/user/password', 'UserController@password');
 
 Route::get('/user/address', 'UserController@address');
+
+Route::get('/user/profile', 'UserController@profile');
 //User End
 
 //第三方登录Start
