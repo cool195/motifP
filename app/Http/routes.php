@@ -118,6 +118,8 @@ Route::get('/user/password', 'UserController@password');
 Route::get('/user/address', 'UserController@address');
 
 Route::get('/user/profile', 'UserController@profile');
+
+Route::post('/user/modify', 'UserController@modifyUserInfo');
 //User End
 
 //第三方登录Start

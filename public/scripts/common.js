@@ -1311,12 +1311,43 @@
     });
 
 
-
-    // changepassword end
+    //ChangePassword End
 
     //User Address Start
 
     //User Address End
+
+    //User Profile Start
+    function profile_updateUser()
+    {
+        $.ajax({
+            url: '/user/modify',
+            type: 'post',
+            data: $('#changeProfile').serialize()
+        })
+            .done(function(data) {
+                if(data.success) {
+                    $('input[name="nick"]').attr('placeholder', data.data.nickname);
+                    $('input[name="nick"]').val('');
+                }
+            })
+    }
+
+    $('input[name="nick"]').on('keyup', function() {
+        if("" === $(this).val()) {
+            $('.profile-save').addClass('disabled');
+        } else {
+            $('.profile-save').removeClass('disabled');
+        }
+    })
+
+    $('.profile-save').on('click', function(event) {
+        if(!$(event.target).hasClass('disabled')){
+            profile_updateUser();
+        }
+    })
+
+    //User Profile End
 
     // 图片延迟加载
     try {

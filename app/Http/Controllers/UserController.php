@@ -151,22 +151,16 @@ class UserController extends BaseController
             'token' => $user['token']
         );
         $result = $this->request('user', $params);
-        if (empty($result)) {
-            $result['success'] = false;
-            $result['error_msg'] = "Data access failed";
-            $result['data'] = array();
-        } else {
-            $result['error_msg'] = "Modify Info Failed";
-            if ($result['success']) {
-                $result['prompt_msg'] = "Modify Info Success";
-                $result['redirectUrl'] = "/user/setting";
-                $userInfo = $this->getUserDetailInfo($request);
-                $user['nickname'] = $userInfo['data']['nickname'];
-                Session::forget('user');
-                Session::put('user', $user);
-            }
+        $result['error_msg'] = "Modify Info Failed";
+        if ($result['success']) {
+            $result['prompt_msg'] = "Modify Info Success";
+            $result['redirectUrl'] = "";
+            $userInfo = $this->getUserDetailInfo($request);
+            $user['nickname'] = $userInfo['data']['nickname'];
+            $result['data'] = $userInfo['data'];
+            Session::forget('user');
+            Session::put('user', $user);
         }
-
         return $result;
     }
 
