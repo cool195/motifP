@@ -53,7 +53,7 @@
         <nav class="nav-menu p-y-30x">
             <ul class="nav">
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="/user/profile">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                             <span class="font-size-md">Change Profile</span>
                         </div>
