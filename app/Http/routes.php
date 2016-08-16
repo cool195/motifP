@@ -137,7 +137,7 @@ Route::resource('/address','AddressController');
 
 
 //Order Start
-Route::get('/orderlist', 'OrderController@getOrderList');
+Route::get('/orderlist', 'OrderController@orderList');
 
 Route::get('/orderdetail/{subno}', 'OrderController@orderDetail')->where(['subno' => '[0-9]+']);
 //Order End

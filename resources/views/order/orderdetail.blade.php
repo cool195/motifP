@@ -4,14 +4,14 @@
     <div class="container">
         <div class="content">
             <!-- 左侧菜单 -->
-            @include('user.left')
+            @include('user.left', ['title' => 'Order Detail'])
 
             <!-- 右侧内容 -->
             <div class="right">
                 <div class="rightContent">
                     <!-- Order Detail -->
                     <div class="p-t-5x p-b-10x">
-                        <a href="#">
+                        <a href="/orderlist">
                             <strong><i class="iconfont icon-arrow-left font-size-lx p-x-15x"></i></strong>
                             <span class="helveBold font-size-lxx">Order Detail</span>
                         </a>

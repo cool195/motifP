@@ -18,7 +18,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item @if('Orders' == $title || 'Order Detail' == $title) active @endif">
                     <a href="#">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                             <i class="iconfont icon-book font-size-lg p-r-10x"></i>

@@ -7,20 +7,23 @@ use Illuminate\Support\Facades\Session;
 
 class OrderController extends BaseController
 {
-    public function getOrderList(Request $request)
+    public function orderList(Request $request)
     {
         $params = array(
             'cmd' => 'ordlist',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'num' => $request->input("num", 1),
-            'size' => $size = $request->input("size", 5),
+            'size' => $size = $request->input("size", 500),
         );
         $result = $this->request('order', $params);
         if (!empty($result) && $result['success']) {
             $result = $this->resultJsonDecode($result);
         }
-        return $result;
+        if($request->input('ajax')){
+            return $result;
+        }
+        return view('order.orderlist', ['data' => $result['data']]);
     }
 
     private function resultJsonDecode(Array $result)
