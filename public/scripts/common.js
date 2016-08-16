@@ -1263,6 +1263,7 @@
             .done(function(data){
                 if(data.success){
                     alert(data.prompt_msg);
+                    window.location.href = data.redirectUrl;
                 }else{
                     //$('.warning-info').removeClass('off');
                     //$('.warning-info').children('span').html(data.prompt_msg);
@@ -1314,7 +1315,14 @@
     //ChangePassword End
 
     //User Address Start
-
+    function address_delete()
+    {
+        $.ajax({
+            url: '/address',
+            type: 'delete',
+            
+        })
+    }
     //User Address End
 
     //User Profile Start

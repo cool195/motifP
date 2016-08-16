@@ -275,17 +275,17 @@ class UserController extends BaseController
         return $result['data']['isFC'];
     }
     
-    public function password(Request $request)
+    public function password()
     {
         return view('user.changepassword');
     }
     
-    public function address(Request $request)
+    public function address()
     {
         return view('user.address');
     }
     
-    public function profile(Request $request)
+    public function profile()
     {
         return view('user.profile');
     }

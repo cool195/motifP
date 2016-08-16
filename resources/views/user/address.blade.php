@@ -121,6 +121,7 @@
                                                 @endif
                                                 <div class="btn-edit font-size-md btn-editAddress">Edit</div>
                                                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                                <div class="btn-addPrimary btn-delete">delete</div>
                                             </div>
                                         </div>
                                     </div>
