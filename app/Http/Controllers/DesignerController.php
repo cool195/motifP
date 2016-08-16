@@ -106,7 +106,10 @@ class DesignerController extends BaseController
         } else {
             $view = 'designer.show';
         }
-        return $result;//View($view, ['designer' => $result['data'], 'productAll' => $productAll, 'product' => $product['data']]);
+        if($request->input('ajax')){
+            return $result;
+        }
+        return View($view, ['designer' => $result['data'], 'productAll' => $result['productAll'], 'product' => $result['product']['data']]);
     }
 
 
