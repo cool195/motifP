@@ -37,15 +37,15 @@
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @if(isset($data['productImages']))
                                 @foreach($data['productImages'] as $key => $image)
-                                        <div class="productImg-item swiper-slide p-r-10x">
-                                            <a href="javascript:void(0);"
-                                               rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$image['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$image['img_path']."'}"}}">
-                                                <img class="img-thumbnail small-img img-lazy @if(0 == $key) active @endif"
-                                                     src="/images/product/bg-product@140.png"
-                                                     data-original="{{config('runtime.CDN_URL')}}/n3/{{$image['img_path']}}"
-                                                     width="110" height="110" alt="{{ $data['main_title'] }}">
-                                            </a>
-                                        </div>
+                                    <div class="productImg-item swiper-slide p-r-10x">
+                                        <a href="javascript:void(0);"
+                                           rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$image['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$image['img_path']."'}"}}">
+                                            <img class="img-thumbnail small-img img-lazy @if(0 == $key) active @endif"
+                                                 src="/images/product/bg-product@140.png"
+                                                 data-original="{{config('runtime.CDN_URL')}}/n3/{{$image['img_path']}}"
+                                                 width="110" height="110" alt="{{ $data['main_title'] }}">
+                                        </a>
+                                    </div>
                                 @endforeach
                             @endif
                         </div>
@@ -156,7 +156,8 @@
                                class="btn btn-block btn-primary btn-lg btn-addToBag @if($data['isPutOn']==0){{'disabled'}}@endif">Add
                                 to Bag</a>
                         @else
-                            <a href="/login" class="btn btn-block btn-primary btn-lg btn-350 btn-addToBag">Add to Bag</a>
+                            <a href="/login" class="btn btn-block btn-primary btn-lg btn-350 btn-addToBag">Add to
+                                Bag</a>
                         @endif
                     </div>
                 </div>
@@ -202,13 +203,18 @@
                 <div class="productList-item">
                     <div class="image-container">
                         <a href="/product/{{$list['spu']}}">
-                        <img class="img-fluid img-lazy"
-                             data-original="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}"
-                             src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                             alt="{{ $list['main_title'] }}">
-                        <div class="bg-heart"></div>
+                            <img class="img-fluid img-lazy"
+                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}"
+                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                 alt="{{ $list['main_title'] }}">
+                            <div class="bg-heart"></div>
                         </a>
-                        <span class="product-heart btn-heart @if(in_array($list['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$list['spu']}}"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                        @if(Session::has('user'))
+                            <span class="product-heart btn-heart @if(in_array($list['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                                  data-spu="{{$list['spu']}}"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                        @else
+                            <a href="/login"><span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span></a>
+                        @endif
                     </div>
                     <div class="price-caption helveBold">
                         <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{ $list['main_title'] }}</div>
