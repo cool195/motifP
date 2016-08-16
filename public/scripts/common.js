@@ -1315,14 +1315,25 @@
     //ChangePassword End
 
     //User Address Start
-    function address_delete()
+    function address_delete($addressItem)
     {
         $.ajax({
-            url: '/address',
+            url: '/address/' + $addressItem.parent().data('aid'),
             type: 'delete',
-            
+            data: {}
         })
+            .done(function(data) {
+                if(data.success) {
+                    $addressItem.parents('.col-md-6').remove();
+                }
+            })
     }
+    
+    $('.btn-addressDelete').on('click', function() {
+        var addressId = $(this).parent().data('aid');
+        address_delete($(this));
+    });
+
     //User Address End
 
     //User Profile Start

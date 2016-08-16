@@ -121,7 +121,9 @@
                                                 @endif
                                                 <div class="btn-edit font-size-md btn-editAddress">Edit</div>
                                                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
-                                                <div class="btn-addPrimary btn-delete">delete</div>
+                                                @if(!$value['isDefault'])
+                                                    <div class="btn-addPrimary btn-addressDelete">delete</div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
