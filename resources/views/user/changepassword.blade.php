@@ -4,7 +4,7 @@
 <section class="m-y-40x">
     <div class="container">
         <div class="content">
-            @include('user.left')
+            @include('user.left', ['title' => 'Change Password'])
             <div class="right">
                 <div class="rightContent">
                     <!-- Change Password -->
