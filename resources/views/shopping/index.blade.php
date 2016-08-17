@@ -32,7 +32,7 @@
                             <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['main_image_url']}}" alt="商品的名称">
                             <div class="bg-heart"></div>
                         </a>
-                        <span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                        <span class="product-heart btn-heart @if($product['isWished']) active @endif" data-spu="{{$product['spu']}}"><i class="iconfont icon-onheart font-size-lxx"></i></span>
                     </div>
                     <div class="price-caption helveBold">
                         <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{$product['main_title']}}</div>
