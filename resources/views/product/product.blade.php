@@ -61,8 +61,7 @@
                     @inject('wishlist', 'App\Http\Controllers\UserController')
                     <div class="flex flex-fullJustified">
                         <span class="product-title helveBold">{{ $data['main_title'] }}</span>
-                        <span class="product-heart @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
-                              data-spu="{{$data['spu']}}"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                        <span class="product-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$data['spu']}}"></i></span>
                     </div>
                     <div class="product-price">
                         @if(isset($data['skuPrice']['skuPromotion']))
@@ -210,10 +209,10 @@
                             <div class="bg-heart"></div>
                         </a>
                         @if(Session::has('user'))
-                            <span class="product-heart btn-heart @if(in_array($list['spu'], $wishlist->wishlist())){{'active'}}@endif"
-                                  data-spu="{{$list['spu']}}"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                            <span class="product-heart btn-heart">
+                                <i class="iconfont btn-wish font-size-lxx @if(in_array($list['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$list['spu']}}"></i></span>
                         @else
-                            <a href="/login"><span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span></a>
+                            <a href="/login"><span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"></i></span></a>
                         @endif
                     </div>
                     <div class="price-caption helveBold">
