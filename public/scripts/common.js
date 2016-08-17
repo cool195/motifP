@@ -1368,6 +1368,43 @@
 
     //User Profile End
 
+    //Designer Start
+    function designer_getDesignerList() {
+        var $designerContainer = $('#designerContainer');
+        var pageNum = $designerContainer.data('num');
+        if(pageNum == -1){
+            return;
+        }
+        $.ajax({
+            url: '/designer',
+            data:{
+                num: pageNum,
+                size: 5,
+                ajax: 1
+            }
+        })
+            .done(function (data) {
+                if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '') {
+                    $designerContainer.data('num', -1);
+                } else {
+                    designer_appendDesignerList('tpl-designerList', data.data);
+                }
+            })
+        
+    }
+
+    function designer_appendDesignerList(tpl, designerList) {
+        var tplHtml = template(tpl, designerList);
+        var stageCache = $.parseHtml(tplHtml);
+        $('#designerContainer').append(stageCache);
+    }
+
+    $('.designer-seeMore').on('click', function() {
+        designer_getDesignerList();
+    });
+    
+    //Designer End
+
     // 图片延迟加载
     try {
         $('img.img-lazy').lazyload({

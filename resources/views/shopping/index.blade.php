@@ -28,7 +28,7 @@
             <div class="col-md-3 col-xs-6">
                 <div class="productList-item">
                     <div class="image-container">
-                        <a href="/product/{{$product['spu']}}">
+                        <a href="/product/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}">
                             <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['main_image_url']}}" alt="商品的名称">
                             <div class="bg-heart"></div>
                         </a>
