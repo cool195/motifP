@@ -9643,10 +9643,11 @@ jQuery.parseHTML = function( data, context, keepScripts ) {
 /**
  * Load a url into a page
  */
+
 jQuery.fn.load = function( url, params, callback ) {
-	var selector, type, response,
-		self = this,
-		off = url.indexOf( " " );
+  var selector, response, type,
+    self = this,
+    off = url.indexOf(" ");
 
 	if ( off > -1 ) {
 		selector = jQuery.trim( url.slice( off ) );
@@ -10076,15 +10077,15 @@ return jQuery;
 /**
  * Swiper 3.3.1
  * Most modern mobile touch slider and framework with hardware accelerated transitions
- *
+ * 
  * http://www.idangero.us/swiper/
- *
+ * 
  * Copyright 2016, Vladimir Kharlampidi
  * The iDangero.us
  * http://www.idangero.us/
- *
+ * 
  * Licensed under MIT
- *
+ * 
  * Released on: February 7, 2016
  */
 (function () {
@@ -10288,10 +10289,10 @@ return jQuery;
             onLazyImageLoad: function (swiper, slide, image)
             onLazyImageReady: function (swiper, slide, image)
             */
-
+        
         };
         var initialVirtualTranslate = params && params.virtualTranslate;
-
+        
         params = params || {};
         var originalParams = {};
         for (var param in params) {
@@ -10317,14 +10318,14 @@ return jQuery;
                 }
             }
         }
-
+        
         // Swiper
         var s = this;
-
+        
         // Params
         s.params = params;
         s.originalParams = originalParams;
-
+        
         // Classname
         s.classNames = [];
         /*=========================
@@ -10344,7 +10345,7 @@ return jQuery;
         }
         // Export it to Swiper instance
         s.$ = $;
-
+        
         /*=========================
           Breakpoints
           ===========================*/
@@ -10389,7 +10390,7 @@ return jQuery;
         if (s.params.breakpoints) {
             s.setBreakpoint();
         }
-
+        
         /*=========================
           Preparation - Define Container, Wrapper and Pagination
           ===========================*/
@@ -10403,13 +10404,13 @@ return jQuery;
             });
             return swipers;
         }
-
+        
         // Save instance in container HTML Element and in data
         s.container[0].swiper = s;
         s.container.data('swiper', s);
-
+        
         s.classNames.push('swiper-container-' + s.params.direction);
-
+        
         if (s.params.freeMode) {
             s.classNames.push('swiper-container-free-mode');
         }
@@ -10458,22 +10459,22 @@ return jQuery;
                 s.params.virtualTranslate = true;
             }
         }
-
+        
         // Grab Cursor
         if (s.params.grabCursor && s.support.touch) {
             s.params.grabCursor = false;
         }
-
+        
         // Wrapper
         s.wrapper = s.container.children('.' + s.params.wrapperClass);
-
+        
         // Pagination
         if (s.params.pagination) {
             s.paginationContainer = $(s.params.pagination);
             if (s.params.uniqueNavElements && typeof s.params.pagination === 'string' && s.paginationContainer.length > 1 && s.container.find(s.params.pagination).length === 1) {
                 s.paginationContainer = s.container.find(s.params.pagination);
             }
-
+        
             if (s.params.paginationType === 'bullets' && s.params.paginationClickable) {
                 s.paginationContainer.addClass('swiper-pagination-clickable');
             }
@@ -10497,46 +10498,46 @@ return jQuery;
                 }
             }
         }
-
+        
         // Is Horizontal
         s.isHorizontal = function () {
             return s.params.direction === 'horizontal';
         };
         // s.isH = isH;
-
+        
         // RTL
         s.rtl = s.isHorizontal() && (s.container[0].dir.toLowerCase() === 'rtl' || s.container.css('direction') === 'rtl');
         if (s.rtl) {
             s.classNames.push('swiper-container-rtl');
         }
-
+        
         // Wrong RTL support
         if (s.rtl) {
             s.wrongRTL = s.wrapper.css('display') === '-webkit-box';
         }
-
+        
         // Columns
         if (s.params.slidesPerColumn > 1) {
             s.classNames.push('swiper-container-multirow');
         }
-
+        
         // Check for Android
         if (s.device.android) {
             s.classNames.push('swiper-container-android');
         }
-
+        
         // Add classes
         s.container.addClass(s.classNames.join(' '));
-
+        
         // Translate
         s.translate = 0;
-
+        
         // Progress
         s.progress = 0;
-
+        
         // Velocity
         s.velocity = 0;
-
+        
         /*=========================
           Locks, unlocks
           ===========================*/
@@ -10558,7 +10559,7 @@ return jQuery;
         s.unlockSwipes = function () {
             s.params.allowSwipeToNext = s.params.allowSwipeToPrev = true;
         };
-
+        
         /*=========================
           Round helper
           ===========================*/
@@ -10579,7 +10580,7 @@ return jQuery;
           ===========================*/
         s.imagesToLoad = [];
         s.imagesLoaded = 0;
-
+        
         s.loadImage = function (imgElement, src, srcset, checkForComplete, callback) {
             var image;
             function onReady () {
@@ -10599,7 +10600,7 @@ return jQuery;
                 } else {
                     onReady();
                 }
-
+        
             } else {//image already loaded...
                 onReady();
             }
@@ -10618,7 +10619,7 @@ return jQuery;
                 s.loadImage(s.imagesToLoad[i], (s.imagesToLoad[i].currentSrc || s.imagesToLoad[i].getAttribute('src')), (s.imagesToLoad[i].srcset || s.imagesToLoad[i].getAttribute('srcset')), true, _onReady);
             }
         };
-
+        
         /*=========================
           Autoplay
           ===========================*/
@@ -10722,23 +10723,23 @@ return jQuery;
             if (width === 0 && s.isHorizontal() || height === 0 && !s.isHorizontal()) {
                 return;
             }
-
+        
             //Subtract paddings
             width = width - parseInt(s.container.css('padding-left'), 10) - parseInt(s.container.css('padding-right'), 10);
             height = height - parseInt(s.container.css('padding-top'), 10) - parseInt(s.container.css('padding-bottom'), 10);
-
+        
             // Store values
             s.width = width;
             s.height = height;
             s.size = s.isHorizontal() ? s.width : s.height;
         };
-
+        
         s.updateSlidesSize = function () {
             s.slides = s.wrapper.children('.' + s.params.slideClass);
             s.snapGrid = [];
             s.slidesGrid = [];
             s.slidesSizesGrid = [];
-
+        
             var spaceBetween = s.params.spaceBetween,
                 slidePosition = -s.params.slidesOffsetBefore,
                 i,
@@ -10748,12 +10749,12 @@ return jQuery;
             if (typeof spaceBetween === 'string' && spaceBetween.indexOf('%') >= 0) {
                 spaceBetween = parseFloat(spaceBetween.replace('%', '')) / 100 * s.size;
             }
-
+        
             s.virtualSize = -spaceBetween;
             // reset margins
             if (s.rtl) s.slides.css({marginLeft: '', marginTop: ''});
             else s.slides.css({marginRight: '', marginBottom: ''});
-
+        
             var slidesNumberEvenToRows;
             if (s.params.slidesPerColumn > 1) {
                 if (Math.floor(s.slides.length / s.params.slidesPerColumn) === s.slides.length / s.params.slidesPerColumn) {
@@ -10766,7 +10767,7 @@ return jQuery;
                     slidesNumberEvenToRows = Math.max(slidesNumberEvenToRows, s.params.slidesPerView * s.params.slidesPerColumn);
                 }
             }
-
+        
             // Calc slides
             var slideSize;
             var slidesPerColumn = s.params.slidesPerColumn;
@@ -10808,7 +10809,7 @@ return jQuery;
                         })
                         .attr('data-swiper-column', column)
                         .attr('data-swiper-row', row);
-
+        
                 }
                 if (slide.css('display') === 'none') continue;
                 if (s.params.slidesPerView === 'auto') {
@@ -10818,7 +10819,7 @@ return jQuery;
                 else {
                     slideSize = (s.size - (s.params.slidesPerView - 1) * spaceBetween) / s.params.slidesPerView;
                     if (s.params.roundLengths) slideSize = round(slideSize);
-
+        
                     if (s.isHorizontal()) {
                         s.slides[i].style.width = slideSize + 'px';
                     }
@@ -10828,8 +10829,8 @@ return jQuery;
                 }
                 s.slides[i].swiperSlideSize = slideSize;
                 s.slidesSizesGrid.push(slideSize);
-
-
+        
+        
                 if (s.params.centeredSlides) {
                     slidePosition = slidePosition + slideSize / 2 + prevSlideSize / 2 + spaceBetween;
                     if (i === 0) slidePosition = slidePosition - s.size / 2 - spaceBetween;
@@ -10842,16 +10843,16 @@ return jQuery;
                     s.slidesGrid.push(slidePosition);
                     slidePosition = slidePosition + slideSize + spaceBetween;
                 }
-
+        
                 s.virtualSize += slideSize + spaceBetween;
-
+        
                 prevSlideSize = slideSize;
-
+        
                 index ++;
             }
             s.virtualSize = Math.max(s.virtualSize, s.size) + s.params.slidesOffsetAfter;
             var newSlidesGrid;
-
+        
             if (
                 s.rtl && s.wrongRTL && (s.params.effect === 'slide' || s.params.effect === 'coverflow')) {
                 s.wrapper.css({width: s.virtualSize + s.params.spaceBetween + 'px'});
@@ -10860,7 +10861,7 @@ return jQuery;
                 if (s.isHorizontal()) s.wrapper.css({width: s.virtualSize + s.params.spaceBetween + 'px'});
                 else s.wrapper.css({height: s.virtualSize + s.params.spaceBetween + 'px'});
             }
-
+        
             if (s.params.slidesPerColumn > 1) {
                 s.virtualSize = (slideSize + s.params.spaceBetween) * slidesNumberEvenToRows;
                 s.virtualSize = Math.ceil(s.virtualSize / s.params.slidesPerColumn) - s.params.spaceBetween;
@@ -10873,7 +10874,7 @@ return jQuery;
                     s.snapGrid = newSlidesGrid;
                 }
             }
-
+        
             // Remove last grid elements depending on width
             if (!s.params.centeredSlides) {
                 newSlidesGrid = [];
@@ -10888,7 +10889,7 @@ return jQuery;
                 }
             }
             if (s.snapGrid.length === 0) s.snapGrid = [0];
-
+        
             if (s.params.spaceBetween !== 0) {
                 if (s.isHorizontal()) {
                     if (s.rtl) s.slides.css({marginLeft: spaceBetween + 'px'});
@@ -10905,7 +10906,7 @@ return jQuery;
                 s.slides[i].swiperSlideOffset = s.isHorizontal() ? s.slides[i].offsetLeft : s.slides[i].offsetTop;
             }
         };
-
+        
         /*=========================
           Slider/slides progress
           ===========================*/
@@ -10915,10 +10916,10 @@ return jQuery;
             }
             if (s.slides.length === 0) return;
             if (typeof s.slides[0].swiperSlideOffset === 'undefined') s.updateSlidesOffset();
-
+        
             var offsetCenter = -translate;
             if (s.rtl) offsetCenter = translate;
-
+        
             // Visible Slides
             s.slides.removeClass(s.params.slideVisibleClass);
             for (var i = 0; i < s.slides.length; i++) {
@@ -10956,7 +10957,7 @@ return jQuery;
             }
             if (s.isBeginning && !wasBeginning) s.emit('onReachBeginning', s);
             if (s.isEnd && !wasEnd) s.emit('onReachEnd', s);
-
+        
             if (s.params.watchSlidesProgress) s.updateSlidesProgress(translate);
             s.emit('onProgress', s, s.progress);
         };
@@ -10987,7 +10988,7 @@ return jQuery;
             // }
             snapIndex = Math.floor(newActiveIndex / s.params.slidesPerGroup);
             if (snapIndex >= s.snapGrid.length) snapIndex = s.snapGrid.length - 1;
-
+        
             if (newActiveIndex === s.activeIndex) {
                 return;
             }
@@ -10996,7 +10997,7 @@ return jQuery;
             s.activeIndex = newActiveIndex;
             s.updateClasses();
         };
-
+        
         /*=========================
           Classes
           ===========================*/
@@ -11015,7 +11016,7 @@ return jQuery;
             if (s.params.loop && prevSlide.length === 0) {
                 s.slides.eq(-1).addClass(s.params.slidePrevClass);
             }
-
+        
             // Pagination
             if (s.paginationContainer && s.paginationContainer.length > 0) {
                 // Current/Total
@@ -11068,7 +11069,7 @@ return jQuery;
                     s.emit('onPaginationRendered', s, s.paginationContainer[0]);
                 }
             }
-
+        
             // Next/active buttons
             if (!s.params.loop) {
                 if (s.params.prevButton && s.prevButton && s.prevButton.length > 0) {
@@ -11093,7 +11094,7 @@ return jQuery;
                 }
             }
         };
-
+        
         /*=========================
           Pagination
           ===========================*/
@@ -11188,7 +11189,7 @@ return jQuery;
                 s.updateAutoHeight();
             }
         };
-
+        
         /*=========================
           Resize Handler
           ===========================*/
@@ -11197,12 +11198,12 @@ return jQuery;
             if (s.params.breakpoints) {
                 s.setBreakpoint();
             }
-
+        
             // Disable locks on resize
             var allowSwipeToPrev = s.params.allowSwipeToPrev;
             var allowSwipeToNext = s.params.allowSwipeToNext;
             s.params.allowSwipeToPrev = s.params.allowSwipeToNext = true;
-
+        
             s.updateContainerSize();
             s.updateSlidesSize();
             if (s.params.slidesPerView === 'auto' || s.params.freeMode || forceUpdatePagination) s.updatePagination();
@@ -11218,7 +11219,7 @@ return jQuery;
                 s.setWrapperTranslate(newTranslate);
                 s.updateActiveIndex();
                 s.updateClasses();
-
+        
                 if (s.params.autoHeight) {
                     s.updateAutoHeight();
                 }
@@ -11239,11 +11240,11 @@ return jQuery;
             s.params.allowSwipeToPrev = allowSwipeToPrev;
             s.params.allowSwipeToNext = allowSwipeToNext;
         };
-
+        
         /*=========================
           Events
           ===========================*/
-
+        
         //Define Touch Events
         var desktopEvents = ['mousedown', 'mousemove', 'mouseup'];
         if (window.navigator.pointerEnabled) desktopEvents = ['pointerdown', 'pointermove', 'pointerup'];
@@ -11253,22 +11254,22 @@ return jQuery;
             move : s.support.touch || !s.params.simulateTouch ? 'touchmove' : desktopEvents[1],
             end : s.support.touch || !s.params.simulateTouch ? 'touchend' : desktopEvents[2]
         };
-
-
+        
+        
         // WP8 Touch Events Fix
         if (window.navigator.pointerEnabled || window.navigator.msPointerEnabled) {
             (s.params.touchEventsTarget === 'container' ? s.container : s.wrapper).addClass('swiper-wp8-' + s.params.direction);
         }
-
+        
         // Attach/detach events
         s.initEvents = function (detach) {
             var actionDom = detach ? 'off' : 'on';
             var action = detach ? 'removeEventListener' : 'addEventListener';
             var touchEventsTarget = s.params.touchEventsTarget === 'container' ? s.container[0] : s.wrapper[0];
             var target = s.support.touch ? touchEventsTarget : document;
-
+        
             var moveCapture = s.params.nested ? true : false;
-
+        
             //Touch Events
             if (s.browser.ie) {
                 touchEventsTarget[action](s.touchEvents.start, s.onTouchStart, false);
@@ -11288,7 +11289,7 @@ return jQuery;
                 }
             }
             window[action]('resize', s.onResize);
-
+        
             // Next, Prev, Index
             if (s.params.nextButton && s.nextButton && s.nextButton.length > 0) {
                 s.nextButton[actionDom]('click', s.onClickNext);
@@ -11302,7 +11303,7 @@ return jQuery;
                 s.paginationContainer[actionDom]('click', '.' + s.params.bulletClass, s.onClickIndex);
                 if (s.params.a11y && s.a11y) s.paginationContainer[actionDom]('keydown', '.' + s.params.bulletClass, s.a11y.onEnterKey);
             }
-
+        
             // Prevent Links Clicks
             if (s.params.preventClicks || s.params.preventClicksPropagation) touchEventsTarget[action]('click', s.preventClicks, true);
         };
@@ -11312,7 +11313,7 @@ return jQuery;
         s.detachEvents = function () {
             s.initEvents(true);
         };
-
+        
         /*=========================
           Handle Clicks
           ===========================*/
@@ -11344,7 +11345,7 @@ return jQuery;
             if (s.params.loop) index = index + s.loopedSlides;
             s.slideTo(index);
         };
-
+        
         /*=========================
           Handle Touches
           ===========================*/
@@ -11376,7 +11377,7 @@ return jQuery;
                     if (s.slides[i] === slide) slideFound = true;
                 }
             }
-
+        
             if (slide && slideFound) {
                 s.clickedSlide = slide;
                 s.clickedIndex = $(slide).index();
@@ -11423,7 +11424,7 @@ return jQuery;
                 }
             }
         };
-
+        
         var isTouched,
             isMoved,
             allowTouchCallbacks,
@@ -11439,10 +11440,10 @@ return jQuery;
             //Velocities
             velocities = [],
             allowMomentumBounce;
-
+        
         // Animating Flag
         s.animating = false;
-
+        
         // Touches information
         s.touches = {
             startX: 0,
@@ -11451,7 +11452,7 @@ return jQuery;
             currentY: 0,
             diff: 0
         };
-
+        
         // Touch handlers
         var isTouchEvent, startMoving;
         s.onTouchStart = function (e) {
@@ -11465,15 +11466,15 @@ return jQuery;
             if (s.params.swipeHandler) {
                 if (!findElementInEvent(e, s.params.swipeHandler)) return;
             }
-
+        
             var startX = s.touches.currentX = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
             var startY = s.touches.currentY = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
-
+        
             // Do NOT start if iOS edge swipe is detected. Otherwise iOS app (UIWebView) cannot swipe-to-go-back anymore
             if(s.device.ios && s.params.iOSEdgeSwipeDetection && startX <= s.params.iOSEdgeSwipeThreshold) {
                 return;
             }
-
+        
             isTouched = true;
             isMoved = false;
             allowTouchCallbacks = true;
@@ -11498,7 +11499,7 @@ return jQuery;
             }
             s.emit('onTouchStart', s, e);
         };
-
+        
         s.onTouchMove = function (e) {
             if (e.originalEvent) e = e.originalEvent;
             if (isTouchEvent && e.type === 'mousemove') return;
@@ -11528,10 +11529,10 @@ return jQuery;
                 s.emit('onTouchMove', s, e);
             }
             if (e.targetTouches && e.targetTouches.length > 1) return;
-
+        
             s.touches.currentX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
             s.touches.currentY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
-
+        
             if (typeof isScrolling === 'undefined') {
                 var touchAngle = Math.atan2(Math.abs(s.touches.currentY - s.touches.startY), Math.abs(s.touches.currentX - s.touches.startX)) * 180 / Math.PI;
                 isScrolling = s.isHorizontal() ? touchAngle > s.params.touchAngle : (90 - touchAngle > s.params.touchAngle);
@@ -11558,7 +11559,7 @@ return jQuery;
             if (s.params.touchMoveStopPropagation && !s.params.nested) {
                 e.stopPropagation();
             }
-
+        
             if (!isMoved) {
                 if (params.loop) {
                     s.fixLoop();
@@ -11586,15 +11587,15 @@ return jQuery;
                 }
             }
             isMoved = true;
-
+        
             var diff = s.touches.diff = s.isHorizontal() ? s.touches.currentX - s.touches.startX : s.touches.currentY - s.touches.startY;
-
+        
             diff = diff * s.params.touchRatio;
             if (s.rtl) diff = -diff;
-
+        
             s.swipeDirection = diff > 0 ? 'prev' : 'next';
             currentTranslate = diff + startTranslate;
-
+        
             var disableParentSwiper = true;
             if ((diff > 0 && currentTranslate > s.minTranslate())) {
                 disableParentSwiper = false;
@@ -11604,11 +11605,11 @@ return jQuery;
                 disableParentSwiper = false;
                 if (s.params.resistance) currentTranslate = s.maxTranslate() + 1 - Math.pow(s.maxTranslate() - startTranslate - diff, s.params.resistanceRatio);
             }
-
+        
             if (disableParentSwiper) {
                 e.preventedByNestedSwiper = true;
             }
-
+        
             // Directions locks
             if (!s.params.allowSwipeToNext && s.swipeDirection === 'next' && currentTranslate < startTranslate) {
                 currentTranslate = startTranslate;
@@ -11616,9 +11617,9 @@ return jQuery;
             if (!s.params.allowSwipeToPrev && s.swipeDirection === 'prev' && currentTranslate > startTranslate) {
                 currentTranslate = startTranslate;
             }
-
+        
             if (!s.params.followFinger) return;
-
+        
             // Threshold
             if (s.params.threshold > 0) {
                 if (Math.abs(diff) > s.params.threshold || allowThresholdMove) {
@@ -11672,11 +11673,11 @@ return jQuery;
                 s.container[0].style.cursor = '-moz-grab';
                 s.container[0].style.cursor = 'grab';
             }
-
+        
             // Time diff
             var touchEndTime = Date.now();
             var timeDiff = touchEndTime - touchStartTime;
-
+        
             // Tap, doubleTap, Click
             if (s.allowClick) {
                 s.updateClickedSlide(e);
@@ -11690,25 +11691,25 @@ return jQuery;
                         }
                         s.emit('onClick', s, e);
                     }, 300);
-
+        
                 }
                 if (timeDiff < 300 && (touchEndTime - lastClickTime) < 300) {
                     if (clickTimeout) clearTimeout(clickTimeout);
                     s.emit('onDoubleTap', s, e);
                 }
             }
-
+        
             lastClickTime = Date.now();
             setTimeout(function () {
                 if (s) s.allowClick = true;
             }, 0);
-
+        
             if (!isTouched || !isMoved || !s.swipeDirection || s.touches.diff === 0 || currentTranslate === startTranslate) {
                 isTouched = isMoved = false;
                 return;
             }
             isTouched = isMoved = false;
-
+        
             var currentPos;
             if (s.params.followFinger) {
                 currentPos = s.rtl ? s.translate : -s.translate;
@@ -11730,11 +11731,11 @@ return jQuery;
                     }
                     return;
                 }
-
+        
                 if (s.params.freeModeMomentum) {
                     if (velocities.length > 1) {
                         var lastMoveEvent = velocities.pop(), velocityEvent = velocities.pop();
-
+        
                         var distance = lastMoveEvent.position - velocityEvent.position;
                         var time = lastMoveEvent.time - velocityEvent.time;
                         s.velocity = distance / time;
@@ -11750,11 +11751,11 @@ return jQuery;
                     } else {
                         s.velocity = 0;
                     }
-
+        
                     velocities.length = 0;
                     var momentumDuration = 1000 * s.params.freeModeMomentumRatio;
                     var momentumDistance = s.velocity * momentumDuration;
-
+        
                     var newPosition = s.translate + momentumDistance;
                     if (s.rtl) newPosition = - newPosition;
                     var doBounce = false;
@@ -11794,7 +11795,7 @@ return jQuery;
                                 nextSlide = j;
                                 break;
                             }
-
+        
                         }
                         if (Math.abs(s.snapGrid[nextSlide] - newPosition) < Math.abs(s.snapGrid[nextSlide - 1] - newPosition) || s.swipeDirection === 'next') {
                             newPosition = s.snapGrid[nextSlide];
@@ -11816,7 +11817,7 @@ return jQuery;
                         s.slideReset();
                         return;
                     }
-
+        
                     if (s.params.freeModeMomentumBounce && doBounce) {
                         s.updateProgress(afterBouncePosition);
                         s.setWrapperTransition(momentumDuration);
@@ -11826,7 +11827,7 @@ return jQuery;
                         s.wrapper.transitionEnd(function () {
                             if (!s || !allowMomentumBounce) return;
                             s.emit('onMomentumBounce', s);
-
+        
                             s.setWrapperTransition(s.params.speed);
                             s.setWrapperTranslate(afterBouncePosition);
                             s.wrapper.transitionEnd(function () {
@@ -11846,11 +11847,11 @@ return jQuery;
                                 s.onTransitionEnd();
                             });
                         }
-
+        
                     } else {
                         s.updateProgress(newPosition);
                     }
-
+        
                     s.updateActiveIndex();
                 }
                 if (!s.params.freeModeMomentum || timeDiff >= s.params.longSwipesMs) {
@@ -11859,7 +11860,7 @@ return jQuery;
                 }
                 return;
             }
-
+        
             // Find current slide
             var i, stopIndex = 0, groupSize = s.slidesSizesGrid[0];
             for (i = 0; i < s.slidesGrid.length; i += s.params.slidesPerGroup) {
@@ -11876,10 +11877,10 @@ return jQuery;
                     }
                 }
             }
-
+        
             // Find current slide size
             var ratio = (currentPos - s.slidesGrid[stopIndex]) / groupSize;
-
+        
             if (timeDiff > s.params.longSwipesMs) {
                 // Long touches
                 if (!s.params.longSwipes) {
@@ -11889,7 +11890,7 @@ return jQuery;
                 if (s.swipeDirection === 'next') {
                     if (ratio >= s.params.longSwipesRatio) s.slideTo(stopIndex + s.params.slidesPerGroup);
                     else s.slideTo(stopIndex);
-
+        
                 }
                 if (s.swipeDirection === 'prev') {
                     if (ratio > (1 - s.params.longSwipesRatio)) s.slideTo(stopIndex + s.params.slidesPerGroup);
@@ -11904,7 +11905,7 @@ return jQuery;
                 }
                 if (s.swipeDirection === 'next') {
                     s.slideTo(stopIndex + s.params.slidesPerGroup);
-
+        
                 }
                 if (s.swipeDirection === 'prev') {
                     s.slideTo(stopIndex);
@@ -11923,7 +11924,7 @@ return jQuery;
             if (slideIndex < 0) slideIndex = 0;
             s.snapIndex = Math.floor(slideIndex / s.params.slidesPerGroup);
             if (s.snapIndex >= s.snapGrid.length) s.snapIndex = s.snapGrid.length - 1;
-
+        
             var translate = - s.snapGrid[s.snapIndex];
             // Stop autoplay
             if (s.params.autoplay && s.autoplaying) {
@@ -11936,14 +11937,14 @@ return jQuery;
             }
             // Update progress
             s.updateProgress(translate);
-
+        
             // Normalize slideIndex
             for (var i = 0; i < s.slidesGrid.length; i++) {
                 if (- Math.floor(translate * 100) >= Math.floor(s.slidesGrid[i] * 100)) {
                     slideIndex = i;
                 }
             }
-
+        
             // Directions locks
             if (!s.params.allowSwipeToNext && translate < s.translate && translate < s.minTranslate()) {
                 return false;
@@ -11951,12 +11952,12 @@ return jQuery;
             if (!s.params.allowSwipeToPrev && translate > s.translate && translate > s.maxTranslate()) {
                 if ((s.activeIndex || 0) !== slideIndex ) return false;
             }
-
+        
             // Update Index
             if (typeof speed === 'undefined') speed = s.params.speed;
             s.previousIndex = s.activeIndex || 0;
             s.activeIndex = slideIndex;
-
+        
             if ((s.rtl && -translate === s.translate) || (!s.rtl && translate === s.translate)) {
                 // Update Height
                 if (s.params.autoHeight) {
@@ -11970,7 +11971,7 @@ return jQuery;
             }
             s.updateClasses();
             s.onTransitionStart(runCallbacks);
-
+        
             if (speed === 0) {
                 s.setWrapperTranslate(translate);
                 s.setWrapperTransition(0);
@@ -11986,12 +11987,12 @@ return jQuery;
                         s.onTransitionEnd(runCallbacks);
                     });
                 }
-
+        
             }
-
+        
             return true;
         };
-
+        
         s.onTransitionStart = function (runCallbacks) {
             if (typeof runCallbacks === 'undefined') runCallbacks = true;
             if (s.params.autoHeight) {
@@ -12009,7 +12010,7 @@ return jQuery;
                         s.emit('onSlidePrevStart', s);
                     }
                 }
-
+        
             }
         };
         s.onTransitionEnd = function (runCallbacks) {
@@ -12032,7 +12033,7 @@ return jQuery;
             if (s.params.hashnav && s.hashnav) {
                 s.hashnav.setHash();
             }
-
+        
         };
         s.slideNext = function (runCallbacks, speed, internal) {
             if (s.params.loop) {
@@ -12061,7 +12062,7 @@ return jQuery;
         s.slideReset = function (runCallbacks, speed, internal) {
             return s.slideTo(s.activeIndex, speed, runCallbacks);
         };
-
+        
         /*=========================
           Translate/transition helpers
           ===========================*/
@@ -12089,19 +12090,19 @@ return jQuery;
             else {
                 y = translate;
             }
-
+        
             if (s.params.roundLengths) {
                 x = round(x);
                 y = round(y);
             }
-
+        
             if (!s.params.virtualTranslate) {
                 if (s.support.transforms3d) s.wrapper.transform('translate3d(' + x + 'px, ' + y + 'px, ' + z + 'px)');
                 else s.wrapper.transform('translate(' + x + 'px, ' + y + 'px)');
             }
-
+        
             s.translate = s.isHorizontal() ? x : y;
-
+        
             // Check if we need to update progress
             var progress;
             var translatesDiff = s.maxTranslate() - s.minTranslate();
@@ -12114,7 +12115,7 @@ return jQuery;
             if (progress !== s.progress) {
                 s.updateProgress(translate);
             }
-
+        
             if (updateActiveIndex) s.updateActiveIndex();
             if (s.params.effect !== 'slide' && s.effects[s.params.effect]) {
                 s.effects[s.params.effect].setTranslate(s.translate);
@@ -12130,19 +12131,19 @@ return jQuery;
             }
             s.emit('onSetTranslate', s, s.translate);
         };
-
+        
         s.getTranslate = function (el, axis) {
             var matrix, curTransform, curStyle, transformMatrix;
-
+        
             // automatic axis detection
             if (typeof axis === 'undefined') {
                 axis = 'x';
             }
-
+        
             if (s.params.virtualTranslate) {
                 return s.rtl ? -s.translate : s.translate;
             }
-
+        
             curStyle = window.getComputedStyle(el, null);
             if (window.WebKitCSSMatrix) {
                 curTransform = curStyle.transform || curStyle.webkitTransform;
@@ -12159,7 +12160,7 @@ return jQuery;
                 transformMatrix = curStyle.MozTransform || curStyle.OTransform || curStyle.MsTransform || curStyle.msTransform  || curStyle.transform || curStyle.getPropertyValue('transform').replace('translate(', 'matrix(1, 0, 0, 1,');
                 matrix = transformMatrix.toString().split(',');
             }
-
+        
             if (axis === 'x') {
                 //Latest Chrome and webkits Fix
                 if (window.WebKitCSSMatrix)
@@ -12191,7 +12192,7 @@ return jQuery;
             }
             return s.getTranslate(s.wrapper[0], axis);
         };
-
+        
         /*=========================
           Observer
           ===========================*/
@@ -12206,13 +12207,13 @@ return jQuery;
                     s.emit('onObserverUpdate', s, mutation);
                 });
             });
-
+        
             observer.observe(target, {
                 attributes: typeof options.attributes === 'undefined' ? true : options.attributes,
                 childList: typeof options.childList === 'undefined' ? true : options.childList,
                 characterData: typeof options.characterData === 'undefined' ? true : options.characterData
             });
-
+        
             s.observers.push(observer);
         }
         s.initObservers = function () {
@@ -12222,10 +12223,10 @@ return jQuery;
                     initObserver(containerParents[i]);
                 }
             }
-
+        
             // Observe container
             initObserver(s.container[0], {childList: false});
-
+        
             // Observe wrapper
             initObserver(s.wrapper[0], {attributes: false});
         };
@@ -12242,17 +12243,17 @@ return jQuery;
         s.createLoop = function () {
             // Remove duplicated slides
             s.wrapper.children('.' + s.params.slideClass + '.' + s.params.slideDuplicateClass).remove();
-
+        
             var slides = s.wrapper.children('.' + s.params.slideClass);
-
+        
             if(s.params.slidesPerView === 'auto' && !s.params.loopedSlides) s.params.loopedSlides = slides.length;
-
+        
             s.loopedSlides = parseInt(s.params.loopedSlides || s.params.slidesPerView, 10);
             s.loopedSlides = s.loopedSlides + s.params.loopAdditionalSlides;
             if (s.loopedSlides > slides.length) {
                 s.loopedSlides = slides.length;
             }
-
+        
             var prependSlides = [], appendSlides = [], i;
             slides.each(function (index, el) {
                 var slide = $(this);
@@ -12279,7 +12280,7 @@ return jQuery;
             if (updatePosition) {
                 s.slideTo(oldIndex + s.loopedSlides, 0, false);
             }
-
+        
         };
         s.fixLoop = function () {
             var newIndex;
@@ -12361,11 +12362,11 @@ return jQuery;
                 if (indexToRemove < newActiveIndex) newActiveIndex--;
                 newActiveIndex = Math.max(newActiveIndex, 0);
             }
-
+        
             if (s.params.loop) {
                 s.createLoop();
             }
-
+        
             if (!(s.params.observer && s.support.observer)) {
                 s.update(true);
             }
@@ -12375,7 +12376,7 @@ return jQuery;
             else {
                 s.slideTo(newActiveIndex, 0, false);
             }
-
+        
         };
         s.removeAllSlides = function () {
             var slidesIndexes = [];
@@ -12384,7 +12385,7 @@ return jQuery;
             }
             s.removeSlide(slidesIndexes);
         };
-
+        
 
         /*=========================
           Effects
@@ -12410,9 +12411,9 @@ return jQuery;
                                 opacity: slideOpacity
                             })
                             .transform('translate3d(' + tx + 'px, ' + ty + 'px, 0px)');
-
+        
                     }
-
+        
                 },
                 setTransition: function (duration) {
                     s.slides.transition(duration);
@@ -12454,9 +12455,9 @@ return jQuery;
                         else if (s.rtl) {
                             rotateY = -rotateY;
                         }
-
+        
                         slide[0].style.zIndex = -Math.abs(Math.round(progress)) + s.slides.length;
-
+        
                         if (s.params.flip.slideShadows) {
                             //Set shadows
                             var shadowBefore = s.isHorizontal() ? slide.find('.swiper-slide-shadow-left') : slide.find('.swiper-slide-shadow-top');
@@ -12472,7 +12473,7 @@ return jQuery;
                             if (shadowBefore.length) shadowBefore[0].style.opacity = Math.max(-progress, 0);
                             if (shadowAfter.length) shadowAfter[0].style.opacity = Math.max(progress, 0);
                         }
-
+        
                         slide
                             .transform('translate3d(' + tx + 'px, ' + ty + 'px, 0px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)');
                     }
@@ -12544,12 +12545,12 @@ return jQuery;
                         if (s.rtl) {
                             tx = -tx;
                         }
-
+        
                         if (!s.isHorizontal()) {
                             ty = tx;
                             tx = 0;
                         }
-
+        
                         var transform = 'rotateX(' + (s.isHorizontal() ? 0 : -slideAngle) + 'deg) rotateY(' + (s.isHorizontal() ? slideAngle : 0) + 'deg) translate3d(' + tx + 'px, ' + ty + 'px, ' + tz + 'px)';
                         if (progress <= 1 && progress > -1) {
                             wrapperRotate = i * 90 + progress * 90;
@@ -12578,7 +12579,7 @@ return jQuery;
                         '-ms-transform-origin': '50% 50% -' + (s.size / 2) + 'px',
                         'transform-origin': '50% 50% -' + (s.size / 2) + 'px'
                     });
-
+        
                     if (s.params.cube.shadow) {
                         if (s.isHorizontal()) {
                             cubeShadow.transform('translate3d(0px, ' + (s.width / 2 + s.params.cube.shadowOffset) + 'px, ' + (-s.width / 2) + 'px) rotateX(90deg) rotateZ(0deg) scale(' + (s.params.cube.shadowScale) + ')');
@@ -12614,24 +12615,24 @@ return jQuery;
                         var slideSize = s.slidesSizesGrid[i];
                         var slideOffset = slide[0].swiperSlideOffset;
                         var offsetMultiplier = (center - slideOffset - slideSize / 2) / slideSize * s.params.coverflow.modifier;
-
+        
                         var rotateY = s.isHorizontal() ? rotate * offsetMultiplier : 0;
                         var rotateX = s.isHorizontal() ? 0 : rotate * offsetMultiplier;
                         // var rotateZ = 0
                         var translateZ = -translate * Math.abs(offsetMultiplier);
-
+        
                         var translateY = s.isHorizontal() ? 0 : s.params.coverflow.stretch * (offsetMultiplier);
                         var translateX = s.isHorizontal() ? s.params.coverflow.stretch * (offsetMultiplier) : 0;
-
+        
                         //Fix for ultra small values
                         if (Math.abs(translateX) < 0.001) translateX = 0;
                         if (Math.abs(translateY) < 0.001) translateY = 0;
                         if (Math.abs(translateZ) < 0.001) translateZ = 0;
                         if (Math.abs(rotateY) < 0.001) rotateY = 0;
                         if (Math.abs(rotateX) < 0.001) rotateX = 0;
-
+        
                         var slideTransform = 'translate3d(' + translateX + 'px,' + translateY + 'px,' + translateZ + 'px)  rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
-
+        
                         slide.transform(slideTransform);
                         slide[0].style.zIndex = -Math.abs(Math.round(offsetMultiplier)) + 1;
                         if (s.params.coverflow.slideShadows) {
@@ -12650,7 +12651,7 @@ return jQuery;
                             if (shadowAfter.length) shadowAfter[0].style.opacity = (-offsetMultiplier) > 0 ? -offsetMultiplier : 0;
                         }
                     }
-
+        
                     //Set correct perspective for IE10
                     if (s.browser.ie) {
                         var ws = s.wrapper[0].style;
@@ -12672,14 +12673,14 @@ return jQuery;
                 if (typeof index === 'undefined') return;
                 if (typeof loadInDuplicate === 'undefined') loadInDuplicate = true;
                 if (s.slides.length === 0) return;
-
+        
                 var slide = s.slides.eq(index);
                 var img = slide.find('.swiper-lazy:not(.swiper-lazy-loaded):not(.swiper-lazy-loading)');
                 if (slide.hasClass('swiper-lazy') && !slide.hasClass('swiper-lazy-loaded') && !slide.hasClass('swiper-lazy-loading')) {
                     img = img.add(slide[0]);
                 }
                 if (img.length === 0) return;
-
+        
                 img.each(function () {
                     var _img = $(this);
                     _img.addClass('swiper-lazy-loading');
@@ -12700,9 +12701,9 @@ return jQuery;
                                 _img.attr('src', src);
                                 _img.removeAttr('data-src');
                             }
-
+        
                         }
-
+        
                         _img.addClass('swiper-lazy-loaded').removeClass('swiper-lazy-loading');
                         slide.find('.swiper-lazy-preloader, .preloader').remove();
                         if (s.params.loop && loadInDuplicate) {
@@ -12718,10 +12719,10 @@ return jQuery;
                         }
                         s.emit('onLazyImageReady', s, slide[0], _img[0]);
                     });
-
+        
                     s.emit('onLazyImageLoad', s, slide[0], _img[0]);
                 });
-
+        
             },
             load: function () {
                 var i;
@@ -12758,7 +12759,7 @@ return jQuery;
                     else {
                         var nextSlide = s.wrapper.children('.' + s.params.slideNextClass);
                         if (nextSlide.length > 0) s.lazy.loadImageInSlide(nextSlide.index());
-
+        
                         var prevSlide = s.wrapper.children('.' + s.params.slidePrevClass);
                         if (prevSlide.length > 0) s.lazy.loadImageInSlide(prevSlide.index());
                     }
@@ -12777,7 +12778,7 @@ return jQuery;
                 }
             }
         };
-
+        
 
         /*=========================
           Scrollbar
@@ -12809,10 +12810,10 @@ return jQuery;
                 sb.isTouched = true;
                 e.preventDefault();
                 e.stopPropagation();
-
+        
                 sb.setDragPosition(e);
                 clearTimeout(sb.dragTimeout);
-
+        
                 sb.track.transition(0);
                 if (s.params.scrollbarHide) {
                     sb.track.css('opacity', 1);
@@ -12842,7 +12843,7 @@ return jQuery;
                         sb.track.css('opacity', 0);
                         sb.track.transition(400);
                     }, 1000);
-
+        
                 }
                 s.emit('onScrollbarDragEnd', s);
                 if (s.params.scrollbarSnapOnRelease) {
@@ -12878,18 +12879,18 @@ return jQuery;
                 sb.drag[0].style.width = '';
                 sb.drag[0].style.height = '';
                 sb.trackSize = s.isHorizontal() ? sb.track[0].offsetWidth : sb.track[0].offsetHeight;
-
+        
                 sb.divider = s.size / s.virtualSize;
                 sb.moveDivider = sb.divider * (sb.trackSize / s.size);
                 sb.dragSize = sb.trackSize * sb.divider;
-
+        
                 if (s.isHorizontal()) {
                     sb.drag[0].style.width = sb.dragSize + 'px';
                 }
                 else {
                     sb.drag[0].style.height = sb.dragSize + 'px';
                 }
-
+        
                 if (sb.divider >= 1) {
                     sb.track[0].style.display = 'none';
                 }
@@ -12906,7 +12907,7 @@ return jQuery;
                 var sb = s.scrollbar;
                 var translate = s.translate || 0;
                 var newPos;
-
+        
                 var newSize = sb.dragSize;
                 newPos = (sb.trackSize - sb.dragSize) * s.progress;
                 if (s.rtl && s.isHorizontal()) {
@@ -12974,19 +12975,19 @@ return jQuery;
                 // (x3,y3) is the known point after given value.
                 var i1, i3;
                 var l = this.x.length;
-
+        
                 this.interpolate = function (x2) {
                     if (!x2) return 0;
-
+        
                     // Get the indexes of x1 and x3 (the array indexes before and after given x2):
                     i3 = binarySearch(this.x, x2);
                     i1 = i3 - 1;
-
+        
                     // We have our indexes i1 & i3, so we can calculate already:
                     // y2 := ((x2−x1) × (y3−y1)) ÷ (x3−x1) + y1
                     return ((x2 - this.x[i1]) * (this.y[i3] - this.y[i1])) / (this.x[i3] - this.x[i1]) + this.y[i1];
                 };
-
+        
                 var binarySearch = (function() {
                     var maxIndex, minIndex, guess;
                     return function(array, val) {
@@ -13023,12 +13024,12 @@ return jQuery;
                         // but it did not work out
                         controlledTranslate = -s.controller.spline.interpolate(-translate);
                     }
-
+        
                     if(!controlledTranslate || s.params.controlBy === 'container'){
                         multiplier = (c.maxTranslate() - c.minTranslate()) / (s.maxTranslate() - s.minTranslate());
                         controlledTranslate = (translate - s.minTranslate()) * multiplier + c.minTranslate();
                     }
-
+        
                     if (s.params.controlInverse) {
                         controlledTranslate = c.maxTranslate() - controlledTranslate;
                     }
@@ -13044,7 +13045,7 @@ return jQuery;
                    }
                }
                else if (controlled instanceof Swiper && byController !== controlled) {
-
+        
                    setControlledTranslate(controlled);
                }
             },
@@ -13061,7 +13062,7 @@ return jQuery;
                                 c.fixLoop();
                             }
                             c.onTransitionEnd();
-
+        
                         });
                     }
                 }
@@ -13150,7 +13151,7 @@ return jQuery;
                     ) {
                         inView = true;
                     }
-
+        
                 }
                 if (!inView) return;
             }
@@ -13179,7 +13180,7 @@ return jQuery;
             s.params.keyboardControl = true;
             $(document).on('keydown', handleKeyboard);
         };
-
+        
 
         /*=========================
           Mousewheel Control
@@ -13198,7 +13199,7 @@ return jQuery;
                 }
             }
             if (!s.mousewheel.event && window.WheelEvent) {
-
+        
             }
             if (!s.mousewheel.event && document.onmousewheel !== undefined) {
                 s.mousewheel.event = 'mousewheel';
@@ -13212,7 +13213,7 @@ return jQuery;
             var we = s.mousewheel.event;
             var delta = 0;
             var rtlFactor = s.rtl ? -1 : 1;
-
+        
             //WebKits
             if (we === 'mousewheel') {
                 if (s.params.mousewheelForceToAxis) {
@@ -13248,9 +13249,9 @@ return jQuery;
                 }
             }
             if (delta === 0) return;
-
+        
             if (s.params.mousewheelInvert) delta = -delta;
-
+        
             if (!s.params.freeMode) {
                 if ((new window.Date()).getTime() - s.mousewheel.lastScrollTime > 60) {
                     if (delta < 0) {
@@ -13263,26 +13264,26 @@ return jQuery;
                     }
                 }
                 s.mousewheel.lastScrollTime = (new window.Date()).getTime();
-
+        
             }
             else {
                 //Freemode or scrollContainer:
                 var position = s.getWrapperTranslate() + delta * s.params.mousewheelSensitivity;
                 var wasBeginning = s.isBeginning,
                     wasEnd = s.isEnd;
-
+        
                 if (position >= s.minTranslate()) position = s.minTranslate();
                 if (position <= s.maxTranslate()) position = s.maxTranslate();
-
+        
                 s.setWrapperTransition(0);
                 s.setWrapperTranslate(position);
                 s.updateProgress();
                 s.updateActiveIndex();
-
+        
                 if (!wasBeginning && s.isBeginning || !wasEnd && s.isEnd) {
                     s.updateClasses();
                 }
-
+        
                 if (s.params.freeModeSticky) {
                     clearTimeout(s.mousewheel.timeout);
                     s.mousewheel.timeout = setTimeout(function () {
@@ -13294,12 +13295,12 @@ return jQuery;
                         s.lazy.load();
                     }
                 }
-
+        
                 // Return page scroll on edge positions
                 if (position === 0 || position === s.maxTranslate()) return;
             }
             if (s.params.autoplay) s.stopAutoplay();
-
+        
             if (e.preventDefault) e.preventDefault();
             else e.returnValue = false;
             return false;
@@ -13309,13 +13310,13 @@ return jQuery;
             s.container.off(s.mousewheel.event, handleMousewheel);
             return true;
         };
-
+        
         s.enableMousewheelControl = function () {
             if (!s.mousewheel.event) return false;
             s.container.on(s.mousewheel.event, handleMousewheel);
             return true;
         };
-
+        
 
         /*=========================
           Parallax
@@ -13324,7 +13325,7 @@ return jQuery;
             el = $(el);
             var p, pX, pY;
             var rtlFactor = s.rtl ? -1 : 1;
-
+        
             p = el.attr('data-swiper-parallax') || '0';
             pX = el.attr('data-swiper-parallax-x');
             pY = el.attr('data-swiper-parallax-y');
@@ -13342,7 +13343,7 @@ return jQuery;
                     pX = '0';
                 }
             }
-
+        
             if ((pX).indexOf('%') >= 0) {
                 pX = parseInt(pX, 10) * progress * rtlFactor + '%';
             }
@@ -13355,14 +13356,14 @@ return jQuery;
             else {
                 pY = pY * progress + 'px' ;
             }
-
+        
             el.transform('translate3d(' + pX + ', ' + pY + ',0px)');
         }
         s.parallax = {
             setTranslate: function () {
                 s.container.children('[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y]').each(function(){
                     setParallaxTransform(this, s.progress);
-
+        
                 });
                 s.slides.each(function () {
                     var slide = $(this);
@@ -13382,7 +13383,7 @@ return jQuery;
                 });
             }
         };
-
+        
 
         /*=========================
           Plugins API. Collect all and init all plugins
@@ -13416,7 +13417,7 @@ return jQuery;
             return eventName;
         }
         s.emitterEventListeners = {
-
+        
         };
         s.emit = function (eventName) {
             // Trigger callbacks
@@ -13473,22 +13474,22 @@ return jQuery;
                 $el.attr('role', role);
                 return $el;
             },
-
+        
             addLabel: function ($el, label) {
                 $el.attr('aria-label', label);
                 return $el;
             },
-
+        
             disable: function ($el) {
                 $el.attr('aria-disabled', true);
                 return $el;
             },
-
+        
             enable: function ($el) {
                 $el.attr('aria-disabled', false);
                 return $el;
             },
-
+        
             onEnterKey: function (event) {
                 if (event.keyCode !== 13) return;
                 if ($(event.target).is(s.params.nextButton)) {
@@ -13513,9 +13514,9 @@ return jQuery;
                     $(event.target)[0].click();
                 }
             },
-
+        
             liveRegion: $('<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>'),
-
+        
             notify: function (message) {
                 var notification = s.a11y.liveRegion;
                 if (notification.length === 0) return;
@@ -13534,7 +13535,7 @@ return jQuery;
                     s.a11y.addRole(s.prevButton, 'button');
                     s.a11y.addLabel(s.prevButton, s.params.prevSlideMessage);
                 }
-
+        
                 $(s.container).append(s.a11y.liveRegion);
             },
             initPagination: function () {
@@ -13551,7 +13552,7 @@ return jQuery;
                 if (s.a11y.liveRegion && s.a11y.liveRegion.length > 0) s.a11y.liveRegion.remove();
             }
         };
-
+        
 
         /*=========================
           Init/Destroy
@@ -13606,15 +13607,15 @@ return jQuery;
             if (s.params.a11y && s.a11y) s.a11y.init();
             s.emit('onInit', s);
         };
-
+        
         // Cleanup dynamic styles
         s.cleanupStyles = function () {
             // Container
             s.container.removeClass(s.classNames.join(' ')).removeAttr('style');
-
+        
             // Wrapper
             s.wrapper.removeAttr('style');
-
+        
             // Slides
             if (s.slides && s.slides.length) {
                 s.slides
@@ -13628,7 +13629,7 @@ return jQuery;
                     .removeAttr('data-swiper-column')
                     .removeAttr('data-swiper-row');
             }
-
+        
             // Pagination/Bullets
             if (s.paginationContainer && s.paginationContainer.length) {
                 s.paginationContainer.removeClass(s.params.paginationHiddenClass);
@@ -13636,18 +13637,18 @@ return jQuery;
             if (s.bullets && s.bullets.length) {
                 s.bullets.removeClass(s.params.bulletActiveClass);
             }
-
+        
             // Buttons
             if (s.params.prevButton) $(s.params.prevButton).removeClass(s.params.buttonDisabledClass);
             if (s.params.nextButton) $(s.params.nextButton).removeClass(s.params.buttonDisabledClass);
-
+        
             // Scrollbar
             if (s.params.scrollbar && s.scrollbar) {
                 if (s.scrollbar.track && s.scrollbar.track.length) s.scrollbar.track.removeAttr('style');
                 if (s.scrollbar.drag && s.scrollbar.drag.length) s.scrollbar.drag.removeAttr('style');
             }
         };
-
+        
         // Destroy
         s.destroy = function (deleteInstance, cleanupStyles) {
             // Detach evebts
@@ -13684,15 +13685,15 @@ return jQuery;
             // Delete instance
             if (deleteInstance !== false) s = null;
         };
-
+        
         s.init();
+        
 
-
-
+    
         // Return swiper instance
         return s;
     };
-
+    
 
     /*==================================================
         Prototype
@@ -13734,12 +13735,12 @@ return jQuery;
             touch : (window.Modernizr && Modernizr.touch === true) || (function () {
                 return !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
             })(),
-
+    
             transforms3d : (window.Modernizr && Modernizr.csstransforms3d === true) || (function () {
                 var div = document.createElement('div').style;
                 return ('webkitPerspective' in div || 'MozPerspective' in div || 'OPerspective' in div || 'MsPerspective' in div || 'perspective' in div);
             })(),
-
+    
             flexbox: (function () {
                 var div = document.createElement('div').style;
                 var styles = ('alignItems webkitAlignItems webkitBoxAlign msFlexAlign mozBoxAlign webkitFlexDirection msFlexDirection mozBoxDirection mozBoxOrient webkitBoxDirection webkitBoxOrient').split(' ');
@@ -13747,7 +13748,7 @@ return jQuery;
                     if (styles[i] in div) return true;
                 }
             })(),
-
+    
             observer: (function () {
                 return ('MutationObserver' in window || 'WebkitMutationObserver' in window);
             })()
@@ -13757,7 +13758,7 @@ return jQuery;
         ====================================================*/
         plugins: {}
     };
-
+    
 
     /*===========================
     Dom7 Library
@@ -13963,7 +13964,7 @@ return jQuery;
                         }
                     }
                 }
-
+    
                 return this;
             },
             off: function (eventName, targetSelector, listener, capture) {
@@ -14124,7 +14125,7 @@ return jQuery;
                 }
                 return this;
             },
-
+    
             //Dom manipulation
             each: function (callback) {
                 for (var i = 0; i < this.length; i++) {
@@ -14164,7 +14165,7 @@ return jQuery;
                     var el = this[0];
                     if (el === document) return selector === document;
                     if (el === window) return selector === window;
-
+    
                     if (el.matches) return el.matches(selector);
                     else if (el.webkitMatchesSelector) return el.webkitMatchesSelector(selector);
                     else if (el.mozMatchesSelector) return el.mozMatchesSelector(selector);
@@ -14189,7 +14190,7 @@ return jQuery;
                     }
                     return false;
                 }
-
+    
             },
             index: function () {
                 if (this[0]) {
@@ -14381,7 +14382,7 @@ return jQuery;
                 var children = [];
                 for (var i = 0; i < this.length; i++) {
                     var childNodes = this[i].childNodes;
-
+    
                     for (var j = 0; j < childNodes.length; j++) {
                         if (!selector) {
                             if (childNodes[j].nodeType === 1) children.push(childNodes[j]);
@@ -14420,10 +14421,10 @@ return jQuery;
             }
             return unique;
         };
-
+    
         return $;
     })();
-
+    
 
     /*===========================
      Get Dom libraries
@@ -14456,7 +14457,7 @@ return jQuery;
             return firstInstance;
         };
     }
-
+    
     if (domLib) {
         if (!('transitionEnd' in domLib.fn)) {
             domLib.fn.transitionEnd = function (callback) {
@@ -15550,74 +15551,74 @@ else if (typeof define === 'function' && define.amd) {
 /* http://james.padolsey.com/javascript/special-scroll-events-for-jquery/ */
 
 (function(){
-
+    
     var special = jQuery.event.special,
         uid1 = "D" + (+new Date()),
         uid2 = "D" + (+new Date() + 1);
-
+        
     special.scrollstart = {
         setup: function() {
-
+            
             var timer,
                 handler =  function(evt) {
-
+                    
                     var _self = this,
                         _args = arguments;
-
+                    
                     if (timer) {
                         clearTimeout(timer);
                     } else {
                         evt.type = "scrollstart";
                         jQuery.event.dispatch.apply(_self, _args);
                     }
-
+                    
                     timer = setTimeout( function(){
                         timer = null;
                     }, special.scrollstop.latency);
-
+                    
                 };
-
+            
             jQuery(this).bind("scroll", handler).data(uid1, handler);
-
+            
         },
         teardown: function(){
             jQuery(this).unbind( "scroll", jQuery(this).data(uid1) );
         }
     };
-
+    
     special.scrollstop = {
         latency: 300,
         setup: function() {
-
+            
             var timer,
                     handler = function(evt) {
-
+                    
                     var _self = this,
                         _args = arguments;
-
+                    
                     if (timer) {
                         clearTimeout(timer);
                     }
-
+                    
                     timer = setTimeout( function(){
-
+                        
                         timer = null;
                         evt.type = "scrollstop";
                         jQuery.event.dispatch.apply(_self, _args);
-
-
+                        
+                        
                     }, special.scrollstop.latency);
-
+                    
                 };
-
+            
             jQuery(this).bind("scroll", handler).data(uid2, handler);
-
+            
         },
         teardown: function() {
             jQuery(this).unbind( "scroll", jQuery(this).data(uid2) );
         }
     };
-
+    
 })();
 /*!
  * Bootstrap v4.0.0-alpha.3 (http://getbootstrap.com)
@@ -18402,9 +18403,9 @@ var Tooltip = (function ($) {
    * Check for Tether dependency
    * Tether - http://github.hubspot.com/tether/
    */
-  //if (window.Tether === undefined) {
-  //  throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)');
-  //}
+  // if (window.Tether === undefined) {
+  //   throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)');
+  // }
 
   /**
    * ------------------------------------------------------------------------
@@ -19192,6 +19193,787 @@ var Popover = (function ($) {
 })(jQuery);
 
 }(jQuery);
+
+/*!
+  Wookmark plugin
+  @name wookmark.js
+  @author Christoph Ono (chri@sto.ph or @gbks)
+  @author Sebastian Helzle (me@helzle.it or @sebobo)
+  @version 2.1.2
+  @date 05/05/2016
+  @category jQuery plugin
+  @copyright (c) 2009-2016 Christoph Ono (www.wookmark.com)
+  @license Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
+*/
+/*global define, window, jQuery*/
+/*jslint plusplus: true, bitwise: true */
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['window', 'document'], factory);
+  } else {
+    factory(window, document);
+  }
+}(function (window, document) {
+
+  // Wookmark default options
+  // ------------------------
+  var defaultOptions = {
+    align: 'center',
+    autoResize: true,
+    comparator: null,
+    direction: undefined,
+    ignoreInactiveItems: true,
+    inactiveClass: 'wookmark-inactive',
+    itemSelector: undefined,
+    itemWidth: 0,
+    fillEmptySpace: false,
+    flexibleWidth: 0,
+    offset: 5,
+    outerOffset: 0,
+    onLayoutChanged: undefined,
+    placeholderClass: 'wookmark-placeholder',
+    possibleFilters: [],
+    resizeDelay: 50,
+    verticalOffset: undefined
+  };
+
+  // Helper functions
+  // ----------------
+
+  // Bind function to set the context for the Wookmark instance function
+  function __bind(fn, me) {
+    return function () {
+      return fn.apply(me, arguments);
+    };
+  }
+
+  // Function for executing css writes to dom on the next animation frame if supported
+  var executeNextFrame = window.requestAnimationFrame || function (callback) { callback(); };
+
+  // Update multiple css values on an object
+  function setCSS(el, properties) {
+    var key;
+    for (key in properties) {
+      if (properties.hasOwnProperty(key)) {
+        el.style[key] = properties[key];
+      }
+    }
+  }
+
+  // Update the css properties of multiple elements at the same time
+  // befor the browsers next animation frame.
+  // The parameter `data` has to be an array containing objects, each
+  // with the element and the desired css properties.
+  function bulkUpdateCSS(data, callback) {
+    executeNextFrame(function () {
+      var i, item;
+      for (i = 0; i < data.length; i++) {
+        item = data[i];
+        setCSS(item.el, item.css);
+      }
+      // Run optional callback
+      if (typeof callback === 'function') {
+        executeNextFrame(callback);
+      }
+    });
+  }
+
+  // Remove whitespace around filter names
+  function cleanFilterName(filterName) {
+    return filterName.replace(/^\s+|\s+$/g, '').toLowerCase();
+  }
+
+  // Remove listener from an element (IE8 compatible)
+  function removeEventListener(el, eventName, handler) {
+    if (window.jQuery) {
+      $(el).off(eventName, handler);
+    } else if (el.removeEventListener) {
+      el.removeEventListener(eventName, handler);
+    } else {
+      el.detachEvent('on' + eventName, handler);
+    }
+  }
+
+  // Add listener to an element (IE8 compatible)
+  function addEventListener(el, eventName, handler) {
+    removeEventListener(el, eventName, handler);
+
+    if (window.jQuery) {
+      $(el).on(eventName, handler);
+    } else if (el.addEventListener) {
+      el.addEventListener(eventName, handler);
+    } else {
+      el.attachEvent('on' + eventName, function () {
+        handler.call(el);
+      });
+    }
+  }
+
+  // Checks if element `el` is not visible in the browser
+  function isHidden(el) {
+    return el.offsetParent === null;
+  }
+
+  // Returns the elements height without margin
+  function getHeight(el) {
+    return el.offsetHeight;
+  }
+
+  // Returns the elements width without margin
+  function getWidth(el) {
+    return el.offsetWidth;
+  }
+
+  // Return true if element has class
+  function hasClass(el, className) {
+    if (el.classList) {
+      return el.classList.contains(className);
+    }
+    return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+  }
+
+  // Add class to element (IE8+)
+  function addClass(el, className) {
+    if (el.classList) {
+      el.classList.add(className);
+    } else {
+      el.className += ' ' + className;
+    }
+  }
+
+  // Remove class from element (IE8+)
+  function removeClass(el, className) {
+    if (el.classList) {
+      el.classList.remove(className);
+    } else {
+      el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    }
+  }
+
+  // Get value of specified data attribute
+  function getData(el, attr, isInt, prefix) {
+    if (prefix === undefined) {
+      prefix = 'wookmark-';
+    }
+    var val = el.getAttribute('data-' + prefix + attr);
+    if (isInt === true) {
+      return parseInt(val, 10);
+    }
+    return val;
+  }
+
+  // Set value of specified data attribute
+  function setData(el, attr, val, prefix) {
+    if (prefix === undefined) {
+      prefix = 'wookmark-';
+    }
+    el.setAttribute('data-' + prefix + attr, val);
+  }
+
+  // Remove duplicates from given array
+  function removeDuplicates(items) {
+    var temp = {}, result = [], x, i = items.length;
+    while (i--) {
+      x = getData(items[i], 'id', true);
+      if (!temp.hasOwnProperty(x)) {
+        temp[x] = 1;
+        result.push(items[i]);
+      }
+    }
+    return result;
+  }
+
+  // Get the computed style from an element (IE 8 compatible)
+  function getStyle(el, prop) {
+    return window.getComputedStyle !== undefined ? window.getComputedStyle(el, null).getPropertyValue(prop) : el.currentStyle[prop];
+  }
+
+
+  // IE 8 compatible indexOf
+  function indexOf(items, item) {
+    var len = items.length, i;
+    for (i = 0; i < len; i++) {
+      if (items[i] === item) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  // Main wookmark plugin class
+  // --------------------------
+  function Wookmark(container, options) {
+    options = options || {};
+
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+
+    // Instance variables.
+    this.container = container;
+    this.columns = this.resizeTimer = null;
+    this.activeItemCount = 0;
+    this.placeholders = [];
+    this.itemHeightsInitialized = false;
+    this.itemHeightsDirty = false;
+    this.elementTag = 'div';
+
+    // Bind instance methods
+    this.initItems = __bind(this.initItems, this);
+    this.updateOptions = __bind(this.updateOptions, this);
+    this.onResize = __bind(this.onResize, this);
+    this.onRefresh = __bind(this.onRefresh, this);
+    this.getItemWidth = __bind(this.getItemWidth, this);
+    this.layout = __bind(this.layout, this);
+    this.layoutFull = __bind(this.layoutFull, this);
+    this.layoutColumns = __bind(this.layoutColumns, this);
+    this.filter = __bind(this.filter, this);
+    this.clear = __bind(this.clear, this);
+    this.getActiveItems = __bind(this.getActiveItems, this);
+    this.refreshPlaceholders = __bind(this.refreshPlaceholders, this);
+    this.sortElements = __bind(this.sortElements, this);
+    this.updateFilterClasses = __bind(this.updateFilterClasses, this);
+
+    // Initialize children of the container
+    this.initItems();
+
+    // Initial update and layout
+    this.container.style.display = 'block';
+    this.updateOptions(options);
+
+    // Collect filter classes after items have been initialized
+    this.updateFilterClasses();
+
+    // Listen to resize event of the browser if enabled
+    if (this.autoResize) {
+      addEventListener(window, 'resize', this.onResize);
+    }
+
+    // Listen to external refresh event
+    addEventListener(this.container, 'refreshWookmark', this.onRefresh);
+  }
+
+  // Get all valid children of the container object and store them
+  Wookmark.prototype.initItems = function () {
+    // By select all children of the container if no selector is specified
+    if (this.itemSelector === undefined) {
+      var items = [], child, children = this.container.children,
+          i = children.length;
+      while (i--) {
+        child = children[i];
+        // Skip comment nodes on IE8
+        if (child.nodeType !== 8) {
+          // Show item
+          child.style.display = '';
+          setData(child, 'id', i);
+          items.unshift(child);
+        }
+      }
+      this.items = items;
+    } else {
+      this.items = this.container.querySelectorAll(this.itemSelector);
+    }
+
+    if (this.items.length) {
+      this.elementTag = this.items[0].tagName;
+    }
+    this.itemHeightsDirty = true;
+  };
+
+  // Reload all filter classes from all items and cache them
+  Wookmark.prototype.updateFilterClasses = function () {
+    // Collect filter data
+    var i = this.items.length, j, filterClasses = {}, itemFilterClasses,
+      item, filterClass, possibleFilters = this.possibleFilters,
+      k = possibleFilters.length, possibleFilter;
+
+    while (i--) {
+      item = this.items[i];
+
+      // Read filter classes and globally store each filter class as object and the fitting items in the array
+      itemFilterClasses = JSON.parse(getData(item, 'filter-class', false, ''));
+      if (itemFilterClasses && typeof itemFilterClasses === 'object') {
+        j = itemFilterClasses.length;
+        while (j--) {
+          filterClass = cleanFilterName(itemFilterClasses[j]);
+          if (!filterClasses.hasOwnProperty(filterClass)) {
+            filterClasses[filterClass] = [];
+          }
+          filterClasses[filterClass].push(item);
+        }
+      }
+    }
+
+    while (k--) {
+      possibleFilter = cleanFilterName(possibleFilters[k]);
+      if (!filterClasses.hasOwnProperty(possibleFilter)) {
+        filterClasses[possibleFilter] = [];
+      }
+    }
+
+    this.filterClasses = filterClasses;
+  };
+
+  // Method for updating the plugins options
+  Wookmark.prototype.updateOptions = function (options) {
+    var key;
+    this.itemHeightsDirty = true;
+    options = options || {};
+
+    // Overwrite non existing instance variables with the ones from options or the defaults
+    for (key in defaultOptions) {
+      if (defaultOptions.hasOwnProperty(key)) {
+        if (options.hasOwnProperty(key)) {
+          this[key] = options[key];
+        } else if (!this.hasOwnProperty(key)) {
+          this[key] = defaultOptions[key];
+        }
+      }
+    }
+
+    // Vertical offset uses a fallback to offset
+    this.verticalOffset = this.verticalOffset || this.offset;
+
+    // Update layout so changes apply
+    this.layout(true);
+  };
+
+  // This timer ensures that layout is not continuously called as window is being dragged.
+  Wookmark.prototype.onResize = function () {
+    clearTimeout(this.resizeTimer);
+    this.itemHeightsDirty = this.flexibleWidth !== 0;
+    this.resizeTimer = setTimeout(this.layout, this.resizeDelay);
+  };
+
+  // Marks the items heights as dirty and does a relayout
+  Wookmark.prototype.onRefresh = function () {
+    this.itemHeightsDirty = true;
+    this.layout();
+  };
+
+  // Filters the active items with the given string filters.
+  // @param filters array of string
+  // @param mode 'or' or 'and'
+  Wookmark.prototype.filter = function (filters, mode, dryRun) {
+    var activeFilters = [], activeFiltersLength, activeItems = [],
+      i, j, k, filter;
+
+    filters = filters || [];
+    mode = mode || 'or';
+    dryRun = dryRun || false;
+
+    if (filters.length) {
+      // Collect active filters
+      for (i = 0; i < filters.length; i++) {
+        filter = cleanFilterName(filters[i]);
+        if (this.filterClasses.hasOwnProperty(filter)) {
+          activeFilters.push(this.filterClasses[filter]);
+        }
+      }
+
+      // Get items for active filters with the selected mode
+      i = activeFiltersLength = activeFilters.length;
+      if (mode === 'or' || activeFiltersLength === 1) {
+        // Set all items in all active filters active
+        while (i--) {
+          activeItems = activeItems.concat(activeFilters[i]);
+        }
+      } else if (mode === 'and') {
+        var shortestFilter = activeFilters[0], itemValid = true,
+          foundInFilter, currentItem, currentFilter;
+
+        // Find shortest filter class
+        while (i--) {
+          if (activeFilters[i].length < shortestFilter.length) {
+            shortestFilter = activeFilters[i];
+          }
+        }
+
+        // Iterate over shortest filter and find elements in other filter classes
+        shortestFilter = shortestFilter || [];
+        i = shortestFilter.length;
+        while (i--) {
+          currentItem = shortestFilter[i];
+          j = activeFiltersLength;
+          itemValid = true;
+
+          while (j-- && itemValid) {
+            currentFilter = activeFilters[j];
+            if (shortestFilter !== currentFilter) {
+              // Search for current item in each active filter class
+              foundInFilter = false;
+              k = currentFilter.length;
+              while (k-- && !foundInFilter) {
+                foundInFilter = currentFilter[k] === currentItem;
+              }
+              itemValid &= foundInFilter;
+            }
+          }
+
+          if (itemValid) {
+            activeItems = activeItems.concat(shortestFilter[i]);
+          }
+        }
+      }
+
+      // Remove duplicates from active items
+      if (activeFiltersLength > 1) {
+        activeItems = removeDuplicates(activeItems);
+      }
+
+      // Hide inactive items
+      if (!dryRun) {
+        i = this.items.length;
+        while (i--) {
+          if (indexOf(activeItems, this.items[i]) === -1) {
+            addClass(this.items[i], this.inactiveClass);
+          }
+        }
+      }
+    } else {
+      // Show all items if no filter is selected
+      activeItems = this.items;
+    }
+
+    // Show active items
+    if (!dryRun) {
+      i = activeItems.length;
+      while (i--) {
+        removeClass(activeItems[i], this.inactiveClass);
+      }
+      // Unset columns and refresh grid for a full layout
+      this.columns = null;
+      this.layout();
+    }
+    return activeItems;
+  };
+
+  // Creates or updates existing placeholders to create columns of even height
+  Wookmark.prototype.refreshPlaceholders = function (columnWidth, sideOffset) {
+    var i,
+      containerHeight = getHeight(this.container),
+      columnsLength = this.columns.length,
+      column,
+      height,
+      innerOffset,
+      lastColumnItem,
+      placeholdersHtml = '',
+      placeholder,
+      top;
+
+    // Add more placeholders if necessary
+    if (this.placeholders.length < columnsLength) {
+      for (i = 0; i < columnsLength - this.placeholders.length; i++) {
+        placeholdersHtml += '<' + this.elementTag + ' class="' + this.placeholderClass + '"/>';
+      }
+      this.container.insertAdjacentHTML('beforeend', placeholdersHtml);
+      this.placeholders = this.container.querySelectorAll('.' + this.placeholderClass);
+    }
+
+    innerOffset = (this.offset + parseInt(getStyle(this.placeholders[0], 'border-left-width'), 10) * 2) || 0;
+    innerOffset += (parseInt(getStyle(this.placeholders[0], 'padding-left'), 10) * 2)  || 0;
+
+    // Update each placeholder
+    for (i = 0; i < this.placeholders.length; i++) {
+      placeholder = this.placeholders[i];
+      column = this.columns[i];
+
+      if (i >= columnsLength || column.length === 0) {
+        placeholder.style.display = 'none';
+      } else {
+        lastColumnItem = column[column.length - 1];
+        top = getData(lastColumnItem, 'top', true) + getData(lastColumnItem, 'height', true) + this.verticalOffset;
+        height = Math.max(0, containerHeight - top - innerOffset);
+
+        setCSS(placeholder, {
+          position: 'absolute',
+          display: height > 0 ? 'block' : 'none',
+          left: (i * columnWidth + sideOffset) + 'px',
+          top: top + 'px',
+          width: (columnWidth - innerOffset) + 'px',
+          height: height + 'px'
+        });
+      }
+    }
+  };
+
+  // Method the get active items which are not disabled and visible
+  Wookmark.prototype.getActiveItems = function () {
+    var inactiveClass = this.inactiveClass,
+      i,
+      result = [],
+      item,
+      items = this.items;
+
+    if (this.ignoreInactiveItems) {
+      for (i = 0; i < items.length; i++) {
+        item = items[i];
+        if (!hasClass(item, inactiveClass)) {
+          result.push(item);
+        }
+      }
+    } else {
+      return items;
+    }
+    return result;
+  };
+
+  // Method to get the standard item width
+  Wookmark.prototype.getItemWidth = function () {
+    var itemWidth = this.itemWidth,
+      innerWidth = getWidth(this.container) - 2 * this.outerOffset,
+      flexibleWidth = this.flexibleWidth;
+
+    if (typeof itemWidth === 'function') {
+      itemWidth = this.itemWidth();
+    }
+
+    if (this.items.length > 0 && (itemWidth === undefined || (itemWidth === 0 && !this.flexibleWidth))) {
+      itemWidth = getWidth(this.items[0]);
+    } else if (typeof itemWidth === 'string' && itemWidth.indexOf('%') >= 0) {
+      itemWidth = parseFloat(itemWidth) / 100 * innerWidth;
+    }
+
+    // Calculate flexible item width if option is set
+    if (flexibleWidth) {
+      if (typeof flexibleWidth === 'function') {
+        flexibleWidth = flexibleWidth();
+      }
+
+      if (typeof flexibleWidth === 'string' && flexibleWidth.indexOf('%') >= 0) {
+        flexibleWidth = parseFloat(flexibleWidth) / 100 * innerWidth;
+      }
+
+      // Find highest column count
+      var paddedInnerWidth = (innerWidth + this.offset),
+        flexibleColumns = Math.floor(0.5 + paddedInnerWidth / (flexibleWidth + this.offset)),
+        fixedColumns = Math.floor(paddedInnerWidth / (itemWidth + this.offset)),
+        columns = Math.max(flexibleColumns, fixedColumns),
+        columnWidth = Math.min(flexibleWidth, Math.floor((innerWidth - (columns - 1) * this.offset) / columns));
+
+      itemWidth = Math.max(itemWidth, columnWidth);
+    }
+
+    return itemWidth;
+  };
+
+  // Main layout method.
+  Wookmark.prototype.layout = function (force, callback) {
+    // Do nothing if container isn't visible
+    if (!force && isHidden(this.container)) { return; }
+
+    // Calculate basic layout parameters.
+    var calculatedItemWidth = this.getItemWidth(),
+      columnWidth = calculatedItemWidth + this.offset,
+      containerWidth = getWidth(this.container),
+      innerWidth = containerWidth - 2 * this.outerOffset,
+      columns = Math.floor((innerWidth + this.offset) / columnWidth),
+      offset,
+      maxHeight = 0,
+      activeItems = this.getActiveItems(),
+      activeItemsLength = activeItems.length,
+      item;
+
+    // Cache item heights
+    if (force || this.itemHeightsDirty || !this.itemHeightsInitialized) {
+      for (var i = 0; i < activeItemsLength; i++) {
+        item = activeItems[i];
+
+        if (this.flexibleWidth) {
+          // Stretch items to fill calculated width
+          item.style.width = calculatedItemWidth + 'px';
+        }
+        setData(item, 'height', item.offsetHeight);
+      }
+      this.itemHeightsDirty = false;
+      this.itemHeightsInitialized = true;
+    }
+
+    // Use less columns if there are to few items
+    columns = Math.max(1, Math.min(columns, activeItemsLength));
+
+    // Calculate the offset based on the alignment of columns to the parent container
+    offset = this.outerOffset;
+    if (this.align === 'center') {
+      offset += Math.floor(0.5 + (innerWidth - (columns * columnWidth - this.offset)) >> 1);
+    }
+
+    // Get direction for positioning
+    this.direction = this.direction || (this.align === 'right' ? 'right' : 'left');
+
+    // If container and column count hasn't changed, we can only update the columns.
+    if (!force && this.columns !== null && this.columns.length === columns && this.activeItemCount === activeItemsLength) {
+      maxHeight = this.layoutColumns(columnWidth, offset);
+    } else {
+      maxHeight = this.layoutFull(columnWidth, columns, offset);
+    }
+    this.activeItemCount = activeItemsLength;
+
+    // Set container height to height of the grid.
+    this.container.style.height = maxHeight + 'px';
+
+    // Update placeholders
+    if (this.fillEmptySpace) {
+      this.refreshPlaceholders(columnWidth, offset);
+    }
+
+    if (this.onLayoutChanged !== undefined && typeof this.onLayoutChanged === 'function') {
+      this.onLayoutChanged();
+    }
+
+    // Run optional callback
+    if (typeof callback === 'function') {
+      callback();
+    }
+  };
+
+  // Sort elements with configurable comparator
+  Wookmark.prototype.sortElements = function (elements) {
+    return typeof this.comparator === 'function' ? elements.sort(this.comparator) : elements;
+  };
+
+  // Perform a full layout update.
+  Wookmark.prototype.layoutFull = function (columnWidth, columns, offset) {
+    var item, k = 0, i = 0, activeItems, activeItemCount, shortest = null, shortestIndex = null,
+        sideOffset, heights = [], itemBulkCSS = [], leftAligned = this.align === 'left', self = this;
+
+    this.columns = [];
+
+    // Sort elements before layouting
+    activeItems = this.sortElements(this.getActiveItems());
+    activeItemCount = activeItems.length;
+
+    // Prepare arrays to store height of columns and items.
+    while (heights.length < columns) {
+      heights.push(this.outerOffset);
+      this.columns.push([]);
+    }
+
+    // Loop over items.
+    while (i < activeItemCount) {
+      item = activeItems[i];
+
+      // Find the shortest column.
+      shortest = heights[0];
+      shortestIndex = 0;
+      for (k = 0; k < columns; k++) {
+        if (heights[k] < shortest) {
+          shortest = heights[k];
+          shortestIndex = k;
+        }
+      }
+      setData(item, 'top', shortest);
+
+      // stick to left side if alignment is left and this is the first column
+      sideOffset = offset;
+      if (shortestIndex > 0 || !leftAligned) {
+        sideOffset += shortestIndex * columnWidth;
+      }
+
+      // Position the item.
+      itemBulkCSS[i] = {
+        el: item,
+        css: {
+          position: 'absolute',
+          top: shortest + 'px'
+        }
+      };
+      itemBulkCSS[i].css[this.direction] = sideOffset + 'px';
+
+      // Update column height and store item in shortest column
+      heights[shortestIndex] += getData(item, 'height', true) + this.verticalOffset;
+      this.columns[shortestIndex].push(item);
+      i++;
+    }
+
+    // Update all css in the next frame and mark container as initalised
+    bulkUpdateCSS(itemBulkCSS, function () {
+      // Initialisation done
+      if (!hasClass(self.container, 'wookmark-initialised')) {
+        addClass(self.container, 'wookmark-initialised');
+      }
+    });
+
+    // Return longest column
+    return Math.max.apply(Math, heights);
+  };
+
+  // This layout method only updates the vertical position of the
+  // existing column assignments.
+  Wookmark.prototype.layoutColumns = function (columnWidth, offset) {
+    var heights = [], itemBulkCSS = [], k = 0, j = 0,
+      i = this.columns.length, currentHeight,
+      column, item, sideOffset;
+
+    while (i--) {
+      currentHeight = this.outerOffset;
+      heights.push(currentHeight);
+      column = this.columns[i];
+      sideOffset = i * columnWidth + offset;
+
+      for (k = 0; k < column.length; k++, j++) {
+        item = column[k];
+        setData(item, 'top', currentHeight);
+        itemBulkCSS[j] = {
+          el: item,
+          css: {
+            top: currentHeight + 'px'
+          }
+        };
+        itemBulkCSS[j].css[this.direction] = sideOffset + 'px';
+
+        currentHeight += getData(item, 'height', true) + this.verticalOffset;
+      }
+      heights[i] = currentHeight;
+    }
+
+    bulkUpdateCSS(itemBulkCSS);
+
+    // Return longest column
+    return Math.max.apply(Math, heights);
+  };
+
+  // Clear event listeners and time outs and the instance itself
+  Wookmark.prototype.clear = function () {
+    clearTimeout(this.resizeTimer);
+    var i = this.placeholders.length;
+    while (i--) {
+      this.container.removeChild(this.placeholders[i]);
+    }
+    removeEventListener(window, 'resize', this.onResize);
+    removeEventListener(this.container, 'refreshWookmark', this.onRefresh);
+  };
+
+  // Register as jQuery plugin if jQuery is loaded
+  if (window.jQuery !== undefined) {
+    jQuery.fn.wookmark = function (options) {
+      var i = this.length;
+
+      // Use first element if container is an jQuery object
+      if (options !== undefined && options.container instanceof jQuery) {
+        options.container = options.container[0];
+      }
+
+      // Call plugin multiple times if there are multiple elements selected
+      if (i > 1) {
+        while (i--) {
+          $(this).eq(i).wookmark(options);
+        }
+      } else if (i === 1) {
+        // Create a wookmark instance or update an existing one
+        if (!this.wookmarkInstance) {
+          this.wookmarkInstance = new Wookmark(this[0], options || {});
+        } else {
+          this.wookmarkInstance.updateOptions(options || {});
+        }
+      }
+      return this;
+    };
+  }
+
+  window.Wookmark = Wookmark;
+  return Wookmark;
+}));
 
 "use strict";var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol?"symbol":typeof obj;};/*!
  * jQuery JavaScript Library v1.6.2
@@ -21219,782 +22001,622 @@ jQuery_1_6 = jQuery;
 //# sourceMappingURL=jquery.jqzoom.js.map
 
 /*!
-  Wookmark plugin
-  @name wookmark.js
-  @author Christoph Ono (chri@sto.ph or @gbks)
-  @author Sebastian Helzle (me@helzle.it or @sebobo)
-  @version 2.1.2
-  @date 05/05/2016
-  @category jQuery plugin
-  @copyright (c) 2009-2016 Christoph Ono (www.wookmark.com)
-  @license Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
-*/
-/*global define, window, jQuery*/
-/*jslint plusplus: true, bitwise: true */
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['window', 'document'], factory);
-  } else {
-    factory(window, document);
-  }
-}(function (window, document) {
+ * artTemplate - Template Engine
+ * https://github.com/aui/artTemplate
+ * Released under the MIT, BSD, and GPL Licenses
+ */
 
-  // Wookmark default options
-  // ------------------------
-  var defaultOptions = {
-    align: 'center',
-    autoResize: true,
-    comparator: null,
-    direction: undefined,
-    ignoreInactiveItems: true,
-    inactiveClass: 'wookmark-inactive',
-    itemSelector: undefined,
-    itemWidth: 0,
-    fillEmptySpace: false,
-    flexibleWidth: 0,
-    offset: 5,
-    outerOffset: 0,
-    onLayoutChanged: undefined,
-    placeholderClass: 'wookmark-placeholder',
-    possibleFilters: [],
-    resizeDelay: 50,
-    verticalOffset: undefined
-  };
+/* eslint-disable */
+'use strict';
 
-  // Helper functions
-  // ----------------
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-  // Bind function to set the context for the Wookmark instance function
-  function __bind(fn, me) {
-    return function () {
-      return fn.apply(me, arguments);
+!function (window) {
+
+    /**
+     * 模板引擎
+     * @name    template
+     * @param   {String}            模板名
+     * @param   {Object, String}    数据。如果为字符串则编译并缓存编译结果
+     * @return  {String, Function}  渲染好的HTML字符串或者渲染方法
+     */
+    var template = function template(filename, content) {
+        return typeof content === 'string' ? compile(content, {
+            filename: filename
+        }) : renderFile(filename, content);
     };
-  }
 
-  // Function for executing css writes to dom on the next animation frame if supported
-  var executeNextFrame = window.requestAnimationFrame || function (callback) { callback(); };
+    template.version = '3.0.0';
 
-  // Update multiple css values on an object
-  function setCSS(el, properties) {
-    var key;
-    for (key in properties) {
-      if (properties.hasOwnProperty(key)) {
-        el.style[key] = properties[key];
-      }
-    }
-  }
+    /**
+     * 设置全局配置
+     * @name    template.config
+     * @param   {String}    名称
+     * @param   {Any}       值
+     */
+    template.config = function (name, value) {
+        defaults[name] = value;
+    };
 
-  // Update the css properties of multiple elements at the same time
-  // befor the browsers next animation frame.
-  // The parameter `data` has to be an array containing objects, each
-  // with the element and the desired css properties.
-  function bulkUpdateCSS(data, callback) {
-    executeNextFrame(function () {
-      var i, item;
-      for (i = 0; i < data.length; i++) {
-        item = data[i];
-        setCSS(item.el, item.css);
-      }
-      // Run optional callback
-      if (typeof callback === 'function') {
-        executeNextFrame(callback);
-      }
-    });
-  }
+    var defaults = template.defaults = {
+        openTag: '<%', // 逻辑语法开始标签
+        closeTag: '%>', // 逻辑语法结束标签
+        escape: true, // 是否编码输出变量的 HTML 字符
+        cache: true, // 是否开启缓存（依赖 options 的 filename 字段）
+        compress: false, // 是否压缩输出
+        parser: null // 自定义语法格式器 @see: template-syntax.js
+    };
 
-  // Remove whitespace around filter names
-  function cleanFilterName(filterName) {
-    return filterName.replace(/^\s+|\s+$/g, '').toLowerCase();
-  }
+    var cacheStore = template.cache = {};
 
-  // Remove listener from an element (IE8 compatible)
-  function removeEventListener(el, eventName, handler) {
-    if (window.jQuery) {
-      $(el).off(eventName, handler);
-    } else if (el.removeEventListener) {
-      el.removeEventListener(eventName, handler);
-    } else {
-      el.detachEvent('on' + eventName, handler);
-    }
-  }
+    /**
+     * 渲染模板
+     * @name    template.render
+     * @param   {String}    模板
+     * @param   {Object}    数据
+     * @return  {String}    渲染好的字符串
+     */
+    template.render = function (source, options) {
+        return compile(source, options);
+    };
 
-  // Add listener to an element (IE8 compatible)
-  function addEventListener(el, eventName, handler) {
-    removeEventListener(el, eventName, handler);
-
-    if (window.jQuery) {
-      $(el).on(eventName, handler);
-    } else if (el.addEventListener) {
-      el.addEventListener(eventName, handler);
-    } else {
-      el.attachEvent('on' + eventName, function () {
-        handler.call(el);
-      });
-    }
-  }
-
-  // Checks if element `el` is not visible in the browser
-  function isHidden(el) {
-    return el.offsetParent === null;
-  }
-
-  // Returns the elements height without margin
-  function getHeight(el) {
-    return el.offsetHeight;
-  }
-
-  // Returns the elements width without margin
-  function getWidth(el) {
-    return el.offsetWidth;
-  }
-
-  // Return true if element has class
-  function hasClass(el, className) {
-    if (el.classList) {
-      return el.classList.contains(className);
-    }
-    return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
-  }
-
-  // Add class to element (IE8+)
-  function addClass(el, className) {
-    if (el.classList) {
-      el.classList.add(className);
-    } else {
-      el.className += ' ' + className;
-    }
-  }
-
-  // Remove class from element (IE8+)
-  function removeClass(el, className) {
-    if (el.classList) {
-      el.classList.remove(className);
-    } else {
-      el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-    }
-  }
-
-  // Get value of specified data attribute
-  function getData(el, attr, isInt, prefix) {
-    if (prefix === undefined) {
-      prefix = 'wookmark-';
-    }
-    var val = el.getAttribute('data-' + prefix + attr);
-    if (isInt === true) {
-      return parseInt(val, 10);
-    }
-    return val;
-  }
-
-  // Set value of specified data attribute
-  function setData(el, attr, val, prefix) {
-    if (prefix === undefined) {
-      prefix = 'wookmark-';
-    }
-    el.setAttribute('data-' + prefix + attr, val);
-  }
-
-  // Remove duplicates from given array
-  function removeDuplicates(items) {
-    var temp = {}, result = [], x, i = items.length;
-    while (i--) {
-      x = getData(items[i], 'id', true);
-      if (!temp.hasOwnProperty(x)) {
-        temp[x] = 1;
-        result.push(items[i]);
-      }
-    }
-    return result;
-  }
-
-  // Get the computed style from an element (IE 8 compatible)
-  function getStyle(el, prop) {
-    return window.getComputedStyle !== undefined ? window.getComputedStyle(el, null).getPropertyValue(prop) : el.currentStyle[prop];
-  }
-
-
-  // IE 8 compatible indexOf
-  function indexOf(items, item) {
-    var len = items.length, i;
-    for (i = 0; i < len; i++) {
-      if (items[i] === item) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  // Main wookmark plugin class
-  // --------------------------
-  function Wookmark(container, options) {
-    options = options || {};
-
-    if (typeof container === 'string') {
-      container = document.querySelector(container);
-    }
-
-    // Instance variables.
-    this.container = container;
-    this.columns = this.resizeTimer = null;
-    this.activeItemCount = 0;
-    this.placeholders = [];
-    this.itemHeightsInitialized = false;
-    this.itemHeightsDirty = false;
-    this.elementTag = 'div';
-
-    // Bind instance methods
-    this.initItems = __bind(this.initItems, this);
-    this.updateOptions = __bind(this.updateOptions, this);
-    this.onResize = __bind(this.onResize, this);
-    this.onRefresh = __bind(this.onRefresh, this);
-    this.getItemWidth = __bind(this.getItemWidth, this);
-    this.layout = __bind(this.layout, this);
-    this.layoutFull = __bind(this.layoutFull, this);
-    this.layoutColumns = __bind(this.layoutColumns, this);
-    this.filter = __bind(this.filter, this);
-    this.clear = __bind(this.clear, this);
-    this.getActiveItems = __bind(this.getActiveItems, this);
-    this.refreshPlaceholders = __bind(this.refreshPlaceholders, this);
-    this.sortElements = __bind(this.sortElements, this);
-    this.updateFilterClasses = __bind(this.updateFilterClasses, this);
-
-    // Initialize children of the container
-    this.initItems();
-
-    // Initial update and layout
-    this.container.style.display = 'block';
-    this.updateOptions(options);
-
-    // Collect filter classes after items have been initialized
-    this.updateFilterClasses();
-
-    // Listen to resize event of the browser if enabled
-    if (this.autoResize) {
-      addEventListener(window, 'resize', this.onResize);
-    }
-
-    // Listen to external refresh event
-    addEventListener(this.container, 'refreshWookmark', this.onRefresh);
-  }
-
-  // Get all valid children of the container object and store them
-  Wookmark.prototype.initItems = function () {
-    // By select all children of the container if no selector is specified
-    if (this.itemSelector === undefined) {
-      var items = [], child, children = this.container.children,
-          i = children.length;
-      while (i--) {
-        child = children[i];
-        // Skip comment nodes on IE8
-        if (child.nodeType !== 8) {
-          // Show item
-          child.style.display = '';
-          setData(child, 'id', i);
-          items.unshift(child);
-        }
-      }
-      this.items = items;
-    } else {
-      this.items = this.container.querySelectorAll(this.itemSelector);
-    }
-
-    if (this.items.length) {
-      this.elementTag = this.items[0].tagName;
-    }
-    this.itemHeightsDirty = true;
-  };
-
-  // Reload all filter classes from all items and cache them
-  Wookmark.prototype.updateFilterClasses = function () {
-    // Collect filter data
-    var i = this.items.length, j, filterClasses = {}, itemFilterClasses,
-      item, filterClass, possibleFilters = this.possibleFilters,
-      k = possibleFilters.length, possibleFilter;
-
-    while (i--) {
-      item = this.items[i];
-
-      // Read filter classes and globally store each filter class as object and the fitting items in the array
-      itemFilterClasses = JSON.parse(getData(item, 'filter-class', false, ''));
-      if (itemFilterClasses && typeof itemFilterClasses === 'object') {
-        j = itemFilterClasses.length;
-        while (j--) {
-          filterClass = cleanFilterName(itemFilterClasses[j]);
-          if (!filterClasses.hasOwnProperty(filterClass)) {
-            filterClasses[filterClass] = [];
-          }
-          filterClasses[filterClass].push(item);
-        }
-      }
-    }
-
-    while (k--) {
-      possibleFilter = cleanFilterName(possibleFilters[k]);
-      if (!filterClasses.hasOwnProperty(possibleFilter)) {
-        filterClasses[possibleFilter] = [];
-      }
-    }
-
-    this.filterClasses = filterClasses;
-  };
-
-  // Method for updating the plugins options
-  Wookmark.prototype.updateOptions = function (options) {
-    var key;
-    this.itemHeightsDirty = true;
-    options = options || {};
-
-    // Overwrite non existing instance variables with the ones from options or the defaults
-    for (key in defaultOptions) {
-      if (defaultOptions.hasOwnProperty(key)) {
-        if (options.hasOwnProperty(key)) {
-          this[key] = options[key];
-        } else if (!this.hasOwnProperty(key)) {
-          this[key] = defaultOptions[key];
-        }
-      }
-    }
-
-    // Vertical offset uses a fallback to offset
-    this.verticalOffset = this.verticalOffset || this.offset;
-
-    // Update layout so changes apply
-    this.layout(true);
-  };
-
-  // This timer ensures that layout is not continuously called as window is being dragged.
-  Wookmark.prototype.onResize = function () {
-    clearTimeout(this.resizeTimer);
-    this.itemHeightsDirty = this.flexibleWidth !== 0;
-    this.resizeTimer = setTimeout(this.layout, this.resizeDelay);
-  };
-
-  // Marks the items heights as dirty and does a relayout
-  Wookmark.prototype.onRefresh = function () {
-    this.itemHeightsDirty = true;
-    this.layout();
-  };
-
-  // Filters the active items with the given string filters.
-  // @param filters array of string
-  // @param mode 'or' or 'and'
-  Wookmark.prototype.filter = function (filters, mode, dryRun) {
-    var activeFilters = [], activeFiltersLength, activeItems = [],
-      i, j, k, filter;
-
-    filters = filters || [];
-    mode = mode || 'or';
-    dryRun = dryRun || false;
-
-    if (filters.length) {
-      // Collect active filters
-      for (i = 0; i < filters.length; i++) {
-        filter = cleanFilterName(filters[i]);
-        if (this.filterClasses.hasOwnProperty(filter)) {
-          activeFilters.push(this.filterClasses[filter]);
-        }
-      }
-
-      // Get items for active filters with the selected mode
-      i = activeFiltersLength = activeFilters.length;
-      if (mode === 'or' || activeFiltersLength === 1) {
-        // Set all items in all active filters active
-        while (i--) {
-          activeItems = activeItems.concat(activeFilters[i]);
-        }
-      } else if (mode === 'and') {
-        var shortestFilter = activeFilters[0], itemValid = true,
-          foundInFilter, currentItem, currentFilter;
-
-        // Find shortest filter class
-        while (i--) {
-          if (activeFilters[i].length < shortestFilter.length) {
-            shortestFilter = activeFilters[i];
-          }
-        }
-
-        // Iterate over shortest filter and find elements in other filter classes
-        shortestFilter = shortestFilter || [];
-        i = shortestFilter.length;
-        while (i--) {
-          currentItem = shortestFilter[i];
-          j = activeFiltersLength;
-          itemValid = true;
-
-          while (j-- && itemValid) {
-            currentFilter = activeFilters[j];
-            if (shortestFilter !== currentFilter) {
-              // Search for current item in each active filter class
-              foundInFilter = false;
-              k = currentFilter.length;
-              while (k-- && !foundInFilter) {
-                foundInFilter = currentFilter[k] === currentItem;
-              }
-              itemValid &= foundInFilter;
-            }
-          }
-
-          if (itemValid) {
-            activeItems = activeItems.concat(shortestFilter[i]);
-          }
-        }
-      }
-
-      // Remove duplicates from active items
-      if (activeFiltersLength > 1) {
-        activeItems = removeDuplicates(activeItems);
-      }
-
-      // Hide inactive items
-      if (!dryRun) {
-        i = this.items.length;
-        while (i--) {
-          if (indexOf(activeItems, this.items[i]) === -1) {
-            addClass(this.items[i], this.inactiveClass);
-          }
-        }
-      }
-    } else {
-      // Show all items if no filter is selected
-      activeItems = this.items;
-    }
-
-    // Show active items
-    if (!dryRun) {
-      i = activeItems.length;
-      while (i--) {
-        removeClass(activeItems[i], this.inactiveClass);
-      }
-      // Unset columns and refresh grid for a full layout
-      this.columns = null;
-      this.layout();
-    }
-    return activeItems;
-  };
-
-  // Creates or updates existing placeholders to create columns of even height
-  Wookmark.prototype.refreshPlaceholders = function (columnWidth, sideOffset) {
-    var i,
-      containerHeight = getHeight(this.container),
-      columnsLength = this.columns.length,
-      column,
-      height,
-      innerOffset,
-      lastColumnItem,
-      placeholdersHtml = '',
-      placeholder,
-      top;
-
-    // Add more placeholders if necessary
-    if (this.placeholders.length < columnsLength) {
-      for (i = 0; i < columnsLength - this.placeholders.length; i++) {
-        placeholdersHtml += '<' + this.elementTag + ' class="' + this.placeholderClass + '"/>';
-      }
-      this.container.insertAdjacentHTML('beforeend', placeholdersHtml);
-      this.placeholders = this.container.querySelectorAll('.' + this.placeholderClass);
-    }
-
-    innerOffset = (this.offset + parseInt(getStyle(this.placeholders[0], 'border-left-width'), 10) * 2) || 0;
-    innerOffset += (parseInt(getStyle(this.placeholders[0], 'padding-left'), 10) * 2)  || 0;
-
-    // Update each placeholder
-    for (i = 0; i < this.placeholders.length; i++) {
-      placeholder = this.placeholders[i];
-      column = this.columns[i];
-
-      if (i >= columnsLength || column.length === 0) {
-        placeholder.style.display = 'none';
-      } else {
-        lastColumnItem = column[column.length - 1];
-        top = getData(lastColumnItem, 'top', true) + getData(lastColumnItem, 'height', true) + this.verticalOffset;
-        height = Math.max(0, containerHeight - top - innerOffset);
-
-        setCSS(placeholder, {
-          position: 'absolute',
-          display: height > 0 ? 'block' : 'none',
-          left: (i * columnWidth + sideOffset) + 'px',
-          top: top + 'px',
-          width: (columnWidth - innerOffset) + 'px',
-          height: height + 'px'
+    /**
+     * 渲染模板(根据模板名)
+     * @name    template.render
+     * @param   {String}    模板名
+     * @param   {Object}    数据
+     * @return  {String}    渲染好的字符串
+     */
+    var renderFile = template.renderFile = function (filename, data) {
+        var fn = template.get(filename) || showDebugInfo({
+            filename: filename,
+            name: 'Render Error',
+            message: 'Template not found'
         });
-      }
-    }
-  };
-
-  // Method the get active items which are not disabled and visible
-  Wookmark.prototype.getActiveItems = function () {
-    var inactiveClass = this.inactiveClass,
-      i,
-      result = [],
-      item,
-      items = this.items;
-
-    if (this.ignoreInactiveItems) {
-      for (i = 0; i < items.length; i++) {
-        item = items[i];
-        if (!hasClass(item, inactiveClass)) {
-          result.push(item);
-        }
-      }
-    } else {
-      return items;
-    }
-    return result;
-  };
-
-  // Method to get the standard item width
-  Wookmark.prototype.getItemWidth = function () {
-    var itemWidth = this.itemWidth,
-      innerWidth = getWidth(this.container) - 2 * this.outerOffset,
-      flexibleWidth = this.flexibleWidth;
-
-    if (typeof itemWidth === 'function') {
-      itemWidth = this.itemWidth();
-    }
-
-    if (this.items.length > 0 && (itemWidth === undefined || (itemWidth === 0 && !this.flexibleWidth))) {
-      itemWidth = getWidth(this.items[0]);
-    } else if (typeof itemWidth === 'string' && itemWidth.indexOf('%') >= 0) {
-      itemWidth = parseFloat(itemWidth) / 100 * innerWidth;
-    }
-
-    // Calculate flexible item width if option is set
-    if (flexibleWidth) {
-      if (typeof flexibleWidth === 'function') {
-        flexibleWidth = flexibleWidth();
-      }
-
-      if (typeof flexibleWidth === 'string' && flexibleWidth.indexOf('%') >= 0) {
-        flexibleWidth = parseFloat(flexibleWidth) / 100 * innerWidth;
-      }
-
-      // Find highest column count
-      var paddedInnerWidth = (innerWidth + this.offset),
-        flexibleColumns = Math.floor(0.5 + paddedInnerWidth / (flexibleWidth + this.offset)),
-        fixedColumns = Math.floor(paddedInnerWidth / (itemWidth + this.offset)),
-        columns = Math.max(flexibleColumns, fixedColumns),
-        columnWidth = Math.min(flexibleWidth, Math.floor((innerWidth - (columns - 1) * this.offset) / columns));
-
-      itemWidth = Math.max(itemWidth, columnWidth);
-    }
-
-    return itemWidth;
-  };
-
-  // Main layout method.
-  Wookmark.prototype.layout = function (force, callback) {
-    // Do nothing if container isn't visible
-    if (!force && isHidden(this.container)) { return; }
-
-    // Calculate basic layout parameters.
-    var calculatedItemWidth = this.getItemWidth(),
-      columnWidth = calculatedItemWidth + this.offset,
-      containerWidth = getWidth(this.container),
-      innerWidth = containerWidth - 2 * this.outerOffset,
-      columns = Math.floor((innerWidth + this.offset) / columnWidth),
-      offset,
-      maxHeight = 0,
-      activeItems = this.getActiveItems(),
-      activeItemsLength = activeItems.length,
-      item;
-
-    // Cache item heights
-    if (force || this.itemHeightsDirty || !this.itemHeightsInitialized) {
-      for (var i = 0; i < activeItemsLength; i++) {
-        item = activeItems[i];
-
-        if (this.flexibleWidth) {
-          // Stretch items to fill calculated width
-          item.style.width = calculatedItemWidth + 'px';
-        }
-        setData(item, 'height', item.offsetHeight);
-      }
-      this.itemHeightsDirty = false;
-      this.itemHeightsInitialized = true;
-    }
-
-    // Use less columns if there are to few items
-    columns = Math.max(1, Math.min(columns, activeItemsLength));
-
-    // Calculate the offset based on the alignment of columns to the parent container
-    offset = this.outerOffset;
-    if (this.align === 'center') {
-      offset += Math.floor(0.5 + (innerWidth - (columns * columnWidth - this.offset)) >> 1);
-    }
-
-    // Get direction for positioning
-    this.direction = this.direction || (this.align === 'right' ? 'right' : 'left');
-
-    // If container and column count hasn't changed, we can only update the columns.
-    if (!force && this.columns !== null && this.columns.length === columns && this.activeItemCount === activeItemsLength) {
-      maxHeight = this.layoutColumns(columnWidth, offset);
-    } else {
-      maxHeight = this.layoutFull(columnWidth, columns, offset);
-    }
-    this.activeItemCount = activeItemsLength;
-
-    // Set container height to height of the grid.
-    this.container.style.height = maxHeight + 'px';
-
-    // Update placeholders
-    if (this.fillEmptySpace) {
-      this.refreshPlaceholders(columnWidth, offset);
-    }
-
-    if (this.onLayoutChanged !== undefined && typeof this.onLayoutChanged === 'function') {
-      this.onLayoutChanged();
-    }
-
-    // Run optional callback
-    if (typeof callback === 'function') {
-      callback();
-    }
-  };
-
-  // Sort elements with configurable comparator
-  Wookmark.prototype.sortElements = function (elements) {
-    return typeof this.comparator === 'function' ? elements.sort(this.comparator) : elements;
-  };
-
-  // Perform a full layout update.
-  Wookmark.prototype.layoutFull = function (columnWidth, columns, offset) {
-    var item, k = 0, i = 0, activeItems, activeItemCount, shortest = null, shortestIndex = null,
-        sideOffset, heights = [], itemBulkCSS = [], leftAligned = this.align === 'left', self = this;
-
-    this.columns = [];
-
-    // Sort elements before layouting
-    activeItems = this.sortElements(this.getActiveItems());
-    activeItemCount = activeItems.length;
-
-    // Prepare arrays to store height of columns and items.
-    while (heights.length < columns) {
-      heights.push(this.outerOffset);
-      this.columns.push([]);
-    }
-
-    // Loop over items.
-    while (i < activeItemCount) {
-      item = activeItems[i];
-
-      // Find the shortest column.
-      shortest = heights[0];
-      shortestIndex = 0;
-      for (k = 0; k < columns; k++) {
-        if (heights[k] < shortest) {
-          shortest = heights[k];
-          shortestIndex = k;
-        }
-      }
-      setData(item, 'top', shortest);
-
-      // stick to left side if alignment is left and this is the first column
-      sideOffset = offset;
-      if (shortestIndex > 0 || !leftAligned) {
-        sideOffset += shortestIndex * columnWidth;
-      }
-
-      // Position the item.
-      itemBulkCSS[i] = {
-        el: item,
-        css: {
-          position: 'absolute',
-          top: shortest + 'px'
-        }
-      };
-      itemBulkCSS[i].css[this.direction] = sideOffset + 'px';
-
-      // Update column height and store item in shortest column
-      heights[shortestIndex] += getData(item, 'height', true) + this.verticalOffset;
-      this.columns[shortestIndex].push(item);
-      i++;
-    }
-
-    // Update all css in the next frame and mark container as initalised
-    bulkUpdateCSS(itemBulkCSS, function () {
-      // Initialisation done
-      if (!hasClass(self.container, 'wookmark-initialised')) {
-        addClass(self.container, 'wookmark-initialised');
-      }
-    });
-
-    // Return longest column
-    return Math.max.apply(Math, heights);
-  };
-
-  // This layout method only updates the vertical position of the
-  // existing column assignments.
-  Wookmark.prototype.layoutColumns = function (columnWidth, offset) {
-    var heights = [], itemBulkCSS = [], k = 0, j = 0,
-      i = this.columns.length, currentHeight,
-      column, item, sideOffset;
-
-    while (i--) {
-      currentHeight = this.outerOffset;
-      heights.push(currentHeight);
-      column = this.columns[i];
-      sideOffset = i * columnWidth + offset;
-
-      for (k = 0; k < column.length; k++, j++) {
-        item = column[k];
-        setData(item, 'top', currentHeight);
-        itemBulkCSS[j] = {
-          el: item,
-          css: {
-            top: currentHeight + 'px'
-          }
-        };
-        itemBulkCSS[j].css[this.direction] = sideOffset + 'px';
-
-        currentHeight += getData(item, 'height', true) + this.verticalOffset;
-      }
-      heights[i] = currentHeight;
-    }
-
-    bulkUpdateCSS(itemBulkCSS);
-
-    // Return longest column
-    return Math.max.apply(Math, heights);
-  };
-
-  // Clear event listeners and time outs and the instance itself
-  Wookmark.prototype.clear = function () {
-    clearTimeout(this.resizeTimer);
-    var i = this.placeholders.length;
-    while (i--) {
-      this.container.removeChild(this.placeholders[i]);
-    }
-    removeEventListener(window, 'resize', this.onResize);
-    removeEventListener(this.container, 'refreshWookmark', this.onRefresh);
-  };
-
-  // Register as jQuery plugin if jQuery is loaded
-  if (window.jQuery !== undefined) {
-    jQuery.fn.wookmark = function (options) {
-      var i = this.length;
-
-      // Use first element if container is an jQuery object
-      if (options !== undefined && options.container instanceof jQuery) {
-        options.container = options.container[0];
-      }
-
-      // Call plugin multiple times if there are multiple elements selected
-      if (i > 1) {
-        while (i--) {
-          $(this).eq(i).wookmark(options);
-        }
-      } else if (i === 1) {
-        // Create a wookmark instance or update an existing one
-        if (!this.wookmarkInstance) {
-          this.wookmarkInstance = new Wookmark(this[0], options || {});
-        } else {
-          this.wookmarkInstance.updateOptions(options || {});
-        }
-      }
-      return this;
+        return data ? fn(data) : fn;
     };
-  }
 
-  window.Wookmark = Wookmark;
-  return Wookmark;
-}));
+    /**
+     * 获取编译缓存（可由外部重写此方法）
+     * @param   {String}    模板名
+     * @param   {Function}  编译好的函数
+     */
+    template.get = function (filename) {
+
+        var cache;
+
+        if (cacheStore[filename]) {
+            // 使用内存缓存
+            cache = cacheStore[filename];
+        } else if ((typeof document === 'undefined' ? 'undefined' : _typeof(document)) === 'object') {
+            // 加载模板并编译
+            var elem = document.getElementById(filename);
+
+            if (elem) {
+                var source = (elem.value || elem.innerHTML).replace(/^\s*|\s*$/g, '');
+                cache = compile(source, {
+                    filename: filename
+                });
+            }
+        }
+
+        return cache;
+    };
+
+    var toString = function toString(value, type) {
+
+        if (typeof value !== 'string') {
+
+            type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+            if (type === 'number') {
+                value += '';
+            } else if (type === 'function') {
+                value = toString(value.call(value));
+            } else {
+                value = '';
+            }
+        }
+
+        return value;
+    };
+
+    var escapeMap = {
+        "<": "&#60;",
+        ">": "&#62;",
+        '"': "&#34;",
+        "'": "&#39;",
+        "&": "&#38;"
+    };
+
+    var escapeFn = function escapeFn(s) {
+        return escapeMap[s];
+    };
+
+    var escapeHTML = function escapeHTML(content) {
+        return toString(content).replace(/&(?![\w#]+;)|[<>"']/g, escapeFn);
+    };
+
+    var isArray = Array.isArray || function (obj) {
+        return {}.toString.call(obj) === '[object Array]';
+    };
+
+    var each = function each(data, callback) {
+        var i, len;
+        if (isArray(data)) {
+            for (i = 0, len = data.length; i < len; i++) {
+                callback.call(data, data[i], i, data);
+            }
+        } else {
+            for (i in data) {
+                callback.call(data, data[i], i);
+            }
+        }
+    };
+
+    var utils = template.utils = {
+
+        $helpers: {},
+
+        $include: renderFile,
+
+        $string: toString,
+
+        $escape: escapeHTML,
+
+        $each: each
+
+    };
+    /**
+     * 添加模板辅助方法
+     * @name    template.helper
+     * @param   {String}    名称
+     * @param   {Function}  方法
+     */
+    template.helper = function (name, helper) {
+        helpers[name] = helper;
+    };
+
+    var helpers = template.helpers = utils.$helpers;
+
+    /**
+     * 模板错误事件（可由外部重写此方法）
+     * @name    template.onerror
+     * @event
+     */
+    template.onerror = function (e) {
+        var message = 'Template Error\n\n';
+        for (var name in e) {
+            message += '<' + name + '>\n' + e[name] + '\n\n';
+        }
+
+        if ((typeof console === 'undefined' ? 'undefined' : _typeof(console)) === 'object') {
+            console.error(message);
+        }
+    };
+
+    // 模板调试器
+    var showDebugInfo = function showDebugInfo(e) {
+
+        template.onerror(e);
+
+        return function () {
+            return '{Template Error}';
+        };
+    };
+
+    /**
+     * 编译模板
+     * 2012-6-6 @TooBug: define 方法名改为 compile，与 Node Express 保持一致
+     * @name    template.compile
+     * @param   {String}    模板字符串
+     * @param   {Object}    编译选项
+     *
+     *      - openTag       {String}
+     *      - closeTag      {String}
+     *      - filename      {String}
+     *      - escape        {Boolean}
+     *      - compress      {Boolean}
+     *      - debug         {Boolean}
+     *      - cache         {Boolean}
+     *      - parser        {Function}
+     *
+     * @return  {Function}  渲染方法
+     */
+    var compile = template.compile = function (source, options) {
+
+        // 合并默认配置
+        options = options || {};
+        for (var name in defaults) {
+            if (options[name] === undefined) {
+                options[name] = defaults[name];
+            }
+        }
+
+        var filename = options.filename;
+
+        try {
+
+            var Render = compiler(source, options);
+        } catch (e) {
+
+            e.filename = filename || 'anonymous';
+            e.name = 'Syntax Error';
+
+            return showDebugInfo(e);
+        }
+
+        // 对编译结果进行一次包装
+
+        function render(data) {
+
+            try {
+
+                return new Render(data, filename) + '';
+            } catch (e) {
+
+                // 运行时出错后自动开启调试模式重新编译
+                if (!options.debug) {
+                    options.debug = true;
+                    return compile(source, options)(data);
+                }
+
+                return showDebugInfo(e)();
+            }
+        }
+
+        render.prototype = Render.prototype;
+        render.toString = function () {
+            return Render.toString();
+        };
+
+        if (filename && options.cache) {
+            cacheStore[filename] = render;
+        }
+
+        return render;
+    };
+
+    // 数组迭代
+    var forEach = utils.$each;
+
+    // 静态分析模板变量
+    var KEYWORDS =
+    // 关键字
+    'break,case,catch,continue,debugger,default,delete,do,else,false' + ',finally,for,function,if,in,instanceof,new,null,return,switch,this' + ',throw,true,try,typeof,var,void,while,with'
+
+    // 保留字
+    + ',abstract,boolean,byte,char,class,const,double,enum,export,extends' + ',final,float,goto,implements,import,int,interface,long,native' + ',package,private,protected,public,short,static,super,synchronized' + ',throws,transient,volatile'
+
+    // ECMA 5 - use strict
+    + ',arguments,let,yield' + ',undefined';
+
+    var REMOVE_RE = /\/\*[\w\W]*?\*\/|\/\/[^\n]*\n|\/\/[^\n]*$|"(?:[^"\\]|\\[\w\W])*"|'(?:[^'\\]|\\[\w\W])*'|\s*\.\s*[$\w\.]+/g;
+    var SPLIT_RE = /[^\w$]+/g;
+    var KEYWORDS_RE = new RegExp(["\\b" + KEYWORDS.replace(/,/g, '\\b|\\b') + "\\b"].join('|'), 'g');
+    var NUMBER_RE = /^\d[^,]*|,\d[^,]*/g;
+    var BOUNDARY_RE = /^,+|,+$/g;
+    var SPLIT2_RE = /^$|,+/;
+
+    // 获取变量
+    function getVariable(code) {
+        return code.replace(REMOVE_RE, '').replace(SPLIT_RE, ',').replace(KEYWORDS_RE, '').replace(NUMBER_RE, '').replace(BOUNDARY_RE, '').split(SPLIT2_RE);
+    };
+
+    // 字符串转义
+    function stringify(code) {
+        return "'" + code
+        // 单引号与反斜杠转义
+        .replace(/('|\\)/g, '\\$1')
+        // 换行符转义(windows + linux)
+        .replace(/\r/g, '\\r').replace(/\n/g, '\\n') + "'";
+    }
+
+    function compiler(source, options) {
+
+        var debug = options.debug;
+        var openTag = options.openTag;
+        var closeTag = options.closeTag;
+        var parser = options.parser;
+        var compress = options.compress;
+        var escape = options.escape;
+
+        var line = 1;
+        var uniq = { $data: 1, $filename: 1, $utils: 1, $helpers: 1, $out: 1, $line: 1 };
+
+        var isNewEngine = ''.trim; // '__proto__' in {}
+        var replaces = isNewEngine ? ["$out='';", "$out+=", ";", "$out"] : ["$out=[];", "$out.push(", ");", "$out.join('')"];
+
+        var concat = isNewEngine ? "$out+=text;return $out;" : "$out.push(text);";
+
+        var print = "function(){" + "var text=''.concat.apply('',arguments);" + concat + "}";
+
+        var include = "function(filename,data){" + "data=data||$data;" + "var text=$utils.$include(filename,data,$filename);" + concat + "}";
+
+        var headerCode = "'use strict';" + "var $utils=this,$helpers=$utils.$helpers," + (debug ? "$line=0," : "");
+
+        var mainCode = replaces[0];
+
+        var footerCode = "return new String(" + replaces[3] + ");";
+
+        // html与逻辑语法分离
+        forEach(source.split(openTag), function (code) {
+            code = code.split(closeTag);
+
+            var $0 = code[0];
+            var $1 = code[1];
+
+            // code: [html]
+            if (code.length === 1) {
+
+                mainCode += html($0);
+
+                // code: [logic, html]
+            } else {
+
+                mainCode += logic($0);
+
+                if ($1) {
+                    mainCode += html($1);
+                }
+            }
+        });
+
+        var code = headerCode + mainCode + footerCode;
+
+        // 调试语句
+        if (debug) {
+            code = "try{" + code + "}catch(e){" + "throw {" + "filename:$filename," + "name:'Render Error'," + "message:e.message," + "line:$line," + "source:" + stringify(source) + ".split(/\\n/)[$line-1].replace(/^\\s+/,'')" + "};" + "}";
+        }
+
+        try {
+
+            var Render = new Function("$data", "$filename", code);
+            Render.prototype = utils;
+
+            return Render;
+        } catch (e) {
+            e.temp = "function anonymous($data,$filename) {" + code + "}";
+            throw e;
+        }
+
+        // 处理 HTML 语句
+        function html(code) {
+
+            // 记录行号
+            line += code.split(/\n/).length - 1;
+
+            // 压缩多余空白与注释
+            if (compress) {
+                code = code.replace(/\s+/g, ' ').replace(/<!--[\w\W]*?-->/g, '');
+            }
+
+            if (code) {
+                code = replaces[1] + stringify(code) + replaces[2] + "\n";
+            }
+
+            return code;
+        }
+
+        // 处理逻辑语句
+        function logic(code) {
+
+            var thisLine = line;
+
+            if (parser) {
+
+                // 语法转换插件钩子
+                code = parser(code, options);
+            } else if (debug) {
+
+                // 记录行号
+                code = code.replace(/\n/g, function () {
+                    line++;
+                    return "$line=" + line + ";";
+                });
+            }
+
+            // 输出语句. 编码: <%=value%> 不编码:<%=#value%>
+            // <%=#value%> 等同 v2.0.3 之前的 <%==value%>
+            if (code.indexOf('=') === 0) {
+
+                var escapeSyntax = escape && !/^=[=#]/.test(code);
+
+                code = code.replace(/^=[=#]?|[\s;]*$/g, '');
+
+                // 对内容编码
+                if (escapeSyntax) {
+
+                    var name = code.replace(/\s*\([^\)]+\)/, '');
+
+                    // 排除 utils.* | include | print
+
+                    if (!utils[name] && !/^(include|print)$/.test(name)) {
+                        code = "$escape(" + code + ")";
+                    }
+
+                    // 不编码
+                } else {
+                    code = "$string(" + code + ")";
+                }
+
+                code = replaces[1] + code + replaces[2];
+            }
+
+            if (debug) {
+                code = "$line=" + thisLine + ";" + code;
+            }
+
+            // 提取模板中的变量名
+            forEach(getVariable(code), function (name) {
+
+                // name 值可能为空，在安卓低版本浏览器下
+                if (!name || uniq[name]) {
+                    return;
+                }
+
+                var value;
+
+                // 声明模板变量
+                // 赋值优先级:
+                // [include, print] > utils > helpers > data
+                if (name === 'print') {
+
+                    value = print;
+                } else if (name === 'include') {
+
+                    value = include;
+                } else if (utils[name]) {
+
+                    value = "$utils." + name;
+                } else if (helpers[name]) {
+
+                    value = "$helpers." + name;
+                } else {
+
+                    value = "$data." + name;
+                }
+
+                headerCode += name + "=" + value + ",";
+                uniq[name] = true;
+            });
+
+            return code + "\n";
+        }
+    };
+
+    // 定义模板引擎的语法
+
+
+    defaults.openTag = '{{';
+    defaults.closeTag = '}}';
+
+    var filtered = function filtered(js, filter) {
+        var parts = filter.split(':');
+        var name = parts.shift();
+        var args = parts.join(':') || '';
+
+        if (args) {
+            args = ', ' + args;
+        }
+
+        return '$helpers.' + name + '(' + js + args + ')';
+    };
+
+    defaults.parser = function (code, options) {
+
+        // var match = code.match(/([\w\$]*)(\b.*)/);
+        // var key = match[1];
+        // var args = match[2];
+        // var split = args.split(' ');
+        // split.shift();
+
+        code = code.replace(/^\s/, '');
+
+        var split = code.split(' ');
+        var key = split.shift();
+        var args = split.join(' ');
+
+        switch (key) {
+
+            case 'if':
+
+                code = 'if(' + args + '){';
+                break;
+
+            case 'else':
+
+                if (split.shift() === 'if') {
+                    split = ' if(' + split.join(' ') + ')';
+                } else {
+                    split = '';
+                }
+
+                code = '}else' + split + '{';
+                break;
+
+            case '/if':
+
+                code = '}';
+                break;
+
+            case 'each':
+
+                var object = split[0] || '$data';
+                var as = split[1] || 'as';
+                var value = split[2] || '$value';
+                var index = split[3] || '$index';
+
+                var param = value + ',' + index;
+
+                if (as !== 'as') {
+                    object = '[]';
+                }
+
+                code = '$each(' + object + ',function(' + param + '){';
+                break;
+
+            case '/each':
+
+                code = '});';
+                break;
+
+            case 'echo':
+
+                code = 'print(' + args + ');';
+                break;
+
+            case 'print':
+            case 'include':
+
+                code = key + '(' + split.join(',') + ');';
+                break;
+
+            default:
+
+                // 过滤器（辅助方法）
+                // {{value | filterA:'abcd' | filterB}}
+                // >>> $helpers.filterB($helpers.filterA(value, 'abcd'))
+                // TODO: {{ddd||aaa}} 不包含空格
+                if (/^\s*\|\s*[\w\$]/.test(args)) {
+
+                    var escape = true;
+
+                    // {{#value | link}}
+                    if (code.indexOf('#') === 0) {
+                        code = code.substr(1);
+                        escape = false;
+                    }
+
+                    var i = 0;
+                    var array = code.split('|');
+                    var len = array.length;
+                    var val = array[i++];
+
+                    for (; i < len; i++) {
+                        val = filtered(val, array[i]);
+                    }
+
+                    code = (escape ? '=' : '=#') + val;
+
+                    // 即将弃用 {{helperName value}}
+                } else if (template.helpers[key]) {
+
+                    code = '=#' + key + '(' + split.join(',') + ');';
+
+                    // 内容直接输出 {{value}}
+                } else {
+
+                    code = '=' + code;
+                }
+
+                break;
+        }
+
+        return code;
+    };
+
+    window.template = template;
+}(window);
+
+//# sourceMappingURL=template-native.js.map
+//# sourceMappingURL=template-native.js.map

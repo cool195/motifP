@@ -1256,60 +1256,59 @@
     function change_password() {
         $('.change-save').addClass('disabled');
         $.ajax({
-            url: '/user/modifyUserPwd',
-            type: 'POST',
-            data: $('#changepassword').serialize()
-        })
-            .done(function(data){
-                if(data.success){
+                url: '/user/modifyUserPwd',
+                type: 'POST',
+                data: $('#changepassword').serialize()
+            })
+            .done(function (data) {
+                if (data.success) {
                     alert(data.prompt_msg);
-                }else{
+                } else {
                     //$('.warning-info').removeClass('off');
                     //$('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
-            .always(function() {
+            .always(function () {
                 $('.change-save').removeClass('disabled');
             })
     }
 
-    $('.change-oldpw').on('keyup blur', function() {
+    $('.change-oldpw').on('keyup blur', function () {
         var pw = $('.change-pw').val(),
             confirmPwd = $('.change-cpw').val();
 
-        if ( login_validationPassword( $(this) ) && login_validationPassword($('.change-pw')) && reset_validateConfirmPwd($('.change-cpw'), pw, confirmPwd)) {
+        if (login_validationPassword($(this)) && login_validationPassword($('.change-pw')) && reset_validateConfirmPwd($('.change-cpw'), pw, confirmPwd)) {
             $('.change-save').removeClass('disabled');
         } else {
             $('.change-save').addClass('disabled');
         }
     });
 
-    $('.change-pw').on('keyup blur', function() {
+    $('.change-pw').on('keyup blur', function () {
         var pw = $(this).val(),
             confirmPwd = $('.change-cpw').val();
-        if ( login_validationPassword( $(this) ) && login_validationPassword($('.change-oldpw')) && reset_validateConfirmPwd($('.change-cpw'), pw, confirmPwd)) {
+        if (login_validationPassword($(this)) && login_validationPassword($('.change-oldpw')) && reset_validateConfirmPwd($('.change-cpw'), pw, confirmPwd)) {
             $('.change-save').removeClass('disabled');
         } else {
             $('.change-save').addClass('disabled');
         }
     });
 
-    $('.change-cpw').on('keyup blur', function() {
+    $('.change-cpw').on('keyup blur', function () {
         var newPwd = $('.change-pw').val(),
             confirmPwd = $(this).val();
-        if ( login_validationPassword( $(this) ) && reset_validateConfirmPwd($(this), newPwd, confirmPwd) && login_validationPassword($('.change-oldpw')) && login_validationPassword($('.change-pw'))) {
+        if (login_validationPassword($(this)) && reset_validateConfirmPwd($(this), newPwd, confirmPwd) && login_validationPassword($('.change-oldpw')) && login_validationPassword($('.change-pw'))) {
             $('.change-save').removeClass('disabled');
         } else {
             $('.change-save').addClass('disabled');
         }
     });
 
-    $('.change-save').on('click', function(event) {
-        if(!$(event.target).hasClass('disabled')){
+    $('.change-save').on('click', function (event) {
+        if (!$(event.target).hasClass('disabled')) {
             change_password();
         }
     });
-
 
 
     // changepassword end
@@ -1329,18 +1328,123 @@
     }
 
     // 图片放大镜
-    jQuery_1_6(function () {
-        jQuery_1_6('#jqzoom').jqzoom({
-            zoomType: 'standard',
-            xOffset: 40,
-            title: false,
-            lens: true,
-            preloadImages: false,
-            alwaysOn: false,
-            zoomWidth: 550,
-            zoomHeight: 550
+    try {
+        jQuery_1_6(function () {
+            jQuery_1_6('#jqzoom').jqzoom({
+                zoomType: 'standard',
+                xOffset: 40,
+                title: false,
+                lens: true,
+                preloadImages: false,
+                alwaysOn: false,
+                zoomWidth: 550,
+                zoomHeight: 550
+            });
         });
+    }
+    catch (e) {
+    }
+
+
+    // Shopping List
+
+    // 商品图片加载 loading
+    // 加载动画显示
+    function productList_loadingShow() {
+        $('.product-loading').show();
+        $('.productList-seeMore').hide();
+    }
+
+    // 加载动画隐藏
+    function productList_loadingHide() {
+        $('.product-loading').hide();
+        $('.productList-seeMore').show();
+    }
+
+    // 点击 查看更多商品
+    $('.btn-seeMore').on('click', function () {
+        $('img.img-lazy').each(function () {
+            var Src = $(this).attr('src'),
+                Original = $(this).attr('data-original');
+            if (Src === Original) {
+                $(this).removeClass('img-lazy');
+            }
+        });
+        getProductList();
     });
+
+    // ajax 得到 product list
+    function getProductList() {
+        //  $DesignerContainer 列表容器
+        //  Start 当前页开始条数
+        //  Size 当前页显示条数
+        var $ProductListontainer = $('#productList-container'),
+            Pagenum = $ProductListontainer.data('pagenum'),
+            Size = 4,
+            CategoryId = $ProductListontainer.data('categoryid');
+        // 判断是否还有数据要加载
+        if (Pagenum === -1) {
+            return;
+        }
+
+        // 判断当前选项卡是否在加载中
+        if ($ProductListontainer.data('loading') === true) {
+            return;
+        } else {
+            $ProductListontainer.data('loading', true);
+        }
+
+        var NextProductNum = ++Pagenum;
+
+        productList_loadingShow();
+        $.ajax({
+            url: '/products',
+            data: {
+                pagenum: Pagenum,
+                pagesize: Size,
+                cid: CategoryId
+            }
+        }).done(function (data) {
+            if (data.data === null || data.data === '') {
+                $ProductListontainer.data('pagenum', -1);
+            } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
+                $ProductListontainer.data('pagenum', -1);
+            } else {
+                // 遍历模板 插入页面
+
+                appendProductList(data.data);
+
+                $ProductListontainer.data('pagenum', NextProductNum);
+
+                // 图片延迟加载
+                $('img.img-lazy').lazyload({
+                    threshold: 1000,
+                    effect: 'fadeIn'
+                });
+
+            }
+        }).always(function () {
+            $ProductListontainer.data('loading', false);
+            productList_loadingHide();
+        });
+    }
+
+    // 遍历 data 生成html 插入到页面
+    function appendProductList(ProductsList) {
+        var TplHtml = template('tpl-product', ProductsList);
+        var StageCache = $.parseHTML(TplHtml);
+        $('#productList-container').find('.row').append(StageCache);
+    }
+
+    // 点击 wish
+    $('.btn-wish').on('click', function () {
+        if (!$(this).hasClass('active')) {
+            $(this).addClass('active');
+        } else {
+            $(this).removeClass('active');
+        }
+    });
+
 })(jQuery, Swiper);
 //# sourceMappingURL=common.js.map
 
@@ -1354,7 +1458,7 @@ $.ajaxSetup({
 //public end
 
 // 瀑布流
-$(function(){
+$(function () {
     try {
         var wookmark1 = new Wookmark('#daily-wookmark', {
             container: $('#daily-wookmark'),
