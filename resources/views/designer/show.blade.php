@@ -2,6 +2,7 @@
 
 <!-- 内容 -->
 <section class="m-t-40x">
+    @inject('wishlist', 'App\Http\Controllers\UserController')
     <!-- 设计师列表 -->
     <div class="container m-b-40x">
         <div class="box-shadow p-a-20x bg-white">
@@ -60,11 +61,11 @@
                 <div class="productList-item">
                     <div class="image-container">
                         <a href="/detail/{{$spu}}">
-                            <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n1/{{ $product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                            <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{ $product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                  src="/images/product/bg-product@336.png" alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                             <div class="bg-heart"></div>
                         </a>
-                        <span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                        <span class="product-heart btn-heart @if(in_array($spu, $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"><i class="iconfont icon-onheart font-size-lxx"></i></span>
                     </div>
                     <div class="price-caption helveBold">
                         <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{$product['spuInfos'][$spu]['spuBase']['main_title']}}</div>
@@ -91,7 +92,7 @@
                             <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}" alt="{{$product['main_title']}}">
                             <div class="bg-heart"></div>
                         </a>
-                        <span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                        <span class="product-heart btn-heart @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$product['spu']}}"><i class="iconfont icon-onheart font-size-lxx"></i></span>
                     </div>
                     <div class="price-caption helveBold">
                         <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{ $product['main_title'] }}</div>
