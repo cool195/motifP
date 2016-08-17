@@ -334,6 +334,8 @@
         var AddItemModal = $('[data-remodal-id=additem-modal]').remodal(Options);
         // Shopping Detail 添加购物车失败 提示框
         var AddItemFailModal = $('[data-remodal-id=additemfail-modal]').remodal(Options);
+        // Address List 删除地址 提示框
+        var DelAddressModal = $('[data-remodal-id=addressmodal-modal]').remodal(Options);
     } catch (e) {
     }
 
@@ -1317,20 +1319,29 @@
     function address_delete($addressItem)
     {
         $.ajax({
-            url: '/address/' + $addressItem.parent().data('aid'),
+            url: '/address/' + $addressItem.data('aid'),
             type: 'delete',
             data: {}
         })
             .done(function(data) {
                 if(data.success) {
+                    DelAddressModal.close();
                     $addressItem.parents('.col-md-6').remove();
                 }
             })
     }
-    
-    $('.btn-addressDelete').on('click', function() {
+
+    $('.btn-delAddress').on('click', function() {
         var addressId = $(this).parent().data('aid');
-        address_delete($(this));
+        $('[data-remodal-id="addressmodal-modal"]').data('addressid', addressId);
+        DelAddressModal.open();
+    });
+
+    // 删除 地址
+    $('.delAddress').on('click',function(){
+        var DelAddressId=$('[data-remodal-id="addressmodal-modal"]').data('addressid');
+        var $DelAddressItem=$('[data-aid="'+ DelAddressId +'"]');
+        address_delete($DelAddressItem);
     });
 
     //User Address End
@@ -1389,7 +1400,7 @@
                     designer_appendDesignerList('tpl-designerList', data.data);
                 }
             })
-        
+
     }
 
     function designer_appendDesignerList(tpl, designerList) {
@@ -1401,7 +1412,7 @@
     $('.designer-seeMore').on('click', function() {
         designer_getDesignerList();
     });
-    
+
     //Designer End
 
     // 图片延迟加载

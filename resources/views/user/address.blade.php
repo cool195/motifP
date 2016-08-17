@@ -120,10 +120,10 @@
                                                     <div class="primary-address font-size-md">Primary</div>
                                                 @endif
                                                 <div class="btn-edit font-size-md btn-editAddress">Edit</div>
-                                                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                                                 @if(!$value['isDefault'])
-                                                    <div class="btn-addPrimary btn-addressDelete">delete</div>
+                                                    <div class="font-size-md btn-delAddress">Delete</div>
                                                 @endif
+                                                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                                             </div>
                                         </div>
                                     </div>
@@ -138,6 +138,23 @@
         </div>
     </div>
 </section>
+
+<!-- 删除地址 确认框 -->
+<div class="remodal modal-content remodal-md p-a-0" data-remodal-id="addressmodal-modal" data-addressid="">
+    <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Address?</div>
+    <hr class="hr-common m-a-0">
+    <div class="text-center dialog-info">Are you sure you want to remove this item?</div>
+    <hr class="hr-common m-a-0">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="m-y-20x m-l-20x"><a href="javascript:;" class="btn btn-block btn-secondary btn-lg delAddress">Remove</a></div>
+        </div>
+        <div class="col-md-6">
+            <div class="m-y-20x m-r-20x"><a href="javascript:;" class="btn btn-block btn-primary btn-lg" data-remodal-action="close">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <template id="tpl-address">
     @{{ each list }}
