@@ -306,7 +306,7 @@
     });
 
     // 点击 "心" 关注商品
-    $('.product-heart').on('click', function () {
+    $('.btn-wish').on('click', function () {
         var $this = $(this);
         $.ajax({
                 url: '/wishlist/' + $this.data('spu'),
@@ -1263,7 +1263,8 @@
             .done(function (data) {
                 if (data.success) {
                     alert(data.prompt_msg);
-                } else {
+                    window.location.href = data.redirectUrl;
+                }else{
                     //$('.warning-info').removeClass('off');
                     //$('.warning-info').children('span').html(data.prompt_msg);
                 }
@@ -1310,12 +1311,98 @@
         }
     });
 
-
-    // changepassword end
+    //ChangePassword End
 
     //User Address Start
+    function address_delete($addressItem)
+    {
+        $.ajax({
+            url: '/address/' + $addressItem.parent().data('aid'),
+            type: 'delete',
+            data: {}
+        })
+            .done(function(data) {
+                if(data.success) {
+                    $addressItem.parents('.col-md-6').remove();
+                }
+            })
+    }
+    
+    $('.btn-addressDelete').on('click', function() {
+        var addressId = $(this).parent().data('aid');
+        address_delete($(this));
+    });
 
     //User Address End
+
+    //User Profile Start
+    function profile_updateUser()
+    {
+        $.ajax({
+            url: '/user/modify',
+            type: 'post',
+            data: $('#changeProfile').serialize()
+        })
+            .done(function(data) {
+                if(data.success) {
+                    $('input[name="nick"]').attr('placeholder', data.data.nickname);
+                    $('input[name="nick"]').val('');
+                }
+            })
+    }
+
+    $('input[name="nick"]').on('keyup', function() {
+        if("" === $(this).val()) {
+            $('.profile-save').addClass('disabled');
+        } else {
+            $('.profile-save').removeClass('disabled');
+        }
+    })
+
+    $('.profile-save').on('click', function(event) {
+        if(!$(event.target).hasClass('disabled')){
+            profile_updateUser();
+        }
+    })
+
+    //User Profile End
+
+    //Designer Start
+    function designer_getDesignerList() {
+        var $designerContainer = $('#designerContainer');
+        var pageNum = $designerContainer.data('num');
+        if(pageNum == -1){
+            return;
+        }
+        $.ajax({
+            url: '/designer',
+            data:{
+                num: pageNum,
+                size: 5,
+                ajax: 1
+            }
+        })
+            .done(function (data) {
+                if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '') {
+                    $designerContainer.data('num', -1);
+                } else {
+                    designer_appendDesignerList('tpl-designerList', data.data);
+                }
+            })
+        
+    }
+
+    function designer_appendDesignerList(tpl, designerList) {
+        var tplHtml = template(tpl, designerList);
+        var stageCache = $.parseHtml(tplHtml);
+        $('#designerContainer').append(stageCache);
+    }
+
+    $('.designer-seeMore').on('click', function() {
+        designer_getDesignerList();
+    });
+    
+    //Designer End
 
     // 图片延迟加载
     try {
@@ -1435,15 +1522,6 @@
         var StageCache = $.parseHTML(TplHtml);
         $('#productList-container').find('.row').append(StageCache);
     }
-
-    // 点击 wish
-    $('.btn-wish').on('click', function () {
-        if (!$(this).hasClass('active')) {
-            $(this).addClass('active');
-        } else {
-            $(this).removeClass('active');
-        }
-    });
 
 })(jQuery, Swiper);
 //# sourceMappingURL=common.js.map

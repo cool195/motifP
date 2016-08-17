@@ -1,430 +1,116 @@
-<!doctype html>
-<html class="no-js" lang="">
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Order List</title>
-  <link rel="apple-touch-icon" href="/images/icon/apple-touch-icon.png">
-
-  <link rel="stylesheet" href="styles/vendor.css">
-
-  <link rel="stylesheet" href="styles/common.css">
-
-  <script src="scripts/vendor/modernizr.js"></script>
-</head>
-<body>
-
-<!-- 头部 -->
-<header class="">
-  <div class="container">
-    <nav class="navbar-left">
-      <ul class="nav navbar-primary">
-        <li class="nav-item nav-logo"><a href="#">
-          <img class="img-fluid" src="/images/logo/logo.png" alt="logo"></a>
-          </li>
-        <li class="nav-item"><a class="nav-link active" href="#">DAILY</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">DESIGNER</a></li>
-        <li class="nav-item dropdown">
-          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-item"><a href="#">Rings</a></li>
-            <li class="dropdown-item"><a href="#">Necklaces</a></li>
-            <li class="dropdown-item"><a href="#">Bracelets</a></li>
-            <li class="dropdown-item"><a href="#">Earrings</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-    <nav class="navbar-right">
-      <ul class="nav navbar-primary">
-        <li class="nav-item p-x-10x"><a href="#" class="nav-link">yinlinghui</a></li>
-        <li class="nav-item p-x-10x"><a href="#" class="nav-link">
-          <img class="img-circle" src="/images/icon/apple-touch-icon.png" width="40" height="40" alt=""></a>
-        </li>
-        <li class="nav-item p-x-20x">
-          <a href="#">
-            <div class="nav-shoppingCart">
-              <i class="iconfont icon-shopbag font-size-lg text-primary"></i>
-              <span class="shoppingCart-number"></span>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
+@include('header')
 
 <!-- 内容 -->
 <section class="m-y-40x">
-  <div class="container">
-    <div class="content">
-      <div class="leftMeun">
-        <div class="box-shadow bg-white">
-          <!-- 个人头像、用户名 -->
-          <div class="my-info p-x-20x p-t-20x text-center">
-            <img class="img-circle" src="images/designer/designer-head.jpg" width="64" height="64" alt="">
-            <div class="helveBold font-size-md p-t-5x">Vivian</div>
-            <hr class="hr-base m-x-20x">
-          </div>
+    <div class="container">
+        <div class="content">
+            @include('user.left', ['title' => 'Orders'])
+            <div class="right">
+                <div class="rightContent">
+                    <!-- 空购物车 提示信息 -->
+                    <!--<div class="shopbag-empty-content m-b-40x">-->
+                    <!--<div class="container shopbag-emptyInfo">-->
+                    <!--<div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-book"></i></div>-->
+                    <!--<p class="text-primary m-b-20x p-b-20x font-size-llxx">No Oreders Found</p>-->
+                    <!--<a href="#" class="btn btn-block btn-primary btn-lg btn-320">Go Shopping</a>-->
+                    <!--</div>-->
+                    <!--</div>-->
 
-          <!-- 菜单 -->
-          <nav class="nav-menu p-b-15x">
-            <ul class="nav">
-              <li class="nav-item">
-                <a href="#">
-                  <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                    <i class="iconfont icon-shopbag font-size-lg p-r-10x"></i><span class="font-size-md">My Bag</span></div>
-                </a>
-              </li>
-              <li class="nav-item active">
-                <a href="#">
-                  <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                    <i class="iconfont icon-book font-size-lg p-r-10x"></i><span class="font-size-md">Orders</span></div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#">
-                  <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                    <i class="iconfont icon-like font-size-lg p-r-10x"></i><span class="font-size-md">Wishlist</span></div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#">
-                  <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                    <i class="iconfont icon-follow font-size-lg p-r-10x"></i><span class="font-size-md">Following</span></div>
-                </a>
-              </li>
-            </ul>
-          </nav>
+                    <!-- Order List -->
+                    @if(isset($data['list']))
+                        @foreach($data['list'] as $order)
+                            @foreach($order['subOrderList'] as $subOrder)
+                    <div class="box-shadow bg-white m-b-20x">
+                        <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
+                            <div>
+                                <h5 class="sanBold font-size-md">Order Created: {{$subOrder['create_time']}}</h5>
+                                <p class="m-b-0 p-t-5x">{{ $subOrder['status_explain'] }}</p>
+                            </div>
+                            <span>
+                                <a class="btn btn-primary btn-md" href="/orderdetail/{{  $subOrder['order_no'] }}">Order Detail</a>
+                            </span>
+                        </div>
+                        <hr class="hr-base m-a-0">
+                        <div class="p-a-20x">
+                            @foreach($subOrder['lineOrderList'] as $lineOrder)
+                            <div class="checkout-Item">
+                                <div class="media">
+                                    <div class="media-left m-r-15x">
+                                        <img class="img-thumbnail" src="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}" width="120" height="120" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="row flex flex-alignCenter">
+                                            <div class="col-md-3">
+                                                <div class="font-size-md text-main p-l-20x">{{ $lineOrder['main_title'] }}</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @if(isset($lineOrder['attrValues']))
+                                                    @foreach($lineOrder['attrValues'] as $attr)
+                                                        {{$attr['attr_type_value']}}:{{$attr['attr_value']}}<br>
+                                                    @endforeach
+                                                @endif
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="text-center">${{ number_format(($lineOrder['sale_price'] / 100), 2) }}</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="text-center">X{{ $lineOrder['sale_qtty'] }}</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="text-center">${{ number_format(($lineOrder['total_amount'] / 100), 2) }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @if(!empty($lineOrder['vas_info']))
+                                    @foreach($lineOrder['vas_info'] as $value)
+                                <div class="media">
+                                    <div class="media-left m-r-15x">
+                                        &nbsp;
+                                    </div>
+                                    <div class="media-body no-border">
+                                        <div class="row flex flex-alignCenter">
+                                            <div class="col-md-3">
+                                                <div class="p-l-20x">{{$value['vas_name']}}</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div>{{ $value['user_remark'] }}</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="text-center">${{ number_format(($value['vas_price'] / 100), 2) }}</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="text-center">X{{ $value['vas_type'] }}</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="text-center">+${{ number_format(($value['vas_price'] / 100 * $value['vas_types']), 2) }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                            @endforeach
+                        </div>
+                        <hr class="hr-base">
+                        <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
+                            <div>
+                                Order # {{$subOrder['order_no']}}
+                            </div>
+                            <span>
+                                <span class="p-r-30x">Order total</span>
+                                <span>${{ number_format(($subOrder['pay_amount'] / 100), 2) }}</span>
+                            </span>
+                        </div>
+                    </div>
+                            @endforeach
+                        @endforeach
+                    @endif
+                </div>
+            </div>
         </div>
-
-        <h5 class="helveBold p-t-30x p-b-15x font-size-md p-l-20x">Settings</h5>
-
-        <div class="box-shadow bg-white">
-          <!-- 菜单 -->
-          <nav class="nav-menu p-y-30x">
-            <ul class="nav">
-              <li class="nav-item">
-                <a href="#">
-                  <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                    <span class="font-size-md">Change Profile</span></div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#">
-                  <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                    <span class="font-size-md">Change Password</span></div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#">
-                  <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                    <span class="font-size-md">Payment Method</span></div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#">
-                  <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                    <span class="font-size-md">Shipping Address</span></div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#">
-                  <div class="flex flex-alignCenter p-y-5x p-x-40x">
-                    <span class="font-size-md">Log Out</span></div>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <div class="right">
-        <div class="rightContent">
-          <!-- 空购物车 提示信息 -->
-          <!--<div class="shopbag-empty-content m-b-40x">-->
-          <!--<div class="container shopbag-emptyInfo">-->
-          <!--<div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-book"></i></div>-->
-          <!--<p class="text-primary m-b-20x p-b-20x font-size-llxx">No Oreders Found</p>-->
-          <!--<a href="#" class="btn btn-block btn-primary btn-lg btn-320">Go Shopping</a>-->
-          <!--</div>-->
-          <!--</div>-->
-
-          <!-- Order List -->
-          <div class="box-shadow bg-white m-b-20x">
-            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-              <div>
-                <h5 class="sanBold font-size-md">Order Created: July 7,2016</h5>
-                <p class="m-b-0 p-t-5x">We expect your order to be processed between: Apr 15, 2016 - Apr 17, 2016</p>
-              </div>
-              <span>
-              <a class="btn btn-primary btn-md" href="#">Order Detail</a>
-              </span>
-            </div>
-            <hr class="hr-base m-a-0">
-            <div class="p-a-20x">
-              <div class="checkout-Item">
-                <div class="media">
-                  <div class="media-left m-r-15x">
-                    <img class="img-thumbnail" src="/images/product/product.jpg" width="120" height="120" alt="">
-                  </div>
-                  <div class="media-body">
-                    <div class="row flex flex-alignCenter">
-                      <div class="col-md-3">
-                        <div class="font-size-md text-main p-l-20x">Aurora Ring rings</div>
-                      </div>
-                      <div class="col-md-3">
-                        Size:11<br>
-                        Color:Black<br>
-                        Material:Gold
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$199.95</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">X2</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$499.95</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="media">
-                  <div class="media-left m-r-15x">
-                    &nbsp;
-                  </div>
-                  <div class="media-body no-border">
-                    <div class="row flex flex-alignCenter">
-                      <div class="col-md-3">
-                        <div class="p-l-20x">Inside Engraving</div>
-                      </div>
-                      <div class="col-md-3">
-                        <div>I Love You Charles</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$4.5</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">X2</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">+$9</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr class="hr-base">
-              <div class="checkout-Item">
-                <div class="media">
-                  <div class="media-left m-r-15x">
-                    <img class="" src="/images/product/product.jpg" width="120" height="120" alt="">
-                  </div>
-                  <div class="media-body no-border">
-                    <div class="row flex flex-alignCenter">
-                      <div class="col-md-3">
-                        <div class="font-size-md text-main p-l-20x">Aurora Ring rings</div>
-                      </div>
-                      <div class="col-md-3">
-                        Size:11<br>
-                        Color:Black<br>
-                        Material:Gold
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$199.95</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">X2</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$499.95</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr class="hr-base m-a-0">
-            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-              <div>
-                Order # 109-138937478-457395943789
-              </div>
-          <span>
-          <span class="p-r-30x">Order total</span>
-          <span>$25.98</span>
-          </span>
-            </div>
-          </div>
-          <div class="box-shadow bg-white m-b-20x">
-            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-              <div>
-                <h5 class="sanBold font-size-md">Order Created: July 7,2016</h5>
-              </div>
-              <span>
-              <a class="btn btn-primary btn-md" href="#">Order Detail</a>
-              </span>
-            </div>
-            <hr class="hr-base m-a-0">
-            <div class="p-a-20x">
-              <div class="checkout-Item">
-                <div class="media">
-                  <div class="media-left m-r-15x">
-                    <img class="img-thumbnail" src="/images/product/product.jpg" width="120" height="120" alt="">
-                  </div>
-                  <div class="media-body">
-                    <div class="row flex flex-alignCenter">
-                      <div class="col-md-3">
-                        <div class="font-size-md text-main p-l-20x">Aurora Ring rings</div>
-                      </div>
-                      <div class="col-md-3">
-                        Size:11<br>
-                        Color:Black<br>
-                        Material:Gold
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$199.95</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">X2</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$499.95</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="media">
-                  <div class="media-left m-r-15x">
-                    &nbsp;
-                  </div>
-                  <div class="media-body no-border">
-                    <div class="row flex flex-alignCenter">
-                      <div class="col-md-3">
-                        <div class="p-l-20x">Inside Engraving</div>
-                      </div>
-                      <div class="col-md-3">
-                        <div>I Love You Charles</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$4.5</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">X2</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">+$9</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr class="hr-base">
-              <div class="checkout-Item">
-                <div class="media">
-                  <div class="media-left m-r-15x">
-                    <img class="" src="/images/product/product.jpg" width="120" height="120" alt="">
-                  </div>
-                  <div class="media-body no-border">
-                    <div class="row flex flex-alignCenter">
-                      <div class="col-md-3">
-                        <div class="font-size-md text-main p-l-20x">Aurora Ring rings</div>
-                      </div>
-                      <div class="col-md-3">
-                        Size:11<br>
-                        Color:Black<br>
-                        Material:Gold
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$199.95</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">X2</div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="text-center">$499.95</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr class="hr-base m-a-0">
-            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-              <div>
-                Order # 109-138937478-457395943789
-              </div>
-          <span>
-          <span class="p-r-30x">Order total</span>
-          <span>$25.98</span>
-          </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
     </div>
-  </div>
 </section>
 
-<footer>
-  <div class="container p-x-40x">
-    <div class="text-center m-b-40x p-t-10x"><img class="" src="/images/logo/logo-white.png" alt="logo"></div>
-    <div class="row">
-      <div class="col-md-3 col-xs-6">
-        <div class="list-group text-white m-b-20x">
-          <div class="sanBold font-size-sm p-b-20x">Motif</div>
-          <a class="list-group-item font-size-xs" href="#">About Motif</a>
-          <a class="list-group-item font-size-xs" href="#">Privacy Notice</a>
-          <a class="list-group-item font-size-xs" href="#">Terms & Conditions</a>
-        </div>
-      </div>
-      <div class="col-md-3 col-xs-6">
-        <div class="list-group text-white m-b-20x">
-          <div class="sanBold font-size-sm m-b-20x">Help & Service</div>
-          <a class="list-group-item font-size-xs text-white" href="#">Contact Us</a>
-          <a class="list-group-item font-size-xs text-white" href="#">FAQ</a>
-          <a class="list-group-item font-size-xs text-white" href="#">Payments</a>
-          <a class="list-group-item font-size-xs text-white" href="#">Shipping & Returns</a>
-        </div>
-      </div>
-      <div class="col-md-3 col-xs-6">
-        <div class="list-group text-white m-b-20x">
-          <div class="sanBold font-size-sm m-b-20x">Download</div>
-          <div class="list-group-item">
-            <a href="#" class="btn btn-black">
-              <img class="img-fluid m-x-auto" src="/images/icon/icon-appStore.png" srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x">
-            </a>
-          </div>
-          <div class="list-group-item">
-            <a href="#" class="btn btn-black">
-              <img class="img-fluid m-x-auto" src="/images/icon/icon-googlePlay.png" srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x">
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-xs-6">
-        <div class="list-group text-white m-b-20x">
-          <div class="sanBold font-size-sm m-b-20x">Follow Us</div>
-          <a href="#" class="btn btn-share btn-circle m-r-20x">
-            <img class="img-fluid m-x-auto" src="/images/icon/icon-fac.png">
-          </a>
-          <a href="#" class="btn btn-share btn-circle m-r-20x">
-            <img class="img-fluid m-x-auto" src="/images/icon/icon-pin.png">
-          </a>
-          <a href="#" class="btn btn-share btn-circle m-r-20x">
-            <img class="img-fluid m-x-auto" src="/images/icon/icon-ins.png">
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="p-t-10x text-center text-common font-size-xs">Copyright © 2016 MOTIF Inc. All rights reserved.</div>
-  </div>
-</footer>
-
-</body>
-<script src="scripts/vendor.js"></script>
-
-<script src="scripts/common.js"></script>
-</html>
+@include('footer')

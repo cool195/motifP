@@ -4,7 +4,7 @@
 <section class="m-y-40x">
     <div class="container">
         <div class="content">
-            @include('user.left')
+            @include('user.left', ['title' => 'Change Password'])
             <div class="right">
                 <div class="rightContent">
                     <!-- Change Password -->
@@ -44,7 +44,7 @@
                         </div>
                         </form>
                         <div class="text-right p-x-30x p-y-10x">
-                            <a href="javascript:void(0)" class="text-primary font-size-md p-r-30x">Cancel</a>
+                            {{--<a href="javascript:void(0)" class="text-primary font-size-md p-r-30x">Cancel</a>--}}
                             <a href="javascript:void(0)" class="btn btn-primary btn-lg btn-200 change-save">Save</a>
                         </div>
                     </div>

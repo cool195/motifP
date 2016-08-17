@@ -118,6 +118,8 @@ Route::get('/user/password', 'UserController@password');
 Route::get('/user/address', 'UserController@address');
 
 Route::get('/user/profile', 'UserController@profile');
+
+Route::post('/user/modify', 'UserController@modifyUserInfo');
 //User End
 
 //第三方登录Start
@@ -135,7 +137,7 @@ Route::resource('/address','AddressController');
 
 
 //Order Start
-Route::get('/orderlist', 'OrderController@getOrderList');
+Route::get('/orderlist', 'OrderController@orderList');
 
 Route::get('/orderdetail/{subno}', 'OrderController@orderDetail')->where(['subno' => '[0-9]+']);
 //Order End

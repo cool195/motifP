@@ -97,13 +97,13 @@ class AddressController extends BaseController
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($aid)
     {
         $params = array(
             'cmd' => "del",
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'aid' => $id,
+            'aid' => $aid,
         );
         $result = $this->request('useraddr', $params);
         return $result;

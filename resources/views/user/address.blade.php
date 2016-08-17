@@ -4,7 +4,7 @@
 <section class="m-y-40x">
     <div class="container">
         <div class="myHome-content">
-            @include('user.left')
+            @include('user.left', ['title' => 'Shipping Address'])
             @inject('Address', 'App\Http\Controllers\AddressController')
             <div class="right">
                 <div class="rightContent">
@@ -108,7 +108,7 @@
                                     <div class="col-md-6">
                                         <div class="p-a-10x">
                                             <div class="address-item p-x-20x p-y-15x @if($value['isDefault']){{'active'}}@endif"
-                                            data-aid="{{$value['receiving_id']}}">
+                                                 data-aid="{{$value['receiving_id']}}">
                                                 <div class="address-info">
                                                     {{$value['name']}}<br>
                                                     {{$value['city']}}<br>
@@ -121,6 +121,9 @@
                                                 @endif
                                                 <div class="btn-edit font-size-md btn-editAddress">Edit</div>
                                                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                                @if(!$value['isDefault'])
+                                                    <div class="btn-addPrimary btn-addressDelete">delete</div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -153,8 +156,10 @@
                 <div class="primary-address font-size-md">Primary</div>
                 @{{ /if }}
                 <div class="btn-edit font-size-md btn-editAddress">Edit</div>
-                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i>
-                </div>
+                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                @{{ if $value.isDefault !== 1 }}
+                <div class="btn-addPrimary btn-addressDelete">delete</div>
+                @{{ /if }}
             </div>
         </div>
     </div>
