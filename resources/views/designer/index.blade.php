@@ -34,7 +34,12 @@
                     <div class="text-center">
                         <div class="m-b-10x"><img class="img-circle" src="/images/designer/designer-head.jpg" width="120" height="120" alt=""></div>
                         <div class="font-size-md helveBold">{{ $designer['name'] }}</div>
-                        <div class="p-t-15x"><a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif" data-did="{{$designer['designerId']}}">Follow</a>
+                        <div class="p-t-15x">
+                            @if(Session::has('user'))
+                                <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif" data-did="{{$designer['designerId']}}">Follow</a>
+                            @else
+                                <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
+                            @endif
                         </div>
                         <div class="p-t-15x">{{  $designer['intro'] }}</div>
                         <div class="p-t-15x">
@@ -53,7 +58,12 @@
                     <div class="text-center">
                         <div class="m-b-10x"><img class="img-circle" src="/images/designer/designer-head.jpg" width="120" height="120" alt=""></div>
                         <div class="font-size-md helveBold">{{ $designer['name'] }}</div>
-                        <div class="p-t-15x"><a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif" data-did="{{$designer['designerId']}}">Follow</a>
+                        <div class="p-t-15x">
+                            @if(Session::has('user'))
+                                <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif" data-did="{{$designer['designerId']}}">Follow</a>
+                            @else
+                                <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
+                            @endif
                         </div>
                         <div class="p-t-15x">{{ $designer['intro'] }}</div>
                         <div class="p-t-15x">
