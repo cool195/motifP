@@ -60,7 +60,7 @@
             <div class="col-md-3 col-xs-6">
                 <div class="productList-item">
                     <div class="image-container">
-                        <a href="/detail/{{$spu}}">
+                        <a href="/product/{{$spu}}">
                             <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{ $product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                  src="/images/product/bg-product@336.png" alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                             <div class="bg-heart"></div>
@@ -88,7 +88,7 @@
             <div class="col-md-3 col-xs-6">
                 <div class="productList-item">
                     <div class="image-container">
-                        <a href="/detail/{{$product['spu']}}">
+                        <a href="/product/{{$product['spu']}}">
                             <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}" alt="{{$product['main_title']}}">
                             <div class="bg-heart"></div>
                         </a>
