@@ -25,13 +25,12 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/designer">DESIGNER</a></li>
                 <li class="nav-item dropdown">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button"
-                       aria-haspopup="true" aria-expanded="false">SHOPPING</a>
+                    @inject('Category', 'App\Http\Controllers\ShoppingController')
+                    <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-item"><a href="#">Rings</a></li>
-                        <li class="dropdown-item"><a href="#">Necklaces</a></li>
-                        <li class="dropdown-item"><a href="#">Bracelets</a></li>
-                        <li class="dropdown-item"><a href="#">Earrings</a></li>
+                        @foreach($Category->getShoppingCategoryList() as $category)
+                            <li class="dropdown-item"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
+                        @endforeach
                     </ul>
                 </li>
             </ul>
@@ -51,7 +50,7 @@
                             @if(Session::get('user.nickname'))
                                 {{--购物车数量 注入服务--}}
                                 @inject('Cart', 'App\Http\Controllers\CartController')
-                                <span class="shoppingCart-number @if($Cart->getCartAmount()['data']['skusAmout'] <= 0){{'hidden'}}@endif"></span>
+                                <span class="shoppingCart-number @if($Cart->getCartAmount()['data']['skusAmout'] <= 0){{'hidden'}}@endif">{{$Cart->getCartAmount()['data']['skusAmount']}}</span>
                             @else
                                 <span class="shoppingCart-number hidden"></span>
                             @endif

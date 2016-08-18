@@ -10,9 +10,9 @@ class ShoppingController extends BaseController
 {
     public function index(Request $request, $cid = 0)
     {
-        $category = $this->getShoppingCategoryList();
+        $categories = $this->getShoppingCategoryList();
         $productAll = $this->getShoppingProductList($request, $cid);
-        return View('shopping.index', ['categories' => $category['data']['list'], 'productAll' => $productAll['data'], 'cid'=>$cid]);
+        return View('shopping.index', ['categories' => $categories, 'productAll' => $productAll['data'], 'cid'=>$cid]);
     }
 
     public function getShoppingCategoryList()
@@ -21,7 +21,7 @@ class ShoppingController extends BaseController
             'cmd' => 'categorylist',
         );
         $result = $this->request('product', $params);
-        return $result;
+        return $result['data']['list'];
     }
 
     public function getShoppingProductList(Request $request, $cid = 0)
