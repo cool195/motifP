@@ -1492,7 +1492,7 @@
         //  Size 当前页显示条数
         var $ProductListontainer = $('#productList-container'),
             Pagenum = $ProductListontainer.data('pagenum'),
-            Size = 4,
+            Size = 20,
             CategoryId = $ProductListontainer.data('categoryid');
         // 判断是否还有数据要加载
         if (Pagenum === -1) {

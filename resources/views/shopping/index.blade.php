@@ -8,8 +8,8 @@
                 <ul class="nav flex flex-alignCenter flex-justifyCenter">
                     @foreach($categories as $category)
                     <li class="nav-item p-x-20x m-l-0">
-                        <a href="#">
-                            <div class="p-x-5x p-t-30x p-b-20x category-item @if("All" == $category['category_name']) active @endif">
+                        <a href="/shopping/{{ $category['category_id'] }}">
+                            <div class="p-x-5x p-t-30x p-b-20x category-item @if($cid == $category['category_id']) active @endif">
                                 <img src="{{config('runtime.CDN_URL')}}/n0/{{$category['img_path2']}}" alt="">
                                 <div class="text-center p-t-10x">{{$category['category_name']}}</div>
                             </div>
@@ -22,7 +22,7 @@
     </div>
 
     <!-- 商品列表 -->
-    <div class="container m-t-30x m-b-40x" id="productList-container" data-categoryid="0" data-pagenum="1" data-loading="false">
+    <div class="container m-t-30x m-b-40x" id="productList-container" data-categoryid="{{$cid}}" data-pagenum="1" data-loading="false">
         <div class="row">
             @foreach($productAll['list'] as $product)
             <div class="col-md-3 col-xs-6">

@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Cache;
 
 class ShoppingController extends BaseController
 {
-    public function index(Request $request)
+    public function index(Request $request, $cid = 0)
     {
         $category = $this->getShoppingCategoryList();
-        $productAll = $this->getShoppingProductList($request);
-        return View('shopping.index', ['categories' => $category['data']['list'], 'productAll' => $productAll['data']]);
+        $productAll = $this->getShoppingProductList($request, $cid);
+        return View('shopping.index', ['categories' => $category['data']['list'], 'productAll' => $productAll['data'], 'cid'=>$cid]);
     }
 
     public function getShoppingCategoryList()
@@ -24,14 +24,14 @@ class ShoppingController extends BaseController
         return $result;
     }
 
-    public function getShoppingProductList(Request $request)
+    public function getShoppingProductList(Request $request, $cid = 0)
     {
         $params = array(
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'recid' => $request->input('recid', '100000'),
             'uuid' => $_COOKIE['uid'],
-            'cid' => $request->input('cid', 0),
+            'cid' => $request->input('cid', $cid),
             'pagenum' => $request->input('pagenum', 1),
             'pagesize' => $request->input('pagesize', 16),
             'extra' => $request->input('extra_kv', "")
