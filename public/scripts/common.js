@@ -320,6 +320,20 @@
 
     });
 
+    $('#productList-container').on('click', '.btn-wishList', function(e) {
+       var $this = $(e.target);
+       var spu = $this.data('spu');
+        $.ajax({
+            url: '/wishlist/' + spu,
+            type: 'GET',
+        })
+            .done(function (data) {
+                if(data.success) {
+                    $this.toggleClass('active');
+                }
+            })
+    });
+
     // Shopping Cart
     // 初始化 确认删除 弹出框
     try {

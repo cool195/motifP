@@ -65,7 +65,11 @@
                                  src="/images/product/bg-product@336.png" alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                             <div class="bg-heart"></div>
                         </a>
-                        <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($spu, $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i></span>
+                        @if(Session::has('user'))
+                            <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($spu, $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i></span>
+                        @else
+                            <a class="product-heart btn-heart" href="/login"><i class="iconfont btn-wish font-size-lxx"></i></a>
+                        @endif
                     </div>
                     <div class="price-caption helveBold">
                         <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{$product['spuInfos'][$spu]['spuBase']['main_title']}}</div>
@@ -92,7 +96,11 @@
                             <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}" alt="{{$product['main_title']}}">
                             <div class="bg-heart"></div>
                         </a>
-                        <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$product['spu']}}"></i></span>
+                        @if(Session::has('user'))
+                            <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$product['spu']}}"></i></span>
+                        @else
+                            <a class="product-heart btn-heart" href="/login"><i class="iconfont btn-wish font-size-lxx"></i></a>
+                        @endif
                     </div>
                     <div class="price-caption helveBold">
                         <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{ $product['main_title'] }}</div>
