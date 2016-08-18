@@ -1422,10 +1422,26 @@
         var stageCache = $.parseHtml(tplHtml);
         $('#designerContainer').append(stageCache);
     }
+    
+    
 
     $('.designer-seeMore').on('click', function() {
         designer_getDesignerList();
     });
+    
+    $('.btn-follow').on('click', function() {
+        var $this = $(this);
+        $.ajax({
+                url: '/follow/' + $this.data('did'),
+                type: 'GET',
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $this.toggleClass('active');
+                }
+            });
+
+    })
 
     //Designer End
 

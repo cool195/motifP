@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cache;
 
 class DesignerController extends BaseController
 {
@@ -22,12 +23,30 @@ class DesignerController extends BaseController
             'start' => $request->input('start', 1),
         );
 
-        $result = $this->request('designer', $params);
+        $data = $this->request('designer', $params);
+        $result = $this->getDesignerFollowedStatus($data);
 
         if ($request->input('ajax')) {
             return $result;
         }
         return view('designer.index', ['list' => $result['data']['list']]);
+    }
+
+    private function getDesignerFollowedStatus(Array $result)
+    {
+        if(!empty($result['data']['list'])){
+            $followlist = $this->followList();
+            $list = array();
+            foreach($result['data']['list'] as $value){
+                $value['isFollowed'] = 0;
+                if(in_array($value['designerId'], $followlist)){
+                    $value['isFollowed'] = 1;
+                }
+                $list[] = $value;
+            }
+            $result['data']['list'] = $list;
+        }
+        return $result;
     }
 
 
@@ -109,9 +128,34 @@ class DesignerController extends BaseController
         if($request->input('ajax')){
             return $result;
         }
-        return View($view, ['designer' => $result['data'], 'productAll' => $result['productAll'], 'product' => $result['product']['data']]);
+
+        return View($view, ['designer' => $result['data'], 'productAll' => $result['productAll'], 'product' => $result['product']['data'], 'followList' => $this->followList()]);
     }
 
+
+    public function followList()
+    {
+        if(Session::get('user.pin')) {
+           $value = Cache::rememberForever(Session::get('user.pin') . 'followlist', function() {
+               $params = array(
+                   'cmd' => 'list',
+                   'pin' => Session::get('user.pin'),
+                   'token' => Session::get('user.token'),
+                   'num' => 1,
+                   'size' => 500
+               );
+               $result = $this->request('follow', $params);
+               if ($result['success'] && $result['data']['amount'] > 0) {
+                   foreach ($result['data']['list'] as $value) {
+                       $result['cacheList'][] = $value['userId'];
+                   }
+               }
+               return $result['cacheList'];
+           });
+           return $value;
+        }
+        return false;
+    }
 
     /**
      * 关注或取消设计师
@@ -121,33 +165,28 @@ class DesignerController extends BaseController
      */
     public function follow($id)
     {
-        $followParams = array(
-            'cmd' => 'is',
-            'pin' => Session::get('user.pin'),
-            'token' => Session::get('user.token'),
+        $params = array(
+            'cmd' => $this->isFollowed($id) ? 'del' : 'add',
             'did' => $id,
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin')
         );
-        $follow = $this->request('follow', $followParams);
-        if ($follow['data']['isFC']) {
-            //取消关注
-            $followParams = array(
-                'cmd' => 'del',
-                'pin' => Session::get('user.pin'),
-                'token' => Session::get('user.token'),
-                'did' => $id,
-            );
-            $follow = $this->request('follow', $followParams);
-        } else {
-            //关注
-            $followParams = array(
-                'cmd' => 'add',
-                'pin' => Session::get('user.pin'),
-                'token' => Session::get('user.token'),
-                'did' => $id,
-            );
-            $follow = $this->request('follow', $followParams);
+        $result = $this->request('follow', $params);
+        if ($result['success']) {
+            Cache::forget(Session::get('user.pin') . 'followlist');
         }
-        return $follow;
-
+        return $result;
+    }
+    
+    public function isFollowed($id)
+    {
+        $params = array(
+            'cmd' => 'is',
+            'did' => $id,
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token')
+        );
+        $result = $this->request('follow', $params);
+        return $result['data']['isFC'];
     }
 }

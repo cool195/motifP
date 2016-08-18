@@ -22,7 +22,7 @@
                     <div class="text-center">
                         <div class="m-b-10x"><img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}" width="120" height="120" alt=""></div>
                         <div class="font-size-md helveBold">{{$designer['nickname']}}</div>
-                        <div class="p-t-15x"><a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x">Follow</a></div>
+                        <div class="p-t-15x"><a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif" data-did="{{$designer['designer_id']}}">Follow</a></div>
                         <div class="p-t-15x">{{$designer['describe']}}</div>
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                         <div class="p-t-15x">
