@@ -2,7 +2,7 @@
 @include('header')
 <!--内容-->
 <section class="p-y-40x">
-
+    @inject('wishlist', 'App\Http\Controllers\UserController')
     <div class="topic-wrap">
         @if(isset($topic['infos']))
             <div class="bg-white">
@@ -43,12 +43,16 @@
                                 <div class="productList-item">
                                     <div class="image-container">
                                         <a href="/product/{{$spu}}">
-                                            <img class="img-fluid img-lazy" data-original="{{env('APP_Api_Image')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                            <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                             <div class="bg-heart"></div>
                                         </a>
-                                        <span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                                        @if(Session::has('user'))
+                                            <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i></span>
+                                        @else
+                                            <a class="product-heart btn-heart" href="/login"><i class="iconfont btn-wish font-size-lxx"></i></a>
+                                        @endif
                                     </div>
                                     <div class="price-caption helveBold">
                                         <div class="text-center font-size-md text-primary text-truncate p-x-20x">
@@ -70,12 +74,7 @@
             @endif
             @endforeach
         @endif
-
-        <div class="loading" style="display: block">
-            <div class="loader">
-            </div>
-            <div class="text-center p-t-10x">Loading...</div>
-        </div>
+        
     </div>
 </section>
 
