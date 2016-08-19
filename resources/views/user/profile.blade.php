@@ -12,23 +12,23 @@
                         <div class="p-t-30x p-x-30x">
                             <!-- 头像、用户名 -->
                             <div class="p-x-20x p-t-20x text-center">
-                                <img class="img-circle" src="{{config('runtime.Image_URL')}}/images/designer/designer-head.jpg" width="116" height="116" alt="">
+                                <img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{Session::get('user.icon')}}" width="116" height="116" alt="">
                                 <div class="font-size-md p-y-10x font-size-md">Replace Profile Picture</div>
                                 <hr class="hr-base m-x-20x">
                             </div>
                             <!-- 修改 用户名 -->
                             <div class="p-t-30x">
                                 <form method="" id="changeProfile">
-                                <div class="flex flex-alignCenter flex-justifyCenter m-b-20x">
-                                    <span class="sanBold font-size-md p-r-20x changeName-title">Email</span>
-                                    <span class="changePwd-input">{{ Session::get('user.login_email') }}</span>
-                                </div>
-                                <div class="sanBold flex flex-alignCenter flex-justifyCenter m-b-20x">
-                                    <span class="font-size-md p-r-20x changeName-title">Name</span>
+                                    <div class="flex flex-alignCenter flex-justifyCenter m-b-20x">
+                                        <span class="sanBold font-size-md p-r-20x changeName-title">Email</span>
+                                        <span class="changePwd-input">{{ Session::get('user.login_email') }}</span>
+                                    </div>
+                                    <div class="sanBold flex flex-alignCenter flex-justifyCenter m-b-20x">
+                                        <span class="font-size-md p-r-20x changeName-title">Name</span>
                                     <span class="changePwd-input">
                                         <input type="text" name="nick" class="form-control contrlo-lg text-primary" placeholder="{{ Session::get('user.nickname') }}">
                                     </span>
-                                </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>

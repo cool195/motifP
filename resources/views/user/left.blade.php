@@ -2,8 +2,8 @@
     <div class="box-shadow bg-white">
         <!-- 个人头像、用户名 -->
         <div class="my-info p-x-20x p-t-20x text-center">
-            <img class="img-circle" src="{{config('runtime.Image_URL')}}/images/designer/designer-head.jpg" width="64" height="64" alt="">
-            <div class="helveBold font-size-md p-t-5x">Vivian</div>
+            <img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{Session::get('user.icon')}}" width="64" height="64" alt="">
+            <div class="helveBold font-size-md p-t-5x">{{ Session::get('user.nickname') }}</div>
             <hr class="hr-base m-x-20x">
         </div>
 

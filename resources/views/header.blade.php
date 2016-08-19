@@ -23,6 +23,7 @@
                         <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png"
                              alt="logo"></a>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="/daily">Daily</a></li>
                 <li class="nav-item"><a class="nav-link" href="/designer">DESIGNER</a></li>
                 <li class="nav-item dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
