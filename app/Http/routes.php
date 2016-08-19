@@ -134,7 +134,7 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::post('/user/modify', 'UserController@modifyUserInfo');
 
-    Route::post('/user/uploadicon', 'UserController@uploadIcon');
+    Route::get('/user/uploadicon', 'UserController@uploadIcon');
 
     Route::get('/wishlist/{spu}', 'UserController@updateWishList')->where(['spu' => '[0-9]+']);
 
@@ -158,7 +158,7 @@ Route::get('/addFacebookEmail', 'AuthController@addFacebookEmail');
 
 
 //Address Start
-Route::resource('/address','AddressController')->middleware(['loginCheck']);
+Route::resource('/address','AddressController');
 //Address End
 
 
