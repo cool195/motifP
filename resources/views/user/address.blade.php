@@ -175,7 +175,7 @@
                 <div class="btn-edit font-size-md btn-editAddress">Edit</div>
                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                 @{{ if $value.isDefault !== 1 }}
-                <div class="btn-addPrimary btn-addressDelete">delete</div>
+                <div class="font-size-md btn-delAddress">Delete</div>
                 @{{ /if }}
             </div>
         </div>
