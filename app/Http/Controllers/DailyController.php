@@ -35,7 +35,7 @@ class DailyController extends BaseController
      * @param int $id
      * @return Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $params = array(
             'id' => $id
@@ -48,8 +48,10 @@ class DailyController extends BaseController
         } else {
             $view = 'daily.topic';
         }
-
-        return $result;//View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>true]);
+        if($request->input('ajax')){
+            return $result;
+        }
+        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>true]);
     }
 
     /**
