@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Session;
 
 class LoginCheckMiddleware
 {
@@ -11,7 +12,6 @@ class LoginCheckMiddleware
         if(Session::has('user')){
             return $next($request);
         }
-        //return redirect('/login?url='.urlencode($_SERVER['REQUEST_URI']));
-        return $next($request);
+        return redirect('/login?url='.urlencode($_SERVER['REQUEST_URI']));
     }
 }
