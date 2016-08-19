@@ -19,8 +19,8 @@
                             <div class="productImg-list p-t-20x swiper-wrapper">
                                 @foreach($designer['products']  as $k => $product)
                                 <div class="productImg-item swiper-slide p-r-10x">
-                                    <a href="javascript:void(0);">
-                                        <img class="img-thumbnail small-img img-lazy @if(0 == $k)active @endif" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
+                                    <a href="/product/{{$product['spu']}}">
+                                        <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                     </a>
                                 </div>
                                 @endforeach
@@ -32,8 +32,14 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="text-center">
-                        <div class="m-b-10x"><img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt=""></div>
-                        <div class="font-size-md helveBold">{{ $designer['name'] }}</div>
+                        <div class="m-b-10x">
+                            <a href="/designer/{{ $designer['designerId'] }}">
+                                <img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
+                            </a>
+                        </div>
+                        <div class="font-size-md helveBold">
+                            <a href="/designer/{{ $designer['designerId'] }}">{{ $designer['name'] }}</a>
+                        </div>
                         <div class="p-t-15x">
                             @if(Session::has('user'))
                                 <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif" data-did="{{$designer['designerId']}}">Follow</a>
@@ -56,8 +62,14 @@
             <div class="row designer-item">
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="text-center">
-                        <div class="m-b-10x"><img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt=""></div>
-                        <div class="font-size-md helveBold">{{ $designer['name'] }}</div>
+                        <div class="m-b-10x">
+                            <a href="/designer/{{ $product['designerId'] }}">
+                                <img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
+                            </a>
+                        </div>
+                        <div class="font-size-md helveBold">
+                            <a href="/designer/{{ $product['designerId'] }}">{{ $designer['name'] }}</a>
+                        </div>
                         <div class="p-t-15x">
                             @if(Session::has('user'))
                                 <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif" data-did="{{$designer['designerId']}}">Follow</a>
@@ -77,15 +89,15 @@
                     <div class="p-l-30x">
                         <div class="product-bigImg">
                             <a href="/designer/{{$designer['designerId']}}">
-                                <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" alt="商品的名称">
+                                <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" src="/images/product/bg-product@750.png" alt="商品的名称">
                             </a>
                         </div>
                         <div class="swiper-container">
                             <div class="productImg-list p-t-20x swiper-wrapper">
                                 @foreach($designer['products'] as $k => $product)
                                 <div class="productImg-item swiper-slide p-r-10x">
-                                    <a href="javascript:void(0);">
-                                        <img class="img-thumbnail small-img img-lazy @if(0 == $k)active @endif" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
+                                    <a href="/product/{{$product['spu']}}">
+                                        <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                     </a>
                                 </div>
                                 @endforeach

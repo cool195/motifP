@@ -40,14 +40,14 @@
     }
 
     // 点击选择图片
-    $('.productImg-item img').on('click', function () {
+/*    $('.productImg-item img').on('click', function () {
         if (!$(this).hasClass('active')) {
             var ImgUrl = $(this).attr('src');
             $('.productImg-item img').removeClass('active');
             $(this).addClass('active');
             $('.product-bigImg').attr('src', ImgUrl);
         }
-    });
+    });*/
 
     // 选择 商品属性
     var product_data = eval('(' + $('#jsonStr').val() + ')')
