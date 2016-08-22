@@ -20,8 +20,8 @@
 </section>
 <div class="clearfix"></div>
 
-<!-- 内容 -->
-<div class="container m-b-40x" role="main">
+<!-- 列表内容 -->
+<div class="container m-b-40x" role="main" id="dailyList-container" data-pagenum="1" data-loading="false">
     @if(!empty($list))
         <ul class="tiles-wrap animated row" id="daily-wookmark">
             @foreach($list as $daily)
@@ -54,14 +54,34 @@
             @endforeach
         </ul>
     @endif
-        <div class="text-center m-y-30x">
-            <a class="btn btn-block btn-gray btn-lg btn-380 btn-seeMore" href="#">See more of all</a>
+        <div class="text-center m-y-30x dailyList-seeMore">
+            <a class="btn btn-block btn-gray btn-lg btn-380 btn-seeMore-dailyList">See more of all</a>
         </div>
-        <div class="loading" style="display: block">
+        <div class="loading daily-loading" style="display: none">
             <div class="loader"></div>
             <div class="text-center p-t-10x">Loading...</div>
         </div>
 </div>
+
+<template id="tpl-daily">
+    @{{ each list }}
+    <li>
+        <div class="daily-item">
+            <a href="@if(1 == $daily['skipType'])/product/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@else/shopping/@endif{{ $daily['skipId'] }}">
+                <img src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$daily['imgPath']}}" class="img-fluid img-daily img-lazy">
+            </a>
+            @if(!empty($daily['title'] || !empty($daily['subTitle'])))
+                <div class="daily-info p-a-10x text-left">
+                    <div>
+                        <h6 class="text-main helveBold font-size-md m-b-5x">{{$daily['title']}}</h6>
+                        <p class="text-primary m-b-0">{{ $daily['subTitle'] }}</p>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </li>
+    @{{ /each }}
+</template>
 
 @include('footer')
 

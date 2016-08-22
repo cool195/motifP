@@ -1564,10 +1564,105 @@
         $('#productList-container').find('.row').append(StageCache);
     }
 
+
+    // Daily List
+
+    // 商品图片加载 loading
+    //加载动画显示
+    function dailyList_loadingShow(){
+        $('.daily-loading').show();
+        $('.dailyList-seeMore').hide();
+    }
+
+    //加载动画隐藏
+    function dailyList_loadingHide(){
+        $('.daily-loading').hide();
+        $('.dailyList-seeMore').show();
+    }
+
+    //点击 查看更多商品
+    $('.btn-seeMore-dailyList').on('click', function () {
+        $('img.img-lazy').each(function () {
+            var Src = $(this).attr('sec'),
+                Original = $(this).attr('data-original');
+            if (Src === Original){
+                $(this).removeClass('img-lazy');
+            }
+        });
+        getDailyList();
+    });
+
+    // ajax 得到 daily List
+    function getDailyList(){
+        //  $DailyListContainer 列表容器
+        //  Size 当前页显示条数
+        var $DailyListContainer = $('#dailyList-container'),
+            PageNum = $DailyListContainer.data('pagenum'),
+            Size = 5;
+        //判断是否还有数据要加载
+        if (PageNum === -1){
+            return;
+        }
+
+        //判断当前容器的数据是否正在加载中
+        if ($DailyListContainer.data('loading') === true){
+            return;
+        }else{
+            $DailyListContainer.data('loading', true);
+        }
+
+        var NextDailyNum = ++PageNum;
+        //参数：pagesize 页面大小， pagenum,当前页面 ， ajax:1必传
+        dailyList_loadingShow();
+        $.ajax({
+            url: '/daily',
+            data: {
+                pagesize: Size,
+                pagenum: PageNum,
+                ajax: 1
+            }
+        }).done(function (data) {
+            console.info(data);
+            if (data.data === null || data.data === ''){
+                $DailyListContainer.data('pagenum', -1);
+            }else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
+                $DailyListContainer.data('pagenum', -1);
+            }else{
+                // 遍历模板 插入页面
+
+                appendDailyList(data.data);
+
+                $DailyListContainer.data('pagenum', NextDailyNum);
+                var wookmark1 = new Wookmark('#daily-wookmark', {
+                    container: $('#daily-wookmark'),
+                    align: 'center',
+                    offset: 0,
+                    itemWidth: 272
+                });
+                // 图片延迟加载
+                $('img.img-lazy').lazyload({
+                    threshold: 1000,
+                    effect: 'fadeIn'
+                });
+            }
+        }).always(function () {
+            $DailyListContainer.data('loading', false);
+            dailyList_loadingHide();
+        });
+    }
+
+    //遍历 data 生成html 插入到页面
+    function appendDailyList(DailysList){
+        var TplHtml = template('tpl-daily', DailysList);
+        var StageCache = $.parseHTML(TplHtml);
+        $('#dailyList-container').find('#daily-wookmark').append(StageCache);
+    }
+
 })(jQuery, Swiper);
+
+
+
 //# sourceMappingURL=common.js.map
-
-
 //public start
 $.ajaxSetup({
     headers: {
