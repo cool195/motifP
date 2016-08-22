@@ -5,18 +5,18 @@
             <div class="col-md-3 col-xs-6">
                 <div class="list-group text-white m-b-20x">
                     <div class="sanBold font-size-sm p-b-20x">Motif</div>
-                    <a class="list-group-item font-size-xs" href="#">About Motif</a>
-                    <a class="list-group-item font-size-xs" href="#">Privacy Notice</a>
-                    <a class="list-group-item font-size-xs" href="#">Terms & Conditions</a>
+                    <a class="list-group-item font-size-xs" href="/about">About Motif</a>
+                    <a class="list-group-item font-size-xs" href="/privacyPolicy">Privacy Notice</a>
+                    <a class="list-group-item font-size-xs" href="/termsService">Terms & Conditions</a>
                 </div>
             </div>
             <div class="col-md-3 col-xs-6">
                 <div class="list-group text-white m-b-20x">
                     <div class="sanBold font-size-sm m-b-20x">Help & Service</div>
-                    <a class="list-group-item font-size-xs text-white" href="#">Contact Us</a>
-                    <a class="list-group-item font-size-xs text-white" href="#">FAQ</a>
-                    <a class="list-group-item font-size-xs text-white" href="#">Payments</a>
-                    <a class="list-group-item font-size-xs text-white" href="#">Shipping & Returns</a>
+                    <a class="list-group-item font-size-xs text-white" href="/contactus">Contact Us</a>
+                    <a class="list-group-item font-size-xs text-white" href="/faq">FAQ</a>
+                    <a class="list-group-item font-size-xs text-white" href="/description">Payments</a>
+                    <a class="list-group-item font-size-xs text-white" href="/description">Shipping & Returns</a>
                 </div>
             </div>
             <div class="col-md-3 col-xs-6">

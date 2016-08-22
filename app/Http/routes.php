@@ -185,7 +185,6 @@ Route::get('/sizeGuide', 'PageController@sizeGuide');
 Route::get('/termsService', 'PageController@termsService');
 
 Route::get('/userAgreement', 'PageController@userAgreement');
-
 // Page Start
 
 
