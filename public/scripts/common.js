@@ -1393,39 +1393,98 @@
     //User Profile End
 
     //Designer Start
+
+    // 商品图片加载 loading
+    // 加载动画显示
+    function designerList_loadingShow() {
+        $('.designer-loading').show();
+        $('.designerList-seeMore').hide();
+    }
+
+    // 加载动画隐藏
+    function designerList_loadingHide() {
+        $('.designer-loading').hide();
+        $('.designerList-seeMore').show();
+    }
+
+    // ajax 加载 设计师信息
     function designer_getDesignerList() {
-        var $designerContainer = $('#designerContainer');
-        var pageNum = $designerContainer.data('num');
-        if(pageNum == -1){
+        var $DesignerContainer = $('#designerContainer'),
+            Pagenum = $DesignerContainer.data('pagenum'),
+            Size = 6;
+        // 判断是否还有数据要加载
+        if (Pagenum === -1) {
             return;
         }
+
+        // 判断当前选项卡是否在加载中
+        if ($DesignerContainer.data('loading') === true) {
+            return;
+        } else {
+            $DesignerContainer.data('loading', true);
+        }
+
+        var NextProductNum = ++Pagenum;
+
+        designerList_loadingShow();
         $.ajax({
             url: '/designer',
             data:{
-                num: pageNum,
-                size: 5,
+                num: Pagenum,
+                size: Size,
                 ajax: 1
             }
         })
             .done(function (data) {
                 if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '') {
-                    $designerContainer.data('num', -1);
+                    $DesignerContainer.data('pagenum', -1);
                 } else {
                     designer_appendDesignerList('tpl-designerList', data.data);
+                    console.info(data.data);
+
+                    $DesignerContainer.data('pagenum', NextProductNum);
+
+                    // 初始化 swiper
+                    initSwiper();
+
+                    // 图片延迟加载
+                    $('img.img-lazy').lazyload({
+                        threshold: 1000,
+                        effect: 'fadeIn'
+                    });
                 }
             })
+            .always(function () {
+                $DesignerContainer.data('loading', false);
+                designerList_loadingHide();
+            });
 
     }
 
+    function initSwiper() {
+        var designerSwiper = new Swiper('.swiper-container', {
+            freeMode: true,
+            slidesPerView: 'auto',
+            freeModeMomentumRatio: .5
+        });
+    }
+
+    // 渲染 html 模版
     function designer_appendDesignerList(tpl, designerList) {
         var tplHtml = template(tpl, designerList);
-        var stageCache = $.parseHtml(tplHtml);
+        var stageCache = $.parseHTML(tplHtml);
         $('#designerContainer').append(stageCache);
     }
-    
-    
 
-    $('.designer-seeMore').on('click', function() {
+    // 点击查看更多 designer 信息
+    $('.designerList-seeMore').on('click', function() {
+        $('img.img-lazy').each(function () {
+            var Src = $(this).attr('src'),
+                Original = $(this).attr('data-original');
+            if (Src === Original) {
+                $(this).removeClass('img-lazy');
+            }
+        });
         designer_getDesignerList();
     });
     
