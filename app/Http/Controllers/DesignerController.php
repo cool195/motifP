@@ -132,6 +132,22 @@ class DesignerController extends BaseController
         return View($view, ['designer' => $result['data'], 'productAll' => $result['productAll'], 'product' => $result['product']['data'], 'followList' => $this->followList()]);
     }
 
+    public function following(Request $request)
+    {
+        $params = array(
+            'cmd' => 'list',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'num' => 1,
+            'size' => 500
+        );
+        $result = $this->request('follow', $params);
+        if($request->input('ajax')){
+            return $result;
+        }
+        return View('user.following', ['data' => $result['data']]);
+
+    }
 
     public function followList()
     {

@@ -219,6 +219,19 @@ class UserController extends BaseController
         return $result;
     }
 
+    public function wish(Request $request)
+    {
+        $params = array(
+            'cmd' => 'list',
+            'num' => $request->input('num', 1),
+            'size' => $request->input('size', 500),
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token')
+        );
+        $result = $this->request('wishlist', $params);
+        return $result;
+    }
+
     //我收藏的商品
     public function wishlist()
     {

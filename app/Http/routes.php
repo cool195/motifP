@@ -27,6 +27,8 @@ Route::get('/designer', 'DesignerController@index');
 
 Route::get('/designer/{id}', 'DesignerController@show')->where(['id' => '[0-9]+']);
 
+Route::get('/following', 'DesignerController@following');
+
 Route::get('/followlist', 'DesignerController@followList');
 
 Route::get('/follow/{id}', 'DesignerController@follow')->where(['id' => '[0-9]+']);
@@ -135,6 +137,8 @@ Route::group(['middleware' => 'loginCheck'], function () {
     Route::post('/user/modify', 'UserController@modifyUserInfo');
 
     Route::get('/user/uploadicon', 'UserController@uploadIcon');
+
+    Route::get('/wish', 'UserController@wish');
 
     Route::get('/wishlist/{spu}', 'UserController@updateWishList')->where(['spu' => '[0-9]+']);
 
