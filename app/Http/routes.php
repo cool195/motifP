@@ -167,7 +167,26 @@ Route::resource('/address','AddressController');
 
 
 
+// Page Start
+Route::get('/about', 'PageController@about');
 
+Route::get('/cancellation', 'PageController@cancellation');
+
+Route::get('/contactus', 'PageController@contactUs');
+
+Route::get('/description', 'PageController@description');
+
+Route::get('/faq', 'PageController@faq');
+
+Route::get('/privacyPolicy', 'PageController@privacyPolicy');
+
+Route::get('/sizeGuide', 'PageController@sizeGuide');
+
+Route::get('/termsService', 'PageController@termsService');
+
+Route::get('/userAgreement', 'PageController@userAgreement');
+
+// Page Start
 
 
 

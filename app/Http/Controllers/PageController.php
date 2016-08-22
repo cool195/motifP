@@ -11,15 +11,15 @@ class PageController extends BaseController
     }
 
     //aboutMotif
-    public function aboutmotif()
+    public function about()
     {
-        return View('Other.page-aboutMotif');
+        return View('Other.page-about');
     }
 
     //cancellationPolicy
-    public function cancellationPolicy()
+    public function cancellation()
     {
-        return View('Other.page-cancellationPolicy');
+        return View('Other.page-cancellation');
     }
 
     //contactUs
@@ -28,62 +28,34 @@ class PageController extends BaseController
         return View('Other.page-contactUs');
     }
 
-    //shippingreturns
-    public function shippingreturns()
+    public function description()
     {
-        return View('Other.page-shippingreturns');
+        return View('Other.page-description');
     }
 
-    //payments
-    public function payments()
-    {
-        return View('Other.page-payment');
-    }
-
-    //faq
     public function faq()
     {
         return View('Other.page-FAQ');
     }
 
-    //motifGuarantee
-    public function motifGuarantee()
-    {
-        return View('Other.page-motifGuarantee');
-    }
-
-    //privacyPolicy
     public function privacyPolicy()
     {
         return View('Other.page-privacyPolicy');
     }
 
-    //sizeGuide
     public function sizeGuide()
     {
         return View('Other.page-sizeGuide');
     }
 
-    //termsService
     public function termsService()
     {
         return View('Other.page-termsService');
     }
 
-    //userAgreement
     public function userAgreement()
     {
         return View('Other.page-userAgreement');
-    }
-
-    public function pcPrivacyPolicy()
-    {
-        return View('Other.pc-privacyPolicy');
-    }
-
-    public function pcTermsService()
-    {
-        return view('Other.pc-termsService');
     }
 
 }
