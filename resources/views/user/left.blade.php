@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="javascript:void(0)">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                             <i class="iconfont icon-like font-size-lg p-r-10x"></i>
                             <span class="font-size-md">Wishlist</span>
@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="nav-item @if('Following' == $title) active @endif" >
-                    <a href="/following">
+                    <a href="javascript:void(0)">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                             <i class="iconfont icon-follow font-size-lg p-r-10x"></i>
                             <span class="font-size-md">Following</span>
@@ -63,13 +63,6 @@
                     <a href="/user/password">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                             <span class="font-size-md">Change Password</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item @if('Payment Method' == $title) active @endif">
-                    <a href="#">
-                        <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                            <span class="font-size-md">Payment Method</span>
                         </div>
                     </a>
                 </li>

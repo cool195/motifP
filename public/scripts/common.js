@@ -1376,6 +1376,26 @@
             })
     }
 
+    function profile_uploadIcon()
+    {
+        var formData = new FormData($('#uploadForm')[0]);
+        console.log(formData);
+        $.ajax({
+            url: $('#uploadIcon').attr('action'),
+            type: 'post',
+            cache: false,
+            data: formData,
+            processData: false,
+            contentType: 'multipart/form-data'
+        })
+            .done(function(data) {
+
+            })
+            .fail(function(data) {
+
+            });
+    }
+
     $('input[name="nick"]').on('keyup', function() {
         if("" === $(this).val()) {
             $('.profile-save').addClass('disabled');
@@ -1387,6 +1407,12 @@
     $('.profile-save').on('click', function(event) {
         if(!$(event.target).hasClass('disabled')){
             profile_updateUser();
+        }
+    })
+
+    $('.profile-uploadIcon').on('click', function(event) {
+        if(!$(event.target).hasClass('disabled')){
+            profile_uploadIcon();
         }
     })
 

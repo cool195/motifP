@@ -136,7 +136,7 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::post('/user/modify', 'UserController@modifyUserInfo');
 
-    Route::get('/user/uploadicon', 'UserController@uploadIcon');
+    Route::post('/user/uploadicon', 'UserController@uploadIcon');
 
     Route::get('/wish', 'UserController@wish');
 
