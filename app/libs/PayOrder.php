@@ -69,8 +69,8 @@ Class PayOrder
 
         $redirectUrls = new RedirectUrls();
 
-        $redirectUrls->setReturnUrl('http://' . $_SERVER['SERVER_NAME'] . '/paypalStatus?success=true')
-            ->setCancelUrl('http://' . $_SERVER['SERVER_NAME'] . '/paypalStatus?success=false');
+        $redirectUrls->setReturnUrl('http://' . $_SERVER['HTTP_HOST'] . '/paypalStatus?success=true')
+            ->setCancelUrl('http://' . $_SERVER['HTTP_HOST'] . '/paypalStatus?success=false');
 
         $payment = new Payment();
         $payment->setIntent('sale')
