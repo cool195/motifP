@@ -1376,25 +1376,31 @@
             })
     }
 
-    function profile_uploadIcon()
-    {
-        var formData = new FormData($('#uploadForm')[0]);
-        console.log(formData);
-        $.ajax({
-            url: $('#uploadIcon').attr('action'),
-            type: 'post',
-            cache: false,
-            data: formData,
-            processData: false,
-            contentType: 'multipart/form-data'
-        })
-            .done(function(data) {
+    //上传头像
+    $('.profile-uploadIcon').click(function(){
+        var xhr = new XMLHttpRequest();
+        var file = $('#profileIcon').get(0).files[0];
+        var formData = new FormData();
+        formData.append('_token',$('input[name="_token"]').val());
+        formData.append('file', file);
 
-            })
-            .fail(function(data) {
+        xhr.upload.addEventListener("progress", function (evt) {
+            if (evt.lengthComputable) {
+                var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+                console.log(percentComplete);
+            }
 
-            });
-    }
+        }, false);//进度
+        xhr.addEventListener("load", function () {
+            console.log('ok');
+        }, false); // 处理上传完成
+        xhr.addEventListener("error", function () {
+            console.log('error');
+        }, false); // 处理上传失败
+
+        xhr.open('post', '/user/uploadicon');
+        xhr.send(formData);
+    });
 
     $('input[name="nick"]').on('keyup', function() {
         if("" === $(this).val()) {
@@ -1407,12 +1413,6 @@
     $('.profile-save').on('click', function(event) {
         if(!$(event.target).hasClass('disabled')){
             profile_updateUser();
-        }
-    })
-
-    $('.profile-uploadIcon').on('click', function(event) {
-        if(!$(event.target).hasClass('disabled')){
-            profile_uploadIcon();
         }
     })
 
@@ -1776,24 +1776,27 @@ $.ajaxSetup({
 //public end
 
 // 瀑布流
-$(function () {
-    try {
-        $('#daily-wookmark').imagesLoaded(function() {
-            $('.daily-loading').hide();
-            $('.dailyList-seeMore').show();
+if($('.isHidden').hasClass('isHidden')){
+    $(function () {
+        try {
+            $('#daily-wookmark').imagesLoaded(function() {
+                $('.daily-loading').hide();
+                $('.dailyList-seeMore').show();
 
-            $('.isHidden').removeClass('isHidden');
-            var wookmark1 = new Wookmark('#daily-wookmark', {
-                container: $('#daily-wookmark'),
-                align: 'center',
-                offset: 0,
-                itemWidth: 272
-            });
+                $('.isHidden').removeClass('isHidden');
+                var wookmark1 = new Wookmark('#daily-wookmark', {
+                    container: $('#daily-wookmark'),
+                    align: 'center',
+                    offset: 0,
+                    itemWidth: 272
+                });
 
-        })
-    } catch (e) {
-    }
-});
+            })
+        } catch (e) {
+        }
+    });
+}
+
 
 window.onload = function () {
     // 初始化瀑布流
