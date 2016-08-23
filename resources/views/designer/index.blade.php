@@ -3,7 +3,7 @@
 <!-- 内容 -->
 <section class="m-t-40x">
     <!-- 设计师列表 -->
-    <div id="designerContainer" class="container m-b-40x" data-pagenum="1" data-loading="false">
+    <div id="designerContainer" class="container m-b-40x" data-pagenum="{{$start}}" data-loading="false">
         @foreach($list as $key => $designer)
         @if( 0 == $key % 2 )
         <div class="p-a-20x bg-white">

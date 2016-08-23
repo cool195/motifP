@@ -10,17 +10,17 @@
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="p-r-30x">
                         <div class="product-bigImg">
-                            <a href="#">
+                            <a href="javascript:void(0)">
                                 <img class="img-fluid product-bigImg img-lazy"
                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['main_img_path']}}"
-                                     src="/images/product/bg-product@750.png" alt="商品的名称">
+                                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="商品的名称">
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="text-center">
-                        <div class="m-b-10x"><img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}" width="120" height="120" alt=""></div>
+                        <div class="m-b-10x"><img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['icon']}}" width="120" height="120" alt=""></div>
                         <div class="font-size-md helveBold">{{$designer['nickname']}}</div>
                         <div class="p-t-15x">
                             @if(Session::has('user'))
@@ -34,13 +34,13 @@
                         <div class="p-t-15x">
                         @endif
                             @if(!empty($designer['facebook_link']))
-                                <a href="{{$designer['facebook_link']}}" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
+                                <a href="{{$designer['facebook_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-fac.png"></a>
                             @endif
                             @if(!empty($designer['snapchat_link']))
-                                <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
+                                <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-pin.png"></a>
                             @endif
                             @if(!empty($designer['instagram_link']))
-                                <a href="{{$designer['instagram_link']}}" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                                <a href="{{$designer['instagram_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-ins.png"></a>
                             @endif
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                         </div>
