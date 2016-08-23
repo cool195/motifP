@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Following</title>
+  <title>WishList</title>
   <link rel="apple-touch-icon" href="/images/icon/apple-touch-icon.png">
 
   <link rel="stylesheet" href="styles/vendor.css">
@@ -70,12 +70,12 @@
 </header>
 
 <!-- 内容 -->
-<section class="m-y-40x">
+<section class="m-y-30x">
   <div class="container">
     <div class="myHome-content">
       <!-- 左侧菜单 -->
       <div class="leftMeun">
-        <div class="box-shadow bg-white">
+        <div class="box-shadow bg-white m-t-10x">
           <!-- 个人头像、用户名 -->
           <div class="my-info p-x-20x p-t-20x text-center">
             <img class="img-circle" src="images/designer/designer-head.jpg" width="64" height="64" alt="">
@@ -100,14 +100,14 @@
                   </div>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a href="#">
                   <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                     <i class="iconfont icon-like font-size-lg p-r-10x"></i><span class="font-size-md">Wishlist</span>
                   </div>
                 </a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a href="#">
                   <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                     <i class="iconfont icon-follow font-size-lg p-r-10x"></i><span class="font-size-md">Following</span>
@@ -162,90 +162,139 @@
       <!-- 左侧内容 -->
       <div class="right">
         <div class="rightContent">
-          <!-- Following List -->
-          <div class="row">
-            <div class="col-md-6 col-xs-12">
-              <div class="text-center box-shadow p-a-40x m-b-20x bg-white">
-                <div class="m-b-10x">
-                  <img class="img-circle" src="/images/designer/designer-head.jpg" width="120" height="120" alt="">
-                </div>
-                <div class="font-size-md helveBold">PISCES</div>
-                <div class="p-t-15x">
-                  <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x">Follow</a>
-                </div>
-                <div class="p-t-15x">Shinya Kimura @ chabott engineering - redesign concept for a custom motorcycle
-                  builder
-                  and designer Shinya Kimura.
-                </div>
-                <div class="p-t-15x">
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+          <!-- WishList content -->
+          <ul class="tiles-wrap wishlist-wrap animated row" id="wishlist-wookmark">
+            <!-- 图片 -->
+            <li>
+              <div class="wishlist-item daily-item">
+                <a href="#"><img class="img-fluid" src="/images/daily/daily.jpg" alt=""></a>
+                <span class="wishlist-heart btn-heart"><i class="iconfont btn-wish font-size-lxx active"></i></span>
+              </div>
+            </li>
+
+            <!-- 图 & 文 -->
+            <li>
+              <div class="wishlist-item daily-item">
+                <a href="#"><img src="/images/daily/daily1.jpg" class="img-fluid"></a>
+                <span class="wishlist-heart btn-heart"><i class="iconfont btn-wish font-size-lxx active"></i></span>
+
+                <div class="daily-info p-a-10x text-left">
+                  <div>
+                    <h6 class="text-main helveBold font-size-md m-b-5x">Boho Beaded Tassel Necklace</h6>
+                    <p class="text-primary m-b-0">Boasting a spectacular display of color, the titanium</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-6 col-xs-12">
-              <div class="text-center box-shadow p-a-40x m-b-20x bg-common">
-                <div class="m-b-10x">
-                  <img class="img-circle" src="/images/designer/designer-head.jpg" width="120" height="120" alt="">
-                </div>
-                <div class="font-size-md helveBold">PISCES</div>
-                <div class="p-t-15x">
-                  <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x">Follow</a>
-                </div>
-                <div class="p-t-15x">Shinya Kimura @ chabott engineering - redesign concept for a custom motorcycle
-                  builder
-                  and designer Shinya Kimura.
-                </div>
-                <div class="p-t-15x">
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xs-12">
-              <div class="text-center box-shadow p-a-40x m-b-20x bg-common">
-                <div class="m-b-10x">
-                  <img class="img-circle" src="/images/designer/designer-head.jpg" width="120" height="120" alt="">
-                </div>
-                <div class="font-size-md helveBold">PISCES</div>
-                <div class="p-t-15x">
-                  <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x">Follow</a>
-                </div>
-                <div class="p-t-15x">Shinya Kimura @ chabott engineering - redesign concept for a custom motorcycle
-                  builder
-                  and designer Shinya Kimura.
-                </div>
-                <div class="p-t-15x">
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+            </li>
+
+            <!-- 图 & 文 & 设计师 -->
+            <li>
+              <div class="wishlist-item daily-item">
+                <a href="#"><img src="/images/daily/daily2.jpg" class="img-fluid"></a>
+                <span class="wishlist-heart btn-heart"><i class="iconfont btn-wish font-size-lxx active"></i></span>
+
+                <div class="daily-info p-a-10x text-left">
+                  <div>
+                    <h6 class="text-main helveBold font-size-md m-b-5x">Boho Beaded Tassel Necklace</h6>
+                    <p class="text-primary m-b-0">Boasting a spectacular display of color, the titanium</p>
+                  </div>
+                  <hr class="hr-base m-y-10x">
+                  <div class="flex flex-fullJustified flex-alignCenter">
+                    <div class="flex flex-alignCenter">
+                      <img src="/images/daily/daily.jpg" class="img-circle" width="30" height="30">
+                      <span class="p-l-15x">
+                        <h6 class="text-main font-size-sm helveBold">Street Art</h6>
+                        <a class="text-primary font-size-sm" href="#">facebook.com</a>
+                      </span>
+                    </div>
+                    <i class="iconfont icon-follow font-size-lx"></i>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-6 col-xs-12">
-              <div class="text-center box-shadow p-a-40x m-b-20x bg-white">
-                <div class="m-b-10x">
-                  <img class="img-circle" src="/images/designer/designer-head.jpg" width="120" height="120" alt="">
-                </div>
-                <div class="font-size-md helveBold">PISCES</div>
-                <div class="p-t-15x">
-                  <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x">Follow</a>
-                </div>
-                <div class="p-t-15x">Shinya Kimura @ chabott engineering - redesign concept for a custom motorcycle
-                  builder
-                  and designer Shinya Kimura.
-                </div>
-                <div class="p-t-15x">
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
-                  <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+            </li>
+
+            <!-- 商品 -->
+            <li>
+              <div class="wishlist-item daily-item">
+                <a href="#"><img src="/images/product/product.jpg" alt="商品的名称" class="img-fluid"></a>
+                <span class="wishlist-heart btn-heart"><i class="iconfont btn-wish font-size-lxx active"></i></span>
+
+                <div class="daily-info p-a-10x helveBold text-center">
+                  <div class="font-size-md text-main p-x-20x">New Rings</div>
+                  <div>
+                    <span class="font-size-md text-main p-r-5x">$199.95</span>
+                    <span class="font-size-base text-common text-throughLine">$299.95</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <!-- see more btn -->
+            </li>
+
+            <!-- 图片 -->
+            <li>
+              <div class="wishlist-item daily-item">
+                <a href="#"><img class="img-fluid" src="/images/daily/daily.jpg" alt=""></a>
+                <span class="wishlist-heart btn-heart"><i class="iconfont btn-wish font-size-lxx active"></i></span>
+              </div>
+            </li>
+
+            <!-- 图 & 文 -->
+            <li>
+              <div class="wishlist-item daily-item">
+                <a href="#"><img src="/images/daily/daily1.jpg" class="img-fluid"></a>
+                <span class="wishlist-heart btn-heart"><i class="iconfont btn-wish font-size-lxx active"></i></span>
+
+                <div class="daily-info p-a-10x text-left">
+                  <div>
+                    <h6 class="text-main helveBold font-size-md m-b-5x">Boho Beaded Tassel Necklace</h6>
+                    <p class="text-primary m-b-0">Boasting a spectacular display of color, the titanium</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- 图 & 文 & 设计师 -->
+            <li>
+              <div class="wishlist-item daily-item">
+                <a href="#"><img src="/images/daily/daily2.jpg" class="img-fluid"></a>
+                <span class="wishlist-heart btn-heart"><i class="iconfont btn-wish font-size-lxx active"></i></span>
+
+                <div class="daily-info p-a-10x text-left">
+                  <div>
+                    <h6 class="text-main helveBold font-size-md m-b-5x">Boho Beaded Tassel Necklace</h6>
+                    <p class="text-primary m-b-0">Boasting a spectacular display of color, the titanium</p>
+                  </div>
+                  <hr class="hr-base m-y-10x">
+                  <div class="flex flex-fullJustified flex-alignCenter">
+                    <div class="flex flex-alignCenter">
+                      <img src="/images/daily/daily.jpg" class="img-circle" width="30" height="30">
+                      <span class="p-l-15x">
+                        <h6 class="text-main font-size-sm helveBold">Street Art</h6>
+                        <a class="text-primary font-size-sm" href="#">facebook.com</a>
+                      </span>
+                    </div>
+                    <i class="iconfont icon-follow font-size-lx"></i>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- 商品 -->
+            <li>
+              <div class="wishlist-item daily-item">
+                <a href="#"><img src="/images/product/product.jpg" alt="商品的名称" class="img-fluid"></a>
+                <span class="wishlist-heart btn-heart"><i class="iconfont btn-wish font-size-lxx active"></i></span>
+
+                <div class="daily-info p-a-10x helveBold text-center">
+                  <div class="font-size-md text-main p-x-20x">New Rings</div>
+                  <div>
+                    <span class="font-size-md text-main p-r-5x">$199.95</span>
+                    <span class="font-size-base text-common text-throughLine">$299.95</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+          </ul>
           <div class="text-center m-y-30x"><a class="btn btn-block btn-gray btn-lg btn-380 btn-seeMore" href="#">See
             more of all</a>
           </div>
@@ -254,8 +303,6 @@
             </div>
             <div class="text-center p-t-10x">Loading...</div>
           </div>
-
-
         </div>
 
       </div>
