@@ -39,6 +39,6 @@ class PaypalController extends BaseController
                 }
             }
         }
-        return redirect('/order/orderlist');
+        return redirect('/orderlist');
     }
 }
