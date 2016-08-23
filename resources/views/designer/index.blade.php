@@ -165,7 +165,7 @@
                     </div>
                     <div class="p-t-15x">
                         @if(Session::has('user'))
-                            <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow  @{{ if value.isFollowed == 1 }} active @{{ /if }}" data-did="@{{ value.designerId }}">Follow</a>
+                            <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-following  @{{ if value.isFollowed == 1 }} active @{{ /if }}" data-did="@{{ value.designerId }}">Follow</a>
                         @else
                             <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
                         @endif
@@ -190,7 +190,7 @@
                     </div>
                     <div class="p-t-15x">
                         @if(Session::has('user'))
-                            <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @{{ if value.isFollowed == 1 }} active @{{ /if }}" data-did="@{{ value.designerId }}">Follow</a>
+                            <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-following @{{ if value.isFollowed == 1 }} active @{{ /if }}" data-did="@{{ value.designerId }}">Follow</a>
                         @else
                             <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
                         @endif

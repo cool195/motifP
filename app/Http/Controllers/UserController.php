@@ -208,8 +208,13 @@ class UserController extends BaseController
         }
     }
 
-    public function uploadIcon()
+    public function uploadIcon(Request $request)
     {
+        if ($request->hasFile('file')) {
+            return $request->file('file')->getRealPath();
+        }else{
+            return 'error';
+        }
         $params = array(
             'cmd' => 'uploadicon',
             'pin' => Session::get('user.pin'),
