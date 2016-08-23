@@ -1526,7 +1526,7 @@
                 }
             });
 
-    })
+    });
 
     //Designer End
 
@@ -1665,6 +1665,11 @@
         $('.dailyList-seeMore').show();
     }
 
+    function loadingAndSeeMoreHide(){
+        $('.daily-loading').hide();
+        $('.dailyList-seeMore').hide();
+    }
+
     //点击 查看更多商品
     $('.btn-seeMore-dailyList').on('click', function () {
         $('img.img-lazy').each(function () {
@@ -1683,9 +1688,10 @@
         //  Size 当前页显示条数
         var $DailyListContainer = $('#dailyList-container'),
             PageNum = $DailyListContainer.data('pagenum'),
-            Size = 5;
+            Size = 2;
         //判断是否还有数据要加载
         if (PageNum === -1){
+
             return;
         }
 
@@ -1707,22 +1713,28 @@
                 ajax: 1
             }
         }).done(function (data) {
-            console.info(data);
+
             if (data.data === null || data.data === ''){
+                loadingAndSeeMoreHide();
                 $DailyListContainer.data('pagenum', -1);
             }else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
+                loadingAndSeeMoreHide();
                 $DailyListContainer.data('pagenum', -1);
             }else{
                 // 遍历模板 插入页面
-
                 appendDailyList(data.data);
 
                 $DailyListContainer.data('pagenum', NextDailyNum);
-                var wookmark1 = new Wookmark('#daily-wookmark', {
-                    container: $('#daily-wookmark'),
-                    align: 'center',
-                    offset: 0,
-                    itemWidth: 272
+
+                $('#daily-wookmark').imagesLoaded(function(){
+                    dailyList_loadingHide();
+                    $('.isHidden').removeClass('isHidden');
+                    var wookmark1 = new Wookmark('#daily-wookmark', {
+                        container: $('#daily-wookmark'),
+                        align: 'center',
+                        offset: 0,
+                        itemWidth: 272
+                    });
                 });
                 // 图片延迟加载
                 $('img.img-lazy').lazyload({
@@ -1732,7 +1744,6 @@
             }
         }).always(function () {
             $DailyListContainer.data('loading', false);
-            dailyList_loadingHide();
         });
     }
 
@@ -1742,6 +1753,14 @@
         var StageCache = $.parseHTML(TplHtml);
         $('#dailyList-container').find('#daily-wookmark').append(StageCache);
     }
+
+    $(function () {
+        try {
+            dailyList_loadingShow();
+        } catch (e) {
+        }
+    });
+
 
 })(jQuery, Swiper);
 
@@ -1759,12 +1778,19 @@ $.ajaxSetup({
 // 瀑布流
 $(function () {
     try {
-        var wookmark1 = new Wookmark('#daily-wookmark', {
-            container: $('#daily-wookmark'),
-            align: 'center',
-            offset: 0,
-            itemWidth: 272
-        });
+        $('#daily-wookmark').imagesLoaded(function() {
+            $('.daily-loading').hide();
+            $('.dailyList-seeMore').show();
+
+            $('.isHidden').removeClass('isHidden');
+            var wookmark1 = new Wookmark('#daily-wookmark', {
+                container: $('#daily-wookmark'),
+                align: 'center',
+                offset: 0,
+                itemWidth: 272
+            });
+
+        })
     } catch (e) {
     }
 });
