@@ -1528,6 +1528,19 @@
 
     });
 
+    $('#designerContainer').on('click', '.btn-following', function() {
+        var $this = $(this);
+        $.ajax({
+                url: '/follow/' + $this.data('did'),
+                type: 'GET',
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $this.toggleClass('active');
+                }
+            });
+    })
+
     //Designer End
 
     // 图片延迟加载
