@@ -766,6 +766,19 @@
             .done(function (data) {
                 if (data.success) {
                     appendAddressList(data.data);
+                    if($('.address-item').length ===1){
+                        $.each(data.data.list ,function (n, value){
+                            var country=value['country'],
+                                city=value['city'],
+                                detail_address1=value['detail_address1'],
+                                zip=value['zip'],
+                                name=value['name'];
+                            $('#defaultAddr').html(country + " " + city+" " + detail_address1 + " " + zip + " " + name);
+                            $('#defaultAddr').data('city', city);
+                            $('#defaultAddr').data('aid', value['receiving_id']);
+                            console.info(value['country']);
+                        });
+                    }
                 }
             })
     }
