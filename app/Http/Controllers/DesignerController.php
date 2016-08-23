@@ -19,17 +19,16 @@ class DesignerController extends BaseController
             'cmd' => 'designerinfolist',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'size' => $request->input('size', 10),
+            'size' => $request->input('size', 6),
             'start' => $request->input('start', 1),
         );
 
         $data = $this->request('designer', $params);
         $result = $this->getDesignerFollowedStatus($data);
-
         if ($request->input('ajax')) {
             return $result;
         }
-        return view('designer.index', ['list' => $result['data']['list']]);
+        return view('designer.index', ['list' => $result['data']['list'], 'start' =>$result['data']['start']]);
     }
 
     private function getDesignerFollowedStatus(Array $result)
