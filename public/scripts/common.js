@@ -1913,6 +1913,7 @@ if($('.isHidden').hasClass('isHidden')){
 
 window.onload = function () {
     // 初始化瀑布流
+    // daily 瀑布流
     try {
         var wookmark1 = new Wookmark('#daily-wookmark', {
             container: $('#daily-wookmark'),
@@ -1921,5 +1922,17 @@ window.onload = function () {
             itemWidth: 272
         });
     } catch (e) {
+    }
+
+    // wishlist 瀑布流
+    try {
+        var wishlist_wookmark = new Wookmark('#wishlist-wookmark', {
+            container: $('#wishlist-wookmark'),
+            align: 'left',
+            offset: 0,
+            itemWidth: 285
+        });
+    }
+    catch (e) {
     }
 };
