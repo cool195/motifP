@@ -1449,10 +1449,10 @@
     // ajax 加载 设计师信息
     function designer_getDesignerList() {
         var $DesignerContainer = $('#designerContainer'),
-            Pagenum = $DesignerContainer.data('pagenum'),
+            Start = $DesignerContainer.data('start'),
             Size = 6;
         // 判断是否还有数据要加载
-        if (Pagenum === -1) {
+        if (Start === -1) {
             return;
         }
 
@@ -1463,25 +1463,31 @@
             $DesignerContainer.data('loading', true);
         }
 
-        var NextProductNum = ++Pagenum;
-
         designerList_loadingShow();
         $.ajax({
             url: '/designer',
             data:{
-                num: Pagenum,
+                start: Start,
                 size: Size,
                 ajax: 1
             }
         })
             .done(function (data) {
                 if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '') {
-                    $DesignerContainer.data('pagenum', -1);
+                    $DesignerContainer.data('start', -1);
                 } else {
-                    designer_appendDesignerList('tpl-designerList', data.data);
-                    console.info(data.data);
+                    designer_appendDesignerList(data.data);
 
-                    $DesignerContainer.data('pagenum', NextProductNum);
+                    // 判断当前页是否是最后一页
+                    // CurrentSize 当前页显示条数
+                    // StartNum 下一页开始条数
+                    var CurrentSize = data.data.list.length,
+                        StartNum = data.data.start;
+                    if (CurrentSize < Size) {
+                        $DesignerContainer.data('start', -1);
+                    } else {
+                        $DesignerContainer.data('start', StartNum);
+                    }
 
                     // 初始化 swiper
                     initSwiper();
@@ -1509,8 +1515,13 @@
     }
 
     // 渲染 html 模版
-    function designer_appendDesignerList(tpl, designerList) {
-        var tplHtml = template(tpl, designerList);
+    function designer_appendDesignerList(designerList) {
+        var number=$('.designerList-item').length;
+        if(number % 2 === 0){
+            var tplHtml = template('tpl-designerList-even', designerList);
+        }else {
+            var tplHtml = template('tpl-designerList-odd', designerList);
+        }
         var stageCache = $.parseHTML(tplHtml);
         $('#designerContainer').append(stageCache);
     }
