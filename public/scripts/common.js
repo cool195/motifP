@@ -1762,6 +1762,82 @@
     });
 
 
+    // 个人中心 Order List start
+
+    // 加载动画显示
+    function orderList_loadingShow() {
+        $('.orderList-loading').show();
+        $('.orderList-seeMore').hide();
+    }
+
+    // 加载动画隐藏
+    function orderList_loadingHide() {
+        $('.orderList-loading').hide();
+        $('.orderList-seeMore').show();
+    }
+
+    // 点击 查看更多 订单
+    $('.orderList-seeMore').on('click', function () {
+        getOrderList();
+    });
+
+    // ajax 得到 order list
+    function getOrderList() {
+        //  $OrderListContainer 列表容器
+        //  Start 当前页开始条数
+        //  Size 当前页显示条数
+        var $OrderListContainer = $('#orderListContainer'),
+            Pagenum = $OrderListContainer.data('pagenum'),
+            Size = 10;
+        // 判断是否还有数据要加载
+        if (Pagenum === -1) {
+            return;
+        }
+
+        // 判断当前选项卡是否在加载中
+        if ($OrderListContainer.data('loading') === true) {
+            return;
+        } else {
+            $OrderListContainer.data('loading', true);
+        }
+
+        var NextProductNum = ++Pagenum;
+
+        orderList_loadingShow();
+        $.ajax({
+            url: '/orderlist',
+            data: {
+                num: Pagenum,
+                size: Size,
+                ajax: 1
+            }
+        }).done(function (data) {
+            if (data.data === null || data.data === '') {
+                $OrderListContainer.data('pagenum', -1);
+            } else if (data.data.list.length === 0 || data.data.list === '' || data.data.list === undefined) {
+                $OrderListContainer.data('pagenum', -1);
+            } else {
+                // 遍历模板 插入页面
+                appendOrderList(data.data);
+
+                $OrderListContainer.data('pagenum', NextProductNum);
+            }
+        }).always(function () {
+            $OrderListContainer.data('loading', false);
+            orderList_loadingHide();
+        });
+    }
+
+    // 遍历 data 生成html 插入到页面
+    function appendOrderList(OrdersList) {
+        var TplHtml = template('tpl-orderList', OrdersList);
+        var StageCache = $.parseHTML(TplHtml);
+        $('#orderListContainer').append(StageCache);
+    }
+
+    // 个人中心 Order List end
+
+
 })(jQuery, Swiper);
 
 

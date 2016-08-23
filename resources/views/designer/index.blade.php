@@ -124,8 +124,8 @@
 
 </section>
 
+<!-- designer list 模版 -->
 <template id="tpl-designerList">
-{{--    @{{ each list }}--}}
     @{{each list as value index}}
 
     @{{ if 0 == index % 2 }}
