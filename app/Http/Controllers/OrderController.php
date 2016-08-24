@@ -118,4 +118,26 @@ class OrderController extends BaseController
         }
 
     }
+
+    //重新获取订单信息
+    public function orderPayInfo($orderid, $paytype)
+    {
+        $params = array(
+            'cmd' => "payinfo",
+            'ordno' => $orderid,
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin')
+        );
+        $result = $this->request("order", $params);
+
+        if ($result['success']) {
+            if ($paytype == 1) {
+                return redirect("/paypal?orderid={$orderid}&orderDetail={$orderid}&totalPrice=" . $result['data']['pay_amount'] / 100);
+            } else {
+                return redirect("/qianhai?orderid={$orderid}&totalPrice=" . $result['data']['pay_amount'] / 100);
+            }
+        } else {
+            return redirect("/orderdetail/$orderid");
+        }
+    }
 }
