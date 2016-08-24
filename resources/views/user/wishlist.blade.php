@@ -16,7 +16,10 @@
                         <li>
                             <div class="wishlist-item daily-item">
                                 <a href="/product/{{$wish['spu']}}">
-                                    <img src="{{config('runtime.CDN_URL')}}/n1/{{ $wish['main_image_url'] }}" alt="{{ $wish['main_title'] }}" class="img-fluid">
+                                    <img class="img-fluid img-lazy"
+                                         data-original="{{config('runtime.CDN_URL')}}/n1/{{ $wish['main_image_url'] }}"
+                                         src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                         alt="{{ $wish['main_title'] }}">
                                 </a>
                                 <span class="wishlist-heart btn-heart"><i class="iconfont btn-wish font-size-lxx active" data-spu="{{$wish['spu']}}"></i></span>
                                 <div class="daily-info p-a-10x helveBold text-center">
