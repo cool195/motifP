@@ -229,7 +229,7 @@ class UserController extends BaseController
         $params = array(
             'cmd' => 'list',
             'num' => $request->input('num', 1),
-            'size' => $request->input('size', 500),
+            'size' => $request->input('size', 9),
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token')
         );
