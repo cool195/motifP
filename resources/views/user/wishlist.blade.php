@@ -4,8 +4,9 @@
     <div class="container">
         <div class="myHome-content">
             <!-- 左侧菜单 -->
-            @include('user.left')
-                    <!-- 左侧内容 -->
+            @include('user.left', ['title' => 'wishlist'])
+            <!-- 左侧内容 -->
+
             <div class="right">
                 <div class="rightContent" id="wishList-container" data-pagenum="1" data-loading="false">
                     <!-- WishList content -->
@@ -30,6 +31,7 @@
                                                 @endif
                                             </div>
                                         </div>
+
                                     </div>
                                 </li>
                             @endforeach

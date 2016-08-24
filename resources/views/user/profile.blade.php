@@ -14,7 +14,7 @@
                             <div class="p-x-20x p-t-20x text-center">
                                 <img class="img-circle"
                                      src="{{config('runtime.CDN_URL')}}/n1/{{Session::get('user.icon')}}" width="116"
-                                     height="116" alt="">
+                                     height="116" data-url="{{config('runtime.CDN_URL')}}" id="avatarUrl">
 
                                 <div class="sanBold flex flex-alignCenter flex-justifyCenter m-b-20x">
                                     <span class="font-size-md p-r-20x changeName-title">Icon</span>
@@ -25,8 +25,7 @@
                                         </span>
                                 </div>
 
-                                <a href="javascript:void(0)" class="btn btn-primary btn-lg btn-200 profile-uploadIcon">Replace
-                                    Profile Picture</a>
+                                <a href="javascript:void(0)" class="btn btn-primary btn-lg btn-200 profile-uploadIcon">Replace Profile Picture</a>
                                 {{--<div class="font-size-md p-y-10x font-size-md">Replace Profile Picture</div>--}}
                                 <hr class="hr-base m-x-20x">
                             </div>

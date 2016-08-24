@@ -5,7 +5,7 @@
     <div class="container">
         <div class="myHome-content">
             <!-- 左侧菜单 -->
-            @include('user.left')
+            @include('user.left', ['title' => 'following'])
 
             <!-- 右侧内容 -->
             <div class="right">
@@ -17,7 +17,12 @@
                         <div class="col-md-6 col-xs-12">
                             <div class="text-center box-shadow p-a-40x m-b-20x @if($key % 4 == 0 || $key % 4 == 3) bg-white @else bg-common @endif">
                                 <div class="m-b-10x">
-                                    <img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{$follow['avatar']}}" width="120" height="120" alt="">
+                                    <a href="/designer/{{$follow['id']}}">
+                                        <img class="img-circle img-lazy"
+                                             data-original="{{config('runtime.CDN_URL')}}/n1/{{$follow['avatar']}}"
+                                             src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                             width="120" height="120" alt="">
+                                    </a>
                                 </div>
                                 <div class="font-size-md helveBold">{{ $follow['name'] }}</div>
                                 <div class="p-t-15x">

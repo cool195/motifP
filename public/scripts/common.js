@@ -737,6 +737,7 @@
 
     // 生成订单
     $('.btn-toCheckout').on('click', function () {
+        var paym = $(this).data('with');
         $.ajax({
                 url: '/order',
                 type: 'POST',
@@ -745,6 +746,7 @@
                     cps: $('input[name="ccps"]').val(),
                     remark: $('input[name="cremark"]').val(),
                     stype: $('input[name="shippingMethod"]:checked').val(),
+                    paym: paym
                 }
             })
             .done(function (data) {
@@ -1390,6 +1392,7 @@
             .done(function(data) {
                 if(data.success) {
                     $('input[name="nick"]').attr('placeholder', data.data.nickname);
+                    $('.name').html(data.data.nickname);
                     $('input[name="nick"]').val('');
                 }
             })
@@ -1403,18 +1406,21 @@
         formData.append('_token',$('input[name="_token"]').val());
         formData.append('file', file);
 
-        xhr.upload.addEventListener("progress", function (evt) {
-            if (evt.lengthComputable) {
-                var percentComplete = Math.round(evt.loaded * 100 / evt.total);
-                console.log(percentComplete);
+        // xhr.upload.addEventListener("progress", function (evt) {
+        //     if (evt.lengthComputable) {
+        //         var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+        //         console.log(percentComplete);
+        //     }
+        //
+        // }, false);//进度
+        xhr.addEventListener("load", function (e) {
+            var obj = JSON.parse(e.currentTarget.response);
+            if(obj.success){
+                $('#avatarUrl').attr('src',$('#avatarUrl').data('url')+'/n1/'+obj.data.url);
             }
-
-        }, false);//进度
-        xhr.addEventListener("load", function () {
-            console.log('ok');
         }, false); // 处理上传完成
-        xhr.addEventListener("error", function () {
-            console.log('error');
+        xhr.addEventListener("error", function (e) {
+            console.log(e);
         }, false); // 处理上传失败
 
         xhr.open('post', '/user/uploadicon');

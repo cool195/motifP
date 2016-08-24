@@ -300,7 +300,8 @@
         </div>
         <!-- 提交按钮 -->
         <div class="p-y-40x text-right">
-            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout">Proceed To Checkout</a>
+            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="Oceanpay">Pay with Credit Card</a>
+            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay with PayPal</a>
         </div>
     </div>
 </section>

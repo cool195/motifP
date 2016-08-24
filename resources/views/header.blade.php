@@ -38,9 +38,9 @@
         </nav>
         <nav class="navbar-right">
             <ul class="nav navbar-primary">
-                <li class="nav-item p-x-10x"><a href="/orderlist" class="nav-link">{{Session::get('user.nickname')}}</a></li>
+                <li class="nav-item p-x-10x"><a href="/user/profile" class="nav-link name">{{Session::get('user.nickname')}}</a></li>
                 <li class="nav-item p-x-10x header-img">
-                    <a href="/orderlist" class="nav-link">
+                    <a href="/user/profile" class="nav-link">
                         <img class="img-circle"
                              src="@if(Session::has('user')){{config('runtime.CDN_URL').'/n1/'.Session::get('user.icon')}}@else{{config('runtime.Image_URL').'/images/icon/apple-touch-icon.png'}}@endif"
                              width="40" height="40" alt="">
@@ -49,12 +49,12 @@
                     <div class="dropdown-img">
                         <span class="triangle-up"></span>
                         <ul class="nav">
-                            <li class="p-t-10x"><a class="p-l-15x" href="#">Orders</a></li>
-                            <li class="p-t-5x"><a class="p-l-15x" href="#">My Bag</a></li>
-                            <li class="p-t-5x active"><a class="p-l-15x" href="#">Wishlist</a></li>
-                            <li class="p-t-5x"><a class="p-l-15x" href="#">Following</a></li>
-                            <li class="p-t-5x"><a class="p-l-15x" href="#">Settings</a></li>
-                            <li class="p-y-5x p-b-10x"><a class="p-l-15x" href="#">Log out</a></li>
+                            <li class="p-t-10x"><a class="p-l-15x" href="/orderlist">Orders</a></li>
+                            <li class="p-t-5x"><a class="p-l-15x" href="/cart">My Bag</a></li>
+                            <li class="p-t-5x"><a class="p-l-15x" href="/wish">Wishlist</a></li>
+                            <li class="p-t-5x"><a class="p-l-15x" href="/follow">Following</a></li>
+                            <li class="p-t-5x"><a class="p-l-15x" href="/user/profile">Settings</a></li>
+                            <li class="p-y-5x p-b-10x"><a class="p-l-15x" href="/signout">Log out</a></li>
                         </ul>
                     </div>
                 </li>

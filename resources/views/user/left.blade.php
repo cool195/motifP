@@ -3,7 +3,7 @@
         <!-- 个人头像、用户名 -->
         <div class="my-info p-x-20x p-t-20x text-center">
             <img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{Session::get('user.icon')}}" width="64" height="64" alt="">
-            <div class="helveBold font-size-md p-t-5x">{{ Session::get('user.nickname') }}</div>
+            <div class="helveBold font-size-md p-t-5x name">{{ Session::get('user.nickname') }}</div>
             <hr class="hr-base m-x-20x">
         </div>
 
@@ -26,7 +26,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item @if('wishlist' == $title) active @endif ">
                     <a href="/wish">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                             <i class="iconfont icon-like font-size-lg p-r-10x"></i>
@@ -34,8 +34,8 @@
                         </div>
                     </a>
                 </li>
-                <li class="nav-item @if('Following' == $title) active @endif" >
-                    <a href="/follow">
+                <li class="nav-item @if('following' == $title) active @endif" >
+                    <a href="/following">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                             <i class="iconfont icon-follow font-size-lg p-r-10x"></i>
                             <span class="font-size-md">Following</span>
