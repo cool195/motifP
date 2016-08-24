@@ -25,8 +25,7 @@
                                         </span>
                                 </div>
 
-                                <a href="javascript:void(0)" class="btn btn-primary btn-lg btn-200 profile-uploadIcon">Replace
-                                    Profile Picture</a>
+                                <a href="javascript:void(0)" class="btn btn-primary btn-lg btn-200 profile-uploadIcon">Replace Profile Picture</a>
                                 {{--<div class="font-size-md p-y-10x font-size-md">Replace Profile Picture</div>--}}
                                 <hr class="hr-base m-x-20x">
                             </div>
