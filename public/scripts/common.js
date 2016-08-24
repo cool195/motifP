@@ -1384,6 +1384,7 @@
             .done(function(data) {
                 if(data.success) {
                     $('input[name="nick"]').attr('placeholder', data.data.nickname);
+                    $('.name').html(data.data.nickname);
                     $('input[name="nick"]').val('');
                 }
             })
