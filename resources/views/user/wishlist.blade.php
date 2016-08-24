@@ -4,7 +4,7 @@
     <div class="container">
         <div class="myHome-content">
             <!-- 左侧菜单 -->
-            @include('user.left')
+            @include('user.left', ['title' => 'wishlist'])
             <!-- 左侧内容 -->
             <div class="right">
                 <div class="rightContent">
