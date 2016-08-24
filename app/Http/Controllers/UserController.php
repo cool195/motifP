@@ -229,6 +229,8 @@ class UserController extends BaseController
                 $result = curl_exec($ch);
                 curl_close($ch);
                 //成功后删除头像目录
+                $icon = json_decode($result);
+                Session::put('user.icon',$icon->data->url);
                 Storage::deleteDirectory('avatar/' . Session::get('user.pin'));
                 return $result;
             } else {
