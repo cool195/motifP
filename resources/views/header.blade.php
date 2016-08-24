@@ -38,7 +38,7 @@
         </nav>
         <nav class="navbar-right">
             <ul class="nav navbar-primary">
-                <li class="nav-item p-x-10x"><a href="/user/profile" class="nav-link">{{Session::get('user.nickname')}}</a></li>
+                <li class="nav-item p-x-10x"><a href="/user/profile" class="nav-link name">{{Session::get('user.nickname')}}</a></li>
                 <li class="nav-item p-x-10x header-img">
                     <a href="/user/profile" class="nav-link">
                         <img class="img-circle"
