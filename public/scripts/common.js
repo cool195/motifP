@@ -1397,18 +1397,21 @@
         formData.append('_token',$('input[name="_token"]').val());
         formData.append('file', file);
 
-        xhr.upload.addEventListener("progress", function (evt) {
-            if (evt.lengthComputable) {
-                var percentComplete = Math.round(evt.loaded * 100 / evt.total);
-                console.log(percentComplete);
+        // xhr.upload.addEventListener("progress", function (evt) {
+        //     if (evt.lengthComputable) {
+        //         var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+        //         console.log(percentComplete);
+        //     }
+        //
+        // }, false);//进度
+        xhr.addEventListener("load", function (e) {
+            var obj = JSON.parse(e.currentTarget.response);
+            if(obj.success){
+                $('#avatarUrl').attr('src',$('#avatarUrl').data('url')+'/n1/'+obj.data.url);
             }
-
-        }, false);//进度
-        xhr.addEventListener("load", function () {
-            console.log('ok');
         }, false); // 处理上传完成
-        xhr.addEventListener("error", function () {
-            console.log('error');
+        xhr.addEventListener("error", function (e) {
+            console.log(e);
         }, false); // 处理上传失败
 
         xhr.open('post', '/user/uploadicon');
