@@ -245,12 +245,15 @@ class UserController extends BaseController
         $params = array(
             'cmd' => 'list',
             'num' => $request->input('num', 1),
-            'size' => $request->input('size', 500),
+            'size' => $request->input('size', 9),
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token')
         );
         $result = $this->request('wishlist', $params);
-        return $result;
+        if($request->input('ajax')){
+            return $result;
+        }
+        return View('user.wishlist', ['data' => $result['data']]);
     }
 
     //我收藏的商品
