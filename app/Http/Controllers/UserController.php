@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Cache;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends BaseController
 {
@@ -40,7 +41,7 @@ class UserController extends BaseController
 
     public function login(Request $request)
     {
-        if(Session::has('user')){
+        if (Session::has('user')) {
             //return redirect('daily');
         }
 
@@ -75,8 +76,8 @@ class UserController extends BaseController
 
     public function reset(Request $request)
     {
-        if($request->input('pw')) {
-            if($request->input('pw') != $request->input('lastpw')) {
+        if ($request->input('pw')) {
+            if ($request->input('pw') != $request->input('lastpw')) {
                 return array('success' => false, 'error_msg' => 'Passwords do not match');
             }
             $params = array(
@@ -87,7 +88,7 @@ class UserController extends BaseController
                 'token' => self::Token
             );
             $result = $this->request('user', $params);
-            $result['redirectUrl'] ="/login";
+            $result['redirectUrl'] = "/login";
             return $result;
         } else {
             return view('user.resetpassword', ['tp' => $request->input('tp'), 'sig' => $request->input('sig')]);
@@ -211,18 +212,33 @@ class UserController extends BaseController
     public function uploadIcon(Request $request)
     {
         if ($request->hasFile('file')) {
-            return $request->file('file')->getRealPath();
-        }else{
-            return 'error';
+            $API_URL = config('runtime.API_URL');
+            $url = $API_URL['api'] . '/user?cmd=uploadicon&pin=' . Session::get('user.pin') . '&token=' . Session::get('user.token');
+
+            $path = 'avatar/' . Session::get('user.pin') . '/' . $request->file('file')->getClientOriginalName();
+            //上传头像
+            if (Storage::put($path, file_get_contents($request->file('file')))) {
+                $post_data = array(
+                    "avatar" => new \CurlFile(storage_path('app/' . $path), $request->file('file')->getMimeType())
+                );
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                $result = curl_exec($ch);
+                curl_close($ch);
+                //成功后删除头像目录
+                Storage::deleteDirectory('avatar/' . Session::get('user.pin'));
+                return $result;
+            } else {
+                return ['success' => false];
+            }
+
+
         }
-        $params = array(
-            'cmd' => 'uploadicon',
-            'pin' => Session::get('user.pin'),
-            'token' => self::Token
-        );
-        $result = $this->request('user', $params);
-        return $result;
     }
+
 
     public function wish(Request $request)
     {
@@ -292,22 +308,21 @@ class UserController extends BaseController
         $result = $this->request('wishlist', $params);
         return $result['data']['isFC'];
     }
-    
+
     public function password()
     {
         return view('user.changepassword');
     }
-    
+
     public function address()
     {
         return view('user.address');
     }
-    
+
     public function profile()
     {
         return view('user.profile');
     }
-    
-    
+
 
 }
