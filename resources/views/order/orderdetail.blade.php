@@ -37,7 +37,7 @@
                     <div class="box-shadow bg-white m-b-20x">
                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
                             <div>
-                                <h5 class="sanBold font-size-md">Order Created: {{ $data['create_time'] }}</h5>
+                                <h5 class="sanBold font-size-md">{{ $data['status_info'] }}: {{ $data['create_time'] }}</h5>
                             </div>
                             <!-- 被取消订单 -->
                             <!--<span>-->

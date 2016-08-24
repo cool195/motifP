@@ -24,8 +24,7 @@
                                     <div class="box-shadow bg-white m-b-20x">
                                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
                                             <div>
-                                                <h5 class="sanBold font-size-md">Order
-                                                    Created: {{$subOrder['create_time']}}</h5>
+                                                <h5 class="sanBold font-size-md">{{$subOrder['status_info']}}: {{$subOrder['create_time']}}</h5>
                                                 <p class="m-b-0 p-t-5x">{{ $subOrder['status_explain'] }}</p>
                                             </div>
                                             <span>
