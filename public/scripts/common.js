@@ -731,6 +731,7 @@
 
     // 生成订单
     $('.btn-toCheckout').on('click', function () {
+        var paym = $(this).data('with');
         $.ajax({
                 url: '/order',
                 type: 'POST',
@@ -739,6 +740,7 @@
                     cps: $('input[name="ccps"]').val(),
                     remark: $('input[name="cremark"]').val(),
                     stype: $('input[name="shippingMethod"]:checked').val(),
+                    paym: paym
                 }
             })
             .done(function (data) {

@@ -147,8 +147,12 @@ Route::group(['middleware' => 'loginCheck'], function () {
     Route::get('/user/address', 'UserController@address');
 
     Route::get('/user/profile', 'UserController@profile');
-});
 
+    //钱海
+    Route::get('/qianhai', 'QianhaiController@index');
+});
+//钱海
+Route::post('/qianhai', 'QianhaiController@checkStatus');
 //User End
 
 

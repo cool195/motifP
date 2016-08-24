@@ -20,7 +20,7 @@ class OrderController extends BaseController
         if (!empty($result) && $result['success']) {
             $result = $this->resultJsonDecode($result);
         }
-        if($request->input('ajax')){
+        if ($request->input('ajax')) {
             return $result;
         }
         return view('order.orderlist', ['data' => $result['data']]);
@@ -67,7 +67,7 @@ class OrderController extends BaseController
         if (!empty($result) && $result['success']) {
             $result = $this->jsonDecodeOrderDetailResult($result);
         }
-        if ($request->input('ajax')){
+        if ($request->input('ajax')) {
             return $result;
         }
         return view('order.orderdetail', ['data' => $result['data']]);
@@ -98,16 +98,20 @@ class OrderController extends BaseController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'aid' => $request->input('aid'),
-            'paym' => "PayPal",
+            'paym' => $request->input('paym', "Oceanpay"),
             'cps' => $request->input('cps'),
             'remark' => $request->input('remark'),
             'stype' => $request->input('stype'),
-            'src' => "H5",
+            'src' => "PC",
             'ver' => 1
         );
         $result = $this->request("order", $params);
         if (!empty($result) && $result['success']) {
-            $result['redirectUrl'] = "/paypal?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
+            if ($params['paym'] == 'Oceanpay') {
+                $result['redirectUrl'] = "/qianhai?orderid=" . $result['data']['orderID'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
+            } else {
+                $result['redirectUrl'] = "/paypal?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
+            }
             return $result;
         } else {
             return $result;
