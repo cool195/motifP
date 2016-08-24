@@ -137,9 +137,9 @@ class DesignerController extends BaseController
             'cmd' => 'list',
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token'),
-            'num' => 1,
-            'size' => 500
-        );
+            'num' => $request->input('num', 1),
+            'size' => $request->input('size', 4)
+        ); 
         $result = $this->request('follow', $params);
         if($request->input('ajax')){
             return $result;

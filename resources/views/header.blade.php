@@ -28,7 +28,7 @@
                 <li class="nav-item dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu p-t-0">
                         @foreach($Category->getShoppingCategoryList() as $category)
                             <li class="dropdown-item"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
                         @endforeach
