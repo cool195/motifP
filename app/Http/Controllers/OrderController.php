@@ -14,7 +14,7 @@ class OrderController extends BaseController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'num' => $request->input("num", 1),
-            'size' => $size = $request->input("size", 500),
+            'size' => $size = $request->input("size", 10),
         );
         $result = $this->request('order', $params);
         if (!empty($result) && $result['success']) {
