@@ -151,7 +151,7 @@ class UserController extends BaseController
             'nick' => $request->input('nick'),
             'token' => $user['token']
         );
-        $result = $this->request('user', $params);
+        $this->updateUserInfo($params);
         $result['error_msg'] = "Modify Info Failed";
         if ($result['success']) {
             $result['prompt_msg'] = "Modify Info Success";
@@ -162,6 +162,12 @@ class UserController extends BaseController
             Session::forget('user');
             Session::put('user', $user);
         }
+        return $result;
+    }
+
+    private function updateUserInfo($params)
+    {
+        $result = $this->request('user', $params);
         return $result;
     }
 
@@ -230,7 +236,14 @@ class UserController extends BaseController
                 curl_close($ch);
                 //成功后删除头像目录
                 $icon = json_decode($result);
-                Session::put('user.icon',$icon->data->url);
+                $params = array(
+                    'cmd' => 'modify',
+                    'pin' => Session::get('user.pin'),
+                    'token' => Session::get('user.token'),
+                    'icon' => $icon->data->url
+                );
+                $this->updateUserInfo($params);
+                Session::put('user.icon', $icon->data->url);
                 Storage::deleteDirectory('avatar/' . Session::get('user.pin'));
                 return $result;
             } else {
@@ -252,7 +265,7 @@ class UserController extends BaseController
             'token' => Session::get('user.token')
         );
         $result = $this->request('wishlist', $params);
-        if($request->input('ajax')){
+        if ($request->input('ajax')) {
             return $result;
         }
         return View('user.wishlist', ['data' => $result['data']]);
