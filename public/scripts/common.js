@@ -1399,7 +1399,9 @@
     }
 
     //上传头像
-    $('.profile-uploadIcon').click(function () {
+    $("#profileIcon").change(function(e){
+        $('.uploadProfile-loading').show();
+        $('.bg-uploadProfileLoading').css('display','block');
         var xhr = new XMLHttpRequest();
         var file = $('#profileIcon').get(0).files[0];
         var formData = new FormData();
@@ -1416,6 +1418,8 @@
         xhr.addEventListener("load", function (e) {
             var obj = JSON.parse(e.currentTarget.response);
             if (obj.success) {
+                $('.uploadProfile-loading').hide();
+                $('.bg-uploadProfileLoading').css('display','none');
                 $('#avatarUrl').attr('src', $('#avatarUrl').data('url') + '/n1/' + obj.data.url);
             }
         }, false); // 处理上传完成
