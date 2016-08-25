@@ -1853,7 +1853,7 @@
         loadingShow('.wish-loading', '.btn-seeMore-wishList');
 
         $.ajax({
-            url: 'wish',
+            url: '/wish',
             data: {
                 size: Size,
                 num: PageNum,
@@ -1875,7 +1875,6 @@
 
                 $('#wishlist-wookmark').imagesLoaded(function () {
                     loadingHide('.wish-loading', '.btn-seeMore-wishList');
-                    $('.isHidden').removeClass('isHidden');
                     new Wookmark('#wishlist-wookmark', {
                         container: $('#wishlist-wookmark'),
                         align: 'left',
@@ -1909,6 +1908,83 @@
     }
 
     //#end 个人中心 WishList
+
+    //#start 个人中心 Following
+    if ( $('.follow-item').length < 3){
+        $('.btn-seeMore-follow').hide();
+    }
+    $('.btn-seeMore-follow').on('click', function () {
+        $('img.img-lazy').each(function () {
+            var Src = $(this).attr('src'),
+                Original = $(this).attr('data.original');
+            if (Src === Original){
+                $(this).removeClass('img-lazy');
+            }
+        });
+        getFollowList();
+    });
+
+    //ajax 得到 Following List
+    function getFollowList(){
+        var $followListContainer = $('#followList-container'),
+            PageNum = $followListContainer.data('pagenum'),
+            Size = 4;
+        //判断是否还有数据要加载
+        if (PageNum === -1){
+            return;
+        }
+        //判断当前容器的数据是否正在加载中
+        if($followListContainer.data('loading') === true){
+            return;
+        }else{
+            $followListContainer.data('loading', true);
+        }
+        var NextFollowNum = ++PageNum;
+        loadingShow('follow-loading', 'btn-seeMore-follow');
+
+        $.ajax({
+            url: '/following',
+            data: {
+                size: Size,
+                num: PageNum,
+                ajax: 1
+            }
+        }).done(function (data) {
+            console.log(data.data);
+            if (data.data === null || data.data === ''){
+                $('.btn-seeMore-follow').hide();
+                $followListContainer.data('pagenum' , -1);
+            }else if (data.data.list.length === 0){
+                $('.btn-seeMore-follow').hide();
+                $followListContainer.data('pagenum' , -1);
+            }else {
+                //遍历模板 生成html插入页面
+                appendFollowList(data.data);
+
+                $followListContainer.data('pagenum', NextFollowNum);
+                loadingHide('follow-loading', 'btn-seeMore-follow');
+                // 图片延迟加载
+                $('img.img-lazy').lazyload({
+                    threshold: 200,
+                    effect: 'fadeIn'
+                })
+            }
+        }).always(function () {
+            $followListContainer.data('loading', false);
+        });
+    }
+    function appendFollowList(followList){
+        var followListNum = $('.follow-item').length;
+        if (followListNum === 0){
+            /*插入following为空时的模板*/
+        }
+        var TplHtml = template('tpl-follow', followList);
+        var StageCache = $.parseHTML(TplHtml);
+        $('#followList-container').find('.row').append(StageCache);
+    }
+
+    //#end 个人中心 Following
+
 
 })(jQuery, Swiper);
 
