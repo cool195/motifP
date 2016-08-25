@@ -14,7 +14,7 @@
                         <!-- 商品 -->
                         @if(!empty($data['list']))
                             @foreach($data['list'] as $wish)
-                                <li class="isHidden">
+                                <li>
                                     <div class="wishlist-item daily-item">
                                         <a href="/product/{{$wish['spu']}}">
                                             <img src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
@@ -38,8 +38,8 @@
                         @endif
                     </ul>
 
-                    <div class="text-center m-y-30x btn-seeMore-wishList">
-                        <a class="btn btn-block btn-gray btn-lg btn-380" href="javascript:void(0)">See more
+                    <div class="text-center m-y-30x  wishList-seeMore">
+                        <a class="btn btn-block btn-gray btn-lg btn-380 btn-seeMore-wishList" href="javascript:void(0)">See more
                             of all</a>
                     </div>
                     <div class="loading wish-loading" style="display: none">
@@ -54,7 +54,7 @@
 
 <template id="tpl-wish">
     @{{ each list }}
-    <li class="isHidden">
+    <li>
         <div class="wishlist-item daily-item">
             <a href="/product/@{{ $value.spu }}">
                 <img src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"

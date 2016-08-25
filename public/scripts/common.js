@@ -1675,13 +1675,6 @@
 
     //点击 查看更多商品
     $('.btn-seeMore-dailyList').on('click', function () {
-        $('img.img-lazy').each(function () {
-            var Src = $(this).attr('src'),
-                Original = $(this).attr('data-original');
-            if (Src === Original){
-                $(this).removeClass('img-lazy');
-            }
-        });
         getDailyList();
     });
 
@@ -1691,7 +1684,7 @@
         //  Size 当前页显示条数
         var $DailyListContainer = $('#dailyList-container'),
             PageNum = $DailyListContainer.data('pagenum'),
-            Size = 2;
+            Size = 20;
         //判断是否还有数据要加载
         if (PageNum === -1){
             return;
@@ -1737,11 +1730,6 @@
                         offset: 0,
                         itemWidth: 272
                     });
-                });
-                // 图片延迟加载
-                $('img.img-lazy').lazyload({
-                    threshold: 1000,
-                    effect: 'fadeIn'
                 });
             }
         }).always(function () {
@@ -1870,7 +1858,6 @@
                 num: PageNum,
                 ajax: 1
             }
-
         }).done(function (data) {
             if (data.data === null || data.data === ''){
                 loadingAndSeemoreHide('.wish-loading', '.btn-seeMore-wishList');
@@ -1915,7 +1902,6 @@
             /* 在此处插入 wishlist 列表为空 时的模板*/
 
         }
-
         var TplHtml = template('tpl-wish', WishList);
         var StageCache = $.parseHTML(TplHtml);
         $('#wishList-container').find('#wishlist-wookmark').append(StageCache);
