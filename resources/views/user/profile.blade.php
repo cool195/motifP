@@ -26,16 +26,6 @@
                                         <div class="loader"></div>
                                     </div>
                                 </div>
-                                
-                                {{--<div class="sanBold flex flex-alignCenter flex-justifyCenter m-b-20x">--}}
-                                    {{--<span class="font-size-md p-r-20x changeName-title">Icon</span>--}}
-                                    {{--<span class="changePwd-input">--}}
-                                        {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
-                                        {{--<input id="profileIcon" type="file" name="file" class="form-control contrlo-lg text-primary">--}}
-                                    {{--</span>--}}
-                                {{--</div>--}}
-
-                                {{--<a href="javascript:void(0)" class="btn btn-primary btn-lg btn-200 profile-uploadIcon">Replace Profile Picture</a>--}}
                                 <div class="font-size-md p-y-10x font-size-md">Replace Profile Picture</div>
                                 <hr class="hr-base m-x-20x">
                             </div>
