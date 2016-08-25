@@ -57,6 +57,15 @@ class OrderController extends BaseController
 
     public function orderDetail(Request $request, $subno)
     {
+        $result = $this->getOrderDetail($subno);
+        if ($request->input('ajax')) {
+            return $result;
+        }
+        return view('order.orderdetail', ['data' => $result['data']]);
+    }
+
+    private function getOrderDetail($subno)
+    {
         $params = array(
             'cmd' => 'detail',
             'token' => Session::get('user.token'),
@@ -67,10 +76,7 @@ class OrderController extends BaseController
         if (!empty($result) && $result['success']) {
             $result = $this->jsonDecodeOrderDetailResult($result);
         }
-        if ($request->input('ajax')) {
-            return $result;
-        }
-        return view('order.orderdetail', ['data' => $result['data']]);
+        return $result;
     }
 
     private function jsonDecodeOrderDetailResult(Array $result)
@@ -89,6 +95,16 @@ class OrderController extends BaseController
             $result['data']['lineOrderList'] = $lineOrderList;
         }
         return $result;
+    }
+
+    public function orderConfirmed(Request $request)
+    {
+        $view = View('order.orderconfirmed');
+        if($request->has('orderid')){
+            $result = $this->getOrderDetail($request->input('orderid'));
+            $view = View('order.orderconfirmed', ['order' => $result['data']]);
+        }
+        return $view;
     }
 
     public function orderSubmit(Request $request)
