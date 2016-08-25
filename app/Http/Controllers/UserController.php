@@ -151,7 +151,7 @@ class UserController extends BaseController
             'nick' => $request->input('nick'),
             'token' => $user['token']
         );
-        $this->updateUserInfo($params);
+        $result = $this->request('user', $params);
         $result['error_msg'] = "Modify Info Failed";
         if ($result['success']) {
             $result['prompt_msg'] = "Modify Info Success";
