@@ -4,17 +4,23 @@
 
 (function ($, Swiper) {
 
+    // 公共方法 : 图片加载loading动画 与 see more 按钮 的显示和隐藏
+    function loadingShow(loadingName, seemoreName){
+        $(loadingName).show();
+        $(seemoreName).hide();
+    }
+    function loadingHide(loadingName, seemoreName){
+        $(loadingName).hide();
+        $(seemoreName).show();
+    }
+    function loadingAndSeemoreHide(loadingName, seemoreName){
+        $(loadingName).hide();
+        $(seemoreName).hide();
+    }
+
+
+
     // ShoppingDetail.html
-
-    // 加载动画显示
-    function loadingShow(CurrentTab) {
-        $('.loading').show();
-    }
-
-    // 加载动画隐藏
-    function loadingHide(CurrentTab) {
-        $('.loading').hide();
-    }
 
     // 初始化商品图片列表 Swiper
     try {
@@ -196,7 +202,8 @@
                 }
                 $('#addQtySku').addClass('disabled');
             } else if (skuQty > product_stock_qtty && $(this).data('num') > 0) {
-                AddItemFailModal.open();
+                //alert('库存不足');
+                $('#addQtySku').addClass('disabled');
             }
             if (skuQty <= 1) {
                 !$('#delQtySku').hasClass('disabled') ? $('#delQtySku').addClass('disabled') : false;
@@ -1190,7 +1197,7 @@
         } else {
             $('div[data-role="register-submit"]').addClass('disabled');
         }
-    })
+    });
 
     $('.register-pw').on('keyup blur', function () {
         if (login_validationPassword($(this)) && register_validationNick($('.register-nick')) && login_validationEmail($('.register-email'))) {
@@ -1198,7 +1205,7 @@
         } else {
             $('div[data-role="register-submit"]').addClass('disabled');
         }
-    })
+    });
 
     $('[data-role="register-submit"]').on('click', function () {
         console.info('Register');
@@ -1258,7 +1265,7 @@
         } else {
             $('div[data-role="reset-submit"]').addClass('disabled');
         }
-    })
+    });
 
     $('.reset-lastpw').on('keyup blur', function () {
         var newPwd = $('input[name="pw"]').val(),
@@ -1268,7 +1275,7 @@
         } else {
             $('div[data-role="reset-submit"]').addClass('disabled');
         }
-    })
+    });
 
 
     $('[data-role="reset-submit"]').on('click', function () {
@@ -1427,31 +1434,17 @@
         } else {
             $('.profile-save').removeClass('disabled');
         }
-    })
+    });
 
     $('.profile-save').on('click', function(event) {
         if(!$(event.target).hasClass('disabled')){
             profile_updateUser();
         }
-    })
+    });
 
     //User Profile End
 
     //Designer Start
-
-    // 商品图片加载 loading
-    // 加载动画显示
-    function designerList_loadingShow() {
-        $('.designer-loading').show();
-        $('.designerList-seeMore').hide();
-    }
-
-    // 加载动画隐藏
-    function designerList_loadingHide() {
-        $('.designer-loading').hide();
-        $('.designerList-seeMore').show();
-    }
-
     // ajax 加载 设计师信息
     function designer_getDesignerList() {
         var $DesignerContainer = $('#designerContainer'),
@@ -1468,8 +1461,8 @@
         } else {
             $DesignerContainer.data('loading', true);
         }
-
-        designerList_loadingShow();
+        // 加载动画loading 显示
+        loadingShow('.designer-loading', '.designerList-seeMore');
         $.ajax({
             url: '/designer',
             data:{
@@ -1507,13 +1500,14 @@
             })
             .always(function () {
                 $DesignerContainer.data('loading', false);
-                designerList_loadingHide();
+                // 加载动画loading 隐藏
+                loadingHide('.designer-loading', '.designerList-seeMore');
             });
 
     }
 
     function initSwiper() {
-        var designerSwiper = new Swiper('.swiper-container', {
+        new Swiper('.swiper-container', {
             freeMode: true,
             slidesPerView: 'auto',
             freeModeMomentumRatio: .5
@@ -1562,14 +1556,14 @@
         var $this = $(this);
         $.ajax({
                 url: '/follow/' + $this.data('did'),
-                type: 'GET',
+                type: 'GET'
             })
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
                 }
             });
-    })
+    });
 
     //Designer End
 
@@ -1604,19 +1598,6 @@
 
     // Shopping List
 
-    // 商品图片加载 loading
-    // 加载动画显示
-    function productList_loadingShow() {
-        $('.product-loading').show();
-        $('.productList-seeMore').hide();
-    }
-
-    // 加载动画隐藏
-    function productList_loadingHide() {
-        $('.product-loading').hide();
-        $('.productList-seeMore').show();
-    }
-
     // 点击 查看更多商品
     $('.btn-seeMore').on('click', function () {
         $('img.img-lazy').each(function () {
@@ -1649,10 +1630,8 @@
         } else {
             $ProductListontainer.data('loading', true);
         }
-
         var NextProductNum = ++Pagenum;
-
-        productList_loadingShow();
+        loadingShow('.product-loading', '.productList-seeMore');
         $.ajax({
             url: '/products',
             data: {
@@ -1681,7 +1660,7 @@
             }
         }).always(function () {
             $ProductListontainer.data('loading', false);
-            productList_loadingHide();
+            loadingHide('.product-loading', '.productList-seeMore');
         });
     }
 
@@ -1695,33 +1674,8 @@
 
     // Daily List
 
-    // 商品图片加载 loading
-    //加载动画显示
-    function dailyList_loadingShow(){
-        $('.daily-loading').show();
-        $('.dailyList-seeMore').hide();
-    }
-
-    //加载动画隐藏
-    function dailyList_loadingHide(){
-        $('.daily-loading').hide();
-        $('.dailyList-seeMore').show();
-    }
-
-    function loadingAndSeeMoreHide(){
-        $('.daily-loading').hide();
-        $('.dailyList-seeMore').hide();
-    }
-
     //点击 查看更多商品
     $('.btn-seeMore-dailyList').on('click', function () {
-        $('img.img-lazy').each(function () {
-            var Src = $(this).attr('sec'),
-                Original = $(this).attr('data-original');
-            if (Src === Original){
-                $(this).removeClass('img-lazy');
-            }
-        });
         getDailyList();
     });
 
@@ -1731,10 +1685,9 @@
         //  Size 当前页显示条数
         var $DailyListContainer = $('#dailyList-container'),
             PageNum = $DailyListContainer.data('pagenum'),
-            Size = 2;
+            Size = 20;
         //判断是否还有数据要加载
         if (PageNum === -1){
-
             return;
         }
 
@@ -1746,8 +1699,8 @@
         }
 
         var NextDailyNum = ++PageNum;
+        loadingShow('.daily-loading', '.dailyList-seeMore');
         //参数：pagesize 页面大小， pagenum,当前页面 ， ajax:1必传
-        dailyList_loadingShow();
         $.ajax({
             url: '/daily',
             data: {
@@ -1758,10 +1711,10 @@
         }).done(function (data) {
 
             if (data.data === null || data.data === ''){
-                loadingAndSeeMoreHide();
+                loadingAndSeemoreHide('.daily-loading', '.dailyList-seeMore');
                 $DailyListContainer.data('pagenum', -1);
             }else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
-                loadingAndSeeMoreHide();
+                loadingAndSeemoreHide('.daily-loading', '.dailyList-seeMore');
                 $DailyListContainer.data('pagenum', -1);
             }else{
                 // 遍历模板 插入页面
@@ -1770,7 +1723,7 @@
                 $DailyListContainer.data('pagenum', NextDailyNum);
 
                 $('#daily-wookmark').imagesLoaded(function(){
-                    dailyList_loadingHide();
+                    loadingHide('.daily-loading', '.dailyList-seeMore');
                     $('.isHidden').removeClass('isHidden');
                     var wookmark1 = new Wookmark('#daily-wookmark', {
                         container: $('#daily-wookmark'),
@@ -1778,11 +1731,6 @@
                         offset: 0,
                         itemWidth: 272
                     });
-                });
-                // 图片延迟加载
-                $('img.img-lazy').lazyload({
-                    threshold: 1000,
-                    effect: 'fadeIn'
                 });
             }
         }).always(function () {
@@ -1799,25 +1747,13 @@
 
     $(function () {
         try {
-            dailyList_loadingShow();
+            loadingShow('.daily-loading', '.dailyList-seeMore');
         } catch (e) {
         }
     });
 
 
     // 个人中心 Order List start
-
-    // 加载动画显示
-    function orderList_loadingShow() {
-        $('.orderList-loading').show();
-        $('.orderList-seeMore').hide();
-    }
-
-    // 加载动画隐藏
-    function orderList_loadingHide() {
-        $('.orderList-loading').hide();
-        $('.orderList-seeMore').show();
-    }
 
     // 点击 查看更多 订单
     $('.orderList-seeMore').on('click', function () {
@@ -1846,7 +1782,7 @@
 
         var NextProductNum = ++Pagenum;
 
-        orderList_loadingShow();
+        loadingShow('.orderList-loading', '.orderList-seeMore');
         $.ajax({
             url: '/orderlist',
             data: {
@@ -1867,7 +1803,7 @@
             }
         }).always(function () {
             $OrderListContainer.data('loading', false);
-            orderList_loadingHide();
+            loadingHide('.orderList-loading', '.orderList-seeMore');
         });
     }
 
@@ -1880,6 +1816,99 @@
 
     // 个人中心 Order List end
 
+
+    //#start 个人中心 WishList
+
+    if ( $('.wishlist-item').length < 9){
+        $('.btn-seeMore-wishList').hide();
+    }
+    //点击查看更多商品
+    $('.btn-seeMore-wishList').on('click', function () {
+        $('img.img-lazy').each(function () {
+            var Src = $(this).attr('src'),
+                Original = $(this).attr('data.original');
+            if (Src === Original){
+                $(this).removeClass('img-lazy');
+            }
+        });
+       getWishList();
+    });
+
+    //ajax 得到 wish List
+    function getWishList(){
+        var $WishListContainer = $('#wishList-container'),
+            PageNum = $WishListContainer.data('pagenum'),
+            Size = 9;
+        //判断是否还有数据要加载
+        if (PageNum === -1){
+            return;
+        }
+        //判断当前容器的数据是否正在加载中
+        if ($WishListContainer.data('loading') === true){
+            return;
+        }else{
+            $WishListContainer.data('loading' , true);
+        }
+        var NextWishNum = ++PageNum;
+        loadingShow('.wish-loading', '.btn-seeMore-wishList');
+
+        $.ajax({
+            url: 'wish',
+            data: {
+                size: Size,
+                num: PageNum,
+                ajax: 1
+            }
+        }).done(function (data) {
+            if (data.data === null || data.data === ''){
+                loadingAndSeemoreHide('.wish-loading', '.btn-seeMore-wishList');
+                $WishListContainer.data('pagenum', -1);
+            }else if (data.data.list.length === 0 ){
+                loadingAndSeemoreHide('.wish-loading', '.btn-seeMore-wishList');
+                $WishListContainer.data('pagenum', -1);
+            }else{
+
+                // 遍历模板 插入数据
+                appendWishList(data.data);
+
+                $WishListContainer.data('pagenum', NextWishNum);
+
+                $('#wishlist-wookmark').imagesLoaded(function () {
+                    loadingHide('.wish-loading', '.btn-seeMore-wishList');
+                    $('.isHidden').removeClass('isHidden');
+                    new Wookmark('#wishlist-wookmark', {
+                        container: $('#wishlist-wookmark'),
+                        align: 'left',
+                        offset: 0,
+                        itemWidth: 285
+                    });
+                });
+
+                //图片延迟加载
+                $('img.img-lazy').lazyload({
+                    threshold: 1000,
+                    effect: 'fadeIn'
+                });
+
+            }
+        }).always(function () {
+            $WishListContainer.data('loading', false);
+        });
+    }
+
+    //遍历data 生成html 插入到页面
+    function appendWishList(WishList){
+        var wishlistNum = $('.wishlist-item').length;
+        if (wishlistNum === 0){
+            /* 在此处插入 wishlist 列表为空 时的模板*/
+
+        }
+        var TplHtml = template('tpl-wish', WishList);
+        var StageCache = $.parseHTML(TplHtml);
+        $('#wishList-container').find('#wishlist-wookmark').append(StageCache);
+    }
+
+    //#end 个人中心 WishList
 
 })(jQuery, Swiper);
 
