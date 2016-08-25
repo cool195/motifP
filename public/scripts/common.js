@@ -1542,7 +1542,7 @@
         var $this = $(this);
         $.ajax({
                 url: '/follow/' + $this.data('did'),
-                type: 'GET',
+                type: 'GET'
             })
             .done(function (data) {
                 if (data.success) {
@@ -1958,6 +1958,7 @@
                 $('.btn-seeMore-follow').hide();
                 $followListContainer.data('pagenum' , -1);
             }else {
+
                 //遍历模板 生成html插入页面
                 appendFollowList(data.data);
 
@@ -1982,6 +1983,18 @@
         var StageCache = $.parseHTML(TplHtml);
         $('#followList-container').find('.row').append(StageCache);
     }
+    $('#followList-container').on('click', '.btn-following', function () {
+        var $this = $(this);
+        $.ajax({
+                url: '/follow/' + $this.data('did'),
+                type: 'GET'
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $this.toggleClass('active');
+                }
+            });
+    });
 
     //#end 个人中心 Following
 
