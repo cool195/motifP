@@ -202,7 +202,8 @@
                 }
                 $('#addQtySku').addClass('disabled');
             } else if (skuQty > product_stock_qtty && $(this).data('num') > 0) {
-                AddItemFailModal.open();
+                //alert('库存不足');
+                $('#addQtySku').addClass('disabled');
             }
             if (skuQty <= 1) {
                 !$('#delQtySku').hasClass('disabled') ? $('#delQtySku').addClass('disabled') : false;
