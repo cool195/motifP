@@ -49,8 +49,7 @@
                                 @endforeach
                             @endif
                         </div>
-                        <div class="swiper-button-next"><i
-                                    class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
+                        <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
                         <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i>
                         </div>
                     </div>
@@ -92,12 +91,11 @@
                             <fieldset class="text-left m-b-20x">
                                 <div class="text-primary font-size-md flex">
                                     <span class="p-r-20x">{{$spuAttr['attr_type_value']}}:</span>
-                                  <span class="warning-info flex flex-alignCenter text-warning off"
+                                    <span class="warning-info flex flex-alignCenter text-warning off"
                                         id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
-                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                    <span class="font-size-base">{{'Please select '.$spuAttr['attr_type_value']}}
-                                        !</span>
-                                  </span>
+                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                        <span class="font-size-base">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
+                                    </span>
                                 </div>
                                 <div class="m-l-15x">
                                     <div class="option-item">

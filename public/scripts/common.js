@@ -1555,7 +1555,7 @@
         var $this = $(this);
         $.ajax({
                 url: '/follow/' + $this.data('did'),
-                type: 'GET',
+                type: 'GET'
             })
             .done(function (data) {
                 if (data.success) {
@@ -1953,7 +1953,7 @@
             $followListContainer.data('loading', true);
         }
         var NextFollowNum = ++PageNum;
-        loadingShow('follow-loading', 'btn-seeMore-follow');
+        loadingShow('.follow-loading', '.btn-seeMore-follow');
 
         $.ajax({
             url: '/following',
@@ -1963,19 +1963,19 @@
                 ajax: 1
             }
         }).done(function (data) {
-            console.log(data.data);
             if (data.data === null || data.data === ''){
-                $('.btn-seeMore-follow').hide();
+                loadingAndSeemoreHide('.follow-loading', '.btn-seeMore-follow');
                 $followListContainer.data('pagenum' , -1);
             }else if (data.data.list.length === 0){
-                $('.btn-seeMore-follow').hide();
+                loadingAndSeemoreHide('.follow-loading', '.btn-seeMore-follow');
                 $followListContainer.data('pagenum' , -1);
             }else {
+
                 //遍历模板 生成html插入页面
                 appendFollowList(data.data);
 
                 $followListContainer.data('pagenum', NextFollowNum);
-                loadingHide('follow-loading', 'btn-seeMore-follow');
+                loadingHide('.follow-loading', '.btn-seeMore-follow');
                 // 图片延迟加载
                 $('img.img-lazy').lazyload({
                     threshold: 200,
@@ -1995,6 +1995,18 @@
         var StageCache = $.parseHTML(TplHtml);
         $('#followList-container').find('.row').append(StageCache);
     }
+    $('#followList-container').on('click', '.btn-following', function () {
+        var $this = $(this);
+        $.ajax({
+                url: '/follow/' + $this.data('did'),
+                type: 'GET'
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $this.toggleClass('active');
+                }
+            });
+    });
 
     //#end 个人中心 Following
 
