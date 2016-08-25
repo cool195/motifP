@@ -52,7 +52,7 @@
                             <li class="p-t-10x"><a class="p-l-15x" href="/orderlist">Orders</a></li>
                             <li class="p-t-5x"><a class="p-l-15x" href="/cart">My Bag</a></li>
                             <li class="p-t-5x"><a class="p-l-15x" href="/wish">Wishlist</a></li>
-                            <li class="p-t-5x"><a class="p-l-15x" href="/follow">Following</a></li>
+                            <li class="p-t-5x"><a class="p-l-15x" href="/following">Following</a></li>
                             <li class="p-t-5x"><a class="p-l-15x" href="/user/profile">Settings</a></li>
                             <li class="p-y-5x p-b-10x"><a class="p-l-15x" href="/signout">Log out</a></li>
                         </ul>
