@@ -5,19 +5,20 @@
 (function ($, Swiper) {
 
     // 公共方法 : 图片加载loading动画 与 see more 按钮 的显示和隐藏
-    function loadingShow(loadingName, seemoreName){
+    function loadingShow(loadingName, seemoreName) {
         $(loadingName).show();
         $(seemoreName).hide();
     }
-    function loadingHide(loadingName, seemoreName){
+
+    function loadingHide(loadingName, seemoreName) {
         $(loadingName).hide();
         $(seemoreName).show();
     }
-    function loadingAndSeemoreHide(loadingName, seemoreName){
+
+    function loadingAndSeemoreHide(loadingName, seemoreName) {
         $(loadingName).hide();
         $(seemoreName).hide();
     }
-
 
 
     // ShoppingDetail.html
@@ -46,14 +47,14 @@
     }
 
     // 点击选择图片
-/*    $('.productImg-item img').on('click', function () {
-        if (!$(this).hasClass('active')) {
-            var ImgUrl = $(this).attr('src');
-            $('.productImg-item img').removeClass('active');
-            $(this).addClass('active');
-            $('.product-bigImg').attr('src', ImgUrl);
-        }
-    });*/
+    /*    $('.productImg-item img').on('click', function () {
+     if (!$(this).hasClass('active')) {
+     var ImgUrl = $(this).attr('src');
+     $('.productImg-item img').removeClass('active');
+     $(this).addClass('active');
+     $('.product-bigImg').attr('src', ImgUrl);
+     }
+     });*/
 
     // 选择 商品属性
     var product_data = eval('(' + $('#jsonStr').val() + ')')
@@ -327,15 +328,15 @@
 
     });
 
-    $('#productList-container').on('click', '.btn-wishList', function(e) {
-       var $this = $(e.target);
-       var spu = $this.data('spu');
+    $('#productList-container').on('click', '.btn-wishList', function (e) {
+        var $this = $(e.target);
+        var spu = $this.data('spu');
         $.ajax({
-            url: '/wishlist/' + spu,
-            type: 'GET',
-        })
+                url: '/wishlist/' + spu,
+                type: 'GET',
+            })
             .done(function (data) {
-                if(data.success) {
+                if (data.success) {
                     $this.toggleClass('active');
                 }
             })
@@ -775,14 +776,14 @@
             .done(function (data) {
                 if (data.success) {
                     appendAddressList(data.data);
-                    if($('.address-item').length ===1){
-                        $.each(data.data.list ,function (n, value){
-                            var country=value['country'],
-                                city=value['city'],
-                                detail_address1=value['detail_address1'],
-                                zip=value['zip'],
-                                name=value['name'];
-                            $('#defaultAddr').html(country + " " + city+" " + detail_address1 + " " + zip + " " + name);
+                    if ($('.address-item').length === 1) {
+                        $.each(data.data.list, function (n, value) {
+                            var country = value['country'],
+                                city = value['city'],
+                                detail_address1 = value['detail_address1'],
+                                zip = value['zip'],
+                                name = value['name'];
+                            $('#defaultAddr').html(country + " " + city + " " + detail_address1 + " " + zip + " " + name);
                             $('#defaultAddr').data('city', city);
                             $('#defaultAddr').data('aid', value['receiving_id']);
                             console.info(value['country']);
@@ -1302,7 +1303,7 @@
                 if (data.success) {
                     alert(data.prompt_msg);
                     window.location.href = data.redirectUrl;
-                }else{
+                } else {
                     //$('.warning-info').removeClass('off');
                     //$('.warning-info').children('span').html(data.prompt_msg);
                 }
@@ -1352,46 +1353,44 @@
     //ChangePassword End
 
     //User Address Start
-    function address_delete($addressItem)
-    {
+    function address_delete($addressItem) {
         $.ajax({
-            url: '/address/' + $addressItem.data('aid'),
-            type: 'delete',
-            data: {}
-        })
-            .done(function(data) {
-                if(data.success) {
+                url: '/address/' + $addressItem.data('aid'),
+                type: 'delete',
+                data: {}
+            })
+            .done(function (data) {
+                if (data.success) {
                     DelAddressModal.close();
                     $addressItem.parents('.col-md-6').remove();
                 }
             })
     }
 
-    $('.btn-delAddress').on('click', function() {
+    $('.btn-delAddress').on('click', function () {
         var addressId = $(this).parent().data('aid');
         $('[data-remodal-id="addressmodal-modal"]').data('addressid', addressId);
         DelAddressModal.open();
     });
 
     // 删除 地址
-    $('.delAddress').on('click',function(){
-        var DelAddressId=$('[data-remodal-id="addressmodal-modal"]').data('addressid');
-        var $DelAddressItem=$('[data-aid="'+ DelAddressId +'"]');
+    $('.delAddress').on('click', function () {
+        var DelAddressId = $('[data-remodal-id="addressmodal-modal"]').data('addressid');
+        var $DelAddressItem = $('[data-aid="' + DelAddressId + '"]');
         address_delete($DelAddressItem);
     });
 
     //User Address End
 
     //User Profile Start
-    function profile_updateUser()
-    {
+    function profile_updateUser() {
         $.ajax({
-            url: '/user/modify',
-            type: 'post',
-            data: $('#changeProfile').serialize()
-        })
-            .done(function(data) {
-                if(data.success) {
+                url: '/user/modify',
+                type: 'post',
+                data: $('#changeProfile').serialize()
+            })
+            .done(function (data) {
+                if (data.success) {
                     $('input[name="nick"]').attr('placeholder', data.data.nickname);
                     $('.name').html(data.data.nickname);
                     $('input[name="nick"]').val('');
@@ -1400,11 +1399,11 @@
     }
 
     //上传头像
-    $('.profile-uploadIcon').click(function(){
+    $('.profile-uploadIcon').click(function () {
         var xhr = new XMLHttpRequest();
         var file = $('#profileIcon').get(0).files[0];
         var formData = new FormData();
-        formData.append('_token',$('input[name="_token"]').val());
+        formData.append('_token', $('input[name="_token"]').val());
         formData.append('file', file);
 
         // xhr.upload.addEventListener("progress", function (evt) {
@@ -1416,8 +1415,8 @@
         // }, false);//进度
         xhr.addEventListener("load", function (e) {
             var obj = JSON.parse(e.currentTarget.response);
-            if(obj.success){
-                $('#avatarUrl').attr('src',$('#avatarUrl').data('url')+'/n1/'+obj.data.url);
+            if (obj.success) {
+                $('#avatarUrl').attr('src', $('#avatarUrl').data('url') + '/n1/' + obj.data.url);
             }
         }, false); // 处理上传完成
         xhr.addEventListener("error", function (e) {
@@ -1428,16 +1427,16 @@
         xhr.send(formData);
     });
 
-    $('input[name="nick"]').on('keyup', function() {
-        if("" === $(this).val()) {
+    $('input[name="nick"]').on('keyup', function () {
+        if ("" === $(this).val()) {
             $('.profile-save').addClass('disabled');
         } else {
             $('.profile-save').removeClass('disabled');
         }
     });
 
-    $('.profile-save').on('click', function(event) {
-        if(!$(event.target).hasClass('disabled')){
+    $('.profile-save').on('click', function (event) {
+        if (!$(event.target).hasClass('disabled')) {
             profile_updateUser();
         }
     });
@@ -1464,13 +1463,13 @@
         // 加载动画loading 显示
         loadingShow('.designer-loading', '.designerList-seeMore');
         $.ajax({
-            url: '/designer',
-            data:{
-                start: Start,
-                size: Size,
-                ajax: 1
-            }
-        })
+                url: '/designer',
+                data: {
+                    start: Start,
+                    size: Size,
+                    ajax: 1
+                }
+            })
             .done(function (data) {
                 if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '') {
                     $DesignerContainer.data('start', -1);
@@ -1486,6 +1485,16 @@
                         $DesignerContainer.data('start', -1);
                     } else {
                         $DesignerContainer.data('start', StartNum);
+                    }
+
+                    // 视频区域高度
+                    var MediaScale = 9 / 16;
+                    var Width = $('.player-media').width(),
+                        MediaHeight = Width * MediaScale;
+                    if ($('.ytplayer').length > 0) {
+                        // 初始化 外边框尺寸
+                        $('.designer-media').css('height', MediaHeight);
+                        $('.designer-beginPlayer').css('display', 'block');
                     }
 
                     // 初始化 swiper
@@ -1516,10 +1525,10 @@
 
     // 渲染 html 模版
     function designer_appendDesignerList(designerList) {
-        var number=$('.designerList-item').length;
-        if(number % 2 === 0){
+        var number = $('.designerList-item').length;
+        if (number % 2 === 0) {
             var tplHtml = template('tpl-designerList-even', designerList);
-        }else {
+        } else {
             var tplHtml = template('tpl-designerList-odd', designerList);
         }
         var stageCache = $.parseHTML(tplHtml);
@@ -1527,7 +1536,7 @@
     }
 
     // 点击查看更多 designer 信息
-    $('.designerList-seeMore').on('click', function() {
+    $('.designerList-seeMore').on('click', function () {
         $('img.img-lazy').each(function () {
             var Src = $(this).attr('src'),
                 Original = $(this).attr('data-original');
@@ -1537,8 +1546,8 @@
         });
         designer_getDesignerList();
     });
-    
-    $('.btn-follow').on('click', function() {
+
+    $('.btn-follow').on('click', function () {
         var $this = $(this);
         $.ajax({
                 url: '/follow/' + $this.data('did'),
@@ -1552,7 +1561,7 @@
 
     });
 
-    $('#designerContainer').on('click', '.btn-following', function() {
+    $('#designerContainer').on('click', '.btn-following', function () {
         var $this = $(this);
         $.ajax({
                 url: '/follow/' + $this.data('did'),
@@ -1680,21 +1689,21 @@
     });
 
     // ajax 得到 daily List
-    function getDailyList(){
+    function getDailyList() {
         //  $DailyListContainer 列表容器
         //  Size 当前页显示条数
         var $DailyListContainer = $('#dailyList-container'),
             PageNum = $DailyListContainer.data('pagenum'),
             Size = 20;
         //判断是否还有数据要加载
-        if (PageNum === -1){
+        if (PageNum === -1) {
             return;
         }
 
         //判断当前容器的数据是否正在加载中
-        if ($DailyListContainer.data('loading') === true){
+        if ($DailyListContainer.data('loading') === true) {
             return;
-        }else{
+        } else {
             $DailyListContainer.data('loading', true);
         }
 
@@ -1710,19 +1719,19 @@
             }
         }).done(function (data) {
 
-            if (data.data === null || data.data === ''){
+            if (data.data === null || data.data === '') {
                 loadingAndSeemoreHide('.daily-loading', '.dailyList-seeMore');
                 $DailyListContainer.data('pagenum', -1);
-            }else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
+            } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
                 loadingAndSeemoreHide('.daily-loading', '.dailyList-seeMore');
                 $DailyListContainer.data('pagenum', -1);
-            }else{
+            } else {
                 // 遍历模板 插入页面
                 appendDailyList(data.data);
 
                 $DailyListContainer.data('pagenum', NextDailyNum);
 
-                $('#daily-wookmark').imagesLoaded(function(){
+                $('#daily-wookmark').imagesLoaded(function () {
                     loadingHide('.daily-loading', '.dailyList-seeMore');
                     $('.isHidden').removeClass('isHidden');
                     var wookmark1 = new Wookmark('#daily-wookmark', {
@@ -1739,7 +1748,7 @@
     }
 
     //遍历 data 生成html 插入到页面
-    function appendDailyList(DailysList){
+    function appendDailyList(DailysList) {
         var TplHtml = template('tpl-daily', DailysList);
         var StageCache = $.parseHTML(TplHtml);
         $('#dailyList-container').find('#daily-wookmark').append(StageCache);
@@ -1819,7 +1828,7 @@
 
     //#start 个人中心 WishList
 
-    if ( $('.wishlist-item').length < 9){
+    if ($('.wishlist-item').length < 9) {
         $('.btn-seeMore-wishList').hide();
     }
     //点击查看更多商品
@@ -1827,27 +1836,27 @@
         $('img.img-lazy').each(function () {
             var Src = $(this).attr('src'),
                 Original = $(this).attr('data.original');
-            if (Src === Original){
+            if (Src === Original) {
                 $(this).removeClass('img-lazy');
             }
         });
-       getWishList();
+        getWishList();
     });
 
     //ajax 得到 wish List
-    function getWishList(){
+    function getWishList() {
         var $WishListContainer = $('#wishList-container'),
             PageNum = $WishListContainer.data('pagenum'),
             Size = 9;
         //判断是否还有数据要加载
-        if (PageNum === -1){
+        if (PageNum === -1) {
             return;
         }
         //判断当前容器的数据是否正在加载中
-        if ($WishListContainer.data('loading') === true){
+        if ($WishListContainer.data('loading') === true) {
             return;
-        }else{
-            $WishListContainer.data('loading' , true);
+        } else {
+            $WishListContainer.data('loading', true);
         }
         var NextWishNum = ++PageNum;
         loadingShow('.wish-loading', '.btn-seeMore-wishList');
@@ -1860,13 +1869,13 @@
                 ajax: 1
             }
         }).done(function (data) {
-            if (data.data === null || data.data === ''){
+            if (data.data === null || data.data === '') {
                 loadingAndSeemoreHide('.wish-loading', '.btn-seeMore-wishList');
                 $WishListContainer.data('pagenum', -1);
-            }else if (data.data.list.length === 0 ){
+            } else if (data.data.list.length === 0) {
                 loadingAndSeemoreHide('.wish-loading', '.btn-seeMore-wishList');
                 $WishListContainer.data('pagenum', -1);
-            }else{
+            } else {
 
                 // 遍历模板 插入数据
                 appendWishList(data.data);
@@ -1896,9 +1905,9 @@
     }
 
     //遍历data 生成html 插入到页面
-    function appendWishList(WishList){
+    function appendWishList(WishList) {
         var wishlistNum = $('.wishlist-item').length;
-        if (wishlistNum === 0){
+        if (wishlistNum === 0) {
             /* 在此处插入 wishlist 列表为空 时的模板*/
 
         }
@@ -2002,7 +2011,6 @@
 })(jQuery, Swiper);
 
 
-
 //# sourceMappingURL=common.js.map
 //public start
 $.ajaxSetup({
@@ -2013,10 +2021,10 @@ $.ajaxSetup({
 //public end
 
 // 瀑布流
-if($('.isHidden').hasClass('isHidden')){
+if ($('.isHidden').hasClass('isHidden')) {
     $(function () {
         try {
-            $('#daily-wookmark').imagesLoaded(function() {
+            $('#daily-wookmark').imagesLoaded(function () {
                 $('.daily-loading').hide();
                 $('.dailyList-seeMore').show();
 
@@ -2060,3 +2068,124 @@ window.onload = function () {
     catch (e) {
     }
 };
+
+
+// youtube 视频加载 start
+// 视频播放
+function onPlayerReady(event) {
+    event.target.playVideo();
+    //event.target.mute();  // 设置静音
+}
+
+// 视频播放失败
+function onPlayerError(event) {
+    event.target.playVideo();
+}
+
+// youtube 视频播放
+// 视频比例
+var MediaScale = 9 / 16;
+var $ClickPlayer;
+
+var Width = $('.player-media').width(),
+    MediaHeight = Width * MediaScale;
+
+if ($('.ytplayer').length > 0) {
+    // 初始化 外边框尺寸
+    $('.designer-media').css('height', MediaHeight);
+
+    // 加载视频
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/player_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+}
+var player;
+// daily 页面
+$('.daily-content').on('click', '.bg-player', function () {
+    var PlayId = $(this).siblings('.ytplayer').data('playid');
+    player = new YT.Player(PlayId, {
+        height: MediaHeight,
+        width: Width,
+        videoId: PlayId,
+        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
+        events: {
+            'onReady': onPlayerReady,
+            'onError': onPlayerError
+        }
+    });
+
+    $ClickPlayer = $(this);
+    $(this).css('display', 'none');
+    $(this).children('.bg-img').hide();
+    $(this).children('.btn-beginPlayer').hide();
+    //$(this).siblings('.btn-morePlayer').show();
+    $(this).parents('.player-item').addClass('active');
+});
+
+// designer 页面
+$('#designerContainer').on('click', '.bg-player', function () {
+    var PlayId = $(this).siblings('.ytplayer').data('playid');
+    player = new YT.Player(PlayId, {
+        height: MediaHeight,
+        width: Width,
+        videoId: PlayId,
+        playerVars: {'autoplay': 1},
+        events: {
+            'onReady': onPlayerReady,
+            'onError': onPlayerError
+        }
+    });
+
+    $ClickPlayer = $(this);
+    $(this).css('display', 'none');
+    $(this).children('.bg-img').hide();
+    $(this).children('.btn-beginPlayer').hide();
+    //$(this).siblings('.btn-morePlayer').show();
+    $(this).parents('.player-item').addClass('active');
+});
+
+
+// 判断是否离开曝光
+$(document).on('scroll', function (event) {
+    var $PlayerItem = $('.player-item');
+    if ($PlayerItem.length !== 0) {
+        $.each($PlayerItem, function (index, element) {
+            if (switchPlayer(element) && $(element).hasClass('active')) {
+                var $Player = $(element),
+                    PlayerId = $Player.data('playid'),
+                    isAdd = false;
+                $Player.children('.bg-player').css('display', 'block');
+                $Player.children('.bg-player').children('.bg-img').css('display', 'block');
+                $Player.children('.bg-player').children('.btn-beginPlayer').css('display', 'block');
+                //$Player.children('.btn-morePlayer').css('display', 'none');
+                $Player.removeClass('active');
+                $Player.children('iframe').remove();
+                if (!isAdd) {
+                    $Player.prepend('<div id="' + PlayerId + '" class="ytplayer" data-playid="' + PlayerId + '"></div>');
+                    isAdd = true;
+                }
+            }
+        });
+    }
+});
+
+// 判断视频是否在曝光处
+function switchPlayer(Player) {
+    // 当前视窗浏览位置
+    var CurrentPosition = $(window).scrollTop() + $(window).height();
+    // 元素本身聚顶部高度
+    var ItemPositionBottom = $(Player).offset().top;
+    // 如果是曝光项，加上本身的高度
+    // 完全出现在视窗内时，再曝光
+    var ItemPositionTop = ItemPositionBottom + $(Player).height();
+    // 判断是否在视窗内
+    if (ItemPositionBottom > CurrentPosition || ItemPositionTop < $(window).scrollTop()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// youtube 视频加载 end
