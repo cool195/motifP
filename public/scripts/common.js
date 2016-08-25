@@ -1949,7 +1949,7 @@
             $followListContainer.data('loading', true);
         }
         var NextFollowNum = ++PageNum;
-        loadingShow('follow-loading', 'btn-seeMore-follow');
+        loadingShow('.follow-loading', '.btn-seeMore-follow');
 
         $.ajax({
             url: '/following',
@@ -1959,12 +1959,11 @@
                 ajax: 1
             }
         }).done(function (data) {
-            console.log(data.data);
             if (data.data === null || data.data === ''){
-                $('.btn-seeMore-follow').hide();
+                loadingAndSeemoreHide('.follow-loading', '.btn-seeMore-follow');
                 $followListContainer.data('pagenum' , -1);
             }else if (data.data.list.length === 0){
-                $('.btn-seeMore-follow').hide();
+                loadingAndSeemoreHide('.follow-loading', '.btn-seeMore-follow');
                 $followListContainer.data('pagenum' , -1);
             }else {
 
@@ -1972,7 +1971,7 @@
                 appendFollowList(data.data);
 
                 $followListContainer.data('pagenum', NextFollowNum);
-                loadingHide('follow-loading', 'btn-seeMore-follow');
+                loadingHide('.follow-loading', '.btn-seeMore-follow');
                 // 图片延迟加载
                 $('img.img-lazy').lazyload({
                     threshold: 200,
