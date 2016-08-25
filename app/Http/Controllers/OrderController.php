@@ -100,8 +100,8 @@ class OrderController extends BaseController
     public function orderConfirmed(Request $request)
     {
         $view = View('order.orderconfirmed');
-        if($request->has('orderId')){
-            $result = $this->getOrderDetail($request->input('orderId'));
+        if($request->has('orderid')){
+            $result = $this->getOrderDetail($request->input('orderid'));
             $view = View('order.orderconfirmed', ['order' => $result['data']]);
         }
         return $view;
