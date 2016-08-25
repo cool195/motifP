@@ -12,7 +12,7 @@
                         <div class="product-bigImg">
                             <a href="javascript:void(0)">
                                 <img class="img-fluid product-bigImg img-lazy"
-                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['main_img_path']}}"
+                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}"
                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="商品的名称">
                             </a>
                         </div>
@@ -63,31 +63,35 @@
                 @foreach($product['infos'] as $k => $value)
                     @if(isset($value['spus']))
                         @foreach($value['spus'] as $spu)
-            <div class="col-md-3 col-xs-6">
-                <div class="productList-item">
-                    <div class="image-container">
-                        <a href="/product/{{$spu}}">
-                            <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{ $product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                 src="/images/product/bg-product@336.png" alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
-                            <div class="bg-heart"></div>
-                        </a>
-                        @if(Session::has('user'))
-                            <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($spu, $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i></span>
-                        @else
-                            <a class="product-heart btn-heart" href="/login"><i class="iconfont btn-wish font-size-lxx"></i></a>
-                        @endif
-                    </div>
-                    <div class="price-caption helveBold">
-                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{$product['spuInfos'][$spu]['spuBase']['main_title']}}</div>
-                        <div class="text-center">
-                            <span class="font-size-md text-primary p-r-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
-                            @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
-                                <span class="font-size-base text-common text-throughLine">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <div class="col-md-3 col-xs-6">
+                                <div class="productList-item">
+                                    <div class="image-container">
+                                        <a href="/product/{{$spu}}">
+                                            <img class="img-fluid img-lazy"
+                                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{ $product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                 src="/images/product/bg-product@336.png"
+                                                 alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                            <div class="bg-heart"></div>
+                                        </a>
+                                        @if(Session::has('user'))
+                                            <span class="product-heart btn-heart">
+                                                <i class="iconfont btn-wish font-size-lxx @if(in_array($spu, $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i>
+                                            </span>
+                                        @else
+                                            <a class="product-heart btn-heart" href="/login"><i class="iconfont btn-wish font-size-lxx"></i></a>
+                                        @endif
+                                    </div>
+                                    <div class="price-caption helveBold">
+                                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{$product['spuInfos'][$spu]['spuBase']['main_title']}}</div>
+                                        <div class="text-center">
+                                            <span class="font-size-md text-primary p-r-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
+                                            @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
+                                                <span class="font-size-base text-common text-throughLine">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     @endif
                 @endforeach
