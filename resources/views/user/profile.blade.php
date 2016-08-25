@@ -18,11 +18,10 @@
 
                                 <div class="sanBold flex flex-alignCenter flex-justifyCenter m-b-20x">
                                     <span class="font-size-md p-r-20x changeName-title">Icon</span>
-                                        <span class="changePwd-input">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input id="profileIcon" type="file" name="file"
-                                                   class="form-control contrlo-lg text-primary">
-                                        </span>
+                                    <span class="changePwd-input">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input id="profileIcon" type="file" name="file" class="form-control contrlo-lg text-primary">
+                                    </span>
                                 </div>
 
                                 <a href="javascript:void(0)" class="btn btn-primary btn-lg btn-200 profile-uploadIcon">Replace Profile Picture</a>
@@ -48,7 +47,7 @@
                         </div>
                         <div class="text-right p-x-30x p-y-10x">
                             {{--<a href="javascript:void(0)" class="text-primary font-size-md p-r-30x">Cancel</a>--}}
-                            <a href="javascript:void(0)" class="btn btn-primary btn-lg btn-200 profile-save">Save</a>
+                            <a href="javascript:void(0)" class="btn btn-primary btn-lg btn-200 profile-save disabled">Save</a>
                         </div>
                     </div>
                 </div>

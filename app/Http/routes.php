@@ -27,11 +27,16 @@ Route::get('/designer', 'DesignerController@index');
 
 Route::get('/designer/{id}', 'DesignerController@show')->where(['id' => '[0-9]+']);
 
-Route::get('/following', 'DesignerController@following');
+Route::group(['middleware' => 'loginCheck'], function () {
 
-Route::get('/followlist', 'DesignerController@followList');
+    Route::get('/following', 'DesignerController@following');
 
-Route::get('/follow/{id}', 'DesignerController@follow')->where(['id' => '[0-9]+']);
+    Route::get('/followlist', 'DesignerController@followList');
+
+    Route::get('/follow/{id}', 'DesignerController@follow')->where(['id' => '[0-9]+']);
+
+});
+
 //Designer End
 
 
