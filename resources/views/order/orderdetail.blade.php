@@ -165,10 +165,14 @@
                     <div class="text-right p-t-30x">
                         <a href="#" class="btn btn-primary btn-lg btn-300 m-r-20x">Contact Service</a>
 
-                        <!-- 支付失败订单 支付按钮 -->
-                        <a href="#" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
-                        <a href="#" class="btn btn-primary btn-lg btn-200">PayPal</a>
                     </div>
+                    <!-- 支付失败订单 支付按钮 -->
+                    @if(in_array($data['status_code'], array(21, 22, 23)))
+                        <div class="text-right p-a-20x">
+                            <a href="/payagain/{{  $data['sub_order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
+                            <a href="/payagain/{{  $data['sub_order_no'] }}/1" class="btn btn-primary btn-lg btn-200">PayPal</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
