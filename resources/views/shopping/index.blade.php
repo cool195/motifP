@@ -54,7 +54,7 @@
             @endforeach
         </div>
         <div class="text-center m-y-30x productList-seeMore">
-            <div class="btn btn-block btn-gray btn-lg btn-380 btn-seeMore">See more of all</div>
+            <div class="btn btn-gray btn-lg btn-380 btn-seeMore">See more of all</div>
         </div>
         <div class="loading product-loading" style="display: none">
             <div class="loader">

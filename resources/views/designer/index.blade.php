@@ -153,7 +153,7 @@
     </div>
 
     <div class="text-center m-y-30x">
-        <a class="btn btn-block btn-gray btn-lg btn-380 designerList-seeMore" href="javascript:void(0)">See more of all</a>
+        <a class="btn btn-gray btn-lg btn-380 designerList-seeMore" href="javascript:void(0)">See more of all</a>
 
         <div class="loading designer-loading" style="display: none">
             <div class="loader"></div>
