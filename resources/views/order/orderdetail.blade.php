@@ -163,7 +163,11 @@
                     </div>
 
                     <div class="text-right p-t-30x">
-                        <a href="#" class="btn btn-primary btn-lg btn-300">Contact Service</a>
+                        <a href="#" class="btn btn-primary btn-lg btn-300 m-r-20x">Contact Service</a>
+
+                        <!-- 支付失败订单 支付按钮 -->
+                        <a href="#" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
+                        <a href="#" class="btn btn-primary btn-lg btn-200">PayPal</a>
                     </div>
                 </div>
             </div>

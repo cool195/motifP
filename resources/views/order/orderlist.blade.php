@@ -231,6 +231,14 @@
                 <span>$@{{ (value.pay_amount/100).toFixed(2) }}</span>
             </span>
         </div>
+
+        <!-- 订单支付失败 支付按钮 -->
+        <hr class="hr-base m-a-0">
+        <div class="text-right p-a-20x">
+            <a href="#" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
+            <a href="#" class="btn btn-primary btn-lg btn-200">PayPal</a>
+        </div>
+
     </div>
     @{{ /each }}
     @{{ /each }}
