@@ -39,7 +39,7 @@
                     </ul>
 
                     <div class="text-center m-y-30x  wishList-seeMore">
-                        <a class="btn btn-block btn-gray btn-lg btn-380 btn-seeMore-wishList" href="javascript:void(0)">See more
+                        <a class="btn btn-gray btn-lg btn-380 btn-seeMore-wishList" href="javascript:void(0)">See more
                             of all</a>
                     </div>
                     <div class="loading wish-loading" style="display: none">

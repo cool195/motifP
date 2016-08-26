@@ -42,7 +42,7 @@
 
                     <!-- see more btn -->
                     <div class="text-center m-y-30x">
-                        <a class="btn btn-block btn-gray btn-lg btn-380 btn-seeMore-follow" href="javascript:void(0)">See more of all</a>
+                        <a class="btn btn-gray btn-lg btn-380 btn-seeMore-follow" href="javascript:void(0)">See more of all</a>
                     </div>
                     <div class="loading follow-loading" style="display: none">
                         <div class="loader"></div>

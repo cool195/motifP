@@ -55,7 +55,7 @@
         </ul>
     @endif
         <div class="text-center m-y-30x dailyList-seeMore">
-            <a class="btn btn-block btn-gray btn-lg btn-380 btn-seeMore-dailyList">See more of all</a>
+            <a class="btn btn-gray btn-lg btn-380 btn-seeMore-dailyList">See more of all</a>
         </div>
         <div class="loading daily-loading" style="display: none">
             <div class="loader"></div>
