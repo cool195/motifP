@@ -116,7 +116,7 @@
                                                 <span>${{ number_format(($subOrder['pay_amount'] / 100), 2) }}</span>
                                             </span>
                                         </div>
-                                        @if($subOrder['status_code'])
+                                        @if(in_array($subOrder['status_code'], array(21, 22, 23)))
                                             <hr class="hr-base m-a-0">
                                             <div class="text-right p-a-20x">
                                                 <a href="/payagain/{{  $subOrder['order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
@@ -222,7 +222,7 @@
                 @{{ /each }}
                 @{{ /if }}
             </div>
-            @{{ /each }}
+            @{{ /each  }}
         </div>
         <hr class="hr-base">
         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
@@ -234,13 +234,14 @@
                 <span>$@{{ (value.pay_amount/100).toFixed(2) }}</span>
             </span>
         </div>
-
+        @{{ if value.status_code == 21 || value.status_code == 22 || value.status_code == 23 }}
         <!-- 订单支付失败 支付按钮 -->
         <hr class="hr-base m-a-0">
         <div class="text-right p-a-20x">
-            <a href="#" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
-            <a href="#" class="btn btn-primary btn-lg btn-200">PayPal</a>
+            <a href="/payagain/@{{  $value.order_no }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
+            <a href="/payagain/@{{  $value.order_no }}/1" class="btn btn-primary btn-lg btn-200">PayPal</a>
         </div>
+        @{{ /if }}
 
     </div>
     @{{ /each }}
