@@ -184,7 +184,7 @@
         @if(isset($data['templates']))
             @foreach($data['templates'] as $template)
                 <li class="nav-item">
-                    <a class="nav-link font-size-md btn-free" href="#Free" data-tid="{{$template['template_id']}}" data-toggle="tab">{{$template['template_title']}}</a>
+                    <a class="nav-link font-size-md btn-productTemplate" href="#template{{$template['template_id']}}" data-tid="{{$template['template_id']}}" data-toggle="tab">{{$template['template_title']}}</a>
                 </li>
             @endforeach
         @endif
@@ -193,12 +193,18 @@
         <div class="tab-pane text-primary active" id="Descripyion">
             <p class="m-b-0">{!! str_replace("\n", "<br>",  $data['intro_short']) !!}</p>
         </div>
-        <div class="tab-pane text-primary" id="Free">
-            <div class="loading" style="display: block;">
-                <div class="loader"></div>
-                <div class="text-center p-t-10x">Loading...</div>
-            </div>
-        </div>
+
+        @if(isset($data['templates']))
+            @foreach($data['templates'] as $template)
+                <div class="tab-pane text-primary" id="template{{$template['template_id']}}">
+                    <div class="loading" style="display: block;">
+                        <div class="loader"></div>
+                        <div class="text-center p-t-10x">Loading...</div>
+                    </div>
+                </div>
+            @endforeach
+        @endif
+
     </div>
 </div>
 
@@ -253,3 +259,14 @@
 <!-- footer start -->
 @include('footer')
 <!-- footer end -->
+
+<template id="tpl-productTemplate">
+    @{{ each infos }}
+        @{{ if $value.type == "title" }}
+            <h4 class="sanBold m-b-15x">@{{ $value.value }}</h4>
+        @{{ /if }}
+        @{{ if $value.type == "context" }}
+            <p>@{{ $value.value }}</p>
+        @{{ /if }}
+    @{{ /each }}
+</template>

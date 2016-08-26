@@ -21,7 +21,7 @@
     }
 
 
-    // ShoppingDetail.html
+    // ShoppingDetail.html  start
 
     // 初始化商品图片列表 Swiper
     try {
@@ -341,6 +341,38 @@
                 }
             })
     });
+
+    // 商品详情页 动态获取模版
+    $('.btn-productTemplate').on('click', function () {
+        var TemplateId = $(this).data('tid'),
+            $TemplateDom = $('#template' + TemplateId),
+            $this = $(this);
+        if (TemplateId == -1) {
+            return;
+        }else {
+        $.ajax({
+                url: '/service/' + TemplateId,
+                type: 'GET',
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $this.data('tid', -1);
+                    appendProductTemplateList($TemplateDom, data.data);
+
+                }
+            })
+        }
+    });
+
+    // 遍历 template data 生成html 插入到页面
+    function appendProductTemplateList($TemplateContainer, TemplateList) {
+        var TplHtml = template('tpl-productTemplate', TemplateList);
+        var StageCache = $.parseHTML(TplHtml);
+        $TemplateContainer.html(StageCache);
+    }
+
+
+    // ShoppingDetail.html  end
 
     // Shopping Cart
     // 初始化 确认删除 弹出框
