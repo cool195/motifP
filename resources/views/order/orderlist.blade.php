@@ -114,12 +114,15 @@
                                             <span>
                                                 <span class="p-r-30x">Order total</span>
                                                 <span>${{ number_format(($subOrder['pay_amount'] / 100), 2) }}</span>
-                                                @if($subOrder['status_code']==11)
-                                                    <a class="btn btn-primary btn-md" href="/payagain/{{  $subOrder['order_no'] }}/0">Credit Cart</a>
-                                                    <a class="btn btn-primary btn-md" href="/payagain/{{  $subOrder['order_no'] }}/1">PayPal</a>
-                                                @endif
                                             </span>
                                         </div>
+                                        @if($subOrder['status_code'])
+                                            <hr class="hr-base m-a-0">
+                                            <div class="text-right p-a-20x">
+                                                <a href="/payagain/{{  $subOrder['order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
+                                                <a href="/payagain/{{  $subOrder['order_no'] }}/1" class="btn btn-primary btn-lg btn-200">PayPal</a>
+                                            </div>
+                                        @endif
                                     </div>
                                 @endforeach
                             @endforeach

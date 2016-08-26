@@ -74,7 +74,7 @@ class DailyController extends BaseController
             $view = 'daily.topic';
         }
 
-        return $result;//View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
+        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
     }
 
 }

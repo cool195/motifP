@@ -181,9 +181,13 @@
         <li class="nav-item">
             <a class="nav-link font-size-md active" href="#Descripyion" data-toggle="tab">Descripyion</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link font-size-md btn-free" href="#Free" data-toggle="tab">Free Shipping & Free Return</a>
-        </li>
+        @if(isset($data['templates']))
+            @foreach($data['templates'] as $template)
+                <li class="nav-item">
+                    <a class="nav-link font-size-md btn-free" href="#Free" data-tid="{{$template['template_id']}}" data-toggle="tab">{{$template['template_title']}}</a>
+                </li>
+            @endforeach
+        @endif
     </ul>
     <div class="tab-content bg-white p-a-20x">
         <div class="tab-pane text-primary active" id="Descripyion">
