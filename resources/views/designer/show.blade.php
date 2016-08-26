@@ -1,20 +1,36 @@
 @include('header')
-
 <!-- 内容 -->
 <section class="m-t-40x">
     @inject('wishlist', 'App\Http\Controllers\UserController')
     <!-- 设计师列表 -->
     <div class="container m-b-40x">
         <div class="box-shadow p-a-20x bg-white">
-            <div class="row designer-item">
+            <div class="row designer-item" id="designerDetailContainer">
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="p-r-30x">
-                        <div class="product-bigImg">
-                            <a href="javascript:void(0)">
-                                <img class="img-fluid product-bigImg img-lazy"
-                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}"
-                                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="商品的名称">
-                            </a>
+                        <div class="product-bigImg player-media">
+                            @if(isset($designer['detailVideoPath']))
+                            <div class="designer-media bg-white">
+                                <div class="player-item" data-playid="{{$designer['detailVideoPath']}}">
+                                    <div id="{{$designer['detailVideoPath']}}" class="ytplayer" data-playid="{{$designer['detailVideoPath']}}"></div>
+                                    <div class="bg-player">
+                                        <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}" alt="">
+                                        <div class="btn-beginPlayer designer-beginPlayer">
+                                            <img src="/images/daily/icon-player.png"
+                                                 srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @else
+                                <a href="javascript:void(0)">
+                                    <img class="img-fluid product-bigImg img-lazy"
+                                         data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}"
+                                         src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png"
+                                         alt="商品的名称">
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>

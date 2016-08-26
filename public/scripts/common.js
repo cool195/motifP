@@ -1399,9 +1399,9 @@
     }
 
     //上传头像
-    $("#profileIcon").change(function(e){
+    $("#profileIcon").change(function (e) {
         $('.uploadProfile-loading').show();
-        $('.bg-uploadProfileLoading').css('display','block');
+        $('.bg-uploadProfileLoading').css('display', 'block');
         var xhr = new XMLHttpRequest();
         var file = $('#profileIcon').get(0).files[0];
         var formData = new FormData();
@@ -1419,7 +1419,7 @@
             var obj = JSON.parse(e.currentTarget.response);
             if (obj.success) {
                 $('.uploadProfile-loading').hide();
-                $('.bg-uploadProfileLoading').css('display','none');
+                $('.bg-uploadProfileLoading').css('display', 'none');
                 $('#avatarUrl').attr('src', $('#avatarUrl').data('url') + '/n1/' + obj.data.url);
             }
         }, false); // 处理上传完成
@@ -1923,14 +1923,14 @@
     //#end 个人中心 WishList
 
     //#start 个人中心 Following
-    if ( $('.follow-item').length < 3){
+    if ($('.follow-item').length < 3) {
         $('.btn-seeMore-follow').hide();
     }
     $('.btn-seeMore-follow').on('click', function () {
         $('img.img-lazy').each(function () {
             var Src = $(this).attr('src'),
                 Original = $(this).attr('data.original');
-            if (Src === Original){
+            if (Src === Original) {
                 $(this).removeClass('img-lazy');
             }
         });
@@ -1938,18 +1938,18 @@
     });
 
     //ajax 得到 Following List
-    function getFollowList(){
+    function getFollowList() {
         var $followListContainer = $('#followList-container'),
             PageNum = $followListContainer.data('pagenum'),
             Size = 4;
         //判断是否还有数据要加载
-        if (PageNum === -1){
+        if (PageNum === -1) {
             return;
         }
         //判断当前容器的数据是否正在加载中
-        if($followListContainer.data('loading') === true){
+        if ($followListContainer.data('loading') === true) {
             return;
-        }else{
+        } else {
             $followListContainer.data('loading', true);
         }
         var NextFollowNum = ++PageNum;
@@ -1963,13 +1963,13 @@
                 ajax: 1
             }
         }).done(function (data) {
-            if (data.data === null || data.data === ''){
+            if (data.data === null || data.data === '') {
                 loadingAndSeemoreHide('.follow-loading', '.btn-seeMore-follow');
-                $followListContainer.data('pagenum' , -1);
-            }else if (data.data.list.length === 0){
+                $followListContainer.data('pagenum', -1);
+            } else if (data.data.list.length === 0) {
                 loadingAndSeemoreHide('.follow-loading', '.btn-seeMore-follow');
-                $followListContainer.data('pagenum' , -1);
-            }else {
+                $followListContainer.data('pagenum', -1);
+            } else {
 
                 //遍历模板 生成html插入页面
                 appendFollowList(data.data);
@@ -1986,15 +1986,17 @@
             $followListContainer.data('loading', false);
         });
     }
-    function appendFollowList(followList){
+
+    function appendFollowList(followList) {
         var followListNum = $('.follow-item').length;
-        if (followListNum === 0){
+        if (followListNum === 0) {
             /*插入following为空时的模板*/
         }
         var TplHtml = template('tpl-follow', followList);
         var StageCache = $.parseHTML(TplHtml);
         $('#followList-container').find('.row').append(StageCache);
     }
+
     $('#followList-container').on('click', '.btn-following', function () {
         var $this = $(this);
         $.ajax({
@@ -2108,7 +2110,21 @@ if ($('.ytplayer').length > 0) {
 var player;
 // daily 页面
 $('.daily-content').on('click', '.bg-player', function () {
-    var PlayId = $(this).siblings('.ytplayer').data('playid');
+    startPlayer($(this));
+});
+
+// designer 页面
+$('#designerContainer').on('click', '.bg-player', function () {
+    startPlayer($(this));
+});
+// designerDetail 页面
+$('#designerDetailContainer').on('click', '.bg-player', function () {
+    startPlayer($(this));
+});
+
+
+function startPlayer($this) {
+    var PlayId = $this.siblings('.ytplayer').data('playid');
     player = new YT.Player(PlayId, {
         height: MediaHeight,
         width: Width,
@@ -2120,41 +2136,19 @@ $('.daily-content').on('click', '.bg-player', function () {
         }
     });
 
-    $ClickPlayer = $(this);
-    $(this).css('display', 'none');
-    $(this).children('.bg-img').hide();
-    $(this).children('.btn-beginPlayer').hide();
+    $ClickPlayer = $this;
+    $this.css('display', 'none');
+    $this.children('.bg-img').hide();
+    $this.children('.btn-beginPlayer').hide();
     //$(this).siblings('.btn-morePlayer').show();
-    $(this).parents('.player-item').addClass('active');
-});
-
-// designer 页面
-$('#designerContainer').on('click', '.bg-player', function () {
-    var PlayId = $(this).siblings('.ytplayer').data('playid');
-    player = new YT.Player(PlayId, {
-        height: MediaHeight,
-        width: Width,
-        videoId: PlayId,
-        playerVars: {'autoplay': 1},
-        events: {
-            'onReady': onPlayerReady,
-            'onError': onPlayerError
-        }
-    });
-
-    $ClickPlayer = $(this);
-    $(this).css('display', 'none');
-    $(this).children('.bg-img').hide();
-    $(this).children('.btn-beginPlayer').hide();
-    //$(this).siblings('.btn-morePlayer').show();
-    $(this).parents('.player-item').addClass('active');
-});
+    $this.parents('.player-item').addClass('active');
+}
 
 
 // 判断是否离开曝光
 $(document).on('scroll', function (event) {
     var $PlayerItem = $('.player-item');
-    if ($PlayerItem.length !== 0) {
+    if ($PlayerItem.length !== 0 && $('#designerDetailContainer').length < 1) {
         $.each($PlayerItem, function (index, element) {
             if (switchPlayer(element) && $(element).hasClass('active')) {
                 var $Player = $(element),
