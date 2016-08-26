@@ -108,9 +108,28 @@
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="p-l-30x">
                         <div class="product-bigImg">
-                            <a href="/designer/{{$designer['designerId']}}">
-                                <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" src="/images/product/bg-product@750.png" alt="商品的名称">
-                            </a>
+                            @if(isset($designer['listVideoPath']))
+                                <div class="designer-media bg-white">
+                                    <div class="player-item" data-playid="{{$designer['listVideoId']}}">
+                                        <div id="{{$designer['listVideoId']}}" class="ytplayer" data-playid="{{$designer['listVideoId']}}"></div>
+                                        <div class="bg-player">
+                                            <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['mainImg']}}" alt="">
+                                            <div class="btn-beginPlayer designer-beginPlayer">
+                                                <img src="/images/daily/icon-player.png"
+                                                     srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
+                                                     alt="">
+                                            </div>
+                                        </div>
+                                        <div class="btn-morePlayer">
+                                            <a class="text-white font-size-sm" href="{{$designer['listVideoPath']}}"><strong>Click for More</strong></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <a href="/designer/{{ $designer['designerId'] }}">
+                                    <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" src="/images/product/bg-product@750.png" alt="商品的名称">
+                                </a>
+                            @endif
                         </div>
                         <div class="swiper-container">
                             <div class="productImg-list p-t-20x swiper-wrapper">
