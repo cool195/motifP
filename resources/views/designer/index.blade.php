@@ -163,7 +163,7 @@
                                 <div class="player-item" data-playid="@{{value.listVideoId}}">
                                     <div id="@{{value.listVideoId}}" class="ytplayer" data-playid="@{{value.listVideoId}}"></div>
                                     <div class="bg-player">
-                                        <img class="img-fluid bg-img" src="{{env('APP_Api_Image')}}/n1/@{{ value.listImg }}" alt="">
+                                        <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" alt="">
                                         <div class="btn-beginPlayer designer-beginPlayer">
                                             <img src="/images/daily/icon-player.png"
                                                  srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
@@ -249,7 +249,7 @@
                             <div class="player-item" data-playid="@{{value.listVideoId}}">
                                 <div id="@{{value.listVideoId}}" class="ytplayer" data-playid="@{{value.listVideoId}}"></div>
                                 <div class="bg-player">
-                                    <img class="img-fluid bg-img" src="{{env('APP_Api_Image')}}/n1/@{{ value.listImg }}" alt="">
+                                    <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" alt="">
                                     <div class="btn-beginPlayer designer-beginPlayer">
                                         <img src="/images/daily/icon-player.png"
                                              srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
@@ -323,7 +323,7 @@
                             <div class="player-item" data-playid="@{{value.listVideoId}}">
                                 <div id="@{{value.listVideoId}}" class="ytplayer" data-playid="@{{value.listVideoId}}"></div>
                                 <div class="bg-player">
-                                    <img class="img-fluid bg-img" src="{{env('APP_Api_Image')}}/n1/@{{ value.listImg }}" alt="">
+                                    <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" alt="">
                                     <div class="btn-beginPlayer designer-beginPlayer">
                                         <img src="/images/daily/icon-player.png"
                                              srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
@@ -369,7 +369,7 @@
                             <div class="player-item" data-playid="@{{value.listVideoId}}">
                                 <div id="@{{value.listVideoId}}" class="ytplayer" data-playid="@{{value.listVideoId}}"></div>
                                 <div class="bg-player">
-                                    <img class="img-fluid bg-img" src="{{env('APP_Api_Image')}}/n1/@{{ value.listImg }}" alt="">
+                                    <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" alt="">
                                     <div class="btn-beginPlayer designer-beginPlayer">
                                         <img src="/images/daily/icon-player.png"
                                              srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"

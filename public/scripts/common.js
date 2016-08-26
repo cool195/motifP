@@ -2096,6 +2096,7 @@ var Width = $('.player-media').width(),
 if ($('.ytplayer').length > 0) {
     // 初始化 外边框尺寸
     $('.designer-media').css('height', MediaHeight);
+    $('.designer-beginPlayer').css('display', 'block');
 
     // 加载视频
     var tag = document.createElement('script');
