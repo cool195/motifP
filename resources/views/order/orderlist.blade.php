@@ -130,7 +130,7 @@
                     </div>
                     <!-- 查看更多 按钮 loading -->
                     <div class="text-center m-y-30x">
-                        <a class="btn btn-block btn-gray btn-lg btn-380 orderList-seeMore" href="javascript:void(0)">See
+                        <a class="btn btn-gray btn-lg btn-380 orderList-seeMore" href="javascript:void(0)">See
                             more of all</a>
 
                         <div class="loading orderList-loading" style="display: none">
