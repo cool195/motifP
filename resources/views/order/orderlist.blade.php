@@ -129,15 +129,15 @@
                         @endif
                     </div>
                     <!-- 查看更多 按钮 loading -->
+                    @if(!empty($data['list']))
                     <div class="text-center m-y-30x">
-                        <a class="btn btn-block btn-gray btn-lg btn-380 orderList-seeMore" href="javascript:void(0)">See
-                            more of all</a>
-
+                        <a class="btn btn-block btn-gray btn-lg btn-380 orderList-seeMore" href="javascript:void(0)">See more of all</a>
                         <div class="loading orderList-loading" style="display: none">
                             <div class="loader"></div>
                             <div class="text-center p-t-5x p-l-10x">Loading...</div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
