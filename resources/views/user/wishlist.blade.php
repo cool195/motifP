@@ -8,6 +8,14 @@
             <!-- 左侧内容 -->
 
             <div class="right">
+                <!--wishlist为空时显示-->
+                <div class="rightContent">
+                    <div class="empty-content">
+                        <i class="iconfont icon-like"></i>
+                        <p class="helveBold font-size-llxx m-t-40x">Your wishlist is empty!</p>
+                    </div>
+                </div>
+
                 <div class="rightContent" id="wishList-container" data-pagenum="1" data-loading="false">
                     <!-- WishList content -->
                     <ul class="tiles-wrap wishlist-wrap animated row" id="wishlist-wookmark">

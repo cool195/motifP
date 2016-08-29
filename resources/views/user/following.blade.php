@@ -9,6 +9,14 @@
 
             <!-- 右侧内容 -->
             <div class="right">
+                <!--following为空时显示-->
+                <div class="rightContent">
+                    <div class="empty-content">
+                        <i class="iconfont icon-follow"></i>
+                        <p class="helveBold font-size-llxx m-t-40x">Your following list is empty!</p>
+                    </div>
+                </div>
+
                 <div class="rightContent" id="followList-container" data-pagenum="1" data-loading="false">
                     <!-- Following List -->
                     <div class="row">
