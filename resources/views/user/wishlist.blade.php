@@ -8,14 +8,15 @@
             <!-- 左侧内容 -->
 
             <div class="right">
-                <!--wishlist为空时显示-->
-                <div class="rightContent">
-                    <div class="empty-content">
-                        <i class="iconfont icon-like"></i>
-                        <p class="helveBold font-size-llxx m-t-40x">Your wishlist is empty!</p>
+                @if(empty($data['list']))
+                    <!--wishlist为空时显示-->
+                    <div class="rightContent">
+                        <div class="empty-content">
+                            <i class="iconfont icon-like"></i>
+                            <p class="helveBold font-size-llxx m-t-40x">Your wishlist is empty!</p>
+                        </div>
                     </div>
-                </div>
-
+                @endif
                 <div class="rightContent" id="wishList-container" data-pagenum="1" data-loading="false">
                     <!-- WishList content -->
                     <ul class="tiles-wrap wishlist-wrap animated row" id="wishlist-wookmark">
@@ -46,10 +47,11 @@
                         @endif
                     </ul>
 
-                    <div class="text-center m-y-30x  wishList-seeMore">
-                        <a class="btn btn-gray btn-lg btn-380 btn-seeMore-wishList" href="javascript:void(0)">See more
-                            of all</a>
-                    </div>
+                    @if(empty($data['list']))
+                        <div class="text-center m-y-30x  wishList-seeMore">
+                            <a class="btn btn-gray btn-lg btn-380 btn-seeMore-wishList" href="javascript:void(0)">See more of all</a>
+                        </div>
+                    @endif
                     <div class="loading wish-loading" style="display: none">
                         <div class="loader"></div>
                         <div class="text-center p-t-10x">Loading...</div>
