@@ -1945,11 +1945,6 @@
 
     //遍历data 生成html 插入到页面
     function appendWishList(WishList) {
-        var wishlistNum = $('.wishlist-item').length;
-        if (wishlistNum === 0) {
-            /* 在此处插入 wishlist 列表为空 时的模板*/
-
-        }
         var TplHtml = template('tpl-wish', WishList);
         var StageCache = $.parseHTML(TplHtml);
         $('#wishList-container').find('#wishlist-wookmark').append(StageCache);
@@ -2023,10 +2018,6 @@
     }
 
     function appendFollowList(followList) {
-        var followListNum = $('.follow-item').length;
-        if (followListNum === 0) {
-            /*插入following为空时的模板*/
-        }
         var TplHtml = template('tpl-follow', followList);
         var StageCache = $.parseHTML(TplHtml);
         $('#followList-container').find('.row').append(StageCache);
