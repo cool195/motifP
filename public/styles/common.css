@@ -147,7 +147,9 @@ footer {
   border-radius: 0.375rem 0.375rem 0 0;
   display: block;
 }
-
+.wishlist-wrap{
+  margin-top: -10px;
+}
 .wishlist-wrap li {
   width: 285px;
 }
