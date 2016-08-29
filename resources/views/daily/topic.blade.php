@@ -16,7 +16,7 @@
                 @elseif($value['type'] == 'multilink')
                 <!--图-->
                 <div class="p-y-20x">
-                    <img src="{{ $value['imgPath'] }}">
+                    <img src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
                 </div>
                 @elseif($value['type'] == 'boxline')
                 <!--分割线-->
@@ -25,7 +25,7 @@
                 <!--描述 & 图-->
                 <div>
                     <div class="m-y-20x">
-                        <img src="{{ $value['imgPath'] }}">
+                        <img src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
                     </div>
                 </div>
                 @endif
