@@ -22,8 +22,8 @@
             <hr class="hr-common m-a-0">
             <div class="p-x-20x">
                 @foreach($cart['showSkus'] as $showSku)
-                <div class="p-y-20x">
-                    <div class="row flex flex-alignCenter cartProduct-item" id="{{'csku'.$showSku['sku']}}">
+                <div class="p-y-20x" id="{{'csku'.$showSku['sku']}}">
+                    <div class="row flex flex-alignCenter cartProduct-item">
                         <div class="col-md-3 flex flex-alignCenter">
                             <div><img src="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
                             <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
@@ -82,8 +82,8 @@
                             <span class="font-size-base">Error !</span>
                         </div>
                     @endif
+                    <hr class="hr-common m-a-0">
                 </div>
-                <hr class="hr-common m-a-0">
                 @endforeach
             </div>
         </div>
