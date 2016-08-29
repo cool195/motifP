@@ -318,7 +318,7 @@
         var $this = $(this);
         $.ajax({
                 url: '/wishlist/' + $this.data('spu'),
-                type: 'GET',
+                type: 'GET'
             })
             .done(function (data) {
                 if (data.success) {
@@ -333,7 +333,7 @@
         var spu = $this.data('spu');
         $.ajax({
                 url: '/wishlist/' + spu,
-                type: 'GET',
+                type: 'GET'
             })
             .done(function (data) {
                 if (data.success) {
@@ -1949,6 +1949,21 @@
         var StageCache = $.parseHTML(TplHtml);
         $('#wishList-container').find('#wishlist-wookmark').append(StageCache);
     }
+    // 新加载出来的也可点击 '心' 切换
+    $('#wishList-container').on('click', '.btn-wishing', function (e) {
+        var $this = $(e.target);
+        var spu = $this.data('spu');
+        $.ajax({
+                url: '/wishlist/' + spu,
+                type: 'GET'
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $this.toggleClass('active');
+                }
+            })
+    });
+
 
     //#end 个人中心 WishList
 

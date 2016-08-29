@@ -5,7 +5,7 @@
         <div class="myHome-content">
             <!-- 左侧菜单 -->
             @include('user.left', ['title' => 'wishlist'])
-            <!-- 左侧内容 -->
+            <!-- 左右侧内容 -->
 
             <div class="right">
                 @if(empty($data['list']))
@@ -46,7 +46,7 @@
                         @endif
                     </ul>
                     @if(!empty($data['list']))
-                        <div class="text-center m-y-30x  wishList-seeMore">
+                        <div class="text-center m-y-30x wishList-seeMore">
                             <a class="btn btn-gray btn-lg btn-380 btn-seeMore-wishList" href="javascript:void(0)">See more of all</a>
                         </div>
                     @endif
@@ -69,7 +69,7 @@
                      data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.main_image_url }}" alt="@{{ $value.main_title }}" class="img-fluid img-lazy">
             </a>
             <span class="wishlist-heart btn-heart">
-                <i class="iconfont btn-wish font-size-lxx active" data-spu="@{{ $value.spu }}"></i></span>
+                <i class="iconfont btn-wish btn-wishing font-size-lxx active" data-spu="@{{ $value.spu }}"></i></span>
             <div class="daily-info p-a-10x helveBold text-center">
                 <div class="font-size-md text-main p-x-20x">@{{ $value.main_title }}</div>
                 <div>
