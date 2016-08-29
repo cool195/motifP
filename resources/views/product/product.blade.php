@@ -172,7 +172,7 @@
 @if(isset($data['designer']))
     <div class="container m-t-30x">
         <span class="sanBold font-size-md p-x-20x">Designer:</span>
-        <span class="sanBold text-main">{{ $data['designer']['designer_name'] }}</span>
+        <a href="/designer/{{$data['designer']['designer_id']}}"><span class="sanBold text-main">{{ $data['designer']['designer_name'] }}</span></a>
     </div>
 @endif
 

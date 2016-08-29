@@ -30,7 +30,8 @@
                                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{ $wish['main_image_url'] }}" alt="{{ $wish['main_title'] }}" class="img-fluid img-lazy">
                                         </a>
                                         <span class="wishlist-heart btn-heart">
-                                            <i class="iconfont btn-wish font-size-lxx active" data-spu="{{$wish['spu']}}"></i></span>
+                                            <i class="iconfont btn-wish font-size-lxx active" data-spu="{{$wish['spu']}}"></i>
+                                        </span>
                                         <div class="daily-info p-a-10x helveBold text-center">
                                             <div class="font-size-md text-main p-x-20x">{{$wish['main_title']}}</div>
                                             <div>
@@ -69,7 +70,7 @@
                      data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.main_image_url }}" alt="@{{ $value.main_title }}" class="img-fluid img-lazy">
             </a>
             <span class="wishlist-heart btn-heart">
-                <i class="iconfont btn-wish font-size-lxx active" data-spu="@{{ $value.spu }}"></i></span>
+                <i class="iconfont btn-wish btn-wishList font-size-lxx active" data-spu="@{{ $value.spu }}"></i></span>
             <div class="daily-info p-a-10x helveBold text-center">
                 <div class="font-size-md text-main p-x-20x">@{{ $value.main_title }}</div>
                 <div>

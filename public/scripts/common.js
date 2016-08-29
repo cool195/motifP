@@ -342,6 +342,20 @@
             })
     });
 
+    $('#wishList-container').on('click', '.btn-wishList', function (e) {
+        var $this = $(e.target);
+        var spu = $this.data('spu');
+        $.ajax({
+                url: '/wishlist/' + spu,
+                type: 'GET',
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $this.toggleClass('active');
+                }
+            })
+    });
+
     // 商品详情页 动态获取模版
     $('.btn-productTemplate').on('click', function () {
         var TemplateId = $(this).data('tid'),
