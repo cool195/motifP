@@ -14,7 +14,7 @@
                 <a href="@if(!empty($order))/orderdetail/{{$order['sub_order_no']}}@else /orderlist @endif" class="text-link">your order</a>
                 at any time by visting the Order tab from the PROFILE menu
             </p>
-            <a href="/daily" class="btn btn-block btn-primary btn-lg btn-320 m-t-40x">Continue Shopping</a>
+            <a href="/daily" class="btn btn-primary btn-lg btn-320 m-t-40x">Continue Shopping</a>
         </div>
     </div>
 </section>
