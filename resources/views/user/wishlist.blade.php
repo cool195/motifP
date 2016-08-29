@@ -40,14 +40,12 @@
                                                 @endif
                                             </div>
                                         </div>
-
                                     </div>
                                 </li>
                             @endforeach
                         @endif
                     </ul>
-
-                    @if(empty($data['list']))
+                    @if(!empty($data['list']))
                         <div class="text-center m-y-30x  wishList-seeMore">
                             <a class="btn btn-gray btn-lg btn-380 btn-seeMore-wishList" href="javascript:void(0)">See more of all</a>
                         </div>
