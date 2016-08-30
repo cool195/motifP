@@ -40,7 +40,8 @@
                         <div class="font-size-md helveBold">{{$designer['nickname']}}</div>
                         <div class="p-t-15x">
                             @if(Session::has('user'))
-                                <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif" data-did="{{$designer['designer_id']}}">Follow</a>
+                                <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
+                                   data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</a>
                             @else
                                 <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
                             @endif
