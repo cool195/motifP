@@ -2155,6 +2155,11 @@
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
+                    if('Following' == $this.html()){
+                        $this.html('Follow');
+                    } else {
+                        $this.html('Following');
+                    }
                 }
             });
     });
