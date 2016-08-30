@@ -2,8 +2,8 @@
 
 if (env('APP_ENV') == 'production') {
     //生产
-    $CDN_URL = 'http://cdn.motif.me';
-    $Image_URL = '';
+    $CDN_URL = 'http://image.motif.me';//后台图片服务地址
+    $Image_URL = '';//SelfCDN地址服务
     $API_URL = array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me');
     $QianHai_URL = 'https://secure.oceanpayment.com/gateway/service/pay';
     $paypalclientID = 'AeJ0JypMpSkBh2pvVrWMSg8Km_l6fcmWXUQ0oWxom2tz8nPzBB1rWu71bkL1j4S-TGsjGYrbfDZYiWWe';
@@ -11,8 +11,8 @@ if (env('APP_ENV') == 'production') {
     $paypalmode = "live";
 } elseif (env('APP_ENV') == 'publish') {
     //预发布
-    $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';
-    $Image_URL = '';
+    $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';//后台图片服务地址
+    $Image_URL = '';//SelfCDN地址服务
     $API_URL = array('api' => 'http://54.222.233.255', 'rec' => 'http://54.222.233.255');
     $QianHai_URL = 'https://secure.oceanpayment.com/gateway/service/test';
     $paypalclientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
@@ -20,8 +20,8 @@ if (env('APP_ENV') == 'production') {
     $paypalmode = 'sandbox';
 } else {
     //测试
-    $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';
-    $Image_URL = '';
+    $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';//后台图片服务地址
+    $Image_URL = '';//SelfCDN地址服务
     $API_URL = array('api' => 'http://192.168.0.230', 'rec' => 'http://192.168.0.230');
     $QianHai_URL = 'https://secure.oceanpayment.com/gateway/service/test';
     $paypalclientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
