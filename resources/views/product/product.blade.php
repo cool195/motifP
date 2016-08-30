@@ -247,13 +247,13 @@
 
 <!-- 购买成功提示 -->
 <div class="remodal modal-content remodal-xs" data-remodal-id="additem-modal" id="addItem-modalDialog" data-spu="">
-    <div class="text-center font-size-md p-a-30x">Item Added</div>
+    <div class="text-center font-size-md m-y-10x">Item Added</div>
 </div>
 
 <!-- 购买失败提示 -->
 <div class="remodal modal-content remodal-xs" data-remodal-id="additemfail-modal" id="addItemFail-modalDialog"
      data-spu="">
-    <div class="text-center font-size-md p-a-30x">Added Failled</div>
+    <div class="text-center font-size-md m-y-10x">Added Failled</div>
 </div>
 
 <!-- footer start -->
