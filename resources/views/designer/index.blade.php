@@ -23,9 +23,6 @@
                                                      alt="">
                                             </div>
                                         </div>
-                                        <div class="btn-morePlayer">
-                                            <a class="text-white font-size-sm" href="{{$designer['listVideoPath']}}"><strong>Click for More</strong></a>
-                                        </div>
                                     </div>
                                 </div>
                             @else
@@ -122,9 +119,6 @@
                                                      alt="">
                                             </div>
                                         </div>
-                                        <div class="btn-morePlayer">
-                                            <a class="text-white font-size-sm" href="{{$designer['listVideoPath']}}"><strong>Click for More</strong></a>
-                                        </div>
                                     </div>
                                 </div>
                             @else
@@ -190,9 +184,6 @@
                                                  srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
                                                  alt="">
                                         </div>
-                                    </div>
-                                    <div class="btn-morePlayer">
-                                        <a class="text-white font-size-sm" href="/designer/@{{value.designerId}}"><strong>Click for More</strong></a>
                                     </div>
                                 </div>
                             </div>
@@ -279,9 +270,6 @@
                                              alt="">
                                     </div>
                                 </div>
-                                <div class="btn-morePlayer">
-                                    <a class="text-white font-size-sm" href="/designer/@{{value.designerId}}"><strong>Click for More</strong></a>
-                                </div>
                             </div>
                         </div>
                         @{{ /if }}
@@ -353,9 +341,6 @@
                                              alt="">
                                     </div>
                                 </div>
-                                <div class="btn-morePlayer">
-                                    <a class="text-white font-size-sm" href="/designer/@{{value.designerId}}"><strong>Click for More</strong></a>
-                                </div>
                             </div>
                         </div>
                         @{{ /if }}
@@ -398,9 +383,6 @@
                                              srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
                                              alt="">
                                     </div>
-                                </div>
-                                <div class="btn-morePlayer">
-                                    <a class="text-white font-size-sm" href="/designer/@{{value.designerId}}"><strong>Click for More</strong></a>
                                 </div>
                             </div>
                         </div>
