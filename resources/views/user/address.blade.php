@@ -29,10 +29,10 @@
                                     <div class="col-md-5">
                                         <div class="p-l-20x m-b-20x">
                                             <input type="text" name="email" class="form-control contrlo-lg text-primary address-email" placeholder="Email">
-                                        </div>
-                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
-                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                            <span class="font-size-base">Please enter a valid email address !</span>
+                                            <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                                <span class="font-size-base">Please enter a valid email address !</span>
+                                            </div>
                                         </div>
                                         <div class="p-l-20x m-b-20x">
                                             <input type="text" name="name" class="form-control contrlo-lg text-primary address-name" placeholder="Full name">
