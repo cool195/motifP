@@ -10,7 +10,7 @@
         <div class="shopbag-empty-content m-b-40x">
             <div class="container shopbag-emptyInfo">
                 <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-shopbag"></i></div>
-                <p class="text-primary m-b-20x p-b-20x font-size-llxx">Your bag is empty ,fill it up ! </p>
+                <p class="text-primary m-b-20x p-b-20x font-size-llxx">Your bag is empty, fill it up ! </p>
                 <a href="/daily" class="btn btn-block btn-primary btn-lg btn-320">Go Shopping</a>
             </div>
         </div>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="p-l-20x">
-                                <a class="btn-block cartManage" data-action="save" data-sku="{{$showSku['sku']}}" href="javascript:;">Save for Later</a>
+                                <a class="btn-block cartManage" data-action="save" data-sku="{{$showSku['sku']}}" href="javascript:;">Save for Later</a><br>
                                 <a class="btn-block" data-type="cart-remove" data-action="delsku" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
                             </div>
                         </div>
@@ -123,10 +123,8 @@
                             </div>
                             <div class="col-md-2 col-xs-4">
                                 <div class="p-l-20x">
-                                    <a class="btn-block cartManage" data-action="movetocart"
-                                       data-sku="{{$showSku['sku']}}" href="javascript:;">Move to Bag</a>
-                                    <a class="btn-block" data-type="cart-remove" data-action="delsave" data-sku="{{$showSku['sku']}}"
-                                       href="javascript:;">Remove</a>
+                                    <a class="btn-block cartManage" data-action="movetocart" data-sku="{{$showSku['sku']}}" href="javascript:;">Move to Bag</a><br/>
+                                    <a class="btn-block" data-type="cart-remove" data-action="delsave" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
                                 </div>
                             </div>
                         </div>

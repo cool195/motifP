@@ -15,7 +15,7 @@
                                 <div class="container shopbag-emptyInfo">
                                     <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-book"></i>
                                     </div>
-                                    <p class="text-primary m-b-20x p-b-20x font-size-llxx">No Oreders Found</p>
+                                    <p class="text-primary m-b-20x p-b-20x font-size-llxx">No Order Found</p>
                                     <a href="/daily" class="btn btn-block btn-primary btn-lg btn-320">Go Shopping</a>
                                 </div>
                             </div>
