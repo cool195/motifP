@@ -17,7 +17,7 @@ class DailyController extends BaseController
         $params = array(
             'cmd' => 'list',
             'token' => Session::get('user.token'),
-            'pagesize' => $request->input('pagesize', 10),
+            'pagesize' => $request->input('pagesize', 20),
             'pagenum' => $request->input('pagenum', 1),
         );
 
