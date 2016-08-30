@@ -1429,9 +1429,32 @@
         return flag;
     }
 
+    function address_validationEmail($email) {
+        var flag = false;
+        var emailNull = "Please enter your email",
+            emailStyle = "Please enter a valid email address";
+        //var $warningInfo = $('.warning-info');
+        var $warningInfo = $email.siblings('.warning-info');
+        var inputText = $email.val();
+        var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        if ("" == inputText || undefined == inputText || null == inputText) {
+            $warningInfo.removeClass('off');
+            $warningInfo.children('span').html(emailNull);
+            flag = false;
+        } else if (!reg.test(inputText)) {
+            $warningInfo.removeClass('off');
+            $warningInfo.children('span').html(emailStyle);
+            flag = false;
+        } else {
+            $warningInfo.addClass('off');
+            flag = true;
+        }
+        return flag;
+    }
+
     $('.address-email').on('keyup blur', function () {
        var email = $(this).val();
-       if(login_validationEmail($(this)) && address_check($('.address-name')) && address_check($('.address-city'))
+       if(address_validationEmail($(this)) && address_check($('.address-name')) && address_check($('.address-city'))
            && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))){
            $('.address-save').removeClass('disabled');
        } else {
@@ -1441,7 +1464,7 @@
 
     $('.address-name').on('keyup blur', function () {
         var name = $(this).val();
-        if(address_check($(this)) && login_validationEmail($('.address-email')) && address_check($('.address-city'))
+        if(address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-city'))
             && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
             $('.address-save').removeClass('disabled');
         } else {
@@ -1450,7 +1473,7 @@
     });
 
     $('.address-city').on('keyup blur', function () {
-       if(address_check($(this)) && login_validationEmail($('.address-email')) && address_check($('.address-name'))
+       if(address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
            && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
            $('.address-save').removeClass('disabled');
        } else {
@@ -1459,7 +1482,7 @@
     });
 
     $('.address-phone').on('keyup blur', function () {
-        if(address_check($(this)) && login_validationEmail($('.address-email')) && address_check($('.address-name'))
+        if(address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-street')) && address_check($('.address-zipcode'))){
             $('.address-save').removeClass('disabled');
         } else {
@@ -1468,7 +1491,7 @@
     })
 
     $('.address-street').on('keyup blur', function () {
-        if(address_check($(this)) && login_validationEmail($('.address-email')) && address_check($('.address-name'))
+        if(address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))){
             $('.address-save').removeClass('disabled');
         } else {
@@ -1477,7 +1500,7 @@
     });
 
     $('.address-zipcode').on('keyup blur', function () {
-        if(address_check($(this)) && login_validationEmail($('.address-email')) && address_check($('.address-name'))
+        if(address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-street'))){
             $('.address-save').removeClass('disabled');
         } else {
