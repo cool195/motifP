@@ -702,6 +702,7 @@
             $('input[name="addr2"]').val('');
             $('input[name="zip"]').val('');
             $('.isDefault').removeClass('active');
+            $('.address-save').addClass('disabled');
         } else {
             // 修改地址
             $.ajax({
@@ -724,6 +725,7 @@
                     } else {
                         $('.isDefault').removeClass('active');
                     }
+                    $('.address-save').removeClass('disabled');
 
                 })
         }
@@ -1411,6 +1413,78 @@
         var $DelAddressItem = $('[data-aid="' + DelAddressId + '"]');
         address_delete($DelAddressItem);
     });
+
+        //地址验证
+    function address_check($address) {
+        var flag = false;
+        var $warningInfo = $address.siblings('.warning-info');
+        var inputText = $address.val();
+        if ("" == inputText || undefined == inputText || null == inputText) {
+            $warningInfo.removeClass('off');
+            flag = false;
+        } else {
+            $warningInfo.addClass('off');
+            flag = true;
+        }
+        return flag;
+    }
+
+    $('.address-email').on('keyup blur', function () {
+       var email = $(this).val();
+       if(login_validationEmail($(this)) && address_check($('.address-name')) && address_check($('.address-city'))
+           && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))){
+           $('.address-save').removeClass('disabled');
+       } else {
+           $('.address-save').addClass('disabled');
+       }
+    });
+
+    $('.address-name').on('keyup blur', function () {
+        var name = $(this).val();
+        if(address_check($(this)) && login_validationEmail($('.address-email')) && address_check($('.address-city'))
+            && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
+            $('.address-save').removeClass('disabled');
+        } else {
+            $('.address-save').addClass('disabled');
+        }
+    });
+
+    $('.address-city').on('keyup blur', function () {
+       if(address_check($(this)) && login_validationEmail($('.address-email')) && address_check($('.address-name'))
+           && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
+           $('.address-save').removeClass('disabled');
+       } else {
+           $('.address-save').addClass('disabled');
+       }
+    });
+
+    $('.address-phone').on('keyup blur', function () {
+        if(address_check($(this)) && login_validationEmail($('.address-email')) && address_check($('.address-name'))
+            && address_check($('.address-city')) && address_check($('.address-street')) && address_check($('.address-zipcode'))){
+            $('.address-save').removeClass('disabled');
+        } else {
+            $('.address-save').addClass('disabled');
+        }
+    })
+
+    $('.address-street').on('keyup blur', function () {
+        if(address_check($(this)) && login_validationEmail($('.address-email')) && address_check($('.address-name'))
+            && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))){
+            $('.address-save').removeClass('disabled');
+        } else {
+            $('.address-save').addClass('disabled');
+        }
+    });
+
+    $('.address-zipcode').on('keyup blur', function () {
+        if(address_check($(this)) && login_validationEmail($('.address-email')) && address_check($('.address-name'))
+            && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-street'))){
+            $('.address-save').removeClass('disabled');
+        } else {
+            $('.address-save').addClass('disabled');
+        }
+    })
+        //地址验证
 
     //User Address End
 
