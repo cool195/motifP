@@ -37,7 +37,8 @@
             </ul>
         </nav>
         <nav class="navbar-right">
-            <ul class="nav navbar-primary">
+            <ul class="nav navbar-primary clearfix">
+                @if(Session::has('user'))
                 <li class="nav-item p-x-10x"><a href="/user/profile" class="nav-link name">{{Session::get('user.nickname')}}</a></li>
                 <li class="nav-item p-x-10x header-img">
                     <a href="/user/profile" class="nav-link">
@@ -54,11 +55,7 @@
                             <li class="p-t-5x"><a class="p-l-15x" href="/wish">Wishlist</a></li>
                             <li class="p-t-5x"><a class="p-l-15x" href="/following">Following</a></li>
                             <li class="p-t-5x"><a class="p-l-15x" href="/user/profile">Settings</a></li>
-                            @if(Session::has('user'))
-                                <li class="p-y-5x p-b-10x"><a class="p-l-15x" href="/signout">Log out</a></li>
-                            @else
-                                <li class="p-y-5x p-b-10x"><a class="p-l-15x" href="/login">Sign in</a></li>
-                            @endif
+                            <li class="p-y-5x p-b-10x"><a class="p-l-15x" href="/signout">Log out</a></li>
                         </ul>
                     </div>
                 </li>
@@ -77,6 +74,10 @@
                         </div>
                     </a>
                 </li>
+                @else
+                    <li class="nav-item p-x-10x"><a class="nav-link" href="/login">LOGIN</a></li>
+                    <li class="nav-item p-x-10x"><a class="nav-link" href="/register">REGISTER</a></li>
+                @endif
             </ul>
         </nav>
     </div>

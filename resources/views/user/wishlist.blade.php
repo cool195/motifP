@@ -1,6 +1,6 @@
 @include('header')
         <!-- 内容 -->
-<section class="m-y-30x">
+<section class="m-y-40x">
     <div class="container">
         <div class="myHome-content">
             <!-- 左侧菜单 -->
