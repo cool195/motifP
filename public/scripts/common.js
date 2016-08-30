@@ -1550,6 +1550,7 @@
                 $('.uploadProfile-loading').hide();
                 $('.bg-uploadProfileLoading').css('display', 'none');
                 $('#avatarUrl').attr('src', $('#avatarUrl').data('url') + '/n1/' + obj.data.url);
+                $('.img-circle').attr('src', $('#avatarUrl').data('url') + '/n1/' + obj.data.url);
             }
         }, false); // 处理上传完成
         xhr.addEventListener("error", function (e) {
