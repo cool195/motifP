@@ -29,7 +29,7 @@
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link @if('shopping' == $title) active @endif" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
                     <ul class="dropdown-menu p-t-0">
                         @foreach($Category->getShoppingCategoryList() as $category)
-                            <li class="dropdown-item"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
+                            <li class="dropdown-item active"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -52,7 +52,7 @@
                     <div class="dropdown-img">
                         <span class="triangle-up"></span>
                         <ul class="nav">
-                            <li class="p-t-10x"><a class="p-l-15x" href="/orderlist">Orders</a></li>
+                            <li class="p-t-10x active"><a class="p-l-15x" href="/orderlist">Orders</a></li>
                             <li class="p-t-5x"><a class="p-l-15x" href="/cart">My Bag</a></li>
                             <li class="p-t-5x"><a class="p-l-15x" href="/wish">Wishlist</a></li>
                             <li class="p-t-5x"><a class="p-l-15x" href="/following">Following</a></li>
