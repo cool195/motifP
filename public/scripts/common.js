@@ -1872,13 +1872,6 @@
     }
     //点击查看更多商品
     $('.btn-seeMore-wishList').on('click', function () {
-        $('img.img-lazy').each(function () {
-            var Src = $(this).attr('src'),
-                Original = $(this).attr('data.original');
-            if (Src === Original) {
-                $(this).removeClass('img-lazy');
-            }
-        });
         getWishList();
     });
 
@@ -1923,6 +1916,7 @@
 
                 $('#wishlist-wookmark').imagesLoaded(function () {
                     loadingHide('.wish-loading', '.btn-seeMore-wishList');
+                    $('.isHidden').removeClass('isHidden');
                     new Wookmark('#wishlist-wookmark', {
                         container: $('#wishlist-wookmark'),
                         align: 'left',
@@ -1932,10 +1926,10 @@
                 });
 
                 //图片延迟加载
-                $('img.img-lazy').lazyload({
-                    threshold: 1000,
-                    effect: 'fadeIn'
-                });
+                //$('img.img-lazy').lazyload({
+                //    threshold: 1000,
+                //    effect: 'fadeIn'
+                //});
 
             }
         }).always(function () {

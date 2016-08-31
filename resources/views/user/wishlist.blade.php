@@ -62,11 +62,10 @@
 
 <template id="tpl-wish">
     @{{ each list }}
-    <li>
+    <li class="isHidden">
         <div class="wishlist-item daily-item">
             <a href="/product/@{{ $value.spu }}">
-                <img src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                     data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.main_image_url }}" alt="@{{ $value.main_title }}" class="img-fluid img-lazy">
+                <img src="{{config('runtime.CDN_URL')}}/n1/@{{ $value.main_image_url }}" alt="@{{ $value.main_title }}" class="img-fluid">
             </a>
             <span class="wishlist-heart btn-heart">
                 <i class="iconfont btn-wish font-size-lxx active" data-spu="@{{ $value.spu }}"></i></span>
