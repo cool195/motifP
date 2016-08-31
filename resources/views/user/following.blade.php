@@ -40,11 +40,11 @@
                                                data-did="{{$follow['userId']}}">Following</a>
                                         </div>
                                         <div class="p-t-15x">{{ $follow['description'] }}</div>
-                                        <div class="p-t-15x">
+                                        {{--<div class="p-t-15x">
                                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
                                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
                                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                                        </div>
+                                        </div>--}}
                                     </div>
                                 </div>
                             @endforeach
@@ -84,11 +84,11 @@
                 <a href="javascript:void(0);" class="btn btn-gray btn-sm p-x-20x btn-following active" data-did="@{{ $value.userId }}">Following</a>
             </div>
             <div class="p-t-15x">@{{ $value.description }}</div>
-            <div class="p-t-15x">
+            {{--<div class="p-t-15x">
                 <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
                 <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
                 <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-            </div>
+            </div>--}}
         </div>
     </div>
     @{{ /each }}
