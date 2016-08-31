@@ -131,8 +131,6 @@
                                         <input type="text" id="{{'vas_id'.$vas['vas_id']}}" class="input-engraving form-control m-r-20x text-primary disabled">
                                         <i class="iconfont icon-checkcircle text-primary font-size-lg"></i>
                                     </div>
-                                </div>
-                                <div class="m-l-15x">
                                     <span class="warning-info flex flex-alignCenter text-warning off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Invalid character</span>
