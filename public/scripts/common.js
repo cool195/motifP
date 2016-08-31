@@ -1415,7 +1415,7 @@
             })
     }
 
-    $('.btn-delAddress').on('click', function () {
+    $('#addressList-info').on('click','.btn-delAddress',function(){
         var addressId = $(this).parent().data('aid');
         $('[data-remodal-id="addressmodal-modal"]').data('addressid', addressId);
         DelAddressModal.open();

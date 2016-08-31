@@ -107,7 +107,7 @@
                                         <a class="btn btn-secondary btn-md btn-addNewAddress" href="javascript:void(0)"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address</a>
                                     </span>
                                 </div>
-                                <div class="row p-x-10x p-t-20x address-list">
+                                <div class="row p-x-10x p-t-20x address-list" id="addressList-info">
                                     @foreach($address['data']['list'] as $value)
                                     <div class="col-md-6">
                                         <div class="p-a-10x">
