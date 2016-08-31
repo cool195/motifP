@@ -264,7 +264,7 @@
             </div>
             <div class="showHide-body p-x-20x p-b-20x">
                 <div class="p-x-20x p-b-20x">
-                    <textarea name="cremark" class="form-control disabled" cols="30" rows="4"></textarea>
+                    <textarea name="cremark" class="form-control" cols="30" rows="4"></textarea>
                 </div>
                 <div class="text-right"><a href="javascript:;" id="crsubmit" class="btn btn-primary btn-md">Save</a></div>
             </div>

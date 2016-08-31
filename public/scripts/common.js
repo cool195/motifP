@@ -255,7 +255,7 @@
             $.each(product_data.vasBases, function (index, val) {
                 if (!$('#vas_id' + val.vas_id).hasClass('disabled') /*&& $('#vas_id' + val.vas_id).val()*/) {
                     if($('#vas_id' + val.vas_id).val() == "" || $('#vas_id' + val.vas_id).val() == null){
-                        $('#vas_id' + val.vas_id).siblings('.warning-info').removeClass('off');
+                        $('#vas_id' + val.vas_id).parents('.flex-alignCenter').siblings('.warning-info').removeClass('off');
                         flag = false;
                     }
                     operate.VAList.push({'vas_id': val.vas_id, 'user_remark': $('#vas_id' + val.vas_id).val()});
@@ -311,12 +311,12 @@
     $('.input-engraving').on('click', function () {
         $(this).removeClass('disabled');
         $(this).siblings('.icon-checkcircle').addClass('active');
-        $(this).siblings('.warning-info').addClass('off');
+        $(this).parents('.flex-alignCenter').siblings('.warning-info').addClass('off');
     });
 
     $('.icon-checkcircle').on('click', function () {
         $(this).toggleClass('active');
-        $(this).siblings('.warning-info').addClass('off');
+        $(this).parents('.flex-alignCenter').siblings('.warning-info').addClass('off');
         if ($(this).hasClass('active')) {
             $(this).siblings('.input-engraving').removeClass('disabled');
             $(this).siblings('.input-engraving').removeAttr('disabled');
