@@ -1,6 +1,8 @@
 <footer>
     <div class="container p-x-40x">
-        <div class="text-center m-b-40x p-t-10x"><img class="" src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png" alt="logo"></div>
+        <div class="text-center m-b-40x p-t-10x">
+            <a href="/daily"><img class="" src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png" alt="logo"></a>
+        </div>
         <div class="row">
             <div class="col-md-3 col-xs-6">
                 <div class="list-group text-white m-b-20x">
