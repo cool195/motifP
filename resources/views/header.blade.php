@@ -20,8 +20,7 @@
         <nav class="navbar-left">
             <ul class="nav navbar-primary">
                 <li class="nav-item nav-logo"><a href="/daily">
-                        <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png"
-                             alt="logo"></a>
+                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png" alt="logo"></a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/daily">Daily</a></li>
                 <li class="nav-item"><a class="nav-link" href="/designer">DESIGNER</a></li>
@@ -44,8 +43,9 @@
                 </li>
                 <li class="nav-item p-x-10x header-img">
                     <a href="/user/profile" class="nav-link">
-                        <img class="img-circle"
-                             src="@if(Session::has('user')){{config('runtime.CDN_URL').'/n1/'.Session::get('user.icon')}}@else{{config('runtime.Image_URL').'/images/icon/apple-touch-icon.png'}}@endif"
+                        <img class="img-circle img-lazy"
+                             src="/images/product/bg-product@336.png"
+                             data-original="@if(Session::has('user')){{config('runtime.CDN_URL').'/n1/'.Session::get('user.icon')}}@else{{config('runtime.Image_URL').'/images/icon/apple-touch-icon.png'}}@endif"
                              width="40" height="40" alt="">
                     </a>
                     <!--个人中心下拉框-->
