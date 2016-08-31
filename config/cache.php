@@ -53,7 +53,7 @@ return [
             'driver' => 'memcached',
             'servers' => [
                 [
-                    'host' => env('MEMCACHED_HOST', '127.0.0.1'),
+                    'host' => env('MEMCACHED_HOST', env('APP_ENV') == 'production' ? 'memcache-h5.qbqakn.0001.use1.cache.amazonaws.com' : '127.0.0.1'),
                     'port' => env('MEMCACHED_PORT', 11211),
                     'weight' => 100,
                 ],
@@ -78,6 +78,6 @@ return [
     |
     */
 
-    'prefix' => 'laravel',
+    'prefix' => 'motifP',
 
 ];

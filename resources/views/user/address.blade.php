@@ -28,17 +28,21 @@
                                     <form id="addAddressForm" data-aid="">
                                     <div class="col-md-5">
                                         <div class="p-l-20x m-b-20x">
-                                            <input type="text" name="email" class="form-control contrlo-lg text-primary" placeholder="Email">
+                                            <input type="text" name="email" class="form-control contrlo-lg text-primary address-email" placeholder="Email">
+                                            <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                                <span class="font-size-base">Please enter a valid email address !</span>
+                                            </div>
                                         </div>
                                         <div class="p-l-20x m-b-20x">
-                                            <input type="text" name="name" class="form-control contrlo-lg text-primary" placeholder="Full name">
+                                            <input type="text" name="name" class="form-control contrlo-lg text-primary address-name" placeholder="Full name">
                                             <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                                 <span class="font-size-base">Please enter your name !</span>
                                             </div>
                                         </div>
                                         <div class="p-l-20x m-b-20x">
-                                            <input type="text" name="city" class="form-control contrlo-lg text-primary" placeholder="City">
+                                            <input type="text" name="city" class="form-control contrlo-lg text-primary address-city" placeholder="City">
                                             <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                                 <span class="font-size-base">Please enter your city !</span>
@@ -48,7 +52,7 @@
                                             <input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">
                                         </div>
                                         <div class="p-l-20x m-b-20x">
-                                            <input type="text" name="tel" class="form-control contrlo-lg text-primary" placeholder="Phone (optional)">
+                                            <input type="text" name="tel" class="form-control contrlo-lg text-primary address-phone" placeholder="Phone (optional)">
                                             <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                                 <span class="font-size-base">Please enter your Phone !</span>
@@ -58,7 +62,7 @@
                                     <div class="col-md-1"></div>
                                     <div class="col-md-5">
                                         <div class="p-l-20x m-b-20x">
-                                            <input type="text" name="addr1" class="form-control contrlo-lg text-primary" placeholder="Street 1">
+                                            <input type="text" name="addr1" class="form-control contrlo-lg text-primary address-street" placeholder="Street 1">
                                             <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                                 <span class="font-size-base">Please enter your street !</span>
@@ -75,7 +79,7 @@
                                             </select>
                                         </div>
                                         <div class="p-l-20x m-b-20x">
-                                            <input type="text" name="zip" id="zip" class="form-control contrlo-lg text-primary" placeholder="Zip Code">
+                                            <input type="text" name="zip" id="zip" class="form-control contrlo-lg text-primary address-zipcode" placeholder="Zip Code">
                                             <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                                 <span class="font-size-base">Please enter your zip code !</span>
@@ -90,7 +94,7 @@
                                 </div>
                                 <div class="text-right">
                                     <a href="javascript:void(0)" id="addAddress-cancel" class="text-primary font-size-md p-r-30x">Cancel</a>
-                                    <a href="javascript:void(0)" id="addAddress" class="btn btn-primary btn-lg btn-200">Save</a>
+                                    <a href="javascript:void(0)" id="addAddress" class="btn btn-primary btn-lg btn-200 address-save">Save</a>
                                 </div>
                             </div>
 

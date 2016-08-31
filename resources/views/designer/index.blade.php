@@ -23,9 +23,6 @@
                                                      alt="">
                                             </div>
                                         </div>
-                                        <div class="btn-morePlayer">
-                                            <a class="text-white font-size-sm" href="{{$designer['listVideoPath']}}"><strong>Click for More</strong></a>
-                                        </div>
                                     </div>
                                 </div>
                             @else
@@ -62,7 +59,8 @@
                         </div>
                         <div class="p-t-15x">
                             @if(Session::has('user'))
-                                <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif" data-did="{{$designer['designerId']}}">Follow</a>
+                                <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif"
+                                   data-did="{{$designer['designerId']}}">@if($designer['isFollowed']){{'Following'}}@else{{'Follow'}}@endif</a>
                             @else
                                 <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
                             @endif
@@ -92,7 +90,8 @@
                         </div>
                         <div class="p-t-15x">
                             @if(Session::has('user'))
-                                <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif" data-did="{{$designer['designerId']}}">Follow</a>
+                                <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif"
+                                   data-did="{{$designer['designerId']}}">@if($designer['isFollowed']){{'Following'}}@else{{'Follow'}}@endif</a>
                             @else
                                 <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
                             @endif
@@ -119,9 +118,6 @@
                                                      srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
                                                      alt="">
                                             </div>
-                                        </div>
-                                        <div class="btn-morePlayer">
-                                            <a class="text-white font-size-sm" href="{{$designer['listVideoPath']}}"><strong>Click for More</strong></a>
                                         </div>
                                     </div>
                                 </div>
@@ -189,9 +185,6 @@
                                                  alt="">
                                         </div>
                                     </div>
-                                    <div class="btn-morePlayer">
-                                        <a class="text-white font-size-sm" href="/designer/@{{value.designerId}}"><strong>Click for More</strong></a>
-                                    </div>
                                 </div>
                             </div>
                         @{{ /if }}
@@ -223,7 +216,8 @@
                     </div>
                     <div class="p-t-15x">
                         @if(Session::has('user'))
-                            <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-following  @{{ if value.isFollowed == 1 }} active @{{ /if }}" data-did="@{{ value.designerId }}">Follow</a>
+                            <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-following  @{{ if value.isFollowed == 1 }} active @{{ /if }}"
+                               data-did="@{{ value.designerId }}">@{{ if value.isFollowed }}Following@{{ else }}Follow@{{ /if }}</a>
                         @else
                             <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
                         @endif
@@ -248,7 +242,8 @@
                     </div>
                     <div class="p-t-15x">
                         @if(Session::has('user'))
-                            <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-following @{{ if value.isFollowed == 1 }} active @{{ /if }}" data-did="@{{ value.designerId }}">Follow</a>
+                            <a href="javascrip:void(0);" class="btn btn-gray btn-sm p-x-20x btn-following @{{ if value.isFollowed == 1 }} active @{{ /if }}"
+                               data-did="@{{ value.designerId }}">@{{ if value.isFollowed }}Following@{{ else }}Follow@{{ /if }}</a>
                         @else
                             <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
                         @endif
@@ -274,9 +269,6 @@
                                              srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
                                              alt="">
                                     </div>
-                                </div>
-                                <div class="btn-morePlayer">
-                                    <a class="text-white font-size-sm" href="/designer/@{{value.designerId}}"><strong>Click for More</strong></a>
                                 </div>
                             </div>
                         </div>
@@ -349,9 +341,6 @@
                                              alt="">
                                     </div>
                                 </div>
-                                <div class="btn-morePlayer">
-                                    <a class="text-white font-size-sm" href="/designer/@{{value.designerId}}"><strong>Click for More</strong></a>
-                                </div>
                             </div>
                         </div>
                         @{{ /if }}
@@ -394,9 +383,6 @@
                                              srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
                                              alt="">
                                     </div>
-                                </div>
-                                <div class="btn-morePlayer">
-                                    <a class="text-white font-size-sm" href="/designer/@{{value.designerId}}"><strong>Click for More</strong></a>
                                 </div>
                             </div>
                         </div>

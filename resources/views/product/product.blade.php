@@ -124,12 +124,12 @@
                     @if(isset($data['vasBases']))
                         @foreach($data['vasBases'] as $vas)
                             <fieldset class="text-left m-b-20x">
-                                <div class="text-primary font-size-md">{{$vas['vas_describe']}}
+                                <div class="text-primary font-size-md">{{ucfirst(strtolower($vas['vas_describe']))}}
                                     +${{number_format(($vas['vas_price'] / 100), 2)}}</div>
                                 <div class="m-l-15x">
                                     <div class="p-y-5x flex flex-alignCenter">
                                         <input type="text" id="{{'vas_id'.$vas['vas_id']}}"
-                                               class="input-engraving form-control m-r-20x text-primary disabled">
+                                               class="input-engraving form-control m-r-20x disabled">
                                         <i class="iconfont icon-checkcircle text-primary font-size-lg"></i>
                                     </div>
                                 </div>
@@ -156,11 +156,9 @@
                     <div class="text-center p-t-15x p-b-10x">
                         @if(Session::has('user'))
                             <a href="javascript:void(0);" id="productAddBag"
-                               class="btn btn-primary btn-lg btn-350 btn-addToBag @if($data['isPutOn']==0){{'disabled'}}@endif">Add
-                                to Bag</a>
+                               class="btn btn-primary btn-lg btn-350 btn-addToBag @if($data['isPutOn']==0){{'disabled'}}@endif">Add to Bag</a>
                         @else
-                            <a href="/login" class="btn btn-block btn-primary btn-lg btn-350 btn-addToBag">Add to
-                                Bag</a>
+                            <a href="/login" class="btn btn-block btn-primary btn-lg btn-350 btn-addToBag">Add to Bag</a>
                         @endif
                     </div>
                 </div>
@@ -172,7 +170,7 @@
 @if(isset($data['designer']))
     <div class="container m-t-30x">
         <span class="sanBold font-size-md p-x-20x">Designer:</span>
-        <span class="sanBold text-main">{{ $data['designer']['designer_name'] }}</span>
+        <a href="/designer/{{$data['designer']['designer_id']}}"><span class="sanBold text-main">{{ $data['designer']['designer_name'] }}</span></a>
     </div>
 @endif
 
@@ -247,13 +245,13 @@
 
 <!-- 购买成功提示 -->
 <div class="remodal modal-content remodal-xs" data-remodal-id="additem-modal" id="addItem-modalDialog" data-spu="">
-    <div class="text-center font-size-md p-a-30x">Item Added</div>
+    <div class="text-center font-size-md m-y-10x">Item Added</div>
 </div>
 
 <!-- 购买失败提示 -->
 <div class="remodal modal-content remodal-xs" data-remodal-id="additemfail-modal" id="addItemFail-modalDialog"
      data-spu="">
-    <div class="text-center font-size-md p-a-30x">Added Failled</div>
+    <div class="text-center font-size-md m-y-10x">Added Failled</div>
 </div>
 
 <!-- footer start -->

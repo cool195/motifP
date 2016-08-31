@@ -1,11 +1,11 @@
 @include('header')
         <!-- 内容 -->
-<section class="m-y-30x">
+<section class="m-y-40x">
     <div class="container">
         <div class="myHome-content">
             <!-- 左侧菜单 -->
             @include('user.left', ['title' => 'wishlist'])
-            <!-- 左侧内容 -->
+            <!-- 左右侧内容 -->
 
             <div class="right">
                 @if(empty($data['list']))
@@ -24,17 +24,21 @@
                         @if(!empty($data['list']))
                             @foreach($data['list'] as $wish)
                                 <li>
-                                    <div class="wishlist-item daily-item">
-                                        <a href="/product/{{$wish['spu']}}">
-                                            <img src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{ $wish['main_image_url'] }}" alt="{{ $wish['main_title'] }}" class="img-fluid img-lazy">
-                                        </a>
-                                        <span class="wishlist-heart btn-heart">
-                                            <i class="iconfont btn-wish font-size-lxx active" data-spu="{{$wish['spu']}}"></i></span>
-                                        <div class="daily-info p-a-10x helveBold text-center">
-                                            <div class="font-size-md text-main p-x-20x">{{$wish['main_title']}}</div>
-                                            <div>
-                                                <span class="font-size-md text-main p-r-5x">${{ number_format(($wish['skuPrice']['sale_price'] / 100), 2) }}</span>
+                                    <div class="productList-item wishlist-item">
+                                        <div class="image-container">
+                                            <a href="/product/{{$wish['spu']}}">
+                                                <img src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{ $wish['main_image_url'] }}" alt="{{ $wish['main_title'] }}" class="img-fluid img-lazy">
+                                                <div class="bg-heart"></div>
+                                            </a>
+                                            <span class="product-heart btn-heart">
+                                                <i class="iconfont btn-wish font-size-lxx active" data-spu="{{$wish['spu']}}"></i>
+                                            </span>
+                                        </div>
+                                        <div class="price-caption helveBold">
+                                            <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{$wish['main_title']}}</div>
+                                            <div class="text-center">
+                                                <span class="font-size-md text-primary p-r-5x">${{ number_format(($wish['skuPrice']['sale_price'] / 100), 2) }}</span>
                                                 @if($wish['skuPrice']['sale_price'] !== $wish['skuPrice']['price'])
                                                     <span class="font-size-base text-common text-throughLine">${{ number_format(($wish['skuPrice']['price'] / 100), 2) }}</span>
                                                 @endif
@@ -46,7 +50,7 @@
                         @endif
                     </ul>
                     @if(!empty($data['list']))
-                        <div class="text-center m-y-30x  wishList-seeMore">
+                        <div class="text-center m-y-30x wishList-seeMore">
                             <a class="btn btn-gray btn-lg btn-380 btn-seeMore-wishList" href="javascript:void(0)">See more of all</a>
                         </div>
                     @endif
@@ -63,15 +67,19 @@
 <template id="tpl-wish">
     @{{ each list }}
     <li class="isHidden">
-        <div class="wishlist-item daily-item">
-            <a href="/product/@{{ $value.spu }}">
-                <img src="{{config('runtime.CDN_URL')}}/n1/@{{ $value.main_image_url }}" alt="@{{ $value.main_title }}" class="img-fluid">
-            </a>
-            <span class="wishlist-heart btn-heart">
-                <i class="iconfont btn-wish font-size-lxx active" data-spu="@{{ $value.spu }}"></i></span>
-            <div class="daily-info p-a-10x helveBold text-center">
-                <div class="font-size-md text-main p-x-20x">@{{ $value.main_title }}</div>
-                <div>
+        <div class="productList-item wishlist-item">
+            <div class="image-container">
+                <a href="/product/@{{ $value.spu }}">
+                    <img src="{{config('runtime.CDN_URL')}}/n1/@{{ $value.main_image_url }}" alt="@{{ $value.main_title }}" class="img-fluid">
+                    <div class="bg-heart"></div>
+                </a>
+                <span class="product-heart btn-heart">
+                    <i class="iconfont btn-wish btn-wishing font-size-lxx active" data-spu="@{{ $value.spu }}"></i>
+                </span>
+            </div>
+            <div class="price-caption helveBold">
+                <div class="text-center font-size-md text-primary text-truncate p-x-20x">@{{ $value.main_title }}</div>
+                <div class="text-center">
                     <span class="font-size-md text-main p-r-5x">@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
                     @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
                         <span class="font-size-base text-common text-throughLine">@{{ ($value.skuPrice.price/100).toFixed(2) }}</span>

@@ -36,8 +36,8 @@
                                         <span class="sanBold font-size-md p-r-20x changeName-title">Email</span>
                                         <span class="changePwd-input">{{ Session::get('user.login_email') }}</span>
                                     </div>
-                                    <div class="sanBold flex flex-alignCenter flex-justifyCenter m-b-20x">
-                                        <span class="font-size-md p-r-20x changeName-title">Name</span>
+                                    <div class="flex flex-alignCenter flex-justifyCenter m-b-20x">
+                                        <span class="sanBold font-size-md p-r-20x changeName-title">Name</span>
                                         <span class="changePwd-input">
                                             <input type="text" name="nick" class="form-control contrlo-lg text-primary"
                                                    placeholder="{{ Session::get('user.nickname') }}">

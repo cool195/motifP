@@ -194,6 +194,7 @@
             var product_stock_qtty = product_cache_skuQty[$('#productsku').val()] ? product_cache_skuQty[$('#productsku').val()] : product_getSkuQty($('#productsku').val());
             if (skuQty > 0 && skuQty <= product_stock_qtty) {
                 $('#delQtySku').hasClass('disabled') ? $('#delQtySku').removeClass('disabled') : false;
+                $('#addQtySku').hasClass('disabled') ? $('#addQtySku').removeClass('disabled') : false;
                 $('#skuQty').data('num', skuQty);
                 $('#skuQty').html(skuQty);
             }
@@ -213,6 +214,7 @@
             !$('#delQtySku').hasClass('disabled') || $(this).data('num') > 0 ? pSelAttr() : false;
         }
     });
+
     //检查库存
     function checkStock(skus) {
         $.ajax({
@@ -249,12 +251,19 @@
                 'VAList': []
             };
 
-
+            var flag = true;
             $.each(product_data.vasBases, function (index, val) {
-                if (!$('#vas_id' + val.vas_id).hasClass('disabled') && $('#vas_id' + val.vas_id).val()) {
+                if (!$('#vas_id' + val.vas_id).hasClass('disabled') /*&& $('#vas_id' + val.vas_id).val()*/) {
+                    if($('#vas_id' + val.vas_id).val() == "" || $('#vas_id' + val.vas_id).val() == null){
+                        flag = false;
+                    }
                     operate.VAList.push({'vas_id': val.vas_id, 'user_remark': $('#vas_id' + val.vas_id).val()});
                 }
             });
+            if(!flag){
+                alert('没填刻字');
+                return;
+            }
             $('#productAddBag').addClass('disabled');
             $.ajax({
                     url: '/cart/add',
@@ -307,9 +316,11 @@
         $(this).toggleClass('active');
         if ($(this).hasClass('active')) {
             $(this).siblings('.input-engraving').removeClass('disabled');
+            $(this).siblings('.input-engraving').removeAttr('disabled');
         } else {
-            $(this).siblings('.input-engraving').val('');
+            //$(this).siblings('.input-engraving').val('');
             $(this).siblings('.input-engraving').addClass('disabled');
+            $(this).siblings('.input-engraving').attr({ disabled: "disabled" })
         }
     });
 
@@ -318,7 +329,7 @@
         var $this = $(this);
         $.ajax({
                 url: '/wishlist/' + $this.data('spu'),
-                type: 'GET',
+                type: 'GET'
             })
             .done(function (data) {
                 if (data.success) {
@@ -333,7 +344,7 @@
         var spu = $this.data('spu');
         $.ajax({
                 url: '/wishlist/' + spu,
-                type: 'GET',
+                type: 'GET'
             })
             .done(function (data) {
                 if (data.success) {
@@ -702,6 +713,7 @@
             $('input[name="addr2"]').val('');
             $('input[name="zip"]').val('');
             $('.isDefault').removeClass('active');
+            $('.address-save').addClass('disabled');
         } else {
             // 修改地址
             $.ajax({
@@ -724,6 +736,7 @@
                     } else {
                         $('.isDefault').removeClass('active');
                     }
+                    $('.address-save').removeClass('disabled');
 
                 })
         }
@@ -1412,6 +1425,101 @@
         address_delete($DelAddressItem);
     });
 
+        //地址验证
+    function address_check($address) {
+        var flag = false;
+        var $warningInfo = $address.siblings('.warning-info');
+        var inputText = $address.val();
+        if ("" == inputText || undefined == inputText || null == inputText) {
+            $warningInfo.removeClass('off');
+            flag = false;
+        } else {
+            $warningInfo.addClass('off');
+            flag = true;
+        }
+        return flag;
+    }
+
+    function address_validationEmail($email) {
+        var flag = false;
+        var emailNull = "Please enter your email",
+            emailStyle = "Please enter a valid email address";
+        //var $warningInfo = $('.warning-info');
+        var $warningInfo = $email.siblings('.warning-info');
+        var inputText = $email.val();
+        var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        if ("" == inputText || undefined == inputText || null == inputText) {
+            $warningInfo.removeClass('off');
+            $warningInfo.children('span').html(emailNull);
+            flag = false;
+        } else if (!reg.test(inputText)) {
+            $warningInfo.removeClass('off');
+            $warningInfo.children('span').html(emailStyle);
+            flag = false;
+        } else {
+            $warningInfo.addClass('off');
+            flag = true;
+        }
+        return flag;
+    }
+
+    $('.address-email').on('keyup blur', function () {
+       var email = $(this).val();
+       if(address_validationEmail($(this)) && address_check($('.address-name')) && address_check($('.address-city'))
+           && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))){
+           $('.address-save').removeClass('disabled');
+       } else {
+           $('.address-save').addClass('disabled');
+       }
+    });
+
+    $('.address-name').on('keyup blur', function () {
+        var name = $(this).val();
+        if(address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-city'))
+            && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
+            $('.address-save').removeClass('disabled');
+        } else {
+            $('.address-save').addClass('disabled');
+        }
+    });
+
+    $('.address-city').on('keyup blur', function () {
+       if(address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+           && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
+           $('.address-save').removeClass('disabled');
+       } else {
+           $('.address-save').addClass('disabled');
+       }
+    });
+
+    $('.address-phone').on('keyup blur', function () {
+        if(address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+            && address_check($('.address-city')) && address_check($('.address-street')) && address_check($('.address-zipcode'))){
+            $('.address-save').removeClass('disabled');
+        } else {
+            $('.address-save').addClass('disabled');
+        }
+    })
+
+    $('.address-street').on('keyup blur', function () {
+        if(address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+            && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))){
+            $('.address-save').removeClass('disabled');
+        } else {
+            $('.address-save').addClass('disabled');
+        }
+    });
+
+    $('.address-zipcode').on('keyup blur', function () {
+        if(address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+            && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-street'))){
+            $('.address-save').removeClass('disabled');
+        } else {
+            $('.address-save').addClass('disabled');
+        }
+    })
+        //地址验证
+
     //User Address End
 
     //User Profile Start
@@ -1453,6 +1561,7 @@
                 $('.uploadProfile-loading').hide();
                 $('.bg-uploadProfileLoading').css('display', 'none');
                 $('#avatarUrl').attr('src', $('#avatarUrl').data('url') + '/n1/' + obj.data.url);
+                $('.img-circle').attr('src', $('#avatarUrl').data('url') + '/n1/' + obj.data.url);
             }
         }, false); // 处理上传完成
         xhr.addEventListener("error", function (e) {
@@ -1595,6 +1704,11 @@
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
+                    if('Following' == $this.html()){
+                        $this.html('Follow');
+                    } else{
+                        $this.html('Following');
+                    }
                 }
             });
 
@@ -1609,6 +1723,11 @@
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
+                    if('Following' == $this.html()){
+                        $this.html('Follow');
+                    } else {
+                        $this.html('Following');
+                    }
                 }
             });
     });
@@ -1943,6 +2062,21 @@
         var StageCache = $.parseHTML(TplHtml);
         $('#wishList-container').find('#wishlist-wookmark').append(StageCache);
     }
+    // 新加载出来的也可点击 '心' 切换
+    $('#wishList-container').on('click', '.btn-wishing', function (e) {
+        var $this = $(e.target);
+        var spu = $this.data('spu');
+        $.ajax({
+                url: '/wishlist/' + spu,
+                type: 'GET'
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $this.toggleClass('active');
+                }
+            })
+    });
+
 
     //#end 个人中心 WishList
 
@@ -2026,6 +2160,11 @@
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
+                    if('Following' == $this.html()){
+                        $this.html('Follow');
+                    } else {
+                        $this.html('Following');
+                    }
                 }
             });
     });

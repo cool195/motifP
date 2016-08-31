@@ -21,7 +21,7 @@
 <div class="clearfix"></div>
 
 <!-- 列表内容 -->
-<div class="container m-y-40x" role="main" id="dailyList-container" data-pagenum="0" data-loading="false">
+<div class="container m-y-40x" role="main" id="dailyList-container" data-pagenum="1" data-loading="false">
     @if(!empty($list))
         <ul class="tiles-wrap animated row" id="daily-wookmark">
             @foreach($list as $daily)

@@ -2296,7 +2296,7 @@ pre code {
   padding: 0.25rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  color: #6d91ff;
+  /*color: #6d91ff;*/
   background-color: #f6f7fa;
   background-image: none;
   border: 1px solid #dddde1;
@@ -2335,6 +2335,7 @@ pre code {
 
 .form-control.disabled, .form-control:disabled, .form-control[readonly] {
   border: 1px solid #dddde1;
+  color: #dddde1;
 }
 
 .form-control:disabled {
