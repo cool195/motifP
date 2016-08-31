@@ -124,7 +124,7 @@
                     @if(isset($data['vasBases']))
                         @foreach($data['vasBases'] as $vas)
                             <fieldset class="text-left m-b-20x">
-                                <div class="text-primary font-size-md">{{$vas['vas_describe']}}
+                                <div class="text-primary font-size-md">{{strtolower($vas['vas_describe'])}}
                                     +${{number_format(($vas['vas_price'] / 100), 2)}}</div>
                                 <div class="m-l-15x">
                                     <div class="p-y-5x flex flex-alignCenter">
@@ -156,11 +156,9 @@
                     <div class="text-center p-t-15x p-b-10x">
                         @if(Session::has('user'))
                             <a href="javascript:void(0);" id="productAddBag"
-                               class="btn btn-primary btn-lg btn-350 btn-addToBag @if($data['isPutOn']==0){{'disabled'}}@endif">Add
-                                to Bag</a>
+                               class="btn btn-primary btn-lg btn-350 btn-addToBag @if($data['isPutOn']==0){{'disabled'}}@endif">Add to Bag</a>
                         @else
-                            <a href="/login" class="btn btn-block btn-primary btn-lg btn-350 btn-addToBag">Add to
-                                Bag</a>
+                            <a href="/login" class="btn btn-block btn-primary btn-lg btn-350 btn-addToBag">Add to Bag</a>
                         @endif
                     </div>
                 </div>

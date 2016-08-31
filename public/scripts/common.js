@@ -194,6 +194,7 @@
             var product_stock_qtty = product_cache_skuQty[$('#productsku').val()] ? product_cache_skuQty[$('#productsku').val()] : product_getSkuQty($('#productsku').val());
             if (skuQty > 0 && skuQty <= product_stock_qtty) {
                 $('#delQtySku').hasClass('disabled') ? $('#delQtySku').removeClass('disabled') : false;
+                $('#addQtySku').hasClass('disabled') ? $('#addQtySku').removeClass('disabled') : false;
                 $('#skuQty').data('num', skuQty);
                 $('#skuQty').html(skuQty);
             }
@@ -213,6 +214,7 @@
             !$('#delQtySku').hasClass('disabled') || $(this).data('num') > 0 ? pSelAttr() : false;
         }
     });
+
     //检查库存
     function checkStock(skus) {
         $.ajax({
@@ -249,12 +251,19 @@
                 'VAList': []
             };
 
-
+            var flag = true;
             $.each(product_data.vasBases, function (index, val) {
-                if (!$('#vas_id' + val.vas_id).hasClass('disabled') && $('#vas_id' + val.vas_id).val()) {
+                if (!$('#vas_id' + val.vas_id).hasClass('disabled') /*&& $('#vas_id' + val.vas_id).val()*/) {
+                    if($('#vas_id' + val.vas_id).val() == "" || $('#vas_id' + val.vas_id).val() == null){
+                        alert('不能为空');
+                        flag = false;
+                    }
                     operate.VAList.push({'vas_id': val.vas_id, 'user_remark': $('#vas_id' + val.vas_id).val()});
                 }
             });
+            if(!flag){
+                return;
+            }
             $('#productAddBag').addClass('disabled');
             $.ajax({
                     url: '/cart/add',
