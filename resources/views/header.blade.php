@@ -22,7 +22,7 @@
                 <li class="nav-item nav-logo"><a href="/daily">
                     <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png" alt="logo"></a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="/daily">Daily</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/daily">Daily</a></li>
                 <li class="nav-item"><a class="nav-link" href="/designer">DESIGNER</a></li>
                 <li class="nav-item dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
@@ -64,7 +64,7 @@
                 <li class="nav-item p-x-20x">
                     <a href="/cart">
                         <div class="nav-shoppingCart">
-                            <i class="iconfont icon-shopbag font-size-lg text-primary"></i>
+                            <i class="iconfont icon-shopbag font-size-lxx text-primary"></i>
                             @if(Session::get('user.nickname'))
                                 {{--购物车数量 注入服务--}}
                                 @inject('Cart', 'App\Http\Controllers\CartController')
