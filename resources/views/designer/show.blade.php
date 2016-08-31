@@ -16,8 +16,8 @@
                                     <div class="bg-player">
                                         <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}" alt="">
                                         <div class="btn-beginPlayer designer-beginPlayer">
-                                            <img src="/images/daily/icon-player.png"
-                                                 srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
+                                            <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                                 srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
                                                  alt="">
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                                         <a href="/product/{{$spu}}">
                                             <img class="img-fluid img-lazy"
                                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{ $product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
-                                                 src="/images/product/bg-product@336.png"
+                                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                  alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                             <div class="bg-heart"></div>
                                         </a>

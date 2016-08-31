@@ -21,7 +21,7 @@
                     <p class="m-b-20x">
                         <strong>1. Credit card</strong> <br>
                         We accept the following cards for payment of pur chases made online<img class="m-x-10x"
-                                                                                                src="images/payment/cards.png"
+                                                                                                src="{{config('runtime.Image_URL')}}/images/payment/cards.png"
                                                                                                 alt="">
                         Payment will be taken from your
                         credit or debit card as soon as you have placed your order. To ensure safe shopping, we are

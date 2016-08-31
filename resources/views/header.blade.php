@@ -43,8 +43,8 @@
                 </li>
                 <li class="nav-item p-x-10x header-img">
                     <a href="/user/profile" class="nav-link">
-                        <img class="img-circle img-lazy"
-                             src="/images/product/bg-product@336.png"
+                        <img class="img-circle img-border-white img-lazy"
+                             src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                              data-original="@if(Session::has('user')){{config('runtime.CDN_URL').'/n1/'.Session::get('user.icon')}}@else{{config('runtime.Image_URL').'/images/icon/apple-touch-icon.png'}}@endif"
                              width="40" height="40" alt="">
                     </a>

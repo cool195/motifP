@@ -18,8 +18,8 @@
                                         <div class="bg-player">
                                             <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['mainImg']}}" alt="">
                                             <div class="btn-beginPlayer designer-beginPlayer">
-                                                <img src="/images/daily/icon-player.png"
-                                                     srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
+                                                <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                                     srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
                                                      alt="">
                                             </div>
                                         </div>
@@ -27,7 +27,7 @@
                                 </div>
                             @else
                                 <a href="/designer/{{ $designer['designerId'] }}">
-                                    <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" src="/images/product/bg-product@750.png" alt="商品的名称">
+                                    <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="商品的名称">
                                 </a>
                             @endif
 
@@ -37,7 +37,7 @@
                                 @foreach($designer['products']  as $k => $product)
                                 <div class="productImg-item swiper-slide p-r-10x">
                                     <a href="/product/{{$product['spu']}}">
-                                        <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
+                                        <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                     </a>
                                 </div>
                                 @endforeach
@@ -114,8 +114,8 @@
                                         <div class="bg-player">
                                             <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['mainImg']}}" alt="">
                                             <div class="btn-beginPlayer designer-beginPlayer">
-                                                <img src="/images/daily/icon-player.png"
-                                                     srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
+                                                <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                                     srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
                                                      alt="">
                                             </div>
                                         </div>
@@ -123,7 +123,7 @@
                                 </div>
                             @else
                                 <a href="/designer/{{ $designer['designerId'] }}">
-                                    <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" src="/images/product/bg-product@750.png" alt="商品的名称">
+                                    <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="商品的名称">
                                 </a>
                             @endif
                         </div>
@@ -171,7 +171,7 @@
                     <div class="product-bigImg">
                         @{{ if value.listVideoId == undefined }}
                             <a href="/designer/@{{ value.designerId }}">
-                                <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" src="/images/product/bg-product@750.png" alt="@{{ value.name }}">
+                                <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="@{{ value.name }}">
                             </a>
                         @{{ else }}
                             <div class="designer-media bg-white">
@@ -180,8 +180,8 @@
                                     <div class="bg-player">
                                         <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" alt="">
                                         <div class="btn-beginPlayer designer-beginPlayer">
-                                            <img src="/images/daily/icon-player.png"
-                                                 srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
+                                            <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                                 srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
                                                  alt="">
                                         </div>
                                     </div>
@@ -194,7 +194,7 @@
                             @{{ each value.products }}
                                 <div class="productImg-item swiper-slide p-r-10x">
                                     <a href="/product/@{{$value.spu}}">
-                                        <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
+                                        <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                     </a>
                                 </div>
                             @{{ /each }}
@@ -256,7 +256,7 @@
                     <div class="product-bigImg">
                         @{{ if value.listVideoId == undefined }}
                         <a href="/designer/@{{ value.designerId }}">
-                            <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" src="/images/product/bg-product@750.png" alt="@{{ value.name }}">
+                            <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="@{{ value.name }}">
                         </a>
                         @{{ else }}
                         <div class="designer-media bg-white">
@@ -265,8 +265,8 @@
                                 <div class="bg-player">
                                     <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" alt="">
                                     <div class="btn-beginPlayer designer-beginPlayer">
-                                        <img src="/images/daily/icon-player.png"
-                                             srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
+                                        <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                             srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
                                              alt="">
                                     </div>
                                 </div>
@@ -279,7 +279,7 @@
                             @{{ each value.products }}
                                 <div class="productImg-item swiper-slide p-r-10x">
                                     <a href="/product/@{{$value.spu}}">
-                                        <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
+                                        <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                     </a>
                                 </div>
                             @{{ /each }}
@@ -327,7 +327,7 @@
                     <div class="product-bigImg">
                         @{{ if value.listVideoId == undefined }}
                         <a href="/designer/@{{ value.designerId }}">
-                            <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" src="/images/product/bg-product@750.png" alt="@{{ value.name }}">
+                            <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="@{{ value.name }}">
                         </a>
                         @{{ else }}
                         <div class="designer-media bg-white">
@@ -336,8 +336,8 @@
                                 <div class="bg-player">
                                     <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" alt="">
                                     <div class="btn-beginPlayer designer-beginPlayer">
-                                        <img src="/images/daily/icon-player.png"
-                                             srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
+                                        <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                             srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
                                              alt="">
                                     </div>
                                 </div>
@@ -350,7 +350,7 @@
                             @{{ each value.products }}
                             <div class="productImg-item swiper-slide p-r-10x">
                                 <a href="/product/@{{$value.spu}}">
-                                    <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
+                                    <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                 </a>
                             </div>
                             @{{ /each }}
@@ -370,7 +370,7 @@
                     <div class="product-bigImg">
                         @{{ if value.listVideoId == undefined }}
                         <a href="/designer/@{{ value.designerId }}">
-                            <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" src="/images/product/bg-product@750.png" alt="@{{ value.name }}">
+                            <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="@{{ value.name }}">
                         </a>
                         @{{ else }}
                         <div class="designer-media bg-white">
@@ -379,8 +379,8 @@
                                 <div class="bg-player">
                                     <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" alt="">
                                     <div class="btn-beginPlayer designer-beginPlayer">
-                                        <img src="/images/daily/icon-player.png"
-                                             srcset="/images/daily/icon-player@2x.png 2x,/images/daily/icon-player@3x.png 3x"
+                                        <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                             srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
                                              alt="">
                                     </div>
                                 </div>

@@ -37,7 +37,7 @@
                     into account when measuring your fingers.
                 </p>
 
-                <div class="m-b-20x"><img class="img-fluid" src="images/sizeguild/gide-size.jpg" alt=""></div>
+                <div class="m-b-20x"><img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/sizeguild/gide-size.jpg" alt=""></div>
 
                 <p class="m-b-20x sanBold"><strong>Finding the Ring Size for Your Loved Ones</strong></p>
                 <div class="m-b-20x">

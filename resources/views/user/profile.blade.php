@@ -15,8 +15,8 @@
 
                                 <div class="text-center profile-info">
                                     <a href="javascript:;" class="head-file">
-                                        <img class="img-circle img-lazy"
-                                             src="/images/product/bg-product@336.png"
+                                        <img class="img-circle img-border-white img-lazy"
+                                             src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                              data-original="{{config('runtime.CDN_URL')}}/n1/{{Session::get('user.icon')}}" width="116"
                                              height="116" data-url="{{config('runtime.CDN_URL')}}" id="avatarUrl">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
