@@ -1,4 +1,4 @@
-@include('header')
+@include('header', ['title' => 'shopping'])
 <!-- 内容 -->
 <section class="m-t-30x">
     <!-- 商品类别 二级导航 -->
