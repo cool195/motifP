@@ -129,7 +129,7 @@
                                 <div class="m-l-15x">
                                     <div class="p-y-5x flex flex-alignCenter">
                                         <input type="text" id="{{'vas_id'.$vas['vas_id']}}"
-                                               class="input-engraving form-control m-r-20x text-primary disabled">
+                                               class="input-engraving form-control m-r-20x disabled">
                                         <i class="iconfont icon-checkcircle text-primary font-size-lg"></i>
                                     </div>
                                 </div>

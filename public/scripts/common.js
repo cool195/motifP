@@ -316,9 +316,11 @@
         $(this).toggleClass('active');
         if ($(this).hasClass('active')) {
             $(this).siblings('.input-engraving').removeClass('disabled');
+            $(this).siblings('.input-engraving').removeAttr('disabled');
         } else {
             //$(this).siblings('.input-engraving').val('');
             $(this).siblings('.input-engraving').addClass('disabled');
+            $(this).siblings('.input-engraving').attr({ disabled: "disabled" })
         }
     });
 
