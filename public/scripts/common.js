@@ -317,7 +317,7 @@
         if ($(this).hasClass('active')) {
             $(this).siblings('.input-engraving').removeClass('disabled');
         } else {
-            $(this).siblings('.input-engraving').val('');
+            //$(this).siblings('.input-engraving').val('');
             $(this).siblings('.input-engraving').addClass('disabled');
         }
     });

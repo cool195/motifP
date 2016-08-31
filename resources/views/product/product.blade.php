@@ -124,7 +124,7 @@
                     @if(isset($data['vasBases']))
                         @foreach($data['vasBases'] as $vas)
                             <fieldset class="text-left m-b-20x">
-                                <div class="text-primary font-size-md">{{strtolower($vas['vas_describe'])}}
+                                <div class="text-primary font-size-md">{{ucfirst(strtolower($vas['vas_describe']))}}
                                     +${{number_format(($vas['vas_price'] / 100), 2)}}</div>
                                 <div class="m-l-15x">
                                     <div class="p-y-5x flex flex-alignCenter">

@@ -37,7 +37,7 @@
                                 @endif
                                 @if(isset($showSku['showVASes']))
                                     @foreach($showSku['showVASes'] as $key => $vas)
-                                        {{ $vas['vas_name'] }}:{{ $vas['user_remark'] }}
+                                        {{ ucfirst(strtolower($vas['vas_name'])) }}:{{ $vas['user_remark'] }}
                                     @endforeach
                                 @endif
                             </div>
