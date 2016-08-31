@@ -1842,7 +1842,7 @@
     }
 
 
-    // Daily List
+    // Daily List start
 
     //点击 查看更多商品
     $('.btn-seeMore-dailyList').on('click', function () {
@@ -1918,9 +1918,17 @@
     $(function () {
         try {
             loadingShow('.daily-loading', '.dailyList-seeMore');
+            // 判断 daily banner 个数
+            if($('.daily-banner').length >1){
+                $('.dailyBanner-btn').css('display','block');
+            } else {
+                $('.dailyBanner-btn').css('display','none');
+            }
         } catch (e) {
         }
     });
+
+    // Daily List end
 
 
     // 个人中心 Order List start

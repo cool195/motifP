@@ -4,11 +4,12 @@
 <section>
     <div class="bannerSwiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>
+            <div class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>
+            {{--<div class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>--}}
+            {{--<div class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>--}}
         </div>
-        <div class="container banner-container">
+        <div class="container banner-container dailyBanner-btn">
+            <!-- banner 按钮 -->
             <div class="swiper-button-next">
                 <i class="iconfont icon-arrow-right text-white"></i>
             </div>
