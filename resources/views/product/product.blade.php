@@ -128,9 +128,12 @@
                                     +${{number_format(($vas['vas_price'] / 100), 2)}}</div>
                                 <div class="m-l-15x">
                                     <div class="p-y-5x flex flex-alignCenter">
-                                        <input type="text" id="{{'vas_id'.$vas['vas_id']}}"
-                                               class="input-engraving form-control m-r-20x text-primary disabled">
-                                        <i class="iconfont icon-checkcircle text-primary font-size-lg"></i>
+                                        <input type="text" id="{{'vas_id'.$vas['vas_id']}}" class="input-engraving form-control m-r-20x text-primary disabled">
+                                        <i class="iconfont icon-checkcircle text-primary font-size-lg"></i><br/>
+                                        <span class="warning-info flex flex-alignCenter text-warning off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">没填刻字</span>
+                                        </span>
                                     </div>
                                 </div>
                             </fieldset>
