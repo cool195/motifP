@@ -249,8 +249,6 @@ class UserController extends BaseController
             } else {
                 return ['success' => false];
             }
-
-
         }
     }
 
