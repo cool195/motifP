@@ -2,8 +2,8 @@
     <div class="box-shadow bg-white">
         <!-- 个人头像、用户名 -->
         <div class="my-info p-x-20x p-t-20x text-center">
-            <img class="img-circle img-lazy"
-                 src="/images/product/bg-product@336.png"
+            <img class="img-circle img-border-white img-lazy"
+                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                  data-original="{{config('runtime.CDN_URL')}}/n1/{{Session::get('user.icon')}}" width="64" height="64" alt="">
             <div class="helveBold font-size-md p-t-5x name">{{ Session::get('user.nickname') }}</div>
             <hr class="hr-base m-x-20x">

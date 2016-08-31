@@ -4,7 +4,7 @@
 <section class="m-y-40x">
     <div class="container bg-white text-center">
         <div class="order_comfirmed_content">
-            <img src="/images/icon/ok.png">
+            <img src="{{config('runtime.Image_URL')}}/images/icon/ok.png">
             <h4 class="helveBold m-b-20x m-t-40x text-main">Order Confirmed</h4>
             <p class="text-primary font-size-md">
                 <span>A confirmation email has been sent to: </span><br>
