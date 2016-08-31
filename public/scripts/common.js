@@ -255,13 +255,13 @@
             $.each(product_data.vasBases, function (index, val) {
                 if (!$('#vas_id' + val.vas_id).hasClass('disabled') /*&& $('#vas_id' + val.vas_id).val()*/) {
                     if($('#vas_id' + val.vas_id).val() == "" || $('#vas_id' + val.vas_id).val() == null){
-                        alert('不能为空');
                         flag = false;
                     }
                     operate.VAList.push({'vas_id': val.vas_id, 'user_remark': $('#vas_id' + val.vas_id).val()});
                 }
             });
             if(!flag){
+                alert('没填刻字');
                 return;
             }
             $('#productAddBag').addClass('disabled');
