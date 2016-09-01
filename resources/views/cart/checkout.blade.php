@@ -51,7 +51,7 @@
                                         &nbsp;
                                     </div>
                                     <div class="media-body no-border">
-                                        <div class="row flex flex-alignCenter">
+                                        <div class="row flex flex-alignCenter border-top">
                                             <div class="col-md-3">
                                                 <div class="p-l-20x">{{ $vas['vas_name'] }}</div>
                                             </div>
