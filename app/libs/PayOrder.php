@@ -20,8 +20,6 @@ Class PayOrder
     //出始化
     public static function initConfig()
     {
-        //lijiang.hou-buyer2@gmail.com
-        //gsx12345
         $paypalObj = new ApiContext(new OAuthTokenCredential(config('runtime.PAYPAL_ID'), config('runtime.PAYPAL_SECRET')));
         $paypalObj->setConfig(array('mode' => config('runtime.PAYPAL_MODE')));
         return $paypalObj;
