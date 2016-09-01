@@ -116,7 +116,7 @@
                                                 <span>${{ number_format(($subOrder['pay_amount'] / 100), 2) }}</span>
                                             </span>
                                         </div>
-                                        @if(in_array($subOrder['status_code'], array(21, 22, 23)))
+                                        @if( 11 == $subOrder['status_code'])
                                             <hr class="hr-base m-a-0">
                                             <div class="text-right p-a-20x">
                                                 <a href="/payagain/{{  $subOrder['order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
@@ -234,8 +234,8 @@
                 <span>$@{{ (value.pay_amount/100).toFixed(2) }}</span>
             </span>
         </div>
-        @{{ if value.status_code == 21 || value.status_code == 22 || value.status_code == 23 }}
-        <!-- 订单支付失败 支付按钮 -->
+        @{{ if value.status_code == 11 }}
+        <!-- 订单未支付 支付按钮 -->
         <hr class="hr-base m-a-0">
         <div class="text-right p-a-20x">
             <a href="/payagain/@{{  $value.order_no }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>

@@ -19,13 +19,16 @@
         {{--My Bag List--}}
         <div class="box-shadow bg-white m-t-20x">
             <div class="sanBold font-size-md p-x-20x p-y-15x">In Bag</div>
-            <hr class="hr-common m-a-0">
+            <hr class="hr-base m-a-0">
             <div class="p-x-20x">
                 @foreach($cart['showSkus'] as $showSku)
-                <div class="p-y-20x" id="{{'csku'.$showSku['sku']}}">
+                <div class="p-y-20x border-bottom" id="{{'csku'.$showSku['sku']}}">
                     <div class="row flex flex-alignCenter cartProduct-item">
                         <div class="col-md-3 flex flex-alignCenter">
-                            <div><img src="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
+                            <div><img class="img-lazy"
+                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                      data-original="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}"
+                                      width="120" height="120" alt=""></div>
                             <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
                         </div>
                         <div class="col-md-3">
@@ -67,7 +70,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="p-l-20x">
+                            <div class="p-l-40x m-l-10x">
                                 <a class="btn-block cartManage" data-action="save" data-sku="{{$showSku['sku']}}" href="javascript:;">Save for Later</a><br>
                                 <a class="btn-block" data-type="cart-remove" data-action="delsku" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
                             </div>
@@ -82,7 +85,6 @@
                             <span class="font-size-base">Error !</span>
                         </div>
                     @endif
-                    <hr class="hr-common m-a-0">
                 </div>
                 @endforeach
             </div>
@@ -92,12 +94,15 @@
         @if($save['showSkus'])
             <div class="box-shadow bg-white m-t-20x">
                 <div class="sanBold font-size-md p-x-20x p-y-15x">Saved</div>
-                <hr class="hr-common m-a-0">
-                <div class="p-x-20x">
+                <hr class="hr-base m-a-0">
+                <div class="p-x-20x border-bottom">
                     @foreach($save['showSkus'] as $showSku)
                         <div class="row p-y-20x flex flex-alignCenter cartProduct-item" id="{{'csku'.$showSku['sku']}}">
                             <div class="col-md-6 col-xs-12 flex flex-alignCenter">
-                                <div><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
+                                <div><img class="img-lazy"
+                                          src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                          data-original="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}"
+                                          width="120" height="120" alt=""></div>
                                 <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
                                 <div class="p-l-30x">
                                     @if(isset($showSku['attrValues']))
@@ -122,13 +127,12 @@
                                 &nbsp;
                             </div>
                             <div class="col-md-2 col-xs-4">
-                                <div class="p-l-20x">
+                                <div class="p-l-40x m-l-10x">
                                     <a class="btn-block cartManage" data-action="movetocart" data-sku="{{$showSku['sku']}}" href="javascript:;">Move to Bag</a><br/>
                                     <a class="btn-block" data-type="cart-remove" data-action="delsave" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
                                 </div>
                             </div>
                         </div>
-                        <hr class="hr-common m-a-0">
                     @endforeach
                 </div>
             </div>
