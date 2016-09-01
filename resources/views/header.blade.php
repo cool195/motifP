@@ -64,7 +64,7 @@
                 <li class="nav-item p-x-20x">
                     <a href="/cart">
                         <div class="nav-shoppingCart">
-                            <i class="iconfont icon-shopbag font-size-lxx text-primary"></i>
+                            <i class="iconfont icon-iconshoppingbag font-size-lxx text-primary"></i>
                             @if(Session::get('user.nickname'))
                                 {{--购物车数量 注入服务--}}
                                 @inject('Cart', 'App\Http\Controllers\CartController')
