@@ -15,7 +15,7 @@
                 <li class="nav-item">
                     <a href="/cart">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                            <i class="iconfont icon-shopbag font-size-lg p-r-10x"></i>
+                            <i class="iconfont icon-iconshoppingbag font-size-lg p-r-10x"></i>
                             <span class="font-size-md">My Bag</span>
                         </div>
                     </a>
