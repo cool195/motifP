@@ -54,9 +54,12 @@
                                 <div class="checkout-Item">
                                     <div class="media">
                                         <div class="media-left m-r-15x">
-                                            <img class="img-thumbnail"
-                                                 src="{{config('runtime.Image_URL')}}/images/product/product.jpg"
-                                                 width="120" height="120" alt="">
+                                            <a href="/product/{{$lineOrder['spu']}}">
+                                                <img class="img-thumbnail img-lazy"
+                                                    src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                                    data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
+                                                    width="120" height="120" alt="">
+                                            </a>
                                         </div>
                                         <div class="media-body no-border">
                                             <div class="row flex flex-alignCenter">
