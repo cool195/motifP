@@ -47,6 +47,13 @@
     }
 
     // 点击选择图片
+    $('.small-img').on('click', function (e) {
+        if (!$(this).hasClass('active')) {
+            $('.productImg-item img').removeClass('active');
+            $(this).addClass('active');
+        }
+    });
+
     /*    $('.productImg-item img').on('click', function () {
      if (!$(this).hasClass('active')) {
      var ImgUrl = $(this).attr('src');

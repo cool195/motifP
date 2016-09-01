@@ -27,7 +27,7 @@
                                     <div class="text-center box-shadow p-a-40x m-b-20x @if($key % 4 == 0 || $key % 4 == 3) bg-white @else bg-common @endif">
                                         <div class="m-b-10x">
                                             <a href="/designer/{{$follow['id']}}">
-                                                <img class="img-circle img-lazy"
+                                                <img class="img-circle img-lazy img-border-white"
                                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{$follow['avatar']}}"
                                                      width="120" height="120" alt="">
@@ -73,7 +73,7 @@
         <div class="text-center box-shadow p-a-40x m-b-20x @{{ if ($index % 4) == 0 || ($index % 4) == 3 }} bg-white @{{ else }} bg-common @{{ /if }}">
             <div class="m-b-10x">
                 <a href="/designer/@{{ $value.id }}">
-                    <img class="img-circle img-lazy"
+                    <img class="img-circle img-lazy img-border-white"
                          src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                          data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.avatar }}"
                          width="120" height="120" alt="">
