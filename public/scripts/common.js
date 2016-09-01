@@ -1994,6 +1994,61 @@
 
     // 个人中心 Order List end
 
+    //个人中心 Order Detail Start
+
+    function order_getOperate() {
+        var operate = [];
+        var operateItem = {
+            'sale_qtty': null,
+            'select': true,
+            'sku': null,
+            'VAList': []
+        };
+
+        var orderList =  $('#buyAgain').data('orderlist') ;
+
+        $.each(orderList, function(index, val) {
+            operateItem.sale_qtty = val.sale_qtty;
+            operateItem.sku = val.sku;
+
+            var vas = [];
+            $.each(val.vas_info, function(i, el) {
+                vas[i] = {};
+                vas[i].user_remark = el.user_remark;
+                vas[i].vas_id = el.vas_id;
+            });
+            operateItem.VAList = vas;
+
+            operate.push(operateItem);
+        });
+        return operate;
+    }
+
+    function order_buyAgain() {
+        var operate = order_getOperate();
+        $.ajax({
+            url: '/cart/addBatch',
+            type: 'POST',
+            data: {
+                operate: operate
+            }
+        })
+            .done(function(data) {
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                }
+            })
+    }
+
+    $('#buyAgain').click(function() {
+        order_buyAgain();
+    })
+
+
+
+
+    //个人中心 Order Detail End
+
 
     //#start 个人中心 WishList
 

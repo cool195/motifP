@@ -42,9 +42,11 @@
                                     : {{ $data['create_time'] }}</h5>
                             </div>
                             <!-- 被取消的订单 -->
-                            <span>
-                                <a class="btn btn-primary btn-md" href="#">Buy Again</a>
-                            </span>
+                            @if(in_array($data['status_code'], array(21, 22, 23)))
+                                <span>
+                                    <a id="buyAgain" class="btn btn-primary btn-md" href="javascript:void(0)" data-orderList="{{json_encode($data['lineOrderList'])}}" >Buy Again</a>
+                                </span>
+                            @endif
                         </div>
                         <hr class="hr-base m-a-0">
                         <div class="p-a-20x">
@@ -162,8 +164,8 @@
 
                     <div class="text-right p-t-30x">
                         <a href="#" class="btn btn-primary btn-lg btn-300 m-r-20x">Contact Service</a>
-                        <!-- 支付失败订单 支付按钮 -->
-                        @if(in_array($data['status_code'], array(21, 22, 23)))
+                        <!-- 未支付订单 支付按钮 -->
+                        @if( 11 == $data['status_code'])
                             <a href="/payagain/{{  $data['sub_order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
                             <a href="/payagain/{{  $data['sub_order_no'] }}/1" class="btn btn-primary btn-lg btn-200">PayPal</a>
                         @endif
