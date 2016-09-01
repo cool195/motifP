@@ -806,7 +806,7 @@ footer {
 
 /*个人中心下拉框*/
 .dropdown-nav-hover li {
-  padding-top: 5px;
+  padding: 3px 0 3px 0;
 }
 
 .dropdown-nav-hover li a {

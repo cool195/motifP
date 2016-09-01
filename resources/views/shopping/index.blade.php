@@ -7,7 +7,7 @@
             <nav class="nav navbar-nav">
                 <ul class="nav flex flex-alignCenter flex-justifyCenter">
                     @foreach($categories as $category)
-                    <li class="nav-item p-x-20x m-l-0">
+                    <li class="nav-item p-x-10x m-l-0">
                         <a href="/shopping/{{ $category['category_id'] }}">
                             <div class="p-x-5x p-t-30x p-b-20x category-item @if($cid == $category['category_id']) active @endif">
                                 <img src="{{config('runtime.CDN_URL')}}/n0/{{$category['img_path2']}}" alt="">

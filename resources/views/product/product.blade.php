@@ -83,7 +83,7 @@
                         @endif
                         <span>{{$data['prompt_words']}}</span>
                     </div>
-                    <hr class="hr-common">
+                    <hr class="hr-base">
                     <input hidden id="jsonStr" value="{{$jsonResult}}">
                     @if(isset($data['spuAttrs']))
                         <input hidden id="productsku">
@@ -155,7 +155,7 @@
                             </div>
                         </div>
                     </fieldset>
-                    <hr class="hr-common">
+                    <hr class="hr-base">
                     <div class="text-center p-t-15x p-b-10x">
                         @if(Session::has('user'))
                             <a href="javascript:void(0);" id="productAddBag"
