@@ -446,10 +446,10 @@
             .done(function (data) {
                 if (data.success) {
                     if (data.data != '') {
-                        $('#total_amount').html('$' + data.data.total_amount / 100);
+                        $('#total_amount').html('$' + (data.data.total_amount / 100).toFixed(2));
                         $('#total_sku_qtty').html('Items(' + data.data.total_sku_qtty + '):');
-                        $('#vas_amount').html('$' + data.data.vas_amount / 100);
-                        $('#pay_amount').html('$' + data.data.pay_amount / 100);
+                        $('#vas_amount').html('$' + (data.data.vas_amount / 100).toFixed(2) );
+                        $('#pay_amount').html('$' + (data.data.pay_amount / 100).toFixed(2) );
                     } else {
                         location.reload();
                     }
