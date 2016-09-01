@@ -41,12 +41,10 @@
                                 <h5 class="sanBold font-size-md">{{ $data['status_info'] }}
                                     : {{ $data['create_time'] }}</h5>
                             </div>
-                            @if($data['status_code']==11)
-                                <span>
-                                    <a class="btn btn-primary btn-md" href="/payagain/{{$data['sub_order_no']}}/0">Credit Cart</a>
-                                    <a class="btn btn-primary btn-md" href="/payagain/{{$data['sub_order_no']}}/1">PayPal</a>
-                                </span>
-                            @endif
+                            <!-- 被取消的订单 -->
+                            <span>
+                                <a class="btn btn-primary btn-md" href="#">Buy Again</a>
+                            </span>
                         </div>
                         <hr class="hr-base m-a-0">
                         <div class="p-a-20x">
@@ -164,15 +162,12 @@
 
                     <div class="text-right p-t-30x">
                         <a href="#" class="btn btn-primary btn-lg btn-300 m-r-20x">Contact Service</a>
-
-                    </div>
-                    <!-- 支付失败订单 支付按钮 -->
-                    @if(in_array($data['status_code'], array(21, 22, 23)))
-                        <div class="text-right p-a-20x">
+                        <!-- 支付失败订单 支付按钮 -->
+                        @if(in_array($data['status_code'], array(21, 22, 23)))
                             <a href="/payagain/{{  $data['sub_order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
                             <a href="/payagain/{{  $data['sub_order_no'] }}/1" class="btn btn-primary btn-lg btn-200">PayPal</a>
-                        </div>
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
