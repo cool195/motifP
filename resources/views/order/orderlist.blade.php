@@ -40,10 +40,12 @@
                                                 <div class="checkout-Item p-y-20x border-bottom">
                                                     <div class="media">
                                                         <div class="media-left m-r-15x">
-                                                            <img class="img-lazy img-fluid"
-                                                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                                                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
-                                                                 width="120" height="120" alt="">
+                                                            <a href="/product/{{$lineOrder['spu']}}">
+                                                                <img class="img-lazy img-fluid"
+                                                                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
+                                                                     width="120" height="120" alt="">
+                                                            </a>
                                                         </div>
                                                         <div class="media-body">
                                                             <div class="row flex flex-alignCenter">
@@ -164,13 +166,15 @@
         <hr class="hr-base m-a-0">
         <div class="p-a-20x">
             @{{ each value.lineOrderList }}
-            <div class="checkout-Item">
+            <div class="checkout-Item border-bottom">
                 <div class="media">
                     <div class="media-left m-r-15x">
-                        <img class="img-lazy img-fluid"
-                             src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                             data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.img_path }}"
-                             width="120" height="120" alt="">
+                        <a href="/product/@{{ $value.spu }}">
+                            <img class="img-lazy img-fluid"
+                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                 data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.img_path }}"
+                                 width="120" height="120" alt="">
+                        </a>
                     </div>
                     <div class="media-body">
                         <div class="row flex flex-alignCenter">
