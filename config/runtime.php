@@ -9,6 +9,9 @@ if (env('APP_ENV') == 'production') {
     $paypalclientID = 'AeJ0JypMpSkBh2pvVrWMSg8Km_l6fcmWXUQ0oWxom2tz8nPzBB1rWu71bkL1j4S-TGsjGYrbfDZYiWWe';
     $paypalsecret = 'ECmKQFY0UdanCEXHr6bHQ1PCwivwmtEMWma30r3ejfOlvQVlSW6_rwuXp4leydeHrcqSCthauqka1BYU';
     $paypalmode = "live";
+
+    $secureCode = 'v842rr80';
+    $terminal = '16044401';
 } elseif (env('APP_ENV') == 'publish') {
     //预发布
     $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';//后台图片服务地址
@@ -18,6 +21,9 @@ if (env('APP_ENV') == 'production') {
     $paypalclientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
     $paypalsecret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
     $paypalmode = 'sandbox';
+
+    $secureCode = 'jt688j00';
+    $terminal = '16044405';
 } else {
     //测试
     $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';//后台图片服务地址
@@ -27,6 +33,9 @@ if (env('APP_ENV') == 'production') {
     $paypalclientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
     $paypalsecret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
     $paypalmode = 'sandbox';
+
+    $secureCode = 'jt688j00';
+    $terminal = '16044405';
 }
 
 return [
@@ -34,6 +43,9 @@ return [
     'API_URL' => $API_URL,
     'Image_URL' => $Image_URL,
     'QIANHAI_URL' => $QianHai_URL,
+    'QIANHAI_Account' => '160444',
+    'QIANHAI_Code' => $secureCode,
+    'QIANHAI_Terminal' => $terminal,
     'PAYPAL_ID' => $paypalclientID,
     'PAYPAL_SECRET' => $paypalsecret,
     'PAYPAL_MODE' => $paypalmode,

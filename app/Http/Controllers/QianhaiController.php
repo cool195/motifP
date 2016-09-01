@@ -19,13 +19,13 @@ class QianhaiController extends BaseController
         );
         $addrData = $this->request('order', $params);
 
-        $secureCode = 'jt688j00';
+        $secureCode = config('runtime.QIANHAI_Code');
         $postUrl = config('runtime.QIANHAI_URL');
         $postData = array(
-            'account' => '160444',
-            'terminal' => '16044405',
+            'account' => config('runtime.QIANHAI_Account'),
+            'terminal' => config('runtime.QIANHAI_Terminal'),
             'backUrl' => 'http://' . $_SERVER['HTTP_HOST'] . '/qianhai',
-            'noticeUrl' => 'http://54.222.233.255/oceanpaycb',
+            'noticeUrl' => config('runtime.API_URL').'/oceanpaycb',
             'methods' => 'Credit Card',
             'pages' => '0',
             'order_number' => $request->input('orderid'),
