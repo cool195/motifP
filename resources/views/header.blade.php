@@ -27,7 +27,7 @@
                 <li class="nav-item dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link @if('shopping' == $title) active @endif" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
-                    <ul class="dropdown-menu p-t-0">
+                    <ul class="dropdown-menu dropdown-nav-hover">
                         @foreach($Category->getShoppingCategoryList() as $category)
                             <li class="dropdown-item @if('shopping' == $title && $cid == $category['category_id']) active @endif"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
                         @endforeach
@@ -51,13 +51,13 @@
                     <!--个人中心下拉框-->
                     <div class="dropdown-img">
                         <span class="triangle-up"></span>
-                        <ul class="nav">
-                            <li class="p-t-10x @if('Orders' == $title || 'Order Detail' == $title) active @endif"><a class="p-l-15x" href="/orderlist">Orders</a></li>
-                            <li class="p-t-5x @if('Cart' == $title) active @endif "><a class="p-l-15x" href="/cart">My Bag</a></li>
-                            <li class="p-t-5x @if('wishlist' == $title) active @endif "><a class="p-l-15x" href="/wish">Wishlist</a></li>
-                            <li class="p-t-5x @if('following' == $title) active @endif "><a class="p-l-15x" href="/following">Following</a></li>
-                            <li class="p-t-5x @if('Change Profile' == $title) active @endif "><a class="p-l-15x" href="/user/profile">Settings</a></li>
-                            <li class="p-y-5x p-b-10x"><a class="p-l-15x" href="/signout">Log out</a></li>
+                        <ul class="nav p-t-5x p-b-10x dropdown-nav-hover">
+                            <li class="@if('Orders' == $title || 'Order Detail' == $title) active @endif"><a href="/orderlist">Orders</a></li>
+                            <li class="@if('Cart' == $title) active @endif "><a href="/cart">My Bag</a></li>
+                            <li class="@if('wishlist' == $title) active @endif "><a href="/wish">Wishlist</a></li>
+                            <li class="@if('following' == $title) active @endif "><a href="/following">Following</a></li>
+                            <li class="@if('Change Profile' == $title) active @endif "><a href="/user/profile">Settings</a></li>
+                            <li><a href="/signout">Log out</a></li>
                         </ul>
                     </div>
                 </li>
