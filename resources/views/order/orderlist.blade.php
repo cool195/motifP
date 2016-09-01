@@ -35,7 +35,7 @@
                                             </span>
                                         </div>
                                         <hr class="hr-base m-a-0">
-                                        <div class="p-a-20x">
+                                        <div class="p-x-20x">
                                             @foreach($subOrder['lineOrderList'] as $lineOrder)
                                                 <div class="checkout-Item p-y-20x border-bottom">
                                                     <div class="media">
@@ -164,7 +164,7 @@
                             </span>
         </div>
         <hr class="hr-base m-a-0">
-        <div class="p-a-20x">
+        <div class="p-x-20x">
             @{{ each value.lineOrderList }}
             <div class="checkout-Item border-bottom">
                 <div class="media">
