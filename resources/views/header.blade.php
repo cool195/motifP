@@ -29,7 +29,7 @@
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link @if('shopping' == $title) active @endif" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
                     <ul class="dropdown-menu p-t-0">
                         @foreach($Category->getShoppingCategoryList() as $category)
-                            <li class="dropdown-item active"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
+                            <li class="dropdown-item @if('shopping' == $title && $cid == $category['category_id']) active @endif"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
                         @endforeach
                     </ul>
                 </li>

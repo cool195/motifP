@@ -1,4 +1,4 @@
-@include('header', ['title' => 'shopping'])
+@include('header', ['title' => 'shopping', 'cid' =>$cid])
 <!-- 内容 -->
 <section class="m-t-30x">
     <!-- 商品类别 二级导航 -->
