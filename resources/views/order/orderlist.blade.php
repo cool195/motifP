@@ -107,7 +107,7 @@
                                                 </div>
                                             @endforeach
                                         </div>
-                                        <hr class="hr-base">
+                                        <hr class="hr-base m-a-0">
                                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
                                             <div>
                                                 Order # {{$subOrder['order_no']}}
@@ -227,7 +227,7 @@
             </div>
             @{{ /each  }}
         </div>
-        <hr class="hr-base">
+        <hr class="hr-base m-a-0">
         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
             <div>
                 Order # @{{ value.order_no }}
