@@ -1,5 +1,5 @@
 
-@include('header')
+@include('header', ['title' => 'following'])
 <!-- 内容 -->
 <section class="m-y-40x">
     <div class="container">

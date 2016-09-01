@@ -1,5 +1,5 @@
 <!-- header start-->
-@include('header')
+@include('header', ['title' => 'Cart'])
 <!-- header end-->
 
 <!-- 内容 -->

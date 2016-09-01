@@ -1,4 +1,4 @@
-@include('header')
+@include('header', ['title' => 'Order Detail'])
 
 <section class="m-y-40x">
     <div class="container">
