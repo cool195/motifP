@@ -25,7 +25,10 @@
                 <div class="p-y-20x border-bottom" id="{{'csku'.$showSku['sku']}}">
                     <div class="row flex flex-alignCenter cartProduct-item">
                         <div class="col-md-3 flex flex-alignCenter">
-                            <div><img src="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
+                            <div><img class="img-lazy"
+                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                      data-original="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}"
+                                      width="120" height="120" alt=""></div>
                             <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
                         </div>
                         <div class="col-md-3">
@@ -96,7 +99,10 @@
                     @foreach($save['showSkus'] as $showSku)
                         <div class="row p-y-20x flex flex-alignCenter cartProduct-item" id="{{'csku'.$showSku['sku']}}">
                             <div class="col-md-6 col-xs-12 flex flex-alignCenter">
-                                <div><img src="{{config('runtime.CDN_URL')}}/n1/{{ $showSku['main_image_url'] }}" width="120" height="120" alt=""></div>
+                                <div><img class="img-lazy"
+                                          src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                          data-original="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}"
+                                          width="120" height="120" alt=""></div>
                                 <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
                                 <div class="p-l-30x">
                                     @if(isset($showSku['attrValues']))
