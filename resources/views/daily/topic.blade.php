@@ -19,15 +19,14 @@
                 </div>
                 @elseif($value['type'] == 'multilink')
                 <!--图-->
-                <div class="p-y-0">
+                <div class="m-t-20x">
                     <img src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
                 </div>
                 @elseif($value['type'] == 'boxline')
                 <!--分割线-->
                 <hr class="hr-base m-x-20x m-y-0">
                 @elseif($value['type'] == 'banner')
-                <!--描述 & 图-->
-                <!--图-->
+                <!--图 banner-->
                 <div class="p-y-0">
                     <img src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
                 </div>
