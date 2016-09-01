@@ -10,8 +10,8 @@ if (env('APP_ENV') == 'production') {
     $paypalsecret = 'ECmKQFY0UdanCEXHr6bHQ1PCwivwmtEMWma30r3ejfOlvQVlSW6_rwuXp4leydeHrcqSCthauqka1BYU';
     $paypalmode = "live";
 
-    $secureCode = 'v842rr80';
-    $terminal = '16044401';
+    $secureCode = '4646r88B';
+    $terminal = '16044402';
 } elseif (env('APP_ENV') == 'publish') {
     //预发布
     $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';//后台图片服务地址
@@ -22,8 +22,8 @@ if (env('APP_ENV') == 'production') {
     $paypalsecret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
     $paypalmode = 'sandbox';
 
-    $secureCode = 'jt688j00';
-    $terminal = '16044405';
+    $secureCode = '4646r88B';
+    $terminal = '16044402';
 } else {
     //测试
     $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';//后台图片服务地址
@@ -34,8 +34,8 @@ if (env('APP_ENV') == 'production') {
     $paypalsecret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
     $paypalmode = 'sandbox';
 
-    $secureCode = 'jt688j00';
-    $terminal = '16044405';
+    $secureCode = '4646r88B';
+    $terminal = '16044402';
 }
 
 return [
