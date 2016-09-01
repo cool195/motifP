@@ -37,11 +37,12 @@
                                         <hr class="hr-base m-a-0">
                                         <div class="p-a-20x">
                                             @foreach($subOrder['lineOrderList'] as $lineOrder)
-                                                <div class="checkout-Item">
+                                                <div class="checkout-Item p-y-20x border-bottom">
                                                     <div class="media">
                                                         <div class="media-left m-r-15x">
-                                                            <img class="img-thumbnail"
-                                                                 src="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
+                                                            <img class="img-lazy img-thumbnail"
+                                                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
                                                                  width="120" height="120" alt="">
                                                         </div>
                                                         <div class="media-body">
@@ -166,7 +167,9 @@
             <div class="checkout-Item">
                 <div class="media">
                     <div class="media-left m-r-15x">
-                        <img class="img-thumbnail" src="{{config('runtime.CDN_URL')}}/n1/@{{ $value.img_path }}"
+                        <img class="img-lazy img-thumbnail"
+                             src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                             data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.img_path }}"
                              width="120" height="120" alt="">
                     </div>
                     <div class="media-body">
