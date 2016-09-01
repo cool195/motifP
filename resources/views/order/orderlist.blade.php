@@ -81,8 +81,8 @@
                                                                 <div class="media-left m-r-15x">
                                                                     &nbsp;
                                                                 </div>
-                                                                <div class="media-body no-border">
-                                                                    <div class="row flex flex-alignCenter">
+                                                                <div class="media-body">
+                                                                    <div class="row flex flex-alignCenter border-top">
                                                                         <div class="col-md-3">
                                                                             <div class="p-l-20x">{{$value['vas_name']}}</div>
                                                                         </div>
@@ -206,8 +206,8 @@
                     <div class="media-left m-r-15x">
                         &nbsp;
                     </div>
-                    <div class="media-body no-border">
-                        <div class="row flex flex-alignCenter">
+                    <div class="media-body">
+                        <div class="row flex flex-alignCenter border-top">
                             <div class="col-md-3">
                                 <div class="p-l-20x">@{{ $value.vas_name }}</div>
                             </div>
