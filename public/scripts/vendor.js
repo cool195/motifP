@@ -21975,7 +21975,7 @@ jQuery_1_6 = jQuery;
       //zoomWindow default position
       preloadImages: true,
       //image preload
-      preloadText: 'Loading zoom',
+      preloadText: 'Loading',
       title: true,
       lens: true,
       imageOpacity: 0.4,

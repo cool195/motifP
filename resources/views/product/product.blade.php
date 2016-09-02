@@ -7,8 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
-                <div class="p-a-20x box-shadow bg-white">
-
+                <div class="p-a-20x box-shadow bg-white" id="productImg">
                     <div class="product-bigImg gallery">
                         @if(isset($data['productImages']))
                             @foreach($data['productImages'] as $key => $image)
