@@ -35,14 +35,17 @@
                                             </span>
                                         </div>
                                         <hr class="hr-base m-a-0">
-                                        <div class="p-a-20x">
+                                        <div class="p-x-20x">
                                             @foreach($subOrder['lineOrderList'] as $lineOrder)
-                                                <div class="checkout-Item">
+                                                <div class="checkout-Item p-y-20x border-bottom">
                                                     <div class="media">
                                                         <div class="media-left m-r-15x">
-                                                            <img class="img-thumbnail"
-                                                                 src="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
-                                                                 width="120" height="120" alt="">
+                                                            <a href="/product/{{$lineOrder['spu']}}">
+                                                                <img class="img-lazy img-fluid"
+                                                                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
+                                                                     width="120" height="120" alt="">
+                                                            </a>
                                                         </div>
                                                         <div class="media-body">
                                                             <div class="row flex flex-alignCenter">
@@ -78,8 +81,8 @@
                                                                 <div class="media-left m-r-15x">
                                                                     &nbsp;
                                                                 </div>
-                                                                <div class="media-body no-border">
-                                                                    <div class="row flex flex-alignCenter">
+                                                                <div class="media-body">
+                                                                    <div class="row flex flex-alignCenter border-top">
                                                                         <div class="col-md-3">
                                                                             <div class="p-l-20x">{{$value['vas_name']}}</div>
                                                                         </div>
@@ -106,7 +109,7 @@
                                                 </div>
                                             @endforeach
                                         </div>
-                                        <hr class="hr-base">
+                                        <hr class="hr-base m-a-0">
                                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
                                             <div>
                                                 Order # {{$subOrder['order_no']}}
@@ -116,7 +119,7 @@
                                                 <span>${{ number_format(($subOrder['pay_amount'] / 100), 2) }}</span>
                                             </span>
                                         </div>
-                                        @if(in_array($subOrder['status_code'], array(21, 22, 23)))
+                                        @if( 11 == $subOrder['status_code'])
                                             <hr class="hr-base m-a-0">
                                             <div class="text-right p-a-20x">
                                                 <a href="/payagain/{{  $subOrder['order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
@@ -161,13 +164,17 @@
                             </span>
         </div>
         <hr class="hr-base m-a-0">
-        <div class="p-a-20x">
+        <div class="p-x-20x">
             @{{ each value.lineOrderList }}
-            <div class="checkout-Item">
+            <div class="checkout-Item border-bottom">
                 <div class="media">
                     <div class="media-left m-r-15x">
-                        <img class="img-thumbnail" src="{{config('runtime.CDN_URL')}}/n1/@{{ $value.img_path }}"
-                             width="120" height="120" alt="">
+                        <a href="/product/@{{ $value.spu }}">
+                            <img class="img-lazy img-fluid"
+                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                 data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.img_path }}"
+                                 width="120" height="120" alt="">
+                        </a>
                     </div>
                     <div class="media-body">
                         <div class="row flex flex-alignCenter">
@@ -199,8 +206,8 @@
                     <div class="media-left m-r-15x">
                         &nbsp;
                     </div>
-                    <div class="media-body no-border">
-                        <div class="row flex flex-alignCenter">
+                    <div class="media-body">
+                        <div class="row flex flex-alignCenter border-top">
                             <div class="col-md-3">
                                 <div class="p-l-20x">@{{ $value.vas_name }}</div>
                             </div>
@@ -224,7 +231,7 @@
             </div>
             @{{ /each  }}
         </div>
-        <hr class="hr-base">
+        <hr class="hr-base m-a-0">
         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
             <div>
                 Order # @{{ value.order_no }}
@@ -234,8 +241,8 @@
                 <span>$@{{ (value.pay_amount/100).toFixed(2) }}</span>
             </span>
         </div>
-        @{{ if value.status_code == 21 || value.status_code == 22 || value.status_code == 23 }}
-        <!-- 订单支付失败 支付按钮 -->
+        @{{ if value.status_code == 11 }}
+        <!-- 订单未支付 支付按钮 -->
         <hr class="hr-base m-a-0">
         <div class="text-right p-a-20x">
             <a href="/payagain/@{{  $value.order_no }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>

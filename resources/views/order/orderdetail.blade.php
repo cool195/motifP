@@ -42,19 +42,24 @@
                                     : {{ $data['create_time'] }}</h5>
                             </div>
                             <!-- 被取消的订单 -->
-                            <span>
-                                <a class="btn btn-primary btn-md" href="#">Buy Again</a>
-                            </span>
+                            @if(in_array($data['status_code'], array(21, 22, 23)))
+                                <span>
+                                    <a id="buyAgain" class="btn btn-primary btn-md" href="javascript:void(0)" data-orderList="{{json_encode($data['lineOrderList'])}}" >Buy Again</a>
+                                </span>
+                            @endif
                         </div>
                         <hr class="hr-base m-a-0">
-                        <div class="p-a-20x">
+                        <div class="p-x-20x">
                             @foreach($data['lineOrderList'] as $lineOrder)
-                                <div class="checkout-Item">
+                                <div class="checkout-Item border-bottom p-y-20x">
                                     <div class="media">
                                         <div class="media-left m-r-15x">
-                                            <img class="img-thumbnail"
-                                                 src="{{config('runtime.Image_URL')}}/images/product/product.jpg"
-                                                 width="120" height="120" alt="">
+                                            <a href="/product/{{$lineOrder['spu']}}">
+                                                <img class="img-fluid img-lazy"
+                                                    src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                                    data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
+                                                    width="120" height="120" alt="">
+                                            </a>
                                         </div>
                                         <div class="media-body no-border">
                                             <div class="row flex flex-alignCenter">
@@ -83,7 +88,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr class="hr-base">
                             @endforeach
                         </div>
                         <hr class="hr-base m-a-0">
@@ -162,8 +166,8 @@
 
                     <div class="text-right p-t-30x">
                         <a href="#" class="btn btn-primary btn-lg btn-300 m-r-20x">Contact Service</a>
-                        <!-- 支付失败订单 支付按钮 -->
-                        @if(in_array($data['status_code'], array(21, 22, 23)))
+                        <!-- 未支付订单 支付按钮 -->
+                        @if( 11 == $data['status_code'])
                             <a href="/payagain/{{  $data['sub_order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
                             <a href="/payagain/{{  $data['sub_order_no'] }}/1" class="btn btn-primary btn-lg btn-200">PayPal</a>
                         @endif

@@ -43,10 +43,27 @@
             effect: 'fade'
             // autoplay: 2500
         });
-    } catch (e) {
-    }
+    } catch (e) {}
+
+    // designerList 判断设计师商品个数
+    try{
+        $('.productImg-list').each(function(){
+            var itemNum=$(this).children('.productImg-item').length;
+            if(itemNum <=4){
+                $(this).siblings('.swiper-button-next').hide();
+                $(this).siblings('.swiper-button-prev').hide();
+            }
+        })
+    }catch (e){}
 
     // 点击选择图片
+    $('.small-img').on('click', function (e) {
+        if (!$(this).hasClass('active')) {
+            $('.productImg-item img').removeClass('active');
+            $(this).addClass('active');
+        }
+    });
+
     /*    $('.productImg-item img').on('click', function () {
      if (!$(this).hasClass('active')) {
      var ImgUrl = $(this).attr('src');
@@ -1821,6 +1838,13 @@
 
                 $ProductListontainer.data('pagenum', NextProductNum);
 
+                if(data.data.list.length < Size){
+                    $('.productList-seeMore').html('No more items!');
+                    setTimeout(function () {
+                        $('.productList-seeMore').hide();
+                    }, 2000);
+                }
+
                 // 图片延迟加载
                 $('img.img-lazy').lazyload({
                     threshold: 1000,
@@ -1993,6 +2017,69 @@
     }
 
     // 个人中心 Order List end
+
+    //个人中心 Order Detail Start
+
+    function order_getOperate() {
+        var operate = [];
+        var operateItem = {
+            'sale_qtty': null,
+            'select': true,
+            'sku': null,
+            'VAList': []
+        };
+
+        var orderList =  eval($('#buyAgain').data('orderlist')) ;
+
+        $.each(orderList, function(index, val) {
+            operateItem.sale_qtty = val.sale_qtty;
+            operateItem.sku = val.sku;
+
+            var vas = [];
+            $.each(val.vas_info, function(i, el) {
+                vas[i] = {};
+                vas[i].user_remark = el.user_remark;
+                vas[i].vas_id = el.vas_id;
+            });
+            operateItem.VAList = vas;
+
+            operate.push(operateItem);
+
+            operateItem = {
+                'sale_qtty': null,
+                'select': true,
+                'sku': null,
+                'VAList': []
+            };
+        });
+        console.log(operate);
+        return operate;
+    }
+
+    function order_buyAgain() {
+        var operate = order_getOperate();
+        $.ajax({
+            url: '/cart/addBatch',
+            type: 'POST',
+            data: {
+                operate: operate
+            }
+        })
+            .done(function(data) {
+                if (data.success) {
+                    //window.location.href = data.redirectUrl;
+                }
+            })
+    }
+
+    $('#buyAgain').click(function() {
+        order_buyAgain();
+    })
+
+
+
+
+    //个人中心 Order Detail End
 
 
     //#start 个人中心 WishList
@@ -2181,7 +2268,6 @@
     });
 
     //#end 个人中心 Following
-
 
 })(jQuery, Swiper);
 

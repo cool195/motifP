@@ -9,34 +9,33 @@
             @foreach($topic['infos'] as $k => $value)
                 @if($value['type'] == 'title')
                 <!--标题-->
-                <h2 class="helveBold p-a-20x">{{ $value['value'] }}</h2>
+                <div class="p-x-20x p-t-20x m-b-20x">
+                    <h2 class="helveBold">{{ $value['value'] }}</h2>
+                </div>
                 @elseif($value['type'] == 'context')
                 <!--描述-->
-                <p class="m-b-0 p-x-20x">{{ $value['value'] }}</p>
+                <div class="p-x-20x m-y-20x">
+                    <p class="m-b-0">{{ $value['value'] }}</p>
+                </div>
                 @elseif($value['type'] == 'multilink')
                 <!--图-->
-                <div class="p-y-20x">
+                <div class="m-t-20x">
                     <img src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
                 </div>
                 @elseif($value['type'] == 'boxline')
                 <!--分割线-->
-                <hr class="hr-base m-x-20x">
+                <hr class="hr-base m-x-20x m-y-0">
                 @elseif($value['type'] == 'banner')
-                <!--描述 & 图-->
-                <div>
-                    <div class="m-y-20x">
-                        <img src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
-                    </div>
+                <!--图 banner-->
+                <div class="p-y-0">
+                    <img src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
                 </div>
                 @endif
-            @endforeach
-            </div>
 
-            @foreach($topic['infos'] as $k => $value)
             @if($value['type'] == 'product')
                     <!--图文列表-->
             @if(isset($value['spus']))
-                <div class="p-t-40x p-b-20x">
+                <div class="p-t-40x p-b-20x bg-body">
                     <div class="row">
                         @foreach($value['spus'] as $spu)
                             <div class="col-xs-6">
@@ -73,6 +72,7 @@
             @endif
             @endif
             @endforeach
+            </div>
         @endif
         
     </div>

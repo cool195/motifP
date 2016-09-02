@@ -53,13 +53,15 @@
             </div>
             @endforeach
         </div>
-        <div class="text-center m-y-30x productList-seeMore">
-            <div class="btn btn-gray btn-lg btn-380 btn-seeMore">See more of all</div>
-        </div>
-        <div class="loading product-loading" style="display: none">
-            <div class="loader">
+        <div class="text-center m-y-30x seeMore-info">
+            <div class="productList-seeMore">
+                <div class="btn btn-gray btn-lg btn-380 btn-seeMore">See more of all</div>
             </div>
-            <div class="text-center p-t-5x p-l-10x">Loading...</div>
+            <div class="loading product-loading" style="display: none">
+                <div class="loader">
+                </div>
+                <div class="text-center p-l-15x">Loading more...</div>
+            </div>
         </div>
     </div>
 </section>
