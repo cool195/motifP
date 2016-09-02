@@ -184,7 +184,7 @@
     <hr class="hr-common m-a-0">
     <div class="text-center dialog-info">Are you sure you want to remove this item?</div>
     <hr class="hr-common m-a-0">
-    <div class="row">
+    <div class="row m-a-0">
         <div class="col-md-6">
             <div class="m-y-20x m-l-20x"><a href="javascript:;" class="btn btn-block btn-secondary btn-lg delCartM">Remove</a></div>
         </div>
