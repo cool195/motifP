@@ -2012,7 +2012,7 @@
             'VAList': []
         };
 
-        var orderList =  $('#buyAgain').data('orderlist') ;
+        var orderList =  eval($('#buyAgain').data('orderlist')) ;
 
         $.each(orderList, function(index, val) {
             operateItem.sale_qtty = val.sale_qtty;
@@ -2027,7 +2027,15 @@
             operateItem.VAList = vas;
 
             operate.push(operateItem);
+
+            operateItem = {
+                'sale_qtty': null,
+                'select': true,
+                'sku': null,
+                'VAList': []
+            };
         });
+        console.log(operate);
         return operate;
     }
 
@@ -2042,7 +2050,7 @@
         })
             .done(function(data) {
                 if (data.success) {
-                    window.location.href = data.redirectUrl;
+                    //window.location.href = data.redirectUrl;
                 }
             })
     }
