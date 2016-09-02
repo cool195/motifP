@@ -23,8 +23,8 @@
                     <div class="row">
                         @if(!empty($data['list']))
                             @foreach($data['list'] as $key => $follow)
-                                <div class="col-md-6 col-xs-12 follow-item">
-                                    <div class="text-center box-shadow p-a-40x m-b-20x @if($key % 4 == 0 || $key % 4 == 3) bg-white @else bg-common @endif">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="follow-item text-center p-a-40x m-b-20x @if($key % 4 == 0 || $key % 4 == 3) bg-white @else bg-common @endif">
                                         <div class="m-b-10x">
                                             <a href="/designer/{{$follow['id']}}">
                                                 <img class="img-circle img-lazy img-border-white"
@@ -69,8 +69,8 @@
 
 <template id="tpl-follow">
     @{{ each list }}
-    <div class="col-md-6 col-xs-12 follow-item">
-        <div class="text-center box-shadow p-a-40x m-b-20x @{{ if ($index % 4) == 0 || ($index % 4) == 3 }} bg-white @{{ else }} bg-common @{{ /if }}">
+    <div class="col-md-6 col-xs-12">
+        <div class="follow-item text-center p-a-40x m-b-20x @{{ if ($index % 4) == 0 || ($index % 4) == 3 }} bg-white @{{ else }} bg-common @{{ /if }}">
             <div class="m-b-10x">
                 <a href="/designer/@{{ $value.id }}">
                     <img class="img-circle img-lazy img-border-white"
