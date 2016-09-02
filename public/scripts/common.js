@@ -1821,6 +1821,13 @@
 
                 $ProductListontainer.data('pagenum', NextProductNum);
 
+                if(data.data.list.length < Size){
+                    $('.productList-seeMore').html('No more items!');
+                    setTimeout(function () {
+                        $('.productList-seeMore').hide();
+                    }, 2000);
+                }
+
                 // 图片延迟加载
                 $('img.img-lazy').lazyload({
                     threshold: 1000,
