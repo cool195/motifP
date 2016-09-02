@@ -51,7 +51,7 @@
                     <div class="text-center">
                         <div class="m-b-10x">
                             <a href="/designer/{{ $designer['designerId'] }}">
-                                <img class="img-circle img-border-white" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
+                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
@@ -82,7 +82,7 @@
                     <div class="text-center">
                         <div class="m-b-10x">
                             <a href="/designer/{{ $product['designerId'] }}">
-                                <img class="img-circle img-border-white" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
+                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
@@ -208,7 +208,7 @@
                 <div class="text-center">
                     <div class="m-b-10x">
                         <a href="/designer/@{{ value.designerId }}">
-                            <img class="img-circle img-border-white" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -234,7 +234,7 @@
                 <div class="text-center">
                     <div class="m-b-10x">
                         <a href="/designer/@{{ value.designerId }}">
-                            <img class="img-circle img-border-white" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -306,7 +306,7 @@
                 <div class="text-center">
                     <div class="m-b-10x">
                         <a href="/designer/@{{ value.designerId }}">
-                            <img class="img-circle img-border-white" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -407,7 +407,7 @@
                 <div class="text-center">
                     <div class="m-b-10x">
                         <a href="/designer/@{{ value.designerId }}">
-                            <img class="img-circle img-border-white" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
