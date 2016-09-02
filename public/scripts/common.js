@@ -43,8 +43,18 @@
             effect: 'fade'
             // autoplay: 2500
         });
-    } catch (e) {
-    }
+    } catch (e) {}
+
+    // designerList 判断设计师商品个数
+    try{
+        $('.productImg-list').each(function(){
+            var itemNum=$(this).children('.productImg-item').length;
+            if(itemNum <=4){
+                $(this).siblings('.swiper-button-next').hide();
+                $(this).siblings('.swiper-button-prev').hide();
+            }
+        })
+    }catch (e){}
 
     // 点击选择图片
     $('.small-img').on('click', function (e) {
@@ -2258,7 +2268,6 @@
     });
 
     //#end 个人中心 Following
-
 
 })(jQuery, Swiper);
 
