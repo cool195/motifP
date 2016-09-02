@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class PaypalController extends BaseController
 {
-    //lijiang.hou-buyer2@gmail.com
+    //lijiang.hou-buyer3@gmail.com
     //12345678
     //请求paypal支付
     public function index(Request $request)

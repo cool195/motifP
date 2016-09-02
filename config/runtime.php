@@ -6,9 +6,12 @@ if (env('APP_ENV') == 'production') {
     $Image_URL = '';//SelfCDN地址服务
     $API_URL = array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me');
     $QianHai_URL = 'https://secure.oceanpayment.com/gateway/service/pay';
-    $paypalclientID = 'AeJ0JypMpSkBh2pvVrWMSg8Km_l6fcmWXUQ0oWxom2tz8nPzBB1rWu71bkL1j4S-TGsjGYrbfDZYiWWe';
-    $paypalsecret = 'ECmKQFY0UdanCEXHr6bHQ1PCwivwmtEMWma30r3ejfOlvQVlSW6_rwuXp4leydeHrcqSCthauqka1BYU';
-    $paypalmode = "live";
+//    $paypalclientID = 'AeJ0JypMpSkBh2pvVrWMSg8Km_l6fcmWXUQ0oWxom2tz8nPzBB1rWu71bkL1j4S-TGsjGYrbfDZYiWWe';
+//    $paypalsecret = 'ECmKQFY0UdanCEXHr6bHQ1PCwivwmtEMWma30r3ejfOlvQVlSW6_rwuXp4leydeHrcqSCthauqka1BYU';
+//    $paypalmode = "live";
+    $paypalclientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
+    $paypalsecret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
+    $paypalmode = 'sandbox';
 
     $secureCode = '4646r88B';
     $terminal = '16044402';
