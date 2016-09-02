@@ -14,8 +14,8 @@
                             <div class="p-x-20x p-t-20x text-center">
 
                                 <div class="text-center profile-info">
-                                    <a href="javascript:;" class="head-file">
-                                        <img class="img-circle img-border-white img-lazy"
+                                    <a href="javascript:;" class="head-file img-border-white-4x">
+                                        <img class="img-circle img-lazy"
                                              src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                              data-original="{{config('runtime.CDN_URL')}}/n1/{{Session::get('user.icon')}}" width="116"
                                              height="116" data-url="{{config('runtime.CDN_URL')}}" id="avatarUrl">

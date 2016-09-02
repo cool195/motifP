@@ -47,6 +47,13 @@
     }
 
     // 点击选择图片
+    $('.small-img').on('click', function (e) {
+        if (!$(this).hasClass('active')) {
+            $('.productImg-item img').removeClass('active');
+            $(this).addClass('active');
+        }
+    });
+
     /*    $('.productImg-item img').on('click', function () {
      if (!$(this).hasClass('active')) {
      var ImgUrl = $(this).attr('src');
@@ -2012,7 +2019,7 @@
             'VAList': []
         };
 
-        var orderList =  $('#buyAgain').data('orderlist') ;
+        var orderList =  eval($('#buyAgain').data('orderlist')) ;
 
         $.each(orderList, function(index, val) {
             operateItem.sale_qtty = val.sale_qtty;
@@ -2027,7 +2034,15 @@
             operateItem.VAList = vas;
 
             operate.push(operateItem);
+
+            operateItem = {
+                'sale_qtty': null,
+                'select': true,
+                'sku': null,
+                'VAList': []
+            };
         });
+        console.log(operate);
         return operate;
     }
 
@@ -2042,7 +2057,7 @@
         })
             .done(function(data) {
                 if (data.success) {
-                    window.location.href = data.redirectUrl;
+                    //window.location.href = data.redirectUrl;
                 }
             })
     }

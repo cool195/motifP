@@ -49,13 +49,13 @@
                             @endif
                         </div>
                         <hr class="hr-base m-a-0">
-                        <div class="p-a-20x">
+                        <div class="p-x-20x">
                             @foreach($data['lineOrderList'] as $lineOrder)
-                                <div class="checkout-Item">
+                                <div class="checkout-Item border-bottom p-y-20x">
                                     <div class="media">
                                         <div class="media-left m-r-15x">
                                             <a href="/product/{{$lineOrder['spu']}}">
-                                                <img class="img-thumbnail img-lazy"
+                                                <img class="img-fluid img-lazy"
                                                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
                                                     width="120" height="120" alt="">
@@ -88,7 +88,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr class="hr-base">
                             @endforeach
                         </div>
                         <hr class="hr-base m-a-0">
