@@ -10,9 +10,9 @@
         <div class="box-shadow bg-white m-t-20x">
             <div class="sanBold font-size-md p-x-20x p-y-15x">Items</div>
             <hr class="hr-base m-a-0">
-            <div class="p-a-20x">
+            <div class="p-x-20x">
                 @foreach($accountList['showSkus'] as $showSku)
-                    <div class="checkout-Item">
+                    <div class="checkout-Item border-bottom p-y-20x">
                         <div class="media">
                             <div class="media-left m-r-15x">
                                 <img class="" src="{{config('runtime.CDN_URL')}}/n1/{{$showSku['main_image_url']}}"
@@ -76,9 +76,10 @@
                             </div>
                         @endif
                     </div>
-                    <hr class="hr-base">
                 @endforeach
             </div>
+            <!--预售-->
+            <div class="presale-checkout text-white font-size-md p-a-10x bg-red sanBold">PREORDER: Expected to ship on November 18, 2016.</div>
         </div>
 
         {{--Shipping Address--}}
