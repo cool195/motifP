@@ -121,7 +121,10 @@
                     <div class="image-container">
                         <a href="/product/{{$product['spu']}}">
                             <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}" alt="{{$product['main_title']}}">
-                            <div class="bg-heart"></div>
+                            {{--售罄--}}
+                            <div class="bg-soldout">
+                                <span class="text helve font-size-sm">SOLD OUT</span>
+                            </div>
                         </a>
                         @if(Session::has('user'))
                             <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$product['spu']}}"></i></span>
