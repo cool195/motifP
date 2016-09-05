@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="text-center">
-                        <div class="m-b-10x"><img class="img-circle" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['icon']}}" width="120" height="120" alt=""></div>
+                        <div class="m-b-10x"><img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['icon']}}" width="120" height="120" alt=""></div>
                         <div class="font-size-md helveBold">{{$designer['nickname']}}</div>
                         <div class="p-t-15x">
                             @if(Session::has('user'))

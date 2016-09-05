@@ -56,7 +56,7 @@
                     @endif
                     <div class="loading wish-loading" style="display: none">
                         <div class="loader"></div>
-                        <div class="text-center p-t-10x">Loading...</div>
+                        <div class="text-center p-t-10x p-l-10x">Loading...</div>
                     </div>
                 </div>
             </div>
