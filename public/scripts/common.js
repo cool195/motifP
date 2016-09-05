@@ -2078,12 +2078,16 @@
             .done(function (data) {
                 if (data.success) {
                     //window.location.href = data.redirectUrl;
+                }else{
+
                 }
             })
     }
 
     $('#buyAgain').click(function () {
-        order_buyAgain();
+        if(!$(this).hasClass('disabled')) {
+            order_buyAgain();
+        }
     })
 
 
