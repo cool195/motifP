@@ -53,7 +53,7 @@
                         <span class="triangle-up"></span>
                         <ul class="nav p-t-5x p-b-10x dropdown-nav-hover">
                             <li class="@if('Orders' == $title || 'Order Detail' == $title) active @endif"><a href="/orderlist">Orders</a></li>
-                            <li class="@if('Cart' == $title) active @endif "><a href="/cart">My Bag</a></li>
+                            {{--<li class="@if('Cart' == $title) active @endif "><a href="/cart">My Bag</a></li>--}}
                             <li class="@if('wishlist' == $title) active @endif "><a href="/wish">Wishlist</a></li>
                             <li class="@if('following' == $title) active @endif "><a href="/following">Following</a></li>
                             <li class="@if('Change Profile' == $title) active @endif "><a href="/user/profile">Settings</a></li>
