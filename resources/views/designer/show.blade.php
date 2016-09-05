@@ -120,7 +120,10 @@
                 <div class="productList-item">
                     <div class="image-container">
                         <a href="/product/{{$product['spu']}}">
-                            <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}" alt="{{$product['main_title']}}">
+                            <img class="img-fluid img-lazy"
+                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}" alt="{{$product['main_title']}}"
+                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                            >
                             {{--售罄--}}
                             <div class="bg-soldout">
                                 <span class="text helve font-size-sm">SOLD OUT</span>
