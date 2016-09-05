@@ -37,6 +37,11 @@
                         @else
                             <a class="product-heart btn-heart" href="/login"><i class="iconfont btn-wish font-size-lxx"></i></a>
                         @endif
+                                <!--预售标志-->
+                            <div class="presale-sign">
+                                <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                            </div>
                     </div>
                     <div class="price-caption helveBold">
                         <div class="text-center font-size-md text-main text-truncate p-x-20x">{{$product['main_title']}}</div>
