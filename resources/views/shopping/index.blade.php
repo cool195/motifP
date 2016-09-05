@@ -47,10 +47,10 @@
                         <div class="text-center font-size-md text-main text-truncate p-x-20x">{{$product['main_title']}}</div>
                         <div class="text-center">
                             @if(isset($product['skuPrice']['skuPromotion']))
-                                <span class="font-size-md text-main p-r-5x">${{ number_format(($product['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
+                                <span class="font-size-md text-main p-r-5x text-red">${{ number_format(($product['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
                                 <span class="font-size-base text-common text-throughLine">${{ number_format(($product['skuPrice']['skuPromotion']['price'] / 100), 2) }}</span>
                             @else
-                                <span class="font-size-md text-main p-r-5x">${{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}</span>
+                                <span class="font-size-md text-main p-r-5x text-red">${{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}</span>
                             @endif
                         </div>
                     </div>
