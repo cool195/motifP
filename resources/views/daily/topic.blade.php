@@ -10,12 +10,12 @@
                 @if($value['type'] == 'title')
                 <!--标题-->
                 <div class="p-x-20x p-t-20x m-b-20x">
-                    <h2 class="helveBold">{{ $value['value'] }}</h2>
+                    <h2 class="helveBold font-size-lxx">{{ $value['value'] }}</h2>
                 </div>
                 @elseif($value['type'] == 'context')
                 <!--描述-->
                 <div class="p-x-20x m-y-20x">
-                    <p class="m-b-0">{{ $value['value'] }}</p>
+                    <p class="m-b-0 font-size-base">{{ $value['value'] }}</p>
                 </div>
                 @elseif($value['type'] == 'multilink')
                 <!--图-->
@@ -45,13 +45,17 @@
                                             <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                  src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                  alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                            <div class="bg-heart"></div>
                                         </a>
                                         @if(Session::has('user'))
                                             <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i></span>
                                         @else
                                             <a class="product-heart btn-heart" href="/login"><i class="iconfont btn-wish font-size-lxx"></i></a>
                                         @endif
+                                                <!--预售标志-->
+                                            <div class="presale-sign">
+                                                <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                                <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                            </div>
                                     </div>
                                     <div class="price-caption helveBold">
                                         <div class="text-center font-size-md text-primary text-truncate p-x-20x">
