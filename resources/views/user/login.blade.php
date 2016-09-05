@@ -2,7 +2,7 @@
 <!-- 内容 -->
 <section class="bg-white">
     <div class="helve login-title text-center text-main p-y-20x">Sign in with Motif Account</div>
-    <div class="row">
+    <div class="row m-a-0">
         <div class="col-lg-6 p-r-0 login-ad-container"></div>
         <div class="col-lg-6 login-container">
             <!-- 登录 -->

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/styles/common.css">
 
 </head>
-<body>
+<body class="bg-white">
 
 <!-- 头部 -->
 <header class="login-header">
