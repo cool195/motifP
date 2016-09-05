@@ -274,28 +274,6 @@ footer {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-.shopbag-empty-content {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  width: 100%;
-  min-height: 24rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.shopbag-empty-content .shopbag-emptyInfo {
-  width: 100%;
-}
-
-.shopbag-empty-content .btn-shopbagEmpty {
-  font-size: 6rem;
-}
-
 .btn-320 {
   max-width: 320px;
   display: inline-block;

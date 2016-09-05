@@ -11,13 +11,10 @@
                         <!-- Order List -->
                     @if(empty($data['list']))
                         <!-- 空订单列表 提示信息 -->
-                            <div class="shopbag-empty-content m-b-40x">
-                                <div class="container shopbag-emptyInfo">
-                                    <div class="m-b-20x p-b-5x"><i class="btn-shopbagEmpty iconfont icon-book"></i>
-                                    </div>
-                                    <p class="text-primary m-b-20x p-b-20x font-size-llxx">No Orders Found</p>
-                                    <a href="/daily" class="btn btn-primary btn-lg btn-320">Go Shopping</a>
-                                </div>
+                            <div class="empty-content">
+                                <div class="m-b-20x p-b-5x"><i class="iconfont icon-book"></i></div>
+                                <p class="text-primary m-b-20x p-b-20x font-size-llxx">No Orders Found</p>
+                                <a href="/daily" class="btn btn-primary btn-lg btn-320">Go Shopping</a>
                             </div>
                         @else
                             @foreach($data['list'] as $order)
