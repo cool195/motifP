@@ -28,17 +28,19 @@
             @foreach($list as $daily)
             <li class="isHidden">
                 <div class="daily-item">
-                    <a href="@if(1 == $daily['skipType'])/product/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@else/shopping/@endif{{ $daily['skipId'] }}">
+                    <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
+                       data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
+                       href="@if(1 == $daily['skipType'])/product/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@else/shopping/@endif{{ $daily['skipId'] }}">
                         <img src="{{config('runtime.CDN_URL')}}/n2/{{$daily['imgPath']}}" class="img-fluid img-daily img-lazy">
                     </a>
-                        @if(!empty($daily['title'] || !empty($daily['subTitle'])))
+                    @if(!empty($daily['title'] || !empty($daily['subTitle'])))
                         <div class="daily-info p-a-10x text-left">
                             <div>
                                 <h6 class="text-main helveBold font-size-md m-b-5x">{{$daily['title']}}</h6>
                                 <p class="text-primary m-b-0">{{ $daily['subTitle'] }}</p>
                             </div>
                         </div>
-                        @endif
+                    @endif
                             {{--<hr class="hr-base m-y-10x">--}}
                         {{--<div class="flex flex-fullJustified flex-alignCenter">--}}
                             {{--<div class="flex flex-alignCenter">--}}
@@ -68,7 +70,9 @@
     @{{ each list }}
     <li class="isHidden">
         <div class="daily-item">
-            <a href="@{{if $value.skipType == 1}}/product/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4}}/shopping/@{{ /if }}@{{ $value.skipId }}">
+            <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
+               data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
+               href="@{{if $value.skipType == 1}}/product/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4}}/shopping/@{{ /if }}@{{ $value.skipId }}">
                 <img src="{{config('runtime.CDN_URL')}}/n2/@{{ $value.imgPath }}" class="img-fluid img-daily">
             </a>
 
