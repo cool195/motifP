@@ -180,7 +180,7 @@
                         <div class="text-center p-t-20x p-b-15x">
                         @if(Session::has('user'))
                             <a href="javascript:void(0);" id="productAddBag"
-                               class="btn btn-primary btn-lg btn-350 btn-addToBag @if($data['isPutOn']==0){{'disabled'}}@endif">Add to Bag</a>
+                               class="btn btn-primary btn-lg btn-350 btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0){{'disabled'}}@endif">Add to Bag</a>
                         @else
                             <a href="/login" class="btn btn-block btn-primary btn-lg btn-350 btn-addToBag">Add to Bag</a>
                         @endif
