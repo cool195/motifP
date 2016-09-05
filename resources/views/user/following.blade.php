@@ -53,14 +53,16 @@
 
                     @if(!empty($data['list']) && count($data['list']) == 4)
                         <!-- see more btn -->
-                        <div class="text-center m-y-30x">
-                            <a class="btn btn-gray btn-lg btn-380 btn-seeMore-follow" href="javascript:void(0)">See more of all</a>
+                        <div class="text-center m-y-30x seeMore-info">
+                            <div class="followList-seeMore" style="display: none;">
+                                <a class="btn btn-gray btn-lg btn-380 btn-seeMore-follow" href="javascript:void(0)">See more of all</a>
+                            </div>
+                            <div class="loading follow-loading" style="display: none">
+                                <div class="loader"></div>
+                                <div class="text-center p-l-15x">Loading...</div>
+                            </div>
                         </div>
                     @endif
-                    <div class="loading follow-loading" style="display: none">
-                        <div class="loader"></div>
-                        <div class="text-center p-t-10x">Loading...</div>
-                    </div>
                 </div>
             </div>
         </div>

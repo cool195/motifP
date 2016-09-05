@@ -2,6 +2,14 @@
 
 'use strict';
 
+// 公共方法: 隐藏 see more 按钮
+function HideSeeMore(seemoreName) {
+    $(seemoreName).html('No more items!');
+    setTimeout(function () {
+        $(seemoreName).hide();
+    }, 2000);
+}
+
 (function ($, Swiper) {
 
     // 公共方法 : 图片加载loading动画 与 see more 按钮 的显示和隐藏
@@ -18,14 +26,6 @@
     function loadingAndSeemoreHide(loadingName, seemoreName) {
         $(loadingName).hide();
         $(seemoreName).hide();
-    }
-
-    // 公共方法: 隐藏 see more 按钮
-    function HideSeeMore(seemoreName){
-        $(seemoreName).html('No more items!');
-        setTimeout(function () {
-            $(seemoreName).hide();
-        }, 2000);
     }
 
 
@@ -1619,11 +1619,23 @@
     //User Profile End
 
     //Designer Start
+
+    // 判断 第一页 designer 个数
+    try {
+        $(function () {
+            var DesignerListNum = $('.designer-item').length;
+            $('.designerList-seeMore').show();
+            if (DesignerListNum < 10) {
+                HideSeeMore('.designerList-seeMore');
+            }
+        })
+    } catch (e) {}
+
     // ajax 加载 设计师信息
     function designer_getDesignerList() {
         var $DesignerContainer = $('#designerContainer'),
             Start = $DesignerContainer.data('start'),
-            Size = 6;
+            Size = 10;
         // 判断是否还有数据要加载
         if (Start === -1) {
             return;
@@ -1648,6 +1660,7 @@
             .done(function (data) {
                 if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '') {
                     $DesignerContainer.data('start', -1);
+                    HideSeeMore('.designerList-seeMore');
                 } else {
                     designer_appendDesignerList(data.data);
 
@@ -1660,6 +1673,10 @@
                         $DesignerContainer.data('start', -1);
                     } else {
                         $DesignerContainer.data('start', StartNum);
+                    }
+
+                    if (data.data.list.length < Size) {
+                        HideSeeMore('.designerList-seeMore');
                     }
 
                     // 视频区域高度
@@ -1803,6 +1820,19 @@
 
     // Shopping List
 
+    // 判断 商品个数
+    try {
+        $(function () {
+            var ProductListNum = $('.productList-item').length;
+            $('.productList-seeMore').show();
+            if (ProductListNum < 16) {
+                HideSeeMore('.productList-seeMore');
+            }
+        })
+    } catch (e) {
+
+    }
+
     // 点击 查看更多商品
     $('.btn-seeMore').on('click', function () {
         $('img.img-lazy').each(function () {
@@ -1822,7 +1852,7 @@
         //  Size 当前页显示条数
         var $ProductListontainer = $('#productList-container'),
             Pagenum = $ProductListontainer.data('pagenum'),
-            Size = 20,
+            Size = 16,
             CategoryId = $ProductListontainer.data('categoryid');
         // 判断是否还有数据要加载
         if (Pagenum === -1) {
@@ -1921,11 +1951,11 @@
         }).done(function (data) {
 
             if (data.data === null || data.data === '') {
-                loadingAndSeemoreHide('.daily-loading', '.dailyList-seeMore');
                 $DailyListContainer.data('pagenum', -1);
+                HideSeeMore('.dailyList-seeMore');
             } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
-                loadingAndSeemoreHide('.daily-loading', '.dailyList-seeMore');
                 $DailyListContainer.data('pagenum', -1);
+                HideSeeMore('.dailyList-seeMore');
             } else {
                 // 遍历模板 插入页面
                 appendDailyList(data.data);
@@ -1941,6 +1971,11 @@
                         offset: 0,
                         itemWidth: 272
                     });
+
+                    var dailyNum = data.data.list.length;
+                    if (dailyNum < Size) {
+                        HideSeeMore('.dailyList-seeMore');
+                    }
                 });
             }
         }).always(function () {
@@ -1972,6 +2007,17 @@
 
 
     // 个人中心 Order List start
+
+    // 判断 order list 第一次加载订单数
+    try {
+        $(function () {
+            var OrderListNum = $('#orderListContainer .box-shadow').length;
+            $('.orderList-seeMore').show();
+            if (OrderListNum < 10) {
+                HideSeeMore('.orderList-seeMore');
+            }
+        })
+    } catch (e) {}
 
     // 点击 查看更多 订单
     $('.orderList-seeMore').on('click', function () {
@@ -2011,13 +2057,19 @@
         }).done(function (data) {
             if (data.data === null || data.data === '') {
                 $OrderListContainer.data('pagenum', -1);
+                HideSeeMore('.orderList-seeMore');
             } else if (data.data.list.length === 0 || data.data.list === '' || data.data.list === undefined) {
                 $OrderListContainer.data('pagenum', -1);
+                HideSeeMore('.orderList-seeMore');
             } else {
                 // 遍历模板 插入页面
                 appendOrderList(data.data);
 
                 $OrderListContainer.data('pagenum', NextProductNum);
+
+                if (data.data.list.length < Size) {
+                    HideSeeMore('.orderList-seeMore');
+                }
             }
         }).always(function () {
             $OrderListContainer.data('loading', false);
@@ -2084,14 +2136,14 @@
             .done(function (data) {
                 if (data.success) {
                     //window.location.href = data.redirectUrl;
-                }else{
+                } else {
 
                 }
             })
     }
 
     $('#buyAgain').click(function () {
-        if(!$(this).hasClass('disabled')) {
+        if (!$(this).hasClass('disabled')) {
             order_buyAgain();
         }
     })
@@ -2102,9 +2154,17 @@
 
     //#start 个人中心 WishList
 
-    if ($('.wishlist-item').length < 9) {
-        $('.btn-seeMore-wishList').hide();
-    }
+    // 判断 wishlist 第一次加载数
+    try {
+        $(function () {
+            var WishListNum = $('.wishlist-item').length;
+            $('.wishList-seeMore').show();
+            if (WishListNum < 9) {
+                HideSeeMore('.wishList-seeMore');
+            }
+        })
+    } catch (e) {}
+
     //点击查看更多商品
     $('.btn-seeMore-wishList').on('click', function () {
         getWishList();
@@ -2137,11 +2197,11 @@
             }
         }).done(function (data) {
             if (data.data === null || data.data === '') {
-                loadingAndSeemoreHide('.wish-loading', '.btn-seeMore-wishList');
                 $WishListContainer.data('pagenum', -1);
+                HideSeeMore('.wishList-seeMore');
             } else if (data.data.list.length === 0) {
-                loadingAndSeemoreHide('.wish-loading', '.btn-seeMore-wishList');
                 $WishListContainer.data('pagenum', -1);
+                HideSeeMore('.wishList-seeMore');
             } else {
 
                 // 遍历模板 插入数据
@@ -2158,6 +2218,11 @@
                         offset: 0,
                         itemWidth: 285
                     });
+
+                    var WishNum = data.data.list.length;
+                    if (WishNum < Size) {
+                        HideSeeMore('.wishList-seeMore');
+                    }
                 });
 
                 //图片延迟加载
@@ -2198,9 +2263,18 @@
     //#end 个人中心 WishList
 
     //#start 个人中心 Following
-    if ($('.follow-item').length < 3) {
-        $('.btn-seeMore-follow').hide();
-    }
+
+    // 判断 followlist 第一次加载数
+    try {
+        $(function () {
+            var FollwListNum = $('.follow-item').length;
+            $('.followList-seeMore').show();
+            if (FollwListNum < 8) {
+                HideSeeMore('.followList-seeMore');
+            }
+        })
+    } catch (e) {}
+
     $('.btn-seeMore-follow').on('click', function () {
         $('img.img-lazy').each(function () {
             var Src = $(this).attr('src'),
@@ -2216,7 +2290,7 @@
     function getFollowList() {
         var $followListContainer = $('#followList-container'),
             PageNum = $followListContainer.data('pagenum'),
-            Size = 4;
+            Size = 8;
         //判断是否还有数据要加载
         if (PageNum === -1) {
             return;
@@ -2239,11 +2313,11 @@
             }
         }).done(function (data) {
             if (data.data === null || data.data === '') {
-                loadingAndSeemoreHide('.follow-loading', '.btn-seeMore-follow');
                 $followListContainer.data('pagenum', -1);
+                HideSeeMore('.followList-seeMore');
             } else if (data.data.list.length === 0) {
-                loadingAndSeemoreHide('.follow-loading', '.btn-seeMore-follow');
                 $followListContainer.data('pagenum', -1);
+                HideSeeMore('.followList-seeMore');
             } else {
 
                 //遍历模板 生成html插入页面
@@ -2251,6 +2325,11 @@
 
                 $followListContainer.data('pagenum', NextFollowNum);
                 loadingHide('.follow-loading', '.btn-seeMore-follow');
+
+                if (data.data.list.length < Size) {
+                    HideSeeMore('.followList-seeMore');
+                }
+
                 // 图片延迟加载
                 $('img.img-lazy').lazyload({
                     threshold: 200,
@@ -2316,6 +2395,11 @@ if ($('.isHidden').hasClass('isHidden')) {
                     itemWidth: 272
                 });
 
+                var dailyNum = $('#daily-wookmark li').length;
+                $('.productList-seeMore').show();
+                if (dailyNum < 20) {
+                    HideSeeMore('.dailyList-seeMore');
+                }
             })
         } catch (e) {
         }

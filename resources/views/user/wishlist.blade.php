@@ -50,14 +50,16 @@
                         @endif
                     </ul>
                     @if(!empty($data['list']))
-                        <div class="text-center m-y-30x wishList-seeMore">
-                            <a class="btn btn-gray btn-lg btn-380 btn-seeMore-wishList" href="javascript:void(0)">See more of all</a>
+                        <div class="text-center m-y-30x seeMore-info">
+                            <div class="wishList-seeMore" style="display: none;">
+                                <a class="btn btn-gray btn-lg btn-380 btn-seeMore-wishList" href="javascript:void(0)">See more of all</a>
+                            </div>
+                            <div class="loading wish-loading" style="display: none">
+                                <div class="loader"></div>
+                                <div class="text-center p-l-15x">Loading...</div>
+                            </div>
                         </div>
                     @endif
-                    <div class="loading wish-loading" style="display: none">
-                        <div class="loader"></div>
-                        <div class="text-center p-t-10x p-l-10x">Loading...</div>
-                    </div>
                 </div>
             </div>
         </div>

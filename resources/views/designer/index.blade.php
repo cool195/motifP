@@ -148,12 +148,13 @@
         @endforeach
     </div>
 
-    <div class="text-center m-y-30x">
-        <a class="btn btn-gray btn-lg btn-380 designerList-seeMore" href="javascript:void(0)">See more of all</a>
-
+    <div class="text-center m-y-30x seeMore-info">
+        <div class="designerList-seeMore" style="display: none;">
+            <a class="btn btn-gray btn-lg btn-380" href="javascript:void(0)">See more of all</a>
+        </div>
         <div class="loading designer-loading" style="display: none">
             <div class="loader"></div>
-            <div class="text-center p-t-5x p-l-10x">Loading...</div>
+            <div class="text-center p-l-15x">Loading...</div>
         </div>
     </div>
 

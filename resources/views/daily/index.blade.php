@@ -55,12 +55,14 @@
             @endforeach
         </ul>
     @endif
-        <div class="text-center m-y-30x dailyList-seeMore">
-            <a class="btn btn-gray btn-lg btn-380 btn-seeMore-dailyList">See more of all</a>
-        </div>
-        <div class="loading daily-loading" style="display: none">
-            <div class="loader"></div>
-            <div class="text-center p-t-5x p-l-10x">Loading...</div>
+        <div class="text-center m-y-30x seeMore-info">
+            <div class="dailyList-seeMore" style="display: none;">
+                <a class="btn btn-gray btn-lg btn-380 btn-seeMore-dailyList">See more of all</a>
+            </div>
+            <div class="loading daily-loading" style="display: none">
+                <div class="loader"></div>
+                <div class="text-center p-l-15x">Loading...</div>
+            </div>
         </div>
 </div>
 

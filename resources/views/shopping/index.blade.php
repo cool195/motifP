@@ -59,7 +59,7 @@
             @endforeach
         </div>
         <div class="text-center m-y-30x seeMore-info">
-            <div class="productList-seeMore">
+            <div class="productList-seeMore" style="display: none">
                 <div class="btn btn-gray btn-lg btn-380 btn-seeMore">See more of all</div>
             </div>
             <div class="loading product-loading" style="display: none">
