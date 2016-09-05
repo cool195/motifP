@@ -12,14 +12,14 @@
         <!-- 菜单 -->
         <nav class="nav-menu p-b-15x">
             <ul class="nav">
-                <li class="nav-item">
-                    <a href="/cart">
-                        <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                            <i class="iconfont icon-iconshoppingbag font-size-lg p-r-10x"></i>
-                            <span class="font-size-md">My Bag</span>
-                        </div>
-                    </a>
-                </li>
+                {{--<li class="nav-item">--}}
+                    {{--<a href="/cart">--}}
+                        {{--<div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">--}}
+                            {{--<i class="iconfont icon-iconshoppingbag font-size-lg p-r-10x"></i>--}}
+                            {{--<span class="font-size-md">My Bag</span>--}}
+                        {{--</div>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
                 <li class="nav-item @if('Orders' == $title || 'Order Detail' == $title) active @endif">
                     <a href="/orderlist">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">

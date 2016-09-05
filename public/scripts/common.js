@@ -20,6 +20,14 @@
         $(seemoreName).hide();
     }
 
+    // 公共方法: 隐藏 see more 按钮
+    function HideSeeMore(seemoreName){
+        $(seemoreName).html('No more items!');
+        setTimeout(function () {
+            $(seemoreName).hide();
+        }, 2000);
+    }
+
 
     // ShoppingDetail.html  start
 
@@ -1839,8 +1847,10 @@
         }).done(function (data) {
             if (data.data === null || data.data === '') {
                 $ProductListontainer.data('pagenum', -1);
+                HideSeeMore('.productList-seeMore');
             } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
                 $ProductListontainer.data('pagenum', -1);
+                HideSeeMore('.productList-seeMore');
             } else {
                 // 遍历模板 插入页面
 
@@ -1849,10 +1859,7 @@
                 $ProductListontainer.data('pagenum', NextProductNum);
 
                 if (data.data.list.length < Size) {
-                    $('.productList-seeMore').html('No more items!');
-                    setTimeout(function () {
-                        $('.productList-seeMore').hide();
-                    }, 2000);
+                    HideSeeMore('.productList-seeMore');
                 }
 
                 // 图片延迟加载
@@ -1874,7 +1881,6 @@
         var StageCache = $.parseHTML(TplHtml);
         $('#productList-container').find('.row').append(StageCache);
     }
-
 
     // Daily List start
 
