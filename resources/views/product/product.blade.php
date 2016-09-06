@@ -191,9 +191,9 @@
                     </div>
                     @endif
 
-                    <div class="p-x-20x p-b-10x">
-                        <hr class="hr-base">
-                        <div class="text-center p-t-20x p-b-15x">
+                    <div class="p-x-20x">
+                        <hr class="hr-base m-a-0">
+                        <div class="text-center p-y-30x">
                         @if(Session::has('user'))
                             <a href="javascript:void(0);" id="productAddBag"
                                class="btn btn-primary btn-lg btn-350 btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0){{'disabled'}}@endif"
