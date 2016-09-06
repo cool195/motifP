@@ -56,7 +56,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="box-shadow bg-white">
-                    <div class="p-x-20x p-t-10x">
+                    <div class="p-x-20x p-t-20x">
                         @inject('wishlist', 'App\Http\Controllers\UserController')
                         <div class="flex flex-fullJustified">
                             <span data-impr='http://clk.motif.me/log.gif?t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},”expid":0,"version":"1.0.1”,"src":"PC"}'
@@ -162,14 +162,13 @@
                     <!-- 预售信息 -->
                     <div class="preorder-info">
                         @if($data['skuPrice']['skuPromotion']['ship_desc'])
-                            <div class="text-white font-size-md p-a-10x bg-red preorder-title">
+                            <div class="text-white font-size-md p-a-10x m-b-10x bg-red preorder-title">
                                 <div class="sanBold">PREORDER: Expected to ship on {{$data['skuPrice']['skuPromotion']['ship_desc']}}</div>
                                 <span class="preorder-fold"></span>
                             </div>
                         @endif
                         @if(!isset($data['skuPrice']['skuPromotion']) || $data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] ==0 || !empty($data['spuStock']))
-                        <div class="p-y-10x">
-
+                        <div class="p-b-10x">
                             <div class="p-x-20x p-y-10x font-size-md">
                                 <img src="/images/product/icon-flash@2x.png" alt="">
                                 <span class="p-l-10x stock-qtty">
