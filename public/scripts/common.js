@@ -2020,6 +2020,7 @@ function HideSeeMore(seemoreName) {
             }
         }).always(function () {
             $DailyListContainer.data('loading', false);
+            loadingHide('.daily-loading', '.dailyList-seeMore');
         });
     }
 
