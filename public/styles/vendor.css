@@ -8141,6 +8141,9 @@ html.remodal-is-locked {
   font-size: 18px;
   color: #fff;
   padding-top: 5px;
+  position: absolute;
+  left: 0;
+  bottom: -25px;
 }
 
 #zoom {
@@ -8166,7 +8169,7 @@ html.remodal-is-locked {
   background: #ffffff no-repeat 50% 50%;
   padding: 0;
   margin: -100px 0 0 -100px;
-  box-shadow: -20px 20px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
   border-radius: 4px;
 }
 
