@@ -291,10 +291,11 @@ function HideSeeMore(seemoreName) {
             if (!flag) {
                 return;
             }
-            $('#productAddBag').addClass('disabled');
+            $(this).addClass('disabled');
+            var action = $(this).data('action');
             $.ajax({
                     url: '/cart/add',
-                    type: 'POST',
+                    type: action,
                     data: {
                         operate: operate
                     }
@@ -309,6 +310,9 @@ function HideSeeMore(seemoreName) {
                         }, 1500);
                         if ($('.shoppingCart-number').hasClass('hidden')) {
                             $('.shoppingCart-number').removeClass('hidden');
+                        }
+                        if(data.redirectUrl != null) {
+                            window.location.href = data.redirectUrl;
                         }
                     } else {
                         AddItemFailModal.open();

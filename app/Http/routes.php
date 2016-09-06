@@ -78,6 +78,8 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::post('/cart/add', 'CartController@addCart');
 
+    Route::put('/cart/add', 'CartController@promptlyBuy');
+
     Route::post('/cart/proBuy', 'CartController@promptlyBuy');
 
     Route::post('/cart/addBatch', 'CartController@addBatchCart');
