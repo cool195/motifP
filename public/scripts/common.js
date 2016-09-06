@@ -279,15 +279,17 @@ function HideSeeMore(seemoreName) {
             };
 
             var flag = true;
-            $.each(product_data.vasBases, function (index, val) {
-                if (!$('#vas_id' + val.vas_id).hasClass('disabled') /*&& $('#vas_id' + val.vas_id).val()*/) {
-                    if ($('#vas_id' + val.vas_id).val() == "" || $('#vas_id' + val.vas_id).val() == null) {
-                        $('#vas_id' + val.vas_id).parents('.flex-alignCenter').siblings('.warning-info').removeClass('off');
-                        flag = false;
+            if(product_data.vasBases != undefined){
+                $.each(product_data.vasBases, function (index, val) {
+                    if (!$('#vas_id' + val.vas_id).hasClass('disabled') /*&& $('#vas_id' + val.vas_id).val()*/) {
+                        if ($('#vas_id' + val.vas_id).val() == "" || $('#vas_id' + val.vas_id).val() == null) {
+                            $('#vas_id' + val.vas_id).parents('.flex-alignCenter').siblings('.warning-info').removeClass('off');
+                            flag = false;
+                        }
+                        operate.VAList.push({'vas_id': val.vas_id, 'user_remark': $('#vas_id' + val.vas_id).val()});
                     }
-                    operate.VAList.push({'vas_id': val.vas_id, 'user_remark': $('#vas_id' + val.vas_id).val()});
-                }
-            });
+                });
+            }
             if (!flag) {
                 return;
             }
