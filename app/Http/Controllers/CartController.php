@@ -143,7 +143,7 @@ class CartController extends BaseController
         );
         $result = $this->request('cart', $params);
         if($result['success']){
-            $result['redirectUrl'] = '/cart/ordercheckout';
+            $result['redirectUrl'] = '/checkout';
         }
         return $result;
     }

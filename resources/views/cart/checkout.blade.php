@@ -78,8 +78,10 @@
                     </div>
                 @endforeach
             </div>
-            <!--预售-->
-            <div class="presale-checkout text-white font-size-md p-a-10x bg-red sanBold">PREORDER: Expected to ship on November 18, 2016.</div>
+            @if(1 == $accountList['showSkus'][0]['sale_type'] && isset($accountList['showSkus'][0]['skuPromotion']['ship_desc']))
+                <!--预售-->
+                <div class="presale-checkout text-white font-size-md p-a-10x bg-red sanBold">PREORDER: Expected to ship on {{$accountList['showSkus'][0]['skuPromotion']['ship_desc']}}</div>
+            @endif
         </div>
 
         {{--Shipping Address--}}
