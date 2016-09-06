@@ -30,9 +30,8 @@
                 <div class="p-y-0">
                     <img src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
                 </div>
-                @endif
 
-                @if($value['type'] == 'product')
+                @elseif($value['type'] == 'product')
                     <!--图文列表-->
                     @if(isset($value['spus']))
                     <div class="p-t-40x p-b-20x bg-body">
@@ -56,10 +55,12 @@
                                                 <a class="product-heart btn-heart" href="/login"><i class="iconfont btn-wish font-size-lxx"></i></a>
                                             @endif
                                                 <!--预售标志-->
+                                            @if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])
                                                 <div class="presale-sign">
                                                     <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
                                                     <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
                                                 </div>
+                                            @endif
                                         </div>
                                         <div class="price-caption helveBold">
                                             <div class="text-center font-size-md text-primary text-truncate p-x-20x">

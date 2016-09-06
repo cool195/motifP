@@ -37,11 +37,14 @@
                         @else
                             <a class="product-heart btn-heart" href="/login"><i class="iconfont btn-wish font-size-lxx"></i></a>
                         @endif
-                                <!--预售标志-->
+
+                        @if(1 == $product['sale_type'])
+                            <!--预售标志-->
                             <div class="presale-sign">
                                 <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
                                 <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
                             </div>
+                        @endif
                     </div>
                     <div class="price-caption helveBold">
                         <div class="text-center font-size-md text-main text-truncate p-x-20x">{{$product['main_title']}}</div>
@@ -50,7 +53,7 @@
                                 <span class="font-size-md text-main p-r-5x text-red">${{ number_format(($product['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
                                 <span class="font-size-base text-common text-throughLine">${{ number_format(($product['skuPrice']['skuPromotion']['price'] / 100), 2) }}</span>
                             @else
-                                <span class="font-size-md text-main p-r-5x text-red">${{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}</span>
+                                <span class="font-size-md text-main p-r-5x">${{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}</span>
                             @endif
                         </div>
                     </div>
@@ -86,6 +89,13 @@
             @else
                 <a class="product-heart btn-heart" href="/login"><i class="iconfont font-size-lxx btn-wish"></i></a>
             @endif
+            @{{ if 1 == $value.sale_type }}
+                <!--预售标志-->
+                <div class="presale-sign">
+                    <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                    <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                </div>
+            @{{ /if }}
         </div>
         <div class="price-caption helveBold">
             <div class="text-center font-size-md text-main text-truncate p-x-20x">@{{ $value.main_title }}</div>

@@ -89,9 +89,11 @@
                                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                  alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                             {{--售罄--}}
+                                            @if(!$product['spuInfos'][$spu]['spuBase']['isPutOn'] || $product['spuInfos'][$spu]['spuBase']['status_code'] != 100)
                                             <div class="bg-soldout">
                                                 <span class="text helve font-size-sm">SOLD OUT</span>
                                             </div>
+                                            @endif
                                         </a>
                                         @if(Session::has('user'))
                                             <span class="product-heart btn-heart">
