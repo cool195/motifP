@@ -158,24 +158,38 @@
                         </fieldset>
                     </div>
 
+                    @if(1 == $data['sale_type'])
                     <!-- 预售信息 -->
                     <div class="preorder-info">
-                        <div class="text-white font-size-md p-a-10x bg-red preorder-title">
-                            <div class="sanBold">PREORDER: Expected to ship on November 25, 2016.</div>
-                            <span class="preorder-fold"></span>
-                        </div>
+                        @if($data['skuPrice']['skuPromotion']['ship_desc'])
+                            <div class="text-white font-size-md p-a-10x bg-red preorder-title">
+                                <div class="sanBold">PREORDER: Expected to ship on {{$data['skuPrice']['skuPromotion']['ship_desc']}}</div>
+                                <span class="preorder-fold"></span>
+                            </div>
+                        @endif
+                        @if(!isset($data['skuPrice']['skuPromotion']) || $data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] ==0 || !empty($data['spuStock']))
                         <div class="p-y-10x">
+
                             <div class="p-x-20x p-y-10x font-size-md">
                                 <img src="/images/product/icon-flash@2x.png" alt="">
-                                <span class="p-l-10x stock-qtty">Only 45 Left</span>
+                                <span class="p-l-10x stock-qtty">
+                                    Only @if(($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0 && $data['sale_status']) && $data['isPutOn']==1) Left
+                                @else Sold Out @endif</span>
                             </div>
+
                             <div class="p-x-20x p-y-10x font-size-md limited-content"
-                                 data-begintime="1472627566000" data-endtime="1476083568000" data-lefttime="2953712568" data-qtty="2">
+                                 data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
+                                 data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
+                                 data-lefttime="@if($data['sale_status'] && $data['isPutOn']==1){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
+                                 data-qtty="{{$data['spuStock']['stock_qtty']}}">
                                 <img src="/images/product/icon-flash@2x.png" alt="">
                                 <span class="p-l-10x">Orders Close In <span class="time_show"></span></span>
                             </div>
+
                         </div>
+                        @endif
                     </div>
+                    @endif
 
                     <div class="p-x-20x p-b-10x">
                         <hr class="hr-base">
@@ -254,13 +268,21 @@
                         @else
                             <a href="/login"><span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"></i></span></a>
                         @endif
+                        @if(1 == $list['sale_type'])
+                            <div class="presale-sign">
+                                <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                            </div>
+                        @endif
                     </div>
                     <div class="price-caption helveBold">
                         <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{ $list['main_title'] }}</div>
                         <div class="text-center">
-                            <span class="font-size-md text-primary p-r-5x">${{ number_format(($list['skuPrice']['sale_price'] / 100), 2) }}</span>
                             @if($list['skuPrice']['sale_price'] != $list['skuPrice']['price'])
+                                <span class="font-size-md text-primary p-r-5x text-red">${{ number_format(($list['skuPrice']['sale_price'] / 100), 2) }}</span>
                                 <span class="font-size-base text-common text-throughLine">${{ number_format(($list['skuPrice']['price'] / 100), 2) }}</span>
+                            @else
+                                <span class="font-size-md text-primary p-r-5x">${{ number_format(($list['skuPrice']['sale_price'] / 100), 2) }}</span>
                             @endif
                         </div>
                     </div>
