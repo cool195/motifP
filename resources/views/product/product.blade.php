@@ -184,7 +184,7 @@
                             <a href="javascript:void(0);" id="productAddBag"
                                class="btn btn-primary btn-lg btn-350 btn-addToBag @if($data['isPutOn']==0){{'disabled'}}@endif">Add to Bag</a>
                         @else
-                            <a href="/login" class="btn btn-block btn-primary btn-lg btn-350 btn-addToBag">Add to Bag</a>
+                            <a href="/login" class="btn btn-primary btn-lg btn-350 btn-addToBag">Add to Bag</a>
                         @endif
                     </div>
                     </div>
