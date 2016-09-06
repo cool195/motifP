@@ -219,18 +219,18 @@ function HideSeeMore(seemoreName) {
         if ($('#productsku').val()) {
             var skuQty = $('#skuQty').data('num') + $(this).data('num');
             var product_stock_qtty = product_cache_skuQty[$('#productsku').val()] ? product_cache_skuQty[$('#productsku').val()] : product_getSkuQty($('#productsku').val());
-            if (skuQty > 0 && skuQty <= product_stock_qtty) {
+            if (skuQty > 0 && skuQty <= product_stock_qtty ) {
                 $('#delQtySku').hasClass('disabled') ? $('#delQtySku').removeClass('disabled') : false;
                 $('#addQtySku').hasClass('disabled') ? $('#addQtySku').removeClass('disabled') : false;
                 $('#skuQty').data('num', skuQty);
                 $('#skuQty').html(skuQty);
             }
-            else if (skuQty > 20 && $(this).data('num') > 0) {
+            else if ($(this).data('num') > 0 && skuQty > 20) {
                 if (!$('#addQtySku').hasClass('disabled')) {
                     checkStock($('#productsku').val() + '_' + skuQty);
                 }
                 $('#addQtySku').addClass('disabled');
-            } else if (skuQty > product_stock_qtty && $(this).data('num') > 0) {
+            } else if (skuQty >= product_stock_qtty && $(this).data('num') > 0) {
                 //alert('库存不足');
                 $('#addQtySku').addClass('disabled');
             }
@@ -501,6 +501,8 @@ function HideSeeMore(seemoreName) {
                         tObj.removeClass('disabled');
                         if (skuQty == 2) $('#cdsku' + nowsku).removeClass('disabled');
                         if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');
+                        if (skuQty >= 50) $('#casku' + nowsku).addClass('disabled');
+                        if (skuQty <= 49) $('#casku' + nowsku).removeClass('disabled');
                         cart_update_info();
                     } else {
                         AddItemFailModal.open();
