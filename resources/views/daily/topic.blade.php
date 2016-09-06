@@ -67,9 +67,12 @@
                                                 {{$topic['spuInfos'][$spu]['spuBase']['main_title']}}
                                             </div>
                                             <div class="text-center">
-                                                <span class="font-size-md text-primary p-r-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
+
                                                 @if($topic['spuInfos'][$spu]['skuPrice']['price'] != $topic['spuInfos'][$spu]['skuPrice']['sale_price'])
+                                                    <span class="font-size-md text-primary p-r-5x text-red">${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
                                                     <span class="font-size-base text-common text-throughLine">${{number_format($topic['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                @else
+                                                    <span class="font-size-md text-primary p-r-5x">${{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
                                                 @endif
                                             </div>
                                         </div>
