@@ -38,12 +38,40 @@ class ProductController extends BaseController
             'spu' => $spu,
         );
         $result = $this->request('product', $params);
-        if ($result['success'] && isset($result['data']['spuAttrs'])) {
+        if ($result['success']) {
             //$result['data']['spuAttrs'] = $this->getSpuAttrsStockStatus($result['data']['spuAttrs'], $result['data']['skuExps']);
-            $result['data']['spuAttrs'] = $this->findSkuStatus($result['data']);
+            if(isset($result['data']['spuAttrs'])) {
+                $result['data']['spuAttrs'] = $this->findSkuStatus($result['data']);
+            }
+            $result['data']['sale_status'] = true;
+            if(1 == $result['data']['sale_type']){
+                $result['data']['sale_status'] = $this->getSaleStatus($result['data']);
+            }
+
         }
         return $result;
     }
+
+    private function getSaleStatus(Array $data)
+    {
+        $flag = true;
+        if(1 == $data['sale_type'] && !isset($data['skuPrice']['skuPromotion']))
+        {
+            $flag = false;
+        }
+        elseif(!empty($data['spuStock']) && $data['spuStock']['stock_qtty'] == $data['spuStock']['saled_qtty'] )
+        {
+            $flag = false;
+        }
+        elseif(0 == $data['skuPrice']['skuPromotion']['remain_time'])
+        {
+            $flag = false;
+        }else{
+
+        }
+        return $flag;
+    }
+
 
     private function findSkuStatus($result)
     {
