@@ -1119,6 +1119,12 @@ footer {
   .loginFooter-contactUs {
     margin-bottom: 0 !important;
   }
+  .nav-shoppingCart {
+    margin-top: 2.75rem;
+  }
+  .nav-shoppingCart .icon-iconshoppingbag{
+    font-size: 24px!important;
+  }
 }
 
 @media (max-width: 544px) {
