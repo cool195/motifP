@@ -950,10 +950,17 @@ footer {
 
 .follow-item {
   box-shadow: 0px 0px 8px rgba(196, 200, 211, 0.3);
+  min-height: 25rem;
 }
 
 .follow-item:hover {
   box-shadow: 0px 0px 8px rgba(196, 200, 211, 0.9);
+}
+
+.follow-item .followText-Info {
+  height: 4.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .order_comfirmed_content {

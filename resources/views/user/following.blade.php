@@ -39,7 +39,7 @@
                                                class="btn btn-gray btn-sm p-x-20x btn-follow active"
                                                data-did="{{$follow['userId']}}">Following</a>
                                         </div>
-                                        <div class="p-t-15x">{{ $follow['description'] }}</div>
+                                        <div class="m-t-15x followText-Info">{{ $follow['description'] }}</div>
                                         {{--<div class="p-t-15x">
                                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
                                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
@@ -85,7 +85,7 @@
             <div class="p-t-15x">
                 <a href="javascript:void(0);" class="btn btn-gray btn-sm p-x-20x btn-following active" data-did="@{{ $value.userId }}">Following</a>
             </div>
-            <div class="p-t-15x">@{{ $value.description }}</div>
+            <div class="m-t-15x followText-Info">@{{ $value.description }}</div>
             {{--<div class="p-t-15x">
                 <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
                 <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
