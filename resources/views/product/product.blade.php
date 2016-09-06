@@ -62,7 +62,7 @@
                             <span data-impr='http://clk.motif.me/log.gif?t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},”expid":0,"version":"1.0.1”,"src":"PC"}'
                                   class="product-title helveBold">{{ $data['main_title'] }}</span>
                             @if(Session::has('user'))
-                                <span class="product-heart">
+                                <span class="product-heart p-t-5x p-l-10x">
                                     <i class="iconfont btn-wish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$data['spu']}}"></i>
                                 </span>
                             @else
