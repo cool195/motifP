@@ -131,9 +131,9 @@
                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}" alt="{{$product['main_title']}}"
                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png">
                             {{--售罄--}}
-                            <div class="bg-soldout">
+                            {{--<div class="bg-soldout">
                                 <span class="text helve font-size-sm">SOLD OUT</span>
-                            </div>
+                            </div>--}}
                         </a>
                         @if(Session::has('user'))
                             <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$product['spu']}}"></i></span>
