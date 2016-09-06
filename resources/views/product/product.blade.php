@@ -167,11 +167,12 @@
                         <div class="p-y-10x">
                             <div class="p-x-20x p-y-10x font-size-md">
                                 <img src="/images/product/icon-flash@2x.png" alt="">
-                                <span class="p-l-10x">Only 45 Left</span>
+                                <span class="p-l-10x stock-qtty">Only 45 Left</span>
                             </div>
-                            <div class="p-x-20x p-y-10x font-size-md">
+                            <div class="p-x-20x p-y-10x font-size-md limited-content"
+                                 data-begintime="1472627566000" data-endtime="1476083568000" data-lefttime="2953712568" data-qtty="2">
                                 <img src="/images/product/icon-flash@2x.png" alt="">
-                                <span class="p-l-10x">Orders Close In 5d: 10h: 34m: 32s</span>
+                                <span class="p-l-10x">Orders Close In <span class="time_show"></span></span>
                             </div>
                         </div>
                     </div>
