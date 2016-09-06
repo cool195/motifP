@@ -20,7 +20,7 @@
                 @elseif($value['type'] == 'multilink')
                 <!--图-->
                 <div class="m-t-20x">
-                    <img src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
+                    <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
                 </div>
                 @elseif($value['type'] == 'boxline')
                 <!--分割线-->
@@ -28,7 +28,7 @@
                 @elseif($value['type'] == 'banner')
                 <!--图 banner-->
                 <div class="p-y-0">
-                    <img src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
+                    <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
                 </div>
 
                 @elseif($value['type'] == 'product')
