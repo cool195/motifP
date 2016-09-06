@@ -235,12 +235,12 @@
 
 <div class="container m-t-30x m-b-40x">
     <h4 class="helveBold text-main p-l-10x">You May Also Like</h4>
-    <div class="row p-t-20x">
+    <div class="row p-t-20x" data-impr="{{$recommended['impr']}}">
         @foreach($recommended['list'] as $list)
             <div class="col-md-3 col-xs-6">
                 <div class="productList-item">
                     <div class="image-container">
-                        <a href="/product/{{$list['spu']}}">
+                        <a href="/product/{{$list['spu']}}" data-impr="{{$list['impr']}}" data-clk="{{$list['clk']}}">
                             <img class="img-fluid img-lazy"
                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}"
                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
