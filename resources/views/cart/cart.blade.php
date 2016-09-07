@@ -170,7 +170,7 @@
         {{--提交按钮--}}
         <div class="p-y-40x text-right">
             @if(!empty($cart['showSkus']))
-                <a href="/checkout" class="btn btn-block btn-primary btn-lg btn-toCheckout @if($cartData['pay_amount'] <= 0) disabled @endif">Proceed To Checkout</a>
+                <a href="/checkout" class="btn btn-block btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed To Checkout</a>
             @endif
         </div>
     </div>
