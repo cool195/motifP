@@ -35,9 +35,8 @@
                                         </div>
                                         <div class="font-size-md helveBold">{{ $follow['name'] }}</div>
                                         <div class="p-t-15x">
-                                            <a href="javascript:void(0);"
-                                               class="btn btn-gray btn-sm p-x-20x btn-follow active"
-                                               data-did="{{$follow['userId']}}">Following</a>
+                                            <div class="btn btn-gray btn-sm p-x-20x btn-follow active"
+                                               data-did="{{$follow['userId']}}">Following</div>
                                         </div>
                                         <div class="m-t-15x followText-Info">{{ $follow['description'] }}</div>
                                         {{--<div class="p-t-15x">
@@ -83,7 +82,7 @@
             </div>
             <div class="font-size-md helveBold">@{{ $value.name }}</div>
             <div class="p-t-15x">
-                <a href="javascript:void(0);" class="btn btn-gray btn-sm p-x-20x btn-following active" data-did="@{{ $value.userId }}">Following</a>
+                <div class="btn btn-gray btn-sm p-x-20x btn-following active" data-did="@{{ $value.userId }}">Following</div>
             </div>
             <div class="m-t-15x followText-Info">@{{ $value.description }}</div>
             {{--<div class="p-t-15x">
