@@ -19,7 +19,7 @@ class DesignerController extends BaseController
             'cmd' => 'designerinfolist',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'size' => $request->input('size', 6),
+            'size' => $request->input('size', 10),
             'start' => $request->input('start', 1),
         );
 
@@ -138,7 +138,7 @@ class DesignerController extends BaseController
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token'),
             'num' => $request->input('num', 1),
-            'size' => $request->input('size', 4)
+            'size' => $request->input('size', 8)
         ); 
         $result = $this->request('follow', $params);
         if($request->input('ajax')){
