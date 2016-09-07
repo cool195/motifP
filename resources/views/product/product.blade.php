@@ -154,6 +154,10 @@
                                         <i class="iconfont icon-add font-size-lg"></i>
                                     </div>
                                 </div>
+                                <span class="warning-info flex flex-alignCenter text-warning off">
+                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                    <span class="font-size-base">Invalid character</span>
+                                </span>
                             </div>
                         </fieldset>
                     </div>
