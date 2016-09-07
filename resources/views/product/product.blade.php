@@ -87,7 +87,7 @@
                         </div>
                         <hr class="hr-base">
                         <input hidden id="jsonStr" value="{{$jsonResult}}">
-                        @if(isset($data['spuAttrs']))
+                        @if(!empty($data['spuAttrs']))
                             <input hidden id="productsku">
                             @foreach($data['spuAttrs'] as $spuAttr)
                                 <fieldset class="text-left m-b-20x">
