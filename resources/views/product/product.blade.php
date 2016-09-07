@@ -80,7 +80,8 @@
                         <div class="p-y-5x">
                             @if(isset($data['skuPrice']['skuPromotion']))
                                 <span class="font-size-md">{{ $data['skuPrice']['skuPromotion']['display'] }}
-                                    &nbsp;&nbsp;</span>
+                                    &nbsp;&nbsp;</span><br/>
+                                <span class="font-size-md">{{ $data['skuPrice']['skuPromotion']['promo_words'] }}</span><br/>
                             @endif
                             <span>{{$data['prompt_words']}}</span>
                         </div>
