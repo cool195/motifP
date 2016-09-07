@@ -948,7 +948,9 @@ footer {
 .empty-content .iconfont {
   font-size: 6rem;
 }
-
+.shopbag-content{
+  min-height: 29rem;
+}
 .follow-item {
   box-shadow: 0px 0px 8px rgba(196, 200, 211, 0.3);
   min-height: 25rem;

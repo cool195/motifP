@@ -9,7 +9,7 @@
         {{--空购物车 提示信息--}}
         <div class="empty-content shopbag-content">
             <div class="m-b-20x p-b-5x"><i class="iconfont icon-iconshoppingbag"></i></div>
-            <p class="text-primary m-b-20x p-b-20x font-size-llxx">Your bag is empty, fill it up ! </p>
+            <p class="text-primary m-b-20x p-b-20x font-size-llxx">Your bag is empty, Fill it up ! </p>
             <a href="/daily" class="btn btn-primary btn-lg btn-320">Go Shopping</a>
         </div>
         @else
