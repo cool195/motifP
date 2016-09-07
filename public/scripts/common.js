@@ -1427,8 +1427,8 @@ function HideSeeMore(seemoreName) {
                 data: $('#changepassword').serialize()
             })
             .done(function (data) {
+                alert(data.prompt_msg);
                 if (data.success) {
-                    alert(data.prompt_msg);
                     window.location.href = data.redirectUrl;
                 } else {
                     //$('.warning-info').removeClass('off');
