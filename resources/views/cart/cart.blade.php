@@ -48,9 +48,6 @@
                         <div class="col-md-2">
                             <div class="p-l-20x">
                                 <div class="font-size-md text-primary">${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
-                                @if($showSku['price']>$showSku['sale_price'])
-                                    <div class="font-size-base text-common text-throughLine">${{number_format(($showSku['price'] / 100), 2)}}</div>
-                                @endif
                             </div>
                         </div>
                         <div class="col-md-2">
