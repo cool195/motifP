@@ -20,17 +20,16 @@
                     <div class="box-shadow bg-white m-b-20x">
                         <div class="p-x-20x p-y-15x">
                             <div>
-                                <span class="orderDetail-title">Order date</span>
-                                <span>{{ $data['create_time'] }}</span>
+                                <span class="orderDetail-title">Order Date</span>
+                                <span>{{ date("M d, Y" ,strtotime($data['create_time'])) }}</span>
                             </div>
                             <div>
                                 <span class="orderDetail-title">Order #</span>
                                 <span>{{ $data['sub_order_no'] }}</span>
                             </div>
                             <div>
-                                <span class="orderDetail-title">Order total</span>
-                                <span>${{number_format(($data['pay_amount'] / 100), 2)}}({{ $data['item_qtty'] }}
-                                    items)</span>
+                                <span class="orderDetail-title">Order Total</span>
+                                <span>${{number_format(($data['pay_amount'] / 100), 2)}}</span>
                             </div>
                         </div>
                     </div>
@@ -96,21 +95,11 @@
                                 </div>
                             @endforeach
                         </div>
-                        <hr class="hr-base m-a-0">
-                        <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-                            <div>
-                                Order # {{ $data['sub_order_no'] }}
-                            </div>
-                            <span>
-                                <span class="p-r-30x">Order total</span>
-                                <span class="sanBold">${{ number_format(($data['total_amount'] / 100), 2) }}</span>
-                            </span>
-                        </div>
                     </div>
                     <div class="box-shadow bg-white m-b-20x">
                         <div class="p-a-20x">
                             <div class="media">
-                                <div class="media-left sanBold orderInfo-title">Ships to</div>
+                                <div class="media-left sanBold orderInfo-title">Shipping to</div>
                                 <div class="media-right">
                                     {{ $data['userAddr']['name'] }}<br>
                                     {{ $data['userAddr']['detail_address1'] }}<br>
@@ -130,7 +119,7 @@
                             @if(!in_array($data['status_code'], array(11, 21, 27)))
                                 <hr class="hr-base">
                                 <div class="media">
-                                    <div class="media-left sanBold orderInfo-title">Pay with</div>
+                                    <div class="media-left sanBold orderInfo-title">Paid with</div>
                                     <div class="media-right">{{$data['pay_type']}}</div>
                                 </div>
                             @endif
