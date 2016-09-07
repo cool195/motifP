@@ -29,7 +29,11 @@
         </nav>
         <nav class="navbar-right">
             <ul class="nav navbar-primary">
-                <li class="nav-item p-x-10x"><a href="/register" class="nav-link">Sign up</a></li>
+                @if('Register' == $title)
+                    <li class="nav-item p-x-10x"><a href="/login" class="nav-link">Sign in</a></li>
+                @else
+                    <li class="nav-item p-x-10x"><a href="/register" class="nav-link">Sign up</a></li>
+                @endif
             </ul>
         </nav>
     </div>
