@@ -50,7 +50,7 @@
                         @endif
                     </div>
 
-                    @if(!empty($data['list']) && count($data['list']) == 4)
+                    @if(!empty($data['list']) && count($data['list']) == 8)
                         <!-- see more btn -->
                         <div class="text-center m-y-30x seeMore-info">
                             <div class="followList-seeMore" style="display: none;">
