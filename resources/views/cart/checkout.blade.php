@@ -273,31 +273,39 @@
             </div>
         </div>
 
-        <!-- 购物袋总价 -->
+        <!-- 结算总价 -->
         <div class="box-shadow bg-white m-t-20x">
             <div class="p-a-20x font-size-md">
-                <div class="text-right"><span>Items({{$accountList['total_sku_qtty']}}):</span><span
-                            class="sanBold cart-price">${{number_format(($accountList['total_amount'] / 100), 2)}}</span>
+                <div class="text-right">
+                    <span>Items({{$accountList['total_sku_qtty']}}):</span>
+                    <span class="sanBold cart-price">${{number_format(($accountList['total_amount'] / 100), 2)}}</span>
                 </div>
-                @if($accountList['vas_amount'] !=0)
-                    <div class="text-right"><span>Additional Services:</span><span
-                                class="sanBold cart-price">${{ number_format(($accountList['vas_amount'] / 100), 2) }}</span>
+                @if($accountList['vas_amount'] > 0)
+                    <div class="text-right">
+                        <span>Additional Services:</span>
+                        <span class="sanBold cart-price">${{ number_format(($accountList['vas_amount'] / 100), 2) }}</span>
                     </div>
                 @endif
-
-                <div class="text-right shopping-methodPrice hidden">
-                    <span class="shipMto"></span>
-                    <span class="sanBold cart-price shipMtoprice"></span>
+                <div class="text-right">
+                    <span>Shipping and handling:</span>
+                    <span class="sanBold">@if(0 == $accountList['freight_amount']) Free @else${{ number_format(($accountList['freight_amount'] / 100), 2)}} @endif</span>
                 </div>
+                @if($accountList['promot_discount_amount'] > 0)
+                    <div class="text-right">
+                        <span>Discount</span>
+                        <span class="sanBold">-${{number_format(($accountList['promot_discount_amount'] / 100), 2)}}</span>
+                    </div>
+                @endif
                 {{--promotion-code 添加 hidden样式--}}
-                <div class="text-right promotion-code hidden">
-                    <span>Promotion code:</span>
-                    <span class="sanBold cart-price code-price" data-price="0"></span>
-                </div>
-
-                <div class="text-right"><span>Bag Subtotal:</span><span
-                            class="sanBold cart-price totalPrice"
-                            data-price="{{$accountList['pay_amount']}}">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
+                @if($accountList['cps_amount'] > 0)
+                    <div class="text-right promotion-code ">
+                        <span>Promotion code:</span>
+                        <span class="sanBold cart-price code-price" data-price="0">-${{number_format(($data['cps_amount'] / 100), 2)}}</span>
+                    </div>
+                @endif
+                <div class="text-right">
+                    <span>Order Total:</span>
+                    <span class="sanBold cart-price totalPrice" data-price="{{$accountList['pay_amount']}}">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
                 </div>
             </div>
         </div>

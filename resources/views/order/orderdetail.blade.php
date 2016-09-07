@@ -72,6 +72,12 @@
                                                             {{$attr['attr_type_value'] }}:{{$attr['attr_value']}}<br>
                                                         @endforeach
                                                     @endif
+                                                    @if(isset($lineOrder['vas_info']) && !empty($lineOrder['vas_info']))
+                                                        @foreach($lineOrder['vas_info'] as $info)
+                                                            {{$info['vas_name']}}: {{$info['user_remark']}}
+                                                            +${{number_format(($info['vas_price'] / 100), 2)}}
+                                                        @endforeach
+                                                    @endif
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="text-center">
@@ -118,19 +124,14 @@
                             </div>
                             <hr class="hr-base">
                             <div class="media">
-                                <div class="media-left sanBold orderInfo-title">Shipping Method</div>
-                                <div class="media-right">{{  $data['logistics_name'] }}</div>
+                                <div class="media-left sanBold orderInfo-title">Shipping</div>
+                                <div class="media-right">{{  $data['logistics_name'] }} ${{number_format(($data['logistics_price'] / 100), 2)}}</div>
                             </div>
-                            <hr class="hr-base">
-                            <div class="media">
-                                <div class="media-left sanBold orderInfo-title">Pay with</div>
-                                <div class="media-right">{{$data['pay_type']}}</div>
-                            </div>
-                            @if($data['cps_amount'] > 0)
+                            @if(!in_array($data['status_code'], array(11, 21, 27)))
                                 <hr class="hr-base">
                                 <div class="media">
-                                    <div class="media-left sanBold orderInfo-title">Promotion Code</div>
-                                    <div class="media-right">-${{ number_format(($data['cps_amount'] / 100), 2)}}</div>
+                                    <div class="media-left sanBold orderInfo-title">Pay with</div>
+                                    <div class="media-right">{{$data['pay_type']}}</div>
                                 </div>
                             @endif
                             @if(!empty($data['order_remark']))
@@ -153,12 +154,28 @@
                             </div>
                             @if($data['vas_amount'] > 0)
                                 <div class="text-right">
-                                    <span>Extra:</span>
+                                    <span>Additional Services:</span>
                                     <span class="sanBold cart-price">-${{ number_format(($data['vas_amount'] / 100), 2) }}</span>
                                 </div>
                             @endif
                             <div class="text-right">
-                                <span class="sanBold text-main">Bag Subtotal:</span>
+                                <span>Shipping and handling:</span>
+                                <span>@if(0 == $data['freight_amount']) Free @else ${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
+                            </div>
+                            @if($data['promot_discount_amount'] > 0)
+                                <div class="text-right">
+                                    <span>Discount:</span>
+                                    <span>-${{ number_format(($data['promot_discount_amount'] / 100), 2)}}</span>
+                                </div>
+                            @endif
+                            @if($data['cps_amount'] > 0)
+                                <div class="text-right">
+                                    <span>Promotion Code:</span>
+                                    <span>-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
+                                </div>
+                            @endif
+                            <div class="text-right">
+                                <span class="sanBold text-main">Order Total:</span>
                                 <span class="sanBold text-main cart-price">${{ number_format(($data['pay_amount'] / 100), 2) }}</span>
                             </div>
                         </div>
