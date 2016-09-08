@@ -1,17 +1,17 @@
 @include('header', ['title' => 'shopping', 'cid' =>$cid])
 <!-- 内容 -->
-<section class="m-t-15x">
+<section class="m-t-5x">
     <!-- 商品类别 二级导航 -->
     <div class="bg-white product-category">
         <div class="container">
             <nav class="nav navbar-nav">
                 <ul class="nav flex flex-alignCenter flex-justifyCenter">
                     @foreach($categories as $category)
-                    <li class="nav-item p-x-15x m-l-0">
+                    <li class="nav-item p-x-10x m-l-0">
                         <a href="/shopping/{{ $category['category_id'] }}">
-                            <div class="p-t-15x p-b-5x category-item @if($cid == $category['category_id']) active @endif">
+                            <div class="p-t-10x p-b-5x category-item @if($cid == $category['category_id']) active @endif">
                                 <img src="{{config('runtime.CDN_URL')}}/n0/{{$category['img_path']}}" alt="">
-                                <div class="text-center p-t-10x">{{$category['category_name']}}</div>
+                                <div class="text-center p-t-5x">{{$category['category_name']}}</div>
                             </div>
                         </a>
                     </li>
