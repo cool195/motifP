@@ -20,7 +20,12 @@
                             @foreach($data['list'] as $order)
                                 @foreach($order['subOrderList'] as $subOrder)
                                     <div class="box-shadow bg-white m-b-20x order-item">
-                                        <span class="horn horn-red"></span>
+                                        <span class="horn  @if(11 == $subOrder['status_code']) horn-red
+                                        @elseif(in_array($subOrder['status_code'], array(14, 24))) horn-orange
+                                        @elseif(18 == $subOrder['status_code']) horn-green
+                                        @elseif(in_array($subOrder['status_code'], array(19, 20, 25))) horn-blue
+                                        @elseif(in_array($subOrder['status_code'], array(21, 22, 23))) horn-gray
+                                        @endif"></span>
                                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
                                             <div>
                                                 <h5 class="sanBold font-size-md">{{$subOrder['status_info']}}
@@ -158,10 +163,9 @@
                 <h5 class="sanBold font-size-md">Order Created: @{{ value.create_time }}</h5>
                 <p class="m-b-0 p-t-5x">@{{ value.status_explain }}</p>
             </div>
-                            <span>
-                                <a class="btn btn-primary btn-md"
-                                   href="/orderdetail/@{{ value.order_no }}">Order Detail</a>
-                            </span>
+            <span>
+                <a class="btn btn-primary btn-md" href="/orderdetail/@{{ value.order_no }}">Order Detail</a>
+            </span>
         </div>
         <hr class="hr-base m-a-0">
         <div class="p-x-20x">
