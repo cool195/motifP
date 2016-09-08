@@ -9,14 +9,18 @@
             @foreach($topic['infos'] as $k => $value)
                 @if($value['type'] == 'title')
                 <!--标题-->
-                <div class="p-x-20x p-t-20x m-b-20x">
-                    <h2 class="helveBold font-size-lxx">{{ $value['value'] }}</h2>
-                </div>
+                <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                    <div class="p-x-20x p-t-20x m-b-20x">
+                        <h2 class="helveBold font-size-lxx">{{ $value['value'] }}</h2>
+                    </div>
+                </a>
                 @elseif($value['type'] == 'context')
                 <!--描述-->
-                <div class="p-x-20x m-y-20x">
-                    <p class="m-b-0 font-size-base">{{ $value['value'] }}</p>
-                </div>
+                <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                    <div class="p-x-20x m-y-20x">
+                        <p class="m-b-0 font-size-base">{{ $value['value'] }}</p>
+                    </div>
+                </a>
                 @elseif($value['type'] == 'multilink')
                 <!--图-->
                 <div class="m-t-20x">
@@ -27,9 +31,11 @@
                 <hr class="hr-base m-x-20x m-y-0">
                 @elseif($value['type'] == 'banner')
                 <!--图 banner-->
-                <div class="p-y-0">
-                    <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
-                </div>
+                <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                    <div class="p-y-0">
+                        <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
+                    </div>
+                </a>
 
                 @elseif($value['type'] == 'product')
                     <!--图文列表-->
