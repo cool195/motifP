@@ -19,7 +19,8 @@
                         @else
                             @foreach($data['list'] as $order)
                                 @foreach($order['subOrderList'] as $subOrder)
-                                    <div class="box-shadow bg-white m-b-20x">
+                                    <div class="box-shadow bg-white m-b-20x order-item">
+                                        <span class="horn horn-red"></span>
                                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
                                             <div>
                                                 <h5 class="sanBold font-size-md">{{$subOrder['status_info']}}
