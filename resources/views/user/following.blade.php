@@ -26,7 +26,7 @@
                                 <div class="col-md-6 col-xs-12">
                                     <div class="follow-item text-center p-a-40x m-b-20x @if($key % 4 == 0 || $key % 4 == 3) bg-white @else bg-common @endif">
                                         <div class="m-b-10x">
-                                            <a href="/designer/{{$follow['id']}}">
+                                            <a href="/designer/{{$follow['userId']}}">
                                                 <img class="img-circle img-lazy img-border-white-4x"
                                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{$follow['avatar']}}"
