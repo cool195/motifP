@@ -28,6 +28,17 @@ function HideSeeMore(seemoreName) {
         $(seemoreName).hide();
     }
 
+    // 截取字符串
+    function SubstringText(strinfo){  //'.designer-intro'
+        $(strinfo).each(function(){
+            var str=$(this).html();
+            if(str.length > 200){
+                str = str.substring(0, 200) + '...';
+            }
+            $(this).html(str);
+        });
+    }
+
 
     // ShoppingDetail.html  start
 
@@ -1684,6 +1695,7 @@ function HideSeeMore(seemoreName) {
                 HideSeeMore('.designerList-seeMore');
             }
         })
+        SubstringText('.designer-intro');
     } catch (e) {}
 
     // ajax 加载 设计师信息
@@ -1746,6 +1758,9 @@ function HideSeeMore(seemoreName) {
 
                     // 初始化 swiper
                     initSwiper();
+
+                    // 截取 设计师说明 长度
+                    SubstringText('.designer-intro');
 
                     // 图片延迟加载
                     $('img.img-lazy').lazyload({
@@ -2329,6 +2344,7 @@ function HideSeeMore(seemoreName) {
                 HideSeeMore('.followList-seeMore');
             }
         })
+        SubstringText('.followText-Info');
     } catch (e) {}
 
     $('.btn-seeMore-follow').on('click', function () {
