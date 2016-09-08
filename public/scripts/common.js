@@ -68,11 +68,21 @@ function HideSeeMore(seemoreName) {
     // designerList 判断设计师商品个数
     try {
         $('.productImg-list').each(function () {
-            var itemNum = $(this).children('.productImg-item').length;
-            if (itemNum <= 4) {
-                $(this).siblings('.swiper-button-next').hide();
-                $(this).siblings('.swiper-button-prev').hide();
-            }
+            var itemNum = $(this).children('.productImg-item').length,
+                $btnNext = $(this).siblings('.swiper-button-next'),
+                $btnPrev = $(this).siblings('.swiper-button-prev');
+            $btnNext.hide();
+            $btnPrev.hide();
+            $(this).parent().hover(function () {
+                if (itemNum > 4){
+                    $btnNext.show();
+                    $btnPrev.show();
+                }
+            },function () {
+                $btnNext.hide();
+                $btnPrev.hide();
+            });
+
         })
     } catch (e) {
     }

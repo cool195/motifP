@@ -232,7 +232,7 @@
             </div>
         </div>
 
-        <!-- Promotion Code -->
+{{--        <!-- Promotion Code -->
         <div class="box-shadow bg-white m-t-20x">
             <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified promotionCode">
                 <div class="btn-codeShowHide"></div>
@@ -256,7 +256,7 @@
                     <a class="p-l-40x font-size-md ">Edit</a>
                 </span>
             </div>
-        </div>
+        </div>--}}
 
 
         <!-- Special Request (optional) -->
