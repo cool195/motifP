@@ -44,7 +44,7 @@
                                 <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
                             @endif
                         </div>
-                        <div class="p-t-15x designer-intro">{{$designer['describe']}}</div>
+                        <div class="m-t-15x designer-intro">{{$designer['describe']}}</div>
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                         <div class="p-t-15x">
                         @endif
