@@ -73,7 +73,7 @@
     <div class="col-md-6 col-xs-12">
         <div class="follow-item text-center p-a-40x m-b-20x @{{ if ($index % 4) == 0 || ($index % 4) == 3 }} bg-white @{{ else }} bg-common @{{ /if }}">
             <div class="m-b-10x">
-                <a href="/designer/@{{ $value.id }}">
+                <a href="/designer/@{{ $value.userId }}">
                     <img class="img-circle img-lazy img-border-white-4x"
                          src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                          data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.avatar }}"
