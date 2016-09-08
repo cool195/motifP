@@ -820,20 +820,20 @@ footer {
 .designer-intro {
   position: relative;
   line-height: 1.5rem;
-  height: 4.5rem;
+  max-height: 4.5rem;
   overflow: hidden;
 }
 
-.designer-intro::after {
-  content: "...";
-  font-weight: bold;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 0 20px 1px 45px;
-  background: -webkit-linear-gradient(left, transparent, #fff 55%);
-  background: linear-gradient(to right, transparent, #fff 55%);
-}
+/*.designer-intro::after {*/
+  /*content: "...";*/
+  /*font-weight: bold;*/
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  /*right: 0;*/
+  /*padding: 0 20px 1px 45px;*/
+  /*background: -webkit-linear-gradient(left, transparent, #fff 55%);*/
+  /*background: linear-gradient(to right, transparent, #fff 55%);*/
+/*}*/
 
 .myHome-content {
   min-width: 100%;
