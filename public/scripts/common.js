@@ -968,6 +968,7 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
                 if (data.success) {
+                    alert(data.prompt_msg);
                     $('.restPwd-content').addClass('hidden').removeClass('active');
                     $('.login-content').removeClass('hidden').addClass('active');
                     $('.login-title').text('Sign in with Motif Account');
