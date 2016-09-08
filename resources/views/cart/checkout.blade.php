@@ -244,9 +244,12 @@
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                         <span class="font-size-base">Invalid Code !</span>
                     </div>
-                    <div><input type="text" name="ccps"
-                                class="form-control contrlo-lg text-primary input-promotion disabled"></div>
-                    <div class="p-l-20x"><a href="javascript:;" id="pcsubmit" class="btn btn-primary btn-md">Continue</a></div>
+                    <div>
+                        <input type="text" name="ccps" class="form-control contrlo-lg text-primary input-promotion disabled">
+                    </div>
+                    <div class="p-l-20x">
+                        <a href="javascript:;" id="pcsubmit" class="btn btn-primary btn-md">Continue</a>
+                    </div>
                 </div>
                 <span class="pull-right showHide-simpleInfo promotion-info">
                     <span id="pcode"></span>
@@ -281,7 +284,7 @@
                     <span class="sanBold cart-price">${{number_format(($accountList['total_amount'] / 100), 2)}}</span>
                 </div>
                 @if($accountList['vas_amount'] > 0)
-                    <div class="text-right">
+                    <div class="text-right @if($accountList['vas_amount'] > 0) @endif">
                         <span>Additional Services:</span>
                         <span class="sanBold cart-price">${{ number_format(($accountList['vas_amount'] / 100), 2) }}</span>
                     </div>
@@ -297,13 +300,11 @@
                     </div>
                 @endif
                 {{--promotion-code 添加 hidden样式--}}
-                @if($accountList['cps_amount'] > 0)
-                    <div class="text-right promotion-code ">
-                        <span>Promotion code:</span>
-                        <span class="sanBold cart-price code-price" data-price="0">-${{number_format(($data['cps_amount'] / 100), 2)}}</span>
-                    </div>
-                @endif
-                <div class="text-right">
+                <div class="text-right promotion-code @if($accountList['cps_amount'] <= 0) hidden @endif">
+                    <span>Promotion code:</span>
+                    <span class="sanBold cart-price code-price" data-price="0">-${{number_format(($data['cps_amount'] / 100), 2)}}</span>
+                </div>
+                <div class="text-right ">
                     <span>Order Total:</span>
                     <span class="sanBold cart-price totalPrice" data-price="{{$accountList['pay_amount']}}">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
                 </div>
