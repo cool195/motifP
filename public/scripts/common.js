@@ -1215,8 +1215,10 @@ function HideSeeMore(seemoreName) {
         });
     };
 
-    initGoogle();
-
+    try {
+        initGoogle();
+    } catch (e) {}
+    
     // facebook 第三方登录
 
     // This is called with the results from from FB.getLoginStatus().
