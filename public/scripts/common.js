@@ -1205,7 +1205,7 @@ function HideSeeMore(seemoreName) {
         });
     };
 
-    //initGoogle();
+    initGoogle();
 
     // facebook 第三方登录
 
