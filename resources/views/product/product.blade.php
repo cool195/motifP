@@ -320,5 +320,8 @@
         @{{ if $value.type == "context" }}
             <p>@{{ $value.value }}</p>
         @{{ /if }}
+        @{{ if $value.type == "product" }}
+        <div class="text-center m-b-15x"><img src="{{config('runtime.CDN_URL')}}/n1/@{{ $value.imgPath }}" alt=""></div>
+        @{{ /if }}
     @{{ /each }}
 </template>
