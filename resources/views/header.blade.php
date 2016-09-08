@@ -33,7 +33,7 @@
 <header class="">
     <div class="container">
         <nav class="navbar-left">
-            <ul class="nav navbar-primary">
+            <ul class="nav navbar-primary clearfix">
                 <li class="nav-item nav-logo"><a href="/daily">
                     <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png" alt="logo"></a>
                 </li>
