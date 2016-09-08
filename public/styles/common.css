@@ -779,7 +779,7 @@ footer {
   color: #36405b;
   opacity: .6;
   font-size: .875rem;
-  min-width: 6.5rem;
+  min-width: 6rem;
   -webkit-transition: all 150ms ease;
   transition: all 150ms ease;
 }
