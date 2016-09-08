@@ -8030,6 +8030,7 @@ html.remodal-is-locked {
   float: left;
   z-index: 99;
   cursor: crosshair;
+  width: 100%;
 }
 
 .zoomPreload {
@@ -8123,11 +8124,13 @@ html.remodal-is-locked {
   background: #ffffff;
   padding: 0px;
   margin: 0;
+  width: 100%;
 }
 
 .gallery li {
   float: left;
   padding: 0;
+  width: 100%;
 }
 
 .gallery li:nth-child(6n) {
@@ -8136,6 +8139,7 @@ html.remodal-is-locked {
 
 .gallery li a, .gallery li img {
   float: left;
+  width: 100%;
 }
 
 .imgtitle {
