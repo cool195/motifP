@@ -19,6 +19,7 @@ class PaypalController extends BaseController
     //paypal回调
     public function paypal(Request $request)
     {
+
         if ($request->input('success')) {
             $result = PayOrder::paypalStatic($request);
             if ($result) {
@@ -39,6 +40,6 @@ class PaypalController extends BaseController
                 }
             }
         }
-        return redirect('/orderlist');
+        return redirect('/orderdetail/'.$request->input('orderid'));
     }
 }
