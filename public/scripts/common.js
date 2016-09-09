@@ -66,7 +66,7 @@ function HideSeeMore(seemoreName) {
     }
 
     // designerList 判断设计师商品个数
-    try {
+    function swiperBtnHover(){
         $('.productImg-list').each(function () {
             var itemNum = $(this).children('.productImg-item').length,
                 $btnNext = $(this).siblings('.swiper-button-next'),
@@ -84,8 +84,8 @@ function HideSeeMore(seemoreName) {
             });
 
         })
-    } catch (e) {
     }
+    swiperBtnHover();
 
     // 点击选择图片
     $('.small-img').on('click', function (e) {
@@ -94,15 +94,6 @@ function HideSeeMore(seemoreName) {
             $(this).addClass('active');
         }
     });
-
-    /*    $('.productImg-item img').on('click', function () {
-     if (!$(this).hasClass('active')) {
-     var ImgUrl = $(this).attr('src');
-     $('.productImg-item img').removeClass('active');
-     $(this).addClass('active');
-     $('.product-bigImg').attr('src', ImgUrl);
-     }
-     });*/
 
     // 选择 商品属性
     var product_data = eval('(' + $('#jsonStr').val() + ')');
@@ -1785,6 +1776,7 @@ function HideSeeMore(seemoreName) {
 
                     // 初始化 swiper
                     initSwiper();
+                    swiperBtnHover();
 
                     // 截取 设计师说明 长度
                     SubstringText('.designer-intro');
