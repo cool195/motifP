@@ -66,7 +66,7 @@ function HideSeeMore(seemoreName) {
     }
 
     // designerList 判断设计师商品个数
-    try {
+    function swiperBtnHover(){
         $('.productImg-list').each(function () {
             var itemNum = $(this).children('.productImg-item').length,
                 $btnNext = $(this).siblings('.swiper-button-next'),
@@ -84,8 +84,8 @@ function HideSeeMore(seemoreName) {
             });
 
         })
-    } catch (e) {
     }
+    swiperBtnHover();
 
     // 点击选择图片
     $('.small-img').on('click', function (e) {
@@ -94,15 +94,6 @@ function HideSeeMore(seemoreName) {
             $(this).addClass('active');
         }
     });
-
-    /*    $('.productImg-item img').on('click', function () {
-     if (!$(this).hasClass('active')) {
-     var ImgUrl = $(this).attr('src');
-     $('.productImg-item img').removeClass('active');
-     $(this).addClass('active');
-     $('.product-bigImg').attr('src', ImgUrl);
-     }
-     });*/
 
     // 选择 商品属性
     var product_data = eval('(' + $('#jsonStr').val() + ')');
@@ -1789,6 +1780,7 @@ function HideSeeMore(seemoreName) {
 
                     // 初始化 swiper
                     initSwiper();
+                    swiperBtnHover();
 
                     // 截取 设计师说明 长度
                     SubstringText('.designer-intro');
@@ -2065,8 +2057,17 @@ function HideSeeMore(seemoreName) {
 
                 $DailyListContainer.data('pagenum', NextDailyNum);
 
+                // 视频区域高度
+                var MediaScale = 9 / 16;
+                var Width = $('.daily-item').width(),
+                    MediaHeight = Width * MediaScale;
+                if ($('.ytplayer').length > 0) {
+                    // 初始化 外边框尺寸
+                    $('.designer-media').css('height', MediaHeight);
+                    $('.designer-beginPlayer').css('display', 'block');
+                }
+
                 $('#daily-wookmark').imagesLoaded(function () {
-                    loadingHide('.daily-loading', '.dailyList-seeMore');
                     $('.isHidden').removeClass('isHidden');
                     var wookmark1 = new Wookmark('#daily-wookmark', {
                         container: $('#daily-wookmark'),
@@ -2074,6 +2075,7 @@ function HideSeeMore(seemoreName) {
                         offset: 0,
                         itemWidth: 272
                     });
+                    loadingHide('.daily-loading', '.dailyList-seeMore');
 
                     var dailyNum = data.data.list.length;
                     if (dailyNum < Size) {
@@ -2083,7 +2085,7 @@ function HideSeeMore(seemoreName) {
             }
         }).always(function () {
             $DailyListContainer.data('loading', false);
-            loadingHide('.daily-loading', '.dailyList-seeMore');
+            //loadingHide('.daily-loading', '.dailyList-seeMore');
         });
     }
 
@@ -2565,21 +2567,26 @@ var $ClickPlayer;
 var Width = $('.player-media').width(),
     MediaHeight = Width * MediaScale;
 
+// 加载视频
+var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/player_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 if ($('.ytplayer').length > 0) {
     // 初始化 外边框尺寸
     $('.designer-media').css('height', MediaHeight);
     $('.designer-beginPlayer').css('display', 'block');
-
-    // 加载视频
-    var tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/player_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
 }
 var player;
 // daily 页面
 $('.daily-content').on('click', '.bg-player', function () {
+    Width = $('.player-media').width();
+    MediaHeight = Width * MediaScale;
+    // 初始化 外边框尺寸
+    $('.designer-media').css('height', MediaHeight);
+    $('.designer-beginPlayer').css('display', 'block');
+
     startPlayer($(this));
 });
 
@@ -2599,7 +2606,7 @@ function startPlayer($this) {
         height: MediaHeight,
         width: Width,
         videoId: PlayId,
-        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
+        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'playsinline': 1},
         events: {
             'onReady': onPlayerReady,
             'onError': onPlayerError
@@ -2610,7 +2617,7 @@ function startPlayer($this) {
     $this.css('display', 'none');
     $this.children('.bg-img').hide();
     $this.children('.btn-beginPlayer').hide();
-    //$(this).siblings('.btn-morePlayer').show();
+    $this.siblings('.btn-morePlayer').removeAttr('hidden');
     $this.parents('.player-item').addClass('active');
 }
 
@@ -2627,7 +2634,7 @@ $(document).on('scroll', function (event) {
                 $Player.children('.bg-player').css('display', 'block');
                 $Player.children('.bg-player').children('.bg-img').css('display', 'block');
                 $Player.children('.bg-player').children('.btn-beginPlayer').css('display', 'block');
-                //$Player.children('.btn-morePlayer').css('display', 'none');
+                $Player.children('.btn-morePlayer').attr('hidden','hidden');
                 $Player.removeClass('active');
                 $Player.children('iframe').remove();
                 if (!isAdd) {
