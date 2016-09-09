@@ -2058,8 +2058,17 @@ function HideSeeMore(seemoreName) {
 
                 $DailyListContainer.data('pagenum', NextDailyNum);
 
+                // 视频区域高度
+                var MediaScale = 9 / 16;
+                var Width = $('.daily-item').width(),
+                    MediaHeight = Width * MediaScale;
+                if ($('.ytplayer').length > 0) {
+                    // 初始化 外边框尺寸
+                    $('.designer-media').css('height', MediaHeight);
+                    $('.designer-beginPlayer').css('display', 'block');
+                }
+
                 $('#daily-wookmark').imagesLoaded(function () {
-                    loadingHide('.daily-loading', '.dailyList-seeMore');
                     $('.isHidden').removeClass('isHidden');
                     var wookmark1 = new Wookmark('#daily-wookmark', {
                         container: $('#daily-wookmark'),
@@ -2067,6 +2076,7 @@ function HideSeeMore(seemoreName) {
                         offset: 0,
                         itemWidth: 272
                     });
+                    loadingHide('.daily-loading', '.dailyList-seeMore');
 
                     var dailyNum = data.data.list.length;
                     if (dailyNum < Size) {
@@ -2076,7 +2086,7 @@ function HideSeeMore(seemoreName) {
             }
         }).always(function () {
             $DailyListContainer.data('loading', false);
-            loadingHide('.daily-loading', '.dailyList-seeMore');
+            //loadingHide('.daily-loading', '.dailyList-seeMore');
         });
     }
 
@@ -2552,21 +2562,26 @@ var $ClickPlayer;
 var Width = $('.player-media').width(),
     MediaHeight = Width * MediaScale;
 
+// 加载视频
+var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/player_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 if ($('.ytplayer').length > 0) {
     // 初始化 外边框尺寸
     $('.designer-media').css('height', MediaHeight);
     $('.designer-beginPlayer').css('display', 'block');
-
-    // 加载视频
-    var tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/player_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
 }
 var player;
 // daily 页面
 $('.daily-content').on('click', '.bg-player', function () {
+    Width = $('.player-media').width();
+    MediaHeight = Width * MediaScale;
+    // 初始化 外边框尺寸
+    $('.designer-media').css('height', MediaHeight);
+    $('.designer-beginPlayer').css('display', 'block');
+
     startPlayer($(this));
 });
 
@@ -2586,7 +2601,7 @@ function startPlayer($this) {
         height: MediaHeight,
         width: Width,
         videoId: PlayId,
-        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'fs': 0, 'playsinline': 1},
+        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'playsinline': 1},
         events: {
             'onReady': onPlayerReady,
             'onError': onPlayerError

@@ -24,10 +24,10 @@
 <!-- 列表内容 -->
 <div class="container m-y-40x" role="main" id="dailyList-container" data-pagenum="1" data-loading="false">
     @if(!empty($list))
-        <ul class="tiles-wrap animated row" id="daily-wookmark">
+        <ul class="tiles-wrap animated row daily-content" id="daily-wookmark">
             @foreach($list as $daily)
             <li class="isHidden">
-                <div class="daily-item">
+                <div class="daily-item player-media">
                     <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
                        data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
                        href="@if(1 == $daily['skipType'])/product/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@else/shopping/@endif{{ $daily['skipId'] }}">
@@ -70,6 +70,27 @@
 
 <template id="tpl-daily">
     @{{ each list }}
+    @{{ if $value.type == "3" }}
+    <li class="isHidden">
+        <div class="daily-item">
+            <div class="designer-media bg-white">
+                <div class="player-item" data-playid="@{{$value.videoId}}">
+                    <div id="@{{$value.videoId}}" class="ytplayer" data-playid="@{{$value.videoId}}"></div>
+                    <div class="bg-player">
+                        <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/@{{ $value.imgPath }}" alt="">
+                        <div class="btn-beginPlayer designer-beginPlayer">
+                            <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
+                                 alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    @{{ /if }}
+
+    @{{ if $value.type == "1" || $value.type == "2" }}
     <li class="isHidden">
         <div class="daily-item">
             <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
@@ -88,6 +109,7 @@
             @{{ /if }}
         </div>
     </li>
+    @{{ /if }}
     @{{ /each }}
 </template>
 
