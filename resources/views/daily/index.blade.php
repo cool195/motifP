@@ -26,33 +26,60 @@
     @if(!empty($list))
         <ul class="tiles-wrap animated row daily-content" id="daily-wookmark">
             @foreach($list as $daily)
-            <li class="isHidden">
-                <div class="daily-item player-media">
-                    <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
-                       data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
-                       href="@if(1 == $daily['skipType'])/product/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@else/shopping/@endif{{ $daily['skipId'] }}">
-                        <img src="{{config('runtime.CDN_URL')}}/n2/{{$daily['imgPath']}}" class="img-fluid img-daily img-lazy">
-                    </a>
-                    @if(!empty($daily['title'] || !empty($daily['subTitle'])))
-                        <div class="daily-info p-a-10x text-left">
-                            <div>
-                                <h6 class="text-main helveBold font-size-md m-b-5x">{{$daily['title']}}</h6>
-                                <p class="text-primary m-b-0">{{ $daily['subTitle'] }}</p>
+                <li class="isHidden">
+                    @if(3 == $daily['type'])
+                        <div class="daily-item">
+                            <div class="designer-media bg-white">
+                                <div class="player-item" data-playid="{{$daily['videoId']}}">
+                                    <div id="{{$daily['videoId']}}" class="ytplayer" data-playid="{{$daily['videoId']}}"></div>
+                                    <div class="bg-player">
+                                        <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$daily['videoId']}}" alt="">
+                                        <div class="btn-beginPlayer designer-beginPlayer">
+                                            <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                                 srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="btn-morePlayer" hidden>
+                                        <a class="text-white font-size-xs video-formore"
+                                           data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
+                                           data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
+                                           href="@if(1 == $daily['skipType'])/product/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@else/shopping/@endif{{ $daily['skipId'] }}">
+                                            <strong>Click for More</strong>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    @endif
+                    @else
+                        <div class="daily-item player-media">
+                            <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
+                               data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
+                               href="@if(1 == $daily['skipType'])/product/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@else/shopping/@endif{{ $daily['skipId'] }}">
+                                <img src="{{config('runtime.CDN_URL')}}/n2/{{$daily['imgPath']}}"
+                                     class="img-fluid img-daily img-lazy">
+                            </a>
+                            @if(!empty($daily['title'] || !empty($daily['subTitle'])))
+                                <div class="daily-info p-a-10x text-left">
+                                    <div>
+                                        <h6 class="text-main helveBold font-size-md m-b-5x">{{$daily['title']}}</h6>
+                                        <p class="text-primary m-b-0">{{ $daily['subTitle'] }}</p>
+                                    </div>
+                                </div>
+                            @endif
                             {{--<hr class="hr-base m-y-10x">--}}
-                        {{--<div class="flex flex-fullJustified flex-alignCenter">--}}
+                            {{--<div class="flex flex-fullJustified flex-alignCenter">--}}
                             {{--<div class="flex flex-alignCenter">--}}
-                                {{--<img src="{{config('runtime.Image_URL')}}/images/daily/daily.jpg" class="img-circle" width="30" height="30">--}}
-                                {{--<span class="p-l-15x">--}}
-                                    {{--<h6 class="text-main font-size-sm helveBold">Street Art</h6>--}}
-                                    {{--<a class="text-primary font-size-sm" href="#">facebook.com</a>--}}
-                                {{--</span>--}}
+                            {{--<img src="{{config('runtime.Image_URL')}}/images/daily/daily.jpg" class="img-circle" width="30" height="30">--}}
+                            {{--<span class="p-l-15x">--}}
+                            {{--<h6 class="text-main font-size-sm helveBold">Street Art</h6>--}}
+                            {{--<a class="text-primary font-size-sm" href="#">facebook.com</a>--}}
+                            {{--</span>--}}
                             {{--</div>--}}
                             {{--<i class="iconfont icon-follow font-size-lx"></i>--}}
-                        {{--</div>--}}
-                </div>
+                            {{--</div>--}}
+                        </div>
+                    @endif
             </li>
             @endforeach
         </ul>
@@ -85,10 +112,10 @@
                         </div>
                     </div>
                     <div class="btn-morePlayer" hidden>
-                        <a class="text-white font-size-xs video-formore" data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","type":"@{{ $value.type }}","imgtexttype":"@{{ $value.imgtextType }}","skiptype":"@{{ $value.skipType }}","skipid":"@{{ $value.skipId }}","sortno":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"h5"}'
+                        <a class="text-white font-size-xs video-formore"
+                           data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","type":"@{{ $value.type }}","imgtexttype":"@{{ $value.imgtextType }}","skiptype":"@{{ $value.skipType }}","skipid":"@{{ $value.skipId }}","sortno":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"h5"}'
                            data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","type":"@{{ $value.type }}","imgtexttype":"@{{ $value.imgtextType }}","skiptype":"@{{ $value.skipType }}","skipid":"@{{ $value.skipId }}","sortno":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"h5"}'
-                           data-imprt='http://clk.motif.me/log.gif?t=daily.100001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v='
-                           href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}"><strong>Click for More</strong></a>
+                           href="@{{ if $value.skipType == 1 }}/product/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping#@{{ /if }}@{{ $value.skipId }}"><strong>Click for More</strong></a>
                     </div>
                 </div>
             </div>
