@@ -33,7 +33,7 @@
                                 <div class="player-item" data-playid="{{$daily['videoId']}}">
                                     <div id="{{$daily['videoId']}}" class="ytplayer" data-playid="{{$daily['videoId']}}"></div>
                                     <div class="bg-player">
-                                        <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$daily['videoId']}}" alt="">
+                                        <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$daily['imgPath']}}" alt="">
                                         <div class="btn-beginPlayer designer-beginPlayer">
                                             <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
                                                  srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"

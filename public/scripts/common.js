@@ -2501,6 +2501,14 @@ if ($('.isHidden').hasClass('isHidden')) {
                 $('.dailyList-seeMore').show();
 
                 $('.isHidden').removeClass('isHidden');
+
+                // 设置视频的高度
+                Width = $('.player-media').width();
+                MediaHeight = Width * MediaScale;
+                // 初始化 外边框尺寸
+                $('.designer-media').css('height', MediaHeight);
+                $('.designer-beginPlayer').css('display', 'block');
+
                 var wookmark1 = new Wookmark('#daily-wookmark', {
                     container: $('#daily-wookmark'),
                     align: 'center',
