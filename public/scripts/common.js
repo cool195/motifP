@@ -115,7 +115,10 @@ function HideSeeMore(seemoreName) {
         if (ItemType !== '' && !$(this).hasClass('disabled')) {
             $('#skuQty').data('num', 1);
             $('#skuQty').html(1);
+            $('#skuQty').parent().siblings('.warning-info').addClass('off');
             $('#delQtySku').addClass('disabled');
+            //todo 加判断
+            $('#addQtySku').removeClass('disabled');
             if ($(this).hasClass('active')) {
                 $(this).removeClass('active');
                 delete product_arrayTemp_click['key' + $(this).attr('data-attr-type')];
@@ -148,6 +151,7 @@ function HideSeeMore(seemoreName) {
                 }
             }
         }
+        console.log(nowClickArray);
         return nowClickArray;
     }
 
