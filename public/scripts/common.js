@@ -105,9 +105,9 @@ function HideSeeMore(seemoreName) {
      });*/
 
     // 选择 商品属性
-    var product_data = eval('(' + $('#jsonStr').val() + ')')
+    var product_data = eval('(' + $('#jsonStr').val() + ')');
     var spuAttrs = typeof(product_data) != "undefined" ? product_data.spuAttrs : '';
-    var product_arrayTemp_click = [] //被选中的总数组
+    var product_arrayTemp_click = [];//被选中的总数组
 
     //点击属性事件
     $('.btn-itemProperty').on('click', function () {
@@ -1720,7 +1720,7 @@ function HideSeeMore(seemoreName) {
             if (DesignerListNum < 10) {
                 HideSeeMore('.designerList-seeMore');
             }
-        })
+        });
         SubstringText('.designer-intro');
     } catch (e) {}
 
@@ -1751,9 +1751,10 @@ function HideSeeMore(seemoreName) {
                 }
             })
             .done(function (data) {
-                if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '') {
+                if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '' || data.data.list.length === 0) {
                     $DesignerContainer.data('start', -1);
                     HideSeeMore('.designerList-seeMore');
+                    loadingAndSeemoreHide('.designer-loading', '.designerList-seeMore');
                 } else {
                     designer_appendDesignerList(data.data);
 
@@ -2049,9 +2050,11 @@ function HideSeeMore(seemoreName) {
             if (data.data === null || data.data === '') {
                 $DailyListContainer.data('pagenum', -1);
                 HideSeeMore('.dailyList-seeMore');
+                loadingAndSeemoreHide('.daily-loading', '.dailyList-seeMore');
             } else if (data.data.list === null || data.data.list === '' || data.data.list === undefined) {
                 $DailyListContainer.data('pagenum', -1);
                 HideSeeMore('.dailyList-seeMore');
+                loadingAndSeemoreHide('.daily-loading', '.dailyList-seeMore');
             } else {
                 // 遍历模板 插入页面
                 appendDailyList(data.data);
@@ -2155,9 +2158,11 @@ function HideSeeMore(seemoreName) {
             if (data.data === null || data.data === '') {
                 $OrderListContainer.data('pagenum', -1);
                 HideSeeMore('.orderList-seeMore');
+                loadingAndSeemoreHide('.orderList-loading', '.orderList-seeMore');
             } else if (data.data.list.length === 0 || data.data.list === '' || data.data.list === undefined) {
                 $OrderListContainer.data('pagenum', -1);
                 HideSeeMore('.orderList-seeMore');
+                loadingAndSeemoreHide('.orderList-loading', '.orderList-seeMore');
             } else {
                 // 遍历模板 插入页面
                 appendOrderList(data.data);
@@ -2296,9 +2301,11 @@ function HideSeeMore(seemoreName) {
             if (data.data === null || data.data === '') {
                 $WishListContainer.data('pagenum', -1);
                 HideSeeMore('.wishList-seeMore');
+                loadingAndSeemoreHide('.wish-loading', '.btn-seeMore-wishList');
             } else if (data.data.list.length === 0) {
                 $WishListContainer.data('pagenum', -1);
                 HideSeeMore('.wishList-seeMore');
+                loadingAndSeemoreHide('.wish-loading', '.btn-seeMore-wishList');
             } else {
 
                 // 遍历模板 插入数据
@@ -2413,9 +2420,11 @@ function HideSeeMore(seemoreName) {
             if (data.data === null || data.data === '') {
                 $followListContainer.data('pagenum', -1);
                 HideSeeMore('.followList-seeMore');
+                loadingAndSeemoreHide('.follow-loading', '.btn-seeMore-follow');
             } else if (data.data.list.length === 0) {
                 $followListContainer.data('pagenum', -1);
                 HideSeeMore('.followList-seeMore');
+                loadingAndSeemoreHide('.follow-loading', '.btn-seeMore-follow');
             } else {
 
                 //遍历模板 生成html插入页面
