@@ -302,8 +302,15 @@
                 {{--promotion-code 添加 hidden样式--}}
                 <div class="text-right promotion-code @if($accountList['cps_amount'] <= 0) hidden @endif">
                     <span>Promotion code:</span>
-                    <span class="sanBold cart-price code-price" data-price="0">-${{number_format(($data['cps_amount'] / 100), 2)}}</span>
+                    <span class="sanBold cart-price code-price" data-price="0">-${{number_format(($accountList['cps_amount'] / 100), 2)}}</span>
                 </div>
+                {{--收税提示--}}
+                @if($accountList['tax_amount'])
+                    <div class="text-right promotion-code @if($accountList['tax_amount'] <= 0) hidden @endif">
+                        <span>Sale Tax:</span>
+                        <span class="sanBold cart-price code-price" data-price="0">+${{number_format(($accountList['tax_amount'] / 100), 2)}}</span>
+                    </div>
+                @endif
                 <div class="text-right ">
                     <span>Order Total:</span>
                     <span class="sanBold cart-price totalPrice" data-price="{{$accountList['pay_amount']}}">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
