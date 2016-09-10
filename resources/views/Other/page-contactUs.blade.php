@@ -4,9 +4,11 @@
     <div class="content-wrap">
         <h2 class="helveBold text-main font-size-lxx m-b-20x m-x-20x">Contact Us</h2>
         <div class="bg-white content box-shadow">
-            <p>Customer Support Email: <a href="#">Service@motif.me</a></p>
-            <p>Business Contact Email: <a href="#">Business@motif.me</a></p>
-            <p>Contact Us on Facebook: <a href="#" class="btn-facebook">facebook</a></p>
+            <p>Customer Support Email: <a href="mailto:service@motif.me">Service@motif.me</a></p>
+            <p>Business Contact Email: <a href="mailto:Business@motif.me">Business@motif.me</a></p>
+            <p>Contact Us on Facebook:
+                <a target="_blank" href="@if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')){{'https://www.facebook.com/motifme'}}@else{{'motif://o.c?a=outurl&url='.urlencode('https://www.facebook.com/motifme')}}@endif" class="btn-facebook">facebook</a>
+            </p>
         </div>
     </div>
 </div>

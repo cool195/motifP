@@ -1070,6 +1070,10 @@ footer {
   text-align: center;
 }
 
+.player-item:hover .btn-morePlayer{
+  display: block;
+}
+
 .player-item .designer-beginPlayer {
   display: none;
 }
@@ -1077,11 +1081,12 @@ footer {
 .player-item .btn-morePlayer {
   position: absolute;
   right: 10px;
-  bottom: 15px;
+  top: 6px;
+  display: none;
 }
 
 .player-item .btn-morePlayer a {
-  padding: 6px 9px 7px;
+  padding: 2px 3px 5px;
   border-radius: 5px;
   border: 1px solid #ffffff;
   background: rgba(0, 0, 0, 0.3);

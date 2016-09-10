@@ -38,7 +38,7 @@
                     <div class="btn btn-primary btn-lg btn-block" data-role="login-submit">Login</div>
                 </div>
                 <div class="p-y-15x text-center">
-                    <a class="text-link btn-forgotPwd" href="#">Forgot password?</a>
+                    <a class="text-link btn-forgotPwd" href="javascript:void(0)">Forgot password?</a>
                 </div>
                 <div class="text-center login-or">
                     <hr class="hr-login m-a-0">
