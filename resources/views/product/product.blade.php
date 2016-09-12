@@ -144,7 +144,7 @@
                         <fieldset class="text-left m-b-20x">
                             <div class="flex flex-alignCenter">
                                 <span class="text-primary font-size-md m-r-20x">Qty:</span>
-                                <div class="btn-group flex" id="item-count">
+                                <div class="btn-group flex m-r-15x" id="item-count">
                                     <div class="btn btn-cartCount btn-xs patb disabled" id="delQtySku" data-num="-1">
                                         <i class="iconfont icon-minus font-size-lg"></i>
                                     </div>
