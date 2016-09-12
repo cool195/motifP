@@ -94,19 +94,18 @@ function HideSeeMore(seemoreName) {
     }
 
     $(document).on('scroll', function (event) {
-        imprList();
+        //imprList();
     })
 
     $(document).ready(function () {
         $('[data-clk]').unbind('click');
         $('[data-clk]').click(function () {
             var $this = $(this);
-
             //onProductClick();
 
             if(undefined != $this.data('link')) {
                 $.ajax({
-                    url: $this.data('link'),
+                    url: $this.data('clk'),
                     type: "GET"
                 });
                 setTimeout(function () {
@@ -2151,6 +2150,24 @@ function HideSeeMore(seemoreName) {
                     HideSeeMore('.productList-seeMore');
                 }
 
+                //点击埋点
+                $('[data-clk]').unbind('click');
+                $('[data-clk]').bind('click', function () {
+                    var $this = $(this);
+
+                    if (undefined !== $this.data('link')) {
+                        $.ajax({
+                            url: $this.data('clk'),
+                            type: "GET"
+                        });
+                        setTimeout(function () {
+                            window.location.href = $this.data('link');
+                        }, 100);
+                    }
+                })
+
+                //end
+
                 // 图片延迟加载
                 $('img.img-lazy').lazyload({
                     threshold: 1000,
@@ -2232,6 +2249,22 @@ function HideSeeMore(seemoreName) {
                     $('.designer-media').css('height', MediaHeight);
                     $('.designer-beginPlayer').css('display', 'block');
                 }
+
+                //点击触发点击埋点
+                $('[data-clk]').unbind('click');
+                $('[data-clk]').bind('click', function() {
+                    var $this = $(this);
+                    if (undefined !== $this.data('link')) {
+                        $.ajax({
+                            url: $this.data('clk'),
+                            type: "GET"
+                        });
+                        setTimeout(function () {
+                            window.location.href = $this.data('link');
+                        }, 100);
+                    }
+                } )
+                // end
 
                 $('#daily-wookmark').imagesLoaded(function () {
                     $('.isHidden').removeClass('isHidden');
