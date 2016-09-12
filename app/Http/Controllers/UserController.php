@@ -340,5 +340,16 @@ class UserController extends BaseController
         return view('user.profile');
     }
 
-
+    //添加couponcode
+    public function verifyCoupon(Request $request)
+    {
+        $params = array(
+            'cmd' => 'bind',
+            'couponcode' => $request->input('cps'),
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('coupon', $params);
+        return $result;
+    }
 }

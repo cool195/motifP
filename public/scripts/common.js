@@ -820,6 +820,7 @@ function HideSeeMore(seemoreName) {
                             })
                             .done(function (data) {
                                 if (data.success) {
+                                    //todo 可能要重新请求结算
                                     $('.promotion-code').removeClass('hidden');
                                     $('#pcode').html($('input[name="ccps"]').val() + ' -$' + (data.data.cps_amount / 100).toFixed(2));
                                     $('.code-price').html('-$' + (data.data.cps_amount / 100).toFixed(2));

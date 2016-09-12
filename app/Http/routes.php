@@ -88,7 +88,7 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::post('/cart/operate', 'CartController@operateCartProduct');
 
-    Route::post('/coupon', 'CartController@verifyCoupon');
+    Route::post('/coupon', 'UserController@verifyCoupon');
 });
 //Cart End
 
