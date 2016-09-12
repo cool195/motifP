@@ -35,7 +35,7 @@
                         @if(Session::has('user'))
                             <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if($product['isWished']) active @endif" data-spu="{{$product['spu']}}"></i></span>
                         @else
-                            <a class="product-heart btn-heart" href="/login"><i class="iconfont btn-wish font-size-lxx"></i></a>
+                            <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$product['spu']}}"></i></a>
                         @endif
 
                         @if(1 == $product['sale_type'])
@@ -87,7 +87,7 @@
             @if(Session::has('user'))
                 <span class="product-heart btn-heart"><i class="iconfont btn-wish btn-wishList font-size-lxx @{{ if $value.isWished }} active @{{ /if }}" data-spu="@{{ $value.spu }}"></i></span>
             @else
-                <a class="product-heart btn-heart" href="/login"><i class="iconfont font-size-lxx btn-wish"></i></a>
+                <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont font-size-lxx btn-wish" data-actionspu="@{{ $value.spu }}"></i></a>
             @endif
             @{{ if 1 == $value.sale_type }}
                 <!--预售标志-->

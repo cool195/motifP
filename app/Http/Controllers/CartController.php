@@ -176,16 +176,4 @@ class CartController extends BaseController
             }
         }
     }
-
-    public function verifyCoupon(Request $request)
-    {
-        $params = array(
-            'cmd' => 'verifycoupon',
-            'couponcode' => $request->input('cps'),
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $result = $this->request('cart', $params);
-        return $result;
-    }
 }

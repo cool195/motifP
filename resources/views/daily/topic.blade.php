@@ -54,11 +54,11 @@
                                                      alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                             </a>
                                             @if(Session::has('user'))
-                                                <span class="product-heart btn-heart"><i
-                                                            class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif"
-                                                            data-spu="{{$spu}}"></i></span>
+                                                <span class="product-heart btn-heart">
+                                                    <i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i>
+                                                </span>
                                             @else
-                                                <a class="product-heart btn-heart" href="/login"><i class="iconfont btn-wish font-size-lxx"></i></a>
+                                                <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$spu}}"></i></a>
                                             @endif
                                                 <!--预售标志-->
                                             @if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])

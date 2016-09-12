@@ -467,30 +467,62 @@ function HideSeeMore(seemoreName) {
     // 点击 "心" 关注商品
     $('.btn-wish').on('click', function () {
         var $this = $(this);
-        $.ajax({
-                url: '/wishlist/' + $this.data('spu'),
-                type: 'GET'
-            })
-            .done(function (data) {
-                if (data.success) {
-                    $this.toggleClass('active');
-                }
-            });
+        var spu = $this.data('spu');
+        if( spu != undefined) {
+            $.ajax({
+                    url: '/wishlist/' + spu,
+                    type: 'GET'
+                })
+                .done(function (data) {
+                    if (data.success) {
+                        $this.toggleClass('active');
+                    }
+                });
+        } else {
+            spu = $this.data('actionspu');
+            $.ajax({
+                    url: '/noteaction',
+                    type: 'get',
+                    data: {
+                        action: 'wish',
+                        spu: spu
+                    }
+                })
+                .done(function (data) {
+                    window.location.href = '/login';
+                })
+        }
 
     });
 
     $('#productList-container').on('click', '.btn-wishList', function (e) {
         var $this = $(e.target);
         var spu = $this.data('spu');
-        $.ajax({
-                url: '/wishlist/' + spu,
-                type: 'GET'
-            })
-            .done(function (data) {
-                if (data.success) {
-                    $this.toggleClass('active');
+        if( spu != undefined) {
+            $.ajax({
+                    url: '/wishlist/' + spu,
+                    type: 'GET'
+                })
+                .done(function (data) {
+                    if (data.success) {
+                        $this.toggleClass('active');
+                    }
+                })
+        } else {
+            spu = $this.data('actionspu');
+            $.ajax({
+                url: '/noteaction',
+                type: 'get',
+                data: {
+                    action: 'wish',
+                    spu: spu
                 }
             })
+                .done(function (data) {
+                    window.location.href = '/login';
+                })
+        }
+
     });
 
     // 商品详情页 动态获取模版
@@ -820,6 +852,7 @@ function HideSeeMore(seemoreName) {
                             })
                             .done(function (data) {
                                 if (data.success) {
+                                    //todo 可能要重新请求结算
                                     $('.promotion-code').removeClass('hidden');
                                     $('#pcode').html($('input[name="ccps"]').val() + ' -$' + (data.data.cps_amount / 100).toFixed(2));
                                     $('.code-price').html('-$' + (data.data.cps_amount / 100).toFixed(2));
@@ -924,7 +957,6 @@ function HideSeeMore(seemoreName) {
                     type: 'GET'
                 })
                 .done(function (data) {
-                    console.info(data);
                     //初始化 修改地址 from 表单
                     $('input[name="email"]').val(data.email);
                     $('input[name="name"]').val(data.name);
@@ -962,6 +994,8 @@ function HideSeeMore(seemoreName) {
         }
     });
 
+
+
     // 初始化 国家,洲
     function initCityState(Country,State){
         // CountryId  国家Id
@@ -986,7 +1020,6 @@ function HideSeeMore(seemoreName) {
                 .done(function (data) {
                     $('.state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
                     // 添加选项
-                    console.info(data);
                     $.each(data, function (n, value) {
                         var StateNameId=value['state_name_en'];
                         var StateNameEn=value['state_name_en'];
@@ -998,6 +1031,12 @@ function HideSeeMore(seemoreName) {
                 })
         }
     }
+
+    try {
+        // 初始化 国家,洲
+        var Country= $('select[name="country"] option:selected').text();
+        initCityState(Country,'');
+    } catch (e) {}
 
     // 选择地址增值服务
     $('input[type="radio"]').on('click', function () {
