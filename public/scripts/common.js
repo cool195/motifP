@@ -925,7 +925,6 @@ function HideSeeMore(seemoreName) {
                     type: 'GET'
                 })
                 .done(function (data) {
-                    console.info(data);
                     //初始化 修改地址 from 表单
                     $('input[name="email"]').val(data.email);
                     $('input[name="name"]').val(data.name);
@@ -963,6 +962,8 @@ function HideSeeMore(seemoreName) {
         }
     });
 
+
+
     // 初始化 国家,洲
     function initCityState(Country,State){
         // CountryId  国家Id
@@ -987,7 +988,6 @@ function HideSeeMore(seemoreName) {
                 .done(function (data) {
                     $('.state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
                     // 添加选项
-                    console.info(data);
                     $.each(data, function (n, value) {
                         var StateNameId=value['state_name_en'];
                         var StateNameEn=value['state_name_en'];
@@ -999,6 +999,12 @@ function HideSeeMore(seemoreName) {
                 })
         }
     }
+
+    try {
+        // 初始化 国家,洲
+        var Country= $('select[name="country"] option:selected').text();
+        initCityState(Country,'');
+    } catch (e) {}
 
     // 选择地址增值服务
     $('input[type="radio"]').on('click', function () {
