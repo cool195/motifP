@@ -37,8 +37,8 @@
                 <li class="nav-item nav-logo"><a href="/daily">
                     <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png" alt="logo"></a>
                 </li>
-                <li class="nav-item"><a class="nav-link @if('daily' == $title) active @endif" href="/daily">Daily</a></li>
-                <li class="nav-item"><a class="nav-link @if('designer' == $title) active @endif" href="/designer">DESIGNER</a></li>
+                <li class="nav-item"><a class="nav-link @if('daily' == $title) active @endif" href="/daily">DAILY</a></li>
+                <li class="nav-item"><a class="nav-link @if('designer' == $title) active @endif" href="/designer">DESIGNERS</a></li>
                 <li class="nav-item dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link @if('shopping' == $title) active @endif" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
