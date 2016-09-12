@@ -64,6 +64,9 @@ class UserController extends BaseController
             $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
+            if ($_COOKIE['wishSpu']) {
+                $this->addWishProduct($_COOKIE['wishSpu']);
+            }
         }
         return $result;
     }
@@ -312,6 +315,33 @@ class UserController extends BaseController
         return $result;
     }
 
+    private function addWishProduct($spu, $action = false)
+    {
+        if ($action) {
+            $params = array(
+                'cmd' => 'is',
+                'spu' => $spu,
+                'pin' => Session::get('user.pin'),
+                'token' => Session::get('user.token')
+            );
+            $result = $this->request('wishlist', $params);
+            $cmd = $result['data']['isFC'] ? 'del' : 'add';
+        } else {
+            $cmd = 'add';
+        }
+
+        $params = array(
+            'cmd' => $cmd,
+            'spu' => $spu,
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token')
+        );
+        $result = $this->request('wishlist', $params);
+        $result['cmd'] = $cmd == 'add' ? true : false;
+        Cache::forget(Session::get('user.pin') . 'wishlist');
+        return $result;
+    }
+
     //是否收藏
     public function isWishList($spu)
     {
@@ -323,6 +353,13 @@ class UserController extends BaseController
         );
         $result = $this->request('wishlist', $params);
         return $result['data']['isFC'];
+    }
+
+    public function noteAction(Request $request)
+    {
+        if($request->input('action') == 'wish'){
+            setcookie('wishSpu', $request->input('spu'), time() + 300, '/');
+        }
     }
 
     public function password()

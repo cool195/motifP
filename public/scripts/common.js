@@ -467,30 +467,62 @@ function HideSeeMore(seemoreName) {
     // 点击 "心" 关注商品
     $('.btn-wish').on('click', function () {
         var $this = $(this);
-        $.ajax({
-                url: '/wishlist/' + $this.data('spu'),
-                type: 'GET'
-            })
-            .done(function (data) {
-                if (data.success) {
-                    $this.toggleClass('active');
-                }
-            });
+        var spu = $this.data('spu');
+        if( spu != undefined) {
+            $.ajax({
+                    url: '/wishlist/' + spu,
+                    type: 'GET'
+                })
+                .done(function (data) {
+                    if (data.success) {
+                        $this.toggleClass('active');
+                    }
+                });
+        } else {
+            spu = $this.data('actionspu');
+            $.ajax({
+                    url: '/noteaction',
+                    type: 'get',
+                    data: {
+                        action: 'wish',
+                        spu: spu
+                    }
+                })
+                .done(function (data) {
+                    window.location.href = '/login';
+                })
+        }
 
     });
 
     $('#productList-container').on('click', '.btn-wishList', function (e) {
         var $this = $(e.target);
         var spu = $this.data('spu');
-        $.ajax({
-                url: '/wishlist/' + spu,
-                type: 'GET'
-            })
-            .done(function (data) {
-                if (data.success) {
-                    $this.toggleClass('active');
+        if( spu != undefined) {
+            $.ajax({
+                    url: '/wishlist/' + spu,
+                    type: 'GET'
+                })
+                .done(function (data) {
+                    if (data.success) {
+                        $this.toggleClass('active');
+                    }
+                })
+        } else {
+            spu = $this.data('actionspu');
+            $.ajax({
+                url: '/noteaction',
+                type: 'get',
+                data: {
+                    action: 'wish',
+                    spu: spu
                 }
             })
+                .done(function (data) {
+                    window.location.href = '/login';
+                })
+        }
+
     });
 
     // 商品详情页 动态获取模版
