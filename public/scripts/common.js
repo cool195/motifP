@@ -962,6 +962,8 @@ function HideSeeMore(seemoreName) {
         }
     });
 
+
+
     // 初始化 国家,洲
     function initCityState(Country,State){
         // CountryId  国家Id
@@ -998,6 +1000,12 @@ function HideSeeMore(seemoreName) {
                 })
         }
     }
+
+    try {
+        // 初始化 国家,洲
+        var Country= $('select[name="country"] option:selected').text();
+        initCityState(Country,'');
+    } catch (e) {}
 
     // 选择地址增值服务
     $('input[type="radio"]').on('click', function () {
