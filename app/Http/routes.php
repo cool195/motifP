@@ -162,6 +162,8 @@ Route::group(['middleware' => 'loginCheck'], function () {
 });
 //钱海
 Route::post('/qianhai', 'QianhaiController@checkStatus');
+
+Route::get('noteaction', 'UserController@noteAction');
 //User End
 
 
