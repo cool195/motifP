@@ -709,13 +709,12 @@ function HideSeeMore(seemoreName) {
     // Checkout Start
     $('#addAddress').on('click', function () {
         var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
-        var $email = $('input[name="email"]'),
-            $name = $('input[name="name"]'),
+        var $name = $('input[name="name"]'),
             $city = $('input[name="city"]'),
             $tel = $('input[name="tel"]'),
             $addr1 = $('input[name="addr1"]'),
             $zip = $('input[name="zip"]');
-        if (reg.test($email.val()) && checkValid($email) && checkValid($name) && checkValid($city) && checkValid($tel) && checkValid($addr1) && checkValid($zip)) {
+        if (checkValid($name) && checkValid($city) && checkValid($tel) && checkValid($addr1) && checkValid($zip)) {
             var Aid = $('#addAddressForm').data('aid');
             if (Aid === '' || Aid === undefined) {
                 $.ajax({
@@ -1677,7 +1676,7 @@ function HideSeeMore(seemoreName) {
 
     $('.address-name').on('keyup blur', function () {
         var name = $(this).val();
-        if (address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-city'))
+        if (address_check($(this)) && address_check($('.address-city'))
             && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
             $('.address-save').removeClass('disabled');
         } else {
@@ -1686,7 +1685,7 @@ function HideSeeMore(seemoreName) {
     });
 
     $('.address-city').on('keyup blur', function () {
-        if (address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+        if (address_check($(this)) && address_check($('.address-name'))
             && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
             $('.address-save').removeClass('disabled');
         } else {
@@ -1695,7 +1694,7 @@ function HideSeeMore(seemoreName) {
     });
 
     $('.address-phone').on('keyup blur', function () {
-        if (address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+        if (address_check($(this)) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
             $('.address-save').removeClass('disabled');
         } else {
@@ -1704,7 +1703,7 @@ function HideSeeMore(seemoreName) {
     })
 
     $('.address-street').on('keyup blur', function () {
-        if (address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+        if (address_check($(this)) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
             $('.address-save').removeClass('disabled');
         } else {
@@ -1713,7 +1712,7 @@ function HideSeeMore(seemoreName) {
     });
 
     $('.address-zipcode').on('keyup blur', function () {
-        if (address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+        if (address_check($(this)) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-street'))) {
             $('.address-save').removeClass('disabled');
         } else {
