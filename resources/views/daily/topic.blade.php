@@ -55,7 +55,7 @@
                                             </a>
                                             @if(Session::has('user'))
                                                 <span class="product-heart btn-heart">
-                                                    <i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i>
+                                                    <i class="iconfont btn-wish font-size-lxx @if(in_array($spu, $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i>
                                                 </span>
                                             @else
                                                 <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$spu}}"></i></a>
