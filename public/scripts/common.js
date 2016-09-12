@@ -708,14 +708,14 @@ function HideSeeMore(seemoreName) {
 
     // Checkout Start
     $('#addAddress').on('click', function () {
-        var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        //var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
         var $email = $('input[name="email"]'),
             $name = $('input[name="name"]'),
             $city = $('input[name="city"]'),
             $tel = $('input[name="tel"]'),
             $addr1 = $('input[name="addr1"]'),
             $zip = $('input[name="zip"]');
-        if (reg.test($email.val()) && checkValid($email) && checkValid($name) && checkValid($city) && checkValid($tel) && checkValid($addr1) && checkValid($zip)) {
+        if (checkValid($name) && checkValid($city) && checkValid($tel) && checkValid($addr1) && checkValid($zip)) {
             var Aid = $('#addAddressForm').data('aid');
             if (Aid === '' || Aid === undefined) {
                 $.ajax({
@@ -913,6 +913,11 @@ function HideSeeMore(seemoreName) {
             $('input[name="zip"]').val('');
             $('.isDefault').removeClass('active');
             $('.address-save').addClass('disabled');
+            $('select[name="country"]').prop('selectedIndex', 0);
+
+            // 初始化 国家,洲
+            var Country= $('select[name="country"] option:selected').text();
+            initCityState(Country);
         } else {
             // 修改地址
             $.ajax({
@@ -920,6 +925,7 @@ function HideSeeMore(seemoreName) {
                     type: 'GET'
                 })
                 .done(function (data) {
+                    console.info(data);
                     //初始化 修改地址 from 表单
                     $('input[name="email"]').val(data.email);
                     $('input[name="name"]').val(data.name);
@@ -930,12 +936,63 @@ function HideSeeMore(seemoreName) {
                     $('input[name="addr2"]').val(data.detail_address2);
                     $('input[name="zip"]').val(data.zip);
                     $('select[name="country"]').val(data.country);
+
+                    // 初始化 国家,洲
+                    initCityState(data.country);
+
                     if (data.isDefault == 1) {
                         $('.isDefault').addClass('active');
                     } else {
                         $('.isDefault').removeClass('active');
                     }
                     $('.address-save').removeClass('disabled');
+
+                })
+        }
+    }
+
+    // 选择国家 联动洲
+    $('select[name="country"]').change(function () {
+        if (address_check($(this)) && address_check($('.address-name'))
+            && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
+            validateState();
+        } else {
+            $('.address-save').addClass('disabled');
+        }
+
+        var Country = $('select[name="country"]').val();
+        initCityState(Country);
+    });
+
+    // 初始化 国家,洲
+    function initCityState(Country){
+        // CountryId  国家Id
+        // SelectType 国家对应洲类型
+        var CountryId=$('select[name="country"] > option[value="'+ Country +'"]').data('id');
+        var SelectType = $('select[name="country"] > option[value="'+ Country +'"]').data('type');
+        if(SelectType != undefined && SelectType === 0){
+            // 洲为选填
+            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">');
+        } else if(SelectType != undefined && SelectType === 1){
+            // 洲为必填
+            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="State (optional)"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
+            $('.address-save').addClass('disabled');
+        } else {
+            // 洲为下拉列选择
+            // 获取 洲 列表
+            $.ajax({
+                    url: '/statelist/' + CountryId,
+                    type: 'GET'
+                })
+                .done(function (data) {
+                    $('.state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
+                    // 添加选项
+                    console.info(data);
+                    $.each(data, function (n, value) {
+                        var StateNameId=value['state_id'];
+                        var StateNameEn=value['state_name_en'];
+                        $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($("select"));
+                    });
 
                 })
         }
@@ -1298,7 +1355,7 @@ function HideSeeMore(seemoreName) {
     try {
         initGoogle();
     } catch (e) {}
-    
+
     // facebook 第三方登录
 
     // This is called with the results from from FB.getLoginStatus().
@@ -1665,61 +1722,85 @@ function HideSeeMore(seemoreName) {
         return flag;
     }
 
-    $('.address-email').on('keyup blur', function () {
-        var email = $(this).val();
-        if (address_validationEmail($(this)) && address_check($('.address-name')) && address_check($('.address-city'))
-            && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
-            $('.address-save').removeClass('disabled');
-        } else {
-            $('.address-save').addClass('disabled');
-        }
-    });
+    //$('.address-email').on('keyup blur', function () {
+    //    var email = $(this).val();
+    //    if (address_validationEmail($(this)) && address_check($('.address-name')) && address_check($('.address-city'))
+    //        && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
+    //        $('.address-save').removeClass('disabled');
+    //    } else {
+    //        $('.address-save').addClass('disabled');
+    //    }
+    //});
 
     $('.address-name').on('keyup blur', function () {
         var name = $(this).val();
-        if (address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-city'))
+        if (address_check($(this)) && address_check($('.address-city'))
             && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
-            $('.address-save').removeClass('disabled');
+            validateState();
         } else {
             $('.address-save').addClass('disabled');
         }
     });
 
     $('.address-city').on('keyup blur', function () {
-        if (address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+        if (address_check($(this)) && address_check($('.address-name'))
             && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
-            $('.address-save').removeClass('disabled');
+            validateState();
         } else {
             $('.address-save').addClass('disabled');
         }
     });
 
     $('.address-phone').on('keyup blur', function () {
-        if (address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+        if (address_check($(this)) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
-            $('.address-save').removeClass('disabled');
+            validateState();
         } else {
             $('.address-save').addClass('disabled');
         }
     })
 
     $('.address-street').on('keyup blur', function () {
-        if (address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+        if (address_check($(this)) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
-            $('.address-save').removeClass('disabled');
+            validateState();
         } else {
             $('.address-save').addClass('disabled');
         }
     });
 
     $('.address-zipcode').on('keyup blur', function () {
-        if (address_check($(this)) && address_validationEmail($('.address-email')) && address_check($('.address-name'))
+        if (address_check($(this)) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-street'))) {
-            $('.address-save').removeClass('disabled');
+            validateState();
         } else {
             $('.address-save').addClass('disabled');
         }
-    })
+    });
+
+    // 验证 State
+    $('.state-info').on('keyup blur','.address-state', function () {
+        if (address_check($(this)) && address_check($('.address-name'))
+            && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
+            validateState();
+        } else {
+            $('.address-save').addClass('disabled');
+        }
+    });
+
+    function validateState(){
+        if($('.address-state').length > 0){
+            if(address_check($('.address-state'))){
+                $('.address-save').removeClass('disabled');
+            } else {
+                $('.address-save').addClass('disabled');
+            }
+        } else {
+            $('.address-save').removeClass('disabled');
+        }
+    }
+
+
     //地址验证
 
     //User Address End

@@ -27,13 +27,13 @@
                                 <div class="row p-t-30x">
                                     <form id="addAddressForm" data-aid="">
                                     <div class="col-md-5">
-                                        <div class="p-l-20x m-b-20x">
-                                            <input type="text" name="email" class="form-control contrlo-lg text-primary address-email" placeholder="Email">
-                                            <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
-                                                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                                <span class="font-size-base">Please enter a valid email address !</span>
-                                            </div>
-                                        </div>
+                                        {{--<div class="p-l-20x m-b-20x">--}}
+                                            <input type="hidden" name="email" class="form-control contrlo-lg text-primary address-email" placeholder="Email">
+                                            {{--<div class="warning-info flex flex-alignCenter text-warning p-t-5x off">--}}
+                                                {{--<i class="iconfont icon-caveat icon-size-md p-r-5x"></i>--}}
+                                                {{--<span class="font-size-base">Please enter a valid email address !</span>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
                                         <div class="p-l-20x m-b-20x">
                                             <input type="text" name="name" class="form-control contrlo-lg text-primary address-name" placeholder="Full name">
                                             <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
@@ -48,7 +48,7 @@
                                                 <span class="font-size-base">Please enter your city !</span>
                                             </div>
                                         </div>
-                                        <div class="p-l-20x m-b-20x">
+                                        <div class="p-l-20x m-b-20x state-info">
                                             <input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">
                                         </div>
                                         <div class="p-l-20x m-b-20x">
@@ -74,7 +74,7 @@
                                         <div class="p-l-20x m-b-20x">
                                             <select name="country" class="form-control contrlo-lg select-country">
                                                 @foreach($Address->getCountry() as $value)
-                                                    <option value="{{$value['country_name_en']}}">{{$value['country_name_en']}}</option>
+                                                    <option value="{{$value['country_name_en']}}" data-type="{{$value['child_type']}}" data-id="{{$value['country_id']}}">{{$value['country_name_en']}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

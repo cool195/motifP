@@ -163,7 +163,7 @@
                             </div>
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
-                                <div class="p-l-20x m-b-20x">
+                                <div class="p-l-20x m-b-20x state-info">
                                     <input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">
                                 </div>
                                 <div class="p-l-20x m-b-20x">
