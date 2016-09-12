@@ -41,7 +41,7 @@
                                 <div class="btn btn-gray btn-sm p-x-20x btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
                                    data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>
                             @else
-                                <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
+                                <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designer_id']}}">Follow</a>
                             @endif
                         </div>
                         <div class="m-t-15x designer-intro">{{$designer['describe']}}</div>

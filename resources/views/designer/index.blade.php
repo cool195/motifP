@@ -68,7 +68,7 @@
                                 <div class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif"
                                    data-did="{{$designer['designerId']}}">@if($designer['isFollowed']){{'Following'}}@else{{'Follow'}}@endif</div>
                             @else
-                                <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
+                                <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designerId']}}">Follow</a>
                             @endif
                         </div>
                         <div class="p-t-15x">{{  $designer['intro'] }}</div>
@@ -101,7 +101,7 @@
                                 <div class="btn btn-gray btn-sm p-x-20x btn-follow @if($designer['isFollowed']) active @endif"
                                    data-did="{{$designer['designerId']}}">@if($designer['isFollowed']){{'Following'}}@else{{'Follow'}}@endif</div>
                             @else
-                                <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
+                                <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designerId']}}">Follow</a>
                             @endif
                         </div>
                         <div class="p-t-15x">{{ $designer['intro'] }}</div>
@@ -238,7 +238,7 @@
                             <div class="btn btn-gray btn-sm p-x-20x btn-following  @{{ if value.isFollowed == 1 }} active @{{ /if }}"
                                data-did="@{{ value.designerId }}">@{{ if value.isFollowed }}Following@{{ else }}Follow@{{ /if }}</div>
                         @else
-                            <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
+                            <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>
@@ -266,7 +266,7 @@
                             <div class="btn btn-gray btn-sm p-x-20x btn-following @{{ if value.isFollowed == 1 }} active @{{ /if }}"
                                data-did="@{{ value.designerId }}">@{{ if value.isFollowed }}Following@{{ else }}Follow@{{ /if }}</div>
                         @else
-                            <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
+                            <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>
@@ -343,7 +343,7 @@
                         @if(Session::has('user'))
                             <div class="btn btn-gray btn-sm p-x-20x btn-following @{{ if value.isFollowed == 1 }} active @{{ /if }}" data-did="@{{ value.designerId }}">Follow</div>
                         @else
-                            <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
+                            <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>
@@ -454,7 +454,7 @@
                         @if(Session::has('user'))
                             <div class="btn btn-gray btn-sm p-x-20x btn-following  @{{ if value.isFollowed == 1 }} active @{{ /if }}" data-did="@{{ value.designerId }}">Follow</div>
                         @else
-                            <a href="/login" class="btn btn-gray btn-sm p-x-20x">Follow</a>
+                            <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>

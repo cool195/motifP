@@ -2042,39 +2042,71 @@ function HideSeeMore(seemoreName) {
 
     $('.btn-follow').on('click', function () {
         var $this = $(this);
-        $.ajax({
-                url: '/follow/' + $this.data('did'),
-                type: 'GET'
-            })
-            .done(function (data) {
-                if (data.success) {
-                    $this.toggleClass('active');
-                    if ('Following' == $this.html()) {
-                        $this.html('Follow');
-                    } else {
-                        $this.html('Following');
+        var did = $this.data('did')
+        if(did != undefined) {
+            $.ajax({
+                    url: '/follow/' + did,
+                    type: 'GET'
+                })
+                .done(function (data) {
+                    if (data.success) {
+                        $this.toggleClass('active');
+                        if ('Following' == $this.html()) {
+                            $this.html('Follow');
+                        } else {
+                            $this.html('Following');
+                        }
                     }
-                }
-            });
+                });
+        } else{
+            did = $this.data('actiondid')
+            $.ajax({
+                    url: '/noteaction',
+                    type: 'get',
+                    data: {
+                        action: 'follow',
+                        did: did
+                    }
+                })
+                .done(function (data) {
+                    window.location.href = '/login';
+                })
+        }
 
     });
 
     $('#designerContainer').on('click', '.btn-following', function () {
         var $this = $(this);
-        $.ajax({
-                url: '/follow/' + $this.data('did'),
-                type: 'GET'
-            })
-            .done(function (data) {
-                if (data.success) {
-                    $this.toggleClass('active');
-                    if ('Following' == $this.html()) {
-                        $this.html('Follow');
-                    } else {
-                        $this.html('Following');
+        var did = $this.data('did')
+        if(did != undefined) {
+            $.ajax({
+                    url: '/follow/' + did,
+                    type: 'GET'
+                })
+                .done(function (data) {
+                    if (data.success) {
+                        $this.toggleClass('active');
+                        if ('Following' == $this.html()) {
+                            $this.html('Follow');
+                        } else {
+                            $this.html('Following');
+                        }
                     }
-                }
-            });
+                });
+        } else{
+            did = $this.data('actiondid')
+            $.ajax({
+                    url: '/noteaction',
+                    type: 'get',
+                    data: {
+                        action: 'follow',
+                        did: did
+                    }
+                })
+                .done(function (data) {
+                    window.location.href = '/login';
+                })
+        }
     });
 
     //Designer End

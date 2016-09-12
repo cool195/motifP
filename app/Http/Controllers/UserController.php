@@ -66,6 +66,8 @@ class UserController extends BaseController
             Session::put('user', $result['data']);
             if ($_COOKIE['wishSpu']) {
                 $this->addWishProduct($_COOKIE['wishSpu']);
+            } elseif($_COOKIE['followDid']) {
+                $this->addFollowDesigner($_COOKIE['followDid']);
             }
         }
         return $result;
@@ -255,7 +257,6 @@ class UserController extends BaseController
         }
     }
 
-
     public function wish(Request $request)
     {
         $params = array(
@@ -342,6 +343,33 @@ class UserController extends BaseController
         return $result;
     }
 
+    private function addFollowDesigner($did, $action = false)
+    {
+        if ($action) {
+            $params = array(
+                'cmd' => 'is',
+                'did' => $did,
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin')
+            );
+            $result = $this->request('follow', $params);
+            $cmd = $result['data']['isFC'] ? 'del' : 'add';
+        } else {
+            $cmd = 'add';
+        }
+
+        $params = array(
+            'cmd' => $cmd,
+            'did' => $did,
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin')
+        );
+        $result = $this->request('follow', $params);
+        $result['cmd'] = $cmd == 'add' ? true : false;
+        Cache::forget(Session::get('user.pin') . 'followlist');
+        return $result;
+    }
+
     //是否收藏
     public function isWishList($spu)
     {
@@ -359,6 +387,8 @@ class UserController extends BaseController
     {
         if($request->input('action') == 'wish'){
             setcookie('wishSpu', $request->input('spu'), time() + 300, '/');
+        } elseif($request->input('action') == 'follow'){
+            setcookie('followDid', $request->input('did'), time() + 300, '/');
         }
     }
 
