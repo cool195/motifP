@@ -22,7 +22,15 @@ class CartController extends BaseController
 
     public function checkout(Request $request)
     {
-        $accountList = $this->getCartAccountList($request);
+        //获取默认地址
+        $params = array(
+            'cmd' => 'gdefault',
+            'uuid' => $_COOKIE['uid'],
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('useraddr', $params);
+        $accountList = $this->getCartAccountList($request,1,"","",$result['data']['receiving_id']);
         $logisticsList = $this->getLogisticsList();
         return view('cart.checkout', ['accountList' => $accountList['data'], 'logisticsList' => $logisticsList['data']]);
     }
@@ -68,7 +76,7 @@ class CartController extends BaseController
         return $result;
     }
 
-    public function getCartAccountList(Request $request, $logisticstype = 1, $couponcode = "", $paytype = "")
+    public function getCartAccountList(Request $request, $logisticstype = 1, $bindid = "", $paytype = "",$aid)
     {
         $params = array(
             'cmd'=>'accountlist',
@@ -76,8 +84,10 @@ class CartController extends BaseController
             'pin' => Session::get('user.pin'),
             'logisticstype' => $request->input('logisticstype', $logisticstype),
             'paytype' => $request->input('paytype', $paytype),
-            'couponcode' => $request->input('couponcode', $couponcode )
+            'bindid' => $request->input('bindid', $bindid),
+            'addressid' => $aid
         );
+
         $result = $this->request('cart', $params);
         return $result;
     }
