@@ -30,8 +30,8 @@ class CartController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('useraddr', $params);
-        $accountList = $this->getCartAccountList($request,1,"","",$result['data']['receiving_id']);
         $logisticsList = $this->getLogisticsList();
+        $accountList = $this->getCartAccountList($request,$logisticsList['data']['list'][0]['logistics_type'],"","",$result['data']['receiving_id']);
         return view('cart.checkout', ['accountList' => $accountList['data'], 'logisticsList' => $logisticsList['data']]);
     }
 
