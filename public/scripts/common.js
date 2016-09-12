@@ -11,7 +11,6 @@ function HideSeeMore(seemoreName) {
 }
 
 (function ($, Swiper) {
-
     // 公共方法 : 图片加载loading动画 与 see more 按钮 的显示和隐藏
     function loadingShow(loadingName, seemoreName) {
         $(loadingName).show();
@@ -40,6 +39,7 @@ function HideSeeMore(seemoreName) {
     }
 
     // public 公共方法start
+    var testIndex = 0;
 
     function switchImpr(Impr) {
         // 当前视窗浏览位置
@@ -66,18 +66,22 @@ function HideSeeMore(seemoreName) {
      *
      * @param  { Object } $Item 需要曝光的项
      */
+
     function pushAjax($Item) {
         $.each($Item, function (index, element) {
             if (switchImpr(element)) {
                 var impr = $(element).data('impr');
                 $(element).removeAttr('data-impr');
-
-                $.ajax({
-                        url: impr
-                    })
-                    .always(function () {
-                        //$(element).removeAttr('data-impr');
-                    });
+                if(impr != undefined && impr != null && impr != "") {
+                    testIndex++;
+                    console.log(testIndex);
+                    $.ajax({
+                            url: impr
+                        })
+                        .always(function () {
+                            //$(element).removeAttr('data-impr');
+                        });
+                }
             }
         });
     }
