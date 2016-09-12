@@ -916,7 +916,7 @@ function HideSeeMore(seemoreName) {
 
             // 初始化 国家,洲
             var Country= $('select[name="country"] option:selected').text();
-            initCityState(Country);
+            initCityState(Country,'');
         } else {
             // 修改地址
             $.ajax({
@@ -937,7 +937,7 @@ function HideSeeMore(seemoreName) {
                     $('select[name="country"]').val(data.country);
 
                     // 初始化 国家,洲
-                    initCityState(data.country);
+                    initCityState(data.country,data.state);
 
                     if (data.isDefault == 1) {
                         $('.isDefault').addClass('active');
@@ -952,19 +952,18 @@ function HideSeeMore(seemoreName) {
 
     // 选择国家 联动洲
     $('select[name="country"]').change(function () {
-        if (address_check($(this)) && address_check($('.address-name'))
-            && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
+        var Country = $('select[name="country"]').val();
+        initCityState(Country,'');
+
+        if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
             validateState();
         } else {
             $('.address-save').addClass('disabled');
         }
-
-        var Country = $('select[name="country"]').val();
-        initCityState(Country);
     });
 
     // 初始化 国家,洲
-    function initCityState(Country){
+    function initCityState(Country,State){
         // CountryId  国家Id
         // SelectType 国家对应洲类型
         var CountryId=$('select[name="country"] > option[value="'+ Country +'"]').data('id');
@@ -972,10 +971,11 @@ function HideSeeMore(seemoreName) {
         if(SelectType != undefined && SelectType === 0){
             // 洲为选填
             $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">');
+            $('input[name="state"]').val(State);
         } else if(SelectType != undefined && SelectType === 1){
             // 洲为必填
-            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="State (optional)"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
-            $('.address-save').addClass('disabled');
+            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
+            $('input[name="state"]').val(State);
         } else {
             // 洲为下拉列选择
             // 获取 洲 列表
@@ -988,11 +988,13 @@ function HideSeeMore(seemoreName) {
                     // 添加选项
                     console.info(data);
                     $.each(data, function (n, value) {
-                        var StateNameId=value['state_id'];
+                        var StateNameId=value['state_name_en'];
                         var StateNameEn=value['state_name_en'];
                         $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($("select"));
                     });
-
+                    if(State != ""){
+                        $('select[name="state"]').val(State);
+                    }
                 })
         }
     }

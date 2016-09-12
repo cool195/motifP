@@ -49,7 +49,7 @@
                                             </div>
                                         </div>
                                         <div class="p-l-20x m-b-20x state-info">
-                                            <input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">
+                                            <input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State">
                                         </div>
                                         <div class="p-l-20x m-b-20x">
                                             <input type="text" name="tel" class="form-control contrlo-lg text-primary address-phone" placeholder="Phone (optional)">
