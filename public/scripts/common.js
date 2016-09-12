@@ -815,14 +815,13 @@ function HideSeeMore(seemoreName) {
                 if(data.success){
                     if ($('input[name="ccps"]').val() != '') {
                         $.ajax({
-                                url: '/cart/accountlist?couponcode=' + $('input[name="ccps"]').val() + '&logisticstype=' + $('input[name="shippingMethod"]:checked').val(),
+                                url: '/cart/accountlist?aid='+$('#defaultAddr').data('aid')+'&bindid=' + data.data.bind_id + '&logisticstype=' + $('input[name="shippingMethod"]:checked').val(),
                                 type: 'GET',
                             })
                             .done(function (data) {
                                 if (data.success) {
-                                    //todo 可能要重新请求结算
                                     $('.promotion-code').removeClass('hidden');
-                                    $('#pcode').html($('input[name="ccps"]').val() + ' -$' + (data.data.cps_amount / 100).toFixed(2));
+                                    $('#pcode').html(data.data.cp_title);
                                     $('.code-price').html('-$' + (data.data.cps_amount / 100).toFixed(2));
                                     $('.code-price').data('price', data.data.cps_amount);
                                     $('.totalPrice').html('$' + (data.data.pay_amount / 100).toFixed(2));

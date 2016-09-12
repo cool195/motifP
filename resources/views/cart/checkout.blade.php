@@ -249,7 +249,7 @@
                     </div>
                 </div>
                 <span class="pull-right showHide-simpleInfo promotion-info">
-                    <span id="pcode"></span>
+                    <span id="pcode">{{ $accountList['cp_title'] }}</span>
                     <a class="p-l-40x font-size-md ">Edit</a>
                 </span>
             </div>

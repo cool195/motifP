@@ -85,7 +85,7 @@ class CartController extends BaseController
             'logisticstype' => $request->input('logisticstype', $logisticstype),
             'paytype' => $request->input('paytype', $paytype),
             'bindid' => $request->input('bindid', $bindid),
-            'addressid' => $aid
+            'addressid' => $request->input('aid', $aid)
         );
 
         $result = $this->request('cart', $params);
