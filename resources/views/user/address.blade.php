@@ -52,7 +52,7 @@
                                             <input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State">
                                         </div>
                                         <div class="p-l-20x m-b-20x">
-                                            <input type="text" name="tel" class="form-control contrlo-lg text-primary address-phone" placeholder="Phone (optional)">
+                                            <input type="text" name="tel" class="form-control contrlo-lg text-primary address-phone" placeholder="Phone">
                                             <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                                 <span class="font-size-base">Please enter your Phone !</span>
