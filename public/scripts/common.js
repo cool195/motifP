@@ -235,6 +235,12 @@ function HideSeeMore(seemoreName) {
         }
         if (product_lastSkuArray.length == 1) {
             $('#productsku').val(product_lastSkuArray[0])
+            $.each(product_data.skuExps,function (index,val) {
+                if(product_lastSkuArray[0]==val.sku){
+                    $('.newPrice').html('$'+(val.skuPrice.sale_price/100).toFixed(2));
+                    return false;
+                }
+            });
         }
     }
 
