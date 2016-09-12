@@ -176,6 +176,7 @@ Route::get('/addFacebookEmail', 'AuthController@addFacebookEmail');
 
 //Address Start
 Route::resource('/address','AddressController');
+Route::get('/statelist/{id}','AddressController@getState');
 //Address End
 
 

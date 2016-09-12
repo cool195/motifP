@@ -175,5 +175,18 @@ class AddressController extends BaseController
         return $value;
     }
 
+    //获取洲列表
+    public function getState($id)
+    {
+        $params = array(
+            'cmd' => 'state',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'countryid' => $id
+        );
+        $result = $this->request('addr', $params);
 
+        return $result['data']['list'];
+
+    }
 }
