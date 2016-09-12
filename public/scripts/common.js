@@ -924,7 +924,6 @@ function HideSeeMore(seemoreName) {
                     type: 'GET'
                 })
                 .done(function (data) {
-                    console.info(data);
                     //初始化 修改地址 from 表单
                     $('input[name="email"]').val(data.email);
                     $('input[name="name"]').val(data.name);
@@ -988,7 +987,6 @@ function HideSeeMore(seemoreName) {
                 .done(function (data) {
                     $('.state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
                     // 添加选项
-                    console.info(data);
                     $.each(data, function (n, value) {
                         var StateNameId=value['state_name_en'];
                         var StateNameEn=value['state_name_en'];
