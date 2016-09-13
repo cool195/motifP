@@ -32,6 +32,11 @@ class AuthController extends BaseController
             $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
+            if ($_COOKIE['wishSpu']) {
+                $this->addWishProduct($_COOKIE['wishSpu']);
+            } elseif($_COOKIE['followDid']){
+                $this->addFollowDesigner($_COOKIE['followDid']);
+            }
         }
         return $result;
     }
@@ -59,6 +64,11 @@ class AuthController extends BaseController
             $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
+            if ($_COOKIE['wishSpu']) {
+                $this->addWishProduct($_COOKIE['wishSpu']);
+            } elseif($_COOKIE['followDid']){
+                $this->addFollowDesigner($_COOKIE['followDid']);
+            }
         }
         return $result;
     }
@@ -87,6 +97,61 @@ class AuthController extends BaseController
         $result['status'] = $result['data']['email'] ? true : false;
         return $result;
     }
+
+    private function addWishProduct($spu, $action = false)
+    {
+        if ($action) {
+            $params = array(
+                'cmd' => 'is',
+                'spu' => $spu,
+                'pin' => Session::get('user.pin'),
+                'token' => Session::get('user.token')
+            );
+            $result = $this->request('wishlist', $params);
+            $cmd = $result['data']['isFC'] ? 'del' : 'add';
+        } else {
+            $cmd = 'add';
+        }
+
+        $params = array(
+            'cmd' => $cmd,
+            'spu' => $spu,
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token')
+        );
+        $result = $this->request('wishlist', $params);
+        $result['cmd'] = $cmd == 'add' ? true : false;
+        Cache::forget(Session::get('user.pin') . 'wishlist');
+        return $result;
+    }
+
+    private function addFollowDesigner($did, $action = false)
+    {
+        if ($action) {
+            $params = array(
+                'cmd' => 'is',
+                'did' => $did,
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin')
+            );
+            $result = $this->request('follow', $params);
+            $cmd = $result['data']['isFC'] ? 'del' : 'add';
+        } else {
+            $cmd = 'add';
+        }
+
+        $params = array(
+            'cmd' => $cmd,
+            'did' => $did,
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin')
+        );
+        $result = $this->request('follow', $params);
+        $result['cmd'] = $cmd == 'add' ? true : false;
+        Cache::forget(Session::get('user.pin') . 'followlist');
+        return $result;
+    }
+
 }
 
 ?>

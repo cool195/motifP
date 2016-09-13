@@ -177,7 +177,7 @@
                             <div class="p-x-20x p-y-10x font-size-md">
                                 <img src="/images/product/icon-flash@2x.png" alt="">
                                 <span class="p-l-10x stock-qtty">
-                                    Only @if(($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0 && $data['sale_status']) && $data['isPutOn']==1) Left
+                                    @if(($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0 && $data['sale_status']) && $data['isPutOn']==1) Only {{ $data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] }} Left
                                 @else Sold Out @endif</span>
                             </div>
 
