@@ -115,7 +115,7 @@ class OrderController extends BaseController
             'pin' => Session::get('user.pin'),
             'aid' => $request->input('aid'),
             'paym' => $request->input('paym', "Oceanpay"),
-            'cps' => $request->input('cps'),
+            'cps' => $request->input('bindid'),
             'remark' => $request->input('remark'),
             'stype' => $request->input('stype'),
             'src' => "PC",

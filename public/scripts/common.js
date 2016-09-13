@@ -186,8 +186,7 @@ function HideSeeMore(seemoreName) {
             $('#skuQty').html(1);
             $('#skuQty').parent().siblings('.warning-info').addClass('off');
             $('#delQtySku').addClass('disabled');
-            //todo 加判断
-            //$('#addQtySku').removeClass('disabled');
+            $('#addQtySku').removeClass('disabled');
             if ($(this).hasClass('active')) {
                 $(this).removeClass('active');
                 delete product_arrayTemp_click['key' + $(this).attr('data-attr-type')];
@@ -845,34 +844,18 @@ function HideSeeMore(seemoreName) {
         })
             .done(function (data) {
                 if(data.success){
+                    $('pcode').data('bindid',data.data.bind_id);
+                    getCheckoutInfo();
                     if ($('input[name="ccps"]').val() != '') {
-                        $.ajax({
-                                url: '/cart/accountlist?aid='+$('#defaultAddr').data('aid')+'&bindid=' + data.data.bind_id + '&logisticstype=' + $('input[name="shippingMethod"]:checked').val(),
-                                type: 'GET',
-                            })
-                            .done(function (data) {
-                                if (data.success) {
-                                    $('.promotion-code').removeClass('hidden');
-                                    $('#pcode').html(data.data.cp_title);
-                                    $('.code-price').html('-$' + (data.data.cps_amount / 100).toFixed(2));
-                                    $('.code-price').data('price', data.data.cps_amount);
-                                    $('.totalPrice').html('$' + (data.data.pay_amount / 100).toFixed(2));
-                                    //收起
-                                    var $AddressContent = $this.parent().parent('.showHide-body');
-                                    var $SimpleInfo = $this.parent().parent().siblings('.showHide-simpleInfo');
-                                    $AddressContent.slideUp(500);
-                                    $AddressContent.removeClass('active');
-                                    $this.removeClass('active');
-                                    $AddressContent.css('display', 'none');
-                                    $SimpleInfo.css('display', 'block');
-                                    $this.parent().siblings('.warning-info').addClass('off');
-                                } else {
-                                    $this.parent().siblings('.warning-info').removeClass('off');
-                                    setTimeout(function () {
-                                        $this.parent().siblings('.warning-info').addClass('off');
-                                    }, 1500);
-                                }
-                            })
+                        //收起
+                        var $AddressContent = $this.parent().parent('.showHide-body');
+                        var $SimpleInfo = $this.parent().parent().siblings('.showHide-simpleInfo');
+                        $AddressContent.slideUp(500);
+                        $AddressContent.removeClass('active');
+                        $this.removeClass('active');
+                        $AddressContent.css('display', 'none');
+                        $SimpleInfo.css('display', 'block');
+                        $this.parent().siblings('.warning-info').addClass('off');
                     } else {
                         $this.parent().siblings('.warning-info').removeClass('off');
                         setTimeout(function () {
@@ -882,7 +865,6 @@ function HideSeeMore(seemoreName) {
 
                 }else{
                     $this.parent().siblings('.warning-info').removeClass('off');
-                    //$this.parent().siblings('.warning-info').children('span').html(data.prompt_msg);
                 }
             })
 
@@ -916,6 +898,7 @@ function HideSeeMore(seemoreName) {
         $('#defaultAddr').html($(this).parent('.address-item').data('info'));
         $('#defaultAddr').data('city', $(this).parent('.address-item').data('city'));
         $('#defaultAddr').data('aid', $(this).parent('.address-item').data('aid'));
+        getCheckoutInfo();
     });
 
     // 修改地址
@@ -1020,7 +1003,7 @@ function HideSeeMore(seemoreName) {
                     $('.state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
                     // 添加选项
                     $.each(data, function (n, value) {
-                        var StateNameId=value['state_name_en'];
+                        var StateNameId=value['state_name_sn'];
                         var StateNameEn=value['state_name_en'];
                         $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($("select"));
                     });
@@ -1050,6 +1033,7 @@ function HideSeeMore(seemoreName) {
             $('.shopping-methodPrice').addClass('hidden');
         }
         $('.shippingMethodShow').html($(this).data('show'));
+        getCheckoutInfo();
     });
 
     // 收起地址增值服务
@@ -1077,6 +1061,42 @@ function HideSeeMore(seemoreName) {
         }
     });
 
+    //重新获取结算信息
+    function getCheckoutInfo() {
+        var aid = $('#defaultAddr').data('aid')==undefined ? '' : $('#defaultAddr').data('aid');
+        var bindid = $('pcode').data('bindid')==undefined ? '' : $('pcode').data('bindid');
+        var smethod = $('input[name="shippingMethod"]:checked').val()==undefined ? '' : $('input[name="shippingMethod"]:checked').val();
+        $.ajax({
+            url: '/cart/accountlist?aid='+aid+'&bindid=' + bindid + '&logisticstype=' + smethod,
+            type: 'GET',
+        })
+            .done(function (data) {
+                if (data.success) {
+                    if(data.data.cps_amount > 0){
+                        $('.cps_amountShow').removeClass('hidden');
+                        $('.cps_amount').html('-$' + (data.data.cps_amount / 100).toFixed(2));
+                        $('#pcode').html(data.data.cp_title);
+                    }else{
+                        $('.cps_amountShow').addClass('hidden');
+                    }
+                    if(data.data.tax_amount > 0){
+                        $('.tax_amountShow').removeClass('hidden');
+                        $('.tax_amount').html('$'+(data.data.tax_amount / 100).toFixed(2));
+                    }else{
+                        $('.tax_amountShow').addClass('hidden');
+                    }
+                    if(data.data.freight_amount > 0){
+                        $('.freight_amount').html('$'+(data.data.freight_amount / 100).toFixed(2));
+                    }else{
+                        $('.freight_amount').html('Free');
+                    }
+                    $('.pay_amount').html('$' + (data.data.pay_amount / 100).toFixed(2));
+                } else {
+
+                }
+            })
+    }
+
     // 生成订单
     $('.btn-toCheckout').on('click', function () {
         var paym = $(this).data('with');
@@ -1085,7 +1105,7 @@ function HideSeeMore(seemoreName) {
                 type: 'POST',
                 data: {
                     aid: $('#defaultAddr').data('aid'),
-                    cps: $('input[name="ccps"]').val(),
+                    bindid: $('pcode').data('bindid')==undefined ? '' : $('pcode').data('bindid'),
                     remark: $('input[name="cremark"]').val(),
                     stype: $('input[name="shippingMethod"]:checked').val(),
                     paym: paym
@@ -1152,6 +1172,9 @@ function HideSeeMore(seemoreName) {
 
     function login_signin() {
         $('[data-role="login-submit"]').addClass('disabled');
+        if($('.login-email').val() == "" || $('.login-pw').val() == ""){
+            return;
+        }
         $.ajax({
                 url: '/signin',
                 type: 'POST',
@@ -1441,7 +1464,7 @@ function HideSeeMore(seemoreName) {
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
         FB.api('/me?fields=id,name,picture,email', function (response) {
-            
+
             if (response.email === '' && response === undefined) {
                 $.ajax({
                     url: '/facebookstatus/'+response.id,
