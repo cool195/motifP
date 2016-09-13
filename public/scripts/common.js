@@ -1487,6 +1487,7 @@ function HideSeeMore(seemoreName) {
                         }
                     })
             } else {
+                console.log(response.picture.data.url);exit;
                 $.ajax({
                     url: '/facebooklogin',
                     type: 'POST',
