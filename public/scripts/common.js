@@ -623,21 +623,28 @@ function HideSeeMore(seemoreName) {
             tObj.addClass('disabled');
             var skuQty = $('#cskunum' + nowsku).html() * 1 + tObj.data('num');
             $.ajax({
-                    url: 'cart/alterQtty',
-                    type: 'POST',
-                    data: {
-                        sku: nowsku,
-                        qtty: skuQty,
-                    }
-                })
+                url: '/checkStock',
+                type: 'POST',
+                data: {
+                    skus: nowsku+'_'+skuQty,
+                }
+            })
                 .done(function (data) {
-                    if (data.success) {
+                    if (data.data.list[0].stockStatus === 1) {
                         $('#cskunum' + nowsku).html(skuQty);
                         tObj.removeClass('disabled');
                         if (skuQty == 2) $('#cdsku' + nowsku).removeClass('disabled');
                         if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');
                         if (skuQty >= 50) $('#casku' + nowsku).addClass('disabled');
                         if (skuQty <= 49) $('#casku' + nowsku).removeClass('disabled');
+                        $.ajax({
+                            url: 'cart/alterQtty',
+                            type: 'POST',
+                            data: {
+                                sku: nowsku,
+                                qtty: skuQty,
+                            }
+                        })
                         cart_update_info();
                     } else {
                         AddItemFailModal.open();

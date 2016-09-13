@@ -72,14 +72,14 @@
                                 <a class="btn-block" data-type="cart-remove" data-action="delsku" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
                             </div>
                         </div>
-                        @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
+                        @if(0 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                             <div class="mask"></div>
                         @endif
                     </div>
                     @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                         <div class="warning-info flex flex-alignCenter text-warning">
                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                            <span class="font-size-base">@if(2 !== $showSku['stock_status'])Warning: @endif{{$showSku['prompt_info']}}</span>
+                            <span class="font-size-base">{{$showSku['prompt_info']}}</span>
                         </div>
                     @endif
                 </div>
@@ -131,14 +131,14 @@
                                     <a class="btn-block" data-type="cart-remove" data-action="delsave" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
                                 </div>
                             </div>
-                            @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
+                            @if(0 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                                 <div class="mask"></div>
                             @endif
                         </div>
                         @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                             <div class="warning-info flex flex-alignCenter text-warning">
                                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                <span class="font-size-base">@if(2 !== $showSku['stock_status'])Warning: @endif{{$showSku['prompt_info']}}</span>
+                                <span class="font-size-base">{{$showSku['prompt_info']}}</span>
                             </div>
                         @endif
                     @endforeach
