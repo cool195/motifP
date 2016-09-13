@@ -2,7 +2,7 @@
 <hr class="hr-common m-a-0">
 <!-- 内容 -->
 <section class="bg-white">
-    <div class="helve login-title text-center text-main p-y-20x">Email Required</div>
+    <div class="helve login-title text-center text-main p-y-20x">Add Email</div>
     <div class="register-container">
         <div class="register-content">
             <form id="register">
