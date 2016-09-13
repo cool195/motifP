@@ -4,5 +4,3 @@
         <div class="text-center p-t-10x m-b-10x text-primary font-size-xs">Copyright © 2016 MOTIF Inc. All rights reserved.</div>
     </div>
 </footer>
-<script src="/scripts/vendor.js"></script>
-<script src="/scripts/common.js"></script>
