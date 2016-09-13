@@ -22,7 +22,7 @@
                 @foreach($cart['showSkus'] as $showSku)
                 <div class="p-y-20x border-bottom" id="{{'csku'.$showSku['sku']}}">
                     <div class="row flex flex-alignCenter cartProduct-item">
-                        <div class="col-md-3 media">
+                        <div class="col-md-4 media">
                             <a class="media-left" href="/product/{{$showSku['spu']}}">
                                 <img class="img-lazy"
                                       src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
@@ -32,7 +32,7 @@
                             <div class="media-body cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
                         </div>
                         <div class="col-md-3">
-                            <div class="p-l-30x">
+                            <div class="p-l-15x">
                                 @if(isset($showSku['attrValues']))
                                     @foreach($showSku['attrValues'] as $key => $attrValue)
                                         {{$attrValue['attr_type_value']}}:{{$attrValue['attr_value']}}<br>
@@ -45,13 +45,13 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-1">
                             <div class="p-l-20x">
                                 <div class="font-size-md text-primary">${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="btn-group flex">
+                            <div class="btn-group flex p-l-40x">
                                 <div id="{{'cdsku'.$showSku['sku']}}"
                                      class="btn btn-cartCount btn-xs @if($showSku['sale_qtty']==1 || !$showSku['select']){{'disabled'}}@endif cupn"
                                      data-num="-1" data-sku="{{$showSku['sku']}}">
@@ -72,14 +72,14 @@
                                 <a class="btn-block" data-type="cart-remove" data-action="delsku" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
                             </div>
                         </div>
-                        @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
+                        @if(0 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                             <div class="mask"></div>
                         @endif
                     </div>
                     @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                         <div class="warning-info flex flex-alignCenter text-warning">
                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                            <span class="font-size-base">@if(2 !== $showSku['stock_status'])Warning: @endif{{$showSku['prompt_info']}}</span>
+                            <span class="font-size-base">{{$showSku['prompt_info']}}</span>
                         </div>
                     @endif
                 </div>
@@ -95,7 +95,7 @@
                 <div class="p-x-20x border-bottom">
                     @foreach($save['showSkus'] as $showSku)
                         <div class="row p-y-20x flex flex-alignCenter cartProduct-item" id="{{'csku'.$showSku['sku']}}">
-                            <div class="col-md-6 col-xs-12 flex flex-alignCenter">
+                            <div class="col-md-4 flex flex-alignCenter">
                                 <a href="/product/{{$showSku['spu']}}">
                                     <img class="img-lazy"
                                           src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
@@ -103,7 +103,9 @@
                                           width="120" height="120" alt="">
                                 </a>
                                 <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
-                                <div class="p-l-30x">
+                            </div>
+                            <div class="col-md-3">
+                                <div class="p-l-15x">
                                     @if(isset($showSku['attrValues']))
                                         @foreach($showSku['attrValues'] as $key => $attrValue)
                                             {{$attrValue['attr_type_value']}}:{{$attrValue['attr_value']}}<br>
@@ -116,29 +118,29 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-2 col-xs-4">
+                            <div class="col-md-1">
                                 <div class="p-l-20x">
                                     <div class="font-size-md text-primary">
                                         ${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
                                 </div>
                             </div>
-                            <div class="col-md-2 col-xs-4">
+                            <div class="col-md-2">
                                 &nbsp;
                             </div>
-                            <div class="col-md-2 col-xs-4">
+                            <div class="col-md-2">
                                 <div class="p-l-40x m-l-10x">
                                     <a class="btn-block cartManage" data-action="movetocart" data-sku="{{$showSku['sku']}}" href="javascript:;">Move to Bag</a><br/>
                                     <a class="btn-block" data-type="cart-remove" data-action="delsave" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
                                 </div>
                             </div>
-                            @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
+                            @if(0 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                                 <div class="mask"></div>
                             @endif
                         </div>
                         @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                             <div class="warning-info flex flex-alignCenter text-warning">
                                 <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                <span class="font-size-base">@if(2 !== $showSku['stock_status'])Warning: @endif{{$showSku['prompt_info']}}</span>
+                                <span class="font-size-base">{{$showSku['prompt_info']}}</span>
                             </div>
                         @endif
                     @endforeach

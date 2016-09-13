@@ -46,7 +46,7 @@
                         </div>
                         <div class="m-t-15x designer-intro">{{$designer['describe']}}</div>
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
-                        <div class="p-t-15x">
+                        <div class="p-t-15x p-l-15x">
                         @endif
                             @if(!empty($designer['facebook_link']))
                                 <a href="{{$designer['facebook_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-fac.png"></a>

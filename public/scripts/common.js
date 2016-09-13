@@ -74,7 +74,6 @@ function HideSeeMore(seemoreName) {
                 $(element).removeAttr('data-impr');
                 if(impr != undefined && impr != null && impr != "") {
                     testIndex++;
-                    console.log(testIndex);
                     $.ajax({
                             url: impr
                         })
@@ -186,8 +185,7 @@ function HideSeeMore(seemoreName) {
             $('#skuQty').html(1);
             $('#skuQty').parent().siblings('.warning-info').addClass('off');
             $('#delQtySku').addClass('disabled');
-            //todo 加判断
-            //$('#addQtySku').removeClass('disabled');
+            $('#addQtySku').removeClass('disabled');
             if ($(this).hasClass('active')) {
                 $(this).removeClass('active');
                 delete product_arrayTemp_click['key' + $(this).attr('data-attr-type')];
@@ -624,21 +622,28 @@ function HideSeeMore(seemoreName) {
             tObj.addClass('disabled');
             var skuQty = $('#cskunum' + nowsku).html() * 1 + tObj.data('num');
             $.ajax({
-                    url: 'cart/alterQtty',
-                    type: 'POST',
-                    data: {
-                        sku: nowsku,
-                        qtty: skuQty,
-                    }
-                })
+                url: '/checkStock',
+                type: 'POST',
+                data: {
+                    skus: nowsku+'_'+skuQty,
+                }
+            })
                 .done(function (data) {
-                    if (data.success) {
+                    if (data.data.list[0].stockStatus === 1) {
                         $('#cskunum' + nowsku).html(skuQty);
                         tObj.removeClass('disabled');
                         if (skuQty == 2) $('#cdsku' + nowsku).removeClass('disabled');
                         if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');
                         if (skuQty >= 50) $('#casku' + nowsku).addClass('disabled');
                         if (skuQty <= 49) $('#casku' + nowsku).removeClass('disabled');
+                        $.ajax({
+                            url: 'cart/alterQtty',
+                            type: 'POST',
+                            data: {
+                                sku: nowsku,
+                                qtty: skuQty,
+                            }
+                        })
                         cart_update_info();
                     } else {
                         AddItemFailModal.open();
@@ -1016,9 +1021,11 @@ function HideSeeMore(seemoreName) {
     }
 
     try {
-        // 初始化 国家,洲
-        var Country= $('select[name="country"] option:selected').text();
-        initCityState(Country,'');
+        if($('checkoutView').hasClass('container') || $('addressView').hasClass('container')){
+            // 初始化 国家,洲
+            var Country= $('select[name="country"] option:selected').text();
+            initCityState(Country,'');
+        }
     } catch (e) {}
 
     // 选择地址增值服务
@@ -1106,7 +1113,7 @@ function HideSeeMore(seemoreName) {
                 type: 'POST',
                 data: {
                     aid: $('#defaultAddr').data('aid'),
-                    cps: $('input[name="ccps"]').val(),
+                    bindid: $('pcode').data('bindid')==undefined ? '' : $('pcode').data('bindid'),
                     remark: $('input[name="cremark"]').val(),
                     stype: $('input[name="shippingMethod"]:checked').val(),
                     paym: paym
@@ -1464,8 +1471,7 @@ function HideSeeMore(seemoreName) {
     // Here we run a very simple test of the Graph API after login is
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
-        FB.api('/me?fields=id,name,picture,email', function (response) {
-
+        FB.api('/me', 'GET', {fields: 'id,name,picture.width(750).height(750),email'},function (response) {
             if (response.email === '' && response === undefined) {
                 $.ajax({
                     url: '/facebookstatus/'+response.id,
@@ -1514,6 +1520,16 @@ function HideSeeMore(seemoreName) {
             scope: 'public_profile,email'
         });
     });
+
+    $('.emailRequired-email').on('keyup blur', function () {
+        if (login_validationEmail($(this))) {
+            $('div[data-role="emailRequired-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="emailRequired-submit"]').addClass('disabled');
+        }
+    });
+
+
 
     //第三方登录结束
 

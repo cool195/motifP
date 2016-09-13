@@ -137,35 +137,44 @@
 
                     <div class="box-shadow bg-white m-t-20x">
                         <div class="p-a-20x font-size-md">
+                            {{--数量--}}
                             <div class="text-right">
-                                <span>Items({{ $data['item_qtty'] }}):</span>
+                                <span>Items({{$data['item_qtty']}}):</span>
                                 <span class="sanBold cart-price">${{number_format(($data['total_amount'] / 100), 2)}}</span>
                             </div>
-                            @if($data['vas_amount'] > 0)
-                                <div class="text-right">
-                                    <span>Additional Services:</span>
-                                    <span class="sanBold cart-price">-${{ number_format(($data['vas_amount'] / 100), 2) }}</span>
+                            {{--增值服务--}}
+                            @if($accountList['vas_amount'] > 0)
+                                <div class="text-right @if($data['vas_amount'] > 0) @endif">
+                                    <span>Additional services:</span>
+                                    <span class="sanBold cart-price">${{ number_format(($data['vas_amount'] / 100), 2) }}</span>
                                 </div>
                             @endif
+                            {{--优惠--}}
+                            <div class="text-right promotion-code cps_amountShow @if($data['cps_amount'] <= 0) hidden @endif">
+                                <span>Promotion code:</span>
+                                <span class="sanBold cart-price cps_amount">-${{number_format(($data['cps_amount'] / 100), 2)}}</span>
+                            </div>
+                            {{--折扣--}}
+                            @if($accountList['promot_discount_amount'] > 0)
+                                <div class="text-right">
+                                    <span>Discount</span>
+                                    <span class="sanBold cart-price">-${{number_format(($data['promot_discount_amount'] / 100), 2)}}</span>
+                                </div>
+                            @endif
+                            {{--收税提示--}}
+                            <div class="text-right promotion-code tax_amountShow @if($data['tax_amount'] <= 0) hidden @endif">
+                                <span>Sales tax:</span>
+                                <span class="sanBold cart-price tax_amount">+${{number_format(($data['tax_amount'] / 100), 2)}}</span>
+                            </div>
+                            {{--地址服务--}}
                             <div class="text-right">
                                 <span>Shipping and handling:</span>
-                                <span class="cart-price">@if(0 == $data['freight_amount']) Free @else ${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
+                                <span class="sanBold cart-price freight_amount">@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                             </div>
-                            @if($data['promot_discount_amount'] > 0)
-                                <div class="text-right">
-                                    <span>Discount:</span>
-                                    <span class="sanBold cart-price">-${{ number_format(($data['promot_discount_amount'] / 100), 2)}}</span>
-                                </div>
-                            @endif
-                            @if($data['cps_amount'] > 0)
-                                <div class="text-right">
-                                    <span>Promotion Code:</span>
-                                    <span class="sanBold cart-price">-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
-                                </div>
-                            @endif
-                            <div class="text-right">
-                                <span class="sanBold text-main">Order Total:</span>
-                                <span class="sanBold text-main cart-price">${{ number_format(($data['pay_amount'] / 100), 2) }}</span>
+                            {{--结算价--}}
+                            <div class="text-right ">
+                                <span>Order Total:</span>
+                                <span class="sanBold cart-price pay_amount">${{ number_format(($data['pay_amount']) / 100, 2) }}</span>
                             </div>
                         </div>
                     </div>
