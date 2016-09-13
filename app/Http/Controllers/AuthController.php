@@ -73,6 +73,20 @@ class AuthController extends BaseController
         );
         return view('shopping.fbaddemail', ['params' => $params]);
     }
+
+    //验证是否新用户
+    public function faceBookAuthStatus($trdid)
+    {
+        $params = array(
+            'cmd' => 'email',
+            'type' => 2,
+            'trdid' => $trdid,
+            'token' => self::Token,
+        );
+        $result = $this->request('openapi', '', "user", $params);
+        $result['status'] = $result['data']['email'] ? true : false;
+        return $result;
+    }
 }
 
 ?>
