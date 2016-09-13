@@ -35,7 +35,7 @@
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                         <span class="font-size-base">Please select size !</span>
                     </div>
-                    <div class="btn btn-primary btn-lg btn-block" data-role="login-submit">Login</div>
+                    <div class="btn btn-primary btn-lg btn-block" data-role="login-submit">Sign in</div>
                 </div>
                 <div class="p-y-15x text-center">
                     <a class="text-link btn-forgotPwd" href="javascript:void(0)">Forgot password?</a>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="p-t-15x">
                     <a class="btn btn-block btn-lg btn-facebook" id="facebookLogin">
-                        <i class="iconfont icon-facebook-o icon-size-md"></i> Signin with Facebook
+                        <i class="iconfont icon-facebook-o icon-size-md"></i> Sign in with Facebook
                     </a>
                     <a class="btn btn-block btn-lg btn-google m-t-15x" id="googleLogin">
                         <i class="iconfont icon-google-o icon-size-md"></i> Sign in with Google
