@@ -1440,36 +1440,40 @@ function HideSeeMore(seemoreName) {
     // Here we run a very simple test of the Graph API after login is
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
-        console.log('Welcome!  Fetching your information.... ');
         FB.api('/me?fields=id,name,picture,email', function (response) {
-            console.log(response);
+            
             if (response.email === '' && response === undefined) {
-                window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name + '&avatar=' + response.picture.data.url.encodeURIComponent();
-            } else {
                 $.ajax({
-                        url: '/facebooklogin',
-                        type: 'POST',
-                        data: {
-                            email: response.email,
-                            id: response.id,
-                            name: response.name,
-                            avatar: response.picture.data.url
+                    url: '/facebookstatus/'+response.id,
+                    type: 'get'
+                })
+                    .done(function(data) {
+
+                        if (data.status) {
+                            response.email = data.data.email;
+                            loginSuccess(response);
+                        } else {
+                            window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name;
                         }
                     })
-                    .done(function (data) {
-                        console.log("success");
+            } else {
+                $.ajax({
+                    url: '/facebooklogin',
+                    type: 'POST',
+                    data: {
+                        email: response.email,
+                        id: response.id,
+                        name: response.name,
+                        avatar: response.picture.data.url
+                    }
+                })
+                    .done(function(data) {
                         if (data.success) {
                             window.location.href = data.redirectUrl;
                         } else {
-                            $('.login-pw').parent().siblings('.warning-info').removeClass('off');
-                            $('.login-pw').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
+                            $('.warning-info').removeClass('off');
+                            $('.warning-info').children('span').html(data.prompt_msg);
                         }
-                    })
-                    .fail(function () {
-                        console.log("error");
-                    })
-                    .always(function () {
-                        console.log("complete");
                     });
 
             }

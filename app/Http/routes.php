@@ -173,6 +173,8 @@ Route::post('/googlelogin', 'AuthController@googleLogin');
 Route::post('/facebooklogin', 'AuthController@facebookLogin');
 
 Route::get('/addFacebookEmail', 'AuthController@addFacebookEmail');
+
+Route::get('/facebookstatus/{trdid}', 'AuthController@faceBookAuthStatus');
 //第三方登录End
 
 
