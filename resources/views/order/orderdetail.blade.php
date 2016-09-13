@@ -149,18 +149,18 @@
                             @endif
                             <div class="text-right">
                                 <span>Shipping and handling:</span>
-                                <span>@if(0 == $data['freight_amount']) Free @else ${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
+                                <span class="cart-price">@if(0 == $data['freight_amount']) Free @else ${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                             </div>
                             @if($data['promot_discount_amount'] > 0)
                                 <div class="text-right">
                                     <span>Discount:</span>
-                                    <span>-${{ number_format(($data['promot_discount_amount'] / 100), 2)}}</span>
+                                    <span class="sanBold cart-price">-${{ number_format(($data['promot_discount_amount'] / 100), 2)}}</span>
                                 </div>
                             @endif
                             @if($data['cps_amount'] > 0)
                                 <div class="text-right">
                                     <span>Promotion Code:</span>
-                                    <span>-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
+                                    <span class="sanBold cart-price">-${{ number_format(($data['cps_amount'] / 100), 2)}}</span>
                                 </div>
                             @endif
                             <div class="text-right">
