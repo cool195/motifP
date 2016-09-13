@@ -1169,6 +1169,22 @@ footer {
   left: 0;
 }
 
+.hotspot-image {
+  position: relative;
+  display: inline-block;
+}
+
+.hotspot-spot {
+  width: 10%;
+  height: 10%;
+  top: 20%;
+  left: 20%;
+  position: absolute;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 200;
+}
+
 @media screen and (max-width: 1460px) {
   .login-header {
     height: 70px;

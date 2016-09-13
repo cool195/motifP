@@ -21,11 +21,19 @@
                         <p class="m-b-0 font-size-base">{{ $value['value'] }}</p>
                     </div>
                 </a>
-                @elseif($value['type'] == 'multilink')
-                <!--图-->
+                @elseif($value['type']=='multilink')
+                <!-- 锚点图 -->
                 <div class="m-t-20x">
-                    <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
+                    <div class="hotspot-image"
+                         data-hotspot='@foreach($value['squas'] as $v){{'{"beginX":'.$v['startX'].',"beginY":'.$v['startY'].',"skipId":"'.$v['skipId'].'","skipType":"'.$v['skipType'].'","endX":'.$v['endX'].',"endY":'.$v['endY'].'},'}}@endforeach'>
+                        <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}">
+                    </div>
                 </div>
+                {{--@elseif($value['type'] == 'multilink')--}}
+                {{--<!--图-->--}}
+                {{--<div class="m-t-20x">--}}
+                    {{--<img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">--}}
+                {{--</div>--}}
                 @elseif($value['type'] == 'boxline')
                 <!--分割线-->
                 <hr class="hr-base m-x-20x m-y-0">
@@ -97,3 +105,61 @@
 </section>
 
 @include('footer')
+
+<script>
+    $(document).ready(function () {
+        $('img.img-lazy').lazyload({
+            threshold: 200,
+            effect: 'fadeIn'
+        });
+    });
+
+    // 锚点图
+    function getHotSpot() {
+        $('.hotspot-image').each(function () {
+            var $this = $(this);
+            var obj = $(this).data('hotspot');
+            // 获取最后一个字符
+            var lastStr = obj.charAt(obj.length - 1);
+            if (lastStr === ',') {
+                obj = obj.substring(0, obj.length - 1);
+            }
+            // 转化为json
+            var objJson = eval('[' + obj + ']');
+            $.each(objJson, function (n, value) {
+                var BeginX = value.beginX;
+                var BeginY = value.beginY;
+                var EndX = value.endX;
+                var EndY = value.endY;
+                var url = '';
+                switch (value.skipType) {
+                    case '1':
+                        url = '/product/';
+                        break;
+                    case '2':
+                        url = '/designer/';
+                        break;
+                    case '3':
+                        url = '/topic/';
+                        break;
+                    case '4':
+                        url = '/shopping/';
+                        break;
+                }
+                url += value.skipId;
+                var parenta = $('<a></a>').attr('href', url);
+                var childdiv = $('<div class="hotspot-spot"></div>').css({
+                    width: (EndX - BeginX) * 100 + "%",
+                    height: (EndY - BeginY) * 100 + "%",
+                    left: BeginX * 100 + "%",
+                    top: BeginY * 100 + "%"
+                });
+                parenta.prepend(childdiv).appendTo($this);
+            });
+        });
+    }
+
+    $(function () {
+        getHotSpot();
+    });
+</script>
