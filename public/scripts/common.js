@@ -1152,6 +1152,9 @@ function HideSeeMore(seemoreName) {
 
     function login_signin() {
         $('[data-role="login-submit"]').addClass('disabled');
+        if($('.login-email').val() == "" || $('.login-pw').val() == ""){
+            return;
+        }
         $.ajax({
                 url: '/signin',
                 type: 'POST',
