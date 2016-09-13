@@ -74,7 +74,6 @@ function HideSeeMore(seemoreName) {
                 $(element).removeAttr('data-impr');
                 if(impr != undefined && impr != null && impr != "") {
                     testIndex++;
-                    console.log(testIndex);
                     $.ajax({
                             url: impr
                         })
@@ -1022,9 +1021,11 @@ function HideSeeMore(seemoreName) {
     }
 
     try {
-        // 初始化 国家,洲
-        var Country= $('select[name="country"] option:selected').text();
-        initCityState(Country,'');
+        if($('checkoutView').hasClass('container') || $('addressView').hasClass('container')){
+            // 初始化 国家,洲
+            var Country= $('select[name="country"] option:selected').text();
+            initCityState(Country,'');
+        }
     } catch (e) {}
 
     // 选择地址增值服务
