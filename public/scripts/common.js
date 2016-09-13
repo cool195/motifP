@@ -1471,7 +1471,6 @@ function HideSeeMore(seemoreName) {
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
         FB.api('/me', 'GET', {fields: 'id,name,picture.width(750).height(750),email'},function (response) {
-
             if (response.email === '' && response === undefined) {
                 $.ajax({
                     url: '/facebookstatus/'+response.id,
@@ -1487,7 +1486,6 @@ function HideSeeMore(seemoreName) {
                         }
                     })
             } else {
-                console.log(response);return false;
                 $.ajax({
                     url: '/facebooklogin',
                     type: 'POST',
