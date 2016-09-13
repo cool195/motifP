@@ -186,8 +186,7 @@ function HideSeeMore(seemoreName) {
             $('#skuQty').html(1);
             $('#skuQty').parent().siblings('.warning-info').addClass('off');
             $('#delQtySku').addClass('disabled');
-            //todo 加判断
-            //$('#addQtySku').removeClass('disabled');
+            $('#addQtySku').removeClass('disabled');
             if ($(this).hasClass('active')) {
                 $(this).removeClass('active');
                 delete product_arrayTemp_click['key' + $(this).attr('data-attr-type')];
@@ -1106,7 +1105,7 @@ function HideSeeMore(seemoreName) {
                 type: 'POST',
                 data: {
                     aid: $('#defaultAddr').data('aid'),
-                    cps: $('input[name="ccps"]').val(),
+                    bindid: $('pcode').data('bindid')==undefined ? '' : $('pcode').data('bindid'),
                     remark: $('input[name="cremark"]').val(),
                     stype: $('input[name="shippingMethod"]:checked').val(),
                     paym: paym
