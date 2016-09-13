@@ -81,7 +81,7 @@ class AuthController extends BaseController
             'name' => $request->get('name'),
             'avatar' => urldecode($request->get('avatar')),
         );
-        return view('shopping.fbaddemail', ['params' => $params]);
+        return view('user.fbaddemail', ['params' => $params]);
     }
 
     //验证是否新用户
