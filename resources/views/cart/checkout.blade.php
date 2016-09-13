@@ -288,12 +288,12 @@
                 @endif
                 <div class="text-right">
                     <span>Shipping and handling:</span>
-                    <span class="sanBold">@if(0 == $accountList['freight_amount']) Free @else${{ number_format(($accountList['freight_amount'] / 100), 2)}} @endif</span>
+                    <span class="sanBold cart-price">@if(0 == $accountList['freight_amount']) Free @else${{ number_format(($accountList['freight_amount'] / 100), 2)}} @endif</span>
                 </div>
                 @if($accountList['promot_discount_amount'] > 0)
                     <div class="text-right">
                         <span>Discount</span>
-                        <span class="sanBold">-${{number_format(($accountList['promot_discount_amount'] / 100), 2)}}</span>
+                        <span class="sanBold cart-price">-${{number_format(($accountList['promot_discount_amount'] / 100), 2)}}</span>
                     </div>
                 @endif
                 {{--promotion-code 添加 hidden样式--}}
