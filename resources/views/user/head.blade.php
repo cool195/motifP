@@ -8,6 +8,8 @@
     <title>{{$title}}</title>
     <link rel="apple-touch-icon" href="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png">
 
+
+
     <link rel="stylesheet" href="/styles/vendor.css">
 
     <link rel="stylesheet" href="/styles/common.css">

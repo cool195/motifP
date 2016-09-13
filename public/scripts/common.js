@@ -1520,6 +1520,16 @@ function HideSeeMore(seemoreName) {
         });
     });
 
+    $('.emailRequired-email').on('keyup blur', function () {
+        if (login_validationEmail($(this))) {
+            $('div[data-role="emailRequired-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="emailRequired-submit"]').addClass('disabled');
+        }
+    });
+
+
+
     //第三方登录结束
 
     //Register start
