@@ -29,3 +29,5 @@
 </script>
 
 @include('user.foot')
+<script src="/scripts/vendor.js"></script>
+<script src="/scripts/common.js"></script>
