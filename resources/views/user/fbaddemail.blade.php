@@ -40,12 +40,13 @@
         if (!$(this).hasClass('disabled')) {
             $.ajax({
                 url: '/facebooklogin',
-                type: 'get',
+                type: 'post',
                 data: $('#register').serialize()
             })
                     .done(function(data) {
                         if (data.success) {
-                            window.location.href = data.redirectUrl;
+                            console.log(data.redirectUrl);
+                            //window.location.href = data.redirectUrl;
                         }
                     })
         }
