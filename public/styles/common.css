@@ -2,7 +2,9 @@
 a:focus {
   outline: none;
 }
-
+.hover-blue:hover{
+  color: #6d91ff;
+}
 .arrow-up {
   width: 0;
   height: 0;
