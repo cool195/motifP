@@ -18,16 +18,36 @@
                         <span class="font-size-base">Please select size !</span>
                     </div>
                 </fieldset>
+                <input type="hidden" name="id" value="{{$params['id']}}">
+                <input type="hidden" name="name" value="{{$params['name']}}">
+                <input type="hidden" name="avatar" value="{{$params['avatar']}}">
             </form>
             <div class="p-t-30x">
-                <div class="btn btn-primary btn-lg btn-block disabled" data-role="emailRequired-submit">Continue</div>
+                <div class="btn btn-primary btn-lg btn-block disabled" data-role="submit">Continue</div>
             </div>
         </div>
     </div>
 </section>
+
 <script>
 </script>
 
 @include('user.foot')
 <script src="/scripts/vendor.js"></script>
 <script src="/scripts/common.js"></script>
+<script>
+    $('div[data-role="submit"]').click(function() {
+        if (!$(this).hasClass('disabled')) {
+            $.ajax({
+                url: '/facebooklogin',
+                type: 'get',
+                data: $('#register').serialize()
+            })
+                    .done(function(data) {
+                        if (data.success) {
+                            window.location.href = data.redirectUrl;
+                        }
+                    })
+        }
+    });
+</script>

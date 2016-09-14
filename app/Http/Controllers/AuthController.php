@@ -79,7 +79,7 @@ class AuthController extends BaseController
         $params = array(
             'id' => $request->get('id'),
             'name' => $request->get('name'),
-            'avatar' => urldecode($request->get('avatar')),
+            'avatar' => $request->get('avatar'),
         );
         return view('user.fbaddemail', ['params' => $params]);
     }
