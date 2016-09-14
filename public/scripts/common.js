@@ -1538,6 +1538,16 @@ function HideSeeMore(seemoreName) {
     // 提交 email 信息
     $('div[data-role="emailRequired-submit"]').on('click',function(){
         if(!$(this).hasClass('disabled')){
+            $.ajax({
+                url: '/facebooklogin',
+                type: 'post',
+                data: $('#register').serialize()
+            })
+                .done(function(data) {
+                    if (data.success) {
+                        window.location.href = data.redirectUrl;
+                    }
+                })
             $('.uploademail-loading').css('display','block');
             $('div[data-role="emailRequired-submit"]').addClass('disabled');
             setTimeout(function () {
@@ -2531,35 +2541,29 @@ function HideSeeMore(seemoreName) {
 
     function order_getOperate() {
         var operate = [];
-        var operateItem = {
-            'sale_qtty': null,
-            'select': true,
-            'sku': null,
-            'VAList': []
-        };
+
 
         var orderList = eval($('#buyAgain').data('orderlist'));
 
         $.each(orderList, function (index, val) {
-            operateItem.sale_qtty = val.sale_qtty;
-            operateItem.sku = val.sku;
-
-            var vas = [];
-            $.each(val.vas_info, function (i, el) {
-                vas[i] = {};
-                vas[i].user_remark = el.user_remark;
-                vas[i].vas_id = el.vas_id;
-            });
-            operateItem.VAList = vas;
-
-            operate.push(operateItem);
-
-            operateItem = {
-                'sale_qtty': null,
+            var operateItem = {
+                'sale_qtty': val.sale_qtty,
                 'select': true,
-                'sku': null,
+                'sku': val.sku,
                 'VAList': []
             };
+
+            if( val.vas_info != null && val.vas_info != undefined) {
+                var vas = [];
+                $.each(val.vas_info, function (i, el) {
+                    vas[i] = {};
+                    vas[i].user_remark = el.user_remark;
+                    vas[i].vas_id = el.vas_id;
+                });
+                operateItem.VAList = vas;
+            }
+
+            operate.push(operateItem);
         });
         console.log(operate);
         return operate;
