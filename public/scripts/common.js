@@ -1538,6 +1538,17 @@ function HideSeeMore(seemoreName) {
     // 提交 email 信息
     $('div[data-role="emailRequired-submit"]').on('click',function(){
         if(!$(this).hasClass('disabled')){
+            $.ajax({
+                url: '/facebooklogin',
+                type: 'post',
+                data: $('#register').serialize()
+            })
+                .done(function(data) {
+                    if (data.success) {
+                        console.log(data.redirectUrl);
+                        //window.location.href = data.redirectUrl;
+                    }
+                })
             $('.uploademail-loading').css('display','block');
             $('div[data-role="emailRequired-submit"]').addClass('disabled');
             setTimeout(function () {
