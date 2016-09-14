@@ -2541,18 +2541,17 @@ function HideSeeMore(seemoreName) {
 
     function order_getOperate() {
         var operate = [];
-        var operateItem = {
-            'sale_qtty': null,
-            'select': true,
-            'sku': null,
-            'VAList': []
-        };
+
 
         var orderList = eval($('#buyAgain').data('orderlist'));
 
         $.each(orderList, function (index, val) {
-            operateItem.sale_qtty = val.sale_qtty;
-            operateItem.sku = val.sku;
+            var operateItem = {
+                'sale_qtty': val.sale_qtty,
+                'select': true,
+                'sku': val.sku,
+                'VAList': []
+            };
 
             var vas = [];
             $.each(val.vas_info, function (i, el) {
@@ -2563,15 +2562,8 @@ function HideSeeMore(seemoreName) {
             operateItem.VAList = vas;
 
             operate.push(operateItem);
-
-            operateItem = {
-                'sale_qtty': null,
-                'select': true,
-                'sku': null,
-                'VAList': []
-            };
         });
-        console.log(operate);
+        
         return operate;
     }
 
