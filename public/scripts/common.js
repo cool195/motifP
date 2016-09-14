@@ -1545,8 +1545,7 @@ function HideSeeMore(seemoreName) {
             })
                 .done(function(data) {
                     if (data.success) {
-                        console.log(data.redirectUrl);
-                        //window.location.href = data.redirectUrl;
+                        window.location.href = data.redirectUrl;
                     }
                 })
             $('.uploademail-loading').css('display','block');
