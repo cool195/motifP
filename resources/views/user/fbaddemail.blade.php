@@ -12,6 +12,10 @@
                     <div class="login-text">
                         <input type="text" class="input-login form-control contrlo-lg text-primary emailRequired-email" name="email" placeholder="Email">
                         <i class="iconfont icon-delete font-size-lg input-clear text-common hidden"></i>
+
+                        <div class="loading uploademail-loading" style="display: none">
+                            <div class="loader"></div>
+                        </div>
                     </div>
                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -23,7 +27,7 @@
                 <input type="hidden" name="avatar" value="{{$params['avatar']}}">
             </form>
             <div class="p-t-30x">
-                <div class="btn btn-primary btn-lg btn-block disabled" data-role="submit">Continue</div>
+                <div class="btn btn-primary btn-lg btn-block disabled" data-role="emailRequired-submit">Continue</div>
             </div>
         </div>
     </div>

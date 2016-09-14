@@ -1131,6 +1131,19 @@ footer {
   text-align: center;
 }
 
+.uploademail-loading{
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0px, -50%);
+  transform: translate(0px, -50%);
+  right: -3rem;
+}
+
+.uploademail-loading .loader::after {
+  width: 25px;
+  height: 25px;
+}
+
 .bg-uploadProfileLoading {
   position: absolute;
   width: 100%;

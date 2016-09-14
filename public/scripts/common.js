@@ -1522,10 +1522,28 @@ function HideSeeMore(seemoreName) {
     });
 
     $('.emailRequired-email').on('keyup blur', function () {
+        if($(this).val() === ''){
+            $(this).siblings('.icon-delete').addClass('hidden');
+        } else {
+            $(this).siblings('.icon-delete').removeClass('hidden');
+        }
+
         if (login_validationEmail($(this))) {
             $('div[data-role="emailRequired-submit"]').removeClass('disabled');
         } else {
             $('div[data-role="emailRequired-submit"]').addClass('disabled');
+        }
+    });
+
+    // 提交 email 信息
+    $('div[data-role="emailRequired-submit"]').on('click',function(){
+        if(!$(this).hasClass('disabled')){
+            $('.uploademail-loading').css('display','block');
+            $('div[data-role="emailRequired-submit"]').addClass('disabled');
+            setTimeout(function () {
+                $('.uploademail-loading').css('display','none');
+                $('div[data-role="emailRequired-submit"]').removeClass('disabled');
+            }, 1500);
         }
     });
 
