@@ -2553,17 +2553,19 @@ function HideSeeMore(seemoreName) {
                 'VAList': []
             };
 
-            var vas = [];
-            $.each(val.vas_info, function (i, el) {
-                vas[i] = {};
-                vas[i].user_remark = el.user_remark;
-                vas[i].vas_id = el.vas_id;
-            });
-            operateItem.VAList = vas;
+            if( val.vas_info != null && val.vas_info != undefined) {
+                var vas = [];
+                $.each(val.vas_info, function (i, el) {
+                    vas[i] = {};
+                    vas[i].user_remark = el.user_remark;
+                    vas[i].vas_id = el.vas_id;
+                });
+                operateItem.VAList = vas;
+            }
 
             operate.push(operateItem);
         });
-        
+        console.log(operate);
         return operate;
     }
 
