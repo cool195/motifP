@@ -20,8 +20,8 @@
                                 <div class="inline">
                                     <span class="font-size-md">Add Shipping Address</span>
                                     <span class="font-size-md pull-right">
-                                        <i class="isDefault iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
-                                        <a class="p-l-10x" href="javascript:void(0)">Make Primary</a>
+                                        <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
+                                        <span class="p-l-5x">Make Primary</span>
                                     </span>
                                 </div>
                                 <div class="row p-t-30x">
