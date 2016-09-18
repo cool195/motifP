@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>{{$title or 'Exclusive Fashion Accessories Designed by the World’s Top Fashion Bloggers, Instagrammers and Digital Influencers'}}</title>
+    <meta property="og:image" content="{{$ogimage or config('runtime.Image_URL').'/images/logo/logo.png'}}">
     <meta name="description"
           content="{{$description or 'Your style is unique and cutting edge - your fashion should be too.Exclusive, limited edition accessories designed by the world’s top fashion bloggers, Instagrammers and digital influencers.'}}">
     <meta name="keywords"

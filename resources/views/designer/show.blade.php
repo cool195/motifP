@@ -108,6 +108,14 @@
                                         @else
                                             <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$spu}}"></i></a>
                                         @endif
+
+                                        @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
+                                            <!--预售标志-->
+                                            <div class="presale-sign">
+                                                <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                                <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="price-caption helveBold">
                                         <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{$product['spuInfos'][$spu]['spuBase']['main_title']}}</div>
@@ -147,6 +155,14 @@
                             <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$product['spu']}}"></i></span>
                         @else
                             <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$product['spu']}}"></i></a>
+                        @endif
+
+                        @if(1 == $product['sale_type'])
+                                <!--预售标志-->
+                            <div class="presale-sign">
+                                <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                            </div>
                         @endif
                     </div>
                     <div class="price-caption helveBold">

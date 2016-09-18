@@ -1,5 +1,5 @@
 <!-- header start-->
-@include('header',['title'=>$data['main_title'],'description'=>$data['intro_short']])
+@include('header',['title'=>$data['main_title'],'description'=>$data['intro_short'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$data['main_image_url']])
 <!-- header end-->
 
 <!-- 内容 -->
@@ -205,7 +205,7 @@
                                class="btn btn-primary btn-lg btn-350 btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0 || $data['status_code'] != 100){{'disabled'}}@endif"
                                data-action="@if(1 == $data['sale_type']){{'put'}}@else{{'post'}}@endif">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
                         @else
-                            <a href="/login" class="btn btn-primary btn-lg btn-350 btn-addToBag">Add to Bag</a>
+                            <a href="/login" class="btn btn-primary btn-lg btn-350 btn-addToBag">@if(1 == $data['sale_type']) Pre Order Now @else Add to Bag @endif</a>
                         @endif
                     </div>
                     </div>
