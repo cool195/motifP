@@ -90,7 +90,7 @@
         {{--*/ $address = $Address->index() /*--}}
         <div class="box-shadow bg-white m-t-20x">
             <div class="font-size-md p-x-20x p-y-15x btn-showHide @if(empty($address['data']['list'])){{'active'}}@endif" id="addrShowHide">
-                <span class="sanBold">Shipping Address</span>
+                <span class="sanBold">Shipping to</span>
                 <span class="pull-right showHide-simpleInfo">
                     @forelse ($address['data']['list'] as $value)
                         @if($value['isDefault'])
