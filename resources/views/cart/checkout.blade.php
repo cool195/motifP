@@ -202,7 +202,7 @@
         {{--Shipping Method--}}
         <div class="box-shadow bg-white m-t-20x">
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="smShowHide">
-                <span class="sanBold">Shipping Method</span>
+                <span class="sanBold">Shipping</span>
                 <span class="pull-right showHide-simpleInfo">
                     <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}}</span>
                     <a class="p-l-40x">Edit</a>
