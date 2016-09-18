@@ -1,5 +1,5 @@
 <!-- header start-->
-@include('header',['title'=>$data['main_title'],'description'=>$data['intro_short']])
+@include('header',['title'=>$data['main_title'],'description'=>$data['intro_short'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$data['main_image_url']])
 <!-- header end-->
 
 <!-- 内容 -->
