@@ -1941,6 +1941,7 @@ function HideSeeMore(seemoreName) {
                     $('input[name="nick"]').attr('placeholder', data.data.nickname);
                     $('.name').html(data.data.nickname);
                     $('input[name="nick"]').val('');
+                    $('.profile-save').addClass('disabled');
                 }
             })
     }
