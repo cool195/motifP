@@ -12,8 +12,11 @@ class ProductController extends BaseController
         if ($request->input('ajax')) {
             return $result;
         }
+
+        if($result['success']==false){
+            abort(404);
+        }
         $recommended = $this->recommended($spu, current($result['data']['front_category_ids']));
-        //return $result;
         return View('product.product', ['jsonResult' => json_encode($result['data']), 'data' => $result['data'], 'recommended' => $recommended['data']]);
     }
 

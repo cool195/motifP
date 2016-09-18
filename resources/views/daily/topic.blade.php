@@ -72,7 +72,10 @@
                                             @if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])
                                                 <div class="presale-sign">
                                                     <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
-                                                    <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                                    <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
+                                                       data-link="/product/{{$spu}}" href="javascript:void(0)"
+                                                       class="presale-text helve font-size-sm">LIMITED DEITION
+                                                        </a>
                                                 </div>
                                             @endif
                                         </div>

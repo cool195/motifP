@@ -20,8 +20,8 @@
                                 <div class="inline">
                                     <span class="font-size-md">Add Shipping Address</span>
                                     <span class="font-size-md pull-right">
-                                        <i class="isDefault iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
-                                        <a class="p-l-10x" href="javascript:void(0)">Make Primary</a>
+                                        <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
+                                        <span class="p-l-5x">Make Primary</span>
                                     </span>
                                 </div>
                                 <div class="row p-t-30x">
@@ -89,7 +89,7 @@
                                     </form>
                                 </div>
                                 <div class="text-right">
-                                    <a href="javascript:void(0)" id="addAddress-cancel" class="text-primary font-size-md p-r-30x">Cancel</a>
+                                    <a href="javascript:void(0)" id="addAddress-cancel" class="font-size-md p-r-30x hover-blue">Cancel</a>
                                     <a href="javascript:void(0)" id="addAddress" class="btn btn-primary btn-lg btn-200 address-save">Save</a>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                             {{--Shipping Address--}}
                             <div class="p-a-20x select-address @if(empty($address['data']['list'])) disabled @endif">
                                 <div class="flex flex-alignCenter flex-fullJustified">
-                                    <span class="font-size-md">Selecy Shipping Address</span>
+                                    <span class="font-size-md">Select Shipping Address</span>
                                     <span class="font-size-md pull-right">
                                         <a class="btn btn-secondary btn-md btn-addNewAddress" href="javascript:void(0)"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address</a>
                                     </span>
@@ -119,9 +119,9 @@
                                                 @if($value['isDefault'])
                                                     <div class="primary-address font-size-md">Primary</div>
                                                 @endif
-                                                <div class="btn-edit font-size-md btn-editAddress">Edit</div>
+                                                <div class="btn-edit font-size-md btn-editAddress hover-blue">Edit</div>
                                                 @if(!$value['isDefault'])
-                                                    <div class="font-size-md btn-delAddress">Delete</div>
+                                                    <div class="font-size-md btn-delAddress hover-blue">Delete</div>
                                                 @endif
                                                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                                             </div>
@@ -172,10 +172,10 @@
                 @{{ if $value.isDefault == 1 }}
                 <div class="primary-address font-size-md">Primary</div>
                 @{{ /if }}
-                <div class="btn-edit font-size-md btn-editAddress">Edit</div>
+                <div class="btn-edit font-size-md btn-editAddress hover-blue">Edit</div>
                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                 @{{ if $value.isDefault !== 1 }}
-                <div class="font-size-md btn-delAddress">Delete</div>
+                <div class="font-size-md btn-delAddress hover-blue">Delete</div>
                 @{{ /if }}
             </div>
         </div>

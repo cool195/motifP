@@ -372,6 +372,9 @@ function HideSeeMore(seemoreName) {
 
     // 添加购物车
     $('#productAddBag').on('click', function (e) {
+        if(!pSelAttr()){
+            return false;
+        }
         if ($('#productsku').val()) {
             var operate = {
                 'sale_qtty': $('#skuQty').data('num'),
@@ -425,21 +428,22 @@ function HideSeeMore(seemoreName) {
                         }, 1500);
                     }
                 });
-        } else {
-            pSelAttr();
         }
     });
 
     // 属性验证
     function pSelAttr() {
+        var status = true;
         $.each(product_data.spuAttrs, function (index, val) {
             if ($('#p_a_w' + val.attr_type).data('sel') == 0) {
                 $('#p_a_w' + val.attr_type).focus();
                 $('#p_a_w' + val.attr_type).removeClass('off');
                 $("html,body").animate({scrollTop: $('#p_a_w' + val.attr_type).offset().top}, 200);
+                status = false;
                 return false;
             }
         });
+        return status;
     }
 
     // 选择 商品增值服务
@@ -595,7 +599,7 @@ function HideSeeMore(seemoreName) {
 
     // ShoppingDetail.html  end
 
-    // Shopping Cart
+    // Shopping Cart begin
     // 初始化 确认删除 弹出框
     try {
         var Options = {
@@ -629,24 +633,31 @@ function HideSeeMore(seemoreName) {
                 }
             })
                 .done(function (data) {
-                    if (data.data.list[0].stockStatus === 1) {
-                        $('#cskunum' + nowsku).html(skuQty);
-                        tObj.removeClass('disabled');
-                        if (skuQty == 2) $('#cdsku' + nowsku).removeClass('disabled');
-                        if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');
-                        if (skuQty >= 50) $('#casku' + nowsku).addClass('disabled');
-                        if (skuQty <= 49) $('#casku' + nowsku).removeClass('disabled');
-                        $.ajax({
-                            url: 'cart/alterQtty',
-                            type: 'POST',
-                            data: {
-                                sku: nowsku,
-                                qtty: skuQty,
-                            }
-                        })
-                        cart_update_info();
-                    } else {
-                        AddItemFailModal.open();
+                    if(data.success){
+                        if (data.data.list[0].stockStatus === 1) {
+                            $('#cskunum' + nowsku).html(skuQty);
+                            tObj.removeClass('disabled');
+                            if (skuQty == 2) $('#cdsku' + nowsku).removeClass('disabled');
+                            if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');
+                            if (skuQty >= 50) $('#casku' + nowsku).addClass('disabled');
+                            if (skuQty <= 49) $('#casku' + nowsku).removeClass('disabled');
+                            $.ajax({
+                                url: 'cart/alterQtty',
+                                type: 'POST',
+                                data: {
+                                    sku: nowsku,
+                                    qtty: skuQty,
+                                }
+                            })
+                                .done(function(data){
+                                    if(data.success){
+                                        cart_update_info();
+                                    }
+                            })
+
+                        } else {
+                            AddItemFailModal.open();
+                        }
                     }
                 });
 
@@ -741,6 +752,8 @@ function HideSeeMore(seemoreName) {
         }
         return true;
     }
+
+    // Shopping Cart end
 
     // Checkout Start
     $('#addAddress').on('click', function () {

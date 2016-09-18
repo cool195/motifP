@@ -58,4 +58,6 @@
 </body>
 <script src="/scripts/vendor.js"></script>
 <script src="/scripts/common.js"></script>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57d90b9d79b97dce"></script>
 </html>

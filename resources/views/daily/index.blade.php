@@ -4,7 +4,8 @@
 <section>
     <div class="bannerSwiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>
+            <a href="/shopping/0" class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></a>
+
             {{--<div class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>--}}
             {{--<div class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>--}}
         </div>
@@ -37,7 +38,7 @@
                                         <div class="btn-beginPlayer designer-beginPlayer">
                                             <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
                                                  srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
-                                                 alt="">
+                                                 alt="" width="50" height="50">
                                         </div>
                                     </div>
                                     <div class="btn-morePlayer" hidden>
@@ -110,7 +111,7 @@
                         <div class="btn-beginPlayer designer-beginPlayer">
                             <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
                                  srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
-                                 alt="">
+                                 alt="" width="50" height="50">
                         </div>
                     </div>
                     <div class="btn-morePlayer" hidden>
