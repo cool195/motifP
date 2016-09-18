@@ -2,7 +2,9 @@
 a:focus {
   outline: none;
 }
-
+.hover-blue:hover{
+  color: #6d91ff;
+}
 .arrow-up {
   width: 0;
   height: 0;
@@ -1189,7 +1191,10 @@ footer {
   top: 0;
   left: 0;
 }
-
+.presale-sign .presale-text:hover{
+  cursor: pointer;
+  background-color: rgba(108, 145, 255, 1);
+}
 .hotspot-image {
   position: relative;
   display: inline-block;

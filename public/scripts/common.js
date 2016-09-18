@@ -372,6 +372,9 @@ function HideSeeMore(seemoreName) {
 
     // 添加购物车
     $('#productAddBag').on('click', function (e) {
+        if(!pSelAttr()){
+            return false;
+        }
         if ($('#productsku').val()) {
             var operate = {
                 'sale_qtty': $('#skuQty').data('num'),
@@ -425,21 +428,22 @@ function HideSeeMore(seemoreName) {
                         }, 1500);
                     }
                 });
-        } else {
-            pSelAttr();
         }
     });
 
     // 属性验证
     function pSelAttr() {
+        var status = true;
         $.each(product_data.spuAttrs, function (index, val) {
             if ($('#p_a_w' + val.attr_type).data('sel') == 0) {
                 $('#p_a_w' + val.attr_type).focus();
                 $('#p_a_w' + val.attr_type).removeClass('off');
                 $("html,body").animate({scrollTop: $('#p_a_w' + val.attr_type).offset().top}, 200);
+                status = false;
                 return false;
             }
         });
+        return status;
     }
 
     // 选择 商品增值服务
