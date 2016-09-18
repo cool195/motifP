@@ -209,6 +209,7 @@
                         @endif
                     </div>
                     </div>
+                    <div class="addthis_inline_share_toolbox"></div>
                 </div>
             </div>
         </div>
