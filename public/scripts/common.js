@@ -595,7 +595,7 @@ function HideSeeMore(seemoreName) {
 
     // ShoppingDetail.html  end
 
-    // Shopping Cart
+    // Shopping Cart begin
     // 初始化 确认删除 弹出框
     try {
         var Options = {
@@ -629,24 +629,31 @@ function HideSeeMore(seemoreName) {
                 }
             })
                 .done(function (data) {
-                    if (data.data.list[0].stockStatus === 1) {
-                        $('#cskunum' + nowsku).html(skuQty);
-                        tObj.removeClass('disabled');
-                        if (skuQty == 2) $('#cdsku' + nowsku).removeClass('disabled');
-                        if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');
-                        if (skuQty >= 50) $('#casku' + nowsku).addClass('disabled');
-                        if (skuQty <= 49) $('#casku' + nowsku).removeClass('disabled');
-                        $.ajax({
-                            url: 'cart/alterQtty',
-                            type: 'POST',
-                            data: {
-                                sku: nowsku,
-                                qtty: skuQty,
-                            }
-                        })
-                        cart_update_info();
-                    } else {
-                        AddItemFailModal.open();
+                    if(data.success){
+                        if (data.data.list[0].stockStatus === 1) {
+                            $('#cskunum' + nowsku).html(skuQty);
+                            tObj.removeClass('disabled');
+                            if (skuQty == 2) $('#cdsku' + nowsku).removeClass('disabled');
+                            if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');
+                            if (skuQty >= 50) $('#casku' + nowsku).addClass('disabled');
+                            if (skuQty <= 49) $('#casku' + nowsku).removeClass('disabled');
+                            $.ajax({
+                                url: 'cart/alterQtty',
+                                type: 'POST',
+                                data: {
+                                    sku: nowsku,
+                                    qtty: skuQty,
+                                }
+                            })
+                                .done(function(data){
+                                    if(data.success){
+                                        cart_update_info();
+                                    }
+                            })
+
+                        } else {
+                            AddItemFailModal.open();
+                        }
                     }
                 });
 
@@ -741,6 +748,8 @@ function HideSeeMore(seemoreName) {
         }
         return true;
     }
+
+    // Shopping Cart end
 
     // Checkout Start
     $('#addAddress').on('click', function () {
