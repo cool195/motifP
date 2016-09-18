@@ -75,7 +75,7 @@
                                                     <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
                                                        data-link="/product/{{$spu}}" href="javascript:void(0)"
                                                        class="presale-text helve font-size-sm">LIMITED DEITION
-                                                        </a>
+                                                    </a>
                                                 </div>
                                             @endif
                                         </div>

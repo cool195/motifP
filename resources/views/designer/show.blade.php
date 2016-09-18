@@ -94,12 +94,6 @@
                                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{ $product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                  alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                            {{--售罄--}}
-                                            @if(!$product['spuInfos'][$spu]['spuBase']['isPutOn'] || $product['spuInfos'][$spu]['spuBase']['status_code'] != 100)
-                                            <div class="bg-soldout">
-                                                <span class="text helve font-size-sm">SOLD OUT</span>
-                                            </div>
-                                            @endif
                                         </a>
                                         @if(Session::has('user'))
                                             <span class="product-heart btn-heart">
@@ -110,11 +104,18 @@
                                         @endif
 
                                         @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
-                                            <!--预售标志-->
-                                            <div class="presale-sign">
-                                                <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
-                                                <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
-                                            </div>
+                                            @if(!isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) || $product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                                {{--售罄--}}
+                                                <div class="bg-soldout">
+                                                    <span class="text helve font-size-sm">SOLD OUT</span>
+                                                </div>
+                                                @else
+                                                 <!--预售标志-->
+                                                <div class="presale-sign">
+                                                    <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                                    <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                                </div>
+                                            @endif
                                         @endif
                                     </div>
                                     <div class="price-caption helveBold">
