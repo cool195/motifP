@@ -130,7 +130,7 @@
                             <div class="col-md-2">
                                 <div class="p-l-40x m-l-10x">
                                     @if(0 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
-                                        <a class="btn-block cartManage" href="javascript:;">Listing Ended</a>
+                                        Listing Ended
                                     @else
                                         <a class="btn-block cartManage" data-action="movetocart" data-sku="{{$showSku['sku']}}" href="javascript:;">Move to Bag</a>
                                     @endif
