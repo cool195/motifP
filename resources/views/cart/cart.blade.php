@@ -129,7 +129,12 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="p-l-40x m-l-10x">
-                                    <a class="btn-block cartManage" data-action="movetocart" data-sku="{{$showSku['sku']}}" href="javascript:;">Move to Bag</a><br/>
+                                    @if(0 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
+                                        <a class="btn-block cartManage" href="javascript:;">Listing Ended</a>
+                                    @else
+                                        <a class="btn-block cartManage" data-action="movetocart" data-sku="{{$showSku['sku']}}" href="javascript:;">Move to Bag</a>
+                                    @endif
+                                        <br/>
                                     <a class="btn-block" data-type="cart-remove" data-action="delsave" data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
                                 </div>
                             </div>

@@ -438,7 +438,7 @@ function HideSeeMore(seemoreName) {
             if ($('#p_a_w' + val.attr_type).data('sel') == 0) {
                 $('#p_a_w' + val.attr_type).focus();
                 $('#p_a_w' + val.attr_type).removeClass('off');
-                $("html,body").animate({scrollTop: $('#p_a_w' + val.attr_type).offset().top}, 200);
+                //$("html,body").animate({scrollTop: $('#p_a_w' + val.attr_type).offset().top}, 200);
                 status = false;
                 return false;
             }
