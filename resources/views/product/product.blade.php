@@ -225,7 +225,7 @@
 <div class="container m-t-30x">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link font-size-md active" href="#Descripyion" data-toggle="tab">Descripyion</a>
+            <a class="nav-link font-size-md active" href="#Description" data-toggle="tab">Description</a>
         </li>
         @if(isset($data['templates']))
             @foreach($data['templates'] as $template)
@@ -236,7 +236,7 @@
         @endif
     </ul>
     <div class="tab-content bg-white p-a-20x">
-        <div class="tab-pane text-primary active" id="Descripyion">
+        <div class="tab-pane text-primary active" id="Description">
             <p class="m-b-0">{!! str_replace("\n", "<br>",  $data['intro_short']) !!}</p>
         </div>
 
