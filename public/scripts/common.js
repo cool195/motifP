@@ -175,6 +175,15 @@ function HideSeeMore(seemoreName) {
     // 选择 商品属性
     var product_data = eval('(' + $('#jsonStr').val() + ')');
     var spuAttrs = typeof(product_data) != "undefined" ? product_data.spuAttrs : '';
+    if(spuAttrs.length == 1){
+        if(spuAttrs[0].skuAttrValues.length == 1){
+            console.log(spuAttrs[0].attr_type)
+            $('#p_a_w'+spuAttrs[0].attr_type).data('sel',1);
+            $('#productsku').val(product_data.main_sku)
+            $('#skutype'+spuAttrs[0].skuAttrValues[0].attr_value_id).addClass('active');
+        }
+    }
+
     var product_arrayTemp_click = [];//被选中的总数组
 
     //点击属性事件
