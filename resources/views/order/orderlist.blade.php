@@ -20,9 +20,9 @@
                             @foreach($data['list'] as $order)
                                 @foreach($order['subOrderList'] as $subOrder)
                                     <div class="box-shadow bg-white m-b-20x order-item">
-                                        <span class="horn @if(11 == $subOrder['status_code']) horn-red
-                                        @elseif(in_array($subOrder['status_code'], array(14, 24))) horn-orange
-                                        @elseif(18 == $subOrder['status_code']) horn-green
+                                        <span class="horn @if(in_array($subOrder['status_code'], array(11))) horn-red
+                                        @elseif(in_array($subOrder['status_code'], array(12, 14, 15, 16, 24))) horn-orange
+                                        @elseif(in_array($subOrder['status_code'], array(17, 18))) horn-green
                                         @elseif(in_array($subOrder['status_code'], array(19, 20))) horn-blue
                                         @elseif(25 == $subOrder['status_code']) horn-lightblue
                                         @elseif(in_array($subOrder['status_code'], array(21, 22, 23))) horn-gray
@@ -30,7 +30,7 @@
                                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
                                             <div>
                                                 <h5 class="sanBold font-size-md">{{$subOrder['status_info']}}
-                                                    : {{$subOrder['create_time']}}</h5>
+                                                    : {{ date("M d, Y" ,strtotime($subOrder['create_time'])) }}</h5>
                                                 <p class="m-b-0 p-t-5x">{{ $subOrder['status_explain'] }}</p>
                                             </div>
                                             <span>
@@ -160,8 +160,8 @@
 
     <div class="box-shadow bg-white m-b-20x order-item">
         <span class="horn @{{ if 11 == $value.status_code }} horn-red
-        @{{ else if $value.status_code == 14 || $value.status_code == 24  }} horn-orange
-        @{{ else if $value.status_code == 18 }} horn-green
+        @{{ else if $value.status_code == 12 || $value.status_code == 14 || $value.status_code == 15 || $value.status_code == 16 || $value.status_code == 24  }} horn-orange
+        @{{ else if $value.status_code == 17 || $value.status_code == 18 }} horn-green
         @{{ else if $value.status_code == 19 || $value.status_code == 20 }} horn-blue
         @{{ else if $value.status_code == 25 }} horn-lightblue
         @{{ else if $value.status_code == 21 || $value.status_code == 22 || $value.status_code == 23 }} horn-gray
