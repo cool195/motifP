@@ -97,7 +97,7 @@
                     @forelse ($address['data']['list'] as $value)
                         @if($value['isDefault'])
                             <span id="defaultAddr" data-city="{{$value['detail_address1']}}"
-                                  data-aid="{{$value['receiving_id']}}">{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}</span>
+                                  data-aid="{{$value['receiving_id']}}">{{$value['name']}} {{$value['detail_address1']}} {{$value['city']}} {{$value['state']}} {{$value['country']}} {{$value['zip']}}</span>
                         @endif
                         @break($value['isDefault'])
                     @empty
@@ -136,29 +136,12 @@
 
                                 <input type="hidden" name="email" value="{{Session::get('user.login_email')}}">
                                 <div class="p-l-20x m-b-20x">
-                                    <select name="country" class="form-control contrlo-lg select-country">
-                                        @foreach($Address->getCountry() as $value)
-                                            <option value="{{$value['country_name_en']}}"
-                                                    data-type="{{$value['child_type']}}"
-                                                    data-id="{{$value['country_id']}}">{{$value['country_name_en']}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="p-l-20x m-b-20x">
                                     <input type="text" name="name"
                                            class="form-control contrlo-lg text-primary address-name"
                                            placeholder="Full name">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your name !</span>
-                                    </div>
-                                </div>
-                                <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="city"
-                                           class="form-control contrlo-lg text-primary address-city" placeholder="City">
-                                    <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
-                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                        <span class="font-size-base">Please enter your city !</span>
                                     </div>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
@@ -169,14 +152,6 @@
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your Phone !</span>
                                     </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5">
-                                <div class="p-l-20x m-b-20x state-info">
-                                    <input type="text" name="state" class="form-control contrlo-lg text-primary"
-                                           placeholder="State">
                                 </div>
                                 <div class="p-l-20x m-b-20x">
                                     <input type="text" name="addr1"
@@ -193,6 +168,31 @@
                                 </div>
 
 
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+
+                                <div class="p-l-20x m-b-20x">
+                                    <input type="text" name="city"
+                                           class="form-control contrlo-lg text-primary address-city" placeholder="City">
+                                    <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                        <span class="font-size-base">Please enter your city !</span>
+                                    </div>
+                                </div>
+                                <div class="p-l-20x m-b-20x">
+                                    <select name="country" class="form-control contrlo-lg select-country">
+                                        @foreach($Address->getCountry() as $value)
+                                            <option value="{{$value['country_name_en']}}"
+                                                    data-type="{{$value['child_type']}}"
+                                                    data-id="{{$value['country_id']}}">{{$value['country_name_en']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="p-l-20x m-b-20x state-info">
+                                    <input type="text" name="state" class="form-control contrlo-lg text-primary"
+                                           placeholder="State">
+                                </div>
                                 <div class="p-l-20x m-b-20x">
                                     <input type="text" name="zip" id="zip"
                                            class="form-control contrlo-lg text-primary address-zipcode"
@@ -202,6 +202,7 @@
                                         <span class="font-size-base">Please enter your zip code !</span>
                                     </div>
                                 </div>
+
                                 <div>
                                     <input type="hidden" name="isd"
                                            value="@if(empty($address['data']['list'])){{'1'}}@else{{'0'}}@endif">
@@ -369,13 +370,13 @@
     <div class="col-md-6">
         <div class="p-a-10x">
             <div class="address-item p-x-20x p-y-15x @{{ if $value.isDefault == 1 }} active @{{ /if }}"
-                 data-info="@{{ $value.country }} @{{ $value.city }} @{{ $value.detail_address1 }} @{{ $value.zip }} @{{ $value.name }}"
+                 data-info="@{{ $value.name }} @{{ $value.detail_address1 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }} @{{ $value.zip }}"
                  data-city="@{{ $value.detail_address1 }}"
                  data-aid="@{{ $value.receiving_id }}">
                 <div class="address-info">
                     @{{ $value.name }}<br>
                     @{{ $value.zip }}<br>
-                    @{{ $value.city }}<br>
+                    @{{ $value.city }}, @{{ $value.state }}<br>
                     @{{ $value.country }}
                 </div>
                 <div class="bg-address"></div>
