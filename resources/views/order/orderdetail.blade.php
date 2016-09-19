@@ -38,7 +38,7 @@
                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
                             <div>
                                 <h5 class="sanBold font-size-md">{{ $data['status_info'] }}
-                                    : {{ $data['create_time'] }}</h5>
+                                    : {{ date("M d, Y" ,strtotime($data['create_time'])) }}</h5>
                             </div>
                             <!-- 被取消的订单 -->
                             @if(in_array($data['status_code'], array(21, 22, 23)))
