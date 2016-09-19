@@ -37,11 +37,13 @@
                         <div class="swiper-container">
                             <div class="productImg-list p-t-20x swiper-wrapper">
                                 @foreach($designer['products']  as $k => $product)
-                                <div class="productImg-item swiper-slide p-r-10x">
+                                <div class="productImg-item swiper-slide m-r-10x">
                                     <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                        data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                        data-link="/product/{{$product['spu']}}" href="javascript:void(0)">
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
+                                        {{--售完--}}
+                                        <div class="bg-gray"></div>
                                     </a>
                                 </div>
                                 @endforeach
@@ -140,12 +142,14 @@
                         <div class="swiper-container">
                             <div class="productImg-list p-t-20x swiper-wrapper">
                                 @foreach($designer['products'] as $k => $product)
-                                <div class="productImg-item swiper-slide p-r-10x">
+                                <div class="productImg-item swiper-slide m-r-10x">
                                     <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                        data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                        data-link="/product/{{$product['spu']}}" href="javascript:void(0)">
                                         <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                     </a>
+                                    {{--售完--}}
+                                    <div class="bg-gray"></div>
                                 </div>
                                 @endforeach
                             </div>
@@ -207,7 +211,7 @@
                     <div class="swiper-container">
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @{{ each value.products }}
-                                <div class="productImg-item swiper-slide p-r-10x">
+                                <div class="productImg-item swiper-slide m-r-10x">
                                     <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":@{{ value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
                                        data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":@{{ value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
                                        data-link="/product/@{{$value.spu}}" href="javascript:void(0)">
@@ -300,7 +304,7 @@
                     <div class="swiper-container">
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @{{ each value.products }}
-                                <div class="productImg-item swiper-slide p-r-10x">
+                                <div class="productImg-item swiper-slide m-r-10x">
                                     <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":@{{ value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
                                        data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":@{{ value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
                                        data-link="/product/@{{$value.spu}}" href="javascript:void(0)">
@@ -377,7 +381,7 @@
                     <div class="swiper-container">
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @{{ each value.products }}
-                            <div class="productImg-item swiper-slide p-r-10x">
+                            <div class="productImg-item swiper-slide m-r-10x">
                                 <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":@{{ value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
                                    data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":@{{ value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
                                    data-link="/product/@{{$value.spu}}" href="javascript:void(0)">
@@ -424,7 +428,7 @@
                     <div class="swiper-container">
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @{{ each value.products }}
-                            <div class="productImg-item swiper-slide p-r-10x">
+                            <div class="productImg-item swiper-slide m-r-10x">
                                 <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":@{{ value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
                                    data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":@{{ value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
                                    data-link="/product/@{{$value.spu}}" href="javascript:void(0)">
