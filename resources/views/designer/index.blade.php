@@ -16,7 +16,7 @@
                                     <div class="player-item" data-playid="{{$designer['listVideoId']}}">
                                         <div id="{{$designer['listVideoId']}}" class="ytplayer" data-playid="{{$designer['listVideoId']}}"></div>
                                         <div class="bg-player">
-                                            <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['mainImg']}}" alt="">
+                                            <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" alt="">
                                             <div class="btn-beginPlayer designer-beginPlayer">
                                                 <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
                                                      srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
@@ -43,7 +43,9 @@
                                        data-link="/product/{{$product['spu']}}" href="javascript:void(0)">
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                         {{--售完--}}
-                                        <div class="bg-soldout"></div>
+                                        @if($product['sale_type'] ==1 && $product['stockStatus'] == 0)
+                                            <div class="bg-soldout"></div>
+                                        @endif
                                     </a>
                                 </div>
                                 @endforeach
@@ -122,7 +124,7 @@
                                     <div class="player-item" data-playid="{{$designer['listVideoId']}}">
                                         <div id="{{$designer['listVideoId']}}" class="ytplayer" data-playid="{{$designer['listVideoId']}}"></div>
                                         <div class="bg-player">
-                                            <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['mainImg']}}" alt="">
+                                            <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" alt="">
                                             <div class="btn-beginPlayer designer-beginPlayer">
                                                 <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
                                                      srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
@@ -149,7 +151,9 @@
                                         <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                     </a>
                                     {{--售完--}}
-                                    <div class="bg-soldout"></div>
+                                    @if($product['sale_type'] ==1 && $product['stockStatus'] == 0)
+                                        <div class="bg-soldout"></div>
+                                    @endif
                                 </div>
                                 @endforeach
                             </div>
@@ -218,6 +222,9 @@
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                     </a>
                                 </div>
+                                @{{ if $value.sale_type == 1 && $value.stockStatus == 0}}
+                                    <div class="bg-soldout"></div>
+                                @{{ /if }}
                             @{{ /each }}
                         </div>
                         <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
@@ -311,6 +318,9 @@
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                     </a>
                                 </div>
+                                @{{ if $value.sale_type == 1 && $value.stockStatus == 0}}
+                                    <div class="bg-soldout"></div>
+                                @{{ /if }}
                             @{{ /each }}
                         </div>
                         <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
@@ -388,6 +398,9 @@
                                     <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                 </a>
                             </div>
+                                @{{ if $value.sale_type == 1 && $value.stockStatus == 0}}
+                                    <div class="bg-soldout"></div>
+                                @{{ /if }}
                             @{{ /each }}
                         </div>
                         <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
@@ -435,6 +448,9 @@
                                     <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                 </a>
                             </div>
+                                @{{ if $value.sale_type == 1 && $value.stockStatus == 0}}
+                                <div class="bg-soldout"></div>
+                                @{{ /if }}
                             @{{ /each }}
                         </div>
                         <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
