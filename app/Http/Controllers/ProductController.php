@@ -80,51 +80,20 @@ class ProductController extends BaseController
     {
         foreach ($result['spuAttrs'] as $k1 => $spuAttrs) {
             foreach ($spuAttrs['skuAttrValues'] as $k2 => $skuAttrValues) {
+                $tempSkus = array();
                 foreach ($skuAttrValues['skus'] as $k3 => $sku) {
                     foreach ($result['skuExps'] as $skuExp) {
                         if ($skuExp['sku'] == $sku) {
-                            if ($skuExp['stock_qtty'] < 1) {
-                                array_splice($result['spuAttrs'][$k1]['skuAttrValues'][$k2]['skus'],$k3,1);
+                            if ($skuExp['stock_qtty'] > 1) {
+                                $tempSkus[] = $sku;
                             }
-                            break;
                         }
                     }
                 }
+                $result['spuAttrs'][$k1]['skuAttrValues'][$k2]['skus'] = $tempSkus;
             }
         }
         return $result['spuAttrs'];
-    }
-
-    private function getSpuAttrsStockStatus(Array $spuAttrs, Array $skuExps)
-    {
-        $spuAttrsCopy = array();
-        foreach ($spuAttrs as $spuAttr) {
-            $skuAttrsValues = array();
-            foreach ($spuAttr['skuAttrValues'] as $skuAttrValue) {
-                $skuAttrValue['stock'] = $this->getSkuStockStatus($skuAttrValue['skus'], $skuExps);
-                $skuAttrsValues[] = $skuAttrValue;
-            }
-            $spuAttr['skuAttrValues'] = $skuAttrsValues;
-            $spuAttrsCopy[] = $spuAttr;
-        }
-        return $spuAttrsCopy;
-    }
-
-    private function getSkuStockStatus($skus, $skuExps)
-    {
-        $flag = false;
-        foreach ($skus as $key => $sku) {
-            foreach ($skuExps as $k => $skuExp) {
-                echo $key . ':::' . $k . ':::' . $sku . ':::' . $skuExp['sku'] . ':::' . $skuExp['stock_qtty'] . '<br>';
-                if ($sku == $skuExp['sku']) {
-                    if ($skuExp['stock_qtty'] > 0) {
-                        $flag = true;
-                        break;
-                    }
-                }
-            }
-        }
-        return $flag;
     }
 
 }
