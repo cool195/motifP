@@ -43,7 +43,9 @@
                                        data-link="/product/{{$product['spu']}}" href="javascript:void(0)">
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                         {{--售完--}}
-                                        <div class="bg-soldout"></div>
+                                        @if($product['sale_type'] ==1 && $product['stockStatus'] == 0)
+                                            <div class="bg-soldout"></div>
+                                        @endif
                                     </a>
                                 </div>
                                 @endforeach
@@ -149,7 +151,9 @@
                                         <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                     </a>
                                     {{--售完--}}
-                                    <div class="bg-soldout"></div>
+                                    @if($product['sale_type'] ==1 && $product['stockStatus'] == 0)
+                                        <div class="bg-soldout"></div>
+                                    @endif
                                 </div>
                                 @endforeach
                             </div>
