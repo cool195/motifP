@@ -1,7 +1,7 @@
 <!-- 头部 -->
 @include('header')
 
-        <!-- 内容 -->
+<!-- 内容 -->
 <section class="m-t-40x">
     <div class="container" id="checkoutView" data-status="true">
         <h4 class="helveBold text-main p-l-10x">Checkout</h4>
@@ -78,9 +78,10 @@
                     </div>
                 @endforeach
             </div>
-            @if(1 == $accountList['showSkus'][0]['sale_type'] && isset($accountList['showSkus'][0]['skuPromotion']['ship_desc']))
-                <!--预售-->
-                <div class="presale-checkout text-white font-size-md p-a-10x bg-red sanBold">PREORDER: Expected to ship on {{$accountList['showSkus'][0]['skuPromotion']['ship_desc']}}</div>
+        @if(1 == $accountList['showSkus'][0]['sale_type'] && isset($accountList['showSkus'][0]['skuPromotion']['ship_desc']))
+            <!--预售-->
+                <div class="presale-checkout text-white font-size-md p-a-10x bg-red sanBold">PREORDER: Expected to ship
+                    on {{$accountList['showSkus'][0]['skuPromotion']['ship_desc']}}</div>
             @endif
         </div>
 
@@ -89,12 +90,14 @@
         @inject('Address', 'App\Http\Controllers\AddressController')
         {{--*/ $address = $Address->index() /*--}}
         <div class="box-shadow bg-white m-t-20x">
-            <div class="font-size-md p-x-20x p-y-15x btn-showHide @if(empty($address['data']['list'])){{'active'}}@endif" id="addrShowHide">
+            <div class="font-size-md p-x-20x p-y-15x btn-showHide @if(empty($address['data']['list'])){{'active'}}@endif"
+                 id="addrShowHide">
                 <span class="sanBold">Shipping to</span>
                 <span class="pull-right showHide-simpleInfo">
                     @forelse ($address['data']['list'] as $value)
                         @if($value['isDefault'])
-                            <span id="defaultAddr" data-city="{{$value['detail_address1']}}" data-aid="{{$value['receiving_id']}}">{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}</span>
+                            <span id="defaultAddr" data-city="{{$value['detail_address1']}}"
+                                  data-aid="{{$value['receiving_id']}}">{{$value['country']}} {{$value['city']}} {{$value['detail_address1']}} {{$value['zip']}} {{$value['name']}}</span>
                         @endif
                         @break($value['isDefault'])
                     @empty
@@ -110,7 +113,8 @@
                     <div class="flex flex-alignCenter flex-fullJustified">
                         <span class="font-size-md">Select Shipping Address</span>
                         <span class="font-size-md pull-right">
-                            <div class="btn btn-secondary btn-md btn-addNewAddress" href="#"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address</div>
+                            <div class="btn btn-secondary btn-md btn-addNewAddress" href="#"><i
+                                        class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address</div>
                         </span>
                     </div>
                     <div class="row p-x-10x p-t-20x address-list"></div>
@@ -134,26 +138,33 @@
                                 <div class="p-l-20x m-b-20x">
                                     <select name="country" class="form-control contrlo-lg select-country">
                                         @foreach($Address->getCountry() as $value)
-                                            <option value="{{$value['country_name_en']}}" data-type="{{$value['child_type']}}" data-id="{{$value['country_id']}}">{{$value['country_name_en']}}</option>
+                                            <option value="{{$value['country_name_en']}}"
+                                                    data-type="{{$value['child_type']}}"
+                                                    data-id="{{$value['country_id']}}">{{$value['country_name_en']}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="name" class="form-control contrlo-lg text-primary address-name" placeholder="Full name">
+                                    <input type="text" name="name"
+                                           class="form-control contrlo-lg text-primary address-name"
+                                           placeholder="Full name">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your name !</span>
                                     </div>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="city" class="form-control contrlo-lg text-primary address-city" placeholder="City">
+                                    <input type="text" name="city"
+                                           class="form-control contrlo-lg text-primary address-city" placeholder="City">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your city !</span>
                                     </div>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="tel" class="form-control contrlo-lg text-primary address-phone" placeholder="Phone">
+                                    <input type="text" name="tel"
+                                           class="form-control contrlo-lg text-primary address-phone"
+                                           placeholder="Phone">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your Phone !</span>
@@ -164,37 +175,46 @@
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
                                 <div class="p-l-20x m-b-20x state-info">
-                                    <input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State">
+                                    <input type="text" name="state" class="form-control contrlo-lg text-primary"
+                                           placeholder="State">
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="addr1" class="form-control contrlo-lg text-primary address-street" placeholder="Street 1">
+                                    <input type="text" name="addr1"
+                                           class="form-control contrlo-lg text-primary address-street"
+                                           placeholder="Street 1">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your street !</span>
                                     </div>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="addr2" class="form-control contrlo-lg text-primary" placeholder="Street 2 (optional)">
+                                    <input type="text" name="addr2" class="form-control contrlo-lg text-primary"
+                                           placeholder="Street 2 (optional)">
                                 </div>
 
 
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="zip" id="zip" class="form-control contrlo-lg text-primary address-zipcode" placeholder="Zip Code">
+                                    <input type="text" name="zip" id="zip"
+                                           class="form-control contrlo-lg text-primary address-zipcode"
+                                           placeholder="Zip Code">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base">Please enter your zip code !</span>
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="hidden" name="isd" value="@if(empty($address['data']['list'])){{'1'}}@else{{'0'}}@endif">
+                                    <input type="hidden" name="isd"
+                                           value="@if(empty($address['data']['list'])){{'1'}}@else{{'0'}}@endif">
                                 </div>
                             </div>
                             <div class="col-md-1"></div>
                         </form>
                     </div>
                     <div class="text-right">
-                        <a href="javascript:;" id="addAddress-cancel" class="btn btn-secondary btn-md m-r-10x">Cancel</a>
-                        <a href="javascript:;" id="addAddress" class="btn btn-primary btn-md address-save">Save</a></div>
+                        <a href="javascript:;" id="addAddress-cancel"
+                           class="btn btn-secondary btn-md m-r-10x">Cancel</a>
+                        <a href="javascript:;" id="addAddress" class="btn btn-primary btn-md address-save">Save</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -242,7 +262,8 @@
                         <span class="font-size-base">Invalid Code !</span>
                     </div>
                     <div>
-                        <input type="text" name="ccps" class="form-control contrlo-lg text-primary input-promotion disabled">
+                        <input type="text" name="ccps"
+                               class="form-control contrlo-lg text-primary input-promotion disabled">
                     </div>
                     <div class="p-l-20x">
                         <a href="javascript:;" id="pcsubmit" class="btn btn-primary btn-md">Continue</a>
@@ -258,7 +279,7 @@
 
         <!-- Special Request (optional) -->
         <div class="box-shadow bg-white m-t-20x">
-            <div class="p-x-20x p-y-15x font-size-md btn-showHide"  id="crShowHide">
+            <div class="p-x-20x p-y-15x font-size-md btn-showHide" id="crShowHide">
                 <span class="sanBold">Special Request (optional)</span>
                 <span class="pull-right showHide-simpleInfo">
                     <span id="srmessage"></span>
@@ -269,55 +290,61 @@
                 <div class="p-x-20x p-b-20x">
                     <textarea name="cremark" class="form-control" cols="30" rows="4"></textarea>
                 </div>
-                <div class="text-right"><a href="javascript:;" id="crsubmit" class="btn btn-primary btn-md">Save</a></div>
+                <div class="text-right"><a href="javascript:;" id="crsubmit" class="btn btn-primary btn-md">Save</a>
+                </div>
             </div>
         </div>
 
         <!-- 结算总价 -->
         <div class="box-shadow bg-white m-t-20x">
             <div class="p-a-20x font-size-md">
+                {{--数量--}}
                 <div class="text-right">
                     <span>Items({{$accountList['total_sku_qtty']}}):</span>
                     <span class="sanBold cart-price">${{number_format(($accountList['total_amount'] / 100), 2)}}</span>
                 </div>
+                {{--增值服务--}}
                 @if($accountList['vas_amount'] > 0)
                     <div class="text-right @if($accountList['vas_amount'] > 0) @endif">
-                        <span>Additional Services:</span>
+                        <span>Additional services:</span>
                         <span class="sanBold cart-price">${{ number_format(($accountList['vas_amount'] / 100), 2) }}</span>
                     </div>
                 @endif
-                <div class="text-right">
-                    <span>Shipping and handling:</span>
-                    <span class="sanBold cart-price">@if(0 == $accountList['freight_amount']) Free @else${{ number_format(($accountList['freight_amount'] / 100), 2)}} @endif</span>
+                {{--优惠--}}
+                <div class="text-right promotion-code cps_amountShow @if($accountList['cps_amount'] <= 0) hidden @endif">
+                    <span>Promotion code:</span>
+                    <span class="sanBold cart-price cps_amount">-${{number_format(($accountList['cps_amount'] / 100), 2)}}</span>
                 </div>
+                {{--折扣--}}
                 @if($accountList['promot_discount_amount'] > 0)
                     <div class="text-right">
                         <span>Discount</span>
                         <span class="sanBold cart-price">-${{number_format(($accountList['promot_discount_amount'] / 100), 2)}}</span>
                     </div>
                 @endif
-                {{--promotion-code 添加 hidden样式--}}
-                <div class="text-right promotion-code @if($accountList['cps_amount'] <= 0) hidden @endif">
-                    <span>Promotion code:</span>
-                    <span class="sanBold cart-price code-price" data-price="0">-${{number_format(($accountList['cps_amount'] / 100), 2)}}</span>
-                </div>
                 {{--收税提示--}}
-                @if($accountList['tax_amount'])
-                    <div class="text-right tax_amountShow @if($accountList['tax_amount'] <= 0) hidden @endif">
-                        <span>Sale Tax:</span>
-                        <span class="sanBold cart-price code-price" data-price="0">+${{number_format(($accountList['tax_amount'] / 100), 2)}}</span>
-                    </div>
-                @endif
+                <div class="text-right promotion-code tax_amountShow @if($accountList['tax_amount'] <= 0) hidden @endif">
+                    <span>Sales tax:</span>
+                    <span class="sanBold cart-price tax_amount">${{number_format(($accountList['tax_amount'] / 100), 2)}}</span>
+                </div>
+                {{--地址服务--}}
+                <div class="text-right">
+                    <span>Shipping and handling:</span>
+                    <span class="sanBold cart-price freight_amount">@if(0 == $accountList['freight_amount']) Free @else${{ number_format(($accountList['freight_amount'] / 100), 2)}} @endif</span>
+                </div>
+                {{--结算价--}}
                 <div class="text-right ">
                     <span>Order Total:</span>
-                    <span class="sanBold cart-price totalPrice" data-price="{{$accountList['pay_amount']}}">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
+                    <span class="sanBold cart-price pay_amount">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
                 </div>
             </div>
         </div>
         <!-- 提交按钮 -->
         <div class="p-y-40x text-right">
-            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Oceanpay">Pay with Credit Card</a>
-            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay with PayPal</a>
+            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Oceanpay">Pay
+                with Credit Card</a>
+            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay
+                with PayPal</a>
         </div>
     </div>
 </section>

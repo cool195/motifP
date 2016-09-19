@@ -143,7 +143,7 @@
                                 <span class="sanBold cart-price">${{number_format(($data['total_amount'] / 100), 2)}}</span>
                             </div>
                             {{--增值服务--}}
-                            @if($accountList['vas_amount'] > 0)
+                            @if($data['vas_amount'] > 0)
                                 <div class="text-right @if($data['vas_amount'] > 0) @endif">
                                     <span>Additional services:</span>
                                     <span class="sanBold cart-price">${{ number_format(($data['vas_amount'] / 100), 2) }}</span>
@@ -155,7 +155,7 @@
                                 <span class="sanBold cart-price cps_amount">-${{number_format(($data['cps_amount'] / 100), 2)}}</span>
                             </div>
                             {{--折扣--}}
-                            @if($accountList['promot_discount_amount'] > 0)
+                            @if($data['promot_discount_amount'] > 0)
                                 <div class="text-right">
                                     <span>Discount</span>
                                     <span class="sanBold cart-price">-${{number_format(($data['promot_discount_amount'] / 100), 2)}}</span>
@@ -164,7 +164,7 @@
                             {{--收税提示--}}
                             <div class="text-right promotion-code tax_amountShow @if($data['tax_amount'] <= 0) hidden @endif">
                                 <span>Sales tax:</span>
-                                <span class="sanBold cart-price tax_amount">+${{number_format(($data['tax_amount'] / 100), 2)}}</span>
+                                <span class="sanBold cart-price tax_amount">${{number_format(($data['tax_amount'] / 100), 2)}}</span>
                             </div>
                             {{--地址服务--}}
                             <div class="text-right">
