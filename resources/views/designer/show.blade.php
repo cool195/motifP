@@ -23,12 +23,10 @@
                                 </div>
                             </div>
                         @else
-                            <a href="javascript:void(0)">
-                                <img class="img-fluid product-bigImg img-lazy"
-                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}"
-                                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png"
-                                     alt="商品的名称">
-                            </a>
+                            <img class="img-fluid product-bigImg img-lazy"
+                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}"
+                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png"
+                                 alt="商品的名称">
                         @endif
                     </div>
                 </div>
