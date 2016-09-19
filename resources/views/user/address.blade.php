@@ -113,7 +113,7 @@
                                                     {{$value['name']}}<br>
                                                     {{$value['city']}}<br>
                                                     {{$value['zip']}}<br>
-                                                    {{$value['telephone']}}
+                                                    {{$value['country']}}
                                                 </div>
                                                 <div class="bg-address"></div>
                                                 @if($value['isDefault'])
