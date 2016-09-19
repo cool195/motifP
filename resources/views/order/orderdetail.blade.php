@@ -34,12 +34,21 @@
                         </div>
                     </div>
 
-                    <div class="box-shadow bg-white m-b-20x">
+                    <div class="box-shadow bg-white m-b-20x order-item">
+                        <span class="horn @if(in_array($data['status_code'], array(11))) horn-red
+                                            @elseif(in_array($data['status_code'], array(12, 14, 15, 16, 24))) horn-orange
+                                            @elseif(in_array($data['status_code'], array(17, 18))) horn-green
+                                            @elseif(in_array($data['status_code'], array(19, 20))) horn-blue
+                                            @elseif(25 == $data['status_code']) horn-lightblue
+                                            @elseif(in_array($data['status_code'], array(21, 22, 23))) horn-gray
+                                            @endif">
+                        </span>
                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
                             <div>
-                                <h5 class="sanBold font-size-md">{{ $data['status_info'] }}
-                                    : {{ date("M d, Y" ,strtotime($data['create_time'])) }}</h5>
+                                <h5 class="sanBold font-size-md">{{ $data['status_info'] }}: {{ date("M d, Y" ,strtotime($data['create_time'])) }}</h5>
+                                <p class="m-b-0 p-t-5x">{{ $data['status_explain'] }}</p>
                             </div>
+
                             <!-- 被取消的订单 -->
                             @if(in_array($data['status_code'], array(21, 22, 23)))
                                 <span>

@@ -9,18 +9,30 @@
             @foreach($topic['infos'] as $k => $value)
                 @if($value['type'] == 'title')
                 <!--标题-->
-                <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                    <div class="p-x-20x p-t-20x m-b-20x">
-                        <h2 class="helveBold font-size-lxx">{{ $value['value'] }}</h2>
-                    </div>
-                </a>
+                    @if(!isset($value['skipId']))
+                        <div class="p-x-20x p-t-20x m-b-20x">
+                            <h2 class="helveBold font-size-lxx">{{ $value['value'] }}</h2>
+                        </div>
+                    @else
+                        <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                            <div class="p-x-20x p-t-20x m-b-20x">
+                                <h2 class="helveBold font-size-lxx">{{ $value['value'] }}</h2>
+                            </div>
+                        </a>
+                    @endif
                 @elseif($value['type'] == 'context')
                 <!--描述-->
-                <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                    <div class="p-x-20x m-y-20x">
-                        <p class="m-b-0 font-size-base">{{ $value['value'] }}</p>
-                    </div>
-                </a>
+                    @if(!isset($value['skipId']))
+                        <div class="p-x-20x m-y-20x">
+                            <p class="m-b-0 font-size-base">{{ $value['value'] }}</p>
+                        </div>
+                    @else
+                        <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                            <div class="p-x-20x m-y-20x">
+                                <p class="m-b-0 font-size-base">{{ $value['value'] }}</p>
+                            </div>
+                        </a>
+                    @endif
                 @elseif($value['type']=='multilink')
                 <!-- 锚点图 -->
                 <div class="m-t-20x">
