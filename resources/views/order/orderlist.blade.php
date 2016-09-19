@@ -103,7 +103,7 @@
                                                                         </div>
                                                                         <div class="col-md-2">
                                                                             <div class="text-center">
-                                                                                +${{ number_format(($value['vas_price'] / 100 * $value['vas_types']), 2) }}</div>
+                                                                                ${{ number_format($value['vas_price'] / 100, 2) }}</div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -119,7 +119,7 @@
                                                 Order # {{$subOrder['order_no']}}
                                             </div>
                                             <span>
-                                                <span class="p-r-30x">Order total</span>
+                                                <span class="p-r-30x">Order Total</span>
                                                 <span>${{ number_format(($subOrder['pay_amount'] / 100), 2) }}</span>
                                             </span>
                                         </div>

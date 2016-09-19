@@ -30,7 +30,8 @@ class CartController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('useraddr', $params);
-        $logisticsList = $this->getLogisticsList();
+        $_accountList = $this->getCartAccountList($request,-1,"","",$result['data']['receiving_id']);
+        $logisticsList = $this->getLogisticsList($result['data']['country_name_sn'],$_accountList['data']['total_amount']+$_accountList['data']['vas_amount']);
         $accountList = $this->getCartAccountList($request,$logisticsList['data']['list'][0]['logistics_type'],"","",$result['data']['receiving_id']);
         return view('cart.checkout', ['accountList' => $accountList['data'], 'logisticsList' => $logisticsList['data']]);
     }
@@ -92,12 +93,16 @@ class CartController extends BaseController
         return $result;
     }
 
-    private function getLogisticsList()
+    private function getLogisticsList($country=0,$price=0)
     {
         $params = array(
             'cmd' => 'logis',
             'token' => Session::get('user.token')
         );
+        if($price != 0){
+            $params['amount'] = $price;
+            $params['country'] = $country;
+        }
         $result = $this->request('general', $params);
         return $result;
     }
