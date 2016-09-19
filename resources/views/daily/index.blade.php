@@ -4,7 +4,19 @@
 <section>
     <div class="bannerSwiper-container">
         <div class="swiper-wrapper">
-            <a href="/shopping/0" class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></a>
+            <a href="/shopping/0" class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)">
+                <div class="banner-content">
+                    <div class="text-center text-main helve p-b-10x">
+                        STYLE ACCESSORY CREATIONS BY
+                    </div>
+                    <div class="text-center text-main helveBold p-b-20x">
+                        DESIGNERS <b class="text-link">&</b> BLOGGERS
+                    </div>
+                    <div class="text-center">
+                        <span href="#" class="btn btn-bannerGo active">GO</span>
+                    </div>
+                </div>
+            </a>
 
             {{--<div class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>--}}
             {{--<div class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>--}}

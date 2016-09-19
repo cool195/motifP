@@ -71,7 +71,7 @@
                         </div>
                         <div class="product-price">
                             @if(isset($data['skuPrice']['skuPromotion']))
-                                <span class="sanBold p-r-10x text-primary newPrice">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
+                                <span class="sanBold p-r-10x text-primary newPrice text-red">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
                                 <span class="sanBold font-size-lxx text-common text-throughLine">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
                             @else
                                 <span class="sanBold p-r-10x text-primary newPrice">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
@@ -255,6 +255,7 @@
 </div>
 
 <div class="container m-t-30x m-b-40x">
+    @if(isset($recommended['list']) && !empty($recommended['list']))
     <h4 class="helveBold text-main p-l-10x">You May Also Like</h4>
     <div class="row p-t-20x" data-impr="{{$recommended['impr']}}">
         @foreach($recommended['list'] as $list)
@@ -297,7 +298,9 @@
             </div>
         @endforeach
     </div>
+    @endif
 </div>
+
 
 <!-- 购买成功提示 -->
 <div class="remodal modal-content remodal-xs" data-remodal-id="additem-modal" id="addItem-modalDialog" data-spu="">
