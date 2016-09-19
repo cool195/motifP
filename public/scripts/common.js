@@ -2603,7 +2603,7 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
                 if (data.success) {
-                    //window.location.href = data.redirectUrl;
+                    window.location.href = data.redirectUrl;
                 } else {
 
                 }
