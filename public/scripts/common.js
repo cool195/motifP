@@ -628,6 +628,10 @@ function HideSeeMore(seemoreName) {
         var AddItemFailModal = $('[data-remodal-id=additemfail-modal]').remodal(Options);
         // Address List 删除地址 提示框
         var DelAddressModal = $('[data-remodal-id=addressmodal-modal]').remodal(Options);
+
+        // 个人中心 修改密码成功 提示框
+        var ChangePwdModal = $('[data-remodal-id=changepwd-modal]').remodal(Options);
+
     } catch (e) {
     }
 
@@ -1741,12 +1745,18 @@ function HideSeeMore(seemoreName) {
                 data: $('#changepassword').serialize()
             })
             .done(function (data) {
-                alert(data.prompt_msg);
+                $('.changepwd-info').html(data.prompt_msg);
+                var $changePwdBtn = $('#changePwdBtn');
                 if (data.success) {
-                    window.location.href = data.redirectUrl;
+                    $changePwdBtn.attr('href', data.redirectUrl);
+                    $changePwdBtn.html('OK');
+                    ChangePwdModal.open();
                 } else {
-                    //$('.warning-info').removeClass('off');
-                    //$('.warning-info').children('span').html(data.prompt_msg);
+                    $changePwdBtn.html('Close');
+                    ChangePwdModal.open();
+                    $changePwdBtn.click(function () {
+                        ChangePwdModal.close();
+                    });
                 }
             })
             .always(function () {
