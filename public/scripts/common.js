@@ -175,7 +175,8 @@ function HideSeeMore(seemoreName) {
     // 选择 商品属性
     var product_data = eval('(' + $('#jsonStr').val() + ')');
     var spuAttrs = typeof(product_data) != "undefined" ? product_data.spuAttrs : '';
-    if(spuAttrs.length == 1){
+
+    if(spuAttrs != undefined && spuAttrs.length == 1){
         if(spuAttrs[0].skuAttrValues.length == 1){
             console.log(spuAttrs[0].attr_type)
             $('#p_a_w'+spuAttrs[0].attr_type).data('sel',1);
@@ -442,6 +443,9 @@ function HideSeeMore(seemoreName) {
 
     // 属性验证
     function pSelAttr() {
+        if(spuAttrs == undefined){
+            return true
+        }
         var status = true;
         $.each(product_data.spuAttrs, function (index, val) {
             if ($('#p_a_w' + val.attr_type).data('sel') == 0) {
