@@ -119,7 +119,7 @@
                                                 Order # {{$subOrder['order_no']}}
                                             </div>
                                             <span>
-                                                <span class="p-r-30x">Order total</span>
+                                                <span class="p-r-30x">Order Total</span>
                                                 <span>${{ number_format(($subOrder['pay_amount'] / 100), 2) }}</span>
                                             </span>
                                         </div>
