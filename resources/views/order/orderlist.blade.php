@@ -100,11 +100,11 @@
                                                                         </div>
                                                                         <div class="col-md-2">
                                                                             <div class="text-center">
-                                                                                X{{ $value['vas_type'] }}</div>
+                                                                                X{{ $lineOrder['sale_qtty'] }}</div>
                                                                         </div>
                                                                         <div class="col-md-2">
                                                                             <div class="text-center">
-                                                                                ${{ number_format($value['vas_price'] / 100, 2) }}</div>
+                                                                                ${{ number_format($value['vas_price'] / 100 * $lineOrder['sale_qtty'], 2) }}</div>
                                                                         </div>
                                                                     </div>
                                                                 </div>

@@ -80,12 +80,6 @@
                                                             {{$attr['attr_type_value'] }}:{{$attr['attr_value']}}<br>
                                                         @endforeach
                                                     @endif
-                                                    @if(isset($lineOrder['vas_info']) && !empty($lineOrder['vas_info']))
-                                                        @foreach($lineOrder['vas_info'] as $info)
-                                                            {{$info['vas_name']}}: {{$info['user_remark']}}
-                                                            +${{number_format(($info['vas_price'] / 100), 2)}}
-                                                        @endforeach
-                                                    @endif
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="text-center">
@@ -99,6 +93,37 @@
                                                         ${{number_format(($lineOrder['total_amount'] / 100), 2)}}</div>
                                                 </div>
                                             </div>
+                                            @if(!empty($lineOrder['vas_info']))
+                                                @foreach($lineOrder['vas_info'] as $value)
+                                                    <div class="media">
+                                                        <div class="media-left m-r-15x">
+                                                            &nbsp;
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <div class="row flex flex-alignCenter border-top">
+                                                                <div class="col-md-3">
+                                                                    <div class="p-l-20x">{{$value['vas_name']}}</div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div>{{ $value['user_remark'] }}</div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <div class="text-center">
+                                                                        ${{ number_format(($value['vas_price'] / 100), 2) }}</div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <div class="text-center">
+                                                                        X{{ $lineOrder['sale_qtty'] }}</div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <div class="text-center">
+                                                                        ${{ number_format($value['vas_price'] / 100 * $lineOrder['sale_qtty'], 2) }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
