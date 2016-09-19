@@ -69,4 +69,15 @@
     </div>
 </section>
 
+<!-- 修改密码 弹出框 -->
+<div class="remodal modal-content remodal-md" data-remodal-id="changepwd-modal" id="modalDialog">
+    <div class="text-center dialog-info changepwd-info"></div>
+    <hr class="hr-common m-a-0">
+    <div class="row m-a-0">
+        <div class="col-md-offset-6 col-md-6">
+            <div class="m-y-20x m-r-20x"><a href="javascript:;" class="btn btn-block btn-primary btn-lg" id="changePwdBtn"></a></div>
+        </div>
+    </div>
+</div>
+
 @include('footer')
