@@ -43,7 +43,7 @@
                                        data-link="/product/{{$product['spu']}}" href="javascript:void(0)">
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                         {{--售完--}}
-                                        @if($product['sale_type'] ==1 && $product['stockStatus'] == 0)
+                                        @if($product['sale_type'] ==1 && ($product['stockStatus'] == 0 || $product['isPutOn'] == 0))
                                             <div class="bg-soldout"></div>
                                         @endif
                                     </a>
@@ -151,7 +151,7 @@
                                         <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                     </a>
                                     {{--售完--}}
-                                    @if($product['sale_type'] ==1 && $product['stockStatus'] == 0)
+                                    @if($product['sale_type'] ==1 && ($product['stockStatus'] == 0 || $product['isPutOn'] == 0))
                                         <div class="bg-soldout"></div>
                                     @endif
                                 </div>
@@ -222,7 +222,7 @@
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                     </a>
                                 </div>
-                                @{{ if $value.sale_type == 1 && $value.stockStatus == 0}}
+                                @{{ if $value.sale_type == 1 && ($value.stockStatus == 0 || $value.isPutOn == 0)}}
                                     <div class="bg-soldout"></div>
                                 @{{ /if }}
                             @{{ /each }}
@@ -318,7 +318,7 @@
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                     </a>
                                 </div>
-                                @{{ if $value.sale_type == 1 && $value.stockStatus == 0}}
+                                @{{ if $value.sale_type == 1 && ($value.stockStatus == 0 || $value.isPutOn == 0)}}
                                     <div class="bg-soldout"></div>
                                 @{{ /if }}
                             @{{ /each }}
@@ -398,7 +398,7 @@
                                     <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                 </a>
                             </div>
-                                @{{ if $value.sale_type == 1 && $value.stockStatus == 0}}
+                                @{{ if $value.sale_type == 1 && ($value.stockStatus == 0 || $value.isPutOn == 0)}}
                                     <div class="bg-soldout"></div>
                                 @{{ /if }}
                             @{{ /each }}
@@ -448,8 +448,8 @@
                                     <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                 </a>
                             </div>
-                                @{{ if $value.sale_type == 1 && $value.stockStatus == 0}}
-                                <div class="bg-soldout"></div>
+                                @{{ if $value.sale_type == 1 && ($value.stockStatus == 0 || $value.isPutOn == 0)}}
+                                    <div class="bg-soldout"></div>
                                 @{{ /if }}
                             @{{ /each }}
                         </div>
