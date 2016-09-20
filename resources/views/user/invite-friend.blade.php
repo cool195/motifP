@@ -13,12 +13,18 @@
                     <input type="text" class="form-control" id="inviteCode" placeholder="{{$code}}" value="{{$code}}" aria-describedby="btn-copy">
                     <span class="input-group-addon text-primary font-size-md" id="btn-copy" onclick="copyinput();">Copy</span>
                 </div>
-                <span class="p-l-30x">
-                    <a href="javascript:window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)">facebook</a>
-                    <a href="javascript:window.open('http://twitter.com/home?status='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)" >twitter</a>
+                {{--<span class="p-l-30x">--}}
                     {{--<a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-shape="round" data-pin-height="28">pinterest</a>--}}
-                </span>
+                {{--</span>--}}
             </div>
+            <p class="p-y-10x text-primary font-size-md"></p>
+            <div class="flex flex-alignCenter">
+                <span class="sanBold font-size-md p-r-15x"><a class="btn btn-primary btn-lg btn-200" href="javascript:window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)">Invite Facebook</a></span>
+                <div class="input-group invite-input p-r-30x">
+                    <a class="btn btn-primary btn-lg btn-200" href="javascript:window.open('http://twitter.com/home?status='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)" >Invite Twitter</a>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
