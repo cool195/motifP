@@ -2860,6 +2860,28 @@ function HideSeeMore(seemoreName) {
 
     //#end 个人中心 Following
 
+    //start 个人中心 Promotions
+
+        //进入添加 Promotions Code页面
+    $('.btn-addNewCode').on('click', function () {
+        $('.showPromotionCode').addClass('disabled');
+        $('.addPromotionCode').removeClass('disabled');
+    });
+        //返回 显示Promotions页面
+    $('.goback-toAdd').on('click', function () {
+        $('.showPromotionCode').removeClass('disabled');
+        $('.addPromotionCode').addClass('disabled');
+    });
+    //加载Promotions Code列表
+    function getPromotions(){
+
+    }
+
+
+    //end 个人中心 Promotions
+
+
+
     //Ask Start
     function ask_addMessage() {
         $.ajax({

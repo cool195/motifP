@@ -430,8 +430,18 @@ class UserController extends BaseController
         $result = $this->request('cart', $params);
         return $result;
     }
+
+    public function userCoupon(){
+        $params = array(
+            'cmd' => 'couponlist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('coupon', $params);
+        return $result;
+    }
     
-    public function invite($ode = "")
+    public function invite($code = "")
     {
         return view('user.invite', ['code' => $code]);
     }
@@ -445,6 +455,11 @@ class UserController extends BaseController
         );
         $result = $this->request('user', $params);
         return view('user.invite-friend',['code'=>$result['data']['invite_code']]);
+    }
+
+    public function promotions()
+    {
+        return view('user.promotions');
     }
 
 

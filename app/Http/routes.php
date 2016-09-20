@@ -88,7 +88,6 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::post('/cart/operate', 'CartController@operateCartProduct');
 
-    Route::post('/coupon', 'UserController@verifyCoupon');
 });
 //Cart End
 
@@ -159,11 +158,18 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::get('/invitefriends', 'UserController@inviteFriends');
 
+    Route::get('/promotions', 'UserController@promotions');
+
     Route::get('payagain/{orderid}/{paytype}','OrderController@orderPayInfo');
     //钱海
     Route::get('/qianhai', 'QianhaiController@index');
 
+    //结算
     Route::get('/coupon','UserController@coupon');
+    //个人中心
+    Route::get('/usercoupon','UserController@userCoupon');
+    //添加coupon
+    Route::post('/coupon', 'UserController@verifyCoupon');
 });
 //钱海
 Route::post('/qianhai', 'QianhaiController@checkStatus');

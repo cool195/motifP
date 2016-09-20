@@ -60,7 +60,7 @@
                         <div class="m-b-10x">
                             <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                data-link="/designer/{{ $designer['designerId'] }}" href="javascript:void(0)">
-                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
+                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
@@ -93,7 +93,7 @@
                         <div class="m-b-10x">
                             <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},”expid":0,"version":"1.0.1","src":"PC"}'
                                data-link="/designer/{{ $designer['designerId'] }}" href="javascript:void(0)">
-                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
+                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
@@ -237,7 +237,7 @@
                     <div class="m-b-10x">
                         <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -265,7 +265,7 @@
                     <div class="m-b-10x">
                         <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -346,7 +346,7 @@
                     <div class="m-b-10x">
                         <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},”expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -463,7 +463,7 @@
                     <div class="m-b-10x">
                         <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},”expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
