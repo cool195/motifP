@@ -163,7 +163,10 @@ Route::group(['middleware' => 'loginCheck'], function () {
     //钱海
     Route::get('/qianhai', 'QianhaiController@index');
 
+    //结算
     Route::get('/coupon','UserController@coupon');
+    //个人中心
+    Route::get('/usercoupon','UserController@userCoupon');
 });
 //钱海
 Route::post('/qianhai', 'QianhaiController@checkStatus');
