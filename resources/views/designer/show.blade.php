@@ -42,7 +42,7 @@
                                 <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designer_id']}}">Follow</a>
                             @endif
                         </div>
-                        <div class="m-t-15x designer-intro">{{$designer['describe']}}</div>
+
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                         <div class="p-t-15x p-l-15x">
                         @endif
