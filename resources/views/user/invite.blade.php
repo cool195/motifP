@@ -1,10 +1,11 @@
-@include('header')
+@include('header',['title'=>'Get $20 off your first jewelry purchase! designed by the world’s top Fashion Bloggers,Instagrammers,and Digital Influencers.','description'=>$data['intro_short'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$data['main_image_url']])
+<meta property="og:image" content="{{config('runtime.CDN_URL')}}/images/banner/invite.jpg"/>
 
 <!-- invite -->
 <section>
     <div class="bannerSwiper-container invite-banner">
         <div class="swiper-wrapper">
-            <a href="/shopping/0" class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/share-banner.jpg)">
+            <span class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/share-banner.jpg)">
                 <div class="banner-content">
                     <div class="text-center helveBold p-b-40x text-white inviteBanner-Title">
                         Enjoy $20 jewelry credit from your referral
@@ -15,13 +16,13 @@
                         and digital influences
                     </div>
                     <div class="text-center p-y-20x text-white inviteBanner-subTitle">
-                        Claim your credit with promo code: <span class="text-link inviteBanner-code">HISS</span>
+                        Claim your credit with promo code: <span class="text-link inviteBanner-code">{{$code}}</span>
                     </div>
                     <div class="text-center">
-                        <span href="#" class="btn btn-itemProperty btn-lg btn-200 active clickcode" data-code="123">Sign Up Now</span>
+                        <a><span class="btn btn-itemProperty btn-lg btn-200 active clickcode" data-code="123">Sign Up Now</span></a>
                     </div>
                 </div>
-            </a>
+            </span>
         </div>
     </div>
 </section>
