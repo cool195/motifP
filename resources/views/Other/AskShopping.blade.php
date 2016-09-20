@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
     <title>Contact Service</title>
-    <script src="/scripts/vendor.js"></script>
-    <script src="/scripts/common.js"></script>
 </head>
 
 <body>
@@ -14,10 +12,13 @@
         <textarea name="content" id="content"></textarea>
         <br/>
         <a href="{{Session::has('referer') ? Session::get('referer') : '/orderlist'}}">Cancel</a>
-        <a href="javascript:void(0)" data-role="submit" data-spu="123" id="askSend">Send</a>
+        <div data-role="submit" data-spu="123" id="askSend">Send</div>
     </form>
 
 
+
+    <script src="/scripts/vendor.js"></script>
+    <script src="/scripts/common.js"></script>
 </body>
 
 </html>
