@@ -41,7 +41,7 @@
                                         <span class="sanBold font-size-md p-r-20x changeName-title">Name</span>
                                         <span class="changePwd-input">
                                             <input type="text" name="nick" class="form-control contrlo-lg text-primary"
-                                                   placeholder="{{ Session::get('user.nickname') }}">
+                                                   value="{{ Session::get('user.nickname') }}">
                                         </span>
                                     </div>
                                 </form>

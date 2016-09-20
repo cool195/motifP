@@ -20,7 +20,7 @@
                                     <input type="text" class="form-control contrlo-lg text-primary m-b-10x" name="cps" placeholder="Enter Your Promotions Code Here">
                                     <!--error-->
                                     <span class="warning-info text-warning off">
-                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                        <i class="iconfont icon-caveat p-r-5x"></i>
                                         <span class="font-size-base invalidText"></span>
                                     </span>
                                 </div>
