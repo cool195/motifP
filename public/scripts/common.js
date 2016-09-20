@@ -2870,7 +2870,6 @@ function HideSeeMore(seemoreName) {
     }
 
     $('#askSend').on('click', function() {
-        alert(111);
         ask_addMessage();
     });
     //Ask End
