@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li class="nav-item @if('promotions' ==  $title) active @endif" >
-                    <a href="/promotions">
+                    <a href="/promocode">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
                             <i class="iconfont icon-ticket font-size-lg p-r-10x"></i>
                             <span class="font-size-md">Promotions</span>

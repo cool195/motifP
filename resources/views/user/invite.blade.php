@@ -18,7 +18,7 @@
                         Claim your credit with promo code: <span class="text-link inviteBanner-code">{{$code}}</span>
                     </div>
                     <div class="text-center">
-                        <a><span class="btn btn-itemProperty btn-lg btn-200 active clickcode" data-code="123">Sign Up Now</span></a>
+                        <a><span class="btn btn-itemProperty btn-lg btn-200 active clickcode" data-code="{{$code}}">Sign Up Now</span></a>
                     </div>
                 </div>
             </span>
@@ -54,7 +54,7 @@
 <script type="text/javascript">
     $('.clickcode').on('click',function () {
         setCookie('sharecode', $(this).data('code'));
-        window.location.href = '/register?url=%2Fpromocode';
+        window.location.href = '/register?referer=%2Fpromocode';
     })
 
     function setCookie(name, value) {

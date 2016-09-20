@@ -17,7 +17,7 @@
                                 <i class="iconfont icon-ticket"></i>
                                 <p class="helveBold font-size-llxx m-t-40x">Add New Promotions</p>
                                 <div class="addCode-input m-t-40x text-left">
-                                    <input type="text" class="form-control contrlo-lg text-primary m-b-10x" name="cps" placeholder="Enter Your Promotions Code Here">
+                                    <input type="text" class="form-control contrlo-lg text-primary m-b-10x" name="cps" value="" placeholder="Enter Your Promotions Code Here">
                                     <!--error-->
                                     <span class="warning-info text-warning off">
                                         <i class="iconfont icon-caveat p-r-5x"></i>
@@ -69,4 +69,25 @@
     </div>
     @{{ /each }}
 </template>
+
 @include('footer')
+<script>
+    function getCookie(name) {
+        var arr = document.cookie.match(new RegExp('(^| )' + name + '=([^;]*)(;|$)'));
+        if (arr != null) {
+            $('.showPromotionCode').addClass('disabled');
+            $('.addPromotionCode').removeClass('disabled');
+            $('.coupon-apply').removeClass('disabled');
+            setCookie(name, '');
+            return unescape(arr[2]);
+        }
+        return null;
+    }
+    function setCookie(name, value) {
+        var exp = new Date();
+        exp.setTime(0);
+        document.cookie = name + '=' + escape(value) + ';path=/;expires=' + exp.toGMTString();
+    }
+
+    $('input[name="cps"]').val(getCookie('sharecode'))
+</script>
