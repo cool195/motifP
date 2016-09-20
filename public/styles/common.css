@@ -1257,6 +1257,22 @@ footer {
   font-size: 2.375rem;
 }
 
+.invite-input {
+  max-width: 200px;
+}
+
+.invite-input input {
+  padding: 0.5rem 0.75rem;
+}
+
+.invite-input span {
+  border: none;
+}
+
+.invite-input span:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1460px) {
   .login-header {
     height: 70px;
