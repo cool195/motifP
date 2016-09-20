@@ -419,4 +419,15 @@ class UserController extends BaseController
         $result = $this->request('coupon', $params);
         return $result;
     }
+
+    //我的code
+    public function coupon(){
+        $params = array(
+            'cmd' => 'couponlist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('cart', $params);
+        return $result;
+    }
 }

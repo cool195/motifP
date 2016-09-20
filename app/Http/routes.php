@@ -159,6 +159,8 @@ Route::group(['middleware' => 'loginCheck'], function () {
     Route::get('payagain/{orderid}/{paytype}','OrderController@orderPayInfo');
     //钱海
     Route::get('/qianhai', 'QianhaiController@index');
+
+    Route::get('/coupon','UserController@coupon');
 });
 //钱海
 Route::post('/qianhai', 'QianhaiController@checkStatus');
