@@ -75,8 +75,104 @@
             <p class="m-b-0">{{$designer['describe']}}</p>
         </div>
 
+        <!-- topic 模版 -->
+        <section class="p-y-40x">
+            <div class="topic-wrap">
+                <div class="bg-white">
+                    <!--标题-->
+                    <div class="p-x-20x p-t-20x m-b-20x">
+                        <h2 class="helveBold font-size-lxx">标题</h2>
+                    </div>
+                    <!--描述-->
+                    <div class="p-x-20x m-y-20x">
+                        <p class="m-b-0 font-size-base">描述</p>
+                    </div>
+                    <!--分割线-->
+                    <hr class="hr-base m-x-20x m-y-0">
+                    <!--图文列表-->
+                    <div class="m-t-20x">
+                        <a href="#">
+                            <img class="img-fluid img-lazy" src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/topic/motif/6236/1200X800/5afc346edb18ed69a86993d7def08703.jpg" alt="">
+                        </a>
+                    </div>
+                    <!--图 banner-->
+                    <div class="m-t-20x">
+                        <a href="#">
+                            <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/topic/motif/6236/1200X672/192ac326ef01644c8a5214ff5c20b3ff.jpg">
+                        </a>
+                    </div>
+
+                    <!-- 锚点图 -->
+                    <div class="m-t-20x">
+                        <div class="hotspot-image" data-hotspot="{&quot;beginX&quot;:0,&quot;beginY&quot;:0.11,&quot;skipId&quot;:&quot;10000234&quot;,&quot;skipType&quot;:&quot;1&quot;,&quot;endX&quot;:0.24,&quot;endY&quot;:0.34},{&quot;beginX&quot;:0.4,&quot;beginY&quot;:0.05,&quot;skipId&quot;:&quot;79&quot;,&quot;skipType&quot;:&quot;2&quot;,&quot;endX&quot;:0.71,&quot;endY&quot;:0.66},{&quot;beginX&quot;:0.79,&quot;beginY&quot;:0.62,&quot;skipId&quot;:&quot;133&quot;,&quot;skipType&quot;:&quot;3&quot;,&quot;endX&quot;:0.99,&quot;endY&quot;:0.9},">
+                            <img class="img-fluid" src="https://s3-us-west-1.amazonaws.com/emimagetest/n1/topic/motif/6236/1000X666/42b26b49a48db835a6019d26659e174e.jpg">
+                            <a href="/product/10000234"><div class="hotspot-spot" style="width: 24%; height: 23%; left: 0%; top: 11%;"></div></a><a href="/designer/79"><div class="hotspot-spot" style="width: 31%; height: 61%; left: 40%; top: 5%;"></div></a><a href="/topic/133"><div class="hotspot-spot" style="width: 20%; height: 28%; left: 79%; top: 62%;"></div></a></div>
+                    </div>
+
+                    <!--图文列表-->
+                    <div class="p-t-40x p-b-20x bg-body">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="productList-item">
+                                    <div class="image-container">
+                                        <a href="#">
+                                            <img class="img-fluid img-lazy"
+                                                 data-original="{{env('CDN_Static')}}/images/product/bg-product@336.png" src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="">
+                                        </a>
+                                        <span class="product-heart btn-heart">
+                                           <i class="iconfont btn-wish font-size-lxx active " data-spu=""></i>
+                                        </span>
+                                        <!--预售标志-->
+                                        <div class="presale-sign">
+                                            <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                            <a href="#" class="presale-text helve font-size-sm">LIMITED DEITION</a>
+                                        </div>
+                                    </div>
+                                    <div class="price-caption helveBold">
+                                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">
+                                            Only one SKU
+                                        </div>
+                                        <div class="text-center">
+                                            <span class="font-size-md text-primary p-r-5x">$2.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="productList-item">
+                                    <div class="image-container">
+                                        <a href="#">
+                                            <img class="img-fluid img-lazy"
+                                                 data-original="{{env('CDN_Static')}}/images/product/bg-product@336.png" src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="">
+                                        </a>
+                                        <span class="product-heart btn-heart">
+                                           <i class="iconfont btn-wish font-size-lxx active " data-spu=""></i>
+                                        </span>
+                                        <!--预售标志-->
+                                        <div class="presale-sign">
+                                            <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                            <a href="#" class="presale-text helve font-size-sm">LIMITED DEITION</a>
+                                        </div>
+                                    </div>
+                                    <div class="price-caption helveBold">
+                                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">
+                                            Only one SKU
+                                        </div>
+                                        <div class="text-center">
+                                            <span class="font-size-md text-primary p-r-5x">$2.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 设计师 商品 -->
-        <h4 class="helveBold text-main p-l-10x p-t-30x m-b-20x"></h4>
+        <h4 class="helveBold text-main p-l-10x p-t-30x m-b-20x">@if(isset($product['infos']) || isset($productAll['data']['list'])){{$designer['nickname']}}'s Design Works @endif</h4>
         <div class="row">
             @if(isset($product['infos']))
                 @foreach($product['infos'] as $k => $value)
@@ -184,3 +280,54 @@
 </section>
 
 @include('footer')
+
+<script>
+    // 锚点图
+    function getHotSpot() {
+        $('.hotspot-image').each(function () {
+            var $this = $(this);
+            var obj = $(this).data('hotspot');
+            // 获取最后一个字符
+            var lastStr = obj.charAt(obj.length - 1);
+            if (lastStr === ',') {
+                obj = obj.substring(0, obj.length - 1);
+            }
+            // 转化为json
+            var objJson = eval('[' + obj + ']');
+            $.each(objJson, function (n, value) {
+                var BeginX = value.beginX;
+                var BeginY = value.beginY;
+                var EndX = value.endX;
+                var EndY = value.endY;
+                var url = '';
+                switch (value.skipType) {
+                    case '1':
+                        url = '/product/';
+                        break;
+                    case '2':
+                        url = '/designer/';
+                        break;
+                    case '3':
+                        url = '/topic/';
+                        break;
+                    case '4':
+                        url = '/shopping/';
+                        break;
+                }
+                url += value.skipId;
+                var parenta = $('<a></a>').attr('href', url);
+                var childdiv = $('<div class="hotspot-spot"></div>').css({
+                    width: (EndX - BeginX) * 100 + "%",
+                    height: (EndY - BeginY) * 100 + "%",
+                    left: BeginX * 100 + "%",
+                    top: BeginY * 100 + "%"
+                });
+                parenta.prepend(childdiv).appendTo($this);
+            });
+        });
+    }
+
+    $(function () {
+        getHotSpot();
+    });
+</script>
