@@ -1,5 +1,5 @@
 @include('header',['title'=>'Get $20 off your first jewelry purchase! designed by the world’s top Fashion Bloggers,Instagrammers,and Digital Influencers.','description'=>$data['intro_short'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$data['main_image_url']])
-<meta property="og:image" content="{{config('runtime.CDN_URL')}}/images/background/invite.jpg"/>
+
 <!-- invite friend -->
 <section class="m-y-40x">
     <div class="container box-shadow bg-white">
