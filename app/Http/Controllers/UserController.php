@@ -447,5 +447,10 @@ class UserController extends BaseController
         return view('user.invite-friend',['code'=>$result['data']['invite_code']]);
     }
 
+    public function promotions()
+    {
+        return view('user.promotions');
+    }
+
 
 }
