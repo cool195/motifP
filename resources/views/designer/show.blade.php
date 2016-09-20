@@ -75,10 +75,10 @@
             <p class="m-b-0">{{$designer['describe']}}</p>
         </div>
 
+        @if(isset($product['infos']) && !empty($product['infos']))
         <!-- topic 模版 设计师对应模版商品 -->
         <section class="p-y-40x">
             <div class="topic-wrap">
-                @if(isset($product['infos']))
                 <div class="bg-white">
                     @foreach($product['infos'] as $k => $value)
                         @if($value['type'] == 'title')
@@ -123,6 +123,21 @@
                                                         <img class="img-fluid img-lazy"
                                                             data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                             src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="">
+                                                        <!--预售标志-->
+                                                        @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
+                                                            @if(!isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) || $product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                                                {{--售罄--}}
+                                                                <div class="bg-soldout">
+                                                                    <span class="text helve font-size-sm">SOLD OUT</span>
+                                                                </div>
+                                                                @else
+                                                                        <!--预售标志-->
+                                                                <div class="presale-sign">
+                                                                    <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                                                    <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                                                </div>
+                                                            @endif
+                                                        @endif
                                                     </a>
                                                     @if(Session::has('user'))
                                                         <span class="product-heart btn-heart">
@@ -131,21 +146,7 @@
                                                     @else
                                                         <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$spu}}"></i></a>
                                                     @endif
-                                                    <!--预售标志-->
-                                                    @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
-                                                        @if(!isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) || $product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
-                                                            {{--售罄--}}
-                                                            <div class="bg-soldout">
-                                                                <span class="text helve font-size-sm">SOLD OUT</span>
-                                                            </div>
-                                                        @else
-                                                            <!--预售标志-->
-                                                            <div class="presale-sign">
-                                                                <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
-                                                                <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
-                                                            </div>
-                                                        @endif
-                                                    @endif
+
                                                 </div>
                                                 <div class="price-caption helveBold">
                                                     <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{$product['spuInfos'][$spu]['spuBase']['main_title']}}</div>
@@ -167,9 +168,9 @@
                         @endif
                     @endforeach
                 </div>
-                @endif
             </div>
         </section>
+        @endif
 
         <!-- 设计师 商品 -->
         <h4 class="helveBold text-main p-l-10x p-t-30x m-b-20x">@if(isset($productAll['data']['list'])){{$designer['nickname']}}'s Design Works @endif</h4>
@@ -197,7 +198,6 @@
                         @endif
 
                         @if(1 == $product['sale_type'])
-                                <!--预售标志-->
                             <div class="presale-sign">
                                 <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
                                 <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
