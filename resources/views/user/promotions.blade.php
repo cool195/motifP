@@ -30,66 +30,23 @@
                         <div class="p-a-20x showPromotionCode">
                             <div class="flex flex-alignCenter flex-fullJustified">
                                 <span class="font-size-md sanBold">Coupons and Promotions</span>
-                                    <span class="font-size-md pull-right">
-                                        <a class="btn btn-secondary btn-md btn-addNewCode" href="#"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Promotion Code</a>
-                                    </span>
+                                <span class="font-size-md pull-right">
+                                    <a class="btn btn-secondary btn-md btn-addNewCode" href="#"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Promotion Code</a>
+                                </span>
                             </div>
-                            <div class="row p-x-10x p-t-20x">
+                            <div class="row p-x-10x p-t-20x coupon-list">
                                 <div class="col-md-6">
                                     <div class="m-a-10x">
-                                        <div class="row promotion-item">
+                                        <div class="row promotion-item flex flex-alignCenter active">
                                             <div class="col-md-8">
-                                                <div class="p-t-20x text-right">
-                                                    <div class="helveBold font-size-sm">10% Off For Your First
-                                                        Orde
-                                                    </div>
+                                                <div class="text-right p-left p-r-15x p-y-15x">
+                                                    <div class="helveBold font-size-sm">10% Off For Your First Orde</div>
                                                     <span class="font-size-sm">Expire: Jul 31, 2016</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <div class="p-left">
-                                                    <span class="helveBold">10%</span>
-                                                    <div class="font-size-lx helveBold">OFF</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="m-a-10x">
-                                        <div class="row promotion-item">
-                                            <div class="col-md-8">
-                                                <div class="p-t-20x text-right">
-                                                    <div class="helveBold font-size-sm">10% Off For Your First
-                                                        Orde
-                                                    </div>
-                                                    <span class="font-size-sm">Expire: Jul 31, 2016</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="p-left">
-                                                    <span class="helveBold">10%</span>
-                                                    <div class="font-size-lx helveBold">OFF</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="m-a-10x">
-                                        <div class="row promotion-item">
-                                            <div class="col-md-8">
-                                                <div class="p-t-20x text-right">
-                                                    <div class="helveBold font-size-sm">10% Off For Your First
-                                                        Orde
-                                                    </div>
-                                                    <span class="font-size-sm">Expire: Jul 31, 2016</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="p-left">
-                                                    <span class="helveBold">10%</span>
-                                                    <div class="font-size-lx helveBold">OFF</div>
+                                                <div class="font-size-lx text-left helveBold">
+                                                    <span>10% OFF</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -105,4 +62,25 @@
     </div>
 </section>
 
+<template id="tpl-coupon">
+    @{{ each list }}
+    <div class="row p-x-10x p-t-20x">
+        <div class="col-md-6">
+            <div class="m-a-10x">
+                <div class="row promotion-item flex flex-alignCenter active">
+                    <div class="col-md-8">
+                        <div class="text-right p-left p-r-15x p-y-15x">
+                            <div class="helveBold font-size-sm">@{{ $value.prompt_words }}</div>
+                            <span class="font-size-sm">Expire: @{{ $value.expiry_time }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="font-size-lx text-left helveBold">@{{ $value.cp_title }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @{{ /each }}
+</template>
 @include('footer')

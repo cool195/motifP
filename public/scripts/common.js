@@ -2873,10 +2873,29 @@ function HideSeeMore(seemoreName) {
         $('.addPromotionCode').addClass('disabled');
     });
     //加载Promotions Code列表
-    function getPromotions(){
+    function getCoupons(){
+        $.ajax({
+            url: '/usercoupon',
+            type: 'GET'
+        })
+            .done(function (data) {
+                if (data.success){
+                    appendCouponList(data.data);
+
+                }else{
+                    //显示添加code的页面
+                    console.log('111111');
+                }
+            })
 
     }
-
+    //遍历模板, 插入coupon数据到指定位置
+    function appendCouponList(CouponList){
+        var TplHtml = template('#tpl-coupon', CouponList);
+        var StageCache = $.parseHTML(TplHtml);
+        $('.coupon-list').html(StageCache);
+    }
+    //
 
     //end 个人中心 Promotions
 
