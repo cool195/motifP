@@ -16,7 +16,7 @@
                 <span class="p-l-30x">
                     <a href="javascript:window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)">facebook</a>
                     <a href="javascript:window.open('http://twitter.com/home?status='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)" >twitter</a>
-                    <a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-shape="round" data-pin-height="28">pinterest</a>
+                    {{--<a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-shape="round" data-pin-height="28">pinterest</a>--}}
                 </span>
             </div>
         </div>
@@ -24,7 +24,7 @@
 </section>
 
 
-<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script></li>
+{{--<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>--}}
 
 @include('footer')
 <script type="text/javascript">
