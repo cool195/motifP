@@ -79,8 +79,9 @@
                         </div>
                         <div class="p-y-5x">
                             @if(isset($data['skuPrice']['skuPromotion']))
-                                <span class="font-size-md">{{ $data['skuPrice']['skuPromotion']['display'] }}
-                                    &nbsp;&nbsp;</span><br/>
+                                @if($data['sale_type'] != 1)
+                                    <span class="font-size-md">{{ $data['skuPrice']['skuPromotion']['display'] }}&nbsp;&nbsp;</span><br/>
+                                @endif
                                 <span class="font-size-md">{{ $data['skuPrice']['skuPromotion']['promo_words'] }}</span><br/>
                             @endif
                             <span>{{$data['prompt_words']}}</span>
