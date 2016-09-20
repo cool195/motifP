@@ -2861,6 +2861,7 @@ function HideSeeMore(seemoreName) {
     //#end 个人中心 Following
 
     //start 个人中心 Promotions
+    getCoupons();
 
         //进入添加 Promotions Code页面
     $('.btn-addNewCode').on('click', function () {
@@ -2890,12 +2891,55 @@ function HideSeeMore(seemoreName) {
 
     }
     //遍历模板, 插入coupon数据到指定位置
-    function appendCouponList(CouponList){
-        var TplHtml = template('#tpl-coupon', CouponList);
+    function appendCouponList(couponList){
+        var TplHtml = template('tpl-coupon', couponList);
         var StageCache = $.parseHTML(TplHtml);
         $('.coupon-list').html(StageCache);
     }
-    //
+    //Add New Promotions
+    $('.coupon-apply').on('click', function () {
+        //验证code码
+        if(!$(this).hasClass('disabled')){
+            $.ajax({
+                    url: '/coupon',
+                    type: 'post',
+                    data: {cps: $('input[name="cps"]').val()}
+                })
+                .done(function (data) {
+                    if(data.success){
+                        getCoupons();
+                        $('.addCode-input .warning-info').addClass('off');
+                        $('.showPromotionCode').removeClass('disabled');
+                        $('.addPromotionCode').addClass('disabled');
+                    }else{
+                        $('.invalidText').html(data.prompt_msg);
+                        $('.addCode-input .warning-info').removeClass('off');
+                    }
+                })
+        }
+    });
+    $('input[name="cps"]').on('keyup', function (e) {
+        if ($(this).val() === '') {
+            $('.coupon-apply').addClass('disabled');
+        } else {
+            $('.coupon-apply').removeClass('disabled');
+        }
+    });
+    // 粘贴内容 触发事件
+    $('input[name="cps"]').on('paste', function (e) {
+        var pastedText = undefined;
+        if (window.clipboardData && window.clipboardData.getData) {
+            pastedText = window.clipboardData.getData('Text');
+        } else {
+            pastedText = e.originalEvent.clipboardData.getData('Text');
+        }
+
+        if (pastedText === '' || pastedText === undefined) {
+            $('.coupon-apply').addClass('disabled');
+        } else {
+            $('.coupon-apply').removeClass('disabled');
+        }
+    });
 
     //end 个人中心 Promotions
 

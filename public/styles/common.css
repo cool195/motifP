@@ -1228,7 +1228,7 @@ footer {
 }
 
 .promotion-content {
-  min-height: 42.4rem;
+  min-height: 45.6rem;
 }
 
 .addCode-input {
@@ -1257,7 +1257,9 @@ footer {
 .addPromotionCode.disabled, .showPromotionCode.disabled {
   display: none;
 }
-
+.addPromotionCode .icon-caveat{
+  font-size: 0.875rem;
+}
 .hotspot-image {
   position: relative;
   display: inline-block;
