@@ -39,11 +39,11 @@ class AskController extends BaseController
         if ($request->input('skiptype') == 3) {
             $params['spu'] = $request->input('id');
             $params['stype'] = 3;
-            $urlStr = '/detail/';
+            $urlStr = '/product/';
         } elseif ($request->input('skiptype') == 2) {
             $params['orderno'] = $request->input('id');
             $params['stype'] = 1;
-            $urlStr = '/order/orderdetail/';
+            $urlStr = '/orderdetail/';
         }
 
         $result = $this->request("feedback", $params);

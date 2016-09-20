@@ -214,7 +214,7 @@
                     </div>
 
                     <div class="text-right p-t-30x">
-                        <a href="javascript:void(0)" class="btn btn-primary btn-lg btn-300 m-r-20x">Contact Customer Service</a>
+                        <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="btn btn-primary btn-lg btn-300 m-r-20x">Contact Customer Service</a>
                         <!-- 未支付订单 支付按钮 -->
                         @if( 11 == $data['status_code'])
                             <a href="/payagain/{{  $data['sub_order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>

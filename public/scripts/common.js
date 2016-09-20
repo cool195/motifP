@@ -2844,6 +2844,27 @@ function HideSeeMore(seemoreName) {
 
     //#end 个人中心 Following
 
+    //Ask Start
+    function ask_addMessage() {
+        $.ajax({
+            url: '/askshopping',
+            type: 'POST',
+            data: $('#form-askQuestion').serialize()
+        })
+            .done(function (data) {
+                if(data.success){
+                    alert('success');
+                    window.location.href = data.redirectUrl;
+                }
+            })
+    }
+
+    $('#askSend').on('click', function() {
+        alert(111);
+        ask_addMessage();
+    });
+    //Ask End
+
 })(jQuery, Swiper);
 
 

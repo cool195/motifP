@@ -206,6 +206,15 @@ Route::get('/userAgreement', 'PageController@userAgreement');
 // Page Start
 
 
+// Ask Start
+Route::group(['middleware' => 'loginCheck'], function() {
+
+    Route::get('/askshopping', 'AskController@show');
+
+    Route::post('/askshopping', 'AskController@install');
+});
+// Ask End
+
 
 
 
