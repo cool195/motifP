@@ -1,32 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Contact Service</title>
-</head>
+@include('header')
+<!--内容-->
+<div class="container">
+    <div class="content-wrap">
+        <h2 class="helveBold text-main font-size-lxx m-b-20x m-x-20x">Contact Service</h2>
+        <div class="bg-white content box-shadow">
+            <form method="post" id="form-askQuestion" action="/askshopping">
+                <input type="hidden" class="form-control contrlo-lg text-primary" name="id" value="{{$id}}">
+                <input type="hidden" class="form-control contrlo-lg text-primary" name="skiptype" value="{{$skiptype}}">
+                <input type="text" class="form-control contrlo-lg text-primary" id="email" name="email" value="{{Session::get('user.login_email')}}"><br/>
+                <textarea class="form-control contrlo-lg text-primary" name="content" id="content"></textarea>
+                <br/>
+                <div class="row m-b-20x">
+                    <div class="text-right p-x-30x p-y-10x">
+                        <a  class="btn btn-primary btn-lg btn-200" href="{{Session::has('referer') ? Session::get('referer') : '/orderlist'}}">Cancel</a>
+                        <div class="btn btn-primary btn-lg btn-200" data-role="submit" data-spu="123" id="askSend">Send</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-<body>
-    <form method="post" id="form-askQuestion" action="/askshopping">
-        <input type="hidden" name="id" value="{{$id}}">
-        <input type="hidden" name="skiptype" value="{{$skiptype}}">
-        <input type="text" id="email" name="email" value="{{Session::get('user.login_email')}}">
-        <textarea name="content" id="content"></textarea>
-        <br/>
-        <a href="{{Session::has('referer') ? Session::get('referer') : '/orderlist'}}">Cancel</a>
-        <div data-role="submit" data-spu="123" id="askSend">Send</div>
-    </form>
-
-
-
-    <script src="/scripts/vendor.js"></script>
-    <script src="/scripts/common.js"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    </script>
-</body>
-
-</html>
+@include('footer')
+ååå
