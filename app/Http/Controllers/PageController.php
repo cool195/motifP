@@ -58,6 +58,11 @@ class PageController extends BaseController
         return View('Other.page-userAgreement');
     }
 
+    public function saleInfo()
+    {
+        return view('Other.page-saleinfo');
+    }
+
 }
 
 ?>
