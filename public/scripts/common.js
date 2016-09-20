@@ -1361,6 +1361,12 @@ function HideSeeMore(seemoreName) {
         }
     });
 
+    $("body").keydown(function() {
+        if (event.keyCode == "13") {
+            $('[data-role="login-submit"]').click();
+        }
+    });
+
     $('.forget-email').on('keyup blur', function () {
         if (login_validationEmail($(this))) {
             $('div[data-role="forget-submit"]').removeClass('disabled');
