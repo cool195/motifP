@@ -76,7 +76,7 @@
         </div>
 
         <!-- 设计师 商品 -->
-        <h4 class="helveBold text-main p-l-10x p-t-30x m-b-20x">{{$designer}}</h4>
+        <h4 class="helveBold text-main p-l-10x p-t-30x m-b-20x">@if(isset($product['infos']) || isset($productAll['data']['list'])){{$designer['nickname']}}'s Design Works @endif</h4>
         <div class="row">
             @if(isset($product['infos']))
                 @foreach($product['infos'] as $k => $value)
