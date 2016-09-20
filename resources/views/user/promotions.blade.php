@@ -40,23 +40,7 @@
                                 </span>
                             </div>
                             <div class="row p-x-10x p-t-20x coupon-list">
-                                <div class="col-md-6">
-                                    <div class="m-a-10x">
-                                        <div class="row promotion-item flex flex-alignCenter">
-                                            <div class="col-md-8">
-                                                <div class="text-right p-left p-r-15x p-y-15x">
-                                                    <div class="helveBold font-size-sm">10% Off For Your First Order</div>
-                                                    <span class="font-size-sm">Expire: Jul 31, 2016</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="font-size-lx text-left helveBold">
-                                                    <span>10% OFF</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>

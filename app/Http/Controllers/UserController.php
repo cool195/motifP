@@ -66,7 +66,7 @@ class UserController extends BaseController
             Session::put('user', $result['data']);
             if ($_COOKIE['wishSpu']) {
                 $this->addWishProduct($_COOKIE['wishSpu']);
-            } elseif($_COOKIE['followDid']) {
+            } elseif ($_COOKIE['followDid']) {
                 $this->addFollowDesigner($_COOKIE['followDid']);
             }
         }
@@ -385,9 +385,9 @@ class UserController extends BaseController
 
     public function noteAction(Request $request)
     {
-        if($request->input('action') == 'wish'){
+        if ($request->input('action') == 'wish') {
             setcookie('wishSpu', $request->input('spu'), time() + 300, '/');
-        } elseif($request->input('action') == 'follow'){
+        } elseif ($request->input('action') == 'follow') {
             setcookie('followDid', $request->input('did'), time() + 300, '/');
         }
     }
@@ -421,31 +421,43 @@ class UserController extends BaseController
     }
 
     //我的code
-    public function coupon(){
+    public function coupon()
+    {
         $params = array(
             'cmd' => 'couponlist',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('cart', $params);
+
+        foreach ($result['data']['list'] as &$value) {
+            $value['start_time'] = date("M d, Y", microtime($value['start_time']));
+            $value['expiry_time'] = date("M d, Y", microtime($value['expiry_time']));
+        }
+
         return $result;
     }
 
-    public function userCoupon(){
+    public function userCoupon()
+    {
         $params = array(
             'cmd' => 'couponlist',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('coupon', $params);
+        foreach ($result['data']['list'] as &$value) {
+            $value['start_time'] = date("M d, Y", microtime($value['start_time']));
+            $value['expiry_time'] = date("M d, Y", microtime($value['expiry_time']));
+        }
         return $result;
     }
-    
+
     public function invite($code = "")
     {
         return view('user.invite', ['code' => $code]);
     }
-    
+
     public function inviteFriends()
     {
         $params = array(
@@ -454,7 +466,7 @@ class UserController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('user', $params);
-        return view('user.invite-friend',['code'=>$result['data']['invite_code']]);
+        return view('user.invite-friend', ['code' => $result['data']['invite_code']]);
     }
 
     public function promotions()
