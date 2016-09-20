@@ -159,6 +159,8 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::get('/invitefriends', 'UserController@inviteFriends');
 
+    Route::get('/promotions', 'UserController@promotions');
+
     Route::get('payagain/{orderid}/{paytype}','OrderController@orderPayInfo');
     //钱海
     Route::get('/qianhai', 'QianhaiController@index');
