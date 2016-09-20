@@ -156,6 +156,9 @@ Route::group(['middleware' => 'loginCheck'], function () {
     Route::get('/user/address', 'UserController@address');
 
     Route::get('/user/profile', 'UserController@profile');
+
+    Route::get('/invitefriends', 'UserController@inviteFriends');
+
     Route::get('payagain/{orderid}/{paytype}','OrderController@orderPayInfo');
     //钱海
     Route::get('/qianhai', 'QianhaiController@index');
@@ -166,6 +169,13 @@ Route::group(['middleware' => 'loginCheck'], function () {
 Route::post('/qianhai', 'QianhaiController@checkStatus');
 
 Route::get('noteaction', 'UserController@noteAction');
+
+Route::get('/d/invite/{code}', 'UserController@invite');
+
+Route::get('/d/invite', 'UserController@invite');
+
+
+
 //User End
 
 

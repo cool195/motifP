@@ -430,4 +430,22 @@ class UserController extends BaseController
         $result = $this->request('cart', $params);
         return $result;
     }
+    
+    public function invite($ode = "")
+    {
+        return view('user.invite', ['code' => $code]);
+    }
+    
+    public function inviteFriends()
+    {
+        $params = array(
+            'cmd' => "detail",
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('user', $params);
+        return view('user.invite-friend',['code'=>$result['data']['invite_code']]);
+    }
+
+
 }
