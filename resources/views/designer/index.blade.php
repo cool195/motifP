@@ -60,7 +60,7 @@
                         <div class="m-b-10x">
                             <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                data-link="/designer/{{ $designer['designerId'] }}" href="javascript:void(0)">
-                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
+                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
@@ -93,7 +93,7 @@
                         <div class="m-b-10x">
                             <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},”expid":0,"version":"1.0.1","src":"PC"}'
                                data-link="/designer/{{ $designer['designerId'] }}" href="javascript:void(0)">
-                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
+                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
@@ -222,8 +222,10 @@
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                     </a>
                                 </div>
-                                @{{ if $value.sale_type == 1 && ($value.stockStatus == 0 || $value.isPutOn == 0)}}
-                                    <div class="bg-soldout"></div>
+                                @{{ if $value.sale_type == 1  }}
+                                    @{{ if $value.stockStatus == 0 || $value.isPutOn == 0 }}
+                                        <div class="bg-soldout"></div>
+                                    @{{ /if }}
                                 @{{ /if }}
                             @{{ /each }}
                         </div>
@@ -237,7 +239,7 @@
                     <div class="m-b-10x">
                         <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -265,7 +267,7 @@
                     <div class="m-b-10x">
                         <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -318,8 +320,10 @@
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                     </a>
                                 </div>
-                                @{{ if $value.sale_type == 1 && ($value.stockStatus == 0 || $value.isPutOn == 0)}}
-                                    <div class="bg-soldout"></div>
+                                @{{ if $value.sale_type == 1  }}
+                                    @{{ if $value.stockStatus == 0 || $value.isPutOn == 0 }}
+                                        <div class="bg-soldout"></div>
+                                    @{{ /if }}
                                 @{{ /if }}
                             @{{ /each }}
                         </div>
@@ -346,7 +350,7 @@
                     <div class="m-b-10x">
                         <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},”expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -398,9 +402,11 @@
                                     <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                 </a>
                             </div>
-                                @{{ if $value.sale_type == 1 && ($value.stockStatus == 0 || $value.isPutOn == 0)}}
+                            @{{ if $value.sale_type == 1  }}
+                                @{{ if $value.stockStatus == 0 || $value.isPutOn == 0 }}
                                     <div class="bg-soldout"></div>
                                 @{{ /if }}
+                            @{{ /if }}
                             @{{ /each }}
                         </div>
                         <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
@@ -448,9 +454,11 @@
                                     <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                 </a>
                             </div>
-                                @{{ if $value.sale_type == 1 && ($value.stockStatus == 0 || $value.isPutOn == 0)}}
+                            @{{ if $value.sale_type == 1  }}
+                                @{{ if $value.stockStatus == 0 || $value.isPutOn == 0 }}
                                     <div class="bg-soldout"></div>
                                 @{{ /if }}
+                            @{{ /if }}
                             @{{ /each }}
                         </div>
                         <div class="swiper-button-next"><i class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
@@ -463,7 +471,7 @@
                     <div class="m-b-10x">
                         <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},”expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
