@@ -175,7 +175,7 @@
                         @endif
                         @if(!isset($data['skuPrice']['skuPromotion']) || $data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] ==0 || !empty($data['spuStock']))
                         <div class="p-b-10x">
-                            @if((!isset($data['skuPrice']['skuPromotion']) || $data['isPutOn'] ==0 || !empty($data['spuStock'])) && $data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] <= 10000)
+                            @if(!isset($data['skuPrice']['skuPromotion']) || $data['isPutOn'] ==0 || !empty($data['spuStock']))
                             <div class="p-x-20x p-y-10x font-size-md">
                                 <img src="/images/product/icon-flash@2x.png" alt="">
                                 <span class="p-l-10x stock-qtty">
