@@ -665,6 +665,7 @@ footer {
   padding-left: 7rem;
   min-height: 37.5rem;
   display: -webkit-box;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
               -ms-grid-row-align: center;
