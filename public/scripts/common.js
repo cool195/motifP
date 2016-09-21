@@ -2873,14 +2873,7 @@ function HideSeeMore(seemoreName) {
 
     try {
         if($('#checkoutView').data('status') || $('#userpromotions').data('status')){
-            getCoupons();
-            if($('.promotion-item').length > 0){
-                $('.showPromotionCode').addClass('disabled');
-                $('.addPromotionCode').removeClass('disabled');
-            } else {
-                $('.showPromotionCode').removeClass('disabled');
-                $('.addPromotionCode').addClass('disabled');
-            }
+            getCoupons(2);
         }
     } catch (e) {}
 
@@ -2896,7 +2889,8 @@ function HideSeeMore(seemoreName) {
     });
 
     //加载Promotions Code列表
-    function getCoupons(){
+    //State 加载状态  1:添加加载  2:页面load 首次加载
+    function getCoupons(State){
         //判断 是个人中心 还是 checkout
         if($('#checkoutView').data('status')){
             var CouponUrl = '/coupon';
@@ -2915,6 +2909,15 @@ function HideSeeMore(seemoreName) {
                             $('#codemessage').html($(this).data('promotioncode'));
                         }
                     })
+                    if(State === 2){
+                        if($('.promotion-item').length > 0){
+                            $('.showPromotionCode').removeClass('disabled');
+                            $('.addPromotionCode').addClass('disabled');
+                        } else {
+                            $('.showPromotionCode').addClass('disabled');
+                            $('.addPromotionCode').removeClass('disabled');
+                        }
+                    }
                 }else{
                     //显示添加code的页面
                     console.log('111111');
@@ -2939,7 +2942,7 @@ function HideSeeMore(seemoreName) {
                 })
                 .done(function (data) {
                     if(data.success){
-                        getCoupons();
+                        getCoupons(1);
                         $('.addCode-input .warning-info').addClass('off');
                         $('.showPromotionCode').removeClass('disabled');
                         $('.addPromotionCode').addClass('disabled');
