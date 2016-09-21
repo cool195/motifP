@@ -1507,7 +1507,7 @@ function HideSeeMore(seemoreName) {
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
         FB.api('/me', 'GET', {fields: 'id,name,picture.width(750).height(750),email'},function (response) {
-            if (response.email === '' && response === undefined) {
+            if (response.email == '' || response == undefined) {
                 $.ajax({
                     url: '/facebookstatus/'+response.id,
                     type: 'get'
@@ -1522,28 +1522,31 @@ function HideSeeMore(seemoreName) {
                         }
                     })
             } else {
-                $.ajax({
-                    url: '/facebooklogin',
-                    type: 'POST',
-                    data: {
-                        email: response.email,
-                        id: response.id,
-                        name: response.name,
-                        avatar: response.picture.data.url
-                    }
-                })
-                    .done(function(data) {
-                        if (data.success) {
-                            window.location.href = data.redirectUrl;
-                        } else {
-                            $('.warning-info').removeClass('off');
-                            $('.warning-info').children('span').html(data.prompt_msg);
-                        }
-                    });
-
+                loginSuccess(response);
             }
 
         });
+    }
+
+    function loginSuccess(response){
+        $.ajax({
+            url: '/facebooklogin',
+            type: 'POST',
+            data: {
+                email: response.email,
+                id: response.id,
+                name: response.name,
+                avatar: response.picture.data.url
+            }
+        })
+            .done(function(data) {
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                } else {
+                    $('.warning-info').removeClass('off');
+                    $('.warning-info').children('span').html(data.prompt_msg);
+                }
+            });
     }
 
     $('#facebookLogin').click(function () {
