@@ -1245,6 +1245,7 @@ footer {
   border-radius: 5px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .promotion-item .p-left {
@@ -1253,7 +1254,6 @@ footer {
 
 .promotion-item.active {
   border: 2px solid #6d91ff;
-  cursor: pointer;
 }
 
 .promotionCode-Primary{
@@ -1281,13 +1281,21 @@ footer {
   align-items: flex-end;
   padding: 5px;
   opacity: 1;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
 }
 
 .promotion-item.active .promotionCode-Primary i {
   -webkit-transform: rotate(-225deg);
   transform: rotate(-225deg);
+}
+
+.promotion-item .mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .addPromotionCode, .showPromotionCode {

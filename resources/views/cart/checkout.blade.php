@@ -288,7 +288,7 @@
             <div class="p-x-20x p-y-15x font-size-md btn-showHide" id="crShowHide">
                 <span class="sanBold">Promotion Code</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span id="srmessage"></span>
+                    <span id="codemessage"></span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
@@ -451,7 +451,7 @@
     @{{ each list }}
     <div class="col-md-6">
         <div class="m-a-10x">
-            <div class="row promotion-item checkoutPromotion-item flex flex-alignCenter active">
+            <div class="row promotion-item checkoutPromotion-item flex flex-alignCenter @{{ if $value.selected == true }} active @{{ /if }}" data-promotioncode="@{{ $value.cp_title }}">
                 <div class="col-md-8">
                     <div class="text-right p-left p-r-15x p-y-15x">
                         <div class="helveBold font-size-sm">@{{ $value.prompt_words }}</div>
@@ -462,6 +462,9 @@
                     <div class="font-size-lx text-left helveBold">@{{ $value.cp_title }}</div>
                 </div>
                 <div class="promotionCode-Primary"><i class="iconfont icon-check font-size-lg"></i></div>
+                @{{ if $value.usable == false }}
+                <div class="mask"></div>
+                @{{ /if }}
             </div>
         </div>
     </div>
