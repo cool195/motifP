@@ -2,7 +2,7 @@
 @include('header', ['title' => 'Cart'])
 <!-- header end-->
 <!-- 横幅 -->
-<div class="ads-banner">
+<div class="shippingTop-banner">
     <span class="sanBold font-size-md">FREE Expedited Shipping for $79+ US Orders!</span>
     <div class="btn btn-100 btn-share btn-md m-l-20x text-link">Go Shopping</div>
 </div>
