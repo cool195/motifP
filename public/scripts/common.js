@@ -959,6 +959,7 @@ function HideSeeMore(seemoreName) {
         $('#defaultAddr').data('csn', $(this).parent('.address-item').data('csn'));
         $('#defaultAddr').data('aid', $(this).parent('.address-item').data('aid'));
         getCheckoutInfo();
+        getshiplist();
     });
 
     // 修改地址
@@ -1089,10 +1090,15 @@ function HideSeeMore(seemoreName) {
     } catch (e) {}
 
     // 选择地址增值服务
-    $('input[type="radio"]').on('click', function () {
+    // $('input[type="radio"]').on('click', function () {
+    //     $('.shippingMethodShow').html($(this).data('show'));
+    //     getCheckoutInfo();
+    // });
+
+    $('.checkout-method').on('click','.methodRadio',function(){
         $('.shippingMethodShow').html($(this).data('show'));
         getCheckoutInfo();
-    });
+    })
 
     // 收起地址增值服务
     $('#smsubmit').on('click', function () {
@@ -1148,7 +1154,7 @@ function HideSeeMore(seemoreName) {
                         $('.freight_amount').html('Free');
                     }
                     $('.pay_amount').html('$' + (data.data.pay_amount / 100).toFixed(2));
-                    getshiplist(data.data.total_amount+data.data.vas_amount);
+                    $('.checkoutInfo').data('price',data.data.total_amount+data.data.vas_amount);
                 }
             })
     }
@@ -1210,15 +1216,16 @@ function HideSeeMore(seemoreName) {
                             $('#defaultAddr').data('aid', value['receiving_id']);
                         });
                         getCheckoutInfo();
+                        getshiplist();
                     }
                 }
             })
     }
 
     //设置配送服务
-    function getshiplist(price){
+    function getshiplist(){
         $.ajax({
-            url: '/getshiplist?country='+$('#defaultAddr').data('csn')+'&price='+price,
+            url: '/getshiplist?country='+$('#defaultAddr').data('csn')+'&price='+$('.checkoutInfo').data('price'),
             type: 'GET'
         })
             .done(function (data) {

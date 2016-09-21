@@ -241,7 +241,7 @@
                     <div class="row p-x-20x p-t-20x checkout-method">
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
-                                <input type="radio" @if($k==0){{'checked'}}@endif name="shippingMethod"
+                                <input class="methodRadio" type="radio" @if($k==0){{'checked'}}@endif name="shippingMethod"
                                        data-price="{{$list['price']}}"
                                        value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
@@ -321,7 +321,7 @@
         </div>
 
         <!-- 结算总价 -->
-        <div class="box-shadow bg-white m-t-20x checkoutInfo" data-country="" data-price="">
+        <div class="box-shadow bg-white m-t-20x checkoutInfo" data-price="">
             <div class="p-a-20x font-size-md">
                 {{--数量--}}
                 <div class="text-right">
