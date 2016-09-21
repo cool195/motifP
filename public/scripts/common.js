@@ -669,8 +669,16 @@ function HideSeeMore(seemoreName) {
                             tObj.removeClass('disabled');
                             if (skuQty == 2) $('#cdsku' + nowsku).removeClass('disabled');
                             if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');
-                            if (skuQty >= 50) $('#casku' + nowsku).addClass('disabled');
-                            if (skuQty <= 49) $('#casku' + nowsku).removeClass('disabled');
+                            if (skuQty >= 50) {
+                                $('#casku' + nowsku).addClass('disabled');
+                                $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').removeClass('off');
+                                $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').children('span').html('only ' + skuQty + ' left');
+
+                            }
+                            if (skuQty <= 49) {
+                                $('#casku' + nowsku).removeClass('disabled');
+                                $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').addClass('off');
+                            }
                             $.ajax({
                                 url: 'cart/alterQtty',
                                 type: 'POST',
@@ -3014,6 +3022,35 @@ function HideSeeMore(seemoreName) {
     });
 
     //end 个人中心 Promotions
+
+    //start 设计师详情 预售
+        //获取 banner图片宽高
+    var $designerBanImg = $('.designer-banImg');
+    $designerBanImg.each(function (index) {
+        $(this).on("load", function(){
+            var banW = $(this).width();
+            var banH =  $(this).height();
+            if (banW > banH){
+                console.log('111');
+                console.log(banW);
+                console.log(banH);
+                $(this).css('width', '100%');
+
+            }else{
+                console.log('222');
+                console.log(banW);
+                console.log(banH);
+                $(this).css({
+                    width: '50%',
+                    margin: '0 auto'
+                });
+            }
+        });
+    });
+
+    //end 设计师详情 预售
+
+
 
 
 

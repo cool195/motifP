@@ -87,12 +87,10 @@
                                     <div class="mask"></div>
                                 @endif
                             </div>
-                            @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
-                                <div class="warning-info flex flex-alignCenter text-warning">
-                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                    <span class="font-size-base">{{$showSku['prompt_info']}}</span>
-                                </div>
-                            @endif
+                            <div class="warning-info flex flex-alignCenter text-warning @if(0 != $showSku['stock_status'] && 2 != $showSku['stock_status'] && 1 == $showSku['isPutOn']) off @endif">
+                                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                <span class="font-size-base">{{$showSku['prompt_info']}}</span>
+                            </div>
                         </div>
                     @endforeach
                 </div>
