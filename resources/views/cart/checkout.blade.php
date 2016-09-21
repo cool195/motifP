@@ -256,35 +256,7 @@
         </div>
 
         {{--Promotion Code--}}
-        {{--<div class="box-shadow bg-white m-t-20x">--}}
-            {{--<div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified promotionCode">--}}
-                {{--<div class="btn-codeShowHide"></div>--}}
-                {{--<div class="font-size-md">--}}
-                    {{--<span class="sanBold">Promotion Code</span>--}}
-                {{--</div>--}}
-                {{--<div class="showHide-body flex flex-alignCenter">--}}
-                    {{--<div class="warning-info flex flex-alignCenter text-warning p-r-5x off">--}}
-                        {{--<i class="iconfont icon-caveat icon-size-md p-r-5x"></i>--}}
-                        {{--<span class="font-size-base">Invalid Code !</span>--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<input type="text" name="ccps"--}}
-                               {{--class="form-control contrlo-lg text-primary input-promotion disabled">--}}
-                    {{--</div>--}}
-                    {{--<div class="p-l-20x">--}}
-                        {{--<a href="javascript:;" id="pcsubmit" class="btn btn-primary btn-md">Continue</a>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<span class="pull-right showHide-simpleInfo promotion-info">--}}
-                    {{--<span id="pcode">{{ $accountList['cp_title'] }}</span>--}}
-                    {{--<a class="p-l-40x font-size-md ">Edit</a>--}}
-                {{--</span>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
-
-        <!-- Promotion Code2 -->
-        <div class="box-shadow bg-white m-t-20x">
+        <div class="box-shadow bg-white m-t-20x" id="pcode" data-bindid="{{$accountList['cp_bind_id']}}">
             <div class="p-x-20x p-y-15x font-size-md btn-showHide" id="crShowHide">
                 <span class="sanBold">Promotion Code</span>
                 <span class="pull-right showHide-simpleInfo">
@@ -301,7 +273,6 @@
                         <p class="helveBold font-size-llxx m-t-40x">Add New Promotions</p>
                         <div class="addCode-input m-t-40x text-left">
                             <input type="text" class="form-control contrlo-lg text-primary m-b-10x" name="cps" value="" placeholder="Enter Your Promotions Code Here">
-                            <!--error-->
                                     <span class="warning-info text-warning off">
                                         <i class="iconfont icon-caveat p-r-5x"></i>
                                         <span class="font-size-base invalidText"></span>
@@ -451,7 +422,7 @@
     @{{ each list }}
     <div class="col-md-6">
         <div class="m-a-10x">
-            <div class="row promotion-item checkoutPromotion-item flex flex-alignCenter @{{ if $value.selected == true }} active @{{ /if }}" data-promotioncode="@{{ $value.cp_title }}">
+            <div class="row promotion-item checkoutPromotion-item flex flex-alignCenter @{{ if $value.usable == true }} codeItem @{{ /if }} @{{ if $value.selected == true }} active @{{ /if }}" data-promotioncode="@{{ $value.cp_title }}" data-bindid="@{{ $value.bind_id }}">
                 <div class="col-md-8">
                     <div class="text-right p-left p-r-15x p-y-15x">
                         <div class="helveBold font-size-sm">@{{ $value.prompt_words }}</div>
