@@ -967,11 +967,9 @@ function HideSeeMore(seemoreName) {
         if (AddressId === '' || AddressId === undefined) {
             if($('.address-item').length <=0 ){
                 $('.isDefault').addClass('active');
-                $('.isDefaultText').html('Default');
                 CheckNum=0;
             } else {
                 $('.isDefault').removeClass('active');
-                $('.isDefaultText').html('Make Primary');
             }
             // 添加地址
             //初始化 修改地址 from 表单
@@ -1012,10 +1010,8 @@ function HideSeeMore(seemoreName) {
 
                     if (data.isDefault == 1) {
                         $('.isDefault').addClass('active');
-                        $('.isDefaultText').html('Default');
                     } else {
                         $('.isDefault').removeClass('active');
-                        $('.isDefaultText').html('Make Primary');
                     }
                     $('.address-save').removeClass('disabled');
 

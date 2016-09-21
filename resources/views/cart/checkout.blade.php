@@ -133,7 +133,7 @@
                         <span class="font-size-md">Add Shipping Address</span>
                         <span class="font-size-md pull-right">
                             <i class="isDefault iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
-                            <a class="p-l-10x isDefaultText" href="javascript:;">Make Primary</a></span>
+                            <a class="p-l-10x" href="javascript:;">Default</a></span>
                     </div>
                     <div class="row p-t-30x">
                         <form id="addAddressForm" data-aid="">
