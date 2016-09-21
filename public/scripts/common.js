@@ -1058,7 +1058,7 @@ function HideSeeMore(seemoreName) {
     }
 
     try {
-        if($('checkoutView').hasClass('container') || $('addressView').hasClass('container')){
+        if($('#checkoutView').data('status') || $('#addressView').data('status')){
             // 初始化 国家,洲
             var Country= $('select[name="country"] option:selected').text();
             initCityState(Country,'');
