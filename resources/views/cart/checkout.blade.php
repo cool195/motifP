@@ -1,6 +1,11 @@
 <!-- 头部 -->
 @include('header')
-
+@if($config)
+    <div class="active-banner p-y-10x text-center">
+        <span class="sanBold font-size-md">{{$config}}</span>
+        <a href="/shopping"><div class="btn btn-100 btn-share btn-md m-l-20x text-link">Go Shopping</div></a>
+    </div>
+@endif
 <!-- 内容 -->
 <section class="m-t-40x">
     <div class="container" id="checkoutView" data-status="true">

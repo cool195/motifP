@@ -180,7 +180,8 @@
                                 <img src="/images/product/icon-flash@2x.png" alt="">
                                 <span class="p-l-10x stock-qtty">
                                     @if(($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0 && $data['sale_status']) && $data['isPutOn']==1) Only {{ $data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] }} Left
-                                @else Sold Out @endif</span>
+                                    @else Sold Out @endif
+                                </span>
                             </div>
                             @endif
                             @if(!isset($data['skuPrice']['skuPromotion']) || $data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] ==0)
