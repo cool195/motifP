@@ -2,7 +2,7 @@
 
 <!-- 内容 -->
 <section class="m-y-40x">
-    <div class="container">
+    <div class="container" id="userpromotions" data-status="true">
         <div class="myHome-content">
             @include('user.left', ['title' => 'promotions'])
 

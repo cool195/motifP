@@ -19,9 +19,15 @@
             </div>
             <p class="p-y-10x text-primary font-size-md"></p>
             <div class="flex flex-alignCenter">
-                <span class="sanBold font-size-md p-r-15x"><a class="btn btn-primary btn-lg btn-200" href="javascript:window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)">Invite Facebook</a></span>
-                <div class="input-group invite-input p-r-30x">
-                    <a class="btn btn-primary btn-lg btn-200" href="javascript:window.open('http://twitter.com/home?status='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)" >Invite Twitter</a>
+                <span class="font-size-md p-r-15x">
+                    <a class="btn btn-block btn-facebook" href="javascript:window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)">
+                        Invite Facebook
+                    </a>
+                </span>
+                <div class="font-size-md p-r-15x">
+                    <a class="btn btn-block btn-facebook" href="javascript:window.open('http://twitter.com/home?status='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)">
+                        Invite Twitter
+                    </a>
                 </div>
             </div>
 

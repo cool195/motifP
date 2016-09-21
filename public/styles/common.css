@@ -6,7 +6,13 @@ a:focus {
 .hover-blue:hover {
   color: #6d91ff;
 }
-
+/*cart 横幅*/
+.ads-banner{
+  background: rgba(108, 145, 255, 0.7);
+  line-height: 52px;
+  color: #fff;
+  text-align: center;
+}
 .arrow-up {
   width: 0;
   height: 0;

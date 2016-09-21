@@ -9,6 +9,13 @@ class CartController extends BaseController
 {
     public function cart(Request $request)
     {
+        //字典表
+        $params = array(
+            'cmd' => 'config',
+        );
+        $config = $this->request('general', $params);
+        $config['data']['cart_checkout_top_notification'];
+
         $cartList = $this->getCartList();
         $saveList = $this->getCartSaveList();
         if($request->input('ajax')){
@@ -17,11 +24,19 @@ class CartController extends BaseController
             $result['save'] = $cartList['data'];
             return $result;
         }
-        return view('cart.cart', ['cart' => $cartList['data'], 'save' => $saveList['data']]);
+        return view('cart.cart', ['cart' => $cartList['data'], 'save' => $saveList['data'],'config'=>$config['data']['cart_checkout_top_notification']]);
     }
 
     public function checkout(Request $request)
     {
+
+        //字典表
+        $params = array(
+            'cmd' => 'config',
+        );
+        $config = $this->request('general', $params);
+        $config['data']['cart_checkout_top_notification'];
+
         //获取默认地址
         $params = array(
             'cmd' => 'gdefault',
@@ -33,7 +48,7 @@ class CartController extends BaseController
         $_accountList = $this->getCartAccountList($request,-1,"","",$result['data']['receiving_id']);
         $logisticsList = $this->getLogisticsList($result['data']['country_name_sn'],$_accountList['data']['total_amount']+$_accountList['data']['vas_amount']);
         $accountList = $this->getCartAccountList($request,$logisticsList['data']['list'][0]['logistics_type'],"","",$result['data']['receiving_id']);
-        return view('cart.checkout', ['accountList' => $accountList['data'], 'logisticsList' => $logisticsList['data']]);
+        return view('cart.checkout', ['accountList' => $accountList['data'], 'logisticsList' => $logisticsList['data'],'config'=>$config['data']['cart_checkout_top_notification']]);
     }
 
     public function getCartAmount()

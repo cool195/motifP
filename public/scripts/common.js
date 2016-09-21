@@ -2861,7 +2861,10 @@ function HideSeeMore(seemoreName) {
     //#end 个人中心 Following
 
     //start 个人中心 Promotions
-    getCoupons();
+    if($('#checkoutView').data('status') || $('#userpromotions').data('status')){
+        getCoupons();
+    }
+
 
         //进入添加 Promotions Code页面
     $('.btn-addNewCode').on('click', function () {
