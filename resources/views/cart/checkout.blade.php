@@ -1,7 +1,7 @@
 <!-- 头部 -->
 @include('header')
 @if($config)
-    <div class="shippingTop-banner">
+    <div class="active-banner p-y-10x text-center">
         <span class="sanBold font-size-md">{{$config}}</span>
         <a href="/shopping"><div class="btn btn-100 btn-share btn-md m-l-20x text-link">Go Shopping</div></a>
     </div>
