@@ -1214,12 +1214,13 @@ function HideSeeMore(seemoreName) {
                                 city = value['city'],
                                 detail_address1 = value['detail_address1'],
                                 zip = value['zip'],
-                                name = value['name'];
-                            $('#defaultAddr').html(country + " " + city + " " + detail_address1 + " " + zip + " " + name);
+                                name = value['name'],
+                                state = value['state'];
+                            $('#defaultAddr').html(name + detail_address1 + " " + city + " "+ state + " " + country + " " + zip);
                             $('#defaultAddr').data('city', city);
                             $('#defaultAddr').data('aid', value['receiving_id']);
-                            console.info(value['country']);
                         });
+                        getCheckoutInfo();
                     }
                 }
             })
@@ -3019,6 +3020,35 @@ function HideSeeMore(seemoreName) {
     });
 
     //end 个人中心 Promotions
+
+    //start 设计师详情 预售
+        //获取 banner图片宽高
+    var $designerBanImg = $('.designer-banImg');
+    $designerBanImg.each(function (index) {
+        $(this).on("load", function(){
+            var banW = $(this).width();
+            var banH =  $(this).height();
+            if (banW > banH){
+                console.log('111');
+                console.log(banW);
+                console.log(banH);
+                $(this).css('width', '100%');
+
+            }else{
+                console.log('222');
+                console.log(banW);
+                console.log(banH);
+                $(this).css({
+                    width: '50%',
+                    margin: '0 auto'
+                });
+            }
+        });
+    });
+
+    //end 设计师详情 预售
+
+
 
 
 
