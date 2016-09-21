@@ -76,11 +76,11 @@
             <p class="m-b-0">{{$designer['describe']}}</p>
         </div>
 
-        @if(isset($product['infos']) && !empty($product['infos']))
+     {{--   @if(isset($product['infos']) && !empty($product['infos']))
         <!-- topic 模版 设计师对应模版商品 -->
         <section class="p-y-40x">
             <div class="topic-wrap">
-                <div class="bg-white">
+                --}}{{--<div class="bg-white">
                     @foreach($product['infos'] as $k => $value)
                         @if($value['type'] == 'title')
                             <!--标题-->
@@ -127,7 +127,7 @@
                                                         <!--预售标志-->
                                                         @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
                                                             @if(!isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) || $product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
-                                                                {{--售罄--}}
+                                                                售罄
                                                                 <div class="bg-soldout">
                                                                     <span class="text helve font-size-sm">SOLD OUT</span>
                                                                 </div>
@@ -168,10 +168,308 @@
                             @endif
                         @endif
                     @endforeach
+                </div>--}}{{--
+                <div class="bg-common">
+
+                    <!-- 设计师 预售 -->
+                    <div class="designer-presale">
+                        <div class="helveBold pre-tit">Vivian’s Presale</div>
+                        <span class="sanBold">Order Close in </span>
+
+                    </div>
+                    <!--描述-->
+                    <div class="p-x-20x m-y-20x">
+                        <p class="m-b-0">Alexandra's passion is for fashion, photography and travel, which she established in her
+                            blog
+                            Lovely Pepa back in 2009, and has since become one of the most influential blogs in the world, one of the only
+                            Spanish bloggers to achieve such tremendous success. Her passion for photography and exotic, far away places
+                            come to life in her newest collection.</p>
+                    </div>
+
+                    <!--图-->
+                    <div class="m-t-20x">
+                        <img src="">
+                    </div>
+
+                    <!--分割线-->
+                    <hr class="hr-base m-x-20x m-y-0">
+
+                    <!--图文列表-->
+                    <div class="p-t-40x p-b-20x bg-body">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="productList-item">
+                                    <div class="image-container">
+                                        <a href="#">
+                                            <img class="img-fluid img-lazy" data-original="/images/product/product.jpg"
+                                                 src="/images/product/bg-product@336.png" alt="商品的名称">
+                                            <div class="bg-heart"></div>
+                                        </a>
+                                        <span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                                    </div>
+                                    <div class="price-caption helveBold">
+                                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">New Rings New Rings New Rings
+                                            New
+                                            Rings
+                                        </div>
+                                        <div class="text-center">
+                                            <span class="font-size-md text-primary p-r-5x">$199.95</span>
+                                            <span class="font-size-base text-common text-throughLine">$299.95</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="productList-item">
+                                    <div class="image-container">
+                                        <a href="#">
+                                            <img class="img-fluid img-lazy" data-original="/images/product/product.jpg"
+                                                 src="/images/product/product.jpg" alt="商品的名称">
+                                            <div class="bg-heart"></div>
+                                        </a>
+                                        <span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                                    </div>
+                                    <div class="price-caption helveBold">
+                                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">New Rings</div>
+                                        <div class="text-center">
+                                            <span class="font-size-md text-primary p-r-5x">$199.95</span>
+                                            <span class="font-size-base text-common text-throughLine">$299.95</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="productList-item">
+                                    <div class="image-container">
+                                        <a href="#">
+                                            <img class="img-fluid img-lazy" data-original="/images/product/product.jpg"
+                                                 src="/images/product/product.jpg" alt="商品的名称">
+                                            <div class="bg-heart"></div>
+                                        </a>
+                                        <span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                                    </div>
+                                    <div class="price-caption helveBold">
+                                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">New Rings
+                                        </div>
+                                        <div class="text-center">
+                                            <span class="font-size-md text-primary p-r-5x">$199.95</span>
+                                            <span class="font-size-base text-common text-throughLine">$299.95</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="productList-item">
+                                    <div class="image-container">
+                                        <a href="#">
+                                            <img class="img-fluid img-lazy" data-original="/images/product/product.jpg"
+                                                 src="/images/product/product.jpg" alt="商品的名称">
+                                            <div class="bg-heart"></div>
+                                        </a>
+                                        <span class="product-heart btn-heart"><i class="iconfont icon-onheart font-size-lxx"></i></span>
+                                    </div>
+                                    <div class="price-caption helveBold">
+                                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">New Rings</div>
+                                        <div class="text-center">
+                                            <span class="font-size-md text-primary p-r-5x">$199.95</span>
+                                            <span class="font-size-base text-common text-throughLine">$299.95</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--图 banner-->
+                    <div class="p-y-0">
+                        <img src="images/designer/designer1.jpg">
+                    </div>
                 </div>
             </div>
         </section>
-        @endif
+        @endif--}}
+
+
+        <!-- 设计师 预售 -->
+        <section class="bg-common m-t-30x p-b-20x">
+            <!-- 预售倒计时 -->
+            <div class="designer-presale text-center p-t-40x p-b-10x">
+                <div class="helveBold pre-tit p-b-10x">Vivian’s Presale</div>
+                <span class="sanBold font-size-lxx">Order Close in </span>
+                <div class="m-t-30x">
+                    <div class="row presaleDate-row">
+                        <div class="col-md-3">
+                            <div class="timeDown box-shadow bg-white">
+                                <span class="time-number p-t-5x helveBold">5</span>
+                                <div class="dateName text-white helve">DAY</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="timeDown box-shadow bg-white">
+                                <span class="time-number p-t-5x helveBold">2</span>
+                                <div class="dateName text-white helve">HOUR</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="timeDown box-shadow bg-white">
+                                <span class="time-number p-t-5x helveBold">4</span>
+                                <div class="dateName text-white helve">MIN</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="timeDown box-shadow bg-white">
+                                <span class="time-number p-t-5x helveBold">34</span>
+                                <div class="dateName text-white helve">SEC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="p-t-40x sanBold font-size-md">Expected to ship on Sep 10, 2016</p>
+            </div>
+
+            <!--banner图-->
+            <div class="m-t-20x text-center">
+                <img class="img-lazy designer-banImg" src="{{config('runtime.Image_URL')}}/images/product/pic.jpg">
+            </div>
+
+            <!--描述-->
+            <div class="p-x-20x m-y-20x">
+                <p class="m-b-0 text-center">traight off the Emmys red carpet, inspired by the most beautiful jewelries that sparkled all night.Straight off the Emmys red carpet, inspired by the most beautiful jewelries that sparkled all night.</p>
+            </div>
+
+            <!--预售商品-->
+            <div class="container m-y-20x">
+                <div class="row designerDetail-goods">
+                    <div class="col-md-3 col-xs-6 goods-item">
+                        <div class="productList-item">
+                            <div class="image-container">
+                                <a href="#">
+                                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/product/product.jpg" alt="商品的名称">
+                                    <div class="bg-heart"></div>
+                                </a>
+                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"></i></span>
+                                <!--预售标志-->
+                                <div class="presale-sign">
+                                    <div class="img-clock"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/sale-clock.png"></div>
+                                    <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                </div>
+                            </div>
+                            <div class="price-caption helveBold">
+                                <div class="text-center font-size-md text-primary text-truncate p-x-20x">New Rings</div>
+                                <div class="text-center">
+                                    <span class="font-size-md text-primary p-r-5x text-red">$199.95</span>
+                                    <span class="font-size-base text-common text-throughLine">$299.95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-6 goods-item">
+                        <div class="productList-item">
+                            <div class="image-container">
+                                <a href="#">
+                                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/product/product.jpg" alt="商品的名称">
+                                    <div class="bg-heart"></div>
+                                </a>
+                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"></i></span>
+                                <!--预售标志-->
+                                <div class="presale-sign">
+                                    <div class="img-clock"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/sale-clock.png"></div>
+                                    <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                </div>
+                            </div>
+                            <div class="price-caption helveBold">
+                                <div class="text-center font-size-md text-primary text-truncate p-x-20x">New Rings</div>
+                                <div class="text-center">
+                                    <span class="font-size-md text-primary p-r-5x text-red">$199.95</span>
+                                    <span class="font-size-base text-common text-throughLine">$299.95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-6 goods-item">
+                        <div class="productList-item">
+                            <div class="image-container">
+                                <a href="#">
+                                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/product/product.jpg" alt="商品的名称">
+                                    <div class="bg-heart"></div>
+                                </a>
+                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"></i></span>
+                                <!--预售标志-->
+                                <div class="presale-sign">
+                                    <div class="img-clock"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/sale-clock.png"></div>
+                                    <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                </div>
+                            </div>
+                            <div class="price-caption helveBold">
+                                <div class="text-center font-size-md text-primary text-truncate p-x-20x">New Rings</div>
+                                <div class="text-center">
+                                    <span class="font-size-md text-primary p-r-5x text-red">$199.95</span>
+                                    <span class="font-size-base text-common text-throughLine">$299.95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--banner图-->
+            <div class="m-t-20x text-center">
+                <img class="img-lazy designer-banImg" src="{{config('runtime.Image_URL')}}/images/product/pic-test.png">
+            </div>
+
+            <!--预售商品-->
+            <div class="container m-y-20x">
+                <div class="row designerDetail-goods">
+                    <div class="col-md-3 col-xs-6 goods-item">
+                        <div class="productList-item">
+                            <div class="image-container">
+                                <a href="#">
+                                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/product/product.jpg" alt="商品的名称">
+                                    <div class="bg-heart"></div>
+                                </a>
+                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"></i></span>
+                                <!--预售标志-->
+                                <div class="presale-sign">
+                                    <div class="img-clock"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/sale-clock.png"></div>
+                                    <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                </div>
+                            </div>
+                            <div class="price-caption helveBold">
+                                <div class="text-center font-size-md text-primary text-truncate p-x-20x">New Rings</div>
+                                <div class="text-center">
+                                    <span class="font-size-md text-primary p-r-5x text-red">$199.95</span>
+                                    <span class="font-size-base text-common text-throughLine">$299.95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-6 goods-item">
+                        <div class="productList-item">
+                            <div class="image-container">
+                                <a href="#">
+                                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/product/product.jpg" alt="商品的名称">
+                                    <div class="bg-heart"></div>
+                                </a>
+                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"></i></span>
+                                <!--预售标志-->
+                                <div class="presale-sign">
+                                    <div class="img-clock"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/sale-clock.png"></div>
+                                    <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                </div>
+                            </div>
+                            <div class="price-caption helveBold">
+                                <div class="text-center font-size-md text-primary text-truncate p-x-20x">New Rings</div>
+                                <div class="text-center">
+                                    <span class="font-size-md text-primary p-r-5x text-red">$199.95</span>
+                                    <span class="font-size-base text-common text-throughLine">$299.95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
 
         <!-- 设计师 商品 -->
         <h4 class="helveBold text-main p-l-10x p-t-30x m-b-20x">@if(isset($productAll['data']['list'])){{$designer['nickname']}}'s Design Works @endif</h4>

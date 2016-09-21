@@ -2952,6 +2952,35 @@ function HideSeeMore(seemoreName) {
 
     //end 个人中心 Promotions
 
+    //start 设计师详情 预售
+        //获取 banner图片宽高
+    var $designerBanImg = $('.designer-banImg');
+    $designerBanImg.each(function (index) {
+        $(this).on("load", function(){
+            var banW = $(this).width();
+            var banH =  $(this).height();
+            if (banW > banH){
+                console.log('111');
+                console.log(banW);
+                console.log(banH);
+                $(this).css('width', '100%');
+
+            }else{
+                console.log('222');
+                console.log(banW);
+                console.log(banH);
+                $(this).css({
+                    width: '50%',
+                    margin: '0 auto'
+                });
+            }
+        });
+    });
+
+    //end 设计师详情 预售
+
+
+
 
 
     //Ask Start
