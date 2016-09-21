@@ -81,13 +81,13 @@
                             </div>
                         @endif
                     </div>
+                    {{--预售--}}
+                    {{--@if(1 == $showSku['sale_type'] && isset($showSku['skuPromotion']['ship_desc']))--}}
+                        {{--<div class="presale-checkout text-white font-size-md p-a-10x bg-red sanBold">PREORDER: Expected to ship--}}
+                            {{--on {{$showSku['skuPromotion']['ship_desc']}}</div>--}}
+                    {{--@endif--}}
                 @endforeach
             </div>
-        @if(1 == $accountList['showSkus'][0]['sale_type'] && isset($accountList['showSkus'][0]['skuPromotion']['ship_desc']))
-            <!--预售-->
-                <div class="presale-checkout text-white font-size-md p-a-10x bg-red sanBold">PREORDER: Expected to ship
-                    on {{$accountList['showSkus'][0]['skuPromotion']['ship_desc']}}</div>
-            @endif
         </div>
 
         {{--Shipping Address--}}
