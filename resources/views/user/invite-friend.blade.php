@@ -13,38 +13,19 @@
                     <input type="text" class="form-control" id="inviteCode" placeholder="{{$code}}" value="{{$code}}" aria-describedby="btn-copy">
                     <span class="input-group-addon text-primary font-size-md" id="btn-copy" onclick="copyinput();">Copy</span>
                 </div>
-                {{--<span class="p-l-30x">--}}
-                    {{--<a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-shape="round" data-pin-height="28">pinterest</a>--}}
-                {{--</span>--}}
                 <div class="p-l-30x"><span class="btn btn-primary btn-md" id="btn-inviteFriend">Invite Friends</span></div>
             </div>
-            <p class="p-y-10x text-primary font-size-md"></p>
-            <div class="flex flex-alignCenter">
-                <span class="font-size-md p-r-15x">
-                    <a class="btn btn-block btn-facebook" href="javascript:window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)">
-                        Invite Facebook
-                    </a>
-                </span>
-                <div class="font-size-md p-r-15x">
-                    <a class="btn btn-block btn-facebook" href="javascript:window.open('http://twitter.com/home?status='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)">
-                        Invite Twitter
-                    </a>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
 
 <div class="remodal modal-content remodal-md p-y-20x" data-remodal-id="sharemodal">
     <span class="font-size-md sanBold p-r-15x">Invite with:</span>
-    <a href="#" class="btn btn-circle btn-shareEmail m-r-20x p-a-5x"><i class="iconfont icon-email-o font-size-lxx text-white"></i></a>
-    <a href="#" class="btn btn-circle btn-shareFacebook m-r-20x p-a-5x"><i class="iconfont icon-facebook-o font-size-lxx text-white"></i></a>
-    <a href="#" class="btn btn-circle btn-shareTwitter m-r-20x p-a-5x"><i class="iconfont icon-twitter-o font-size-lxx text-white"></i></a>
-    <a href="#" class="btn btn-circle btn-shareGoogle m-r-20x p-a-5x"><i class="iconfont icon-google-o font-size-lxx text-white"></i></a>
+    {{--<a href="#" class="btn btn-circle btn-shareEmail m-r-20x p-a-5x"><i class="iconfont icon-email-o font-size-lxx text-white"></i></a>--}}
+    <a href="javascript:window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent('{{config('runtime.SELF_URL').'d/invite/'.$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)" class="btn btn-circle btn-shareFacebook m-r-20x p-a-5x"><i class="iconfont icon-facebook-o font-size-lxx text-white"></i></a>
+    <a href="javascript:window.open('http://twitter.com/home?status='+encodeURIComponent('{{config('runtime.SELF_URL').'d/invite/'.$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)" class="btn btn-circle btn-shareTwitter m-r-20x p-a-5x"><i class="iconfont icon-twitter-o font-size-lxx text-white"></i></a>
+    {{--<a href="#" class="btn btn-circle btn-shareGoogle m-r-20x p-a-5x"><i class="iconfont icon-google-o font-size-lxx text-white"></i></a>--}}
 </div>
-
-{{--<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>--}}
 
 @include('footer')
 <script type="text/javascript">
