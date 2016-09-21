@@ -816,7 +816,6 @@ function HideSeeMore(seemoreName) {
                             $('.add-address').addClass('disabled');
                             $('#addAddressForm').find('input[type="text"]').val('');
                             getAddressList();
-                            getCheckoutInfo();
                         }
                     })
             } else {
@@ -837,7 +836,6 @@ function HideSeeMore(seemoreName) {
                             $('.add-address').addClass('disabled');
                             $('#addAddressForm').find('input[type="text"]').val('');
                             getAddressList();
-                            getCheckoutInfo();
                         }
                     })
             }
@@ -1219,6 +1217,7 @@ function HideSeeMore(seemoreName) {
                             $('#defaultAddr').data('city', city);
                             $('#defaultAddr').data('aid', value['receiving_id']);
                         });
+                        getCheckoutInfo();
                     }
                 }
             })
