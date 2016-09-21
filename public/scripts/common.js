@@ -1508,8 +1508,6 @@ function HideSeeMore(seemoreName) {
     function loginFacebook() {
         FB.api('/me', 'GET', {fields: 'id,name,picture.width(750).height(750),email'},function (response) {
             if (response.email === '' && response === undefined) {
-                console.log(response)
-                return false;
                 $.ajax({
                     url: '/facebookstatus/'+response.id,
                     type: 'get'
@@ -1524,8 +1522,6 @@ function HideSeeMore(seemoreName) {
                         }
                     })
             } else {
-                console.log('ok')
-                return false;
                 $.ajax({
                     url: '/facebooklogin',
                     type: 'POST',
