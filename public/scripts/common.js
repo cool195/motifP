@@ -808,6 +808,7 @@ function HideSeeMore(seemoreName) {
                             $('.add-address').addClass('disabled');
                             $('#addAddressForm').find('input[type="text"]').val('');
                             $('#defaultAddr').data('aid',data.data.receiving_id);
+                            $('#defaultAddr').html(data.data.name + " " + data.data.detail_address1 + " " + data.data.city + " "+ data.data.state + " " + data.data.country + " " + data.data.zip);
                             getAddressList();
                             getCheckoutInfo();
                         }
@@ -830,6 +831,7 @@ function HideSeeMore(seemoreName) {
                             $('.add-address').addClass('disabled');
                             $('#addAddressForm').find('input[type="text"]').val('');
                             $('#defaultAddr').data('aid',data.data.receiving_id);
+                            $('#defaultAddr').html(data.data.name + " " + data.data.detail_address1 + " " + data.data.city + " "+ data.data.state + " " + data.data.country + " " + data.data.zip);
                             getAddressList();
                             getCheckoutInfo();
                         }
