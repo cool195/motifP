@@ -896,8 +896,8 @@ footer {
 }
 
 .designerDetail-goods {
-  margin: 0 auto;
   text-align: center;
+  font-size: 0;
 }
 .designerDetail-goods .goods-item{
   float: none !important;
