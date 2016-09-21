@@ -880,7 +880,7 @@ function HideSeeMore(seemoreName) {
         })
             .done(function (data) {
                 if(data.success){
-                    $('pcode').data('bindid',data.data.bind_id);
+                    $('#pcode').data('bindid',data.data.bind_id);
                     getCheckoutInfo();
                     if ($('input[name="ccps"]').val() != '') {
                         //收起
@@ -1102,7 +1102,7 @@ function HideSeeMore(seemoreName) {
     //重新获取结算信息
     function getCheckoutInfo() {
         var aid = $('#defaultAddr').data('aid')==undefined ? '' : $('#defaultAddr').data('aid');
-        var bindid = $('pcode').data('bindid')==undefined ? '' : $('pcode').data('bindid');
+        var bindid = $('#pcode').data('bindid')==undefined ? '' : $('#pcode').data('bindid');
         var smethod = $('input[name="shippingMethod"]:checked').val()==undefined ? '' : $('input[name="shippingMethod"]:checked').val();
         $.ajax({
             url: '/cart/accountlist?aid='+aid+'&bindid=' + bindid + '&logisticstype=' + smethod,
@@ -1113,7 +1113,6 @@ function HideSeeMore(seemoreName) {
                     if(data.data.cps_amount > 0){
                         $('.cps_amountShow').removeClass('hidden');
                         $('.cps_amount').html('-$' + (data.data.cps_amount / 100).toFixed(2));
-                        $('#pcode').html(data.data.cp_title);
                     }else{
                         $('.cps_amountShow').addClass('hidden');
                     }
@@ -1143,7 +1142,7 @@ function HideSeeMore(seemoreName) {
                 type: 'POST',
                 data: {
                     aid: $('#defaultAddr').data('aid'),
-                    bindid: $('pcode').data('bindid')==undefined ? '' : $('pcode').data('bindid'),
+                    bindid: $('#pcode').data('bindid')==undefined ? '' : $('#pcode').data('bindid'),
                     remark: $('input[name="cremark"]').val(),
                     stype: $('input[name="shippingMethod"]:checked').val(),
                     paym: paym
@@ -2966,11 +2965,16 @@ function HideSeeMore(seemoreName) {
 
 
     // checkou promotion
-    $('.coupon-list').on('click','.checkoutPromotion-item',function(){
-        $(this).toggleClass('active');
-        if($(this).hasClass('active')){
+    $('.coupon-list').on('click','.codeItem',function(){
+        $('.codeItem').removeClass('active');
+
+        if(!$(this).hasClass('active')){
             $('#codemessage').html($(this).data('promotioncode'));
+            $('#pcode').data('bindid',$(this).data('bindid'));
+            $(this).addClass('active');
+            getCheckoutInfo();
         }
+
     });
 
     //end 个人中心 Promotions
