@@ -104,14 +104,14 @@
                 <div class="p-x-20x border-bottom">
                     @foreach($save['showSkus'] as $showSku)
                         <div class="row p-y-20x flex flex-alignCenter cartProduct-item" id="{{'csku'.$showSku['sku']}}">
-                            <div class="col-md-4 flex flex-alignCenter">
-                                <a href="/product/{{$showSku['spu']}}">
+                            <div class="col-md-4 media">
+                                <a class="media-left" href="/product/{{$showSku['spu']}}">
                                     <img class="img-lazy"
                                          src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                          data-original="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}"
                                          width="120" height="120" alt="">
                                 </a>
-                                <div class="cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
+                                <div class="media-body cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
                             </div>
                             <div class="col-md-3">
                                 <div class="p-l-15x">

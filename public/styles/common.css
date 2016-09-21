@@ -489,6 +489,7 @@ footer {
 
 .checkout-Item .media-left {
   min-width: 120px;
+  vertical-align: top;
 }
 
 .checkout-Item .no-border {
@@ -896,8 +897,8 @@ footer {
 }
 
 .designerDetail-goods {
-  margin: 0 auto;
   text-align: center;
+  font-size: 0;
 }
 .designerDetail-goods .goods-item{
   float: none !important;
