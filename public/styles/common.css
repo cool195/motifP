@@ -489,6 +489,7 @@ footer {
 
 .checkout-Item .media-left {
   min-width: 120px;
+  vertical-align: top;
 }
 
 .checkout-Item .no-border {
