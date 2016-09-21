@@ -669,8 +669,16 @@ function HideSeeMore(seemoreName) {
                             tObj.removeClass('disabled');
                             if (skuQty == 2) $('#cdsku' + nowsku).removeClass('disabled');
                             if (skuQty == 1) $('#cdsku' + nowsku).addClass('disabled');
-                            if (skuQty >= 50) $('#casku' + nowsku).addClass('disabled');
-                            if (skuQty <= 49) $('#casku' + nowsku).removeClass('disabled');
+                            if (skuQty >= 50) {
+                                $('#casku' + nowsku).addClass('disabled');
+                                $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').removeClass('off');
+                                $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').children('span').html('only ' + skuQty + ' left');
+
+                            }
+                            if (skuQty <= 49) {
+                                $('#casku' + nowsku).removeClass('disabled');
+                                $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').addClass('off');
+                            }
                             $.ajax({
                                 url: 'cart/alterQtty',
                                 type: 'POST',
