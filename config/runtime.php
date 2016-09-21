@@ -15,6 +15,8 @@ if (env('APP_ENV') == 'production') {
 
     $secureCode = '4646r88B';
     $terminal = '16044402';
+
+    $selfUrl = 'http://pc.motif.me/';
 } elseif (env('APP_ENV') == 'publish') {
     //预发布
     $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';//后台图片服务地址
@@ -27,6 +29,8 @@ if (env('APP_ENV') == 'production') {
 
     $secureCode = '4646r88B';
     $terminal = '16044402';
+
+    $selfUrl = 'http://test.pc.motif.me/';
 } else {
     //测试
     $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';//后台图片服务地址
@@ -39,6 +43,8 @@ if (env('APP_ENV') == 'production') {
 
     $secureCode = '4646r88B';
     $terminal = '16044402';
+
+    $selfUrl = 'http://pc.motif.app/';
 }
 
 return [
@@ -52,4 +58,5 @@ return [
     'PAYPAL_ID' => $paypalclientID,
     'PAYPAL_SECRET' => $paypalsecret,
     'PAYPAL_MODE' => $paypalmode,
+    'SELF_URL' => $selfUrl,
 ];

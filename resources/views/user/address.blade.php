@@ -2,7 +2,7 @@
 
         <!-- 内容 -->
 <section class="m-y-40x">
-    <div class="container" id="addressView">
+    <div class="container" id="addressView" data-status="true">
         <div class="myHome-content">
             @include('user.left', ['title' => 'Shipping Address'])
             @inject('Address', 'App\Http\Controllers\AddressController')
@@ -21,7 +21,7 @@
                                     <span class="font-size-md">Add Shipping Address</span>
                                     <span class="font-size-md pull-right">
                                         <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
-                                        <span class="p-l-5x">Make Primary</span>
+                                        <span class="p-l-5x">Default</span>
                                     </span>
                                 </div>
                                 <div class="row p-t-30x">

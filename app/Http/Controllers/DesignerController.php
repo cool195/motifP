@@ -71,6 +71,15 @@ class DesignerController extends BaseController
             'id' => $id,
         );
         $result['product'] = $this->request('content', $params, 'designerf');
+        $product = $result['product'];
+        $_spu = $product['data']['infos'][0]['spus'][0];
+        if (isset($_spu) && $product['data']['spuInfos'][$_spu]['spuBase']['sale_type'] == 1 && isset($product['data']['spuInfos'][$_spu]['skuPrice']['skuPromotion']) && $product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'] == 1 && $product['data']['spuInfos'][$_spu]['stockStatus'] == 'YES') {
+            $params = array(
+                'cmd' => 'productdetail',
+                'spu' => $_spu,
+            );
+            $pre_product = $this->request('product', $params);
+        }
 
         //设计师商品
         $params = array(
@@ -128,7 +137,7 @@ class DesignerController extends BaseController
             return $result;
         }
 
-        return View($view, ['designer' => $result['data'], 'productAll' => $result['productAll'], 'product' => $result['product']['data'], 'followList' => $this->followList()]);
+        return View($view, ['pre_product'=>$pre_product['data'],'designer' => $result['data'], 'productAll' => $result['productAll'], 'product' => $result['product']['data'], 'followList' => $this->followList()]);
     }
 
     public function following(Request $request)

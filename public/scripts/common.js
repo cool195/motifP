@@ -466,16 +466,22 @@ function HideSeeMore(seemoreName) {
         $(this).parents('.flex-alignCenter').siblings('.warning-info').addClass('off');
     });
 
+    var CheckNum=0
     $('.icon-checkcircle').on('click', function () {
-        $(this).toggleClass('active');
-        $(this).parents('.flex-alignCenter').siblings('.warning-info').addClass('off');
-        if ($(this).hasClass('active')) {
-            $(this).siblings('.input-engraving').removeClass('disabled');
-            $(this).siblings('.input-engraving').removeAttr('disabled');
+        if(CheckNum === 0 && $(this).hasClass('active')){
+            CheckNum=0;
         } else {
-            //$(this).siblings('.input-engraving').val('');
-            $(this).siblings('.input-engraving').addClass('disabled');
-            $(this).siblings('.input-engraving').attr({disabled: "disabled"})
+            $(this).toggleClass('active');
+            $(this).parents('.flex-alignCenter').siblings('.warning-info').addClass('off');
+            if ($(this).hasClass('active')) {
+                $(this).siblings('.input-engraving').removeClass('disabled');
+                $(this).siblings('.input-engraving').removeAttr('disabled');
+            } else {
+                //$(this).siblings('.input-engraving').val('');
+                $(this).siblings('.input-engraving').addClass('disabled');
+                $(this).siblings('.input-engraving').attr({disabled: "disabled"})
+            }
+            CheckNum++;
         }
     });
 
@@ -620,6 +626,11 @@ function HideSeeMore(seemoreName) {
             closeOnCancel: false,
             hashTracking: false
         };
+        var OptionsShare={
+            closeOnOutsideClick: true,
+            closeOnCancel: false,
+            hashTracking: false
+        }
         // 删除购物车商品 提示框
         var CartModal = $('[data-remodal-id=cartmodal]').remodal(Options);
         // Shopping Detail 添加购物车成功 提示框
@@ -628,9 +639,11 @@ function HideSeeMore(seemoreName) {
         var AddItemFailModal = $('[data-remodal-id=additemfail-modal]').remodal(Options);
         // Address List 删除地址 提示框
         var DelAddressModal = $('[data-remodal-id=addressmodal-modal]').remodal(Options);
-
         // 个人中心 修改密码成功 提示框
         var ChangePwdModal = $('[data-remodal-id=changepwd-modal]').remodal(Options);
+
+        // inviteFriend share 内容
+        var ShareModal = $('[data-remodal-id=sharemodal]').remodal(OptionsShare);
 
     } catch (e) {
     }
@@ -880,7 +893,7 @@ function HideSeeMore(seemoreName) {
         })
             .done(function (data) {
                 if(data.success){
-                    $('pcode').data('bindid',data.data.bind_id);
+                    $('#pcode').data('bindid',data.data.bind_id);
                     getCheckoutInfo();
                     if ($('input[name="ccps"]').val() != '') {
                         //收起
@@ -941,6 +954,7 @@ function HideSeeMore(seemoreName) {
     $('.address-list').on('click', '.btn-editAddress', function () {
         $('.select-address').addClass('disabled');
         $('.add-address').removeClass('disabled');
+        CheckNum=0;
         // 修改的地址 ID
         var AddressId = $(this).parent('.address-item').data('aid');
         $('#addAddressForm').data('aid', AddressId);
@@ -951,6 +965,12 @@ function HideSeeMore(seemoreName) {
     function initAddAddressForm() {
         var AddressId = $('#addAddressForm').data('aid');
         if (AddressId === '' || AddressId === undefined) {
+            if($('.address-item').length <=0 ){
+                $('.isDefault').addClass('active');
+                CheckNum=0;
+            } else {
+                $('.isDefault').removeClass('active');
+            }
             // 添加地址
             //初始化 修改地址 from 表单
             $('input[name="email"]').val('');
@@ -961,7 +981,6 @@ function HideSeeMore(seemoreName) {
             $('input[name="addr1"]').val('');
             $('input[name="addr2"]').val('');
             $('input[name="zip"]').val('');
-            $('.isDefault').removeClass('active');
             $('.address-save').addClass('disabled');
             $('select[name="country"]').prop('selectedIndex', 0);
 
@@ -1051,7 +1070,7 @@ function HideSeeMore(seemoreName) {
     }
 
     try {
-        if($('checkoutView').hasClass('container') || $('addressView').hasClass('container')){
+        if($('#checkoutView').data('status') || $('#addressView').data('status')){
             // 初始化 国家,洲
             var Country= $('select[name="country"] option:selected').text();
             initCityState(Country,'');
@@ -1102,7 +1121,7 @@ function HideSeeMore(seemoreName) {
     //重新获取结算信息
     function getCheckoutInfo() {
         var aid = $('#defaultAddr').data('aid')==undefined ? '' : $('#defaultAddr').data('aid');
-        var bindid = $('pcode').data('bindid')==undefined ? '' : $('pcode').data('bindid');
+        var bindid = $('#pcode').data('bindid')==undefined ? '' : $('#pcode').data('bindid');
         var smethod = $('input[name="shippingMethod"]:checked').val()==undefined ? '' : $('input[name="shippingMethod"]:checked').val();
         $.ajax({
             url: '/cart/accountlist?aid='+aid+'&bindid=' + bindid + '&logisticstype=' + smethod,
@@ -1113,7 +1132,6 @@ function HideSeeMore(seemoreName) {
                     if(data.data.cps_amount > 0){
                         $('.cps_amountShow').removeClass('hidden');
                         $('.cps_amount').html('-$' + (data.data.cps_amount / 100).toFixed(2));
-                        $('#pcode').html(data.data.cp_title);
                     }else{
                         $('.cps_amountShow').addClass('hidden');
                     }
@@ -1137,13 +1155,18 @@ function HideSeeMore(seemoreName) {
 
     // 生成订单
     $('.btn-toCheckout').on('click', function () {
+        if($('#defaultAddr').data('aid')<1){
+            checkValid($('input[name="name"]'));
+            $("html,body").animate({scrollTop: $('#addrShowHide').offset().top}, 100);
+            return false;
+        }
         var paym = $(this).data('with');
         $.ajax({
                 url: '/order',
                 type: 'POST',
                 data: {
                     aid: $('#defaultAddr').data('aid'),
-                    bindid: $('pcode').data('bindid')==undefined ? '' : $('pcode').data('bindid'),
+                    bindid: $('#pcode').data('bindid')==undefined ? '' : $('#pcode').data('bindid'),
                     remark: $('input[name="cremark"]').val(),
                     stype: $('input[name="shippingMethod"]:checked').val(),
                     paym: paym
@@ -1508,7 +1531,7 @@ function HideSeeMore(seemoreName) {
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
         FB.api('/me', 'GET', {fields: 'id,name,picture.width(750).height(750),email'},function (response) {
-            if (response.email === '' && response === undefined) {
+            if (response.email == '' || response == undefined) {
                 $.ajax({
                     url: '/facebookstatus/'+response.id,
                     type: 'get'
@@ -1523,28 +1546,31 @@ function HideSeeMore(seemoreName) {
                         }
                     })
             } else {
-                $.ajax({
-                    url: '/facebooklogin',
-                    type: 'POST',
-                    data: {
-                        email: response.email,
-                        id: response.id,
-                        name: response.name,
-                        avatar: response.picture.data.url
-                    }
-                })
-                    .done(function(data) {
-                        if (data.success) {
-                            window.location.href = data.redirectUrl;
-                        } else {
-                            $('.warning-info').removeClass('off');
-                            $('.warning-info').children('span').html(data.prompt_msg);
-                        }
-                    });
-
+                loginSuccess(response);
             }
 
         });
+    }
+
+    function loginSuccess(response){
+        $.ajax({
+            url: '/facebooklogin',
+            type: 'POST',
+            data: {
+                email: response.email,
+                id: response.id,
+                name: response.name,
+                avatar: response.picture.data.url
+            }
+        })
+            .done(function(data) {
+                if (data.success) {
+                    window.location.href = data.redirectUrl;
+                } else {
+                    $('.warning-info').removeClass('off');
+                    $('.warning-info').children('span').html(data.prompt_msg);
+                }
+            });
     }
 
     $('#facebookLogin').click(function () {
@@ -2861,10 +2887,12 @@ function HideSeeMore(seemoreName) {
     //#end 个人中心 Following
 
     //start 个人中心 Promotions
-    if($('#checkoutView').data('status') || $('#userpromotions').data('status')){
-        getCoupons();
-    }
 
+    try {
+        if($('#checkoutView').data('status') || $('#userpromotions').data('status')){
+            getCoupons(2);
+        }
+    } catch (e) {}
 
         //进入添加 Promotions Code页面
     $('.btn-addNewCode').on('click', function () {
@@ -2876,16 +2904,37 @@ function HideSeeMore(seemoreName) {
         $('.showPromotionCode').removeClass('disabled');
         $('.addPromotionCode').addClass('disabled');
     });
+
     //加载Promotions Code列表
-    function getCoupons(){
+    //State 加载状态  1:添加加载  2:页面load 首次加载
+    function getCoupons(State){
+        //判断 是个人中心 还是 checkout
+        if($('#checkoutView').data('status')){
+            var CouponUrl = '/coupon';
+        } else if($('#userpromotions').data('status')){
+            var CouponUrl = '/usercoupon';
+        }
         $.ajax({
-            url: '/usercoupon',
+            url: CouponUrl,
             type: 'GET'
         })
             .done(function (data) {
                 if (data.success){
                     appendCouponList(data.data);
-
+                    $('.checkoutPromotion-item').each(function(){
+                        if($(this).hasClass('active')){
+                            $('#codemessage').html($(this).data('promotioncode'));
+                        }
+                    })
+                    if(State === 2){
+                        if($('.promotion-item').length > 0){
+                            $('.showPromotionCode').removeClass('disabled');
+                            $('.addPromotionCode').addClass('disabled');
+                        } else {
+                            $('.showPromotionCode').addClass('disabled');
+                            $('.addPromotionCode').removeClass('disabled');
+                        }
+                    }
                 }else{
                     //显示添加code的页面
                     console.log('111111');
@@ -2910,7 +2959,7 @@ function HideSeeMore(seemoreName) {
                 })
                 .done(function (data) {
                     if(data.success){
-                        getCoupons();
+                        getCoupons(1);
                         $('.addCode-input .warning-info').addClass('off');
                         $('.showPromotionCode').removeClass('disabled');
                         $('.addPromotionCode').addClass('disabled');
@@ -2946,8 +2995,16 @@ function HideSeeMore(seemoreName) {
 
 
     // checkou promotion
-    $('.coupon-list').on('click','.checkoutPromotion-item',function(){
-        $(this).toggleClass('active');
+    $('.coupon-list').on('click','.codeItem',function(){
+        $('.codeItem').removeClass('active');
+
+        if(!$(this).hasClass('active')){
+            $('#codemessage').html($(this).data('promotioncode'));
+            $('#pcode').data('bindid',$(this).data('bindid'));
+            $(this).addClass('active');
+            getCheckoutInfo();
+        }
+
     });
 
     //end 个人中心 Promotions
@@ -3002,6 +3059,14 @@ function HideSeeMore(seemoreName) {
         ask_addMessage();
     });
     //Ask End
+
+
+    // invite Friends begin
+    $('#btn-inviteFriend').on('click', function () {
+        ShareModal.open();
+    })
+
+    // invite Friends end
 
 })(jQuery, Swiper);
 

@@ -214,7 +214,7 @@
                     </div>
 
                     <div class="p-t-30x">
-                        <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="text-left">Contact Customer Service</a>
+                        <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="btn btn-primary text-left">Contact Customer Service</a>
                         <!-- 未支付订单 支付按钮 -->
                         <div class="text-right">
                             @if( 11 == $data['status_code'])
