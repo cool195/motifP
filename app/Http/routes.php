@@ -74,6 +74,8 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::get('/cart/accountlist', 'CartController@getCartAccountList');
 
+    Route::get('/getshiplist','CartController@getshiplist');
+
     Route::get('/cart/savelist', 'CartController@getCartSaveList');
 
     Route::post('/cart/add', 'CartController@addCart');

@@ -122,6 +122,20 @@ class CartController extends BaseController
         return $result;
     }
 
+    public function getshiplist(Request $request)
+    {
+        $params = array(
+            'cmd' => 'logis',
+            'token' => Session::get('user.token')
+        );
+        if($request->input('price') != 0){
+            $params['amount'] = $request->input('price');
+            $params['country'] = $request->input('country');
+        }
+        $result = $this->request('general', $params);
+        return $result;
+    }
+
     public function addCart(Request $request)
     {
         $params = array(

@@ -101,7 +101,7 @@
                 <span class="pull-right showHide-simpleInfo">
                     @forelse ($address['data']['list'] as $value)
                         @if($value['isDefault'])
-                            <span id="defaultAddr" data-city="{{$value['detail_address1']}}"
+                            <span id="defaultAddr" data-csn="{{$value['country_name_sn']}}"
                                   data-aid="{{$value['receiving_id']}}">{{$value['name']}} {{$value['detail_address1']}} {{$value['city']}} {{$value['state']}} {{$value['country']}} {{$value['zip']}}</span>
                         @endif
                         @break($value['isDefault'])
@@ -321,7 +321,7 @@
         </div>
 
         <!-- 结算总价 -->
-        <div class="box-shadow bg-white m-t-20x">
+        <div class="box-shadow bg-white m-t-20x checkoutInfo" data-country="" data-price="">
             <div class="p-a-20x font-size-md">
                 {{--数量--}}
                 <div class="text-right">
@@ -396,7 +396,7 @@
         <div class="p-a-10x">
             <div class="address-item p-x-20x p-y-15x @{{ if $value.isDefault == 1 }} active @{{ /if }}"
                  data-info="@{{ $value.name }} @{{ $value.detail_address1 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }} @{{ $value.zip }}"
-                 data-city="@{{ $value.detail_address1 }}"
+                 data-csn="@{{ $value.country_name_sn }}"
                  data-aid="@{{ $value.receiving_id }}">
                 <div class="address-info">
                     @{{ $value.name }}<br>

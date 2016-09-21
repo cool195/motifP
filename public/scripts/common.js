@@ -953,7 +953,7 @@ function HideSeeMore(seemoreName) {
         $('.address-item').removeClass('active');
         $(this).parent('.address-item').addClass('active');
         $('#defaultAddr').html($(this).parent('.address-item').data('info'));
-        $('#defaultAddr').data('city', $(this).parent('.address-item').data('city'));
+        $('#defaultAddr').data('csn', $(this).parent('.address-item').data('csn'));
         $('#defaultAddr').data('aid', $(this).parent('.address-item').data('aid'));
         getCheckoutInfo();
     });
@@ -1087,16 +1087,6 @@ function HideSeeMore(seemoreName) {
 
     // 选择地址增值服务
     $('input[type="radio"]').on('click', function () {
-
-        if ($(this).data('price') != 0) {
-            $('.shipMto').html('Ship to ' + $('#defaultAddr').data('city') + ':');
-            $('.shipMtoprice').html('$' + ($(this).data('price') / 100).toFixed(2));
-            $('.totalPrice').html('$' + (($(this).data('price') + $('.totalPrice').data('price') - $('.code-price').data('price')) / 100).toFixed(2));
-            $('.shopping-methodPrice').removeClass('hidden');
-        } else {
-            $('.totalPrice').html('$' + (($('.totalPrice').data('price') - $(this).data('price') - $('.code-price').data('price')) / 100).toFixed(2));
-            $('.shopping-methodPrice').addClass('hidden');
-        }
         $('.shippingMethodShow').html($(this).data('show'));
         getCheckoutInfo();
     });
@@ -1155,8 +1145,7 @@ function HideSeeMore(seemoreName) {
                         $('.freight_amount').html('Free');
                     }
                     $('.pay_amount').html('$' + (data.data.pay_amount / 100).toFixed(2));
-                } else {
-
+                    getshiplist(data.data.total_amount+data.data.vas_amount);
                 }
             })
     }
@@ -1214,11 +1203,24 @@ function HideSeeMore(seemoreName) {
                                 name = value['name'],
                                 state = value['state'];
                             $('#defaultAddr').html(name + detail_address1 + " " + city + " "+ state + " " + country + " " + zip);
-                            $('#defaultAddr').data('city', city);
+                            $('#defaultAddr').data('csn', value['country_name_sn']);
                             $('#defaultAddr').data('aid', value['receiving_id']);
                         });
                         getCheckoutInfo();
                     }
+                }
+            })
+    }
+
+    //设置配送服务
+    function getshiplist(price){
+        $.ajax({
+            url: '/getshiplist?country='+$('#defaultAddr').data('csn')+'&price='+price,
+            type: 'GET'
+        })
+            .done(function (data) {
+                if (data.success) {
+                    $('.shippingMethodShow').html(data.data.list[0].logistics_name);
                 }
             })
     }
