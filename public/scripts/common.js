@@ -801,7 +801,9 @@ function HideSeeMore(seemoreName) {
                             $('.select-address').removeClass('disabled');
                             $('.add-address').addClass('disabled');
                             $('#addAddressForm').find('input[type="text"]').val('');
+                            $('#defaultAddr').data('aid',data.data.receiving_id);
                             getAddressList();
+                            getCheckoutInfo();
                         }
                     })
             } else {
@@ -821,7 +823,9 @@ function HideSeeMore(seemoreName) {
                             $('.select-address').removeClass('disabled');
                             $('.add-address').addClass('disabled');
                             $('#addAddressForm').find('input[type="text"]').val('');
+                            $('#defaultAddr').data('aid',data.data.receiving_id);
                             getAddressList();
+                            getCheckoutInfo();
                         }
                     })
             }
@@ -1191,11 +1195,11 @@ function HideSeeMore(seemoreName) {
                                 city = value['city'],
                                 detail_address1 = value['detail_address1'],
                                 zip = value['zip'],
-                                name = value['name'];
-                            $('#defaultAddr').html(country + " " + city + " " + detail_address1 + " " + zip + " " + name);
+                                name = value['name'],
+                                state = value['state'];
+                            $('#defaultAddr').html(name + detail_address1 + " " + city + " "+ state + " " + country + " " + zip);
                             $('#defaultAddr').data('city', city);
                             $('#defaultAddr').data('aid', value['receiving_id']);
-                            console.info(value['country']);
                         });
                     }
                 }
