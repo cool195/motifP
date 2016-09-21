@@ -238,7 +238,7 @@
             <div class="showHide-body method-content">
                 <!-- 选择 物流方式 -->
                 <div class="p-a-20x">
-                    <div class="row p-x-20x p-t-20x">
+                    <div class="row p-x-20x p-t-20x checkout-method">
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
                                 <input type="radio" @if($k==0){{'checked'}}@endif name="shippingMethod"
@@ -439,6 +439,16 @@
             </div>
         </div>
     </div>
+    @{{ /each }}
+</template>
+
+<!-- 物流模板 -->
+<template id="tpl-method">
+    @{{ each list }}
+        <div class="col-md-6 p-b-10x">
+            <input type="radio" name="shippingMethod" data-price="@{{ $value.price }}" value="@{{ $value.logistics_type }}" data-show="@{{ $value.logistics_name }}">
+            <label for="" class="p-l-10x">@{{ $value.logistics_name }} +$@{{ ($value.price/100).toFixed(2) }}</label>
+        </div>
     @{{ /each }}
 </template>
 @include('footer')

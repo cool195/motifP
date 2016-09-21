@@ -1224,8 +1224,16 @@ function HideSeeMore(seemoreName) {
             .done(function (data) {
                 if (data.success) {
                     $('.shippingMethodShow').html(data.data.list[0].logistics_name);
+                    appendMethodList(data.data);
                 }
             })
+    }
+
+    //遍历模板, 配送方式
+    function appendMethodList(MethodList){
+        var TplHtml = template('tpl-method', MethodList);
+        var StageCache = $.parseHTML(TplHtml);
+        $('.checkout-method').html(StageCache);
     }
 
     // 遍历模板, 插入数据到指定位置
