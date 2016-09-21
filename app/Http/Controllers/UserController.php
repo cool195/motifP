@@ -471,7 +471,7 @@ class UserController extends BaseController
 
     public function promotions()
     {
-        return view('user.promotions');
+        return view('user.promotions',['title'=>'Promotions']);
     }
 
 

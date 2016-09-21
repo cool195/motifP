@@ -1159,6 +1159,11 @@ function HideSeeMore(seemoreName) {
 
     // 生成订单
     $('.btn-toCheckout').on('click', function () {
+        if($('#defaultAddr').data('aid')<1){
+            checkValid($('input[name="name"]'));
+            $("html,body").animate({scrollTop: $('#addrShowHide').offset().top}, 100);
+            return false;
+        }
         var paym = $(this).data('with');
         $.ajax({
                 url: '/order',

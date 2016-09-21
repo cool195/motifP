@@ -46,7 +46,6 @@
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                         <div class="p-t-15x p-l-15x">
                         @endif
-
                             @if(!empty($designer['instagram_link']))
                                 <a href="{{$designer['instagram_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-ins.png"></a>
                             @endif
@@ -62,7 +61,7 @@
                             @if(!empty($designer['blog_link']))
                                 <a href="{{$designer['blog_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-blog@2x.png"></a>
                             @endif
-                            @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
+                        @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']))
                         </div>
                         @endif
                     </div>
@@ -131,8 +130,8 @@
                                                                 <div class="bg-soldout">
                                                                     <span class="text helve font-size-sm">SOLD OUT</span>
                                                                 </div>
-                                                                @else
-                                                                        <!--预售标志-->
+                                                            @else
+                                                                <!--预售标志-->
                                                                 <div class="presale-sign">
                                                                     <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
                                                                     <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
