@@ -620,6 +620,11 @@ function HideSeeMore(seemoreName) {
             closeOnCancel: false,
             hashTracking: false
         };
+        var OptionsShare={
+            closeOnOutsideClick: true,
+            closeOnCancel: false,
+            hashTracking: false
+        }
         // 删除购物车商品 提示框
         var CartModal = $('[data-remodal-id=cartmodal]').remodal(Options);
         // Shopping Detail 添加购物车成功 提示框
@@ -628,9 +633,11 @@ function HideSeeMore(seemoreName) {
         var AddItemFailModal = $('[data-remodal-id=additemfail-modal]').remodal(Options);
         // Address List 删除地址 提示框
         var DelAddressModal = $('[data-remodal-id=addressmodal-modal]').remodal(Options);
-
         // 个人中心 修改密码成功 提示框
         var ChangePwdModal = $('[data-remodal-id=changepwd-modal]').remodal(Options);
+
+        // inviteFriend share 内容
+        var ShareModal = $('[data-remodal-id=sharemodal]').remodal(OptionsShare);
 
     } catch (e) {
     }
@@ -3000,6 +3007,14 @@ function HideSeeMore(seemoreName) {
         ask_addMessage();
     });
     //Ask End
+
+
+    // invite Friends begin
+    $('#btn-inviteFriend').on('click', function () {
+        ShareModal.open();
+    })
+
+    // invite Friends end
 
 })(jQuery, Swiper);
 

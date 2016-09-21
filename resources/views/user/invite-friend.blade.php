@@ -16,6 +16,7 @@
                 {{--<span class="p-l-30x">--}}
                     {{--<a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-shape="round" data-pin-height="28">pinterest</a>--}}
                 {{--</span>--}}
+                <div class="p-l-30x"><span class="btn btn-primary btn-md" id="btn-inviteFriend">Invite Friends</span></div>
             </div>
             <p class="p-y-10x text-primary font-size-md"></p>
             <div class="flex flex-alignCenter">
@@ -35,6 +36,13 @@
     </div>
 </section>
 
+<div class="remodal modal-content remodal-md p-y-20x" data-remodal-id="sharemodal">
+    <span class="font-size-md sanBold p-r-15x">Invite with:</span>
+    <a href="#" class="btn btn-circle btn-shareEmail m-r-20x p-a-5x"><i class="iconfont icon-email-o font-size-lxx text-white"></i></a>
+    <a href="#" class="btn btn-circle btn-shareFacebook m-r-20x p-a-5x"><i class="iconfont icon-facebook-o font-size-lxx text-white"></i></a>
+    <a href="#" class="btn btn-circle btn-shareTwitter m-r-20x p-a-5x"><i class="iconfont icon-twitter-o font-size-lxx text-white"></i></a>
+    <a href="#" class="btn btn-circle btn-shareGoogle m-r-20x p-a-5x"><i class="iconfont icon-google-o font-size-lxx text-white"></i></a>
+</div>
 
 {{--<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>--}}
 
