@@ -2901,7 +2901,11 @@ function HideSeeMore(seemoreName) {
             .done(function (data) {
                 if (data.success){
                     appendCouponList(data.data);
-
+                    $('.checkoutPromotion-item').each(function(){
+                        if($(this).hasClass('active')){
+                            $('#codemessage').html($(this).data('promotioncode'));
+                        }
+                    })
                 }else{
                     //显示添加code的页面
                     console.log('111111');
