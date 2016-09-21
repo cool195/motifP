@@ -13,14 +13,30 @@
                     <input type="text" class="form-control" id="inviteCode" placeholder="{{$code}}" value="{{$code}}" aria-describedby="btn-copy">
                     <span class="input-group-addon text-primary font-size-md" id="btn-copy" onclick="copyinput();">Copy</span>
                 </div>
-                <span class="p-l-30x">
-                    <a target="_blank" href="http://www.facebook.com/share.php?u=http://pc.motif.me/d/invite/{{$code}}">fb</a>
-                    <a target="_blank" href="http://twitter.com/home/?status=http://pc.motif.me/d/invite/{{$code}}">tw</a>
-                </span>
+                {{--<span class="p-l-30x">--}}
+                    {{--<a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-shape="round" data-pin-height="28">pinterest</a>--}}
+                {{--</span>--}}
             </div>
+            <p class="p-y-10x text-primary font-size-md"></p>
+            <div class="flex flex-alignCenter">
+                <span class="font-size-md p-r-15x">
+                    <a class="btn btn-block btn-facebook" href="javascript:window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)">
+                        Invite Facebook
+                    </a>
+                </span>
+                <div class="font-size-md p-r-15x">
+                    <a class="btn btn-block btn-facebook" href="javascript:window.open('http://twitter.com/home?status='+encodeURIComponent('http://pc.motif.me/d/invite/{{$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)">
+                        Invite Twitter
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
+
+
+{{--<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>--}}
 
 @include('footer')
 <script type="text/javascript">
