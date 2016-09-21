@@ -2861,10 +2861,19 @@ function HideSeeMore(seemoreName) {
     //#end 个人中心 Following
 
     //start 个人中心 Promotions
-    if($('#checkoutView').data('status') || $('#userpromotions').data('status')){
-        getCoupons();
-    }
 
+    try {
+        if($('#checkoutView').data('status') || $('#userpromotions').data('status')){
+            getCoupons();
+            if($('.promotion-item').length > 0){
+                $('.showPromotionCode').addClass('disabled');
+                $('.addPromotionCode').removeClass('disabled');
+            } else {
+                $('.showPromotionCode').removeClass('disabled');
+                $('.addPromotionCode').addClass('disabled');
+            }
+        }
+    } catch (e) {}
 
         //进入添加 Promotions Code页面
     $('.btn-addNewCode').on('click', function () {
@@ -2876,10 +2885,17 @@ function HideSeeMore(seemoreName) {
         $('.showPromotionCode').removeClass('disabled');
         $('.addPromotionCode').addClass('disabled');
     });
+
     //加载Promotions Code列表
     function getCoupons(){
+        //判断 是个人中心 还是 checkout
+        if($('#checkoutView').data('status')){
+            var CouponUrl = '/coupon';
+        } else if($('#userpromotions').data('status')){
+            var CouponUrl = '/usercoupon';
+        }
         $.ajax({
-            url: '/usercoupon',
+            url: CouponUrl,
             type: 'GET'
         })
             .done(function (data) {
@@ -2948,6 +2964,9 @@ function HideSeeMore(seemoreName) {
     // checkou promotion
     $('.coupon-list').on('click','.checkoutPromotion-item',function(){
         $(this).toggleClass('active');
+        if($(this).hasClass('active')){
+            $('#codemessage').html($(this).data('promotioncode'));
+        }
     });
 
     //end 个人中心 Promotions
