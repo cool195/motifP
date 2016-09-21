@@ -2944,6 +2944,12 @@ function HideSeeMore(seemoreName) {
         }
     });
 
+
+    // checkou promotion
+    $('.coupon-list').on('click','.checkoutPromotion-item',function(){
+        $(this).toggleClass('active');
+    });
+
     //end 个人中心 Promotions
 
 
