@@ -466,16 +466,22 @@ function HideSeeMore(seemoreName) {
         $(this).parents('.flex-alignCenter').siblings('.warning-info').addClass('off');
     });
 
+    var CheckNum=0
     $('.icon-checkcircle').on('click', function () {
-        $(this).toggleClass('active');
-        $(this).parents('.flex-alignCenter').siblings('.warning-info').addClass('off');
-        if ($(this).hasClass('active')) {
-            $(this).siblings('.input-engraving').removeClass('disabled');
-            $(this).siblings('.input-engraving').removeAttr('disabled');
+        if(CheckNum === 0 && $(this).hasClass('active')){
+            CheckNum=0;
         } else {
-            //$(this).siblings('.input-engraving').val('');
-            $(this).siblings('.input-engraving').addClass('disabled');
-            $(this).siblings('.input-engraving').attr({disabled: "disabled"})
+            $(this).toggleClass('active');
+            $(this).parents('.flex-alignCenter').siblings('.warning-info').addClass('off');
+            if ($(this).hasClass('active')) {
+                $(this).siblings('.input-engraving').removeClass('disabled');
+                $(this).siblings('.input-engraving').removeAttr('disabled');
+            } else {
+                //$(this).siblings('.input-engraving').val('');
+                $(this).siblings('.input-engraving').addClass('disabled');
+                $(this).siblings('.input-engraving').attr({disabled: "disabled"})
+            }
+            CheckNum++;
         }
     });
 
@@ -948,6 +954,7 @@ function HideSeeMore(seemoreName) {
     $('.address-list').on('click', '.btn-editAddress', function () {
         $('.select-address').addClass('disabled');
         $('.add-address').removeClass('disabled');
+        CheckNum=0;
         // 修改的地址 ID
         var AddressId = $(this).parent('.address-item').data('aid');
         $('#addAddressForm').data('aid', AddressId);
@@ -958,6 +965,14 @@ function HideSeeMore(seemoreName) {
     function initAddAddressForm() {
         var AddressId = $('#addAddressForm').data('aid');
         if (AddressId === '' || AddressId === undefined) {
+            if($('.address-item').length <=0 ){
+                $('.isDefault').addClass('active');
+                $('.isDefaultText').html('Default');
+                CheckNum=0;
+            } else {
+                $('.isDefault').removeClass('active');
+                $('.isDefaultText').html('Make Primary');
+            }
             // 添加地址
             //初始化 修改地址 from 表单
             $('input[name="email"]').val('');
@@ -968,7 +983,6 @@ function HideSeeMore(seemoreName) {
             $('input[name="addr1"]').val('');
             $('input[name="addr2"]').val('');
             $('input[name="zip"]').val('');
-            $('.isDefault').removeClass('active');
             $('.address-save').addClass('disabled');
             $('select[name="country"]').prop('selectedIndex', 0);
 
@@ -998,8 +1012,10 @@ function HideSeeMore(seemoreName) {
 
                     if (data.isDefault == 1) {
                         $('.isDefault').addClass('active');
+                        $('.isDefaultText').html('Default');
                     } else {
                         $('.isDefault').removeClass('active');
+                        $('.isDefaultText').html('Make Primary');
                     }
                     $('.address-save').removeClass('disabled');
 
