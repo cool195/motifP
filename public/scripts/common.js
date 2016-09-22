@@ -1061,14 +1061,8 @@ function HideSeeMore(seemoreName) {
     } catch (e) {
     }
 
-    // 选择地址增值服务
-    // $('input[type="radio"]').on('click', function () {
-    //     $('.shippingMethodShow').html($(this).data('show'));
-    //     getCheckoutInfo();
-    // });
-
     $('.checkout-method').on('click', '.methodRadio', function () {
-        $('.shippingMethodShow').html($(this).data('show'));
+        $('.shippingMethodShow').html($(this).data('show')+' +$'+($(this).data('price') / 100).toFixed(2));
         getCheckoutInfo();
     })
 
@@ -1202,7 +1196,7 @@ function HideSeeMore(seemoreName) {
         })
             .done(function (data) {
                 if (data.success) {
-                    $('.shippingMethodShow').html(data.data.list[0].logistics_name);
+                    $('.shippingMethodShow').html(data.data.list[0].logistics_name+' +$'+(data.data.list[0].pay_price / 100).toFixed(2));
                     appendMethodList(data.data);
                 }
             })
