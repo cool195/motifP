@@ -71,7 +71,7 @@ class QianhaiController extends BaseController
             $this->request("pay", $params);
             return redirect('/success?orderid=' . $request->input('order_number'));
         } else {
-            return redirect('/orderdetail/' . $request->input('order_number'));
+            return redirect('/order/orderdetail/' . $request->input('order_number'));
         }
     }
 }

@@ -75,6 +75,7 @@
             <p class="m-b-0">{{$designer['describe']}}</p>
         </div>
 
+        @if((isset($pre_product) && !empty($pre_product)) || isset($product['infos']))
         <!-- 设计师 预售 -->
         <section class="bg-common m-t-30x p-b-20x">
             @if(isset($pre_product) && !empty($pre_product))
@@ -124,18 +125,18 @@
                 @foreach($product['infos'] as $k => $value)
                     @if($value['type']=='banner' || (!isset($value['spus']) && $value['type']=='product'))
                         <!--banner图-->
-                        @if(!isset($value['skipType']))
-                            <a href="javascript:void(0)">
-                        @else
-                            <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['imgUrl']}}@endif"
-                                data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
-                                href="javascript:void(0)">
-                        @endif
-                            <div class="m-t-20x text-center">
+                        <div class="m-t-20x text-center">
+                            @if(!isset($value['skipType']))
+                                <a href="javascript:void(0)">
+                            @else
+                                <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['imgUrl']}}@endif"
+                                    data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                                    data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                                    href="javascript:void(0)">
+                            @endif
                                 <img class="img-lazy designer-banImg" src="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}">
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     @elseif($value['type']=='title')
                         <!--标题-->
                         <div class="p-x-20x p-t-20x m-b-20x text-center">
@@ -150,7 +151,7 @@
                             <p class="m-b-0 text-center">{{$value['value']}}</p>
                         </div>
                     @elseif($value['type'] == 'product')
-                        @if(isset($value['spus']))
+                        @if(isset($value['spus']) && !empty($value['spus']))
                         <!--设计师 商品-->
                         <div class="container m-y-20x">
                             <div class="row designerDetail-goods">
@@ -209,6 +210,7 @@
                 @endforeach
             @endif
         </section>
+        @endif
 
         <!-- 设计师 商品 -->
         <h4 class="helveBold text-main p-l-10x p-t-30x m-b-20x">@if(isset($productAll['data']['list'])){{$designer['nickname']}}'s Design Works @endif</h4>
