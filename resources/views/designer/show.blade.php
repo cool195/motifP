@@ -159,6 +159,19 @@
                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                      alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                 <div class="bg-heart"></div>
+                                                @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
+                                                    @if(!isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) || $product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                                        <div class="bg-soldout">
+                                                            <span class="text helve font-size-sm">SOLD OUT</span>
+                                                        </div>
+                                                    @else
+                                                        <!--预售标志-->
+                                                        <div class="presale-sign">
+                                                            <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                                            <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                                        </div>
+                                                    @endif
+                                                @endif
                                             </a>
                                             @if(Session::has('user'))
                                                 <span class="product-heart btn-heart">
@@ -167,11 +180,6 @@
                                             @else
                                                 <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$spu}}"></i></a>
                                             @endif
-                                            <!--预售标志-->
-                                            <div class="presale-sign">
-                                                <div class="img-clock font-size-sm"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/sale-clock.png"></div>
-                                                <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
-                                            </div>
                                         </div>
                                         <div class="price-caption helveBold">
                                             <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{$product['spuInfos'][$spu]['spuBase']['main_title']}}</div>
@@ -213,19 +221,6 @@
                             {{--<div class="bg-soldout">
                                 <span class="text helve font-size-sm">SOLD OUT</span>
                             </div>--}}
-                            @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
-                                @if(!isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) || $product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
-                                    <div class="bg-soldout">
-                                        <span class="text helve font-size-sm">SOLD OUT</span>
-                                    </div>
-                                @else
-                                     <!--预售标志-->
-                                    <div class="presale-sign">
-                                        <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
-                                        <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
-                                    </div>
-                                @endif
-                            @endif
                         </a>
                         @if(Session::has('user'))
                             <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$product['spu']}}"></i></span>
