@@ -154,7 +154,7 @@
                                 <hr class="hr-base">
                                 <div class="media">
                                     <div class="media-left sanBold orderInfo-title">Paid with</div>
-                                    <div class="media-right">@if($data['pay_type']=="Oceanpay"){{'Credit Card'}}@else{{'PayPal'}}@endif</div>
+                                    <div class="media-right">@if($data['payinfo']['pay_type']=="Oceanpay"){{'Credit Card'}}@else{{'PayPal'}}@endif</div>
                                 </div>
                             @endif
                             @if(!empty($data['order_remark']))

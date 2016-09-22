@@ -58,9 +58,12 @@ class OrderController extends BaseController
     public function orderDetail(Request $request, $subno)
     {
         $result = $this->getOrderDetail($subno);
+        $payinfo = $this->getOrderPayInfo($subno);
+        $result['data']['payinfo'] = $payinfo['data'];
         if ($request->input('ajax')) {
             return $result;
         }
+
         return view('order.orderdetail', ['data' => $result['data']]);
     }
 
@@ -76,6 +79,17 @@ class OrderController extends BaseController
         if (!empty($result) && $result['success']) {
             $result = $this->jsonDecodeOrderDetailResult($result);
         }
+        return $result;
+    }
+
+    private function getOrderPayInfo($orderid){
+        $params = array(
+            'cmd' => 'payinfo',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'orderid' => $orderid,
+        );
+        $result = $this->request('pay', $params);
         return $result;
     }
 
