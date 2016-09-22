@@ -87,7 +87,7 @@
                     <div class="row presaleDate-row limited-content"
                          data-begintime="{{  $pre_product['skuPrice']['skuPromotion']['start_time'] }}"
                          data-endtime="{{  $pre_product['skuPrice']['skuPromotion']['end_time'] }}"
-                         data-lefttime="@if($pre_product['sale_status'] && $pre_product['isPutOn']==1){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
+                         data-lefttime="@if($pre_product['isPutOn']==1){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
                         <div class="col-md-3">
                             <div class="timeDown box-shadow bg-white">
                                 <span class="time-number p-t-5x helveBold day-info">0</span>
