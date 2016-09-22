@@ -902,43 +902,6 @@ function HideSeeMore(seemoreName) {
         }
     });
 
-    // 提交 Promotion Code
-    $('#pcsubmit').on('click', function () {
-        var $this = $(this);
-        var flag = true;
-        $.ajax({
-            url: '/coupon',
-            type: 'post',
-            data: {cps: $('input[name="ccps"]').val()}
-        })
-            .done(function (data) {
-                if (data.success) {
-                    $('#pcode').data('bindid', data.data.bind_id);
-                    getCheckoutInfo();
-                    if ($('input[name="ccps"]').val() != '') {
-                        //收起
-                        var $AddressContent = $this.parent().parent('.showHide-body');
-                        var $SimpleInfo = $this.parent().parent().siblings('.showHide-simpleInfo');
-                        $AddressContent.slideUp(500);
-                        $AddressContent.removeClass('active');
-                        $this.removeClass('active');
-                        $AddressContent.css('display', 'none');
-                        $SimpleInfo.css('display', 'block');
-                        $this.parent().siblings('.warning-info').addClass('off');
-                    } else {
-                        $this.parent().siblings('.warning-info').removeClass('off');
-                        setTimeout(function () {
-                            $this.parent().siblings('.warning-info').addClass('off');
-                        }, 1500);
-                    }
-
-                } else {
-                    $this.parent().siblings('.warning-info').removeClass('off');
-                }
-            })
-
-    });
-
     // 设置地址为默认地址
     $('.btn-makePrimary').on('click', function () {
         if ($(this).hasClass('active')) {
