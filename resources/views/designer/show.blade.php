@@ -77,12 +77,16 @@
 
         <!-- 设计师 预售 -->
         <section class="bg-common m-t-30x p-b-20x">
+            @if( true || isset($pre_product) && !empty($pre_product))
             <!-- 预售倒计时 -->
-            <div class="designer-presale text-center p-t-40x p-b-10x">
-                <div class="helveBold pre-tit p-b-10x">Vivian’s Presale</div>
+            <div class="designer-presale text-center p-t-40x p-b-10x" >
+                <div class="helveBold pre-tit p-b-10x">{{$designer['nickname']}}’s Presale</div>
                 <span class="sanBold font-size-lxx">Order Close in </span>
                 <div class="m-t-30x">
-                    <div class="row presaleDate-row">
+                    <div class="row presaleDate-row"
+                         data-begintime="{{  $pre_product['skuPrice']['skuPromotion']['start_time'] }}"
+                         data-endtime="{{  $pre_product['skuPrice']['skuPromotion']['end_time'] }}"
+                         data-lefttime="@if($pre_product['sale_status'] && $pre_product['isPutOn']==1){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
                         <div class="col-md-3">
                             <div class="timeDown box-shadow bg-white">
                                 <span class="time-number p-t-5x helveBold">5</span>
@@ -109,8 +113,11 @@
                         </div>
                     </div>
                 </div>
-                <p class="p-t-40x sanBold font-size-md">Expected to ship on Sep 10, 2016</p>
+                @if($data['skuPrice']['skuPromotion']['ship_desc'])
+                    <p class="p-t-40x sanBold font-size-md">PREORDER: Expected to ship on {{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}</p>
+                @endif
             </div>
+            @endif
 
 
             @if(isset($product['infos']))
@@ -221,6 +228,12 @@
                             {{--<div class="bg-soldout">
                                 <span class="text helve font-size-sm">SOLD OUT</span>
                             </div>--}}
+                            @if($product['sale_type'] == 1)
+                            <div class="presale-sign">
+                                <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                            </div>
+                            @endif
                         </a>
                         @if(Session::has('user'))
                             <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$product['spu']}}"></i></span>
