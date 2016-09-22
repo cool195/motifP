@@ -45,7 +45,7 @@
                                                 <div class="checkout-Item p-y-20x border-bottom">
                                                     <div class="media">
                                                         <div class="media-left m-r-15x">
-                                                            <a href="/product/{{$lineOrder['spu']}}">
+                                                            <a href="/detail/{{$lineOrder['spu']}}">
                                                                 <img class="img-lazy img-fluid"
                                                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
@@ -184,7 +184,7 @@
             <div class="checkout-Item border-bottom">
                 <div class="media">
                     <div class="media-left m-r-15x">
-                        <a href="/product/@{{ $value.spu }}">
+                        <a href="/detail/@{{ $value.spu }}">
                             <img class="img-lazy img-fluid"
                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                  data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.img_path }}"
