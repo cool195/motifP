@@ -1123,7 +1123,11 @@ function HideSeeMore(seemoreName) {
 
     // 添加备注
     $('#crsubmit').on('click', function () {
-        $('#srmessage').html($('textarea[name="cremark"]').val());
+        var messageStr = $('textarea[name="cremark"]').val();
+        if (messageStr.length >= 30) {
+            messageStr = messageStr.substring(0, 30) + '...';
+        }
+        $('#srmessage').html(messageStr);
         if ($('#crShowHide').children('.showHide-simpleInfo').length > 0) {
             var $sm = $('#crShowHide').siblings('.showHide-body');
             if ($sm.hasClass('active')) {

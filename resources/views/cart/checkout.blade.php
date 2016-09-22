@@ -257,7 +257,7 @@
 
         {{--Promotion Code--}}
         <div class="box-shadow bg-white m-t-20x" id="pcode" data-bindid="{{$accountList['cp_bind_id']}}">
-            <div class="p-x-20x p-y-15x font-size-md btn-showHide" id="crShowHide">
+            <div class="p-x-20x p-y-15x font-size-md btn-showHide" id="">
                 <span class="sanBold">Promotion Code</span>
                 <span class="pull-right showHide-simpleInfo">
                     <span id="codemessage"></span>
