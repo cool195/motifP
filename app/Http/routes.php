@@ -130,7 +130,9 @@ Route::get('/signout', 'UserController@signout');
 
 Route::post('/forget', 'UserController@forgetPassword');
 
-Route::match(['get', 'post'], '/reset', 'UserController@reset');
+Route::post('/reset', 'UserController@reset');
+
+Route::get('/forgetpwd', 'UserController@reset');
 
 
 Route::group(['middleware' => 'loginCheck'], function () {
