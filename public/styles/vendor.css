@@ -3025,7 +3025,7 @@ fieldset[disabled] a.btn {
   color: #6d91ff;
   background-color: #ffffff;
   border-color: #6d91ff;
-  border-radius: 1.25rem !important;
+  border-radius: 1.25rem;
   font-size: 1rem !important;
   padding: .625rem 1rem;
   min-width: 4.25rem;
@@ -3611,10 +3611,8 @@ input[type="button"].btn-block {
 
 .btn-follow, .btn-following {
   width: 88px;
-  height: 34px;
-  line-height: 34px;
   text-align: center;
-  padding: 0;
+  border-radius: 1.25rem;
   -webkit-transition: width .3s linear;
   transition: width .3s linear;
 }
