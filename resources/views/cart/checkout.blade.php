@@ -321,7 +321,7 @@
         </div>
 
         <!-- 结算总价 -->
-        <div class="box-shadow bg-white m-t-20x checkoutInfo" data-price="">
+        <div class="box-shadow bg-white m-t-20x checkoutInfo" data-price="{{$accountList['total_amount']+$accountList['vas_amount']}}">
             <div class="p-a-20x font-size-md">
                 {{--数量--}}
                 <div class="text-right">
