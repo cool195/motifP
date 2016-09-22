@@ -83,31 +83,31 @@
                 <div class="helveBold pre-tit p-b-10x">{{$designer['nickname']}}’s Presale</div>
                 <span class="sanBold font-size-lxx">Order Close in </span>
                 <div class="m-t-30x">
-                    <div class="row presaleDate-row"
+                    <div class="row presaleDate-row limited-content"
                          data-begintime="{{  $pre_product['skuPrice']['skuPromotion']['start_time'] }}"
                          data-endtime="{{  $pre_product['skuPrice']['skuPromotion']['end_time'] }}"
                          data-lefttime="@if($pre_product['sale_status'] && $pre_product['isPutOn']==1){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
                         <div class="col-md-3">
                             <div class="timeDown box-shadow bg-white">
-                                <span class="time-number p-t-5x helveBold">5</span>
+                                <span class="time-number p-t-5x helveBold day-info">5</span>
                                 <div class="dateName text-white helve">DAY</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="timeDown box-shadow bg-white">
-                                <span class="time-number p-t-5x helveBold">2</span>
+                                <span class="time-number p-t-5x helveBold hour-info">2</span>
                                 <div class="dateName text-white helve">HOUR</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="timeDown box-shadow bg-white">
-                                <span class="time-number p-t-5x helveBold">4</span>
+                                <span class="time-number p-t-5x helveBold min-info">4</span>
                                 <div class="dateName text-white helve">MIN</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="timeDown box-shadow bg-white">
-                                <span class="time-number p-t-5x helveBold">34</span>
+                                <span class="time-number p-t-5x helveBold sec-info">34</span>
                                 <div class="dateName text-white helve">SEC</div>
                             </div>
                         </div>
