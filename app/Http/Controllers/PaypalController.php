@@ -40,6 +40,6 @@ class PaypalController extends BaseController
                 }
             }
         }
-        return redirect('/orderdetail/'.$request->input('orderid'));
+        return redirect('/order/orderdetail/'.$request->input('orderid'));
     }
 }
