@@ -112,6 +112,14 @@
                 <p class="p-t-40x sanBold font-size-md">Expected to ship on Sep 10, 2016</p>
             </div>
 
+            <!--标题-->
+            <div class="p-x-20x p-t-20x m-b-20x text-center">
+                <h2 class="helveBold font-size-lxx">标题</h2>
+            </div>
+
+            <!--分割线-->
+            <hr class="hr-base m-x-20x m-y-0">
+
             <!--banner图-->
             <div class="m-t-20x text-center">
                 <img class="img-lazy designer-banImg" src="{{config('runtime.Image_URL')}}/images/product/pic.jpg">
