@@ -112,43 +112,26 @@
                 <p class="p-t-40x sanBold font-size-md">Expected to ship on Sep 10, 2016</p>
             </div>
 
-            <!--banner图-->
-            <div class="m-t-20x text-center">
-                <img class="img-lazy designer-banImg" src="{{config('runtime.Image_URL')}}/images/product/pic.jpg">
-            </div>
+            @if(isset($product['infos']))
+                @foreach($product['infos'] as $k => $value)
+                    @if($value['type']=='banner' || (!isset($value['spus']) && $value['type']=='product'))
+                    <!--banner图-->
+                    @if(!isset($value['skipType']))
+                        <a href="javascript:void(0)">
+                    @else
+                        <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['imgUrl']}}@endif"
+                           data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                           href="javascript:void(0)">
+                    @endif
+                            <div class="m-t-20x text-center">
+                                <img class="img-lazy designer-banImg" src="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}">
+                            </div>
+                        </a>
 
             <!--描述-->
             <div class="p-x-20x m-y-20x">
                 <p class="m-b-0 text-center">traight off the Emmys red carpet, inspired by the most beautiful jewelries that sparkled all night.Straight off the Emmys red carpet, inspired by the most beautiful jewelries that sparkled all night.</p>
-            </div>
-
-            <!--设计师 商品-->
-            <div class="container m-y-20x">
-                <div class="row designerDetail-goods">
-                    <div class="col-md-3 col-xs-6 goods-item">
-                        <div class="productList-item">
-                            <div class="image-container">
-                                <a href="#">
-                                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/product/product.jpg" alt="商品的名称">
-                                    <div class="bg-heart"></div>
-                                </a>
-                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"></i></span>
-                                <!--预售标志-->
-                                <div class="presale-sign">
-                                    <div class="img-clock font-size-sm"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/sale-clock.png"></div>
-                                    <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
-                                </div>
-                            </div>
-                            <div class="price-caption helveBold">
-                                <div class="text-center font-size-md text-primary text-truncate p-x-20x">New Rings</div>
-                                <div class="text-center">
-                                    <span class="font-size-md text-primary p-r-5x text-red">$199.95</span>
-                                    <span class="font-size-base text-common text-throughLine">$299.95</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!--banner图-->
@@ -184,8 +167,8 @@
                     </div>
                 </div>
             </div>
-
-
+                @endforeach
+            @endif
         </section>
 
         <!-- 设计师 商品 -->
