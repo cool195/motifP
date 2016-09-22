@@ -1,6 +1,6 @@
 @charset "UTF-8";
 a:focus {
-  outline: none;
+  outline: none !important;
 }
 .hover-blue:hover {
   color: #6d91ff;
