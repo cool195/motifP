@@ -36,7 +36,7 @@
                                             </div>
                                             <span>
                                                 <a class="btn btn-primary btn-md"
-                                                   href="/orderdetail/{{  $subOrder['order_no'] }}">Order Detail</a>
+                                                   href="/order/orderdetail/{{  $subOrder['order_no'] }}">Order Detail</a>
                                             </span>
                                         </div>
                                         <hr class="hr-base m-a-0">
@@ -175,7 +175,7 @@
                 <p class="m-b-0 p-t-5x">@{{ value.status_explain }}</p>
             </div>
             <span>
-                <a class="btn btn-primary btn-md" href="/orderdetail/@{{ value.order_no }}">Order Detail</a>
+                <a class="btn btn-primary btn-md" href="/order/orderdetail/@{{ value.order_no }}">Order Detail</a>
             </span>
         </div>
         <hr class="hr-base m-a-0">

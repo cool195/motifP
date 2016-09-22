@@ -96,9 +96,9 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::post('/order', 'OrderController@orderSubmit');
 
-    Route::get('/orderlist', 'OrderController@orderList');
+    Route::get('/order/orderlist', 'OrderController@orderList');
 
-    Route::get('/orderdetail/{subno}', 'OrderController@orderDetail')->where(['subno' => '[0-9]+']);
+    Route::get('/order/orderdetail/{subno}', 'OrderController@orderDetail')->where(['subno' => '[0-9]+']);
     
     Route::get('/success', 'OrderController@orderConfirmed');
 });
