@@ -880,6 +880,7 @@ footer {
   color: #6d91ff;
   overflow: hidden;
   position: relative;
+  margin: 0 auto;
 }
 
 .designer-presale .timeDown .time-number {
