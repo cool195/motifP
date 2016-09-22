@@ -19,6 +19,7 @@ class BaseController extends Controller
 
     protected function request($service, array $params, $path = null, $method = true, $cacheTime = 0)
     {
+        $params['src'] = 'pc';
         $ApiURL = config('runtime.API_URL');
         $Api = $service == 'rec' ? $ApiURL['rec'] : $ApiURL['api'];
         $Api = $path == null ? $Api : $Api . '/' . $path . '/';
