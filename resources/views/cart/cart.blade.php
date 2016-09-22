@@ -103,7 +103,7 @@
                 <hr class="hr-base m-a-0">
                 <div class="p-x-20x border-bottom">
                     @foreach($save['showSkus'] as $showSku)
-                        <div class="row p-y-20x flex flex-alignCenter cartProduct-item" id="{{'csku'.$showSku['sku']}}">
+                        <div class="row p-y-20x flex flex-alignCenter cartProduct-item border-bottom" id="{{'csku'.$showSku['sku']}}">
                             <div class="col-md-4 media">
                                 <a class="media-left" href="/detail/{{$showSku['spu']}}">
                                     <img class="img-lazy"
