@@ -77,7 +77,7 @@
 
         <!-- 设计师 预售 -->
         <section class="bg-common m-t-30x p-b-20x">
-            @if( true || isset($pre_product) && !empty($pre_product))
+            @if(isset($pre_product) && !empty($pre_product))
             <!-- 预售倒计时 -->
             <div class="designer-presale text-center p-t-40x p-b-10x" >
                 <div class="helveBold pre-tit p-b-10x">{{$designer['nickname']}}’s Presale</div>
@@ -113,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-                @if($data['skuPrice']['skuPromotion']['ship_desc'])
+                @if(isset($pre_product['skuPrice']['skuPromotion']['ship_desc']))
                     <p class="p-t-40x sanBold font-size-md">PREORDER: Expected to ship on {{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}</p>
                 @endif
             </div>
