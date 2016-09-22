@@ -7782,6 +7782,10 @@ a.bg-red:focus, a.bg-red:hover {
   content: "\e643";
 }
 
+.icon-air:before {
+  content: "\e62e";
+}
+
 .loading {
   display: -webkit-box;
   display: -ms-flexbox;

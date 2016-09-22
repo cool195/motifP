@@ -55,8 +55,8 @@
                 <li class="nav-item" >
                     <a href="/invitefriends">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                            <img src="{{config('runtime.Image_URL')}}/images/icon/icon-InviteFriends.png" alt="">
-                            <span class="font-size-md p-l-10x">Invite Friends</span>
+                            <i class="iconfont icon-air font-size-lg p-r-10x"></i>
+                            <span class="font-size-md">Invite Friends</span>
                         </div>
                     </a>
                 </li>
