@@ -54,10 +54,7 @@ Route::post('/checkStock', 'ShoppingController@checkStock');
 
 
 //Product Start
-Route::get('/product/{spu}', 'ProductController@product')->where(['spu' => '[0-9]+']);
-
-//todo delete
-Route::get('/detail/{spu}', 'ProductController@getProductDetail')->where(['spu' => '[0-9]+']); //test
+Route::get('/detail/{spu}', 'ProductController@product')->where(['spu' => '[0-9]+']);
 //Product End
 
 
@@ -99,9 +96,9 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::post('/order', 'OrderController@orderSubmit');
 
-    Route::get('/orderlist', 'OrderController@orderList');
+    Route::get('/order/orderlist', 'OrderController@orderList');
 
-    Route::get('/orderdetail/{subno}', 'OrderController@orderDetail')->where(['subno' => '[0-9]+']);
+    Route::get('/order/orderdetail/{subno}', 'OrderController@orderDetail')->where(['subno' => '[0-9]+']);
     
     Route::get('/success', 'OrderController@orderConfirmed');
 });

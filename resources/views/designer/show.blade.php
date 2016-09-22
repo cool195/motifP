@@ -220,7 +220,7 @@
                     <div class="image-container">
                         <a data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
                            data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
-                           data-link="/product/{{$product['spu']}}" href="javascript:void(0)">
+                           data-link="/detail/{{$product['spu']}}" href="javascript:void(0)">
                             <img class="img-fluid img-lazy"
                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}" alt="{{$product['main_title']}}"
                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png">

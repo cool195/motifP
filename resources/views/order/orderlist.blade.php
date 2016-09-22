@@ -36,7 +36,7 @@
                                             </div>
                                             <span>
                                                 <a class="btn btn-primary btn-md"
-                                                   href="/orderdetail/{{  $subOrder['order_no'] }}">Order Detail</a>
+                                                   href="/order/orderdetail/{{  $subOrder['order_no'] }}">Order Detail</a>
                                             </span>
                                         </div>
                                         <hr class="hr-base m-a-0">
@@ -45,7 +45,7 @@
                                                 <div class="checkout-Item p-y-20x border-bottom">
                                                     <div class="media">
                                                         <div class="media-left m-r-15x">
-                                                            <a href="/product/{{$lineOrder['spu']}}">
+                                                            <a href="/detail/{{$lineOrder['spu']}}">
                                                                 <img class="img-lazy img-fluid"
                                                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
@@ -175,7 +175,7 @@
                 <p class="m-b-0 p-t-5x">@{{ value.status_explain }}</p>
             </div>
             <span>
-                <a class="btn btn-primary btn-md" href="/orderdetail/@{{ value.order_no }}">Order Detail</a>
+                <a class="btn btn-primary btn-md" href="/order/orderdetail/@{{ value.order_no }}">Order Detail</a>
             </span>
         </div>
         <hr class="hr-base m-a-0">
@@ -184,7 +184,7 @@
             <div class="checkout-Item border-bottom">
                 <div class="media">
                     <div class="media-left m-r-15x">
-                        <a href="/product/@{{ $value.spu }}">
+                        <a href="/detail/@{{ $value.spu }}">
                             <img class="img-lazy img-fluid"
                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                  data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.img_path }}"

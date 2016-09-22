@@ -902,43 +902,6 @@ function HideSeeMore(seemoreName) {
         }
     });
 
-    // 提交 Promotion Code
-    $('#pcsubmit').on('click', function () {
-        var $this = $(this);
-        var flag = true;
-        $.ajax({
-            url: '/coupon',
-            type: 'post',
-            data: {cps: $('input[name="ccps"]').val()}
-        })
-            .done(function (data) {
-                if (data.success) {
-                    $('#pcode').data('bindid', data.data.bind_id);
-                    getCheckoutInfo();
-                    if ($('input[name="ccps"]').val() != '') {
-                        //收起
-                        var $AddressContent = $this.parent().parent('.showHide-body');
-                        var $SimpleInfo = $this.parent().parent().siblings('.showHide-simpleInfo');
-                        $AddressContent.slideUp(500);
-                        $AddressContent.removeClass('active');
-                        $this.removeClass('active');
-                        $AddressContent.css('display', 'none');
-                        $SimpleInfo.css('display', 'block');
-                        $this.parent().siblings('.warning-info').addClass('off');
-                    } else {
-                        $this.parent().siblings('.warning-info').removeClass('off');
-                        setTimeout(function () {
-                            $this.parent().siblings('.warning-info').addClass('off');
-                        }, 1500);
-                    }
-
-                } else {
-                    $this.parent().siblings('.warning-info').removeClass('off');
-                }
-            })
-
-    });
-
     // 设置地址为默认地址
     $('.btn-makePrimary').on('click', function () {
         if ($(this).hasClass('active')) {
@@ -1098,14 +1061,8 @@ function HideSeeMore(seemoreName) {
     } catch (e) {
     }
 
-    // 选择地址增值服务
-    // $('input[type="radio"]').on('click', function () {
-    //     $('.shippingMethodShow').html($(this).data('show'));
-    //     getCheckoutInfo();
-    // });
-
     $('.checkout-method').on('click', '.methodRadio', function () {
-        $('.shippingMethodShow').html($(this).data('show'));
+        $('.shippingMethodShow').html($(this).data('show')+' +$'+($(this).data('price') / 100).toFixed(2));
         getCheckoutInfo();
     })
 
@@ -1243,7 +1200,7 @@ function HideSeeMore(seemoreName) {
         })
             .done(function (data) {
                 if (data.success) {
-                    $('.shippingMethodShow').html(data.data.list[0].logistics_name);
+                    $('.shippingMethodShow').html(data.data.list[0].logistics_name+' +$'+(data.data.list[0].pay_price / 100).toFixed(2));
                     appendMethodList(data.data);
                 }
             })
@@ -3008,7 +2965,11 @@ function HideSeeMore(seemoreName) {
             })
                 .done(function (data) {
                     if (data.success) {
+                        $('#pcode').data('bindid', data.data.bind_id);
                         getCoupons(1);
+                        if ($('#checkoutView').data('status')) {
+                            getCheckoutInfo();
+                        }
                         $('.addCode-input .warning-info').addClass('off');
                         $('.showPromotionCode').removeClass('disabled');
                         $('.addPromotionCode').addClass('disabled');

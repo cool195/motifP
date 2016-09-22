@@ -230,7 +230,7 @@
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="smShowHide">
                 <span class="sanBold">Shipping</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}}</span>
+                    <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} +${{ number_format(($list['pay_price'] / 100), 2) }}</span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
@@ -242,10 +242,10 @@
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
                                 <input class="methodRadio" type="radio" @if($k==0){{'checked'}}@endif name="shippingMethod"
-                                       data-price="{{$list['price']}}"
+                                       data-price="{{$list['pay_price']}}"
                                        value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
-                                    +${{ number_format(($list['price'] / 100), 2) }}</label>
+                                    +${{ number_format(($list['pay_price'] / 100), 2) }}</label>
                             </div>
                         @endforeach
                     </div>
