@@ -54,10 +54,7 @@ Route::post('/checkStock', 'ShoppingController@checkStock');
 
 
 //Product Start
-Route::get('/product/{spu}', 'ProductController@product')->where(['spu' => '[0-9]+']);
-
-//todo delete
-Route::get('/detail/{spu}', 'ProductController@getProductDetail')->where(['spu' => '[0-9]+']); //test
+Route::get('/detail/{spu}', 'ProductController@product')->where(['spu' => '[0-9]+']);
 //Product End
 
 
