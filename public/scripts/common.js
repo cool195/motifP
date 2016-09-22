@@ -28,10 +28,10 @@ function HideSeeMore(seemoreName) {
     }
 
     // 截取字符串
-    function SubstringText(strinfo,strlenght){  //'.designer-intro'
-        $(strinfo).each(function(){
-            var str=$(this).html();
-            if(str.length > strlenght){
+    function SubstringText(strinfo, strlenght) {  //'.designer-intro'
+        $(strinfo).each(function () {
+            var str = $(this).html();
+            if (str.length > strlenght) {
                 str = str.substring(0, strlenght) + '...';
             }
             $(this).html(str);
@@ -72,11 +72,11 @@ function HideSeeMore(seemoreName) {
             if (switchImpr(element)) {
                 var impr = $(element).data('impr');
                 $(element).removeAttr('data-impr');
-                if(impr != undefined && impr != null && impr != "") {
+                if (impr != undefined && impr != null && impr != "") {
                     testIndex++;
                     $.ajax({
-                            url: impr
-                        })
+                        url: impr
+                    })
                         .always(function () {
                             //$(element).removeAttr('data-impr');
                         });
@@ -102,7 +102,7 @@ function HideSeeMore(seemoreName) {
             var $this = $(this);
             //onProductClick();
 
-            if(undefined != $this.data('link')) {
+            if (undefined != $this.data('link')) {
                 $.ajax({
                     url: $this.data('clk'),
                     type: "GET"
@@ -143,7 +143,7 @@ function HideSeeMore(seemoreName) {
     }
 
     // designerList 判断设计师商品个数
-    function swiperBtnHover(){
+    function swiperBtnHover() {
         $('.productImg-list').each(function () {
             var itemNum = $(this).children('.productImg-item').length,
                 $btnNext = $(this).siblings('.swiper-button-next'),
@@ -151,17 +151,18 @@ function HideSeeMore(seemoreName) {
             $btnNext.hide();
             $btnPrev.hide();
             $(this).parent().hover(function () {
-                if (itemNum > 4){
+                if (itemNum > 4) {
                     $btnNext.show();
                     $btnPrev.show();
                 }
-            },function () {
+            }, function () {
                 $btnNext.hide();
                 $btnPrev.hide();
             });
 
         })
     }
+
     swiperBtnHover();
 
     // 点击选择图片
@@ -176,12 +177,12 @@ function HideSeeMore(seemoreName) {
     var product_data = eval('(' + $('#jsonStr').val() + ')');
     var spuAttrs = typeof(product_data) != "undefined" ? product_data.spuAttrs : '';
 
-    if(spuAttrs != undefined && spuAttrs.length == 1){
-        if(spuAttrs[0].skuAttrValues.length == 1){
+    if (spuAttrs != undefined && spuAttrs.length == 1) {
+        if (spuAttrs[0].skuAttrValues.length == 1) {
             console.log(spuAttrs[0].attr_type)
-            $('#p_a_w'+spuAttrs[0].attr_type).data('sel',1);
+            $('#p_a_w' + spuAttrs[0].attr_type).data('sel', 1);
             $('#productsku').val(product_data.main_sku)
-            $('#skutype'+spuAttrs[0].skuAttrValues[0].attr_value_id).addClass('active');
+            $('#skutype' + spuAttrs[0].skuAttrValues[0].attr_value_id).addClass('active');
         }
     }
 
@@ -211,8 +212,9 @@ function HideSeeMore(seemoreName) {
                     $('#p_a_w' + $(this).data('attr-type')).addClass('off')
                 }
             }
+
             product_onclickStatic(product_onSkuClick($(this).attr('data-attr-type'), $(this).attr('data-attr-value-id'), $(this).hasClass('active')), $(this).attr('data-attr-type'), $(this).hasClass('active'));
-            product_setLastSku()
+
         }
     });
 
@@ -228,7 +230,6 @@ function HideSeeMore(seemoreName) {
                 }
             }
         }
-        console.log(nowClickArray);
         return nowClickArray;
     }
 
@@ -242,24 +243,30 @@ function HideSeeMore(seemoreName) {
         }
         if (product_lastSkuArray.length == 1) {
             $('#productsku').val(product_lastSkuArray[0])
-            $.each(product_data.skuExps,function (index,val) {
-                if(product_lastSkuArray[0]==val.sku){
-                    $('.newPrice').html('$'+(val.skuPrice.sale_price/100).toFixed(2));
+            $.each(product_data.skuExps, function (index, val) {
+                if (product_lastSkuArray[0] == val.sku) {
+                    $('.newPrice').html('$' + (val.skuPrice.sale_price / 100).toFixed(2));
                     return false;
                 }
             });
         }
+        return product_lastSkuArray;
     }
 
     //操作后的可用状态
     function product_onclickStatic(nowClickArray, nowAT, clickStatus) {
+        var lastSku = product_setLastSku();
         for (var i = 0; i < spuAttrs.length; i++) {
             if (nowAT != spuAttrs[i].attr_type) {
                 for (var y = 0; y < spuAttrs[i].skuAttrValues.length; y++) {
                     var is = false;
                     for (var x = 0; x < spuAttrs[i].skuAttrValues[y].skus.length; x++) {
                         $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
-                        if (nowClickArray.indexOf(spuAttrs[i].skuAttrValues[y].skus[x]) >= 0) {
+                        var _tempArr = nowClickArray;
+                        if($('#p_a_w'+spuAttrs[i].attr_type).data('sel')==0){
+                            _tempArr = lastSku;
+                        }
+                        if (_tempArr.indexOf(spuAttrs[i].skuAttrValues[y].skus[x]) >= 0) {
                             //找到交集,结束循环
                             if ($('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).hasClass('disabled')) {
                                 $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
@@ -268,6 +275,7 @@ function HideSeeMore(seemoreName) {
                             break;
                         }
                     }
+
                     if (!is) {
                         clickStatus ? $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).addClass('disabled') : $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
                     }
@@ -357,12 +365,12 @@ function HideSeeMore(seemoreName) {
     //检查库存
     function checkStock(skus) {
         $.ajax({
-                url: '/checkStock',
-                type: 'POST',
-                data: {
-                    skus: skus
-                }
-            })
+            url: '/checkStock',
+            type: 'POST',
+            data: {
+                skus: skus
+            }
+        })
             .done(function (data) {
                 if (data.success) {
                     if (data.data.list[0].stockStatus === 1) {
@@ -382,7 +390,7 @@ function HideSeeMore(seemoreName) {
 
     // 添加购物车
     $('#productAddBag').on('click', function (e) {
-        if(!pSelAttr()){
+        if (!pSelAttr()) {
             return false;
         }
         if ($('#productsku').val()) {
@@ -394,7 +402,7 @@ function HideSeeMore(seemoreName) {
             };
 
             var flag = true;
-            if(product_data.vasBases != undefined){
+            if (product_data.vasBases != undefined) {
                 $.each(product_data.vasBases, function (index, val) {
                     if (!$('#vas_id' + val.vas_id).hasClass('disabled') /*&& $('#vas_id' + val.vas_id).val()*/) {
                         if ($('#vas_id' + val.vas_id).val() == "" || $('#vas_id' + val.vas_id).val() == null) {
@@ -411,12 +419,12 @@ function HideSeeMore(seemoreName) {
             $(this).addClass('disabled');
             var action = $(this).data('action');
             $.ajax({
-                    url: '/cart/add',
-                    type: action,
-                    data: {
-                        operate: operate
-                    }
-                })
+                url: '/cart/add',
+                type: action,
+                data: {
+                    operate: operate
+                }
+            })
                 .done(function (data) {
                     $('#productAddBag').removeClass('disabled');
                     if (data.success) {
@@ -428,7 +436,7 @@ function HideSeeMore(seemoreName) {
                         if ($('.shoppingCart-number').hasClass('hidden')) {
                             $('.shoppingCart-number').removeClass('hidden');
                         }
-                        if(data.redirectUrl != null) {
+                        if (data.redirectUrl != null) {
                             window.location.href = data.redirectUrl;
                         }
                     } else {
@@ -443,7 +451,7 @@ function HideSeeMore(seemoreName) {
 
     // 属性验证
     function pSelAttr() {
-        if(spuAttrs == undefined){
+        if (spuAttrs == undefined) {
             return true
         }
         var status = true;
@@ -466,10 +474,10 @@ function HideSeeMore(seemoreName) {
         $(this).parents('.flex-alignCenter').siblings('.warning-info').addClass('off');
     });
 
-    var CheckNum=0
+    var CheckNum = 0
     $('.icon-checkcircle').on('click', function () {
-        if(CheckNum === 0 && $(this).hasClass('active')){
-            CheckNum=0;
+        if (CheckNum === 0 && $(this).hasClass('active')) {
+            CheckNum = 0;
         } else {
             $(this).toggleClass('active');
             $(this).parents('.flex-alignCenter').siblings('.warning-info').addClass('off');
@@ -489,11 +497,11 @@ function HideSeeMore(seemoreName) {
     $('.btn-wish').on('click', function () {
         var $this = $(this);
         var spu = $this.data('spu');
-        if( spu != undefined) {
+        if (spu != undefined) {
             $.ajax({
-                    url: '/wishlist/' + spu,
-                    type: 'GET'
-                })
+                url: '/wishlist/' + spu,
+                type: 'GET'
+            })
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
@@ -502,13 +510,13 @@ function HideSeeMore(seemoreName) {
         } else {
             spu = $this.data('actionspu');
             $.ajax({
-                    url: '/noteaction',
-                    type: 'get',
-                    data: {
-                        action: 'wish',
-                        spu: spu
-                    }
-                })
+                url: '/noteaction',
+                type: 'get',
+                data: {
+                    action: 'wish',
+                    spu: spu
+                }
+            })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
@@ -519,11 +527,11 @@ function HideSeeMore(seemoreName) {
     $('#productList-container').on('click', '.btn-wishList', function (e) {
         var $this = $(e.target);
         var spu = $this.data('spu');
-        if( spu != undefined) {
+        if (spu != undefined) {
             $.ajax({
-                    url: '/wishlist/' + spu,
-                    type: 'GET'
-                })
+                url: '/wishlist/' + spu,
+                type: 'GET'
+            })
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
@@ -555,9 +563,9 @@ function HideSeeMore(seemoreName) {
             return;
         } else {
             $.ajax({
-                    url: '/service/' + TemplateId,
-                    type: 'GET',
-                })
+                url: '/service/' + TemplateId,
+                type: 'GET',
+            })
                 .done(function (data) {
                     if (data.success) {
                         $this.data('tid', -1);
@@ -609,7 +617,8 @@ function HideSeeMore(seemoreName) {
             intDiff--;
         }, 1000);
     }
-    if(leftNum != -1){
+
+    if (leftNum != -1) {
         $(function () {
             timer(leftNum / 1000);
         });
@@ -626,7 +635,7 @@ function HideSeeMore(seemoreName) {
             closeOnCancel: false,
             hashTracking: false
         };
-        var OptionsShare={
+        var OptionsShare = {
             closeOnOutsideClick: true,
             closeOnCancel: false,
             hashTracking: false
@@ -659,11 +668,11 @@ function HideSeeMore(seemoreName) {
                 url: '/checkStock',
                 type: 'POST',
                 data: {
-                    skus: nowsku+'_'+skuQty,
+                    skus: nowsku + '_' + skuQty,
                 }
             })
                 .done(function (data) {
-                    if(data.success){
+                    if (data.success) {
                         if (data.data.list[0].stockStatus === 1) {
                             $('#cskunum' + nowsku).html(skuQty);
                             tObj.removeClass('disabled');
@@ -687,11 +696,11 @@ function HideSeeMore(seemoreName) {
                                     qtty: skuQty,
                                 }
                             })
-                                .done(function(data){
-                                    if(data.success){
+                                .done(function (data) {
+                                    if (data.success) {
                                         cart_update_info();
                                     }
-                            })
+                                })
 
                         } else {
                             AddItemFailModal.open();
@@ -708,9 +717,9 @@ function HideSeeMore(seemoreName) {
     //动态更新购物车价格总数量
     function cart_update_info() {
         $.ajax({
-                url: '/cart/list',
-                type: 'GET',
-            })
+            url: '/cart/list',
+            type: 'GET',
+        })
             .done(function (data) {
                 if (data.success) {
                     if (data.data != '') {
@@ -718,7 +727,7 @@ function HideSeeMore(seemoreName) {
                         $('#total_sku_qtty').html('Items(' + data.data.total_sku_qtty + '):');
                         $('#vas_amount').html('$' + (data.data.vas_amount / 100).toFixed(2));
                         $('#pay_amount').html('$' + (data.data.pay_amount / 100).toFixed(2));
-                        if(data.data.pay_amount <= 0){
+                        if (data.data.pay_amount <= 0) {
                             $('.btn-toCheckout').addClass('disabled');
                         }
                     } else {
@@ -735,10 +744,10 @@ function HideSeeMore(seemoreName) {
         var sku = $(this).data('sku');
         var thisParent = $(this).parents('.cartProduct-item');
         $.ajax({
-                url: '/cart/operate',
-                type: 'POST',
-                data: {cmd: action, sku: sku}
-            })
+            url: '/cart/operate',
+            type: 'POST',
+            data: {cmd: action, sku: sku}
+        })
             .done(function (data) {
                 if (data.success) {
                     if (action == 'movetocart' || action == 'save') {
@@ -760,10 +769,10 @@ function HideSeeMore(seemoreName) {
         var id = $('#modalDialog').data('id');
 
         $.ajax({
-                url: '/cart/operate',
-                type: 'POST',
-                data: {cmd: action, sku: sku}
-            })
+            url: '/cart/operate',
+            type: 'POST',
+            data: {cmd: action, sku: sku}
+        })
             .done(function (data) {
                 if (data.success) {
                     if (action == 'movetocart' || action == 'save') {
@@ -809,10 +818,10 @@ function HideSeeMore(seemoreName) {
             var Aid = $('#addAddressForm').data('aid');
             if (Aid === '' || Aid === undefined) {
                 $.ajax({
-                        url: '/address',
-                        type: 'POST',
-                        data: $('#addAddressForm').serialize()
-                    })
+                    url: '/address',
+                    type: 'POST',
+                    data: $('#addAddressForm').serialize()
+                })
                     .done(function (data) {
                         if (data.success) {
                             $('.select-address').removeClass('disabled');
@@ -829,10 +838,10 @@ function HideSeeMore(seemoreName) {
                 }
 
                 $.ajax({
-                        url: '/address/' + Aid,
-                        type: 'PUT',
-                        data: $('#addAddressForm').serialize()
-                    })
+                    url: '/address/' + Aid,
+                    type: 'PUT',
+                    data: $('#addAddressForm').serialize()
+                })
                     .done(function (data) {
                         if (data.success) {
                             $('.select-address').removeClass('disabled');
@@ -903,8 +912,8 @@ function HideSeeMore(seemoreName) {
             data: {cps: $('input[name="ccps"]').val()}
         })
             .done(function (data) {
-                if(data.success){
-                    $('#pcode').data('bindid',data.data.bind_id);
+                if (data.success) {
+                    $('#pcode').data('bindid', data.data.bind_id);
                     getCheckoutInfo();
                     if ($('input[name="ccps"]').val() != '') {
                         //收起
@@ -923,7 +932,7 @@ function HideSeeMore(seemoreName) {
                         }, 1500);
                     }
 
-                }else{
+                } else {
                     $this.parent().siblings('.warning-info').removeClass('off');
                 }
             })
@@ -966,7 +975,7 @@ function HideSeeMore(seemoreName) {
     $('.address-list').on('click', '.btn-editAddress', function () {
         $('.select-address').addClass('disabled');
         $('.add-address').removeClass('disabled');
-        CheckNum=0;
+        CheckNum = 0;
         // 修改的地址 ID
         var AddressId = $(this).parent('.address-item').data('aid');
         $('#addAddressForm').data('aid', AddressId);
@@ -977,9 +986,9 @@ function HideSeeMore(seemoreName) {
     function initAddAddressForm() {
         var AddressId = $('#addAddressForm').data('aid');
         if (AddressId === '' || AddressId === undefined) {
-            if($('.address-item').length <=0 ){
+            if ($('.address-item').length <= 0) {
                 $('.isDefault').addClass('active');
-                CheckNum=0;
+                CheckNum = 0;
             } else {
                 $('.isDefault').removeClass('active');
             }
@@ -997,14 +1006,14 @@ function HideSeeMore(seemoreName) {
             $('select[name="country"]').prop('selectedIndex', 0);
 
             // 初始化 国家,洲
-            var Country= $('select[name="country"] option:selected').text();
-            initCityState(Country,'');
+            var Country = $('select[name="country"] option:selected').text();
+            initCityState(Country, '');
         } else {
             // 修改地址
             $.ajax({
-                    url: '/address/' + AddressId,
-                    type: 'GET'
-                })
+                url: '/address/' + AddressId,
+                type: 'GET'
+            })
                 .done(function (data) {
                     //初始化 修改地址 from 表单
                     $('input[name="email"]').val(data.email);
@@ -1018,7 +1027,7 @@ function HideSeeMore(seemoreName) {
                     $('select[name="country"]').val(data.country);
 
                     // 初始化 国家,洲
-                    initCityState(data.country,data.state);
+                    initCityState(data.country, data.state);
 
                     if (data.isDefault == 1) {
                         $('.isDefault').addClass('active');
@@ -1034,7 +1043,7 @@ function HideSeeMore(seemoreName) {
     // 选择国家 联动洲
     $('select[name="country"]').change(function () {
         var Country = $('select[name="country"]').val();
-        initCityState(Country,'');
+        initCityState(Country, '');
 
         if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
             validateState();
@@ -1044,18 +1053,17 @@ function HideSeeMore(seemoreName) {
     });
 
 
-
     // 初始化 国家,洲
-    function initCityState(Country,State){
+    function initCityState(Country, State) {
         // CountryId  国家Id
         // SelectType 国家对应洲类型
-        var CountryId=$('select[name="country"] > option[value="'+ Country +'"]').data('id');
-        var SelectType = $('select[name="country"] > option[value="'+ Country +'"]').data('type');
-        if(SelectType != undefined && SelectType === 0){
+        var CountryId = $('select[name="country"] > option[value="' + Country + '"]').data('id');
+        var SelectType = $('select[name="country"] > option[value="' + Country + '"]').data('type');
+        if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
             $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">');
             $('input[name="state"]').val(State);
-        } else if(SelectType != undefined && SelectType === 1){
+        } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
             $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
             $('input[name="state"]').val(State);
@@ -1063,18 +1071,18 @@ function HideSeeMore(seemoreName) {
             // 洲为下拉列选择
             // 获取 洲 列表
             $.ajax({
-                    url: '/statelist/' + CountryId,
-                    type: 'GET'
-                })
+                url: '/statelist/' + CountryId,
+                type: 'GET'
+            })
                 .done(function (data) {
                     $('.state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
                     // 添加选项
                     $.each(data, function (n, value) {
-                        var StateNameId=value['state_name_sn'];
-                        var StateNameEn=value['state_name_en'];
+                        var StateNameId = value['state_name_sn'];
+                        var StateNameEn = value['state_name_en'];
                         $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($("select"));
                     });
-                    if(State != ""){
+                    if (State != "") {
                         $('select[name="state"]').val(State);
                     }
                 })
@@ -1082,12 +1090,13 @@ function HideSeeMore(seemoreName) {
     }
 
     try {
-        if($('#checkoutView').data('status') || $('#addressView').data('status')){
+        if ($('#checkoutView').data('status') || $('#addressView').data('status')) {
             // 初始化 国家,洲
-            var Country= $('select[name="country"] option:selected').text();
-            initCityState(Country,'');
+            var Country = $('select[name="country"] option:selected').text();
+            initCityState(Country, '');
         }
-    } catch (e) {}
+    } catch (e) {
+    }
 
     // 选择地址增值服务
     // $('input[type="radio"]').on('click', function () {
@@ -1095,7 +1104,7 @@ function HideSeeMore(seemoreName) {
     //     getCheckoutInfo();
     // });
 
-    $('.checkout-method').on('click','.methodRadio',function(){
+    $('.checkout-method').on('click', '.methodRadio', function () {
         $('.shippingMethodShow').html($(this).data('show'));
         getCheckoutInfo();
     })
@@ -1127,57 +1136,57 @@ function HideSeeMore(seemoreName) {
 
     //重新获取结算信息
     function getCheckoutInfo() {
-        var aid = $('#defaultAddr').data('aid')==undefined ? '' : $('#defaultAddr').data('aid');
-        var bindid = $('#pcode').data('bindid')==undefined ? '' : $('#pcode').data('bindid');
-        var smethod = $('input[name="shippingMethod"]:checked').val()==undefined ? '' : $('input[name="shippingMethod"]:checked').val();
+        var aid = $('#defaultAddr').data('aid') == undefined ? '' : $('#defaultAddr').data('aid');
+        var bindid = $('#pcode').data('bindid') == undefined ? '' : $('#pcode').data('bindid');
+        var smethod = $('input[name="shippingMethod"]:checked').val() == undefined ? '' : $('input[name="shippingMethod"]:checked').val();
         $.ajax({
-            url: '/cart/accountlist?aid='+aid+'&bindid=' + bindid + '&logisticstype=' + smethod,
+            url: '/cart/accountlist?aid=' + aid + '&bindid=' + bindid + '&logisticstype=' + smethod,
             type: 'GET',
         })
             .done(function (data) {
                 if (data.success) {
-                    if(data.data.cps_amount > 0){
+                    if (data.data.cps_amount > 0) {
                         $('.cps_amountShow').removeClass('hidden');
                         $('.cps_amount').html('-$' + (data.data.cps_amount / 100).toFixed(2));
-                    }else{
+                    } else {
                         $('.cps_amountShow').addClass('hidden');
                     }
-                    if(data.data.tax_amount > 0){
+                    if (data.data.tax_amount > 0) {
                         $('.tax_amountShow').removeClass('hidden');
-                        $('.tax_amount').html('$'+(data.data.tax_amount / 100).toFixed(2));
-                    }else{
+                        $('.tax_amount').html('$' + (data.data.tax_amount / 100).toFixed(2));
+                    } else {
                         $('.tax_amountShow').addClass('hidden');
                     }
-                    if(data.data.freight_amount > 0){
-                        $('.freight_amount').html('$'+(data.data.freight_amount / 100).toFixed(2));
-                    }else{
+                    if (data.data.freight_amount > 0) {
+                        $('.freight_amount').html('$' + (data.data.freight_amount / 100).toFixed(2));
+                    } else {
                         $('.freight_amount').html('Free');
                     }
                     $('.pay_amount').html('$' + (data.data.pay_amount / 100).toFixed(2));
-                    $('.checkoutInfo').data('price',data.data.total_amount+data.data.vas_amount);
+                    $('.checkoutInfo').data('price', data.data.total_amount + data.data.vas_amount);
                 }
             })
     }
 
     // 生成订单
     $('.btn-toCheckout').on('click', function () {
-        if($('#defaultAddr').data('aid')<1){
+        if ($('#defaultAddr').data('aid') < 1) {
             checkValid($('input[name="name"]'));
             $("html,body").animate({scrollTop: $('#addrShowHide').offset().top}, 100);
             return false;
         }
         var paym = $(this).data('with');
         $.ajax({
-                url: '/order',
-                type: 'POST',
-                data: {
-                    aid: $('#defaultAddr').data('aid'),
-                    bindid: $('#pcode').data('bindid')==undefined ? '' : $('#pcode').data('bindid'),
-                    remark: $('input[name="cremark"]').val(),
-                    stype: $('input[name="shippingMethod"]:checked').val(),
-                    paym: paym
-                }
-            })
+            url: '/order',
+            type: 'POST',
+            data: {
+                aid: $('#defaultAddr').data('aid'),
+                bindid: $('#pcode').data('bindid') == undefined ? '' : $('#pcode').data('bindid'),
+                remark: $('input[name="cremark"]').val(),
+                stype: $('input[name="shippingMethod"]:checked').val(),
+                paym: paym
+            }
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -1197,9 +1206,9 @@ function HideSeeMore(seemoreName) {
     // 加载地址列表
     function getAddressList() {
         $.ajax({
-                url: '/address',
-                type: 'GET'
-            })
+            url: '/address',
+            type: 'GET'
+        })
             .done(function (data) {
                 if (data.success) {
                     appendAddressList(data.data);
@@ -1211,7 +1220,7 @@ function HideSeeMore(seemoreName) {
                                 zip = value['zip'],
                                 name = value['name'],
                                 state = value['state'];
-                            $('#defaultAddr').html(name + detail_address1 + " " + city + " "+ state + " " + country + " " + zip);
+                            $('#defaultAddr').html(name + detail_address1 + " " + city + " " + state + " " + country + " " + zip);
                             $('#defaultAddr').data('csn', value['country_name_sn']);
                             $('#defaultAddr').data('aid', value['receiving_id']);
                         });
@@ -1223,9 +1232,9 @@ function HideSeeMore(seemoreName) {
     }
 
     //设置配送服务
-    function getshiplist(){
+    function getshiplist() {
         $.ajax({
-            url: '/getshiplist?country='+$('#defaultAddr').data('csn')+'&price='+$('.checkoutInfo').data('price'),
+            url: '/getshiplist?country=' + $('#defaultAddr').data('csn') + '&price=' + $('.checkoutInfo').data('price'),
             type: 'GET'
         })
             .done(function (data) {
@@ -1237,7 +1246,7 @@ function HideSeeMore(seemoreName) {
     }
 
     //遍历模板, 配送方式
-    function appendMethodList(MethodList){
+    function appendMethodList(MethodList) {
         var TplHtml = template('tpl-method', MethodList);
         var StageCache = $.parseHTML(TplHtml);
         $('.checkout-method').html(StageCache);
@@ -1262,14 +1271,14 @@ function HideSeeMore(seemoreName) {
 
     function login_signin() {
         $('[data-role="login-submit"]').addClass('disabled');
-        if($('.login-email').val() == "" || $('.login-pw').val() == ""){
+        if ($('.login-email').val() == "" || $('.login-pw').val() == "") {
             return;
         }
         $.ajax({
-                url: '/signin',
-                type: 'POST',
-                data: $('#login').serialize()
-            })
+            url: '/signin',
+            type: 'POST',
+            data: $('#login').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -1285,10 +1294,10 @@ function HideSeeMore(seemoreName) {
 
     function login_forgetPassword() {
         $.ajax({
-                url: '/forget',
-                type: 'POST',
-                data: $('#forgetPassword').serialize()
-            })
+            url: '/forget',
+            type: 'POST',
+            data: $('#forgetPassword').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     alert(data.prompt_msg);
@@ -1413,7 +1422,7 @@ function HideSeeMore(seemoreName) {
         }
     });
 
-    $("body").keydown(function() {
+    $("body").keydown(function () {
         if (event.keyCode == "13") {
             $('[data-role="login-submit"]').click();
         }
@@ -1463,15 +1472,15 @@ function HideSeeMore(seemoreName) {
             function (googleUser) {
                 var profile = googleUser.getBasicProfile();
                 $.ajax({
-                        url: '/googlelogin',
-                        type: 'POST',
-                        data: {
-                            email: profile.getEmail(),
-                            id: profile.getId(),
-                            name: profile.getName(),
-                            avatar: profile.getImageUrl()
-                        }
-                    })
+                    url: '/googlelogin',
+                    type: 'POST',
+                    data: {
+                        email: profile.getEmail(),
+                        id: profile.getId(),
+                        name: profile.getName(),
+                        avatar: profile.getImageUrl()
+                    }
+                })
                     .done(function (data) {
                         console.log("success");
                         if (data.success) {
@@ -1512,7 +1521,8 @@ function HideSeeMore(seemoreName) {
 
     try {
         initGoogle();
-    } catch (e) {}
+    } catch (e) {
+    }
 
     // facebook 第三方登录
 
@@ -1559,13 +1569,13 @@ function HideSeeMore(seemoreName) {
     // Here we run a very simple test of the Graph API after login is
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
-        FB.api('/me', 'GET', {fields: 'id,name,picture.width(750).height(750),email'},function (response) {
+        FB.api('/me', 'GET', {fields: 'id,name,picture.width(750).height(750),email'}, function (response) {
             if (response.email == '' || response == undefined) {
                 $.ajax({
-                    url: '/facebookstatus/'+response.id,
+                    url: '/facebookstatus/' + response.id,
                     type: 'get'
                 })
-                    .done(function(data) {
+                    .done(function (data) {
 
                         if (data.status) {
                             response.email = data.data.email;
@@ -1581,7 +1591,7 @@ function HideSeeMore(seemoreName) {
         });
     }
 
-    function loginSuccess(response){
+    function loginSuccess(response) {
         $.ajax({
             url: '/facebooklogin',
             type: 'POST',
@@ -1592,7 +1602,7 @@ function HideSeeMore(seemoreName) {
                 avatar: response.picture.data.url
             }
         })
-            .done(function(data) {
+            .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
@@ -1613,7 +1623,7 @@ function HideSeeMore(seemoreName) {
     });
 
     $('.emailRequired-email').on('keyup blur', function () {
-        if($(this).val() === ''){
+        if ($(this).val() === '') {
             $(this).siblings('.icon-delete').addClass('hidden');
         } else {
             $(this).siblings('.icon-delete').removeClass('hidden');
@@ -1627,27 +1637,26 @@ function HideSeeMore(seemoreName) {
     });
 
     // 提交 email 信息
-    $('div[data-role="emailRequired-submit"]').on('click',function(){
-        if(!$(this).hasClass('disabled')){
+    $('div[data-role="emailRequired-submit"]').on('click', function () {
+        if (!$(this).hasClass('disabled')) {
             $.ajax({
                 url: '/facebooklogin',
                 type: 'post',
                 data: $('#register').serialize()
             })
-                .done(function(data) {
+                .done(function (data) {
                     if (data.success) {
                         window.location.href = data.redirectUrl;
                     }
                 })
-            $('.uploademail-loading').css('display','block');
+            $('.uploademail-loading').css('display', 'block');
             $('div[data-role="emailRequired-submit"]').addClass('disabled');
             setTimeout(function () {
-                $('.uploademail-loading').css('display','none');
+                $('.uploademail-loading').css('display', 'none');
                 $('div[data-role="emailRequired-submit"]').removeClass('disabled');
             }, 1500);
         }
     });
-
 
 
     //第三方登录结束
@@ -1673,10 +1682,10 @@ function HideSeeMore(seemoreName) {
     function register_signup() {
         $('[data-role="register-submit"]').addClass('disabled');
         $.ajax({
-                url: '/signup',
-                type: 'POST',
-                data: $('#register').serialize()
-            })
+            url: '/signup',
+            type: 'POST',
+            data: $('#register').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -1730,10 +1739,10 @@ function HideSeeMore(seemoreName) {
     function reset_password() {
         $('[data-role="reset-submit"]').addClass('disabled');
         $.ajax({
-                type: 'POST',
-                url: '/reset',
-                data: $('#reset').serialize()
-            })
+            type: 'POST',
+            url: '/reset',
+            data: $('#reset').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -1801,10 +1810,10 @@ function HideSeeMore(seemoreName) {
     function change_password() {
         $('.change-save').addClass('disabled');
         $.ajax({
-                url: '/user/modifyUserPwd',
-                type: 'POST',
-                data: $('#changepassword').serialize()
-            })
+            url: '/user/modifyUserPwd',
+            type: 'POST',
+            data: $('#changepassword').serialize()
+        })
             .done(function (data) {
                 $('.changepwd-info').html(data.prompt_msg);
                 var $changePwdBtn = $('#changePwdBtn');
@@ -1867,10 +1876,10 @@ function HideSeeMore(seemoreName) {
     //User Address Start
     function address_delete($addressItem) {
         $.ajax({
-                url: '/address/' + $addressItem.data('aid'),
-                type: 'delete',
-                data: {}
-            })
+            url: '/address/' + $addressItem.data('aid'),
+            type: 'delete',
+            data: {}
+        })
             .done(function (data) {
                 if (data.success) {
                     DelAddressModal.close();
@@ -1987,7 +1996,7 @@ function HideSeeMore(seemoreName) {
     });
 
     // 验证 State
-    $('.state-info').on('keyup blur','.address-state', function () {
+    $('.state-info').on('keyup blur', '.address-state', function () {
         if (address_check($(this)) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
             validateState();
@@ -1996,9 +2005,9 @@ function HideSeeMore(seemoreName) {
         }
     });
 
-    function validateState(){
-        if($('.address-state').length > 0){
-            if(address_check($('.address-state'))){
+    function validateState() {
+        if ($('.address-state').length > 0) {
+            if (address_check($('.address-state'))) {
                 $('.address-save').removeClass('disabled');
             } else {
                 $('.address-save').addClass('disabled');
@@ -2016,10 +2025,10 @@ function HideSeeMore(seemoreName) {
     //User Profile Start
     function profile_updateUser() {
         $.ajax({
-                url: '/user/modify',
-                type: 'post',
-                data: $('#changeProfile').serialize()
-            })
+            url: '/user/modify',
+            type: 'post',
+            data: $('#changeProfile').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     $('input[name="nick"]').attr('placeholder', data.data.nickname);
@@ -2091,8 +2100,9 @@ function HideSeeMore(seemoreName) {
                 HideSeeMore('.designerList-seeMore');
             }
         });
-        SubstringText('.designer-intro',140);
-    } catch (e) {}
+        SubstringText('.designer-intro', 140);
+    } catch (e) {
+    }
 
     // ajax 加载 设计师信息
     function designer_getDesignerList() {
@@ -2113,13 +2123,13 @@ function HideSeeMore(seemoreName) {
         // 加载动画loading 显示
         loadingShow('.designer-loading', '.designerList-seeMore');
         $.ajax({
-                url: '/designer',
-                data: {
-                    start: Start,
-                    size: Size,
-                    ajax: 1
-                }
-            })
+            url: '/designer',
+            data: {
+                start: Start,
+                size: Size,
+                ajax: 1
+            }
+        })
             .done(function (data) {
                 if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '' || data.data.list.length === 0) {
                     $DesignerContainer.data('start', -1);
@@ -2158,7 +2168,7 @@ function HideSeeMore(seemoreName) {
                     swiperBtnHover();
 
                     // 截取 设计师说明 长度
-                    SubstringText('.designer-intro',140);
+                    SubstringText('.designer-intro', 140);
 
                     // 图片延迟加载
                     $('img.img-lazy').lazyload({
@@ -2213,11 +2223,11 @@ function HideSeeMore(seemoreName) {
     $('.btn-follow').on('click', function () {
         var $this = $(this);
         var did = $this.data('did')
-        if(did != undefined) {
+        if (did != undefined) {
             $.ajax({
-                    url: '/follow/' + did,
-                    type: 'GET'
-                })
+                url: '/follow/' + did,
+                type: 'GET'
+            })
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
@@ -2228,16 +2238,16 @@ function HideSeeMore(seemoreName) {
                         }
                     }
                 });
-        } else{
+        } else {
             did = $this.data('actiondid')
             $.ajax({
-                    url: '/noteaction',
-                    type: 'get',
-                    data: {
-                        action: 'follow',
-                        did: did
-                    }
-                })
+                url: '/noteaction',
+                type: 'get',
+                data: {
+                    action: 'follow',
+                    did: did
+                }
+            })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
@@ -2248,11 +2258,11 @@ function HideSeeMore(seemoreName) {
     $('#designerContainer').on('click', '.btn-following', function () {
         var $this = $(this);
         var did = $this.data('did')
-        if(did != undefined) {
+        if (did != undefined) {
             $.ajax({
-                    url: '/follow/' + did,
-                    type: 'GET'
-                })
+                url: '/follow/' + did,
+                type: 'GET'
+            })
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
@@ -2263,16 +2273,16 @@ function HideSeeMore(seemoreName) {
                         }
                     }
                 });
-        } else{
+        } else {
             did = $this.data('actiondid')
             $.ajax({
-                    url: '/noteaction',
-                    type: 'get',
-                    data: {
-                        action: 'follow',
-                        did: did
-                    }
-                })
+                url: '/noteaction',
+                type: 'get',
+                data: {
+                    action: 'follow',
+                    did: did
+                }
+            })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
@@ -2494,7 +2504,7 @@ function HideSeeMore(seemoreName) {
 
                 //点击触发点击埋点
                 $('[data-clk]').unbind('click');
-                $('[data-clk]').bind('click', function() {
+                $('[data-clk]').bind('click', function () {
                     var $this = $(this);
                     if (undefined !== $this.data('link')) {
                         $.ajax({
@@ -2505,7 +2515,7 @@ function HideSeeMore(seemoreName) {
                             window.location.href = $this.data('link');
                         }, 100);
                     }
-                } )
+                })
                 // end
 
                 $('#daily-wookmark').imagesLoaded(function () {
@@ -2564,7 +2574,8 @@ function HideSeeMore(seemoreName) {
                 HideSeeMore('.orderList-seeMore');
             }
         })
-    } catch (e) {}
+    } catch (e) {
+    }
 
     // 点击 查看更多 订单
     $('.orderList-seeMore').on('click', function () {
@@ -2651,7 +2662,7 @@ function HideSeeMore(seemoreName) {
                 'VAList': []
             };
 
-            if( val.vas_info != null && val.vas_info != undefined) {
+            if (val.vas_info != null && val.vas_info != undefined) {
                 var vas = [];
                 $.each(val.vas_info, function (i, el) {
                     vas[i] = {};
@@ -2670,12 +2681,12 @@ function HideSeeMore(seemoreName) {
     function order_buyAgain() {
         var operate = order_getOperate();
         $.ajax({
-                url: '/cart/addBatch',
-                type: 'POST',
-                data: {
-                    operate: operate
-                }
-            })
+            url: '/cart/addBatch',
+            type: 'POST',
+            data: {
+                operate: operate
+            }
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -2706,7 +2717,8 @@ function HideSeeMore(seemoreName) {
                 HideSeeMore('.wishList-seeMore');
             }
         })
-    } catch (e) {}
+    } catch (e) {
+    }
 
     //点击查看更多商品
     $('.btn-seeMore-wishList').on('click', function () {
@@ -2794,9 +2806,9 @@ function HideSeeMore(seemoreName) {
         var $this = $(e.target);
         var spu = $this.data('spu');
         $.ajax({
-                url: '/wishlist/' + spu,
-                type: 'GET'
-            })
+            url: '/wishlist/' + spu,
+            type: 'GET'
+        })
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
@@ -2818,8 +2830,9 @@ function HideSeeMore(seemoreName) {
                 HideSeeMore('.followList-seeMore');
             }
         })
-        SubstringText('.followText-Info',140);
-    } catch (e) {}
+        SubstringText('.followText-Info', 140);
+    } catch (e) {
+    }
 
     $('.btn-seeMore-follow').on('click', function () {
         $('img.img-lazy').each(function () {
@@ -2898,9 +2911,9 @@ function HideSeeMore(seemoreName) {
     $('#followList-container').on('click', '.btn-following', function () {
         var $this = $(this);
         $.ajax({
-                url: '/follow/' + $this.data('did'),
-                type: 'GET'
-            })
+            url: '/follow/' + $this.data('did'),
+            type: 'GET'
+        })
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
@@ -2918,17 +2931,18 @@ function HideSeeMore(seemoreName) {
     //start 个人中心 Promotions
 
     try {
-        if($('#checkoutView').data('status') || $('#userpromotions').data('status')){
+        if ($('#checkoutView').data('status') || $('#userpromotions').data('status')) {
             getCoupons(2);
         }
-    } catch (e) {}
+    } catch (e) {
+    }
 
-        //进入添加 Promotions Code页面
+    //进入添加 Promotions Code页面
     $('.btn-addNewCode').on('click', function () {
         $('.showPromotionCode').addClass('disabled');
         $('.addPromotionCode').removeClass('disabled');
     });
-        //返回 显示Promotions页面
+    //返回 显示Promotions页面
     $('.goback-toAdd').on('click', function () {
         $('.showPromotionCode').removeClass('disabled');
         $('.addPromotionCode').addClass('disabled');
@@ -2936,11 +2950,11 @@ function HideSeeMore(seemoreName) {
 
     //加载Promotions Code列表
     //State 加载状态  1:添加加载  2:页面load 首次加载
-    function getCoupons(State){
+    function getCoupons(State) {
         //判断 是个人中心 还是 checkout
-        if($('#checkoutView').data('status')){
+        if ($('#checkoutView').data('status')) {
             var CouponUrl = '/coupon';
-        } else if($('#userpromotions').data('status')){
+        } else if ($('#userpromotions').data('status')) {
             var CouponUrl = '/usercoupon';
         }
         $.ajax({
@@ -2948,15 +2962,15 @@ function HideSeeMore(seemoreName) {
             type: 'GET'
         })
             .done(function (data) {
-                if (data.success){
+                if (data.success) {
                     appendCouponList(data.data);
-                    $('.checkoutPromotion-item').each(function(){
-                        if($(this).hasClass('active')){
+                    $('.checkoutPromotion-item').each(function () {
+                        if ($(this).hasClass('active')) {
                             $('#codemessage').html($(this).data('promotioncode'));
                         }
                     })
-                    if(State === 2){
-                        if($('.promotion-item').length > 0){
+                    if (State === 2) {
+                        if ($('.promotion-item').length > 0) {
                             $('.showPromotionCode').removeClass('disabled');
                             $('.addPromotionCode').addClass('disabled');
                         } else {
@@ -2964,35 +2978,37 @@ function HideSeeMore(seemoreName) {
                             $('.addPromotionCode').removeClass('disabled');
                         }
                     }
-                }else{
+                } else {
                     //显示添加code的页面
                     console.log('111111');
                 }
             })
 
     }
+
     //遍历模板, 插入coupon数据到指定位置
-    function appendCouponList(couponList){
+    function appendCouponList(couponList) {
         var TplHtml = template('tpl-coupon', couponList);
         var StageCache = $.parseHTML(TplHtml);
         $('.coupon-list').html(StageCache);
     }
+
     //Add New Promotions
     $('.coupon-apply').on('click', function () {
         //验证code码
-        if(!$(this).hasClass('disabled')){
+        if (!$(this).hasClass('disabled')) {
             $.ajax({
-                    url: '/coupon',
-                    type: 'post',
-                    data: {cps: $('input[name="cps"]').val()}
-                })
+                url: '/coupon',
+                type: 'post',
+                data: {cps: $('input[name="cps"]').val()}
+            })
                 .done(function (data) {
-                    if(data.success){
+                    if (data.success) {
                         getCoupons(1);
                         $('.addCode-input .warning-info').addClass('off');
                         $('.showPromotionCode').removeClass('disabled');
                         $('.addPromotionCode').addClass('disabled');
-                    }else{
+                    } else {
                         $('.invalidText').html(data.prompt_msg);
                         $('.addCode-input .warning-info').removeClass('off');
                     }
@@ -3024,12 +3040,12 @@ function HideSeeMore(seemoreName) {
 
 
     // checkou promotion
-    $('.coupon-list').on('click','.codeItem',function(){
+    $('.coupon-list').on('click', '.codeItem', function () {
         $('.codeItem').removeClass('active');
 
-        if(!$(this).hasClass('active')){
+        if (!$(this).hasClass('active')) {
             $('#codemessage').html($(this).data('promotioncode'));
-            $('#pcode').data('bindid',$(this).data('bindid'));
+            $('#pcode').data('bindid', $(this).data('bindid'));
             $(this).addClass('active');
             getCheckoutInfo();
         }
@@ -3039,19 +3055,19 @@ function HideSeeMore(seemoreName) {
     //end 个人中心 Promotions
 
     //start 设计师详情 预售
-        //获取 banner图片宽高
+    //获取 banner图片宽高
     var $designerBanImg = $('.designer-banImg');
     $designerBanImg.each(function (index) {
-        $(this).on("load", function(){
+        $(this).on("load", function () {
             var banW = $(this).width();
-            var banH =  $(this).height();
-            if (banW > banH){
+            var banH = $(this).height();
+            if (banW > banH) {
                 console.log('111');
                 console.log(banW);
                 console.log(banH);
                 $(this).css('width', '100%');
 
-            }else{
+            } else {
                 console.log('222');
                 console.log(banW);
                 console.log(banH);
@@ -3066,9 +3082,6 @@ function HideSeeMore(seemoreName) {
     //end 设计师详情 预售
 
 
-
-
-
     //Ask Start
     function ask_addMessage() {
         $.ajax({
@@ -3077,14 +3090,14 @@ function HideSeeMore(seemoreName) {
             data: $('#form-askQuestion').serialize()
         })
             .done(function (data) {
-                if(data.success){
+                if (data.success) {
                     alert('success');
                     window.location.href = data.redirectUrl;
                 }
             })
     }
 
-    $('#askSend').on('click', function() {
+    $('#askSend').on('click', function () {
         ask_addMessage();
     });
     //Ask End
@@ -3259,7 +3272,7 @@ $(document).on('scroll', function (event) {
                 $Player.children('.bg-player').css('display', 'block');
                 $Player.children('.bg-player').children('.bg-img').css('display', 'block');
                 $Player.children('.bg-player').children('.btn-beginPlayer').css('display', 'block');
-                $Player.children('.btn-morePlayer').attr('hidden','hidden');
+                $Player.children('.btn-morePlayer').attr('hidden', 'hidden');
                 $Player.removeClass('active');
                 $Player.children('iframe').remove();
                 if (!isAdd) {
