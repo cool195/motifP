@@ -174,7 +174,7 @@
                                                     @else
                                                         <!--预售标志-->
                                                         <div class="presale-sign">
-                                                            <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                                            <div class="img-clock font-size-sm"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
                                                             <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
                                                         </div>
                                                     @endif
