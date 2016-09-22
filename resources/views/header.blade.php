@@ -55,10 +55,10 @@
             <ul class="nav navbar-primary clearfix">
                 @if(Session::has('user'))
                 <li class="nav-item p-x-10x">
-                    <a href="/user/profile" class="nav-link name">{{Session::get('user.nickname')}}</a>
+                    <a href="/user/changeprofile" class="nav-link name">{{Session::get('user.nickname')}}</a>
                 </li>
                 <li class="nav-item p-x-10x header-img">
-                    <a href="/user/profile" class="nav-link">
+                    <a href="/user/changeprofile" class="nav-link">
                         <img class="img-circle img-border-white img-lazy"
                              src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                              data-original="@if(Session::has('user.icon')){{config('runtime.CDN_URL').'/n1/'.Session::get('user.icon')}}@else{{config('runtime.Image_URL').'/images/icon/apple-touch-icon.png'}}@endif"

@@ -17,7 +17,7 @@
                                     <a href="javascript:;" class="head-file img-border-white-4x">
                                         <img class="img-circle img-lazy"
                                              src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                                             data-original="{{config('runtime.CDN_URL')}}/n1/{{Session::get('user.icon')}}" width="116"
+                                             data-original="@if(Session::has('user.icon')){{config('runtime.CDN_URL').'/n1/'.Session::get('user.icon')}}@else{{config('runtime.Image_URL').'/images/icon/apple-touch-icon.png'}}@endif" width="116"
                                              height="116" data-url="{{config('runtime.CDN_URL')}}" id="avatarUrl">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input id="profileIcon" type="file" name="file">
