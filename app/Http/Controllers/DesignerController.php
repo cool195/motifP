@@ -72,7 +72,13 @@ class DesignerController extends BaseController
         );
         $result['product'] = $this->request('content', $params, 'designerf');
         $product = $result['product'];
-        $_spu = $product['data']['infos'][0]['spus'][0];
+        foreach ($product['data']['infos'] as $value){
+            if($value['type']=='product'){
+                $_spu = $value['spus'][0];
+                break;
+            }
+        }
+        
         if (isset($_spu) && $product['data']['spuInfos'][$_spu]['spuBase']['sale_type'] == 1 && isset($product['data']['spuInfos'][$_spu]['skuPrice']['skuPromotion']) && $product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'] == 1 && $product['data']['spuInfos'][$_spu]['stockStatus'] == 'YES') {
             $params = array(
                 'cmd' => 'productdetail',
