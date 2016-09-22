@@ -89,25 +89,25 @@
                          data-lefttime="@if($pre_product['sale_status'] && $pre_product['isPutOn']==1){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
                         <div class="col-md-3">
                             <div class="timeDown box-shadow bg-white">
-                                <span class="time-number p-t-5x helveBold day-info">5</span>
+                                <span class="time-number p-t-5x helveBold day-info">0</span>
                                 <div class="dateName text-white helve">DAY</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="timeDown box-shadow bg-white">
-                                <span class="time-number p-t-5x helveBold hour-info">2</span>
+                                <span class="time-number p-t-5x helveBold hour-info">0</span>
                                 <div class="dateName text-white helve">HOUR</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="timeDown box-shadow bg-white">
-                                <span class="time-number p-t-5x helveBold min-info">4</span>
+                                <span class="time-number p-t-5x helveBold min-info">0</span>
                                 <div class="dateName text-white helve">MIN</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="timeDown box-shadow bg-white">
-                                <span class="time-number p-t-5x helveBold sec-info">34</span>
+                                <span class="time-number p-t-5x helveBold sec-info">0</span>
                                 <div class="dateName text-white helve">SEC</div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                                                     @else
                                                         <!--预售标志-->
                                                         <div class="presale-sign">
-                                                            <div class="img-clock font-size-sm"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                                            <div class="img-clock font-size-base"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
                                                             <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
                                                         </div>
                                                     @endif

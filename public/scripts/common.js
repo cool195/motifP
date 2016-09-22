@@ -614,6 +614,12 @@ function HideSeeMore(seemoreName) {
             } else {
                 $('.time_show').html(day + 'd: ' + hour + 'h: ' + minute + 'm: ' + second + 's');
             }
+            if($('#designerDetailContainer').length >0){
+                $('.day-info').html(day * 24);
+                $('.hour-info').html(hour);
+                $('.min-info').html(minute);
+                $('.sec-info').html(second);
+            }
             intDiff--;
         }, 1000);
     }
