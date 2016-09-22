@@ -63,7 +63,7 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::get('/cart', 'CartController@cart');
 
-    Route::get('/checkout', 'CartController@checkout');
+    Route::get('/cart/ordercheckout', 'CartController@checkout');
 
     Route::get('/cart/amount', 'CartController@getCartAmount');
 
@@ -149,11 +149,11 @@ Route::group(['middleware' => 'loginCheck'], function () {
 
     Route::get('/wishlist/{spu}', 'UserController@updateWishList')->where(['spu' => '[0-9]+']);
 
-    Route::get('/user/password', 'UserController@password');
+    Route::get('/user/changepassword', 'UserController@password');
 
-    Route::get('/user/address', 'UserController@address');
+    Route::get('/user/shippingaddress', 'UserController@address');
 
-    Route::get('/user/profile', 'UserController@profile');
+    Route::get('/user/changeprofile', 'UserController@profile');
 
     Route::get('/invitefriends', 'UserController@inviteFriends');
 
