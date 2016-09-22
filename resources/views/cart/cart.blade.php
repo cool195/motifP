@@ -103,7 +103,7 @@
                 <hr class="hr-base m-a-0">
                 <div class="p-x-20x border-bottom">
                     @foreach($save['showSkus'] as $showSku)
-                        <div class="row p-y-20x flex flex-alignCenter cartProduct-item" id="{{'csku'.$showSku['sku']}}">
+                        <div class="row p-y-20x flex flex-alignCenter cartProduct-item border-bottom" id="{{'csku'.$showSku['sku']}}">
                             <div class="col-md-4 media">
                                 <a class="media-left" href="/detail/{{$showSku['spu']}}">
                                     <img class="img-lazy"
@@ -112,6 +112,12 @@
                                          width="120" height="120" alt="">
                                 </a>
                                 <div class="media-body cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
+                                @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
+                                    <div class="warning-info flex flex-alignCenter text-warning p-t-10x">
+                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                        <span class="font-size-base">{{$showSku['prompt_info']}}</span>
+                                    </div>
+                                @endif
                             </div>
                             <div class="col-md-3">
                                 <div class="p-l-15x">
@@ -153,12 +159,6 @@
                                 <div class="mask"></div>
                             @endif
                         </div>
-                        @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
-                            <div class="warning-info flex flex-alignCenter text-warning">
-                                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                <span class="font-size-base">{{$showSku['prompt_info']}}</span>
-                            </div>
-                        @endif
                     @endforeach
                 </div>
             </div>
