@@ -11,7 +11,7 @@
                 <div class="rightContent">
                     <!-- Order Detail -->
                     <div class="p-t-5x p-b-10x">
-                        <a href="/orderlist">
+                        <a href="/order/orderlist">
                             <strong><i class="iconfont icon-arrow-left font-size-lx p-x-15x"></i></strong>
                             <span class="helveBold font-size-lxx">Order Detail</span>
                         </a>
