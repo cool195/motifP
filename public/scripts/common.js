@@ -3004,7 +3004,11 @@ function HideSeeMore(seemoreName) {
             })
                 .done(function (data) {
                     if (data.success) {
+                        $('#pcode').data('bindid', data.data.bind_id);
                         getCoupons(1);
+                        if ($('#checkoutView').data('status')) {
+                            getCheckoutInfo();
+                        }
                         $('.addCode-input .warning-info').addClass('off');
                         $('.showPromotionCode').removeClass('disabled');
                         $('.addPromotionCode').addClass('disabled');
