@@ -112,61 +112,85 @@
                 <p class="p-t-40x sanBold font-size-md">Expected to ship on Sep 10, 2016</p>
             </div>
 
+
             @if(isset($product['infos']))
                 @foreach($product['infos'] as $k => $value)
                     @if($value['type']=='banner' || (!isset($value['spus']) && $value['type']=='product'))
-                    <!--banner图-->
-                    @if(!isset($value['skipType']))
-                        <a href="javascript:void(0)">
-                    @else
-                        <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['imgUrl']}}@endif"
-                           data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
-                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
-                           href="javascript:void(0)">
-                    @endif
+                        <!--banner图-->
+                        @if(!isset($value['skipType']))
+                            <a href="javascript:void(0)">
+                        @else
+                            <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['imgUrl']}}@endif"
+                                data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                                data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                                href="javascript:void(0)">
+                        @endif
                             <div class="m-t-20x text-center">
                                 <img class="img-lazy designer-banImg" src="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}">
                             </div>
                         </a>
-
-            <!--描述-->
-            <div class="p-x-20x m-y-20x">
-                <p class="m-b-0 text-center">traight off the Emmys red carpet, inspired by the most beautiful jewelries that sparkled all night.Straight off the Emmys red carpet, inspired by the most beautiful jewelries that sparkled all night.</p>
-            </div>
-
-            <!--banner图-->
-            <div class="m-t-20x text-center">
-                <img class="img-lazy designer-banImg" src="{{config('runtime.Image_URL')}}/images/product/pic-test.png">
-            </div>
-
-            <!--设计师 商品-->
-            <div class="container m-y-20x">
-                <div class="row designerDetail-goods">
-                    <div class="col-md-3 col-xs-6 goods-item">
-                        <div class="productList-item">
-                            <div class="image-container">
-                                <a href="#">
-                                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/product/product.jpg" alt="商品的名称">
-                                    <div class="bg-heart"></div>
-                                </a>
-                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"></i></span>
-                                <!--预售标志-->
-                                <div class="presale-sign">
-                                    <div class="img-clock font-size-sm"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/sale-clock.png"></div>
-                                    <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                    @elseif($value['type']=='title')
+                        <!--标题-->
+                        <div class="p-x-20x p-t-20x m-b-20x text-center">
+                            <h2 class="helveBold font-size-lxx">{{$value['value']}}</h2>
+                        </div>
+                    @elseif($value['type'] == 'boxline')
+                        <!--分割线-->
+                        <hr class="hr-base m-x-20x m-y-0">
+                    @elseif($value['type'] =='context')
+                        <!--描述-->
+                        <div class="p-x-20x m-y-20x">
+                            <p class="m-b-0 text-center">{{$value['value']}}</p>
+                        </div>
+                    @elseif($value['type'] == 'product')
+                        @if(isset($value['spus']))
+                        <!--设计师 商品-->
+                        <div class="container m-y-20x">
+                            <div class="row designerDetail-goods">
+                                @foreach($value['spus'] as $spu)
+                                <div class="col-md-3 col-xs-6 goods-item">
+                                    <div class="productList-item">
+                                        <div class="image-container">
+                                            <a data-link="/detail/{{$spu}}"
+                                               data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=H5_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"H5"}'
+                                               href="javascript:void(0)">
+                                                <img class="img-fluid img-lazy"
+                                                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="商品的名称"
+                                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                     alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                <div class="bg-heart"></div>
+                                            </a>
+                                            @if(Session::has('user'))
+                                                <span class="product-heart btn-heart">
+                                                    <i class="iconfont btn-wish font-size-lxx @if(in_array($spu, $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i>
+                                                </span>
+                                            @else
+                                                <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$spu}}"></i></a>
+                                            @endif
+                                            <!--预售标志-->
+                                            <div class="presale-sign">
+                                                <div class="img-clock font-size-sm"><img class="img-circle" src="{{config('runtime.Image_URL')}}/images/icon/sale-clock.png"></div>
+                                                <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                            </div>
+                                        </div>
+                                        <div class="price-caption helveBold">
+                                            <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{$product['spuInfos'][$spu]['spuBase']['main_title']}}</div>
+                                            <div class="text-center">
+                                                @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
+                                                    <span class="font-size-md text-primary p-r-5x text-red">${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
+                                                    <span class="font-size-base text-common text-throughLine">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                @else
+                                                    <span class="font-size-md text-primary p-r-5x text-red">${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="price-caption helveBold">
-                                <div class="text-center font-size-md text-primary text-truncate p-x-20x">New Rings</div>
-                                <div class="text-center">
-                                    <span class="font-size-md text-primary p-r-5x text-red">$199.95</span>
-                                    <span class="font-size-base text-common text-throughLine">$299.95</span>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                        @endif
+                    @endif
                 @endforeach
             @endif
         </section>
@@ -189,6 +213,19 @@
                             {{--<div class="bg-soldout">
                                 <span class="text helve font-size-sm">SOLD OUT</span>
                             </div>--}}
+                            @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
+                                @if(!isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) || $product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                    <div class="bg-soldout">
+                                        <span class="text helve font-size-sm">SOLD OUT</span>
+                                    </div>
+                                @else
+                                     <!--预售标志-->
+                                    <div class="presale-sign">
+                                        <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                        <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
+                                    </div>
+                                @endif
+                            @endif
                         </a>
                         @if(Session::has('user'))
                             <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$product['spu']}}"></i></span>
@@ -196,15 +233,9 @@
                             <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$product['spu']}}"></i></a>
                         @endif
 
-                        @if(1 == $product['sale_type'])
-                            <div class="presale-sign">
-                                <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
-                                <div class="presale-text helve font-size-sm">LIMITED DEITION</div>
-                            </div>
-                        @endif
                     </div>
                     <div class="price-caption helveBold">
-                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{ $product['main_title'] }}</div>
+                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{ $product['spuInfos'][$spu]['spuBase']['main_title'] }}</div>
                         <div class="text-center">
                             @if($product['skuPrice']['sale_price'] != $product['skuPrice']['price'])
                                 <span class="font-size-md text-primary p-r-5x text-red">${{number_format($product['skuPrice']['sale_price']/100,2)}}</span>
