@@ -167,7 +167,7 @@ class OrderController extends BaseController
                 return redirect("/qianhai?orderid={$orderid}&totalPrice=" . $result['data']['pay_amount'] / 100);
             }
         } else {
-            return redirect("/orderdetail/$orderid");
+            return redirect("/order/orderdetail/$orderid");
         }
     }
 }
