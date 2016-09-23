@@ -232,21 +232,21 @@ Route::group(['middleware' => 'pcguide'], function () {
 // Page Start
 Route::group(['middleware' => 'pcguide'], function () {
 
-    Route::get('/about', 'PageController@about');
+    Route::get('/aboutmotif', 'PageController@about');
 
     Route::get('/cancellation', 'PageController@cancellation');
 
     Route::get('/contactus', 'PageController@contactUs');
 
-    Route::get('/description', 'PageController@description');
+    Route::get('/payments', 'PageController@description');
 
     Route::get('/faq', 'PageController@faq');
 
-    Route::get('/privacyPolicy', 'PageController@privacyPolicy');
+    Route::get('/privacynotice', 'PageController@privacyPolicy');
 
     Route::get('/sizeGuide', 'PageController@sizeGuide');
 
-    Route::get('/termsService', 'PageController@termsService');
+    Route::get('/termsconditions', 'PageController@termsService');
 
     Route::get('/userAgreement', 'PageController@userAgreement');
 
