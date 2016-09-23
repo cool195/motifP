@@ -669,13 +669,13 @@ function HideSeeMore(seemoreName) {
         var tObj = $(this);
         var nowsku = tObj.data('sku');
         if (nowsku && !tObj.hasClass('disabled')) {
-            tObj.addClass('disabled');
+            //tObj.addClass('disabled');
             var skuQty = $('#cskunum' + nowsku).html() * 1 + tObj.data('num');
             $.ajax({
                 url: '/checkStock',
                 type: 'POST',
                 data: {
-                    skus: nowsku + '_' + skuQty,
+                    skus: nowsku + '_' + skuQty
                 }
             })
                 .done(function (data) {
@@ -700,7 +700,7 @@ function HideSeeMore(seemoreName) {
                                 type: 'POST',
                                 data: {
                                     sku: nowsku,
-                                    qtty: skuQty,
+                                    qtty: skuQty
                                 }
                             })
                                 .done(function (data) {
