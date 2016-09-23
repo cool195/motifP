@@ -1159,11 +1159,11 @@ function HideSeeMore(seemoreName) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 }else{
-                    $('.checkoutWarning .font-size-base').html(data.error_msg);
+                    $('.checkoutWarning .font-size-base').html('Payment error, refresh and try again!');
                     $('.checkoutWarning').removeAttr('hidden');
                     setTimeout(function () {
-                        $('.checkoutWarning').attr('hidden');
-                    }, 3000);
+                        location.reload();
+                    }, 2000);
                 }
             })
     });
