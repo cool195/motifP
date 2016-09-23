@@ -82,6 +82,7 @@
             <!-- 预售倒计时 -->
             <div class="designer-presale text-center p-t-40x p-b-10x" >
                 <div class="helveBold pre-tit p-b-10x">{{$designer['nickname']}}’s Presale</div>
+                @if(!isset($pre_product['skuPrice']['skuPromotion']) || $pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0 || $pre_product['isPutOn'] ==0)
                 <span class="sanBold font-size-lxx">Order Close in </span>
                 <div class="m-t-30x">
                     <div class="row presaleDate-row limited-content"
@@ -114,6 +115,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+
                 @if(isset($pre_product['skuPrice']['skuPromotion']['ship_desc']))
                     <p class="p-t-40x sanBold font-size-md">PREORDER: Expected to ship on {{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}</p>
                 @endif
