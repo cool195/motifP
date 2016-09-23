@@ -6,7 +6,7 @@
         <div class="invite-content">
             <div class="invite-title helveBold">Share Promotion Code with your friends</div>
             <p class="p-y-20x text-primary font-size-md">Both you and your friends will get $20 off after their first purchase!
-                <a href="#" class="text-link text-underLine">Detail</a></p>
+                <a href="/saleinfo" class="text-link text-underLine">Detail</a></p>
             <div class="flex flex-alignCenter">
                 <span class="sanBold font-size-md p-r-15x">Invite Code:</span>
                 <div class="input-group invite-input p-r-30x">
