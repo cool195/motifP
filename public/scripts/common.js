@@ -3062,7 +3062,6 @@ function HideSeeMore(seemoreName) {
         })
             .done(function (data) {
                 if (data.success) {
-                    alert('success');
                     window.location.href = data.redirectUrl;
                 }
             })
