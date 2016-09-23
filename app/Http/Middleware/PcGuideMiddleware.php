@@ -17,20 +17,13 @@ class PcGuideMiddleware
     {
         if($this->isMobile())
         {
-            /*if ($_SERVER['HTTP_HOST'] == 'motif.me' || $_SERVER['HTTP_HOST'] == 'www.motif.me'){
-                echo '<script language="javascript" type="text/javascript"> window.location.href="http://m.motif.me'.$request->getRequestUri().'"</script>';
-            }else{
-                return $next($request);
-            }*/
-            //test
-            if($_SERVER['HTTP_HOST'] == 'pc.motif.app'){
+            if($_SERVER['HTTP_HOST'] == config('runtime.SELF_URL')){
                 echo '<script language="javascript" type="text/javascript"> window.location.href="http://motif.app'.$request->getRequestUri().'"</script>';
             }else{
                 return $next($request);
             }
         }
         return $next($request);
-        //echo '<script language="javascript" type="text/javascript"> window.location.href="http://motif.me/home"</script>';
     }
 
     private function isMobile()

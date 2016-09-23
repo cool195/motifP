@@ -136,7 +136,7 @@ Route::group(['middleware' => 'pcguide'], function () {
     Route::get('/register', 'UserController@register');
 
     Route::post('/signup', 'UserController@signup');
-
+    
     Route::get('/signout', 'UserController@signout');
 
     Route::post('/forget', 'UserController@forgetPassword');
