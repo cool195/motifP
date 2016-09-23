@@ -1282,6 +1282,10 @@ footer {
   max-width: 25rem;
 }
 
+.addPromotion-content{
+  min-height: auto!important;
+}
+
 .promotion-item {
   border: 2px solid #36405b;
   border-radius: 5px;

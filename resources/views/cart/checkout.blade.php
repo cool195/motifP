@@ -269,7 +269,7 @@
                 <!--新增促销码-->
                 <div class="p-a-20x addPromotionCode disabled">
                     <div class="goback-toAdd"><i class="iconfont icon-arrow-left font-size-lg p-r-10x"></i></div>
-                    <div class="empty-content invite-content">
+                    <div class="invite-content addPromotion-content">
                         <p class="helveBold font-size-llxx m-t-40x">Add New Promotions</p>
                         <div class="addCode-input m-t-40x text-left">
                             <input type="text" class="form-control contrlo-lg text-primary m-b-10x" name="cps" value="" placeholder="Enter Your Promotions Code Here">
