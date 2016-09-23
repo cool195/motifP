@@ -246,6 +246,7 @@ function HideSeeMore(seemoreName) {
             $.each(product_data.skuExps, function (index, val) {
                 if (product_lastSkuArray[0] == val.sku) {
                     $('.newPrice').html('$' + (val.skuPrice.sale_price / 100).toFixed(2));
+                    $('.oldPrice').html('$' + (val.skuPrice.price / 100).toFixed(2));
                     return false;
                 }
             });
