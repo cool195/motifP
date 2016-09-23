@@ -39,7 +39,7 @@ class AskController extends BaseController
         if ($request->input('skiptype') == 3) {
             $params['spu'] = $request->input('id');
             $params['stype'] = 3;
-            $urlStr = '/product/';
+            $urlStr = '/detail/';
         } elseif ($request->input('skiptype') == 2) {
             $params['orderno'] = $request->input('id');
             $params['stype'] = 1;

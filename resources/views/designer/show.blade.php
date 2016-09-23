@@ -289,7 +289,7 @@
                 var url = '';
                 switch (value.skipType) {
                     case '1':
-                        url = '/product/';
+                        url = '/detail/';
                         break;
                     case '2':
                         url = '/designer/';

@@ -42,7 +42,7 @@
                             <!--预售标志-->
                             <div class="presale-sign">
                                 <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
-                                <a href="javascript:void(0)" data-link="/product/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
+                                <a href="javascript:void(0)" data-link="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
                                    class="presale-text helve font-size-sm">LIMITED DEITION</a>
                             </div>
                         @endif
@@ -94,7 +94,7 @@
                 <!--预售标志-->
                 <div class="presale-sign">
                     <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
-                    <a href="javascript:void(0)" data-link="/product/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
+                    <a href="javascript:void(0)" data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                        class="presale-text helve font-size-sm">LIMITED DEITION</a>
                 </div>
             @{{ /if }}
