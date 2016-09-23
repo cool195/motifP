@@ -1158,6 +1158,12 @@ function HideSeeMore(seemoreName) {
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
+                }else{
+                    $('.checkoutWarning .font-size-base').html(data.error_msg);
+                    $('.checkoutWarning').removeAttr('hidden');
+                    setTimeout(function () {
+                        $('.checkoutWarning').attr('hidden');
+                    }, 3000);
                 }
             })
     });

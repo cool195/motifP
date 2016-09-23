@@ -364,8 +364,12 @@
                 </div>
             </div>
         </div>
+        <div class="checkoutWarning p-y-10x text-right text-warning" hidden>
+            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+            <span class="font-size-base"></span>
+        </div>
         <!-- 提交按钮 -->
-        <div class="p-y-40x text-right">
+        <div class="p-y-20x text-right">
             <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Oceanpay">Pay
                 with Credit Card</a>
             <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay
