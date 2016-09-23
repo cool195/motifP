@@ -41,7 +41,7 @@
                 <div class="btn btn-primary btn-lg btn-block" data-role="register-submit">Sign up</div>
             </div>
             <div class="p-y-15x text-center">
-                <div class="text-main">By registering, you’ve accepted our <a class="text-link" href="/termsService">Terms & Conditions</a>
+                <div class="text-main">By registering, you’ve accepted our <a class="text-link" href="/termsconditions">Terms & Conditions</a>
                 </div>
             </div>
             <div class="text-center login-or">
