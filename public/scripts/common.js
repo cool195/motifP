@@ -246,6 +246,7 @@ function HideSeeMore(seemoreName) {
             $.each(product_data.skuExps, function (index, val) {
                 if (product_lastSkuArray[0] == val.sku) {
                     $('.newPrice').html('$' + (val.skuPrice.sale_price / 100).toFixed(2));
+                    $('.oldPrice').html('$' + (val.skuPrice.price / 100).toFixed(2));
                     return false;
                 }
             });
@@ -2932,8 +2933,10 @@ function HideSeeMore(seemoreName) {
                 if (data.success) {
                     appendCouponList(data.data);
                     $('.checkoutPromotion-item').each(function () {
-                        if ($(this).hasClass('active')) {
+                        if ($(this).hasClass('codeItem') && $(this).data('bindid')==$('#pcode').data('bindid')) {
                             $('#codemessage').html($(this).data('promotioncode'));
+                            $('.codeItem').removeClass('active');
+                            $('[data-bindid='+$('#pcode').data('bindid')+']').addClass('active');
                         }
                     })
                     if (State === 2) {

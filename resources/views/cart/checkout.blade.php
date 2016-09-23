@@ -230,7 +230,7 @@
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="smShowHide">
                 <span class="sanBold">Shipping</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} +${{ number_format(($list['pay_price'] / 100), 2) }}</span>
+                    <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} +${{ number_format(($logisticsList['list'][0]['pay_price'] / 100), 2) }}</span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
