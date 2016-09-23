@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-4 p-x-20x">
                 <div class="text-center"><i class="iconfont icon-ticket text-main inviteBanner-subTitle"></i></div>
-                <div class="text-center font-size-lx text-main p-t-20x">Enter promo code when you check to receive $20 odd your purchase.</div>
+                <div class="text-center font-size-lx text-main p-t-20x">Enter promo code when you checkout to receive $20 off your purchase.</div>
             </div>
             <div class="col-md-4 p-x-20x">
                 <div class="text-center"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-InviteFriends@2x.png" alt=""></div>
