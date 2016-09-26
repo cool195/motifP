@@ -5,7 +5,7 @@ select {
   -moz-appearance:none;
   -webkit-appearance:none;
   padding-right: 14px !important;
-  background: url("/images/icon/arrow.png") no-repeat #f6f7fa scroll right center !important;
+  background: url("/images/icon/arrow.png") no-repeat #f6f7fa 97% center !important
 }
 select::-ms-expand { display: none; }
 
