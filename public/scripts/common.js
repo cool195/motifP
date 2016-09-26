@@ -2585,7 +2585,7 @@ function HideSeeMore(seemoreName) {
 
         loadingShow('.orderList-loading', '.orderList-seeMore');
         $.ajax({
-            url: '/orderlist',
+            url: '/order/orderlist',
             data: {
                 num: Pagenum,
                 size: Size,
