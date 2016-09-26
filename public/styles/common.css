@@ -1105,7 +1105,7 @@ footer {
 }
 
 .order_comfirmed_content {
-  min-height: 38rem;
+  min-height: 22rem;
   /* Safari */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1369,9 +1369,10 @@ footer {
   cursor: pointer;
   z-index: 200;
 }
-
-.invite-content {
+.invite-content.minh{
   min-height: 35rem;
+}
+.invite-content {
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;

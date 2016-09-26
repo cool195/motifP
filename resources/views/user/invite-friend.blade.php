@@ -3,7 +3,7 @@
 <!-- invite friend -->
 <section class="m-y-40x">
     <div class="container box-shadow bg-white">
-        <div class="invite-content">
+        <div class="invite-content minh">
             <div class="invite-title helveBold">Share Promotion Code with your friends</div>
             <p class="p-y-20x text-primary font-size-md">Both you and your friends will get $20 off after their first purchase!
                 <a href="/saleinfo" class="text-link text-underLine">Detail</a></p>
