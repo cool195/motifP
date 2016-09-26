@@ -352,7 +352,12 @@ function HideSeeMore(seemoreName) {
                 //alert('库存不足');
                 $('#addQtySku').addClass('disabled');
                 $(this).parent().siblings('.warning-info').removeClass('off');
-                $(this).parent().siblings('.warning-info').children('span').html('Warning: only ' + product_stock_qtty + ' left');
+                console.log(skuQty);
+                if(skuQty >= 50){
+                    $(this).parent().siblings('.warning-info').children('span').html("Warning: " + product_stock_qtty + ' items limit');
+                }else{
+                    $(this).parent().siblings('.warning-info').children('span').html('Warning: only ' + product_stock_qtty + ' left');
+                }
             }
             if (skuQty <= 1) {
                 !$('#delQtySku').hasClass('disabled') ? $('#delQtySku').addClass('disabled') : false;
@@ -688,7 +693,7 @@ function HideSeeMore(seemoreName) {
                             if (skuQty >= 50) {
                                 $('#casku' + nowsku).addClass('disabled');
                                 $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').removeClass('off');
-                                $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').children('span').html('only ' + skuQty + ' left');
+                                $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').children('span').html(skuQty + ' items limit');
 
                             }
                             if (skuQty <= 49) {
@@ -713,7 +718,7 @@ function HideSeeMore(seemoreName) {
                             AddItemFailModal.open();
                             $('#casku' + nowsku).addClass('disabled');
                             $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').removeClass('off');
-                            $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').children('span').html('only ' + skuQty - 1 + ' left');
+                            $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').children('span').html(skuQty + ' items limit');
                         }
                     }
                 });
@@ -2580,7 +2585,7 @@ function HideSeeMore(seemoreName) {
 
         loadingShow('.orderList-loading', '.orderList-seeMore');
         $.ajax({
-            url: '/orderlist',
+            url: '/order/orderlist',
             data: {
                 num: Pagenum,
                 size: Size,
