@@ -18,13 +18,14 @@
         </div>
     </div>
 </section>
+@if(isset($order) && !empty($order))
 <!-- invite friend -->
 <section class="m-t-20x m-b-40x">
     <div class="container box-shadow bg-white">
         <div class="invite-content p-y-40x">
-            <div class="invite-title helveBold">Share Promotion Code with your friends</div>
-            <p class="p-y-20x text-primary font-size-md">Both you and your friends will get $20 off after their first purchase!
-                <a href="/saleinfo" class="text-link text-underLine">Detail</a></p>
+            <div class="invite-title helveBold">Share Motif with your friends</div>
+            <p class="p-y-20x text-primary font-size-md">They get $20 off, and you will too after their first purchase.
+                <a href="/saleinfo" class="text-link text-underLine">Details</a></p>
             <div class="flex flex-alignCenter">
                 <span class="sanBold font-size-md p-r-15x">Invite Code:</span>
                 <div class="input-group invite-input p-r-30x">
@@ -36,6 +37,7 @@
         </div>
     </div>
 </section>
+@endif
 
 <div class="remodal modal-content remodal-md p-y-20x" data-remodal-id="sharemodal">
     <span class="font-size-md sanBold p-r-15x">Invite with:</span>
