@@ -74,8 +74,8 @@
     <div class="text-center dialog-info changepwd-info"></div>
     <hr class="hr-common m-a-0">
     <div class="row m-a-0">
-        <div class="col-md-offset-6 col-md-6">
-            <div class="m-y-20x m-r-20x"><a href="javascript:;" class="btn btn-block btn-primary btn-lg" id="changePwdBtn"></a></div>
+        <div class="col-md-offset-3 col-md-6">
+            <div class="m-y-20x"><a href="javascript:;" class="btn btn-block btn-primary btn-lg" id="changePwdBtn"></a></div>
         </div>
     </div>
 </div>

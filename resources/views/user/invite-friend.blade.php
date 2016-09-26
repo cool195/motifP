@@ -33,7 +33,17 @@
     {
         var input=document.getElementById("inviteCode");//input的ID值
         input.select(); //选择对象
-        document.execCommand("Copy"); //执行浏览器复制命令
+       // document.execCommand("Copy"); //执行浏览器复制命令
+        try{
+            if(document.execCommand('copy', false, null)){
+                alert("已复制好，可贴粘。");
+            } else{
+                alert("复制失败");
+            }
+        } catch(err){
+            alert("失败");
+        }
+
     }
 </script>
 
