@@ -116,8 +116,15 @@ class OrderController extends BaseController
         $view = View('order.orderconfirmed');
         if($request->has('orderid')){
             $result = $this->getOrderDetail($request->input('orderid'));
-            $view = View('order.orderconfirmed', ['order' => $result['data']]);
+            $params = array(
+                'cmd' => "detail",
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            $code = $this->request('user', $params);
+            $view = View('order.orderconfirmed', ['order' => $result['data'], 'code' => $code['data']['invite_code']]);
         }
+
         return $view;
     }
 
