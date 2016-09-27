@@ -18,7 +18,7 @@
                             {{--*/ $address = $Address->index() /*--}}
                             <div class="p-a-20x add-address @if(!empty($address['data']['list'])) disabled @endif">
                                 <div class="inline">
-                                    <span class="font-size-md">Modify Address</span>
+                                    <span class="font-size-md address-text"></span>
                                     <span class="font-size-md pull-right">
                                         <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
                                         <span class="p-l-5x">Default</span>

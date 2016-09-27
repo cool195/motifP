@@ -116,10 +116,10 @@
                 {{--选择地址--}}
                 <div class="p-a-20x select-address @if(empty($address['data']['list'])){{'disabled'}}@endif">
                     <div class="flex flex-alignCenter flex-fullJustified">
-                        <span class="font-size-md">Select Shipping Address</span>
+                        <span class="font-size-md">Shipping Address</span>
                         <span class="font-size-md pull-right">
-                            <div class="btn btn-secondary btn-md btn-addNewAddress" href="#"><i
-                                        class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address</div>
+                            <div class="btn btn-secondary btn-md btn-addNewAddress" href="#">
+                                <i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address</div>
                         </span>
                     </div>
                     <div class="row p-x-10x p-t-20x address-list"></div>
@@ -130,10 +130,11 @@
                 {{--添加\修改 地址--}}
                 <div class="p-a-20x add-address @if(!empty($address['data']['list'])){{'disabled'}}@endif">
                     <div class="inline">
-                        <span class="font-size-md">Add Shipping Address</span>
+                        <span class="font-size-md address-text">Add Shipping Address</span>
                         <span class="font-size-md pull-right">
                             <i class="isDefault iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
-                            <a class="p-l-10x" href="javascript:;">Default</a></span>
+                            <a class="p-l-10x" href="javascript:;">Default</a>
+                        </span>
                     </div>
                     <div class="row p-t-30x">
                         <form id="addAddressForm" data-aid="">

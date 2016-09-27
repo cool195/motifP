@@ -954,6 +954,7 @@ function HideSeeMore(seemoreName) {
         // 修改的地址 ID
         var AddressId = $(this).parent('.address-item').data('aid');
         $('#addAddressForm').data('aid', AddressId);
+        $('.address-text').html('Modify Address');
         initAddAddressForm();
     });
 
@@ -1179,6 +1180,7 @@ function HideSeeMore(seemoreName) {
         $('.select-address').addClass('disabled');
         $('.add-address').removeClass('disabled');
         $('#addAddressForm').data('aid', '');
+        $('.address-text').html('Add Shipping Address');
         initAddAddressForm();
     });
 
