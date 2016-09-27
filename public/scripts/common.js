@@ -715,10 +715,10 @@ function HideSeeMore(seemoreName) {
                                 })
 
                         } else {
-                            AddItemFailModal.open();
                             $('#casku' + nowsku).addClass('disabled');
                             $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').removeClass('off');
                             $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').children('span').html(skuQty + ' items limit');
+                            AddItemFailModal.open();
                         }
                     }
                 });
