@@ -717,8 +717,8 @@ function HideSeeMore(seemoreName) {
                         } else {
                             $('#casku' + nowsku).addClass('disabled');
                             $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').removeClass('off');
-                            $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').children('span').html(skuQty + ' items limit');
-                            AddItemFailModal.open();
+                            $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').children('span').html("Warning: Only " + (skuQty - 1) + ' left');
+
                         }
                     }
                 });
