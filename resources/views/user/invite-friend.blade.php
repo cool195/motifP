@@ -10,8 +10,8 @@
             <div class="flex flex-alignCenter">
                 <span class="sanBold font-size-md p-r-15x">Invite Code:</span>
                 <div class="input-group invite-input p-r-30x">
-                    <input type="text" class="form-control" id="inviteCode" placeholder="{{$code}}" value="{{$code}}" aria-describedby="btn-copy">
-                    <span class="input-group-addon text-primary font-size-md" id="btn-copy" onclick="copyinput();">Copy</span>
+                    <div class="form-control" id="inviteCode" aria-describedby="btn-copy">{{$code}}</div>
+                    <span class="input-group-addon text-primary font-size-md copy" id="btn-copy">Copy</span>
                 </div>
                 <div class="p-l-30x"><span class="btn btn-primary btn-md" id="btn-inviteFriend">Invite Friends</span></div>
             </div>
@@ -28,23 +28,23 @@
 </div>
 
 @include('footer')
+<script src="scripts/clipboard.min.js"></script>
 <script type="text/javascript">
-    function copyinput()
-    {
-        var input=document.getElementById("inviteCode");//input的ID值
-        input.select(); //选择对象
-       // document.execCommand("Copy"); //执行浏览器复制命令
-        try{
-            if(document.execCommand('copy', false, null)){
-                alert("已复制好，可贴粘。");
-            } else{
-                alert("复制失败");
-            }
-        } catch(err){
-            alert("失败");
+    var clipboard = new Clipboard('.copy', {
+        text: function() {
+            return '{{$code}}';
         }
+    });
+    clipboard.on('success', function(e) {
+        $('#btn-copy').html('Code Copied');
+        setTimeout(function () {
+            $('#btn-copy').html('Copy');
+        }, 1500);
+    });
+    clipboard.on('error', function(e) {
+        $('#btn-copy').html('Copy');
+    });
 
-    }
 </script>
 
 

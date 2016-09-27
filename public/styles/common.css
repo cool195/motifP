@@ -1406,12 +1406,14 @@ footer {
   max-width: 200px;
 }
 
-.invite-input input {
-  padding: 0.4rem 0.75rem;
+.invite-input #inviteCode {
+  padding: 0.45rem 0.75rem;
+  min-width: 110px;
 }
 
 .invite-input span {
   border: none;
+  min-width: 125px;
 }
 
 .invite-input span:hover {
