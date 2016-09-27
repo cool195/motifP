@@ -75,10 +75,10 @@
             <p class="m-b-0">{{$designer['describe']}}</p>
         </div>
 
-        @if((isset($pre_product) && !empty($pre_product)) || isset($product['infos']))
+        @if(!empty($pre_product) || !empty($product['infos']))
         <!-- 设计师 预售 -->
         <section class="bg-common m-t-30x p-b-20x">
-            @if(isset($pre_product) && !empty($pre_product))
+            @if(!empty($pre_product))
             <!-- 预售倒计时 -->
             <div class="designer-presale text-center p-t-40x p-b-10x" >
                 <div class="helveBold pre-tit p-b-10x">{{$designer['nickname']}}’s Presale</div>
@@ -124,7 +124,7 @@
             @endif
 
 
-            @if(isset($product['infos']))
+            @if(!empty($product['infos']))
                 @foreach($product['infos'] as $k => $value)
                     @if($value['type']=='banner' || (!isset($value['spus']) && $value['type']=='product'))
                         <!--banner图-->
