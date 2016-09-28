@@ -160,8 +160,14 @@
     @{{ each list }}
     @{{ each $value.subOrderList as value index }}
 
-    <div class="box-shadow bg-white m-b-20x order-item">
-        <span class="horn @{{ if $value.status_code == 11 }} horn-red @{{ else if $value.status_code == 23 || $value.status_code == 21  || $value.status_code == 27 }} horn-gray @{{ else if $value.status_code == 25 || $value.status_code == 20}} horn-blue @{{ else if $value.status_code == 17}} horn-green @{{ else if $value.status_code == 18}} horn-green @{{ else if $value.status_code == 19}} horn-green @{{ else }} horn-orange @{{ /if }}"></span>
+    <div class="box-shadow bg-white m-b-20x order-item @{{ $value.status_code }}">
+        <span class="horn @{{ if $value.status_code == 11 }} horn-red
+        @{{ else if $value.status_code == 23 || $value.status_code == 21  || $value.status_code == 27 }} horn-gray
+        @{{ else if $value.status_code == 25 || $value.status_code == 20}} horn-blue
+        @{{ else if $value.status_code == 17}} horn-green
+        @{{ else if $value.status_code == 18}} horn-green
+        @{{ else if $value.status_code == 19}} horn-green
+        @{{ else }} horn-orange @{{ /if }}"></span>
 
         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
             <div>
