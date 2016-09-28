@@ -11,9 +11,9 @@ class PageController extends BaseController
     }
 
     //aboutMotif
-    public function about()
+    public function aboutMotif()
     {
-        return View('Other.page-about');
+        return View('Other.page-aboutMotif');
     }
 
     //cancellationPolicy
@@ -61,6 +61,11 @@ class PageController extends BaseController
     public function saleInfo()
     {
         return view('Other.page-saleinfo');
+    }
+
+    public function payment()
+    {
+        return view('Other.page-payment');
     }
 
 }

@@ -20,7 +20,9 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::get('/topic/{id}', 'DailyController@show')->where(['id' => '[0-9]+']);//专题动态模版
 
-    Route::get('service/{id}', 'DailyController@service')->where(['id' => '[0-9]+']);//商品详情服务动态模版
+    Route::get('/service/{id}', 'DailyController@service')->where(['id' => '[0-9]+']);//商品详情服务动态模版
+
+    Route::get('/template/{id}', 'DailyController@staticShow')->where(['id' => '[0-9]+']);
 
 });
 //Daily End
@@ -232,13 +234,13 @@ Route::group(['middleware' => 'pcguide'], function () {
 // Page Start
 Route::group(['middleware' => 'pcguide'], function () {
 
-    Route::get('/aboutmotif', 'PageController@about');
+    Route::get('/aboutmotif', 'PageController@aboutMotif');
 
     Route::get('/cancellation', 'PageController@cancellation');
 
     Route::get('/contactus', 'PageController@contactUs');
 
-    Route::get('/payments', 'PageController@description');
+    Route::get('/payments', 'PageController@payment');
 
     Route::get('/faq', 'PageController@faq');
 

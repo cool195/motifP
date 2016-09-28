@@ -9,6 +9,10 @@
             <p>Contact Us on Facebook:
                 <a target="_blank" href="@if(!strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') && !strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')){{'https://www.facebook.com/motifme'}}@else{{'motif://o.c?a=outurl&url='.urlencode('https://www.facebook.com/motifme')}}@endif" class="btn-facebook">facebook</a>
             </p>
+            <p>
+                BUMPERR LTD <br />
+                71-75, Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM (This address is only for billing, not for return).
+            </p>
         </div>
     </div>
 </div>
