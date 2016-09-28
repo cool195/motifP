@@ -26,6 +26,7 @@
                                             @elseif(in_array($subOrder['status_code'], array(19, 20))) horn-blue
                                             @elseif(25 == $subOrder['status_code']) horn-lightblue
                                             @elseif(in_array($subOrder['status_code'], array(21, 22, 23))) horn-gray
+                                            @else horn-orange
                                             @endif">
                                         </span>
                                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
