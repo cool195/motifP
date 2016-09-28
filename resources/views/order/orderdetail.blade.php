@@ -160,8 +160,8 @@
                             @if(isset($data['logistics_info_url']))
                                 <hr class="hr-base">
                                 <div class="media">
-                                    <div class="media-left sanBold orderInfo-title">Track order</div>
-                                    <div class="media-right">{{$data['logistics_info_url']}}</div>
+                                    <div class="media-left sanBold orderInfo-title"></div>
+                                    <div class="media-right"><a href="{{$data['logistics_info_url']}}">Track order</a></div>
                                 </div>
                             @endif
                             @if(!empty($data['order_remark']))
