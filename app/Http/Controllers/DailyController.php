@@ -73,7 +73,6 @@ class DailyController extends BaseController
     public function staticShow($id)
     {
         $result = $this->service($id);
-        $view = '';
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
             $view = 'daily.topicApp';
         } else {
