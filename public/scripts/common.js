@@ -2134,6 +2134,22 @@ function HideSeeMore(seemoreName) {
                         HideSeeMore('.designerList-seeMore');
                     }
 
+                    $('[data-clk]').unbind('click');
+                    $('[data-clk]').click(function () {
+                        var $this = $(this);
+                        //onProductClick();
+
+                        if (undefined != $this.data('link')) {
+                            $.ajax({
+                                url: $this.data('clk'),
+                                type: "GET"
+                            });
+                            setTimeout(function () {
+                                window.location.href = $this.data('link');
+                            }, 100);
+                        }
+                    })
+
                     // 视频区域高度
                     var MediaScale = 9 / 16;
                     var Width = $('.player-media').width(),

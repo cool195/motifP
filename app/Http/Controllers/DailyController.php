@@ -67,14 +67,18 @@ class DailyController extends BaseController
         );
 
         $result = $this->request("template", $params, 'topicf');
-        $view = '';
+        return $result;
+    }
+
+    public function staticShow($id)
+    {
+        $result = $this->service($id);
         if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
             $view = 'daily.topicApp';
         } else {
             $view = 'daily.topic';
         }
-
-        return $result; //View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
+        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
     }
 
 }

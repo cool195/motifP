@@ -44,9 +44,11 @@ class OrderController extends BaseController
                         $lineOrderList[] = $lineOrder;
                     }
                     $subOrder['lineOrderList'] = $lineOrderList;
+                    $subOrder['format_create_time'] = date("M d, Y" ,strtotime($subOrder['create_time']));
                     $subOrderList[] = $subOrder;
                 }
                 $order['subOrderList'] = $subOrderList;
+                $order['format_create_time'] = date("M d, Y" ,strtotime($order['create_time']));
                 $orderList[] = $order;
             }
         }

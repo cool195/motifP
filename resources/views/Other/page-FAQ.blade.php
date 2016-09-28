@@ -35,16 +35,33 @@
             <div class="p-x-20x p-b-10x">
                 <p class="sanBold"><strong>Where do you ship from?</strong></p>
                 <p>Our warehouse is based in China, so we ship from China.</p>
-                <p>How long does the shipping takes? Why I can’t get any tracking information with the tracking number
+                <p class="sanBold">How long does the shipping takes? Why I can’t get any tracking information with the tracking number
                     given?</p>
                 <p class="m-b-0">Option 1. Registered Airmail (7-20 business days)</p>
                 <p class="m-b-0">Option 2. Standard Shipping (5-8 business days)</p>
                 <p>Option 3. Expedited Shipping (3-4 business days)</p>
                 <p>As for Registered Airmail, the Logistics website may not update so frequently, therefore we suggest
                     you check the status after 3-5 days of receiving the tracking information.</p>
-                <p>How can I track my order?</p>
+                <p class="sanBold">How can I track my order?</p>
                 <p>We will send one order confirmation email to you after you complete your purchase. When your package
                     is shipped, you will get a shipping confirmation email from us with the tracking information.</p>
+            </div>
+        </div>
+
+        <div class="bg-white box-shadow m-t-20x p-b-10x">
+            <div class="p-x-20x p-t-20x text-main font-size-lg sanBold">
+                <strong>Taxes and Fees.</strong>
+            </div>
+            <hr class="hr-base m-y-20x">
+            <div class="p-x-20x p-b-10x">
+                <p class="sanBold"><strong>Do I need to pay tax for the products?</strong></p>
+                <p>You are responsible for determining and paying the appropriate
+                    government taxes, fees,
+                    and service charges resulting from a transaction occurring through the Service.  We
+                    are
+                    not responsible for collecting, reporting, paying, or remitting to you any such
+                    taxes, fees,
+                    or service charges. All transactions through the Service are in U.S. dollars.</p>
             </div>
         </div>
 
@@ -68,23 +85,6 @@
                 <p>Yes, we offer a 30 day free return if you are not 100% satisfied with your purchase. We can help you
                     return the product, but we reserve the right to charge shipping & handling, and restocking fees. For
                     more details, please visit our Return <a href="#" class="text-underLine">Policy</a> Page.</p>
-            </div>
-        </div>
-
-        <div class="bg-white box-shadow m-t-20x p-b-10x">
-            <div class="p-x-20x p-t-20x text-main font-size-lg sanBold">
-                <strong>Other Queries</strong>
-            </div>
-            <hr class="hr-base m-y-20x">
-            <div class="p-x-20x p-b-10x">
-                <p class="sanBold"><strong>Do you carry big size rings?</strong></p>
-                <p>Yes! We can make larger rings for some certain category. </p>
-                <p>However, there may be a $50-80 USD surcharge for customization and 15-20 days are needed for
-                    production. Please contact our customer service for details service@motif.me.</p>
-                <p class="sanBold"><strong>How can I contact your customer service?</strong></p>
-                <p>Please email us at service@motif.me. Normally our service team will reply you within24 hours, but
-                    during the busy season or long holidays, it may take longer to respond. However, no emails will be
-                    left unanswered. </p>
             </div>
         </div>
 
@@ -128,9 +128,7 @@
                         picture?</strong></p>
                 <p>Yes, we can make jewelry according to pictures you send to us and your other
                     requirements, and we
-                    will do our best to meet your specifications. For more info., please feel
-                    free to contact us at
-                    <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a>.</p>
+                    will do our best to meet your specifications.</p>
 
                 <p class="sanBold"><strong>8. Can I return it if I don’t like it?</strong></p>
                 <p>Sorry, personalized jewelry cannot be returned unless it’s a quality issue.
@@ -138,12 +136,12 @@
                     jewelry is made according to your requirements, once it has been made it
                     cannot be sold to
                     others.</p>
+                <p>For any further queries, please feel free to contact us at <a
+                            href="mailto:service@motif.me" class="text-underLine">service@motif.me</a>.
+                    Normally our service team will reply within24 hours, but during the busy season or
+                    long holidays,
+                    it may take longer to respond. However, no emails will be left unanswered.</p>
 
-                <p class="sanBold"><strong>9. Still need help?</strong></p>
-                <p>For any further queries, please feel free to contact us at <a href="mailto:service@motif.me"
-                                                                                 class="text-underLine">service@motif
-                        .me</a>.
-                </p>
             </div>
         </div>
 

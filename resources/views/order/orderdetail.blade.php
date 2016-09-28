@@ -41,6 +41,7 @@
                                             @elseif(in_array($data['status_code'], array(19, 20))) horn-blue
                                             @elseif(25 == $data['status_code']) horn-lightblue
                                             @elseif(in_array($data['status_code'], array(21, 22, 23))) horn-gray
+                                            @else horn-orange
                                             @endif">
                         </span>
                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
@@ -155,6 +156,13 @@
                                 <div class="media">
                                     <div class="media-left sanBold orderInfo-title">Paid with</div>
                                     <div class="media-right">@if($data['payinfo']['pay_type']=="Oceanpay"){{'Credit Card'}}@else{{'PayPal'}}@endif</div>
+                                </div>
+                            @endif
+                            @if(isset($data['logistics_info_url']))
+                                <hr class="hr-base">
+                                <div class="media">
+                                    <div class="media-left sanBold orderInfo-title"></div>
+                                    <div class="media-right"><a href="{{$data['logistics_info_url']}}">Track order</a></div>
                                 </div>
                             @endif
                             @if(!empty($data['order_remark']))
