@@ -82,7 +82,7 @@
         <div class="image-container">
             <a href="javascript:void(0)" data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}">
                 <img class="img-fluid img-lazy" data-original="https://s3-us-west-1.amazonaws.com/emimagetest/n1/@{{ $value.main_image_url }}"
-                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="@{{ $value.main_title }}" alt="@{{ $value.main_title }}">
+                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
                 <div class="bg-heart"></div>
             </a>
             @if(Session::has('user'))
