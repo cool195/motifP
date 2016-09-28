@@ -1395,7 +1395,6 @@ function HideSeeMore(seemoreName) {
 
     // 点击登录
     $('[data-role="login-submit"]').on('click', function () {
-        console.info('登录');
         if ($(this).hasClass('disabled')) {
             return;
         } else {
@@ -1403,7 +1402,8 @@ function HideSeeMore(seemoreName) {
         }
     });
 
-    $("body").keydown(function () {
+    $("body").keydown(function (e) {
+        var event = event || e;
         if (event.keyCode == "13") {
             $('[data-role="login-submit"]').click();
         }
