@@ -452,13 +452,13 @@
     @{{each list as value index}}
     @{{ if 0 == index }}
         <div class="col-md-6 p-b-10x">
-            <input type="radio" class="methodRadio" checked="checked" id="method@{{ value.price }}" name="shippingMethod" data-price="@{{ value.price }}" value="@{{ value.logistics_type }}" data-show="@{{ value.logistics_name }}">
-            <label for="method@{{ value.price }}" class="p-l-10x">@{{ value.logistics_name }} +$@{{ (value.price/100).toFixed(2) }}</label>
+            <input type="radio" class="methodRadio" checked="checked" id="method@{{ value.pay_price }}" name="shippingMethod" data-price="@{{ value.pay_price }}" value="@{{ value.logistics_type }}" data-show="@{{ value.logistics_name }}">
+            <label for="method@{{ value.pay_price }}" class="p-l-10x">@{{ value.logistics_name }} +$@{{ (value.pay_price/100).toFixed(2) }}</label>
         </div>
     @{{ else }}
     <div class="col-md-6 p-b-10x">
         <input type="radio" class="methodRadio" id="method@{{ value.price }}" name="shippingMethod" data-price="@{{ value.price }}" value="@{{ value.logistics_type }}" data-show="@{{ value.logistics_name }}">
-        <label for="method@{{ value.price }}" class="p-l-10x">@{{ value.logistics_name }} +$@{{ (value.price/100).toFixed(2) }}</label>
+        <label for="method@{{ value.pay_price }}" class="p-l-10x">@{{ value.logistics_name }} +$@{{ (value.pay_price/100).toFixed(2) }}</label>
     </div>
     @{{ /if }}
     @{{ /each }}
