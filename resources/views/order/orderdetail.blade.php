@@ -157,6 +157,13 @@
                                     <div class="media-right">@if($data['payinfo']['pay_type']=="Oceanpay"){{'Credit Card'}}@else{{'PayPal'}}@endif</div>
                                 </div>
                             @endif
+                            @if(isset($data['logistics_info_url']))
+                                <hr class="hr-base">
+                                <div class="media">
+                                    <div class="media-left sanBold orderInfo-title">Track order</div>
+                                    <div class="media-right">{{$data['logistics_info_url']}}</div>
+                                </div>
+                            @endif
                             @if(!empty($data['order_remark']))
                                 <hr class="hr-base">
                                 <div class="media">
