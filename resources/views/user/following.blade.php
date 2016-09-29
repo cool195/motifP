@@ -33,7 +33,7 @@
                                                      width="120" height="120" alt="">
                                             </a>
                                         </div>
-                                        <div class="font-size-md helveBold">{{ $follow['name'] }}</div>
+                                        <div class="font-size-md helveBold">{{ $follow['nickname'] }}</div>
                                         <div class="p-t-15x">
                                             <div class="btn btn-gray btn-sm p-x-20x btn-follow active"
                                                data-did="{{$follow['userId']}}">Following</div>
