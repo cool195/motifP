@@ -68,9 +68,10 @@ class DesignerController extends BaseController
         $result = $this->request('designer', $params);
         //设计师商品动态模版
         $params = array(
+            'cmd' => 'dmodel',
             'id' => $id,
         );
-        $result['product'] = $this->request('content', $params, 'designerf');
+        $result['product'] = $this->request('designer', $params);
         $product = $result['product'];
         foreach ($product['data']['infos'] as $value){
             if($value['type']=='product'){
