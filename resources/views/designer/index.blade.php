@@ -46,6 +46,7 @@
                                         @if($product['sale_type'] ==1 && ($product['stockStatus'] == 0 || $product['isPutOn'] == 0))
                                             <div class="bg-soldout"></div>
                                         @endif
+                                        <div class="bg-soldout"></div>
                                     </a>
                                 </div>
                                 @endforeach
