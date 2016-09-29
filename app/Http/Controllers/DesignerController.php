@@ -74,7 +74,7 @@ class DesignerController extends BaseController
         $result['product'] = $this->request('designer', $params);
         $product = $result['product'];
         foreach ($product['data']['infos'] as $value){
-            if($value['type']=='product'){
+            if($value['type']=='product' && isset($value['spus'])){
                 $_spu = $value['spus'][0];
                 break;
             }

@@ -399,7 +399,8 @@
     @{{ each list }}
     <div class="col-md-6">
         <div class="p-a-10x">
-            <div class="address-item p-x-20x p-y-15x @{{ if $value.isDefault == 1 }} active @{{ /if }}"
+            <div id="addressTpl@{{ $value.receiving_id }}"
+                 class="address-item p-x-20x p-y-15x @{{ if $value.isDefault == 1 }} active @{{ /if }}"
                  data-info="@{{ $value.name }} @{{ $value.detail_address1 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }} @{{ $value.zip }}"
                  data-csn="@{{ $value.country_name_sn }}"
                  data-aid="@{{ $value.receiving_id }}">

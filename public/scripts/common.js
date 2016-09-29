@@ -839,7 +839,7 @@ function HideSeeMore(seemoreName) {
                             $('.select-address').removeClass('disabled');
                             $('.add-address').addClass('disabled');
                             $('#addAddressForm').find('input[type="text"]').val('');
-                            getAddressList();
+                            getAddressList(data.data.receiving_id);
                         }
                     })
             } else {
@@ -1185,7 +1185,7 @@ function HideSeeMore(seemoreName) {
     });
 
     // 加载地址列表
-    function getAddressList() {
+    function getAddressList(aid) {
         $.ajax({
             url: '/address',
             type: 'GET'
@@ -1207,6 +1207,11 @@ function HideSeeMore(seemoreName) {
                         });
                         getCheckoutInfo();
                         getshiplist();
+                    }else{
+                        if(aid != undefined && aid !=null && aid != ""){
+                            $('.address-item').removeClass('active');
+                            $('#addressTpl' + aid).addClass('active');
+                        }
                     }
                 }
             })
@@ -1395,7 +1400,6 @@ function HideSeeMore(seemoreName) {
 
     // 点击登录
     $('[data-role="login-submit"]').on('click', function () {
-        console.info('登录');
         if ($(this).hasClass('disabled')) {
             return;
         } else {
@@ -1403,7 +1407,8 @@ function HideSeeMore(seemoreName) {
         }
     });
 
-    $("body").keydown(function () {
+    $("body").keydown(function (e) {
+        var event = event || e;
         if (event.keyCode == "13") {
             $('[data-role="login-submit"]').click();
         }
