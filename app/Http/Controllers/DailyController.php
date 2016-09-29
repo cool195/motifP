@@ -38,20 +38,16 @@ class DailyController extends BaseController
     public function show(Request $request, $id)
     {
         $params = array(
+            'cmd' => 'topic',
             'id' => $id
         );
 
-        $result = $this->request("content", $params, 'topicf');
-        $view = '';
-        if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
-            $view = 'daily.topicApp';
-        } else {
-            $view = 'daily.topic';
-        }
+        $result = $this->request("topicf", $params);
+
         if($request->input('ajax')){
             return $result;
         }
-        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>true]);
+        return View('daily.topic', ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>true]);
     }
 
     /**
@@ -63,22 +59,19 @@ class DailyController extends BaseController
     public function service($id)
     {
         $params = array(
+            'cmd' => 'template',
             'id' => $id
         );
 
-        $result = $this->request("template", $params, 'topicf');
+        $result = $this->request("topicf", $params);
         return $result;
     }
 
     public function staticShow($id)
     {
         $result = $this->service($id);
-        if (strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
-            $view = 'daily.topicApp';
-        } else {
-            $view = 'daily.topic';
-        }
-        return View($view, ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
+        
+        return View('daily.topic', ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
     }
 
 }

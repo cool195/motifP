@@ -100,53 +100,12 @@ class DesignerController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result['productAll'] = $this->request('rec', $params);
-
-
-        $view = '';
-        $result['data']['osType'] = strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios') ? 'ios' : 'android';
-        if ($_GET['test'] || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-android') || strstr($_SERVER['HTTP_USER_AGENT'], 'motif-ios')) {
-
-            if ($request->input('token') || !empty($_COOKIE['PIN'])) {
-                if ($request->input('token')) {
-                    Session::put('user', array(
-                        'login_email' => $request->input('email'),
-                        'nickname' => $request->input('name'),
-                        'pin' => $request->input('pin'),
-                        'token' => $request->input('token'),
-                        'uuid' => $_COOKIE['uid'],
-                    ));
-                } else {
-                    Session::put('user', array(
-                        'login_email' => $_COOKIE['EMAIL'],
-                        'nickname' => urldecode($_COOKIE['NAME']),
-                        'pin' => $_COOKIE['PIN'],
-                        'token' => $_COOKIE['TOKEN'],
-                        'uuid' => $_COOKIE['UUID'],
-                    ));
-                }
-
-                $followParams = array(
-                    'cmd' => 'is',
-                    'pin' => Session::get('user.pin'),
-                    'token' => Session::get('user.token'),
-                    'did' => $result['data']['designer_id'],
-                );
-                $follow = $this->request('follow', $followParams);
-                $result['data']['followStatus'] = $follow['data']['isFC'];
-
-
-            } else {
-                Session::forget('user');
-            }
-            $view = 'designer.showApp';
-        } else {
-            $view = 'designer.show';
-        }
+        
         if($request->input('ajax')){
             return $result;
         }
 
-        return View($view, ['pre_product'=>$pre_product['data'],'designer' => $result['data'], 'productAll' => $result['productAll'], 'product' => $result['product']['data'], 'followList' => $this->followList()]);
+        return View('designer.show', ['pre_product'=>$pre_product['data'],'designer' => $result['data'], 'productAll' => $result['productAll'], 'product' => $result['product']['data'], 'followList' => $this->followList()]);
     }
 
     public function following(Request $request)
