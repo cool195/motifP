@@ -9,11 +9,13 @@
                 <a href="/saleinfo" class="text-link text-underLine">Details</a></p>
             <div class="flex flex-alignCenter">
                 <span class="sanBold font-size-md p-r-15x">Invite Code:</span>
-                <div class="input-group invite-input p-r-30x">
-                    <div class="form-control" id="inviteCode" aria-describedby="btn-copy">{{$code}}</div>
-                    <span class="input-group-addon text-primary font-size-md copy" id="btn-copy">Copy</span>
+                <div class="m-r-30x">
+                    <div class="input-group invite-input">
+                        <div class="form-control" id="inviteCode" aria-describedby="btn-copy">{{$code}}</div>
+                        <span class="input-group-addon text-primary font-size-md copy" id="btn-copy">Copy</span>
+                    </div>
                 </div>
-                <div class="p-l-30x"><span class="btn btn-primary btn-md" id="btn-inviteFriend">Invite Friends</span></div>
+                <span class="btn btn-primary btn-md" id="btn-inviteFriend">Invite Friends</span>
             </div>
         </div>
     </div>
