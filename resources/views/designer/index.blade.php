@@ -65,7 +65,7 @@
                         </div>
                         <div class="font-size-md helveBold">
                             <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},"expid":0,"version":"1.0.1","src":"PC"}'
-                               data-link="/designer/{{ $designer['designerId'] }}" href="javascript:void(0)">{{ $designer['nickname'] }}</a>
+                               data-link="/designer/{{ $designer['designerId'] }}" href="javascript:void(0)">{{ $designer['nickName'] }}</a>
                         </div>
                         <div class="p-t-15x">
                             @if(Session::has('user'))
@@ -98,7 +98,7 @@
                         </div>
                         <div class="font-size-md helveBold">
                             <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},”expid":0,"version":"1.0.1","src":"PC"}'
-                               data-link="/designer/{{ $designer['designerId'] }}" href="javascript:void(0)">{{ $designer['name'] }}</a>
+                               data-link="/designer/{{ $designer['designerId'] }}" href="javascript:void(0)">{{ $designer['nickName'] }}</a>
                         </div>
                         <div class="p-t-15x">
                             @if(Session::has('user'))
