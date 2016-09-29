@@ -159,13 +159,13 @@
     @{{ each list }}
     @{{ each $value.subOrderList as value index }}
 
-    <div class="box-shadow bg-white m-b-20x order-item @{{ $value.erp_status_info }}">
-        <span class="horn @{{ if 11 == $value.status_code }} horn-red
-        @{{ else if $value.status_code == 12 || $value.status_code == 14 || $value.status_code == 15 || $value.status_code == 16 || $value.status_code == 24  }} horn-orange
-        @{{ else if $value.status_code == 17 || $value.status_code == 18 }} horn-green
-        @{{ else if $value.status_code == 19 || $value.status_code == 20 }} horn-blue
-        @{{ else if $value.status_code == 25 }} horn-lightblue
-        @{{ else if $value.status_code == 21 || $value.status_code == 22 || $value.status_code == 23 }} horn-gray
+    <div class="box-shadow bg-white m-b-20x order-item">
+        <span class="horn @{{ if 11 == value.status_code }} horn-red
+        @{{ else if value.status_code == 12 || value.status_code == 14 || value.status_code == 15 || value.status_code == 16 || value.status_code == 24  }} horn-orange
+        @{{ else if value.status_code == 17 || value.status_code == 18 }} horn-green
+        @{{ else if value.status_code == 19 || value.status_code == 20 }} horn-blue
+        @{{ else if value.status_code == 25 }} horn-lightblue
+        @{{ else if value.status_code == 21 || value.status_code == 22 || value.status_code == 23 }} horn-gray
         @{{ else }} horn-orange
         @{{ /if }}"></span>
 
