@@ -61,12 +61,12 @@
                     <!--图文列表-->
                     @if(isset($value['spus']))
                     <div class="p-t-40x p-b-20x bg-body">
-                        <div data-impr='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}' class="row">
+                        <div data-impr='http://clk.motif.me/log.gif?t=daily.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":1,"skipId":"{{ implode("_", $value['spus']) }}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}' class="row">
                             @foreach($value['spus'] as $spu)
                                 <div class="col-xs-6">
                                     <div class="productList-item">
                                         <div class="image-container">
-                                            <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
+                                            <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
                                                data-link="/detail/{{$spu}}" href="javascript:void(0)">
                                                 <img class="img-fluid img-lazy"
                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
@@ -84,7 +84,7 @@
                                             @if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])
                                                 <div class="presale-sign">
                                                     <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
-                                                    <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=H5_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
+                                                    <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
                                                        data-link="/detail/{{$spu}}" href="javascript:void(0)"
                                                        class="presale-text helve font-size-sm">LIMITED DEITION
                                                     </a>

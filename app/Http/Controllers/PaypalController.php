@@ -31,7 +31,7 @@ class PaypalController extends BaseController
                     'orderid' => $result->transactions[0]->item_list->items[0]->name,
                     'paytype' => 'PayPalNative',
                     'showname' => 'PayPal',
-                    'devicedata' => "H5",
+                    'devicedata' => "PC",
                     'nonce' => '{"response_type":"payment","response":{"id":"' . $result->id . '","state":"' . $result->state . '","create_time":"' . $result->create_time . '","intent":"' . $result->intent . '"}}',
                 );
                 $content = $this->request("pay", $params);
