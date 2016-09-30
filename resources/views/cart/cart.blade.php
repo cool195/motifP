@@ -202,7 +202,8 @@
     <hr class="hr-common m-a-0">
     <div class="row m-a-0">
         <div class="col-md-6">
-            <div class="m-y-20x m-l-20x"><a href="javascript:;" class="btn btn-block btn-secondary btn-lg delCartM">Remove</a>
+            <div class="m-y-20x m-l-20x">
+                <a href="javascript:;" class="btn btn-block btn-secondary btn-lg delCartM">Remove</a>
             </div>
         </div>
         <div class="col-md-6">
