@@ -226,7 +226,7 @@
                         <!-- 未支付订单 支付按钮 -->
                         <div class="text-right">
                             @if( 11 == $data['status_code'])
-                                <a href="/payagain/{{  $data['sub_order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Cart</a>
+                                <a href="/payagain/{{  $data['sub_order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Card</a>
                                 <a href="/payagain/{{  $data['sub_order_no'] }}/1" class="btn btn-primary btn-lg btn-200">PayPal</a>
                             @endif
                         </div>
