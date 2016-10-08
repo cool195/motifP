@@ -24,8 +24,8 @@ if (env('APP_ENV') == 'production') {
     $paypalsecret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
     $paypalmode = 'sandbox';
 
-    $secureCode = '4646r88B';
-    $terminal = '16044402';
+    $secureCode = 'jt688j00';
+    $terminal = '16044405';
 
     $selfUrl = 'http://test.pc.motif.me/';
 } else {
@@ -38,8 +38,8 @@ if (env('APP_ENV') == 'production') {
     $paypalsecret = 'EApPC9Qkz0WFkK76gFbz8miNMgsMeZT27LTc24ABFpAcyUqMqBXiLKjR73xX-U7Q8Xlc_szx_5yGP52q';
     $paypalmode = 'sandbox';
 
-    $secureCode = '4646r88B';
-    $terminal = '16044402';
+    $secureCode = 'jt688j00';
+    $terminal = '16044405';
 
     $selfUrl = 'http://pc.motif.app/';
 }
