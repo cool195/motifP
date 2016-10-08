@@ -77,6 +77,7 @@
                         </div>
                     </a>
                 </li>
+                @if(1 == Session::get('user.login_type'))
                 <li class="nav-item @if('Change Password' == $title) active @endif">
                     <a href="/user/changepassword">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
@@ -84,6 +85,7 @@
                         </div>
                     </a>
                 </li>
+                @endif
                 <li class="nav-item @if('Shipping Address' == $title) active @endif">
                     <a href="/user/shippingaddress">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
