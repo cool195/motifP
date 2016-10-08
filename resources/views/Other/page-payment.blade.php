@@ -36,12 +36,6 @@
                         tion with customer’s browser and protect all the sensitive information. 
                     </p>
                     <p class="m-b-20x">
-                        <strong class="sanBold">eCheck</strong> We accept eCheck as well. With an eCheck, we could
-                        receive the payment in 5-7 business days depending on the regulations of your
-                        bank. Therefore, we consider the date of receiving the payment as your order
-                        date. We will process your order only after we receive your payment.
-                    </p>
-                    <p class="m-b-20x">
                         <strong class="sanBold">Coupon Code:</strong> <br>
                         Please fill in the Coupon Code you have in the box
                         while
