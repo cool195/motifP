@@ -231,7 +231,7 @@
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="smShowHide">
                 <span class="sanBold">Shipping</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} +${{ number_format(($logisticsList['list'][0]['pay_price'] / 100), 2) }}</span>
+                    <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} @if($list['pay_price']>0)+${{ number_format(($logisticsList['list'][0]['pay_price'] / 100), 2) }}@endif</span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
@@ -246,7 +246,10 @@
                                        data-price="{{$list['pay_price']}}"
                                        value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
-                                    +${{ number_format(($list['pay_price'] / 100), 2) }}</label>
+                                    @if($list['pay_price']>0)
+                                        +${{ number_format(($list['pay_price'] / 100), 2) }}
+                                    @endif
+                                </label>
                             </div>
                         @endforeach
                     </div>
@@ -453,11 +456,12 @@
     @{{ if 0 == index }}
         <div class="col-md-6 p-b-10x">
             <input type="radio" class="methodRadio" checked="checked" id="method@{{ value.pay_price }}" name="shippingMethod" data-price="@{{ value.pay_price }}" value="@{{ value.logistics_type }}" data-show="@{{ value.logistics_name }}">
-            <label for="method@{{ value.pay_price }}" class="p-l-10x">@{{ value.logistics_name }} +$@{{ (value.pay_price/100).toFixed(2) }}</label>
+            <label for="method@{{ value.pay_price }}" class="p-l-10x">@{{ value.logistics_name }} +$@{{ (value.pay_price/100).toFixed(2) }}
+            </label>
         </div>
     @{{ else }}
     <div class="col-md-6 p-b-10x">
-        <input type="radio" class="methodRadio" id="method@{{ value.price }}" name="shippingMethod" data-price="@{{ value.price }}" value="@{{ value.logistics_type }}" data-show="@{{ value.logistics_name }}">
+        <input type="radio" class="methodRadio" id="method@{{ value.pay_price }}" name="shippingMethod" data-price="@{{ value.pay_price }}" value="@{{ value.logistics_type }}" data-show="@{{ value.logistics_name }}">
         <label for="method@{{ value.pay_price }}" class="p-l-10x">@{{ value.logistics_name }} +$@{{ (value.pay_price/100).toFixed(2) }}</label>
     </div>
     @{{ /if }}

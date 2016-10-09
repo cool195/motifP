@@ -1218,7 +1218,12 @@ function HideSeeMore(seemoreName) {
         })
             .done(function (data) {
                 if (data.success) {
-                    $('.shippingMethodShow').html(data.data.list[0].logistics_name+' +$'+(data.data.list[0].pay_price / 100).toFixed(2));
+                    if(data.data.list[0].pay_price > 0){
+                        $('.shippingMethodShow').html(data.data.list[0].logistics_name+' +$'+(data.data.list[0].pay_price / 100).toFixed(2));
+                    }else{
+                        $('.shippingMethodShow').html(data.data.list[0].logistics_name);
+                    }
+
                     appendMethodList(data.data);
                     getCheckoutInfo();
                 }
