@@ -40,13 +40,16 @@
                 <div class="list-group text-white m-b-20x">
                     <div class="sanBold font-size-sm m-b-20x">Follow Us</div>
                     <a href="https://www.facebook.com/motifme" class="btn btn-share btn-circle m-r-20x">
-                        <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-fac.png">
+                        <i class="iconfont icon-facebook1 footer-icon"></i>
+                        {{--<img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-fac.png">--}}
                     </a>
                     <a href="https://www.instagram.com/motifme/" class="btn btn-share btn-circle m-r-20x">
-                        <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-ins.png">
+                        <i class="iconfont icon-instagram1 footer-icon"></i>
+                        {{--<img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-ins.png">--}}
                     </a>
                     <a href="https://www.pinterest.com/motifme/" class="btn btn-share btn-circle m-r-20x">
-                        <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-pin.png">
+                        <i class="iconfont icon-pinterest1 footer-icon"></i>
+                        {{--<img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-pin.png">--}}
                     </a>
                 </div>
             </div>

@@ -53,9 +53,12 @@
         </nav>
         <nav class="navbar-right">
             <ul class="nav navbar-primary clearfix">
+                <li class="nav-item p-x-10x">
+                    <a href="####" class="nav-link sanBold text-red">GET $20 OFF</a>
+                </li>
                 @if(Session::has('user'))
                 <li class="nav-item p-x-10x">
-                    <a href="/user/changeprofile" class="nav-link name">{{Session::get('user.nickname')}}</a>
+                    <a href="/user/changeprofile" class="nav-link name sanBold">{{Session::get('user.nickname')}}</a>
                 </li>
                 <li class="nav-item p-x-10x header-img">
                     <a href="/user/changeprofile" class="nav-link">
