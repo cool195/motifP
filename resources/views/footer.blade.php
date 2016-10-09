@@ -54,7 +54,15 @@
                 </div>
             </div>
         </div>
-        <div class="p-t-10x text-center text-common font-size-xs">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
+        <div class="p-y-10x text-center">
+            <div class="sanBold font-size-sm m-b-20x text-white">Payment Accepted</div>
+            <div>
+                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/icon-visa.png" width="60" >
+                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/icon-visa.png" width="60" >
+                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/icon-visa.png" width="60" >
+            </div>
+        </div>
+        <div class="p-t-10x m-t-10x text-center text-white font-size-xs text-Copyright">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
     </div>
 </footer>
 

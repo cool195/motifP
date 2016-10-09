@@ -38,6 +38,10 @@ footer {
   padding: 1.875rem 0;
 }
 
+footer .text-Copyright{
+  opacity: .6;
+}
+
 .login-footer {
   background-color: #ffffff;
 }
