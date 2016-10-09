@@ -23,7 +23,7 @@
                     <div class="row">
                         @if(!empty($data['list']))
                             @foreach($data['list'] as $key => $follow)
-                                <div class="col-md-6 col-xs-12">
+                                <div class="col-lg-6 col-md-12">
                                     <div class="follow-item text-center p-a-40x m-b-20x @if($key % 4 == 0 || $key % 4 == 3) bg-white @else bg-common @endif">
                                         <div class="m-b-10x">
                                             <a href="/designer/{{$follow['userId']}}">
