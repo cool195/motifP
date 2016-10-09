@@ -137,7 +137,7 @@
                                     data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'
                                     href="javascript:void(0)">
                             @endif
-                                <img class="img-lazy designer-banImg" src="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}">
+                                <img class="img-lazy img-fluid designer-banImg" src="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}">
                             </a>
                         </div>
                     @elseif($value['type']=='title')
