@@ -25,7 +25,7 @@ class QianhaiController extends BaseController
             'account' => config('runtime.QIANHAI_Account'),
             'terminal' => config('runtime.QIANHAI_Terminal'),
             'backUrl' => 'http://' . $_SERVER['HTTP_HOST'] . '/qianhai',
-            'noticeUrl' => config('runtime.API_URL').'/oceanpaycb',
+            'noticeUrl' => config('runtime.API_URL')['api'].'/oceanpaycb',
             'methods' => 'Credit Card',
             'pages' => '0',
             'order_number' => $request->input('orderid'),
@@ -36,6 +36,7 @@ class QianhaiController extends BaseController
             'billing_email' => Session::get('user.login_email'),
             'billing_phone' => $addrData['data']['userAddr']['telephone'] ? $addrData['data']['userAddr']['telephone'] : 'N/A',
             'billing_country' => $addrData['data']['userAddr']['country_name_sn'] ? $addrData['data']['userAddr']['country_name_sn'] : 'N/A',
+            'billing_state' => $addrData['data']['userAddr']['state'] ? $addrData['data']['userAddr']['state'] : 'N/A',
             'billing_city' => $addrData['data']['userAddr']['city'] ? $addrData['data']['userAddr']['city'] : 'N/A',
             'billing_address' => $addrData['data']['userAddr']['detail_address1'] ? $addrData['data']['userAddr']['detail_address1'] : 'N/A',
             'billing_zip' => $addrData['data']['userAddr']['zip'] ? $addrData['data']['userAddr']['zip'] : 'N/A',
@@ -43,7 +44,7 @@ class QianhaiController extends BaseController
             'productName' => 'N/A',
             'productNum' => 'N/A'
         );
-
+        return [$addrData,$postData];
         $postData['signValue'] = hash("sha256", $postData['account'] . $postData['terminal'] . $postData['backUrl'] . $postData['order_number'] . $postData['order_currency'] . $postData['order_amount'] . $postData['billing_firstName'] . $postData['billing_lastName'] . $postData['billing_email'] . $secureCode);
         $postStr = "<form style='display:none;' id='payform' name='payform' method='post' action='$postUrl'>";
         foreach ($postData as $k => $value) {
