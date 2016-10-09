@@ -6,7 +6,7 @@
 @if($config)
     <div class="active-banner p-y-10x text-center">
         <span class="sanBold font-size-md">{{$config}}</span>
-        <a href="/daily"><div class="btn btn-100 btn-share btn-md m-l-20x text-link">Go Shopping</div></a>
+        <a href="/daily"><div class="btn btn-100 btn-share btn-md m-l-20x text-link">Shop now</div></a>
     </div>
 @endif
 
@@ -18,7 +18,7 @@
             <div class="empty-content shopbag-content">
                 <div class="m-b-20x p-b-5x"><i class="iconfont icon-iconshoppingbag"></i></div>
                 <p class="text-primary m-b-20x p-b-20x font-size-llxx">Your bag is empty, Fill it up ! </p>
-                <a href="/daily" class="btn btn-primary btn-lg btn-320">Go Shopping</a>
+                <a href="/daily" class="btn btn-primary btn-lg btn-320">Shop now</a>
             </div>
         @else
             <h4 class="helveBold text-main p-l-10x">My Bag</h4>

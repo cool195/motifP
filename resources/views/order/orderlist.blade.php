@@ -14,7 +14,7 @@
                             <div class="empty-content">
                                 <div class="m-b-20x p-b-5x"><i class="iconfont icon-book"></i></div>
                                 <p class="text-primary m-b-20x p-b-20x font-size-llxx">No Orders Found</p>
-                                <a href="/daily" class="btn btn-primary btn-lg btn-320">Go Shopping</a>
+                                <a href="/daily" class="btn btn-primary btn-lg btn-320">Shop now</a>
                             </div>
                         @else
                             @foreach($data['list'] as $order)

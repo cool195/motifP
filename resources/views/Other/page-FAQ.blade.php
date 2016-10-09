@@ -5,6 +5,14 @@
     <div class="content-wrap">
         <h2 class="helveBold text-main font-size-lxx m-b-20x m-x-20x">FAQ</h2>
         <div class="bg-white box-shadow m-t-20x p-b-10x">
+            <hr class="hr-base m-y-20x">
+            <div class="p-x-20x p-b-10x">
+                <p>For any further queries not addressed below, please feel free to contact us at <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a>. Normally,
+                    our service team will reply within 24 hours, and all emails will be replied to.</p>
+            </div>
+        </div>
+
+        <div class="bg-white box-shadow m-t-20x p-b-10x">
             <div class="p-x-20x p-t-20x text-main font-size-lg sanBold">
                 <strong>Manage Account</strong>
             </div>
@@ -28,21 +36,12 @@
                     the item or ship your package out.</p>
             </div>
             <div class="p-x-20x p-b-10x">
-                <p class="sanBold"><strong>How long will my package be shipped after I place the order?</strong></p>
-                <p>For non-personalized products, we need 4 business days to process, while for personalized products,
-                    such as name necklaces and pendants, it may take 7-15 business days to process.</p>
-            </div>
-            <div class="p-x-20x p-b-10x">
-                <p class="sanBold"><strong>Where do you ship from?</strong></p>
-                <p>Our warehouse is based in China, so we ship from China.</p>
-                <p class="sanBold">How long does the shipping takes? Why I can’t get any tracking information with the tracking number
-                    given?</p>
+                <p class="sanBold"><strong>How long will it take for my order to arrive? </strong></p>
+                <p class="m-b-0">We provide three options for delivery which you can make at purchase:</p>
                 <p class="m-b-0">Option 1. Registered Airmail (7-20 business days)</p>
                 <p class="m-b-0">Option 2. Standard Shipping (5-8 business days)</p>
-                <p>Option 3. Expedited Shipping (3-4 business days)</p>
-                <p>As for Registered Airmail, the Logistics website may not update so frequently, therefore we suggest
-                    you check the status after 3-5 days of receiving the tracking information.</p>
-                <p class="sanBold">How can I track my order?</p>
+                <p class="m-b-0">Option 3. Expedited Shipping (3-4 business days)</p>
+                <p class="m-b-0">How can I track my order?</p>
                 <p>We will send one order confirmation email to you after you complete your purchase. When your package
                     is shipped, you will get a shipping confirmation email from us with the tracking information.</p>
             </div>
@@ -77,14 +76,10 @@
                     (exceptions may apply).</p>
                 <p>Unfortunately, we can’t exchange rings which are engraved or customized, therefore, we suggest that
                     you follow our Size Guide and carefully choose the correct size.</p>
-                <p class="sanBold"><strong>What can I do if I get an empty box?</strong></p>
-                <p>We carefully check all shipments and we make sure never to send an empty box out. We suggest that you
-                    contact the delivery service which delivered the package, as they were the last ones to handle it.
-                    If they don’t have the product, please contact us with a picture of the box as soon as possible.</p>
-                <p class="sanBold"><strong>Can I return a product because I just don’t like or want it?</strong></p>
-                <p>Yes, we offer a 30 day free return if you are not 100% satisfied with your purchase. We can help you
-                    return the product, but we reserve the right to charge shipping & handling, and restocking fees. For
-                    more details, please visit our Return <a href="#" class="text-underLine">Policy</a> Page.</p>
+                <p class="sanBold"><strong>I’ve changed my mind. Can I return a product if don’t want it anymore?</strong></p>
+                <p>Yes, we offer a 30 day free return if you are not 100% satisfied with your purchase.
+                    We can help you return the product, but we reserve the right to charge shipping & handling, and restocking fees.
+                    For more details, please visit our Return <a href="#" class="text-underLine">Policy</a> Page.</p>
             </div>
         </div>
 

@@ -68,7 +68,7 @@
                                         <div class="image-container">
                                             <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
                                                data-link="/detail/{{$spu}}" href="javascript:void(0)">
-                                                <img class="img-fluid img-lazy"
+                                                <img class="img-fluid img-lazy figure"
                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                      alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
@@ -113,11 +113,9 @@
                     @else
                         @if($value['style'] =='box-vertical')
                                 <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                                    <div>
-                                        <img class="img-fluid img-lazy"
-                                            data-original="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}"
-                                            src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="">
-                                    </div>
+                                    <img class="img-fluid img-lazy figure"
+                                         data-original="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}"
+                                         src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="">
                                 </a>
                         @endif
                     @endif
