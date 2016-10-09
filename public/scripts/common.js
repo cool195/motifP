@@ -942,7 +942,6 @@ function HideSeeMore(seemoreName) {
         $('#defaultAddr').html($(this).parent('.address-item').data('info'));
         $('#defaultAddr').data('csn', $(this).parent('.address-item').data('csn'));
         $('#defaultAddr').data('aid', $(this).parent('.address-item').data('aid'));
-        getCheckoutInfo();
         getshiplist();
     });
 
@@ -1205,7 +1204,6 @@ function HideSeeMore(seemoreName) {
                             $('#defaultAddr').data('csn', value['country_name_sn']);
                             $('#defaultAddr').data('aid', value['receiving_id']);
                         });
-                        getCheckoutInfo();
                         getshiplist();
                     }
                 }
@@ -1222,6 +1220,7 @@ function HideSeeMore(seemoreName) {
                 if (data.success) {
                     $('.shippingMethodShow').html(data.data.list[0].logistics_name+' +$'+(data.data.list[0].pay_price / 100).toFixed(2));
                     appendMethodList(data.data);
+                    getCheckoutInfo();
                 }
             })
     }

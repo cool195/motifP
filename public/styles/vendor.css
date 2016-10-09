@@ -7783,6 +7783,13 @@ a.bg-red:focus, a.bg-red:hover {
 .icon-air:before {
   content: "\e62e";
 }
+.icon-pinterest1:before { content: "\e632"; }
+.icon-instagram1:before { content: "\e637"; }
+.icon-facebook1:before { content: "\e641"; }
+.icon-top:before { content: "\e644"; }
+.footer-icon{
+  font-size: 24px;
+}
 
 .loading {
   display: -webkit-box;

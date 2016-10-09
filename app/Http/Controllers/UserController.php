@@ -429,12 +429,10 @@ class UserController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('cart', $params);
-
         foreach ($result['data']['list'] as &$value) {
-            $value['start_time'] = date("M d, Y", microtime($value['start_time']));
-            $value['expiry_time'] = date("M d, Y", microtime($value['expiry_time']));
+            $value['start_time'] = date("M d, Y", $value['start_time']);
+            $value['expiry_time'] = date("M d, Y", $value['expiry_time']);
         }
-
         return $result;
     }
 
@@ -447,9 +445,10 @@ class UserController extends BaseController
         );
         $result = $this->request('coupon', $params);
         foreach ($result['data']['list'] as &$value) {
-            $value['start_time'] = date("M d, Y", microtime($value['start_time']));
-            $value['expiry_time'] = date("M d, Y", microtime($value['expiry_time']));
+            $value['start_time'] = date("M d, Y", $value['start_time']);
+            $value['expiry_time'] = date("M d, Y", $value['expiry_time']);
         }
+
         return $result;
     }
 

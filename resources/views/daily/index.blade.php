@@ -39,7 +39,7 @@
 <!-- 列表内容 -->
 <div class="container m-y-40x" role="main" id="dailyList-container" data-pagenum="1" data-loading="false">
     @if(!empty($list))
-        <ul class="tiles-wrap animated row daily-content" id="daily-wookmark">
+        <ul class="tiles-wrap animated daily-content" id="daily-wookmark">
             @foreach($list as $daily)
                 <li class="isHidden">
                     @if(3 == $daily['type'])
