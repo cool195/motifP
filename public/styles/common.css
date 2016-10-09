@@ -996,19 +996,17 @@ footer .text-Copyright{
   text-align: right;
 }
 /* shopping 下拉二级菜单*/
-.dropdown-shopping{
-  position: relative;
-}
 .dropdown-shopping:hover .nav-shopping-hover{
   display: block;
 }
 .nav-shopping-hover{
   position: absolute;
-  top: 70px;
-  left: -120px;
+  left: 0;
   z-index: 100;
   white-space: nowrap;
-  /*display: none;*/
+  width: 100%;
+  text-align: center;
+  display: none;
 }
 .nav-shopping-hover li{
   display: inline-block;
