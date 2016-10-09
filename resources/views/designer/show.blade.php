@@ -13,7 +13,7 @@
                                 <div class="player-item" data-playid="{{$designer['detailVideoPath']}}">
                                     <div id="{{$designer['detailVideoPath']}}" class="ytplayer" data-playid="{{$designer['detailVideoPath']}}"></div>
                                     <div class="bg-player">
-                                        <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}" alt="">
+                                        <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n0/{{$designer['img_video_path']}}" alt="">
                                         <div class="btn-beginPlayer designer-beginPlayer">
                                             <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
                                                  srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
@@ -24,9 +24,8 @@
                             </div>
                         @else
                             <img class="img-fluid product-bigImg img-lazy"
-                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}"
-                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png"
-                                 alt="商品的名称">
+                                 data-original="{{config('runtime.CDN_URL')}}/n0/{{$designer['img_video_path']}}"
+                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png">
                         @endif
                     </div>
                 </div>
@@ -137,7 +136,7 @@
                                     data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'
                                     href="javascript:void(0)">
                             @endif
-                                <img class="img-lazy designer-banImg" src="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}">
+                                <img class="img-lazy designer-banImg" src="{{config('runtime.CDN_URL')}}/n0/{{$value['imgPath']}}">
                             </a>
                         </div>
                     @elseif($value['type']=='title')
