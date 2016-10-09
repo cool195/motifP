@@ -3111,6 +3111,22 @@ function HideSeeMore(seemoreName) {
 
     // invite Friends end
 
+
+    // 回到顶部
+    $(window).scroll(function () {
+        var Top = $(window).scrollTop();
+        if (Top > 300) {
+            $('#top').addClass('active');
+        } else {
+            $('#top').removeClass('active');
+        }
+    });
+    $('#top').on('click', function () {
+        $("html, body").animate({
+            "scroll-top": 0
+        }, "fast");
+    });
+
 })(jQuery, Swiper);
 
 

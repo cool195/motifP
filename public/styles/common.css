@@ -1442,11 +1442,27 @@ footer {
   font-size: 2.375rem;
 }
 
-/*#top{*/
-  /*position: fixed;*/
-  /*right: 80px;*/
-  /*bottom: 80px;*/
-/*}*/
+#top{
+  position: fixed;
+  right: 40px;
+  bottom: 50px;
+  opacity: 0;
+  -webkit-transition: opacity 500ms linear;
+  transition: opacity 500ms linear;
+}
+
+#top.active{
+  opacity: 1;
+}
+
+#top .btn-top{
+  background-color:#6d91ff;
+  border-radius:50%;
+}
+
+#top .btn-top:hover{
+   opacity: .9;
+ }
 
 @media screen and (max-width: 1460px) {
   .container {
