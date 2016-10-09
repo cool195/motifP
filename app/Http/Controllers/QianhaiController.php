@@ -44,7 +44,7 @@ class QianhaiController extends BaseController
             'productName' => 'N/A',
             'productNum' => 'N/A'
         );
-        return [$addrData,$postData];
+        
         $postData['signValue'] = hash("sha256", $postData['account'] . $postData['terminal'] . $postData['backUrl'] . $postData['order_number'] . $postData['order_currency'] . $postData['order_amount'] . $postData['billing_firstName'] . $postData['billing_lastName'] . $postData['billing_email'] . $secureCode);
         $postStr = "<form style='display:none;' id='payform' name='payform' method='post' action='$postUrl'>";
         foreach ($postData as $k => $value) {
