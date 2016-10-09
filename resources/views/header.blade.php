@@ -54,7 +54,7 @@
         <nav class="navbar-right">
             <ul class="nav navbar-primary clearfix">
                 <li class="nav-item p-x-10x">
-                    <a href="####" class="nav-link sanBold text-red">GET $20 OFF</a>
+                    <a href="/invitefriends" class="nav-link sanBold text-red">GET $20 OFF</a>
                 </li>
                 @if(Session::has('user'))
                 <li class="nav-item p-x-10x">
