@@ -17,7 +17,7 @@
                     <div class="sanBold font-size-sm m-b-20x">Help & Service</div>
                     <a class="list-group-item font-size-xs text-white" href="/contactus">Contact Us</a>
                     <a class="list-group-item font-size-xs text-white" href="/faq">FAQ</a>
-                    <a class="list-group-item font-size-xs text-white" href="/payments">Payments</a>
+                    {{--<a class="list-group-item font-size-xs text-white" href="/payments">Payments</a>--}}
                     <a class="list-group-item font-size-xs text-white" href="/template/23">Shipping & Returns</a>
                 </div>
             </div>
