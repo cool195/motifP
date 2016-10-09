@@ -3,7 +3,9 @@
 @if($config)
     <div class="active-banner p-y-10x text-center">
         <span class="sanBold font-size-md">{{$config}}</span>
-        <a href="/daily"><div class="btn btn-100 btn-share btn-md m-l-20x text-link">Shop now</div></a>
+        <a href="/daily">
+            <div class="btn btn-100 btn-share btn-md m-l-20x text-link">Shop now</div>
+        </a>
     </div>
 @endif
 <!-- 内容 -->
@@ -83,8 +85,8 @@
                     </div>
                     {{--预售--}}
                     {{--@if(1 == $showSku['sale_type'] && isset($showSku['skuPromotion']['ship_desc']))--}}
-                        {{--<div class="presale-checkout text-white font-size-md p-a-10x bg-red sanBold">PREORDER: Expected to ship--}}
-                            {{--on {{$showSku['skuPromotion']['ship_desc']}}</div>--}}
+                    {{--<div class="presale-checkout text-white font-size-md p-a-10x bg-red sanBold">PREORDER: Expected to ship--}}
+                    {{--on {{$showSku['skuPromotion']['ship_desc']}}</div>--}}
                     {{--@endif--}}
                 @endforeach
             </div>
@@ -231,7 +233,8 @@
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="smShowHide">
                 <span class="sanBold">Shipping</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} @if($list['pay_price']>0)+${{ number_format(($logisticsList['list'][0]['pay_price'] / 100), 2) }}@endif</span>
+                    <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} @if($list['pay_price']>0)
+                            +${{ number_format(($logisticsList['list'][0]['pay_price'] / 100), 2) }}@endif</span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
@@ -242,7 +245,8 @@
                     <div class="row p-x-20x p-t-20x checkout-method">
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
-                                <input class="methodRadio" type="radio" @if($k==0){{'checked'}}@endif name="shippingMethod"
+                                <input class="methodRadio" type="radio"
+                                       @if($k==0){{'checked'}}@endif name="shippingMethod"
                                        data-price="{{$list['pay_price']}}"
                                        value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
@@ -276,7 +280,8 @@
                     <div class="invite-content addPromotion-content">
                         <p class="helveBold font-size-llxx m-t-40x">Add New Promotions</p>
                         <div class="addCode-input m-t-20x text-left">
-                            <input type="text" class="form-control contrlo-lg text-primary m-b-10x" name="cps" value="" placeholder="Enter Your Promotions Code Here">
+                            <input type="text" class="form-control contrlo-lg text-primary m-b-10x" name="cps" value=""
+                                   placeholder="Enter Your Promotions Code Here">
                                     <span class="warning-info text-warning off">
                                         <i class="iconfont icon-caveat p-r-5x"></i>
                                         <span class="font-size-base invalidText"></span>
@@ -294,7 +299,8 @@
                     <div class="flex flex-alignCenter flex-fullJustified">
                         <span class="font-size-md sanBold"></span>
                         <span class="font-size-md pull-right">
-                            <div class="btn btn-secondary btn-md btn-addNewCode"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Promotion Code</div>
+                            <div class="btn btn-secondary btn-md btn-addNewCode"><i
+                                        class="iconfont icon-add font-size-md p-r-5x"></i>Add New Promotion Code</div>
                         </span>
                     </div>
                     <div class="row p-x-10x p-t-20x coupon-list">
@@ -303,7 +309,6 @@
                 </div>
             </div>
         </div>
-
 
 
         <!-- Special Request (optional) -->
@@ -325,7 +330,8 @@
         </div>
 
         <!-- 结算总价 -->
-        <div class="box-shadow bg-white m-t-20x checkoutInfo" data-price="{{$accountList['total_amount']+$accountList['vas_amount']}}">
+        <div class="box-shadow bg-white m-t-20x checkoutInfo"
+             data-price="{{$accountList['total_amount']+$accountList['vas_amount']}}">
             <div class="p-a-20x font-size-md">
                 {{--数量--}}
                 <div class="text-right">
@@ -359,7 +365,8 @@
                 {{--地址服务--}}
                 <div class="text-right">
                     <span>Shipping and handling:</span>
-                    <span class="sanBold cart-price freight_amount">@if(0 == $accountList['freight_amount']) Free @else${{ number_format(($accountList['freight_amount'] / 100), 2)}} @endif</span>
+                    <span class="sanBold cart-price freight_amount">@if(0 == $accountList['freight_amount']) Free @else
+                            ${{ number_format(($accountList['freight_amount'] / 100), 2)}} @endif</span>
                 </div>
                 {{--结算价--}}
                 <div class="text-right ">
@@ -430,7 +437,8 @@
     @{{ each list }}
     <div class="col-md-6">
         <div class="m-a-10x">
-            <div class="row promotion-item checkoutPromotion-item flex flex-alignCenter @{{ if $value.usable == true }} codeItem @{{ /if }} @{{ if $value.selected == true }} active @{{ /if }}" data-promotioncode="@{{ $value.cp_title }}" data-bindid="@{{ $value.bind_id }}">
+            <div class="row promotion-item checkoutPromotion-item flex flex-alignCenter @{{ if $value.usable == true }} codeItem @{{ /if }} @{{ if $value.selected == true }} active @{{ /if }}"
+                 data-promotioncode="@{{ $value.cp_title }}" data-bindid="@{{ $value.bind_id }}">
                 <div class="col-md-8">
                     <div class="text-right p-left p-r-15x p-y-15x">
                         <div class="helveBold font-size-sm">@{{ $value.prompt_words }}</div>
@@ -454,15 +462,30 @@
 <template id="tpl-method">
     @{{each list as value index}}
     @{{ if 0 == index }}
-        <div class="col-md-6 p-b-10x">
-            <input type="radio" class="methodRadio" checked="checked" id="method@{{ value.pay_price }}" name="shippingMethod" data-price="@{{ value.pay_price }}" value="@{{ value.logistics_type }}" data-show="@{{ value.logistics_name }}">
-            <label for="method@{{ value.pay_price }}" class="p-l-10x">@{{ value.logistics_name }} +$@{{ (value.pay_price/100).toFixed(2) }}
-            </label>
-        </div>
+    <div class="col-md-6 p-b-10x">
+        <input type="radio" class="methodRadio" checked="checked" id="method@{{ value.pay_price }}"
+               name="shippingMethod" data-price="@{{ value.pay_price }}" value="@{{ value.logistics_type }}"
+               data-show="@{{ value.logistics_name }}">
+        <label for="method@{{ value.pay_price }}" class="p-l-10x">
+            @{{ if value.pay_price == 0}}
+            @{{ value.logistics_name }}
+            @{{ else }}
+            @{{ value.logistics_name }} +$@{{ (value.pay_price/100).toFixed(2) }}
+            @{{ /if }}
+        </label>
+    </div>
     @{{ else }}
     <div class="col-md-6 p-b-10x">
-        <input type="radio" class="methodRadio" id="method@{{ value.pay_price }}" name="shippingMethod" data-price="@{{ value.pay_price }}" value="@{{ value.logistics_type }}" data-show="@{{ value.logistics_name }}">
-        <label for="method@{{ value.pay_price }}" class="p-l-10x">@{{ value.logistics_name }} +$@{{ (value.pay_price/100).toFixed(2) }}</label>
+        <input type="radio" class="methodRadio" id="method@{{ value.pay_price }}" name="shippingMethod"
+               data-price="@{{ value.pay_price }}" value="@{{ value.logistics_type }}"
+               data-show="@{{ value.logistics_name }}">
+        <label for="method@{{ value.pay_price }}" class="p-l-10x">
+            @{{ if value.pay_price == 0}}
+            @{{ value.logistics_name }}
+            @{{ else }}
+            @{{ value.logistics_name }} +$@{{ (value.pay_price/100).toFixed(2) }}
+            @{{ /if }}
+        </label>
     </div>
     @{{ /if }}
     @{{ /each }}

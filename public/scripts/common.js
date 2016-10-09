@@ -1074,7 +1074,8 @@ function HideSeeMore(seemoreName) {
     }
 
     $('.checkout-method').on('click', '.methodRadio', function () {
-        $('.shippingMethodShow').html($(this).data('show')+' +$'+($(this).data('price') / 100).toFixed(2));
+        var payPrice = $(this).data('pay_price') > 0 ? ' +$'+($(this).data('pay_price') / 100).toFixed(2) : '';
+        $('.shippingMethodShow').html($(this).data('show')+payPrice);
         getCheckoutInfo();
     })
 
@@ -1218,12 +1219,8 @@ function HideSeeMore(seemoreName) {
         })
             .done(function (data) {
                 if (data.success) {
-                    if(data.data.list[0].pay_price > 0){
-                        $('.shippingMethodShow').html(data.data.list[0].logistics_name+' +$'+(data.data.list[0].pay_price / 100).toFixed(2));
-                    }else{
-                        $('.shippingMethodShow').html(data.data.list[0].logistics_name);
-                    }
-
+                    var payPrice = data.data.list[0].pay_price > 0 ? ' +$'+(data.data.list[0].pay_price / 100).toFixed(2) : '';
+                    $('.shippingMethodShow').html(data.data.list[0].logistics_name+payPrice);
                     appendMethodList(data.data);
                     getCheckoutInfo();
                 }
