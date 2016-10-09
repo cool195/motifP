@@ -57,9 +57,10 @@
         <div class="p-y-10x text-center">
             <div class="sanBold font-size-sm m-b-20x text-white">Payment Accepted</div>
             <div>
-                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/icon-visa.png" width="60" >
-                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/icon-visa.png" width="60" >
-                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/icon-visa.png" width="60" >
+                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/maestrcard@2x.png" >
+                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/maestro@2x.png" >
+                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/paypal@2x.png" >
+                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/visa@2x.png" >
             </div>
         </div>
         <div class="p-t-10x m-t-10x text-center text-white font-size-xs text-Copyright">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
