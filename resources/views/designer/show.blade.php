@@ -77,7 +77,7 @@
 
         @if(!empty($pre_product) || !empty($product['infos']))
         <!-- 设计师 预售 -->
-        <section class="bg-common m-t-30x p-b-20x">
+        <section class="bg-common m-t-30x p-y-20x">
             @if(!empty($pre_product))
             <!-- 预售倒计时 -->
             <div class="designer-presale text-center p-t-40x p-b-10x" >
