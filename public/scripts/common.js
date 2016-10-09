@@ -1074,7 +1074,8 @@ function HideSeeMore(seemoreName) {
     }
 
     $('.checkout-method').on('click', '.methodRadio', function () {
-        $('.shippingMethodShow').html($(this).data('show')+' +$'+($(this).data('price') / 100).toFixed(2));
+        var payPrice = $(this).data('price') > 0 ? ' +$'+($(this).data('price') / 100).toFixed(2) : '';
+        $('.shippingMethodShow').html($(this).data('show')+payPrice);
         getCheckoutInfo();
     })
 
@@ -1218,7 +1219,8 @@ function HideSeeMore(seemoreName) {
         })
             .done(function (data) {
                 if (data.success) {
-                    $('.shippingMethodShow').html(data.data.list[0].logistics_name+' +$'+(data.data.list[0].pay_price / 100).toFixed(2));
+                    var payPrice = data.data.list[0].pay_price > 0 ? ' +$'+(data.data.list[0].pay_price / 100).toFixed(2) : '';
+                    $('.shippingMethodShow').html(data.data.list[0].logistics_name+payPrice);
                     appendMethodList(data.data);
                     getCheckoutInfo();
                 }
@@ -3110,6 +3112,22 @@ function HideSeeMore(seemoreName) {
     })
 
     // invite Friends end
+
+
+    // 回到顶部
+    $(window).scroll(function () {
+        var Top = $(window).scrollTop();
+        if (Top > 300) {
+            $('#top').addClass('active');
+        } else {
+            $('#top').removeClass('active');
+        }
+    });
+    $('#top').on('click', function () {
+        $("html, body").animate({
+            "scroll-top": 0
+        }, "fast");
+    });
 
 })(jQuery, Swiper);
 
