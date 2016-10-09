@@ -1442,7 +1442,17 @@ footer {
   font-size: 2.375rem;
 }
 
+/*#top{*/
+  /*position: fixed;*/
+  /*right: 80px;*/
+  /*bottom: 80px;*/
+/*}*/
+
 @media screen and (max-width: 1460px) {
+  .container {
+    max-width: 960px;
+  }
+
   .login-header {
     height: 70px;
   }
