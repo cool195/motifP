@@ -34,7 +34,7 @@
                                             ${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
                                     </div>
                                     <div class="col-md-2">
-                                        <div class="text-center">X{{$showSku['sale_qtty']}}</div>
+                                        <div class="text-center">x{{$showSku['sale_qtty']}}</div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="text-center">
@@ -62,7 +62,7 @@
                                                     ${{number_format(($vas['vas_price'] / 100), 2)}}</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <div class="text-center">X{{ $showSku['sale_qtty']  }}</div>
+                                                <div class="text-center">x{{ $showSku['sale_qtty']  }}</div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="text-center">
