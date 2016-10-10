@@ -171,6 +171,8 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::get('/user/changeprofile', 'UserController@profile');
 
+    Route::get('/user/setting', 'UserController@profile');
+
     Route::get('/invitefriends', 'UserController@inviteFriends');
 
     Route::get('/promocode', 'UserController@promotions');
@@ -267,6 +269,10 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function() {
     Route::get('/askshopping', 'AskController@show');
 
     Route::post('/askshopping', 'AskController@install');
+});
+
+Route::get('404',function (){
+    abort(404);
 });
 // Ask End
 
