@@ -2263,11 +2263,11 @@ function HideSeeMore(seemoreName) {
             })
                 .done(function (data) {
                     if (data.success) {
-                        $this.toggleClass('active');
-                        if ('Following' == $this.html()) {
-                            $this.html('Follow');
+                        $('.btn-follow').toggleClass('active');
+                        if ('Following' == $('.btn-follow').html()) {
+                            $('.btn-follow').html('Follow');
                         } else {
-                            $this.html('Following');
+                            $('.btn-follow').html('Following');
                         }
                     }
                 });
