@@ -27,8 +27,8 @@
             <nav class="nav navbar-nav">
                 <ul class="nav flex flex-alignCenter flex-justifyCenter">
                     @foreach($categories as $category)
-                        <li class="text-center category-item p-x-30x p-y-5x @if('shopping' == $title && $cid == $category['category_id']) active @endif">
-                            <a href="/shopping/{{$category['category_id']}}" class="">{{$category['category_name']}}
+                        <li class="text-center category-item p-x-30x p-y-10x @if($cid == $category['category_id']) active @endif">
+                            <a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}
                                 <span class="triangle-up"></span>
                             </a>
                         </li>
