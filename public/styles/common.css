@@ -1504,6 +1504,11 @@ footer .text-Copyright{
    opacity: .9;
  }
 
+.download-info{
+  background-color: #e9ebf0;
+  padding: 6px 0;
+}
+
 @media screen and (max-width: 1460px) {
   .container {
     max-width: 960px;
