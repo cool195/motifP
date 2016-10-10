@@ -20738,10 +20738,11 @@ jQuery_1_6 = jQuery;
         this.node.left = (smallimage.ow - this.node.width()) / 2;
         //setting position
         this.node.css({
-          top: this.node.top,
-          left: this.node.left,
+          top: 0,
+          left: 0,
           position: 'absolute',
-          visibility: 'visible'
+          visibility: 'visible',
+
         });
       };
       this.hide = function () {
@@ -21103,7 +21104,7 @@ jQuery_1_6 = jQuery;
       //zoomWindow default position
       preloadImages: true,
       //image preload
-      preloadText: 'Loading',
+      preloadText: 'Loading...',
       title: true,
       lens: true,
       imageOpacity: 0.4,
