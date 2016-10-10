@@ -66,7 +66,7 @@
                                     <i class="iconfont btn-wish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$data['spu']}}"></i>
                                 </span>
                             @else
-                                <a href="javascript:void(0)"><span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$data['spu']}}"></i></span></a>
+                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$data['spu']}}"></i></span>
                             @endif
                         </div>
                         <div class="product-price">
@@ -273,7 +273,7 @@
                                 <i class="iconfont btn-wish font-size-lxx @if(in_array($list['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$list['spu']}}"></i>
                             </span>
                         @else
-                            <a href="javascript:void(0)"><span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$list['spu']}}"></i></span></a>
+                            <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$list['spu']}}"></i></span>
                         @endif
                         @if(1 == $list['sale_type'])
                             <div class="presale-sign">
