@@ -42,11 +42,11 @@
                 <li class="nav-item"><a class="nav-link sanBold @if('designer' == $title) active @endif" href="/designer">DESIGNERS</a></li>
                 <li class="nav-item dropdown-shopping">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
-                    <a href="javascript:void(0)" class="nav-link dropdown-toggle sanBold @if('shopping' == $title) active @endif" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
+                    <a href="javascript:void(0)" class="nav-link dropdown-toggle sanBold @if('shopping' == $title) active @endif">SHOPPING</a>
                     <ul class="nav-shopping-hover bg-white p-x-20x box-shadow">
                         @foreach($Category->getShoppingCategoryList() as $category)
                             <li class="text-center @if('shopping' == $title && $cid == $category['category_id']) active @endif">
-                                <a href="/shopping/{{$category['category_id']}}" class="p-x-20x m-y-10x">{{$category['category_name']}}
+                                <a href="/shopping/{{$category['category_id']}}" class="p-x-30x m-y-10x">{{$category['category_name']}}
                                     <span class="triangle-up"></span>
                                 </a>
                             </li>
