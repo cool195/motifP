@@ -128,16 +128,16 @@
                     @if($value['type']=='banner' || (!isset($value['spus']) && $value['type']=='product'))
                         <!--banner图-->
                         <div class="m-t-20x text-center">
-                            @if(!isset($value['skipType']))
-                                <a href="javascript:void(0)">
+                            @if(!isset($value['skipType']) || empty($value['skipId']))
+                                <img class="img-lazy img-fluid designer-banImg" src="{{config('runtime.CDN_URL')}}/n0/{{$value['imgPath']}}">
                             @else
                                 <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['skipId']}}@endif"
                                     data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'
                                     data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'
                                     href="javascript:void(0)">
+                                    <img class="img-lazy img-fluid designer-banImg" src="{{config('runtime.CDN_URL')}}/n0/{{$value['imgPath']}}">
+                                </a>
                             @endif
-                                <img class="img-lazy img-fluid designer-banImg" src="{{config('runtime.CDN_URL')}}/n0/{{$value['imgPath']}}">
-                            </a>
                         </div>
                     @elseif($value['type']=='title')
                         <!--标题-->
