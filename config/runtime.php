@@ -3,7 +3,7 @@
 if (env('APP_ENV') == 'production') {
     //生产
     $CDN_URL = 'http://image.motif.me';//后台图片服务地址
-    $Image_URL = '';//SelfCDN地址服务
+    $Image_URL = 'http://cdn.pc.motif.me';//SelfCDN地址服务
     $API_URL = array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me');
     $QianHai_URL = 'https://secure.oceanpayment.com/gateway/service/pay';
     $paypalclientID = 'AeJ0JypMpSkBh2pvVrWMSg8Km_l6fcmWXUQ0oWxom2tz8nPzBB1rWu71bkL1j4S-TGsjGYrbfDZYiWWe';
