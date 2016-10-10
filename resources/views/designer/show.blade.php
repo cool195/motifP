@@ -1,4 +1,4 @@
-@include('header')
+@include('header',['title'=>$designer['nickname'],'description'=>$designer['describe'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$designer['img_video_path']])
 <!-- 内容 -->
 <section class="m-t-40x">
     @inject('wishlist', 'App\Http\Controllers\UserController')
