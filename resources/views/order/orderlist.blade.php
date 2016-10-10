@@ -14,7 +14,7 @@
                             <div class="empty-content">
                                 <div class="m-b-20x p-b-5x"><i class="iconfont icon-book"></i></div>
                                 <p class="text-primary m-b-20x p-b-20x font-size-llxx">No Orders Found</p>
-                                <a href="/daily" class="btn btn-primary btn-lg btn-320">Shop now</a>
+                                <a href="/daily" class="btn btn-primary btn-lg btn-320">SHOP NOW</a>
                             </div>
                         @else
                             @foreach($data['list'] as $order)
@@ -261,8 +261,8 @@
         <!-- 订单未支付 支付按钮 -->
         <hr class="hr-base m-a-0">
         <div class="text-right p-a-20x">
-            <a href="/payagain/@{{  $value.order_no }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Card</a>
-            <a href="/payagain/@{{  $value.order_no }}/1" class="btn btn-primary btn-lg btn-200">PayPal</a>
+            <a href="/payagain/@{{  $value.order_no }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Pay with Credit Card</a>
+            <a href="/payagain/@{{  $value.order_no }}/1" class="btn btn-primary btn-lg btn-200">Pay with Paypal</a>
         </div>
         @{{ /if }}
 

@@ -25,8 +25,7 @@
                         @else
                             <img class="img-fluid product-bigImg img-lazy"
                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}"
-                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png"
-                                 alt="商品的名称">
+                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png">
                         @endif
                     </div>
                 </div>
@@ -199,7 +198,7 @@
                                                     <span class="font-size-md text-primary p-r-5x text-red">${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
                                                     <span class="font-size-base text-common text-throughLine">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                 @else
-                                                    <span class="font-size-md text-primary p-r-5x text-red">${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
+                                                    <span class="font-size-md text-primary p-r-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -247,8 +246,9 @@
                         @endif
 
                     </div>
+
                     <div class="price-caption helveBold">
-                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{ $product['spuInfos'][$spu]['spuBase']['main_title'] }}</div>
+                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{ $product['main_title'] }}</div>
                         <div class="text-center">
                             @if($product['skuPrice']['sale_price'] != $product['skuPrice']['price'])
                                 <span class="font-size-md text-primary p-r-5x text-red">${{number_format($product['skuPrice']['sale_price']/100,2)}}</span>

@@ -61,6 +61,41 @@ function HideSeeMore(seemoreName) {
         }
     }
 
+    // 设置cookie
+    function setCookie(name, value) {
+        //var Time = 24;
+        var exp = new Date();
+        //exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
+        exp.setTime(exp.getTime() + 5 * 60 * 1000);
+        document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
+    }
+    // 读取cookie
+    function getCookie(name) {
+        var arr = document.cookie.match(new RegExp('(^| )' + name + '=([^;]*)(;|$)'));
+        if (arr != null) {
+            return unescape(arr[2]);
+        }
+        return null;
+    }
+
+    // download 是否显示
+    try{
+        $(function () {
+            if (getCookie('pcdownloadingApp')){
+                $('.download-info').remove();
+            }else {
+                $('.download-info').removeAttr('hidden');
+            }
+        })
+    }catch(e) {}
+
+    // public 关闭下载提示框
+    $('.btn-closeDownload').on('click', function() {
+        setCookie('pcdownloadingApp', 'true');
+        $('.download-info').remove();
+    });
+
+
     /**
      * pushAjax - 依次发送 ajax 请求，遍历所有项
      *

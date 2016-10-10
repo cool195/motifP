@@ -1,13 +1,5 @@
 <!-- 头部 -->
 @include('header')
-@if($config)
-    <div class="active-banner p-y-10x text-center">
-        <span class="sanBold font-size-md">{{$config}}</span>
-        <a href="/daily">
-            <div class="btn btn-100 btn-share btn-md m-l-20x text-link">Shop now</div>
-        </a>
-    </div>
-@endif
 <!-- 内容 -->
 <section class="m-t-40x">
     <div class="container" id="checkoutView" data-status="true">
@@ -278,10 +270,10 @@
                 <div class="p-a-20x addPromotionCode disabled">
                     <div class="goback-toAdd"><i class="iconfont icon-arrow-left font-size-lg p-r-10x"></i></div>
                     <div class="invite-content addPromotion-content">
-                        <p class="helveBold font-size-llxx m-t-40x">Add New Promotions</p>
+                        <p class="helveBold font-size-llxx m-t-40x">Add New Promotion Code</p>
                         <div class="addCode-input m-t-20x text-left">
                             <input type="text" class="form-control contrlo-lg text-primary m-b-10x" name="cps" value=""
-                                   placeholder="Enter Your Promotions Code Here">
+                                   placeholder="Enter Your Promotion Code Here">
                                     <span class="warning-info text-warning off">
                                         <i class="iconfont icon-caveat p-r-5x"></i>
                                         <span class="font-size-base invalidText"></span>
