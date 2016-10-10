@@ -186,7 +186,7 @@ function HideSeeMore(seemoreName) {
             $btnNext.hide();
             $btnPrev.hide();
             $(this).parent().hover(function () {
-                if (itemNum > 4) {
+                if (itemNum > 3) {
                     $btnNext.show();
                     $btnPrev.show();
                 }

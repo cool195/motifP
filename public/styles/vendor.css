@@ -3035,6 +3035,7 @@ fieldset[disabled] a.btn {
   color: #6d91ff;
   background-color: whitesmoke;
   border-color: #547eff;
+  opacity: .9;
 }
 
 .btn-gray:focus, .btn-gray.focus {

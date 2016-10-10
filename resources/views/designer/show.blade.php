@@ -43,7 +43,7 @@
                         </div>
 
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
-                        <div class="p-t-15x p-l-15x">
+                        <div class="p-t-20x p-l-15x">
                         @endif
                             @if(!empty($designer['instagram_link']))
                                 <a href="{{$designer['instagram_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-ins.png"></a>
