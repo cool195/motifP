@@ -261,8 +261,8 @@
         <!-- 订单未支付 支付按钮 -->
         <hr class="hr-base m-a-0">
         <div class="text-right p-a-20x">
-            <a href="/payagain/@{{  $value.order_no }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Credit Card</a>
-            <a href="/payagain/@{{  $value.order_no }}/1" class="btn btn-primary btn-lg btn-200">PayPal</a>
+            <a href="/payagain/@{{  $value.order_no }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Pay with Credit Card</a>
+            <a href="/payagain/@{{  $value.order_no }}/1" class="btn btn-primary btn-lg btn-200">Pay with Paypal</a>
         </div>
         @{{ /if }}
 
