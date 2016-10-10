@@ -269,7 +269,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function() {
     Route::post('/askshopping', 'AskController@install');
 });
 
-Route::get('404',function (){
+Route::get('error',function (){
     abort(404);
 });
 // Ask End
