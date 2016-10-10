@@ -1,6 +1,6 @@
 @include('header', ['title' => 'shopping', 'cid' =>$cid])
 <!-- 内容 -->
-<section class="m-t-5x">
+<section style="margin-top: 1px;">
     <!-- 商品类别 二级导航 -->
   {{--  <div class="bg-white product-category">
         <div class="container">

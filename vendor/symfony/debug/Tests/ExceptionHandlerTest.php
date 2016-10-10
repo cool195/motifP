@@ -62,7 +62,7 @@ class ExceptionHandlerTest extends \PHPUnit_Framework_TestCase
         $this->assertContains('Sorry, the page you are looking for could not be found.', $response);
 
         $expectedHeaders = array(
-            array('HTTP/1.0 404', true, null),
+            array('HTTP/1.0 error', true, null),
             array('Content-Type: text/html; charset=iso8859-1', true, null),
         );
 

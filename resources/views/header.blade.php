@@ -109,7 +109,7 @@
                             <li class="@if('Promotions' == $title) active @endif "><a href="/promocode">Promotions</a></li>
                             <li><a href="/invitefriends">Invite Friends</a></li>
                             <li class="@if('Change Profile' == $title) active @endif "><a href="/user/changeprofile">Settings</a></li>
-                            <li><a href="/signout">Log out</a></li>
+                            <li><a href="/signout">Sign out</a></li>
                         </ul>
                     </div>
                 </li>
