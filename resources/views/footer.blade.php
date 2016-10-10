@@ -1,7 +1,7 @@
 <footer>
     <div class="container p-x-40x">
         <div class="text-center m-b-40x p-t-10x">
-            <a href="/daily"><img class="" src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png" alt="logo"></a>
+            <a href="/daily"><img class="" src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png{{config('runtime.V')}}" alt="logo"></a>
         </div>
         <div class="row">
             <div class="col-md-3 col-xs-6">
@@ -26,12 +26,12 @@
                     <div class="sanBold font-size-sm m-b-20x">Download</div>
                     <div class="list-group-item">
                         <a href="https://itunes.apple.com/us/app/id1125850409" class="btn btn-black">
-                            <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png 3x">
+                            <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png{{config('runtime.V')}} 3x">
                         </a>
                     </div>
                     <div class="list-group-item">
                         <a href="https://play.google.com/store/apps/details?id=me.motif.motif" class="btn btn-black">
-                            <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png 3x">
+                            <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png{{config('runtime.V')}} 3x">
                         </a>
                     </div>
                 </div>
@@ -57,10 +57,10 @@
         <div class="p-y-10x text-center">
             <div class="sanBold font-size-sm m-b-20x text-white">Payment Accepted</div>
             <div>
-                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/paypal@2x.png" srcset="{{config('runtime.Image_URL')}}/images/payment/paypal@3x.png 2x">
-                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/mastercard@2x.png" srcset="{{config('runtime.Image_URL')}}/images/payment/mastercard@3x.png 2x">
-                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/maestro@2x.png" srcset="{{config('runtime.Image_URL')}}/images/payment/maestro@3x.png 2x">
-                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/visa@2x.png" srcset="{{config('runtime.Image_URL')}}/images/payment/visa@3x.png 2x">
+                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/paypal@2x.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/payment/paypal@3x.png{{config('runtime.V')}} 2x">
+                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/mastercard@2x.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/payment/mastercard@3x.png{{config('runtime.V')}} 2x">
+                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/maestro@2x.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/payment/maestro@3x.png{{config('runtime.V')}} 2x">
+                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/visa@2x.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/payment/visa@3x.png{{config('runtime.V')}} 2x">
             </div>
         </div>
         <div class="p-t-10x m-t-10x text-center text-white font-size-xs text-Copyright">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
@@ -74,8 +74,6 @@
 </div>
 
 </body>
-<script src="/scripts/vendor.js"></script>
-<script src="/scripts/common.js"></script>
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57d90b9d79b97dce"></script>
+<script src="/scripts/vendor.js{{config('runtime.V')}}"></script>
+<script src="/scripts/common.js{{config('runtime.V')}}"></script>
 </html>

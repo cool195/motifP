@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8">
     <title>{{$title or 'Exclusive Fashion Accessories Designed by the World’s Top Fashion Bloggers, Instagrammers and Digital Influencers'}}</title>
-    <meta property="og:image" content="{{$ogimage or config('runtime.Image_URL').'/images/logo/logo.png'}}">
+    <meta property="og:image" content="{{$ogimage or config('runtime.Image_URL').'/images/logo/logo.png'}}{{config('runtime.V')}}">
     <meta name="description"
           content="{{$description or 'Your style is unique and cutting edge - your fashion should be too.Exclusive, limited edition accessories designed by the world’s top fashion bloggers, Instagrammers and digital influencers.'}}">
     <meta name="keywords"
           content="{{$keywords or 'fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy'}}">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="apple-touch-icon" href="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png">
-    <link rel="stylesheet" href="{{config('runtime.Image_URL')}}/styles/vendor.css">
-    <link rel="stylesheet" href="{{config('runtime.Image_URL')}}/styles/common.css">
+    <link rel="apple-touch-icon" href="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png{{config('runtime.V')}}">
+    <link rel="stylesheet" href="{{config('runtime.Image_URL')}}/styles/vendor.css{{config('runtime.V')}}">
+    <link rel="stylesheet" href="{{config('runtime.Image_URL')}}/styles/common.css{{config('runtime.V')}}">
     <script type='text/javascript'>
         var _vds = _vds || [];
         window._vds = _vds;
@@ -40,10 +40,10 @@
             </div>
             <div class="col-md-6 text-right">
                 <a href="https://itunes.apple.com/us/app/id1125850409" class="btn btn-black m-r-20x p-x-10x p-y-5x">
-                    <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png 3x">
+                    <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png{{config('runtime.V')}} 3x">
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=me.motif.motif" class="btn btn-black p-x-10x p-y-5x">
-                    <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png 3x">
+                    <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png{{config('runtime.V')}} 3x">
                 </a>
             </div>
         </div>
@@ -55,7 +55,7 @@
         <nav class="navbar-left">
             <ul class="nav navbar-primary clearfix">
                 <li class="nav-item nav-logo"><a href="/daily">
-                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png" width="98" height="32" alt="logo"></a>
+                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}}" width="98" height="32" alt="logo"></a>
                 </li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if('daily' == $title) active @endif" href="/daily">DAILY</a></li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if('designer' == $title) active @endif" href="/designer">DESIGNERS</a></li>
@@ -95,8 +95,8 @@
                 <li class="nav-item p-x-10x header-img">
                     <a href="/user/changeprofile" class="nav-link">
                         <img class="img-circle img-border-white img-lazy"
-                             src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                             data-original="@if(Session::has('user.icon')){{config('runtime.CDN_URL').'/n1/'.Session::get('user.icon')}}@else{{config('runtime.Image_URL').'/images/icon/apple-touch-icon.png'}}@endif"
+                             src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png{{config('runtime.V')}}"
+                             data-original="@if(Session::has('user.icon')){{config('runtime.CDN_URL').'/n1/'.Session::get('user.icon')}}@else{{config('runtime.Image_URL').'/images/icon/apple-touch-icon.png'}}{{config('runtime.V')}}@endif"
                              width="40" height="40" alt="">
                     </a>
                     <!--个人中心下拉框-->
