@@ -115,7 +115,7 @@
                                 <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
                                     <img class="img-fluid img-lazy figure"
                                          data-original="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}"
-                                         src="{{env('CDN_Static')}}/images/product/bg-product@336.png" alt="">
+                                         src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                                 </a>
                         @endif
                     @endif
