@@ -68,6 +68,11 @@ class PageController extends BaseController
         return view('Other.page-payment');
     }
 
+    public function download()
+    {
+        return view('Other.download');
+    }
+
 }
 
 ?>

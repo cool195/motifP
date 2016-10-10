@@ -254,7 +254,10 @@ Route::group(['middleware' => 'pcguide'], function () {
 
     Route::get('/saleinfo', 'PageController@saleinfo');
 
+    Route::get('/download', 'PageController@download');
+
 });
+
 // Page Start
 
 
