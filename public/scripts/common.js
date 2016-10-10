@@ -2333,7 +2333,7 @@ function HideSeeMore(seemoreName) {
         $(function () {
             var ProductListNum = $('.productList-item').length;
             $('.productList-seeMore').show();
-            if (ProductListNum < 16) {
+            if (ProductListNum < 32) {
                 HideSeeMore('.productList-seeMore');
             }
         })
