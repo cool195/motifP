@@ -171,6 +171,8 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::get('/user/changeprofile', 'UserController@profile');
 
+    Route::get('/user/setting', 'UserController@profile');
+
     Route::get('/invitefriends', 'UserController@inviteFriends');
 
     Route::get('/promocode', 'UserController@promotions');

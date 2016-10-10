@@ -1494,6 +1494,24 @@ footer .text-Copyright{
   padding: 6px 0;
 }
 
+.motif-download-up{
+  background-color: #eceef2;
+}
+.motif-download-down{
+  background-color: #f6f7fa;
+  min-height: 52vh;
+}
+
+.download-img{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 540px;
+}
+.download-footer{
+  min-height: 10vh;
+}
+
 @media screen and (max-width: 1460px) {
   .container {
     max-width: 960px;
