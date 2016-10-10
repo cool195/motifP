@@ -263,6 +263,22 @@
                 @endforeach
             @endif
         </div>
+
+        <!-- designer 底部 follow -->
+        <div class="font-size-md text-primary p-y-15x p-x-15x">
+            <div class="text-center">
+                <div>Love this collection? Follow Rae on our free app for early access to shop future collections.</div>
+                <div class="p-t-15x">
+                    @if(Session::has('user'))
+                        <div class="btn btn-gray btn-sm p-x-20x btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
+                             data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>
+                    @else
+                        <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designer_id']}}">Follow</a>
+                    @endif
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
