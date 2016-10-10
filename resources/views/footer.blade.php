@@ -74,6 +74,6 @@
 </div>
 
 </body>
-<script src="/scripts/vendor.js{{config('runtime.V')}}"></script>
-<script src="/scripts/common.js{{config('runtime.V')}}"></script>
+<script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
+<script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
 </html>
