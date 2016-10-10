@@ -30,7 +30,6 @@ a:focus,input:focus {
 
 header {
   background-color: #ffffff;
-  height: 68px;
 }
 
 footer {
@@ -1492,6 +1491,24 @@ footer .text-Copyright{
 .download-info{
   background-color: #e9ebf0;
   padding: 6px 0;
+}
+
+.motif-download-up{
+  background-color: #eceef2;
+}
+.motif-download-down{
+  background-color: #f6f7fa;
+  min-height: 52vh;
+}
+
+.download-img{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 540px;
+}
+.download-footer{
+  min-height: 10vh;
 }
 
 @media screen and (max-width: 1460px) {

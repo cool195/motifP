@@ -1,44 +1,18 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>NotFound 404</title>
-        <style>
-            html, body {
-                height: 100%;
-            }
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato', sans-serif;
-            }
+@include('header', ['title' => ""])
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">404</div>
-            </div>
+<section class="m-y-40x">
+    <div class="container text-center p-y-40x">
+        <div class="order_comfirmed_content">
+            <img src="{{config('runtime.Image_URL')}}/images/error/404@2x.png" srcset="{{config('runtime.Image_URL')}}/images/error/404@3x.png 2x">
+            <h3 class="helveBold m-b-20x m-t-30x text-primary">Seems like you're lost…</h3>
+            <p class="p-t-20x">
+                Your requested url <span>XXX</span> was not found<br>
+                You may want to
+            </p>
+            <a href="###" class="btn btn-primary btn-lg btn-350">Go Home</a>
         </div>
-    </body>
-</html>
+    </div>
+</section>
+
+@include('footer')

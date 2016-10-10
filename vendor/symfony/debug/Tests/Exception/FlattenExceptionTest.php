@@ -38,7 +38,7 @@ class FlattenExceptionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('500', $flattened->getStatusCode());
 
         $flattened = FlattenException::create(new NotFoundHttpException());
-        $this->assertEquals('404', $flattened->getStatusCode());
+        $this->assertEquals('error', $flattened->getStatusCode());
 
         $flattened = FlattenException::create(new UnauthorizedHttpException('Basic realm="My Realm"'));
         $this->assertEquals('401', $flattened->getStatusCode());
