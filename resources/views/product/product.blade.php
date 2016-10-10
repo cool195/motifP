@@ -12,7 +12,7 @@
                         @if(isset($data['productImages']))
                             @foreach($data['productImages'] as $key => $image)
                                 @if(0 == $key)
-                                    <li style="display:block">
+                                    <li style="display:block; width: 100%;">
                                         <a href="{{config('runtime.CDN_URL')}}/n0/{{$image['img_path']}}"
                                            class="jqzoom" rel="gal1" title="triumph" id="jqzoom">
                                             <img class="img-fluid product-bigImg img-lazy"
