@@ -833,8 +833,28 @@ footer .text-Copyright{
 .product-category {
   box-shadow: 0px 2px 7px rgba(196, 200, 211, 0.5);
 }
-
-.category-item {
+.category-item{
+  position: relative;
+}
+.category-item a{
+  display: inline-block;
+}
+.category-item .triangle-up{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  display: none;
+}
+.category-item.active .triangle-up,.category-item:hover .triangle-up{
+  display: block;
+}
+.category-item.active a,.category-item:hover a{
+  color: #6d91ff;
+  cursor: pointer;
+}
+/*.category-item {
   text-align: center;
   color: #36405b;
   opacity: .6;
@@ -863,7 +883,7 @@ footer .text-Copyright{
           transform: scale(1.06, 1.06);
   -webkit-transition: all 150ms ease;
   transition: all 150ms ease;
-}
+}*/
 
 .designer-item {
   -ms-flex-wrap: wrap;
@@ -994,42 +1014,6 @@ footer .text-Copyright{
   display: block;
   min-width: 6rem;
   text-align: right;
-}
-/* shopping 下拉二级菜单*/
-.dropdown-shopping:hover .nav-shopping-hover{
-  display: block;
-}
-.nav-shopping-hover{
-  position: absolute;
-  left: 0;
-  z-index: 100;
-  white-space: nowrap;
-  width: 100%;
-  text-align: center;
-  display: none;
-}
-.nav-shopping-hover li{
-  display: inline-block;
-  position: relative;
-}
-.nav-shopping-hover li a{
-  display: inline-block;
-}
-.nav-shopping-hover li .triangle-up{
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  display: none;
-}
-.nav-shopping-hover li.active a, .nav-shopping-hover li:hover a{
-  color: #6d91ff;
-  cursor: pointer;
-}
-.nav-shopping-hover li.active .triangle-up,.nav-shopping-hover li:hover .triangle-up{
-  display: block;
-  color: red;
 }
 /*个人中心下拉框*/
 .dropdown-nav-hover li {
