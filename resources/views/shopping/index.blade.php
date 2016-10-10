@@ -2,7 +2,6 @@
 <!-- 内容 -->
 <section class="m-t-5x">
     <!-- 商品类别 二级导航 -->
-
   {{--  <div class="bg-white product-category">
         <div class="container">
             <nav class="nav navbar-nav">
@@ -21,7 +20,6 @@
             </nav>
         </div>
     </div>--}}
-
     <div class="bg-white product-category">
         <div class="container">
             <nav class="nav navbar-nav">
@@ -37,8 +35,6 @@
             </nav>
         </div>
     </div>
-
-
     <!-- 商品列表 -->
     <div class="container m-t-20x m-b-40x" id="productList-container" data-categoryid="{{$cid}}" data-pagenum="1" data-loading="false">
         <div class="row">
