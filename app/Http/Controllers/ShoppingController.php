@@ -33,7 +33,7 @@ class ShoppingController extends BaseController
             'uuid' => $_COOKIE['uid'],
             'cid' => $request->input('cid', $cid),
             'pagenum' => $request->input('pagenum', 1),
-            'pagesize' => $request->input('pagesize', 16),
+            'pagesize' => $request->input('pagesize', 32),
             'extra' => $request->input('extra_kv', "")
         );
         $data = $this->request('rec', $params);
