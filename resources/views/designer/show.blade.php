@@ -43,22 +43,22 @@
                         </div>
 
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
-                        <div class="p-t-20x p-l-15x">
+                        <div class="p-t-20x p-l-15x font-size-lxx">
                         @endif
                             @if(!empty($designer['instagram_link']))
-                                <a href="{{$designer['instagram_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-ins.png"></a>
+                                <a href="{{$designer['instagram_link']}}" class="m-r-20x"><i class="iconfont icon-instagram1"></i></a>
                             @endif
                             @if(!empty($designer['snapchat_link']))
-                                <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-snapchat@2x.png"></a>
+                                <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><i class="iconfont icon-snapchat"></i></a>
                             @endif
                             @if(!empty($designer['youtube_link']))
-                                <a href="{{$designer['youtube_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-youtube@2x.png"></a>
+                                <a href="{{$designer['youtube_link']}}" class="m-r-20x"><i class="iconfont icon-youtube1"></i></a>
                             @endif
                             @if(!empty($designer['facebook_link']))
-                                <a href="{{$designer['facebook_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-fac.png"></a>
+                                <a href="{{$designer['facebook_link']}}" class="m-r-20x"><i class="iconfont icon-facebook1"></i></a>
                             @endif
                             @if(!empty($designer['blog_link']))
-                                <a href="{{$designer['blog_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-blog@2x.png"></a>
+                                <a href="{{$designer['blog_link']}}" class="m-r-20x"><i class="iconfont icon-blog"></i></a>
                             @endif
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                         </div>

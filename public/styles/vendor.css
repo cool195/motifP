@@ -7794,6 +7794,9 @@ a.bg-red:focus, a.bg-red:hover {
 .icon-instagram1:before { content: "\e637"; }
 .icon-facebook1:before { content: "\e641"; }
 .icon-top:before { content: "\e644"; }
+.icon-snapchat:before { content: "\e649"; }
+.icon-youtube1:before { content: "\e645"; }
+.icon-blog:before { content: "\e646"; }
 .footer-icon{
   font-size: 24px;
 }
