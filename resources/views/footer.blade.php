@@ -57,10 +57,10 @@
         <div class="p-y-10x text-center">
             <div class="sanBold font-size-sm m-b-20x text-white">Payment Accepted</div>
             <div>
-                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/maestrcard@2x.png" >
-                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/maestro@2x.png" >
-                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/paypal@2x.png" >
-                <img class="p-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/visa@2x.png" >
+                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/paypal@2x.png" srcset="{{config('runtime.Image_URL')}}/images/payment/paypal@3x.png 2x">
+                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/mastercard@2x.png" srcset="{{config('runtime.Image_URL')}}/images/payment/mastercard@3x.png 2x">
+                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/maestro@2x.png" srcset="{{config('runtime.Image_URL')}}/images/payment/maestro@3x.png 2x">
+                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/visa@2x.png" srcset="{{config('runtime.Image_URL')}}/images/payment/visa@3x.png 2x">
             </div>
         </div>
         <div class="p-t-10x m-t-10x text-center text-white font-size-xs text-Copyright">Copyright © 2016 Motif Group LLC. All rights reserved.</div>

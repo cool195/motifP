@@ -36,12 +36,21 @@
         <nav class="navbar-left">
             <ul class="nav navbar-primary clearfix">
                 <li class="nav-item nav-logo"><a href="/daily">
-                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png" alt="logo"></a>
+                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png" width="98" height="32" alt="logo"></a>
                 </li>
                 <li class="nav-item"><a class="nav-link sanBold @if('daily' == $title) active @endif" href="/daily">DAILY</a></li>
                 <li class="nav-item"><a class="nav-link sanBold @if('designer' == $title) active @endif" href="/designer">DESIGNERS</a></li>
-                <li class="nav-item dropdown-shopping">
+                <li class="nav-item dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
+                    <a href="javascript:void(0)" class="dropdown-toggle nav-link sanBold @if('shopping' == $title) active @endif" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
+                    <ul class="dropdown-menu dropdown-nav-hover">
+                        @foreach($Category->getShoppingCategoryList() as $category)
+                            <li class="dropdown-item @if('shopping' == $title && $cid == $category['category_id']) active @endif"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
+
+                        @endforeach
+                    </ul>
+                    {{--<li class="nav-item dropdown-shopping">--}}
+                    {{--@inject('Category', 'App\Http\Controllers\ShoppingController')
                     <a href="javascript:void(0)" class="nav-link dropdown-toggle sanBold @if('shopping' == $title) active @endif">SHOPPING</a>
                     <ul class="nav-shopping-hover bg-white p-x-20x box-shadow">
                         @foreach($Category->getShoppingCategoryList() as $category)
@@ -50,12 +59,6 @@
                                     <span class="triangle-up"></span>
                                 </a>
                             </li>
-                        @endforeach
-                    </ul>
-
-                    {{--<ul class="dropdown-menu dropdown-nav-hover">
-                        @foreach($Category->getShoppingCategoryList() as $category)
-                            <li class="dropdown-item @if('shopping' == $title && $cid == $category['category_id']) active @endif"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
                         @endforeach
                     </ul>--}}
                 </li>
