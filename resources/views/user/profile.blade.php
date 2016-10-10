@@ -20,7 +20,7 @@
                                              data-original="@if(Session::has('user.icon')){{config('runtime.CDN_URL').'/n1/'.Session::get('user.icon')}}@else{{config('runtime.Image_URL').'/images/icon/apple-touch-icon.png'}}@endif" width="116"
                                              height="116" data-url="{{config('runtime.CDN_URL')}}" id="avatarUrl">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input id="profileIcon" type="file" name="file">
+                                        <input id="profileIcon" type="file" name="file" accept="image/*">
                                         <div class="bg-uploadProfileLoading"></div>
                                     </a>
                                     <div class="loading uploadProfile-loading" style="display: none">

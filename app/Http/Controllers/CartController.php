@@ -48,6 +48,9 @@ class CartController extends BaseController
         $_accountList = $this->getCartAccountList($request,-1,"","",$result['data']['receiving_id']);
         $logisticsList = $this->getLogisticsList($result['data']['country_name_sn'],$_accountList['data']['total_amount']+$_accountList['data']['vas_amount']);
         $accountList = $this->getCartAccountList($request,$logisticsList['data']['list'][0]['logistics_type'],"","",$result['data']['receiving_id']);
+        if(empty($accountList['data'])){
+            return redirect('cart');
+        }
         return view('cart.checkout', ['accountList' => $accountList['data'], 'logisticsList' => $logisticsList['data'],'config'=>$config['data']['cart_checkout_top_notification']]);
     }
 

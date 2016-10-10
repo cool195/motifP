@@ -43,22 +43,22 @@
                         </div>
 
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
-                        <div class="p-t-20x p-l-15x">
+                        <div class="p-t-20x p-l-15x font-size-lxx">
                         @endif
                             @if(!empty($designer['instagram_link']))
-                                <a href="{{$designer['instagram_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-ins.png"></a>
+                                <a href="{{$designer['instagram_link']}}" class="m-r-20x"><i class="iconfont icon-instagram1"></i></a>
                             @endif
                             @if(!empty($designer['snapchat_link']))
-                                <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-snapchat@2x.png"></a>
+                                <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><i class="iconfont icon-snapchat"></i></a>
                             @endif
                             @if(!empty($designer['youtube_link']))
-                                <a href="{{$designer['youtube_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-youtube@2x.png"></a>
+                                <a href="{{$designer['youtube_link']}}" class="m-r-20x"><i class="iconfont icon-youtube1"></i></a>
                             @endif
                             @if(!empty($designer['facebook_link']))
-                                <a href="{{$designer['facebook_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-fac.png"></a>
+                                <a href="{{$designer['facebook_link']}}" class="m-r-20x"><i class="iconfont icon-facebook1"></i></a>
                             @endif
                             @if(!empty($designer['blog_link']))
-                                <a href="{{$designer['blog_link']}}" class="m-r-20x"><img src="{{config('runtime.Image_URL')}}/images/icon/icon-blog@2x.png"></a>
+                                <a href="{{$designer['blog_link']}}" class="m-r-20x"><i class="iconfont icon-blog"></i></a>
                             @endif
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                         </div>
@@ -188,7 +188,7 @@
                                                     <i class="iconfont btn-wish font-size-lxx @if(in_array($spu, $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i>
                                                 </span>
                                             @else
-                                                <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$spu}}"></i></a>
+                                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$spu}}"></i></span>
                                             @endif
                                         </div>
                                         <div class="price-caption helveBold">
@@ -242,7 +242,7 @@
                         @if(Session::has('user'))
                             <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if(in_array($product['spu'], $wishlist->wishlist())) active @endif" data-spu="{{$product['spu']}}"></i></span>
                         @else
-                            <a class="product-heart btn-heart" href="javascript:void(0)"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$product['spu']}}"></i></a>
+                            <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$product['spu']}}"></i></span>
                         @endif
 
                     </div>
@@ -263,6 +263,22 @@
                 @endforeach
             @endif
         </div>
+
+        <!-- designer 底部 follow -->
+        <div class="font-size-md text-primary p-y-15x p-x-15x">
+            <div class="text-center">
+                <div>Love this collection? Follow Rae on our free app for early access to shop future collections.</div>
+                <div class="p-t-15x">
+                    @if(Session::has('user'))
+                        <div class="btn btn-gray btn-sm p-x-20x btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
+                             data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>
+                    @else
+                        <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designer_id']}}">Follow</a>
+                    @endif
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 

@@ -1,7 +1,7 @@
 <footer>
     <div class="container p-x-40x">
         <div class="text-center m-b-40x p-t-10x">
-            <a href="/daily"><img class="" src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png{{config('runtime.V')}}" alt="logo"></a>
+            <a href="/daily"><img class="" src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png{{config('runtime.V')}}" alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/logo-white@2x.png 2x"></a>
         </div>
         <div class="row">
             <div class="col-md-3 col-xs-6">
@@ -41,15 +41,12 @@
                     <div class="sanBold font-size-sm m-b-20x">Follow Us</div>
                     <a href="https://www.facebook.com/motifme" class="btn btn-share btn-circle m-r-20x">
                         <i class="iconfont icon-facebook1 footer-icon"></i>
-                        {{--<img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-fac.png">--}}
                     </a>
                     <a href="https://www.instagram.com/motifme/" class="btn btn-share btn-circle m-r-20x">
                         <i class="iconfont icon-instagram1 footer-icon"></i>
-                        {{--<img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-ins.png">--}}
                     </a>
                     <a href="https://www.pinterest.com/motifme/" class="btn btn-share btn-circle m-r-20x">
                         <i class="iconfont icon-pinterest1 footer-icon"></i>
-                        {{--<img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-pin.png">--}}
                     </a>
                 </div>
             </div>
@@ -74,6 +71,6 @@
 </div>
 
 </body>
-<script src="/scripts/vendor.js{{config('runtime.V')}}"></script>
-<script src="/scripts/common.js{{config('runtime.V')}}"></script>
+<script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
+<script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
 </html>

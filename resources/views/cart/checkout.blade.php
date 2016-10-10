@@ -238,7 +238,7 @@
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
                                 <input class="methodRadio" type="radio"
-                                       @if($k==0){{'checked'}}@endif name="shippingMethod"
+                                       @if($k==0){{'checked=checked'}}@endif name="shippingMethod"
                                        data-price="{{$list['pay_price']}}"
                                        value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}

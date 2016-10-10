@@ -96,7 +96,7 @@
                 <li class="nav-item">
                     <a href="/signout">
                         <div class="flex flex-alignCenter p-y-5x p-x-40x">
-                            <span class="font-size-md">Log Out</span>
+                            <span class="font-size-md">Sign out</span>
                         </div>
                     </a>
                 </li>

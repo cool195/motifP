@@ -7794,6 +7794,9 @@ a.bg-red:focus, a.bg-red:hover {
 .icon-instagram1:before { content: "\e637"; }
 .icon-facebook1:before { content: "\e641"; }
 .icon-top:before { content: "\e644"; }
+.icon-snapchat:before { content: "\e649"; }
+.icon-youtube1:before { content: "\e645"; }
+.icon-blog:before { content: "\e646"; }
 .footer-icon{
   font-size: 24px;
 }
@@ -8239,23 +8242,20 @@ html.remodal-is-locked {
 }
 
 .zoomPreload {
-  -moz-opacity: 0.8;
-  opacity: 0.8;
-  filter: alpha(opacity=80);
-  color: #333;
-  font-size: 12px;
+  color: #fff;
+  font-size: 1.125rem;
   text-decoration: none;
   background-color: white;
   padding: 8px;
   text-align: center;
   z-index: 110;
-  width: 90px;
-  height: 43px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
   left: 0;
-  *width: 100px;
-  *height: 49px;
+  padding-top: 46%;
 }
 
 .zoomPup {
