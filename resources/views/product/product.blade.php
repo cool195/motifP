@@ -243,7 +243,7 @@
                         <div class="text-center p-y-30x">
                         @if(Session::has('user'))
                             <a href="javascript:void(0);" id="productAddBag"
-                               class="btn btn-primary btn-lg btn-350 btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']==0 || $data['status_code'] != 100){{'disabled'}}@endif"
+                               class="btn btn-primary btn-lg btn-350 btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']!=1 || $data['status_code'] != 100){{'disabled'}}@endif"
                                data-action="post"> Add to Bag </a>
                         @else
                             <a href="/login" class="btn btn-primary btn-lg btn-350 btn-addToBag"> Add to Bag </a>
