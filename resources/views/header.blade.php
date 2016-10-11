@@ -129,7 +129,7 @@
                     </a>
                 </li>
                 @else
-                    <li class="nav-item p-x-10x"><a class="nav-link" href="/login">LOGIN</a></li>
+                    <li class="nav-item p-x-10x"><a class="nav-link" href="/login">Sign in</a></li>
                     <li class="nav-item p-x-10x"><a class="nav-link" href="/register">REGISTER</a></li>
                 @endif
             </ul>
