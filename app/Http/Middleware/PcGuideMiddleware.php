@@ -19,7 +19,7 @@ class PcGuideMiddleware
         {
             return redirect('http://m.motif.me'.$request->getRequestUri());
         }else{
-            if($_SERVER['HTTP_HOST'] != 'www.motif.me'){
+            if($_SERVER['HTTP_HOST'] != 'www.motif.me' && env('APP_ENV') == 'production'){
                 return redirect('http://www.motif.me'.$request->getRequestUri());
             }else{
                 return $next($request);
