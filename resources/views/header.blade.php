@@ -36,7 +36,7 @@
         <div class="row flex flex-alignCenter">
             <div class="col-md-6">
                 <i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm p-l-10x"></i>
-                <span class="text-main font-size-base p-l-15x">Visit motif.me/rae in your mobile browser, or download the app!</span>
+                <span class="text-main font-size-base p-l-15x">Visit www.motif.me in your mobile browser, or download the app!</span>
             </div>
             <div class="col-md-6 text-right">
                 <a href="https://itunes.apple.com/us/app/id1125850409" class="btn btn-black m-r-20x p-x-10x p-y-5x">
@@ -55,7 +55,7 @@
         <nav class="navbar-left">
             <ul class="nav navbar-primary clearfix">
                 <li class="nav-item nav-logo"><a href="/daily">
-                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png{{config('runtime.V')}}" alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x"></a>
+                    <img class="img-fluid" src="/images/logo/logo.png{{config('runtime.V')}}" alt="logo" srcset="/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x"></a>
                 </li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if('daily' == $title) active @endif" href="/daily">DAILY</a></li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if('designer' == $title) active @endif" href="/designer">DESIGNERS</a></li>
@@ -109,7 +109,7 @@
                             <li class="@if('Promotions' == $title) active @endif "><a href="/promocode">Promotions</a></li>
                             <li><a href="/invitefriends">Invite Friends</a></li>
                             <li class="@if('Change Profile' == $title) active @endif "><a href="/user/changeprofile">Settings</a></li>
-                            <li><a href="/signout">Sign out</a></li>
+                            <li><a href="/signout">Sign Out</a></li>
                         </ul>
                     </div>
                 </li>
@@ -129,7 +129,7 @@
                     </a>
                 </li>
                 @else
-                    <li class="nav-item p-x-10x"><a class="nav-link" href="/login">LOGIN</a></li>
+                    <li class="nav-item p-x-10x"><a class="nav-link" href="/login">SIGN IN</a></li>
                     <li class="nav-item p-x-10x"><a class="nav-link" href="/register">REGISTER</a></li>
                 @endif
             </ul>
