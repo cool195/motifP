@@ -59,6 +59,9 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::post('/checkStock', 'ShoppingController@checkStock');
 
+    Route::get('/rae', function (){
+        return redirect("/designer/99");
+    });
 });
 
 //Shopping End

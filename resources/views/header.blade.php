@@ -36,7 +36,7 @@
         <div class="row flex flex-alignCenter">
             <div class="col-md-6">
                 <i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm p-l-10x"></i>
-                <span class="text-main font-size-base p-l-15x">Visit motif.me/rae in your mobile browser, or download the app!</span>
+                <span class="text-main font-size-base p-l-15x">Visit www.motif.me in your mobile browser, or download the app!</span>
             </div>
             <div class="col-md-6 text-right">
                 <a href="https://itunes.apple.com/us/app/id1125850409" class="btn btn-black m-r-20x p-x-10x p-y-5x">
