@@ -20,7 +20,7 @@ class PcGuideMiddleware
             return redirect('http://m.motif.me'.$request->getRequestUri());
         }else{
             if($_SERVER['HTTP_HOST'] == 'motif.me'){
-                echo '<script language="javascript" type="text/javascript"> window.location.href="http://www.motif.me'.$request->getRequestUri().'"</script>';
+                return redirect('http://www.motif.me'.$request->getRequestUri());
             }else{
                 return $next($request);
             }
