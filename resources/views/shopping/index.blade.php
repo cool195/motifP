@@ -1,4 +1,66 @@
 @include('header', ['title' => 'shopping', 'cid' =>$cid])
+<input type="text" id="productClick-name" value="name" hidden>
+<input type="text" id="productClick-spu" value="1" hidden>
+<input type="text" id="productClick-price" value="1" hidden>
+<script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    // shoppinglist 点击更多 产品埋点
+    function onImpressProduct(item) {
+        var json = [];
+        for(var key in item){
+            json.push({"name":item[key].main_title,"id":item[key].spu,"price":(item[key].skuPrice.sale_price/100).toFixed(2),"brand":"Motif PC","list":"shopping list","position": 1});
+        }
+        dataLayer.push({
+            'event': 'impressProduct',
+            'ecommerce': {
+                'currencyCode': 'EUR',
+                'impressions': json
+            }
+        });
+    }
+
+    // shoppinglist 页面加载 产品埋点
+    dataLayer.push({
+        'ecommerce': {
+            'currencyCode': 'EUR',                       // Local currency is optional.
+            'impressions': [
+                @foreach($productAll['list'] as $product)
+                {
+                    'name': '{{$product['main_title']}}',       // Name or ID is required.
+                    'id': '{{$product['spu']}}',
+                    'price': '{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}',
+                    'brand': 'Motif PC',
+                    'list': 'shopping list',
+                    'position': 1
+                },
+                @endforeach
+            ]
+        }
+    });
+
+    // shoppinglist 点击产品埋点
+    function onProductClick() {
+        var name = document.getElementById('productClick-name').value;
+        var spu = document.getElementById('productClick-spu').value;
+        var price = document.getElementById('productClick-price').value;
+        dataLayer.push({
+            'event': 'productClick',
+            'ecommerce': {
+                'click': {
+                    'actionField': {'list': 'shopping list'},      // Optional list property.
+                    'products': [{
+                        'name': name,                      // Name or ID is required.
+                        'id': spu,
+                        'price': price,
+                        'brand': 'Motif PC',
+                        'position': 1
+                    }]
+                }
+            },
+        });
+    }
+</script>
+
 <!-- 内容 -->
 <section style="margin-top: 1px;">
     <!-- 商品类别 二级导航 -->
@@ -42,7 +104,9 @@
             <div class="col-md-3 col-xs-6">
                 <div class="productList-item">
                     <div class="image-container">
-                        <a href="javascript:void(0)" data-link="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}">
+                        <a href="javascript:void(0)" data-link="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
+                           data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}"
+                           data-price="{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}">
                             <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['main_image_url']}}" alt="商品的名称">
                             <div class="bg-heart"></div>
                         </a>
@@ -94,7 +158,9 @@
 <div class="col-md-3 col-xs-6">
     <div class="productList-item">
         <div class="image-container">
-            <a href="javascript:void(0)" data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}">
+            <a href="javascript:void(0)" data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
+               data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
+               data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
                 <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ $value.main_image_url }}"
                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
                 <div class="bg-heart"></div>
@@ -109,6 +175,8 @@
                 <div class="presale-sign">
                     <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
                     <a href="javascript:void(0)" data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
+                       data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
+                       data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}"
                        class="presale-text helve font-size-sm">LIMITED EDITION</a>
                 </div>
             @{{ /if }}

@@ -135,7 +135,12 @@ function HideSeeMore(seemoreName) {
         $('[data-clk]').unbind('click');
         $('[data-clk]').click(function () {
             var $this = $(this);
-            //onProductClick();
+
+            $('#productClick-name').val($this.data('title'));
+            $('#productClick-spu').val($this.data('spu'));
+            $('#productClick-price').val($this.data('price'));
+
+            onProductClick();
 
             if (undefined != $this.data('link')) {
                 $.ajax({
@@ -398,6 +403,8 @@ function HideSeeMore(seemoreName) {
         } else {
             !$('#delQtySku').hasClass('disabled') || $(this).data('num') > 0 ? pSelAttr() : false;
         }
+
+        $('#addToCart-quantity').val($('#skuQty').html());
     });
 
 
@@ -457,6 +464,10 @@ function HideSeeMore(seemoreName) {
             }
             $(this).addClass('disabled');
             var action = $(this).data('action');
+
+            // 添加购物车埋点
+            onAddToCart();
+
             $.ajax({
                 url: '/cart/add',
                 type: action,
@@ -809,6 +820,8 @@ function HideSeeMore(seemoreName) {
 
     //购物车删除操作
     $('.delCartM').on('click', function () {
+        onRemoveFromCart();
+
         var action = $('#modalDialog').data('action');
         var sku = $('#modalDialog').data('sku');
         var id = $('#modalDialog').data('id');
@@ -835,6 +848,13 @@ function HideSeeMore(seemoreName) {
     $('[data-type="cart-remove"]').on('click', function () {
         $('#modalDialog').data('action', $(this).data('action'));
         $('#modalDialog').data('sku', $(this).data('sku'));
+
+        // 埋点数据
+        $('#removeFromCart-name').val($(this).data('title'));
+        $('#removeFromCart-spu').val($(this).data('spu'));
+        $('#removeFromCart-price').val($(this).data('price'));
+        $('#removeFromCart-quantity').val($(this).data('qtty'));
+
         CartModal.open();
     });
 
@@ -1177,6 +1197,8 @@ function HideSeeMore(seemoreName) {
 
     // 生成订单
     $('.btn-toCheckout').on('click', function () {
+        onCheckout();
+
         if ($('#defaultAddr').data('aid') < 1) {
             checkValid($('input[name="name"]'));
             $("html,body").animate({scrollTop: $('#addrShowHide').offset().top}, 100);
@@ -2421,6 +2443,7 @@ function HideSeeMore(seemoreName) {
                 cid: CategoryId
             }
         }).done(function (data) {
+            onImpressProduct(data.data.list);
             if (data.data === null || data.data === '') {
                 $ProductListontainer.data('pagenum', -1);
                 HideSeeMore('.productList-seeMore');
@@ -2442,6 +2465,12 @@ function HideSeeMore(seemoreName) {
                 $('[data-clk]').unbind('click');
                 $('[data-clk]').bind('click', function () {
                     var $this = $(this);
+
+                    $('#productClick-name').val($this.data('title'));
+                    $('#productClick-spu').val($this.data('spu'));
+                    $('#productClick-price').val($this.data('price'));
+
+                    onProductClick();
 
                     if (undefined !== $this.data('link')) {
                         $.ajax({

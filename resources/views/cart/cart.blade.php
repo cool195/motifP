@@ -1,6 +1,37 @@
 <!-- header start-->
 @include('header', ['title' => 'Cart'])
 <!-- header end-->
+<!-- 横幅 -->
+<input type="text" id="removeFromCart-name" value="" hidden>
+<input type="text" id="removeFromCart-spu" value="" hidden>
+<input type="text" id="removeFromCart-price" value="" hidden>
+<input type="text" id="removeFromCart-quantity" value="" hidden>
+<script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    // 购物车 remove product 埋点
+    function onRemoveFromCart() {
+        var name = document.getElementById('removeFromCart-name').value;
+        var spu = document.getElementById('removeFromCart-spu').value;
+        var price = document.getElementById('removeFromCart-price').value;
+        var quantity = document.getElementById('removeFromCart-quantity').value;
+        dataLayer.push({
+            'event': 'removeFromCart',
+            'ecommerce': {
+                'remove': {
+                    'products': [{
+                        'name': name,
+                        'id': spu,
+                        'price': price,
+                        'brand': 'Motif PC',
+                        'category': '',
+                        'variant': '',
+                        'quantity': quantity
+                    }]
+                }
+            }
+        });
+    }
+</script>
 
 @if($config)
     <div class="active-banner p-y-10x text-center">
@@ -103,7 +134,9 @@
                                         <a class="btn-block cartManage" data-action="save"
                                            data-sku="{{$showSku['sku']}}" href="javascript:;">Save for Later</a><br>
                                         <a class="btn-block" data-type="cart-remove" data-action="delsku"
-                                           data-sku="{{$showSku['sku']}}" href="javascript:;">Remove</a>
+                                           data-sku="{{$showSku['sku']}}" data-spu="{{$showSku['spu']}}"
+                                           data-title="{{$showSku['main_title']}}" data-price="{{number_format(($showSku['sale_price'] / 100), 2)}}"
+                                           data-qtty="{{$showSku['sale_qtty']}}" href="javascript:;">Remove</a>
                                     </div>
                                 </div>
                                 @if(0 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
