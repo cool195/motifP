@@ -142,9 +142,7 @@ function HideSeeMore(seemoreName) {
                     url: $this.data('clk'),
                     type: "GET"
                 });
-                setTimeout(function () {
-                    window.location.href = $this.data('link');
-                }, 100);
+                window.open($this.data('link'));
             }
         })
     })
@@ -2180,9 +2178,8 @@ function HideSeeMore(seemoreName) {
                                 url: $this.data('clk'),
                                 type: "GET"
                             });
-                            setTimeout(function () {
-                                window.location.href = $this.data('link');
-                            }, 100);
+                            window.open($this.data('link'));
+
                         }
                     })
 
@@ -2445,9 +2442,8 @@ function HideSeeMore(seemoreName) {
                             url: $this.data('clk'),
                             type: "GET"
                         });
-                        setTimeout(function () {
-                            window.location.href = $this.data('link');
-                        }, 100);
+                        window.open($this.data('link'));
+
                     }
                 })
 
@@ -2544,9 +2540,7 @@ function HideSeeMore(seemoreName) {
                             url: $this.data('clk'),
                             type: "GET"
                         });
-                        setTimeout(function () {
-                            window.location.href = $this.data('link');
-                        }, 100);
+                        window.open($this.data('link'));
                     }
                 })
                 // end

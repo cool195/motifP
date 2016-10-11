@@ -34,7 +34,7 @@
                                                     : {{ date("M d, Y" ,strtotime($subOrder['create_time'])) }}</h5>
                                                 <p class="m-b-0 p-t-5x">{{ $subOrder['status_explain'] }}</p>
                                             </div>
-                                            <span>
+                                            <span class="text-right" style="width: 28%;">
                                                 <a class="btn btn-primary btn-md"
                                                    href="/order/orderdetail/{{  $subOrder['order_no'] }}">Order Detail</a>
                                             </span>
