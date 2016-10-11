@@ -31,7 +31,7 @@ if (env('APP_ENV') == 'production') {
 } else {
     //测试
     $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';//后台图片服务地址
-    $Image_URL = '';//SelfCDN地址服务
+    $Image_URL = 'http://cdn.pc.motif.me/min';//SelfCDN地址服务
     $API_URL = array('api' => 'http://192.168.0.230', 'rec' => 'http://192.168.0.230');
     $QianHai_URL = 'https://secure.oceanpayment.com/gateway/service/test';
     $paypalclientID = 'AV8SZ3C16kSXKT4-vPI3pRf0Fo2j-kHLj9jDc3Eg346Q74XcbxJyAMlQsSPy3x5iiRFsXhn3xM57Pj4b';
