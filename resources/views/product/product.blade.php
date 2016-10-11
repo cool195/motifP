@@ -1,7 +1,49 @@
 <!-- header start-->
 @include('header',['title'=>$data['main_title'],'description'=>$data['intro_short'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$data['main_image_url']])
 <!-- header end-->
+<!-- 添加购物车 -->
+<input type="text" id="addToCart-quantity" value="1" hidden>
+<script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    // shopping detail 总商品浏览 埋点
+    dataLayer.push({
+        'ecommerce': {
+            'detail': {
+                'actionField': {'list': 'shopping detail'},    // 'detail' actions have an optional list property.
+                'products': [{
+                    'name': '{{$data['main_title']}}',         // Name or ID is required.
+                    'id': '{{ $data['spu'] }}',
+                    'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
+                    'brand': 'Motif PC',
+                    'category': '',
+                    'variant': ''
+                }]
+            }
+        }
+    });
 
+    // shopping detail 加入购物车
+    function onAddToCart() {
+        var quantity = document.getElementById('addToCart-quantity').value;
+        dataLayer.push({
+            'event': 'addToCart',
+            'ecommerce': {
+                'currencyCode': 'EUR',
+                'add': {
+                    'products': [{
+                        'name': '{{$data['main_title']}}',
+                        'id': '{{ $data['spu'] }}',
+                        'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
+                        'brand': 'Motif PC',
+                        'category': '',
+                        'variant': '',
+                        'quantity': quantity
+                    }]
+                }
+            }
+        });
+    }
+</script>
 <!-- 内容 -->
 <section class="m-t-40x">
     <div class="container">

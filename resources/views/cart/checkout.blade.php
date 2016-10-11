@@ -1,5 +1,33 @@
 <!-- 头部 -->
 @include('header')
+<script type="text/javascript">
+    // 支付埋点
+    function onCheckout() {
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+            'event': 'checkout',
+            'ecommerce': {
+                'checkout': {
+                    'actionField': {'step': 1, 'total': '{{ number_format(($data['pay_amount'] / 100), 2)}}'},
+                    'products': [
+                            @foreach($accountList['showSkus'] as $showSku)
+                        {
+                            'name': '{{$showSku['main_title']}}',
+                            'id': '{{$showSku['spu']}}',
+                            'price': '{{ number_format(($showSku['sale_price'] / 100), 2) }}',
+                            'brand': 'Motif PC',
+                            'category': '',
+                            'variant': '',
+                            'quantity': '{{$showSku['sale_qtty']}}'
+                        },
+                        @endforeach
+                    ]
+                }
+            }
+        });
+    }
+</script>
+
 <!-- 内容 -->
 <section class="m-t-40x">
     <div class="container" id="checkoutView" data-status="true">

@@ -1,5 +1,37 @@
 @include('header')
 
+@if(!empty($order))
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+            'ecommerce': {
+                'purchase': {
+                    'actionField': {
+                        'id': '{{ $order['sub_order_no'] }}',
+                        'affiliation': 'Online Store',
+                        'revenue': '{{ number_format($order['total_amount'] / 100, 2) }}',
+                        'tax': '0',
+                        'shipping': '{{ number_format($order['freight_amount'] / 100, 2) }}',
+                        'coupon': ''
+                    },
+                    'products': [
+                            @foreach($order['lineOrderList'] as $lineOrder)
+                        {
+                            'name': '{{ $lineOrder['main_title'] }}',
+                            'id': '{{ $lineOrder['spu'] }}',
+                            'price': '{{ number_format($lineOrder['sale_price'] / 100, 2) }}',
+                            'brand': 'Motif PC',
+                            'category': '',
+                            'quantity': '{{ $lineOrder['sale_qtty'] }}'
+                        },
+                        @endforeach
+                    ]
+                }
+            }
+        });
+    </script>
+    @endif
+
 <!--订单成功主体内容-->
 <section class="m-y-40x">
     <div class="container bg-white text-center">
