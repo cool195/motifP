@@ -1,4 +1,78 @@
 @include('header',['title'=>$designer['nickname'],'description'=>$designer['describe'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$designer['img_video_path']])
+<input type="text" id="productClick-name" value="name" hidden>
+<input type="text" id="productClick-spu" value="1" hidden>
+<input type="text" id="productClick-price" value="1" hidden>
+<script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function onProductClick() {
+        var name = document.getElementById('productClick-name').value;
+        var spu = document.getElementById('productClick-spu').value;
+        var price = document.getElementById('productClick-price').value;
+        dataLayer.push({
+            'event': 'productClick',
+            'ecommerce': {
+                'click': {
+                    'actionField': {'list': 'designer'},      // Optional list property.
+                    'products': [{
+                        'name': name,                      // Name or ID is required.
+                        'id': spu,
+                        'price': price,
+                        'brand': '{{$designer['nickname']}}',
+                        'category': 'designerDetail',
+                        'variant': '',
+                        'position': ''
+                    }]
+                }
+            },
+        });
+    }
+
+    dataLayer.push({
+        'ecommerce': {
+            'currencyCode': 'EUR',                       // Local currency is optional.
+            'impressions': [
+                    @if(!empty($product['infos']))
+                    @foreach($product['infos'] as $k => $value)
+                    @if($value['type']=='product')
+                    @if(isset($value['spus']))
+                    @foreach($value['spus'] as $spu)
+                {
+                    'name': '{{$product['spuInfos'][$spu]['spuBase']['main_title']}}',       // Name or ID is required.
+                    'id': '{{$spu}}',
+                    'price': '{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}',
+                    'brand': '{{$designer['nickname']}}',
+                    'category': 'designerDetail',
+                    'variant': '',
+                    'list': 'designer',
+                    'position': '{{$k}}'
+                },
+                    @endforeach
+                    @endif
+                    @endif
+                    @endforeach
+                    @endif
+
+
+                    @if(isset($productAll['data']['list']))
+                    @foreach($productAll['data']['list'] as $k=>$value)
+                {
+                    'name': '{{$value['main_title']}}',       // Name or ID is required.
+                    'id': '{{$value['spu']}}',
+                    'price': '{{number_format($value['skuPrice']['sale_price']/100,2)}}',
+                    'brand': '{{$designer['nickname']}}',
+                    'category': 'designerDetail',
+                    'variant': '',
+                    'list': 'designer',
+                    'position': '{{$k}}'
+                },
+                @endforeach
+                @endif
+
+            ]
+        }
+    });
+</script>
+
 <!-- 内容 -->
 <section class="m-t-40x">
     @inject('wishlist', 'App\Http\Controllers\UserController')
@@ -163,7 +237,9 @@
                                         <div class="image-container">
                                             <a data-link="/detail/{{$spu}}"
                                                data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"PC"}'
-                                               href="javascript:void(0)">
+                                               href="javascript:void(0)"
+                                               data-spu="{{$spu}}" data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
+                                               data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                 <img class="img-fluid img-lazy"
                                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="商品的名称"
                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
@@ -224,7 +300,9 @@
                     <div class="image-container">
                         <a data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
                            data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
-                           data-link="/detail/{{$product['spu']}}" href="javascript:void(0)">
+                           data-link="/detail/{{$product['spu']}}" href="javascript:void(0)"
+                           data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}"
+                           data-price="{{number_format($product['skuPrice']['sale_price']/100,2)}}">
                             <img class="img-fluid img-lazy"
                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}" alt="{{$product['main_title']}}"
                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png">
