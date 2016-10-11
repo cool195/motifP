@@ -87,7 +87,7 @@
                                                         ${{number_format(($lineOrder['sale_price'] / 100), 2)}}</div>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <div class="text-center">X{{$lineOrder['sale_qtty']}}</div>
+                                                    <div class="text-center">x{{$lineOrder['sale_qtty']}}</div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="text-center">
@@ -114,7 +114,7 @@
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <div class="text-center">
-                                                                        X{{ $lineOrder['sale_qtty'] }}</div>
+                                                                        x{{ $lineOrder['sale_qtty'] }}</div>
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <div class="text-center">

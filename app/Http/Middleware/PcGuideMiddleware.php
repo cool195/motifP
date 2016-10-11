@@ -20,7 +20,7 @@ class PcGuideMiddleware
             if($_SERVER['HTTP_HOST'] == config('runtime.SELF_URL')){
                 echo '<script language="javascript" type="text/javascript"> window.location.href="http://motif.app'.$request->getRequestUri().'"</script>';
             }else{
-                return $next($request);
+                echo '<script language="javascript" type="text/javascript"> window.location.href="http://m.motif.me'.$request->getRequestUri().'"</script>';
             }
         }
         return $next($request);

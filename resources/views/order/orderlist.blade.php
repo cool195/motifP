@@ -71,7 +71,7 @@
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <div class="text-center">
-                                                                        X{{ $lineOrder['sale_qtty'] }}</div>
+                                                                        x{{ $lineOrder['sale_qtty'] }}</div>
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <div class="text-center">
@@ -100,7 +100,7 @@
                                                                         </div>
                                                                         <div class="col-md-2">
                                                                             <div class="text-center">
-                                                                                X{{ $lineOrder['sale_qtty'] }}</div>
+                                                                                x{{ $lineOrder['sale_qtty'] }}</div>
                                                                         </div>
                                                                         <div class="col-md-2">
                                                                             <div class="text-center">
@@ -208,7 +208,7 @@
                                 <div class="text-center">$@{{ ($value.sale_price/100).toFixed(2) }}</div>
                             </div>
                             <div class="col-md-2">
-                                <div class="text-center">X@{{ $value.sale_qtty }}</div>
+                                <div class="text-center">x@{{ $value.sale_qtty }}</div>
                             </div>
                             <div class="col-md-2">
                                 <div class="text-center">$@{{ ($value.pay_amount/100).toFixed(2) }}</div>
@@ -234,7 +234,7 @@
                                 <div class="text-center">$@{{ ($value.vas_price/100).toFixed(2) }}</div>
                             </div>
                             <div class="col-md-2">
-                                <div class="text-center">X@{{ $value.vas_type }}</div>
+                                <div class="text-center">x@{{ $value.vas_type }}</div>
                             </div>
                             <div class="col-md-2">
                                 <div class="text-center">+$@{{ ($value.vas_price/100).toFixed(2) }}</div>
