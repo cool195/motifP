@@ -43,7 +43,7 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9J99M"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-
+@if(!$CartCheck)
 <!-- 下载提示 -->
 <div class="download-info" hidden>
     <div class="container">
@@ -63,6 +63,7 @@
         </div>
     </div>
 </div>
+@endif
 <!-- 头部 -->
 <header class="">
     <div class="container">
@@ -75,7 +76,7 @@
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if('designer' == $title) active @endif" href="/designer">DESIGNERS</a></li>
                 <li class="nav-item dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
-                    <a href="javascript:void(0)" class="dropdown-toggle nav-link border-b p-x-10x sanBold @if('shopping' == $title) active @endif" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
+                    <a href="javascript:void(0)" class="nav-link border-b p-x-10x sanBold @if('shopping' == $title) active @else dropdown-toggle @endif" @if(!$Shopping) data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" @endif>SHOPPING</a>
                     <ul class="dropdown-menu dropdown-nav-hover">
                         @foreach($Category->getShoppingCategoryList() as $category)
                             <li class="dropdown-item @if('shopping' == $title && $cid == $category['category_id']) active @endif"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
