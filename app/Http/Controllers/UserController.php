@@ -112,7 +112,7 @@ class UserController extends BaseController
         $result = $this->request('user', $params);
         if (!empty($result) && $result['success']) {
             $result['redirectUrl'] = "/login";
-            $result['prompt_msg'] = "We have send you an email to your email address";
+            $result['prompt_msg'] = "We have sent you an email to your email address";
         }
         return $result;
     }

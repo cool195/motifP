@@ -60,7 +60,7 @@
             <!-- Forget Password -->
             <div class="restPwd-content hidden">
                 <div class="m-b-20x">Enter the email address associated with your Motif account, then click Reset
-                    Password.
+                    password.
                     We’ll send you a link to reset your password.
                 </div>
                 <form id="forgetPassword">
@@ -76,10 +76,10 @@
                     </fieldset>
                 </form>
                 <div class="p-t-30x">
-                    <div class="btn btn-primary btn-lg btn-block" data-role="forget-submit">Continue</div>
+                    <div class="btn btn-primary btn-lg btn-block" data-role="forget-submit">Reset password</div>
                 </div>
                 <div class="p-y-15x text-center">
-                    <a class="text-link btn-backLogin" href="#">Back to sign in</a>
+                    <a class="text-link btn-backLogin" href="#">Back to Sign in</a>
                 </div>
                 <div class="text-center login-or">
                     <hr class="hr-login m-a-0">

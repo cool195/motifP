@@ -40,7 +40,7 @@
                                             @elseif(in_array($data['status_code'], array(17, 18))) horn-green
                                             @elseif(in_array($data['status_code'], array(19, 20))) horn-blue
                                             @elseif(25 == $data['status_code']) horn-lightblue
-                                            @elseif(in_array($data['status_code'], array(21, 22, 23))) horn-gray
+                                            @elseif(in_array($data['status_code'], array(21, 22, 23, 27))) horn-gray
                                             @else horn-orange
                                             @endif">
                         </span>
