@@ -1,3 +1,5 @@
+<script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
+<script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
 <footer>
     <div class="container p-x-40x">
         <div class="text-center m-b-40x p-t-10x">
@@ -71,6 +73,5 @@
 </div>
 
 </body>
-<script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
-<script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
+
 </html>
