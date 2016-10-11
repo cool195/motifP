@@ -17,12 +17,7 @@ class PcGuideMiddleware
     {
         if($this->isMobile())
         {
-            if($_SERVER['HTTP_HOST'] == config('runtime.SELF_URL')){
-                //echo '<script language="javascript" type="text/javascript"> window.location.href="http://motif.app'.$request->getRequestUri().'"</script>';
-                echo '<script language="javascript" type="text/javascript"> window.location.href="http://m.motif.me'.$request->getRequestUri().'"</script>';
-            }else{
-                echo '<script language="javascript" type="text/javascript"> window.location.href="http://m.motif.me'.$request->getRequestUri().'"</script>';
-            }
+            return redirect('http://m.motif.me'.$request->getRequestUri());
         }else{
             if($_SERVER['HTTP_HOST'] == 'motif.me'){
                 echo '<script language="javascript" type="text/javascript"> window.location.href="http://www.motif.me'.$request->getRequestUri().'"</script>';
