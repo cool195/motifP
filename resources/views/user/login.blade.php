@@ -35,7 +35,7 @@
                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                         <span class="font-size-base">Please select size !</span>
                     </div>
-                    <div class="btn btn-primary btn-lg btn-block" data-role="login-submit">SIGN IN</div>
+                    <div class="btn btn-primary btn-lg btn-block" data-role="login-submit">Sign in</div>
                 </div>
                 <div class="p-y-15x text-center">
                     <a class="text-link btn-forgotPwd" href="javascript:void(0)">Forgot password?</a>
