@@ -25,12 +25,12 @@
         </div>
         <div class="container banner-container dailyBanner-btn">
             <!-- banner 按钮 -->
-            <div class="swiper-button-next">
-                <i class="iconfont icon-arrow-right text-white"></i>
-            </div>
-            <div class="swiper-button-prev">
-                <i class="iconfont icon-arrow-left text-white"></i>
-            </div>
+            {{--<div class="swiper-button-next">--}}
+                {{--<i class="iconfont icon-arrow-right text-white"></i>--}}
+            {{--</div>--}}
+            {{--<div class="swiper-button-prev">--}}
+                {{--<i class="iconfont icon-arrow-left text-white"></i>--}}
+            {{--</div>--}}
         </div>
     </div>
 </section>
