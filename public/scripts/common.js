@@ -140,7 +140,7 @@ function HideSeeMore(seemoreName) {
             $('#productClick-spu').val($this.data('spu'));
             $('#productClick-price').val($this.data('price'));
 
-            onProductClick();
+            //onProductClick();
 
             if (undefined != $this.data('link')) {
                 $.ajax({
@@ -2470,7 +2470,7 @@ function HideSeeMore(seemoreName) {
                     $('#productClick-spu').val($this.data('spu'));
                     $('#productClick-price').val($this.data('price'));
 
-                    onProductClick();
+                    //onProductClick();
 
                     if (undefined !== $this.data('link')) {
                         $.ajax({
