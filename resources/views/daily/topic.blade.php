@@ -52,8 +52,8 @@
                 @elseif($value['type'] == 'banner')
                 <!--图 banner-->
                 <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
-                    <div class="p-y-0">
-                        <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}">
+                    <div class="p-y-0 text-center figure" style="width: 100%;">
+                        <img class="img-fluid img-lazy figure" data-original="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     </div>
                 </a>
 
@@ -112,7 +112,7 @@
                     </div>
                     @else
                         @if($value['style'] =='box-vertical')
-                                <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                                <a class="text-center figure" style="width: 100%;" href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
                                     <img class="img-fluid img-lazy figure"
                                          data-original="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}"
                                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
