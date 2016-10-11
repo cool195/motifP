@@ -7800,6 +7800,10 @@ a.bg-red:focus, a.bg-red:hover {
 .footer-icon{
   font-size: 24px;
 }
+.designer-item .icon-youtube1{
+  font-size: 1.7rem;
+}
+
 
 .loading {
   display: -webkit-box;
