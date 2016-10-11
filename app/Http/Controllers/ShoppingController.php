@@ -12,7 +12,7 @@ class ShoppingController extends BaseController
     {
         $categories = $this->getShoppingCategoryList();
         $productAll = $this->getShoppingProductList($request, $cid);
-        return View('shopping.index', ['categories' => $categories, 'productAll' => $productAll['data'], 'cid'=>$cid]);
+        return View('shopping.index', ['Shopping'=>true,'categories' => $categories, 'productAll' => $productAll['data'], 'cid'=>$cid]);
     }
 
     public function getShoppingCategoryList()

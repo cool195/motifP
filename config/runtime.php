@@ -3,7 +3,7 @@
 if (env('APP_ENV') == 'production') {
     //生产
     $CDN_URL = '//image.motif.me';//后台图片服务地址
-    $Image_URL = '/min';//SelfCDN地址服务
+    $Image_URL = '//cdn.pc.motif.me/min';//SelfCDN地址服务
     $API_URL = array('api' => 'https://api.motif.me', 'rec' => 'https://rec.motif.me');
     $QianHai_URL = 'https://secure.oceanpayment.com/gateway/service/pay';
     $paypalclientID = 'AeJ0JypMpSkBh2pvVrWMSg8Km_l6fcmWXUQ0oWxom2tz8nPzBB1rWu71bkL1j4S-TGsjGYrbfDZYiWWe';
@@ -13,7 +13,7 @@ if (env('APP_ENV') == 'production') {
     $secureCode = '4646r88B';
     $terminal = '16044402';
 
-    $selfUrl = 'http://pc.motif.me/';
+    $selfUrl = 'http://www.motif.me/';
 } elseif (env('APP_ENV') == 'publish') {
     //预发布
     $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';//后台图片服务地址
@@ -56,5 +56,5 @@ return [
     'PAYPAL_SECRET' => $paypalsecret,
     'PAYPAL_MODE' => $paypalmode,
     'SELF_URL' => $selfUrl,
-    'V' => '?V=0.4',
+    'V' => '?v=a',
 ];

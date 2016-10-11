@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{$title}}</title>
-    <link rel="apple-touch-icon" href="/images/icon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png">
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -16,9 +16,9 @@
         })(window,document,'script','dataLayer','GTM-K9J99M');</script>
     <!-- End Google Tag Manager -->
 
-    <link rel="stylesheet" href="/styles/vendor.css">
+    <link rel="stylesheet" href="{{config('runtime.Image_URL')}}/styles/vendor.css">
 
-    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="{{config('runtime.Image_URL')}}/styles/common.css">
 
 </head>
 <body class="bg-white">
@@ -34,7 +34,7 @@
             <ul class="nav navbar-primary">
                 <li class="nav-item nav-logo">
                     <a href="/daily">
-                        <img class="img-fluid" src="/images/logo/logo.png" alt="logo">
+                        <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png" alt="logo">
                     </a>
                 </li>
             </ul>

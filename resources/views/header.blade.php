@@ -31,7 +31,7 @@
 
 </head>
 <body>
-
+@if(!isset($CartCheck))
 <!-- 下载提示 -->
 <div class="download-info" hidden>
     <div class="container">
@@ -51,19 +51,20 @@
         </div>
     </div>
 </div>
+@endif
 <!-- 头部 -->
 <header class="">
     <div class="container">
         <nav class="navbar-left">
             <ul class="nav navbar-primary clearfix">
                 <li class="nav-item nav-logo"><a href="/daily">
-                    <img class="img-fluid" src="/images/logo/logo.png{{config('runtime.V')}}" alt="logo" srcset="/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x"></a>
+                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png{{config('runtime.V')}}" alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x"></a>
                 </li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if('daily' == $title) active @endif" href="/daily">DAILY</a></li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if('designer' == $title) active @endif" href="/designer">DESIGNERS</a></li>
                 <li class="nav-item dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
-                    <a href="javascript:void(0)" class="dropdown-toggle nav-link border-b p-x-10x sanBold @if('shopping' == $title) active @endif" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOPPING</a>
+                    <a href="javascript:void(0)" class="nav-link border-b p-x-10x sanBold @if('shopping' == $title) active @else dropdown-toggle @endif" @if(!$Shopping) data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" @endif>SHOPPING</a>
                     <ul class="dropdown-menu dropdown-nav-hover">
                         @foreach($Category->getShoppingCategoryList() as $category)
                             <li class="dropdown-item @if('shopping' == $title && $cid == $category['category_id']) active @endif"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>

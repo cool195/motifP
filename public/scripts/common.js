@@ -779,10 +779,10 @@ function HideSeeMore(seemoreName) {
             .done(function (data) {
                 if (data.success) {
                     if (data.data != '') {
-                        $('#total_amount').html('$' + (data.data.total_amount / 100).toFixed(2));
-                        $('#total_sku_qtty').html('Items(' + data.data.total_sku_qtty + '):');
-                        $('#vas_amount').html('$' + (data.data.vas_amount / 100).toFixed(2));
-                        $('#pay_amount').html('$' + (data.data.pay_amount / 100).toFixed(2));
+                        $('.total_amount').html('$' + (data.data.total_amount / 100).toFixed(2));
+                        $('.total_sku_qtty').html('Items (' + data.data.total_sku_qtty + '):');
+                        $('.vas_amount').html('$' + (data.data.vas_amount / 100).toFixed(2));
+                        $('.pay_amount').html('$' + (data.data.pay_amount / 100).toFixed(2));
                         if (data.data.pay_amount <= 0) {
                             $('.btn-toCheckout').addClass('disabled');
                         }
@@ -1276,6 +1276,12 @@ function HideSeeMore(seemoreName) {
                 if (data.success) {
                     var payPrice = data.data.list[0].pay_price > 0 ? ' +$'+(data.data.list[0].pay_price / 100).toFixed(2) : '';
                     $('.shippingMethodShow').html(data.data.list[0].logistics_name+payPrice);
+                    console.log(data.data.list.length);
+                    if(data.data.list.length<2){
+                        $('.shippingMethodButton').html('');
+                    }else{
+                        $('.shippingMethodButton').html('Edit');
+                    }
                     appendMethodList(data.data);
                     getCheckoutInfo();
                 }

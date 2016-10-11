@@ -255,7 +255,7 @@
                 <span class="pull-right showHide-simpleInfo">
                     <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} @if($list['pay_price']>0)
                             +${{ number_format(($logisticsList['list'][0]['pay_price'] / 100), 2) }}@endif</span>
-                    <a class="p-l-40x">Edit</a>
+                    <a class="p-l-40x shippingMethodButton">@if(count($logisticsList['list'])>1){{'Edit'}}@endif</a>
                 </span>
             </div>
             <hr class="hr-common m-a-0">
@@ -355,7 +355,7 @@
             <div class="p-a-20x font-size-md">
                 {{--数量--}}
                 <div class="text-right">
-                    <span>Items({{$accountList['total_sku_qtty']}}):</span>
+                    <span>Items ({{$accountList['total_sku_qtty']}}):</span>
                     <span class="sanBold cart-price">${{number_format(($accountList['total_amount'] / 100), 2)}}</span>
                 </div>
                 {{--增值服务--}}

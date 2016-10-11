@@ -24,7 +24,7 @@ class CartController extends BaseController
             $result['save'] = $cartList['data'];
             return $result;
         }
-        return view('cart.cart', ['cart' => $cartList['data'], 'save' => $saveList['data'],'config'=>$config['data']['cart_checkout_top_notification']]);
+        return view('cart.cart', ['CartCheck'=>true,'cart' => $cartList['data'], 'save' => $saveList['data'],'config'=>$config['data']['cart_checkout_top_notification']]);
     }
 
     public function checkout(Request $request)
@@ -51,7 +51,7 @@ class CartController extends BaseController
         if(empty($accountList['data'])){
             return redirect('cart');
         }
-        return view('cart.checkout', ['accountList' => $accountList['data'], 'logisticsList' => $logisticsList['data'],'config'=>$config['data']['cart_checkout_top_notification']]);
+        return view('cart.checkout', ['CartCheck'=>true,'accountList' => $accountList['data'], 'logisticsList' => $logisticsList['data'],'config'=>$config['data']['cart_checkout_top_notification']]);
     }
 
     public function getCartAmount()
