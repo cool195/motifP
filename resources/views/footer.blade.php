@@ -1,7 +1,7 @@
 <footer>
     <div class="container p-x-40x">
         <div class="text-center m-b-40x p-t-10x">
-            <a href="/daily"><img class="" src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png{{config('runtime.V')}}" alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/logo-white@2x.png 2x"></a>
+            <a href="/daily"><img class="" src="/images/logo/logo-white.png{{config('runtime.V')}}" alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/logo-white@2x.png 2x"></a>
         </div>
         <div class="row">
             <div class="col-md-3 col-xs-6">

@@ -55,7 +55,7 @@
         <nav class="navbar-left">
             <ul class="nav navbar-primary clearfix">
                 <li class="nav-item nav-logo"><a href="/daily">
-                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png{{config('runtime.V')}}" alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x"></a>
+                    <img class="img-fluid" src="/images/logo/logo.png{{config('runtime.V')}}" alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x"></a>
                 </li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if('daily' == $title) active @endif" href="/daily">DAILY</a></li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if('designer' == $title) active @endif" href="/designer">DESIGNERS</a></li>
