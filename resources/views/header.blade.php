@@ -43,7 +43,7 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9J99M"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-@if(!$CartCheck)
+@if(!isset($CartCheck))
 <!-- 下载提示 -->
 <div class="download-info" hidden>
     <div class="container">
