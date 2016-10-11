@@ -327,7 +327,7 @@
             <div class="p-a-20x font-size-md">
                 {{--数量--}}
                 <div class="text-right">
-                    <span>Items({{$accountList['total_sku_qtty']}}):</span>
+                    <span>Items ({{$accountList['total_sku_qtty']}}):</span>
                     <span class="sanBold cart-price">${{number_format(($accountList['total_amount'] / 100), 2)}}</span>
                 </div>
                 {{--增值服务--}}
