@@ -1,7 +1,6 @@
 <!-- header start-->
 @include('header', ['title' => 'Cart'])
 <!-- header end-->
-<!-- 横幅 -->
 
 @if($config)
     <div class="active-banner p-y-10x text-center">
@@ -9,26 +8,6 @@
         <a href="/daily"><div class="btn btn-100 btn-share btn-md m-l-20x text-link">SHOP NOW</div></a>
     </div>
 @endif
-        <!-- 价格悬浮条 -->
-<div class="bg-white p-y-10x p-x-20x box-shadow navbar-fixed-top" id="bagBar">
-    <div class="container">
-        <div class="row p-x-20x">
-            <div class="col-md-2 p-t-10x">
-                <h4 class="helveBold text-main">My Bag</h4>
-            </div>
-            <div class="col-md-10 font-size-md text-right">
-                @if(!empty($cart['showSkus']))
-                    <span>Bag Subtotal:</span>
-                    <span class="sanBold" id="pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span>
-
-                    <a href="/cart/ordercheckout"
-                       class="m-l-30x btn btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
-                        To Checkout</a>
-                @endif
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- 内容 -->
 <section class="m-t-40x">
@@ -47,17 +26,17 @@
             <div class="bg-white p-y-10x m-t-20x p-x-20x">
                 <div class="text-right font-size-md">
                     @if(!empty($cart['showSkus']))
-                        <span id="total_sku_qtty">Items({{$cart['total_sku_qtty'] }}):</span>
-                        <span class="sanBold" id="total_amount">${{number_format($cart['total_amount'] /100, 2)}}</span>
+                        <span class="total_sku_qtty">Items({{$cart['total_sku_qtty'] }}):</span>
+                        <span class="sanBold total_amount">${{number_format($cart['total_amount'] /100, 2)}}</span>
                         <span class="p-x-20x text-common">|</span>
 
                         @if($cart['vas_amount'] > 0)
                             <span>Additional Services:</span>
-                            <span class="sanBold" id="vas_amount">${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
+                            <span class="sanBold vas_amount">${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
                             <span class="p-x-20x text-common">|</span>
                         @endif
                         <span>Bag Subtotal:</span>
-                        <span class="sanBold" id="pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span>
+                        <span class="sanBold pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span>
 
                         <a href="/cart/ordercheckout"
                            class="m-l-30x btn btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
@@ -68,7 +47,7 @@
 
             {{--My Bag List--}}
             <div class="box-shadow bg-white m-t-20x">
-                <div class="sanBold font-size-md p-x-20x p-y-15x" id="inBag">In Bag</div>
+                <div class="sanBold font-size-md p-x-20x p-y-15x">In Bag</div>
                 <hr class="hr-base m-a-0">
                 <div class="p-x-20x">
                     @foreach($cart['showSkus'] as $showSku)
@@ -211,18 +190,18 @@
             {{--购物袋总价--}}
             <div class="box-shadow bg-white m-t-20x">
                 <div class="p-a-20x font-size-md">
-                    <div class="text-right"><span id="total_sku_qtty">Items({{$cart['total_sku_qtty'] }}):</span><span
-                                class="sanBold cart-price"
-                                id="total_amount">${{number_format($cart['total_amount'] /100, 2)}}</span></div>
+                    <div class="text-right"><span class="total_sku_qtty">Items({{$cart['total_sku_qtty'] }}):</span><span
+                                class="sanBold cart-price total_amount"
+                                >${{number_format($cart['total_amount'] /100, 2)}}</span></div>
                     @if($cart['vas_amount'] > 0)
                         <div class="text-right"><span>Additional Services:</span><span
-                                    class="sanBold cart-price"
-                                    id="vas_amount">${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
+                                    class="sanBold cart-price vas_amount"
+                                    >${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
                         </div>
                     @endif
                     <div class="text-right"><span>Bag Subtotal:</span><span
-                                class="sanBold cart-price"
-                                id="pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
+                                class="sanBold cart-price pay_amount"
+                                >${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
                 </div>
             </div>
         @endif
@@ -259,15 +238,3 @@
 </div>
 
 @include('footer')
-    <!-- 滚动显示价格悬浮 -->
-    <script type="text/javascript">
-        $(window).scroll(function () {
-            var top = $(window).scrollTop();
-            var dis = $("#inBag").offset().top;
-            if (top > dis) {
-                $('#bagBar').fadeIn();
-            } else {
-                $('#bagBar').fadeOut();
-            }
-        });
-    </script>
