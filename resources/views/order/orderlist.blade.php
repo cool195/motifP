@@ -25,7 +25,8 @@
                                             @elseif(in_array($subOrder['status_code'], array(17, 18))) horn-green
                                             @elseif(in_array($subOrder['status_code'], array(19, 20))) horn-blue
                                             @elseif(25 == $subOrder['status_code']) horn-lightblue
-                                            @elseif(in_array($subOrder['status_code'], array(21, 22, 23))) horn-gray
+                                            @elseif(in_array($subOrder['status_code'], array(21, 22, 23, 27))) horn-gray
+                                            @else horn-orange
                                             @endif">
                                         </span>
                                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
@@ -165,7 +166,7 @@
         @{{ else if value.status_code == 17 || value.status_code == 18 }} horn-green
         @{{ else if value.status_code == 19 || value.status_code == 20 }} horn-blue
         @{{ else if value.status_code == 25 }} horn-lightblue
-        @{{ else if value.status_code == 21 || value.status_code == 22 || value.status_code == 23 }} horn-gray
+        @{{ else if value.status_code == 21 || value.status_code == 22 || value.status_code == 23 || value.status_code == 27 }} horn-gray
         @{{ else }} horn-orange
         @{{ /if }}"></span>
 
