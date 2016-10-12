@@ -4,7 +4,7 @@
 <section>
     <div class="bannerSwiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide daily-banner" style="background:url({{config('runtime.Image_URL')}}/images/banner/ban_luxeedit.jpg) #bcbcbf center center; background-repeat: no-repeat;">
+            <div class="swiper-slide daily-banner" style="background:url({{config('runtime.Image_URL')}}/images/banner/banluxeedit.jpg) #bcbcbf center center; background-repeat: no-repeat;">
                 <a href="/topic/186" target="_blank">
                     <div class="banner-content">
                         {{--<div class="text-center text-main helve p-b-10x">--}}
