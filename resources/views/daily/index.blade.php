@@ -4,33 +4,41 @@
 <section>
     <div class="bannerSwiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)">
-                <a href="/shopping/0">
+            <div class="swiper-slide daily-banner" style="background:url({{config('runtime.Image_URL')}}/images/banner/ban_luxeEdit.jpg) #bcbcbf center center; background-repeat: no-repeat;">
+                <a href="/topic/186" target="_blank">
                     <div class="banner-content">
-                        <div class="text-center text-main helve p-b-10x">
-                            STYLE ACCESSORY CREATIONS BY
-                        </div>
-                        <div class="text-center text-main helveBold p-b-20x">
-                            DESIGNERS <b class="text-link">&</b> BLOGGERS
-                        </div>
-                        <div class="text-center">
-                            <span href="#" class="btn btn-bannerGo active">GO</span>
-                        </div>
+                        {{--<div class="text-center text-main helve p-b-10x">--}}
+                            {{--STYLE ACCESSORY CREATIONS BY--}}
+                        {{--</div>--}}
+                        {{--<div class="text-center text-main helveBold p-b-20x">--}}
+                            {{--DESIGNERS <b class="text-link">&</b> BLOGGERS--}}
+                        {{--</div>--}}
+                        {{--<div class="text-center">--}}
+                            {{--<span href="#" class="btn btn-bannerGo active">GO</span>--}}
+                        {{--</div>--}}
                     </div>
                 </a>
             </div>
 
-            {{--<div class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>--}}
-            {{--<div class="swiper-slide daily-banner" style="background-image:url({{config('runtime.Image_URL')}}/images/banner/banner1.jpg)"></div>--}}
+            <div class="swiper-slide daily-banner" style="background:url({{config('runtime.Image_URL')}}/images/banner/ban_rae.jpg) #e1eaf0 center center">
+                <a href="designer/99" target="_blank">
+                    <div class="banner-content"></div>
+                </a>
+            </div>
+            <div class="swiper-slide daily-banner" style="background:url({{config('runtime.Image_URL')}}/images/banner/ban_runwayRibbons.jpg) #bcbcbf center center">
+                <a href="/topic/187" target="_blank">
+                    <div class="banner-content"></div>
+                </a>
+            </div>
         </div>
         <div class="container banner-container dailyBanner-btn">
             <!-- banner 按钮 -->
-            {{--<div class="swiper-button-next">--}}
-                {{--<i class="iconfont icon-arrow-right text-white"></i>--}}
-            {{--</div>--}}
-            {{--<div class="swiper-button-prev">--}}
-                {{--<i class="iconfont icon-arrow-left text-white"></i>--}}
-            {{--</div>--}}
+            <div class="swiper-button-next">
+                <i class="iconfont icon-arrow-right text-white"></i>
+            </div>
+            <div class="swiper-button-prev">
+                <i class="iconfont icon-arrow-left text-white"></i>
+            </div>
         </div>
     </div>
 </section>
