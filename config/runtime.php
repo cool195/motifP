@@ -56,5 +56,5 @@ return [
     'PAYPAL_SECRET' => $paypalsecret,
     'PAYPAL_MODE' => $paypalmode,
     'SELF_URL' => $selfUrl,
-    'V' => '?v=c',
+    'V' => '?v=e',
 ];

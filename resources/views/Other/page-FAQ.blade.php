@@ -42,8 +42,9 @@
                 <p class="m-b-0">Option 2. Standard Shipping (5-8 business days)</p>
                 <p class="m-b-0">Option 3. Expedited Shipping (3-4 business days)</p>
                 <p class="m-b-0">How can I track my order?</p>
-                <p>We will send one order confirmation email to you after you complete your purchase. When your package
+                <p class="m-b-0">We will send one order confirmation email to you after you complete your purchase. When your package
                     is shipped, you will get a shipping confirmation email from us with the tracking information.</p>
+                <p class="m-b-0">Please note that for Registered Airmail, their tracking system can sometimes be slow to update, and you may not see your order appear for a few days.</p>
             </div>
         </div>
 
@@ -79,7 +80,7 @@
                 <p class="sanBold"><strong>I’ve changed my mind. Can I return a product if don’t want it anymore?</strong></p>
                 <p>Yes, we offer a 30 day free return if you are not 100% satisfied with your purchase.
                     We can help you return the product, but we reserve the right to charge shipping & handling, and restocking fees.
-                    For more details, please visit our Return <a href="#" class="text-underLine">Policy</a> Page.</p>
+                    For more details, please visit our Return <a href="/template/23" class="text-underLine">Policy</a> Page.</p>
             </div>
         </div>
 

@@ -1457,6 +1457,11 @@ function HideSeeMore(seemoreName) {
 
     // 点击登录
     $('[data-role="login-submit"]').on('click', function () {
+        if (login_validationEmail($('.login-email')) && login_validationPassword($('.login-pw'))) {
+            $('div[data-role="login-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="login-submit"]').addClass('disabled');
+        }
         if ($(this).hasClass('disabled')) {
             return;
         } else {
@@ -1767,7 +1772,11 @@ function HideSeeMore(seemoreName) {
     });
 
     $('[data-role="register-submit"]').on('click', function () {
-        console.info('Register');
+        if (register_validationNick($('.register-nick')) && login_validationEmail($('.register-email')) && login_validationPassword($('.register-pw'))) {
+            $('div[data-role="register-submit"]').removeClass('disabled');
+        } else {
+            $('div[data-role="register-submit"]').addClass('disabled');
+        }
         if ($(this).hasClass('disabled')) {
             return;
         } else {
@@ -3196,7 +3205,6 @@ function HideSeeMore(seemoreName) {
 })(jQuery, Swiper);
 
 
-//# sourceMappingURL=common.js.map
 //public start
 $.ajaxSetup({
     headers: {

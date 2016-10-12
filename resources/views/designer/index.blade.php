@@ -91,13 +91,13 @@
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="text-center">
                         <div class="m-b-10x">
-                            <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},”expid":0,"version":"1.0.1","src":"PC"}'
+                            <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                data-link="/designer/{{ $designer['designerId'] }}" href="javascript:void(0)">
                                 <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
-                            <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},”expid":0,"version":"1.0.1","src":"PC"}'
+                            <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                data-link="/designer/{{ $designer['designerId'] }}" href="javascript:void(0)">{{ $designer['nickName'] }}</a>
                         </div>
                         <div class="p-t-15x">
@@ -134,8 +134,8 @@
                                     </div>
                                 </div>
                             @else
-                                <a data-impr='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":2,"skipId":{{$designer['designerId']}},”expid":0,"version":"1.0.1","src":"PC"}'
-                                   data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},”expid":0,"version":"1.0.1","src":"PC"}'
+                                <a data-impr='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":2,"skipId":{{$designer['designerId']}},"expid":0,"version":"1.0.1","src":"PC"}'
+                                   data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                    data-link="/designer/{{ $designer['designerId'] }}" href="javascript:void(0)">
                                     <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/{{$designer['listImg']}}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="商品的名称">
                                 </a>
@@ -216,8 +216,8 @@
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @{{ each value.products }}
                                 <div class="productImg-item swiper-slide m-r-10x">
-                                    <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":@{{ $value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
-                                       data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":@{{ $value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
+                                    <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":"@{{ $value.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
+                                       data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"@{{ $value.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
                                        data-link="/detail/@{{$value.spu}}" href="javascript:void(0)">
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                         @{{ if $value.sale_type == 1  }}
@@ -314,8 +314,8 @@
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @{{ each value.products }}
                                 <div class="productImg-item swiper-slide m-r-10x">
-                                    <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":@{{ $value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
-                                       data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":@{{ $value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
+                                    <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":"@{{ $value.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
+                                       data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"@{{ $value.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
                                        data-link="/detail/@{{$value.spu}}" href="javascript:void(0)">
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                         @{{ if $value.sale_type == 1  }}
@@ -348,13 +348,13 @@
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="text-center">
                     <div class="m-b-10x">
-                        <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},”expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
                             <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
-                        <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},”expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">@{{ value.name }}</a>
                     </div>
                     <div class="p-t-15x">
@@ -372,7 +372,7 @@
                     <div class="product-bigImg">
                         @{{ if value.listVideoId == undefined }}
                         <a data-impr='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"0","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
-                           data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},”expid":"0","version":"1.0.1","src":"PC"}'
+                           data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
                             <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="@{{ value.name }}">
                         </a>
@@ -396,8 +396,8 @@
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @{{ each value.products }}
                             <div class="productImg-item swiper-slide m-r-10x">
-                                <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":@{{ $value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
-                                   data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":@{{ $value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
+                                <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":"@{{ $value.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
+                                   data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"@{{ $value.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
                                    data-link="/detail/@{{$value.spu}}" href="javascript:void(0)">
                                     <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                     @{{ if $value.sale_type == 1  }}
@@ -424,7 +424,7 @@
                     <div class="product-bigImg">
                         @{{ if value.listVideoId == undefined }}
                         <a data-impr='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"0","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
-                           data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},”expid":"0","version":"1.0.1","src":"PC"}'
+                           data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
                             <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n1/@{{ value.listImg }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="@{{ value.name }}">
                         </a>
@@ -448,8 +448,8 @@
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @{{ each value.products }}
                             <div class="productImg-item swiper-slide m-r-10x">
-                                <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":@{{ $value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
-                                   data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":@{{ $value.spu }},”expid":0,"version":"1.0.1","src":"PC"}'
+                                <a data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":@{{ $value.spu }},"expid":0,"version":"1.0.1","src":"PC"}'
+                                   data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":@{{ $value.spu }},"expid":0,"version":"1.0.1","src":"PC"}'
                                    data-link="/detail/@{{$value.spu}}" href="javascript:void(0)">
                                     <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                     @{{ if $value.sale_type == 1  }}
@@ -469,13 +469,13 @@
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="text-center">
                     <div class="m-b-10x">
-                        <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},”expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">
                             <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n0/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
-                        <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},”expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='http://clk.motif.me/log.gif?t=designer.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            data-link="/designer/@{{ value.designerId }}" href="javascript:void(0)">@{{ value.name }}</a>
                     </div>
                     <div class="p-t-15x">
