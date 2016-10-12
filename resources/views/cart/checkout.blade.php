@@ -265,10 +265,16 @@
                     <div class="row p-x-20x p-t-20x checkout-method">
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
+                                @if($k==0)
                                 <input class="methodRadio" type="radio"
-                                       @if($k==0){{'checked=checked'}}@endif name="shippingMethod"
+                                       checked="checked" name="shippingMethod"
                                        data-price="{{$list['pay_price']}}"
                                        value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
+                                @else
+                                        <input class="methodRadio" type="radio" name="shippingMethod"
+                                               data-price="{{$list['pay_price']}}"
+                                               value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
+                                @endif
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
                                     @if($list['pay_price']>0)
                                         +${{ number_format(($list['pay_price'] / 100), 2) }}
