@@ -13645,7 +13645,7 @@ else if (typeof define === 'function' && define.amd) {
         return window.Swiper;
     });
 }
-//# sourceMappingURL=maps/swiper.js.map
+
 
 /*
  *  Remodal - v1.1.0
@@ -20273,7 +20273,7 @@ return Math.max(elem.documentElement["client"+name],elem.body["scroll"+name],ele
 }else{return this.css(type,typeof size==="string"?size:size+"px");}};});// Expose jQuery to the global object
 jQuery_1_6 = jQuery;
 })(window);
-//# sourceMappingURL=jquery-1.6.2.js.map
+
 
 "use strict";
 
@@ -20397,7 +20397,7 @@ jQuery_1_6 = jQuery;
         });
     })();
 })(jQuery);
-//# sourceMappingURL=zoom.min.js.map
+
 
 'use strict';
 
@@ -21135,7 +21135,7 @@ jQuery_1_6 = jQuery;
     }
   };
 })(jQuery_1_6);
-//# sourceMappingURL=jquery.jqzoom.js.map
+
 
 /*!
  * artTemplate - Template Engine
@@ -21755,5 +21755,3 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     window.template = template;
 }(window);
 
-//# sourceMappingURL=template-native.js.map
-//# sourceMappingURL=template-native.js.map

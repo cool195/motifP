@@ -3205,7 +3205,6 @@ function HideSeeMore(seemoreName) {
 })(jQuery, Swiper);
 
 
-//# sourceMappingURL=common.js.map
 //public start
 $.ajaxSetup({
     headers: {
