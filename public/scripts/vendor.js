@@ -20632,6 +20632,10 @@ jQuery_1_6 = jQuery;
         el.zoom_active = false;
       },
       swapimage: function swapimage(link) {
+		  //更换 图片放大列表
+		  var ZoomBigImages=$(el).attr('href');
+		  var ZoomSmallImages=img.attr('src');
+
         el.largeimageloading = false;
         el.largeimageloaded = false;
         var options = new Object();
@@ -20639,6 +20643,14 @@ jQuery_1_6 = jQuery;
         if (options.smallimage && options.largeimage) {
           var smallimage = options.smallimage;
           var largeimage = options.largeimage;
+
+			$('.imgmore').each(function (index) {
+				if($(this).attr('href') === largeimage){
+					$(this).attr('href',ZoomBigImages);
+					$(this).children('img').attr('src',ZoomSmallImages);
+				}
+			});
+
           $(link).addClass('zoomThumbActive');
           $(el).attr('href', largeimage);
           img.attr('src', smallimage);
@@ -21080,6 +21092,7 @@ jQuery_1_6 = jQuery;
         var top = -el.scale.y * (lens.getoffset().top - smallimage.btop + 1);
         $(this.node).css({
           'left': left + 'px',
+
           'top': top + 'px'
         });
       };
