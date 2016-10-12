@@ -32,25 +32,25 @@
 </head>
 <body>
 @if(!isset($CartCheck))
-<!-- 下载提示 -->
-<div class="download-info" hidden>
-    <div class="container">
-        <div class="row flex flex-alignCenter">
-            <div class="col-md-6">
-                <i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm p-l-10x"></i>
-                <span class="text-main font-size-base p-l-15x">Use our free app for 20% off your first purchase!</span>
-            </div>
-            <div class="col-md-6 text-right">
-                <a href="https://itunes.apple.com/us/app/id1125850409" class="btn btn-black m-r-20x p-x-10x p-y-5x">
-                    <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png{{config('runtime.V')}} 3x">
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=me.motif.motif" class="btn btn-black p-x-10x p-y-5x">
-                    <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png{{config('runtime.V')}} 3x">
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+{{--下载提示--}}
+{{--<div class="download-info" hidden>--}}
+    {{--<div class="container">--}}
+        {{--<div class="row flex flex-alignCenter">--}}
+            {{--<div class="col-md-6">--}}
+                {{--<i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm p-l-10x"></i>--}}
+                {{--<span class="text-main font-size-base p-l-15x">Use our free app for 20% off your first purchase!</span>--}}
+            {{--</div>--}}
+            {{--<div class="col-md-6 text-right">--}}
+                {{--<a href="https://itunes.apple.com/us/app/id1125850409" class="btn btn-black m-r-20x p-x-10x p-y-5x">--}}
+                    {{--<img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png{{config('runtime.V')}} 3x">--}}
+                {{--</a>--}}
+                {{--<a href="https://play.google.com/store/apps/details?id=me.motif.motif" class="btn btn-black p-x-10x p-y-5x">--}}
+                    {{--<img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png{{config('runtime.V')}} 3x">--}}
+                {{--</a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
 @endif
 <!-- 头部 -->
 <header class="">
