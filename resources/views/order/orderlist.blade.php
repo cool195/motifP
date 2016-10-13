@@ -141,7 +141,7 @@
                     @if(!empty($data['list']))
                     <div class="text-center m-y-30x seeMore-info">
                         <div class="orderList-seeMore" style="display: none;">
-                            <a class="btn btn-gray btn-lg btn-380" href="javascript:void(0)">See more of all</a>
+                            <a class="btn btn-gray btn-lg btn-380" href="javascript:void(0)">VIEW MORE</a>
                         </div>
                         <div class="loading orderList-loading" style="display: none">
                             <div class="loader"></div>
