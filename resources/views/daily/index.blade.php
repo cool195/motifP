@@ -1,37 +1,27 @@
 @include('header', ['title' => 'daily'])
-
+<div class="clearfix"></div>
         <!-- banner -->
 <section>
     <div class="bannerSwiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide daily-banner" style="background:url({{config('runtime.Image_URL')}}/images/banner/banluxeedit.jpg) #bcbcbf center center; background-repeat: no-repeat;">
+            <div class="swiper-slide" >
                 <a href="/topic/186" target="_blank">
-                    <div class="banner-content">
-                        {{--<div class="text-center text-main helve p-b-10x">--}}
-                            {{--STYLE ACCESSORY CREATIONS BY--}}
-                        {{--</div>--}}
-                        {{--<div class="text-center text-main helveBold p-b-20x">--}}
-                            {{--DESIGNERS <b class="text-link">&</b> BLOGGERS--}}
-                        {{--</div>--}}
-                        {{--<div class="text-center">--}}
-                            {{--<span href="#" class="btn btn-bannerGo active">GO</span>--}}
-                        {{--</div>--}}
-                    </div>
+                    <img src="/images/banner/banluxeedit.jpg" alt="">
                 </a>
             </div>
 
-            <div class="swiper-slide daily-banner" style="background:url({{config('runtime.Image_URL')}}/images/banner/ban_rae.jpg) #e1eaf0 center center">
+            <div class="swiper-slide" >
                 <a href="designer/99" target="_blank">
-                    <div class="banner-content"></div>
+                    <img src="/images/banner/ban_rae.jpg" alt="">
                 </a>
             </div>
-            <div class="swiper-slide daily-banner" style="background:url({{config('runtime.Image_URL')}}/images/banner/ban_runwayRibbons.jpg) #bcbcbf center center">
+            <div class="swiper-slide" >
                 <a href="/topic/187" target="_blank">
-                    <div class="banner-content"></div>
+                    <img src="/images/banner/ban_runwayRibbons.jpg" alt="">
                 </a>
             </div>
         </div>
-        <div class="container banner-container dailyBanner-btn">
+        <div class="container banner-container">
             <!-- banner 按钮 -->
             <div class="swiper-button-next">
                 <i class="iconfont icon-arrow-right text-white"></i>

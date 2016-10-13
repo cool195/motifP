@@ -173,9 +173,12 @@ function HideSeeMore(seemoreName) {
         var swiper1 = new Swiper('.bannerSwiper-container', {
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
+            pagination: '.swiper-pagination',
+            autoplay: 4000,
+            autoplayDisableOnInteraction: false,
             spaceBetween: 30,
-            effect: 'fade'
-            // autoplay: 2500
+            effect: 'fade',
+            loop: true
         });
     } catch (e) {
     }
