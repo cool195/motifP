@@ -22,7 +22,14 @@ class DailyController extends BaseController
         );
 
         $result = $this->request('daily', $params);
-
+        if(!empty($result['data']['list'])){
+            foreach ($result['data']['list'] as &$value){
+                $pathArr = explode('/',$value['imgPath']);
+                $WH = explode('X',$pathArr[3]);
+                $value['weight'] = $WH[0];
+                $value['height'] = $WH[1];
+            }
+        }
         if ($request->input('ajax')) {
             return $result;
         }
