@@ -1,6 +1,5 @@
-@include('header', ['title' => 'daily'])
 
-        <!-- banner -->
+@include('header', ['title' => 'MOTIF | Daily Exclusive Accessory Designs From Your Favorite Instagrammers & YouTubers'])
 <section>
     <div class="bannerSwiper-container">
         <div class="swiper-wrapper">
@@ -109,7 +108,7 @@
     @endif
         <div class="text-center m-y-30x seeMore-info">
             <div class="dailyList-seeMore" style="display: none;">
-                <a class="btn btn-gray btn-lg btn-380 btn-seeMore-dailyList">See more of all</a>
+                <a class="btn btn-gray btn-lg btn-380 btn-seeMore-dailyList">VIEW MORE</a>
             </div>
             <div class="loading daily-loading" style="display: none">
                 <div class="loader"></div>

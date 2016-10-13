@@ -1,4 +1,4 @@
-@include('header',['title'=>$designer['nickname'],'description'=>$designer['describe'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$designer['img_video_path']])
+@include('header',['title'=>'MOTIF | '.$designer['nickname'],'description'=>$designer['describe'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$designer['img_video_path']])
 <input type="text" id="productClick-name" value="name" hidden>
 <input type="text" id="productClick-spu" value="1" hidden>
 <input type="text" id="productClick-price" value="1" hidden>
