@@ -104,7 +104,7 @@
             <div class="col-md-3 col-xs-6">
                 <div class="productList-item">
                     <div class="image-container">
-                        <a href="javascript:void(0)" data-link="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
+                        <a href="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
                            data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}"
                            data-price="{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}">
                             <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['main_image_url']}}" alt="商品的名称">
@@ -120,7 +120,7 @@
                             <!--预售标志-->
                             <div class="presale-sign">
                                 <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
-                                <a href="javascript:void(0)" data-link="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
+                                <a href="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
                                    class="presale-text helve font-size-sm">LIMITED EDITION</a>
                             </div>
                         @endif
@@ -158,7 +158,7 @@
 <div class="col-md-3 col-xs-6">
     <div class="productList-item">
         <div class="image-container">
-            <a href="javascript:void(0)" data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
+            <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
                data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
                 <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ $value.main_image_url }}"
@@ -174,7 +174,7 @@
                 <!--预售标志-->
                 <div class="presale-sign">
                     <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
-                    <a href="javascript:void(0)" data-link="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
+                    <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                        data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
                        data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}"
                        class="presale-text helve font-size-sm">LIMITED EDITION</a>
