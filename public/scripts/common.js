@@ -2302,12 +2302,22 @@ function HideSeeMore(seemoreName) {
             })
                 .done(function (data) {
                     if (data.success) {
-                        $('.btn-follow').toggleClass('active');
-                        if ('Following' == $('.btn-follow').html()) {
-                            $('.btn-follow').html('Follow');
-                        } else {
-                            $('.btn-follow').html('Following');
+                        if($('#designerIndex').data('show')){
+                            $this.toggleClass('active');
+                            if ('Following' == $this.html()) {
+                                $this.html('Follow');
+                            } else {
+                                $this.html('Following');
+                            }
+                        }else{
+                            $('.btn-follow').toggleClass('active');
+                            if ('Following' == $('.btn-follow').html()) {
+                                $('.btn-follow').html('Follow');
+                            } else {
+                                $('.btn-follow').html('Following');
+                            }
                         }
+
                     }
                 });
         } else {

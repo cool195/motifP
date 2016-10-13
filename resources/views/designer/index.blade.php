@@ -1,7 +1,7 @@
 
 @include('header', ['title' => 'MOTIF | Designer', 'page' => 'designer'])
 <!-- 内容 -->
-<section class="m-t-40x">
+<section class="m-t-40x" id="designerIndex" data-show="true">
     <!-- 设计师列表 -->
     <div id="designerContainer" class="container m-b-40x" data-start="{{$start}}" data-loading="false">
         @foreach($list as $key => $designer)
