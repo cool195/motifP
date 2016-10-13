@@ -144,8 +144,6 @@
             <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
                data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
                href="@{{if $value.skipType == 1}}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4}}/shopping/@{{ else }}@{{ /if }}@{{ $value.skipId }}">
-                <img src="{{config('runtime.CDN_URL')}}/n2/@{{ $value.imgPath }}" class="img-fluid img-daily">
-
                 <img data-original="{{config('runtime.CDN_URL')}}/n2/@{{ $value.imgPath }}"
                      src="/images/product/bg-product@336.png"
                      class="img-fluid img-daily img-lazy" style="width: 252px; height: {{ number_format((252/$value.weight * $value.height), 2) }}px">

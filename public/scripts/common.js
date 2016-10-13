@@ -2520,6 +2520,13 @@ function HideSeeMore(seemoreName) {
 
     //点击 查看更多商品
     $('.btn-seeMore-dailyList').on('click', function () {
+        $('img.img-lazy').each(function () {
+            var Src = $(this).attr('src'),
+                Original = $(this).attr('data-original');
+            if (Src === Original) {
+                $(this).removeClass('img-lazy');
+            }
+        });
         getDailyList();
     });
 
@@ -2604,6 +2611,12 @@ function HideSeeMore(seemoreName) {
                     if (dailyNum < Size) {
                         HideSeeMore('.dailyList-seeMore');
                     }
+                });
+
+                // 图片延迟加载
+                $('img.img-lazy').lazyload({
+                    threshold: 1000,
+                    effect: 'fadeIn'
                 });
             }
         }).always(function () {
