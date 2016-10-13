@@ -1,4 +1,4 @@
-@include('header', ['title' => 'shopping', 'cid' =>$cid])
+@include('header', ['title' => 'MOTIF | Shopping', 'cid' =>$cid])
 <input type="text" id="productClick-name" value="name" hidden>
 <input type="text" id="productClick-spu" value="1" hidden>
 <input type="text" id="productClick-price" value="1" hidden>
