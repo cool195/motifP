@@ -146,7 +146,7 @@
                href="@{{if $value.skipType == 1}}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4}}/shopping/@{{ else }}@{{ /if }}@{{ $value.skipId }}">
                 <img data-original="{{config('runtime.CDN_URL')}}/n2/@{{ $value.imgPath }}"
                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                     class="img-fluid img-daily img-lazy" style="width: 252px; height: {{ number_format((252/$value.weight * $value.height), 2) }}px">
+                     class="img-fluid img-daily img-lazy" style="width: 252px; height: @{{ 252/$value.weight * $value.height }}px">
             </a>
 
             @{{ if undefined !== ( $value.title || $value.subTitle ) }}
