@@ -38,7 +38,8 @@
     @if(!empty($list))
         <ul class="tiles-wrap animated daily-content" id="daily-wookmark">
             @foreach($list as $daily)
-                <li class="isHidden">
+                {{--<li class="isHidden">--}}
+                <li>
                     @if(3 == $daily['type'])
                         <div class="daily-item">
                             <div class="designer-media bg-white">
@@ -68,8 +69,9 @@
                             <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
                                data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
                                href="@if(1 == $daily['skipType'])/detail/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@elseif(4 == $daily['skipType'])/shopping/@else{{""}}@endif{{ $daily['skipId'] }}">
-                                <img src="{{config('runtime.CDN_URL')}}/n2/{{$daily['imgPath']}}"
-                                     class="img-fluid img-daily img-lazy">
+                                <img data-original="{{config('runtime.CDN_URL')}}/n2/{{$daily['imgPath']}}"
+                                     src="/images/product/bg-product@336.png"
+                                     class="img-fluid img-daily img-lazy" style="width: 252px; height: {{252/$daily['weight']*$daily['height']}}px">
                             </a>
                             @if(!empty($daily['title'] || !empty($daily['subTitle'])))
                                 <div class="daily-info p-a-10x text-left">
@@ -96,6 +98,7 @@
             @endforeach
         </ul>
     @endif
+    <div class="clearfix"></div>
         <div class="text-center m-y-30x seeMore-info">
             <div class="dailyList-seeMore" style="display: none;">
                 <a class="btn btn-gray btn-lg btn-380 btn-seeMore-dailyList">VIEW MORE</a>
@@ -110,7 +113,7 @@
 <template id="tpl-daily">
     @{{ each list }}
     @{{ if $value.type == "3" }}
-    <li class="isHidden">
+    <li>
         <div class="daily-item">
             <div class="designer-media bg-white">
                 <div class="player-item" data-playid="@{{$value.videoId}}">
@@ -136,12 +139,16 @@
     @{{ /if }}
 
     @{{ if $value.type == "1" || $value.type == "2" }}
-    <li class="isHidden">
+    <li>
         <div class="daily-item">
             <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
                data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
                href="@{{if $value.skipType == 1}}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4}}/shopping/@{{ else }}@{{ /if }}@{{ $value.skipId }}">
                 <img src="{{config('runtime.CDN_URL')}}/n2/@{{ $value.imgPath }}" class="img-fluid img-daily">
+
+                <img data-original="{{config('runtime.CDN_URL')}}/n2/@{{ $value.imgPath }}"
+                     src="/images/product/bg-product@336.png"
+                     class="img-fluid img-daily img-lazy" style="width: 252px; height: {{ number_format((252/$value.weight * $value.height), 2) }}px">
             </a>
 
             @{{ if undefined !== ( $value.title || $value.subTitle ) }}

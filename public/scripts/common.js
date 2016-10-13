@@ -2591,7 +2591,7 @@ function HideSeeMore(seemoreName) {
                 // end
 
                 $('#daily-wookmark').imagesLoaded(function () {
-                    $('.isHidden').removeClass('isHidden');
+                    //$('.isHidden').removeClass('isHidden');
                     var wookmark1 = new Wookmark('#daily-wookmark', {
                         container: $('#daily-wookmark'),
                         align: 'center',
@@ -3215,14 +3215,14 @@ $.ajaxSetup({
 //public end
 
 // 瀑布流
-if ($('.isHidden').hasClass('isHidden')) {
+//if ($('.isHidden').hasClass('isHidden')) {
     $(function () {
         try {
             $('#daily-wookmark').imagesLoaded(function () {
                 $('.daily-loading').hide();
                 $('.dailyList-seeMore').show();
 
-                $('.isHidden').removeClass('isHidden');
+                //$('.isHidden').removeClass('isHidden');
 
                 // 设置视频的高度
                 Width = $('.player-media').width();
@@ -3247,7 +3247,7 @@ if ($('.isHidden').hasClass('isHidden')) {
         } catch (e) {
         }
     });
-}
+//}
 
 
 window.onload = function () {
