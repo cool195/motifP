@@ -3228,7 +3228,7 @@ $.ajaxSetup({
 //public end
 
 // 瀑布流
-//if ($('.isHidden').hasClass('isHidden')) {
+if ($('#dailyIndex').data('show')) {
     $(function () {
         try {
             $('#daily-wookmark').imagesLoaded(function () {
@@ -3260,7 +3260,7 @@ $.ajaxSetup({
         } catch (e) {
         }
     });
-//}
+}
 
 
 window.onload = function () {
