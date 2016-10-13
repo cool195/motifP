@@ -801,7 +801,7 @@ a {
   text-decoration: none;
 }
 
-a:focus, a:hover {
+a:hover {
   color: #6d91ff;
 }
 
