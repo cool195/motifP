@@ -1,5 +1,5 @@
 
-@include('header', ['title' => 'MOTIF | Daily Exclusive Accessory Designs From Your Favorite Instagrammers & YouTubers'])
+@include('header', ['title' => 'MOTIF | Daily Exclusive Accessory Designs From Your Favorite Instagrammers & YouTubers', 'page' => 'daily'])
 <section>
     <div class="bannerSwiper-container">
         <div class="swiper-wrapper">
