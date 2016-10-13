@@ -4,19 +4,19 @@
     <div class="bannerSwiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide" >
-                <a href="/topic/186" target="_blank">
-                    <img src="/images/banner/banluxeedit.jpg" alt="">
+                <a href="/topic/186">
+                    <img src="{{config('runtime.Image_URL')}}/images/banner/banluxeedit.jpg" alt="">
                 </a>
             </div>
 
             <div class="swiper-slide" >
-                <a href="designer/99" target="_blank">
-                    <img src="/images/banner/ban_rae.jpg" alt="">
+                <a href="designer/99">
+                    <img src="{{config('runtime.Image_URL')}}/images/banner/ban_rae.jpg" alt="">
                 </a>
             </div>
             <div class="swiper-slide" >
-                <a href="/topic/187" target="_blank">
-                    <img src="/images/banner/ban_runwayRibbons.jpg" alt="">
+                <a href="/topic/187">
+                    <img src="{{config('runtime.Image_URL')}}/images/banner/ban_runwayRibbons.jpg" alt="">
                 </a>
             </div>
         </div>
