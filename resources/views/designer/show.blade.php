@@ -1,4 +1,4 @@
-@include('header',['title'=>$designer['nickname'],'description'=>$designer['describe'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$designer['img_video_path']])
+@include('header',['title'=>'MOTIF | '.$designer['nickname'],'description'=>$designer['describe'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$designer['img_video_path'],'page'=>'designer'])
 <input type="text" id="productClick-name" value="name" hidden>
 <input type="text" id="productClick-spu" value="1" hidden>
 <input type="text" id="productClick-price" value="1" hidden>
@@ -218,10 +218,9 @@
                                     <img class="img-lazy img-fluid designer-banImg"
                                          src="{{config('runtime.CDN_URL')}}/n0/{{$value['imgPath']}}">
                                 @else
-                                    <a data-link="@if($value['skipType']=='1')/detail/{{$value['skipId']}}{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['skipId']}}@endif"
-                                       data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId"{{$value['skipId']}},"expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'
-                                       data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":{{$value['skipId']}},"expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'
-                                       href="javascript:void(0)">
+                                    <a href="@if($value['skipType']=='1')/detail/{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['skipId']}}@endif"
+                                       data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":0,"skipType":{{$value['skipType']}},"skipId":"{{$value['skipId']}}","expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'
+                                       data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":"{{$value['skipId']}}","expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'>
                                         <img class="img-lazy img-fluid designer-banImg"
                                              src="{{config('runtime.CDN_URL')}}/n0/{{$value['imgPath']}}">
                                     </a>
@@ -249,12 +248,9 @@
                                             <div class="col-md-3 col-xs-6 goods-item">
                                                 <div class="productList-item">
                                                     <div class="image-container">
-                                                        <a data-link="/detail/{{$spu}}"
-                                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId"{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"PC"}'
-                                                           href="javascript:void(0)"
-                                                           data-spu="{{$spu}}"
-                                                           data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
-                                                           data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
+                                                        <a href="/detail/{{$spu}}"
+                                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":1,"skipType":1,"skipId":{{$spu}},"expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"PC"}'
+                                                           data-spu="{{$spu}}" data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                             <img class="img-fluid img-lazy"
                                                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                                  alt="商品的名称"
@@ -325,9 +321,7 @@
                             <div class="image-container">
                                 <a data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                    data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
-                                   data-link="/detail/{{$product['spu']}}" href="javascript:void(0)"
-                                   data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}"
-                                   data-price="{{number_format($product['skuPrice']['sale_price']/100,2)}}">
+                                   href="/detail/{{$product['spu']}}" data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}" data-price="{{number_format($product['skuPrice']['sale_price']/100,2)}}">
                                     <img class="img-fluid img-lazy"
                                          data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}"
                                          alt="{{$product['main_title']}}"
@@ -338,8 +332,7 @@
                                     </div>--}}
                                     @if($product['sale_type'] == 1)
                                         <div class="presale-sign">
-                                            <div class="img-clock"><img class="img-circle"
-                                                                        src="/images/icon/sale-clock.png"></div>
+                                            <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
                                             <div class="presale-text helve font-size-sm">LIMITED EDITION</div>
                                         </div>
                                     @endif

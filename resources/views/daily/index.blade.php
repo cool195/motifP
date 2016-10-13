@@ -1,6 +1,5 @@
-@include('header', ['title' => 'daily'])
-<div class="clearfix"></div>
-        <!-- banner -->
+<!-- banner -->
+@include('header', ['title' => 'MOTIF | Daily Exclusive Accessory Designs From Your Favorite Instagrammers & YouTubers', 'page' => 'daily'])
 <section>
     <div class="bannerSwiper-container">
         <div class="swiper-wrapper">
@@ -57,8 +56,7 @@
                                         <a class="text-white font-size-xs video-formore"
                                            data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
                                            data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
-                                           data-link="@if(1 == $daily['skipType'])/detail/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@elseif(4==$daily['skipType'])/shopping/@else{{""}}@endif{{ $daily['skipId'] }}"
-                                           href="javascript:void(0)">
+                                           href="@if(1 == $daily['skipType'])/detail/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@elseif(4==$daily['skipType'])/shopping/@else{{""}}@endif{{ $daily['skipId'] }}">
                                             <strong>Click for More</strong>
                                         </a>
                                     </div>
@@ -69,8 +67,7 @@
                         <div class="daily-item player-media">
                             <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":0,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
                                data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":{{$daily['skipId']}},"sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
-                               data-link="@if(1 == $daily['skipType'])/detail/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@elseif(4 == $daily['skipType'])/shopping/@else{{""}}@endif{{ $daily['skipId'] }}"
-                               href="javascript:void(0)" >
+                               href="@if(1 == $daily['skipType'])/detail/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@elseif(4 == $daily['skipType'])/shopping/@else{{""}}@endif{{ $daily['skipId'] }}">
                                 <img src="{{config('runtime.CDN_URL')}}/n2/{{$daily['imgPath']}}"
                                      class="img-fluid img-daily img-lazy">
                             </a>
@@ -101,7 +98,7 @@
     @endif
         <div class="text-center m-y-30x seeMore-info">
             <div class="dailyList-seeMore" style="display: none;">
-                <a class="btn btn-gray btn-lg btn-380 btn-seeMore-dailyList">See more of all</a>
+                <a class="btn btn-gray btn-lg btn-380 btn-seeMore-dailyList">VIEW MORE</a>
             </div>
             <div class="loading daily-loading" style="display: none">
                 <div class="loader"></div>
@@ -130,8 +127,7 @@
                         <a class="text-white font-size-xs video-formore"
                            data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","type":"@{{ $value.type }}","imgtexttype":"@{{ $value.imgtextType }}","skiptype":"@{{ $value.skipType }}","skipid":"@{{ $value.skipId }}","sortno":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
                            data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","type":"@{{ $value.type }}","imgtexttype":"@{{ $value.imgtextType }}","skiptype":"@{{ $value.skipType }}","skipid":"@{{ $value.skipId }}","sortno":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"pc"}'
-                           data-link="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping/@{{ else }}@{{ /if }}@{{ $value.skipId }}"
-                           href="javascript:void(0)" ><strong>Click for More</strong></a>
+                           href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping/@{{ else }}@{{ /if }}@{{ $value.skipId }}"><strong>Click for More</strong></a>
                     </div>
                 </div>
             </div>
@@ -144,8 +140,7 @@
         <div class="daily-item">
             <a data-impr='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"0","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
                data-clk='http://clk.motif.me/log.gif?t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{ Session::get('user.uuid') }}&v={"action":"1","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
-               data-link="@{{if $value.skipType == 1}}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4}}/shopping/@{{ else }}@{{ /if }}@{{ $value.skipId }}"
-               href="javascript:void(0)" >
+               href="@{{if $value.skipType == 1}}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4}}/shopping/@{{ else }}@{{ /if }}@{{ $value.skipId }}">
                 <img src="{{config('runtime.CDN_URL')}}/n2/@{{ $value.imgPath }}" class="img-fluid img-daily">
             </a>
 

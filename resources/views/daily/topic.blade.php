@@ -1,5 +1,5 @@
 
-@include('header')
+@include('header',['title'=>'MOTIF | '.$topic['title']])
 <input type="text" id="productClick-name" value="name" hidden>
 <input type="text" id="productClick-spu" value="1" hidden>
 <input type="text" id="productClick-price" value="1" hidden>
@@ -54,6 +54,7 @@
     });
 </script>
 <!--内容-->
+
 <section class="p-y-40x">
     @inject('wishlist', 'App\Http\Controllers\UserController')
     <div class="topic-wrap">
@@ -120,9 +121,7 @@
                                     <div class="productList-item">
                                         <div class="image-container">
                                             <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
-                                               data-link="/detail/{{$spu}}" href="javascript:void(0)"
-                                               data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}"
-                                               data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
+                                               href="/detail/{{$spu}}" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                 <img class="img-fluid img-lazy figure"
                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
@@ -140,8 +139,7 @@
                                                 <div class="presale-sign">
                                                     <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
                                                     <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
-                                                       data-link="/detail/{{$spu}}" href="javascript:void(0)"
-                                                       data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}"
+                                                       data-link="/detail/{{$spu}}" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}"
                                                        data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}"
                                                        class="presale-text helve font-size-sm">LIMITED EDITION
                                                     </a>
