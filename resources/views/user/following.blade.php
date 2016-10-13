@@ -1,7 +1,7 @@
 
 @include('header', ['title' => 'following'])
 <!-- 内容 -->
-<section class="m-y-40x">
+<section class="m-y-40x" id="designerUser" data-show="true">
     <div class="container">
         <div class="myHome-content">
             <!-- 左侧菜单 -->

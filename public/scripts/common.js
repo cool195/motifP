@@ -2302,7 +2302,7 @@ function HideSeeMore(seemoreName) {
             })
                 .done(function (data) {
                     if (data.success) {
-                        if($('#designerIndex').data('show')){
+                        if($('#designerIndex').data('show') || $('#designerUser').data('show')){
                             $this.toggleClass('active');
                             if ('Following' == $this.html()) {
                                 $this.html('Follow');
