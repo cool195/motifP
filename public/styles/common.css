@@ -1492,7 +1492,9 @@ footer .text-Copyright{
   background-color: #e9ebf0;
   padding: 6px 0;
 }
-
+.download-info:hover{
+  cursor: pointer;
+}
 .motif-download-up{
   background-color: #eceef2;
 }

@@ -81,10 +81,14 @@ function HideSeeMore(seemoreName) {
     // download 是否显示
     try{
         $(function () {
+            var $downloadInfo = $('.download-info');
+            $downloadInfo.click(function(){
+                window.location = '/download';
+            });
             if (getCookie('pcdownloadingApp')){
-                $('.download-info').remove();
+                $downloadInfo.remove();
             }else {
-                $('.download-info').removeAttr('hidden');
+                $downloadInfo.removeAttr('hidden');
             }
         })
     }catch(e) {}
