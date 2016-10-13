@@ -146,13 +146,11 @@ function HideSeeMore(seemoreName) {
 
             //onProductClick();
 
-            if (undefined != $this.data('link')) {
-                $.ajax({
-                    url: $this.data('clk'),
-                    type: "GET"
-                });
-                window.open($this.data('link'));
-            }
+            $.ajax({
+                url: $this.data('clk'),
+                type: "GET"
+            });
+            //    window.open($this.data('link'));
         })
     })
 
@@ -2214,14 +2212,14 @@ function HideSeeMore(seemoreName) {
                         var $this = $(this);
                         //onProductClick();
 
-                        if (undefined != $this.data('link')) {
-                            $.ajax({
-                                url: $this.data('clk'),
-                                type: "GET"
-                            });
-                            window.open($this.data('link'));
 
-                        }
+                        $.ajax({
+                            url: $this.data('clk'),
+                            type: "GET"
+                        });
+                        //    window.open($this.data('link'));
+
+
                     })
 
                     // 视频区域高度
@@ -2485,14 +2483,12 @@ function HideSeeMore(seemoreName) {
 
                     //onProductClick();
 
-                    if (undefined !== $this.data('link')) {
-                        $.ajax({
-                            url: $this.data('clk'),
-                            type: "GET"
-                        });
-                        window.open($this.data('link'));
+                    $.ajax({
+                        url: $this.data('clk'),
+                        type: "GET"
+                    });
+                    //    window.open($this.data('link'));
 
-                    }
                 })
 
                 //end
@@ -2583,13 +2579,11 @@ function HideSeeMore(seemoreName) {
                 $('[data-clk]').unbind('click');
                 $('[data-clk]').bind('click', function () {
                     var $this = $(this);
-                    if (undefined !== $this.data('link')) {
-                        $.ajax({
-                            url: $this.data('clk'),
-                            type: "GET"
-                        });
-                        window.open($this.data('link'));
-                    }
+                    $.ajax({
+                        url: $this.data('clk'),
+                        type: "GET"
+                    });
+                    //    window.open($this.data('link'));
                 })
                 // end
 
