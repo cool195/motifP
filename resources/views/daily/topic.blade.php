@@ -1,5 +1,5 @@
 
-@include('header')
+@include('header',['title'=>'MOTIF | '.$topic['title']])
 <input type="text" id="productClick-name" value="name" hidden>
 <input type="text" id="productClick-spu" value="1" hidden>
 <input type="text" id="productClick-price" value="1" hidden>
@@ -54,6 +54,7 @@
     });
 </script>
 <!--内容-->
+
 <section class="p-y-40x">
     @inject('wishlist', 'App\Http\Controllers\UserController')
     <div class="topic-wrap">

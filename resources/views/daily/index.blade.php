@@ -1,4 +1,4 @@
-@include('header', ['title' => 'daily'])
+@include('header', ['title' => 'MOTIF | Daily Exclusive Accessory Designs From Your Favorite Instagrammers & YouTubers'])
 
         <!-- banner -->
 <section>
