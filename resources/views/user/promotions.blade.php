@@ -65,11 +65,6 @@
                     <div class="font-size-lx text-left helveBold">@{{ $value.cp_title }}</div>
                 </div>
             </div>
-            {{--警告提示--}}
-            <span class="warning-info flex flex-alignCenter text-warning p-t-5x">
-                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                <span class="font-size-base">This coupon can only be used in our free Motif app.</span>
-            </span>
         </div>
     </div>
     @{{ /each }}
