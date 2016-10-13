@@ -147,7 +147,7 @@
             <div class="loading product-loading" style="display: none">
                 <div class="loader">
                 </div>
-                <div class="text-center p-l-15x">Loading more...</div>
+                <div class="text-center p-l-15x">Loading...</div>
             </div>
         </div>
     </div>
