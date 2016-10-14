@@ -93,7 +93,7 @@ class UserController extends BaseController
                 'token' => self::Token
             );
             $result = $this->request('user', $params);
-            $result['redirectUrl'] = "/login";
+            $result['redirectUrl'] = "/login?referer=/daily";
             return $result;
         } else {
             return view('user.resetpassword', ['tp' => $request->input('tp'), 'sig' => $request->input('sig')]);
