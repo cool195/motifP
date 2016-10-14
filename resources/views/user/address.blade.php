@@ -79,7 +79,8 @@
                                                     @foreach($Address->getCountry() as $value)
                                                         <option value="{{$value['country_name_en']}}"
                                                                 data-type="{{$value['child_type']}}"
-                                                                data-id="{{$value['country_id']}}">{{$value['country_name_en']}}</option>
+                                                                data-id="{{$value['country_id']}}"
+                                                                data-label="{{$value['zipcode_label']}}">{{$value['country_name_en']}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

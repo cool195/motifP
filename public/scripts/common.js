@@ -1075,8 +1075,9 @@ function HideSeeMore(seemoreName) {
 
     // 选择国家 联动洲
     $('select[name="country"]').change(function () {
-        var Country = $('select[name="country"]').val();
-        initCityState(Country, '');
+        var Country = $('select[name="country"] option:selected').val();
+        var label = $('select[name="country"] option:selected').data('label');
+        initCityState(Country, label);
 
         if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
             validateState();
@@ -1116,7 +1117,7 @@ function HideSeeMore(seemoreName) {
                         $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($("select"));
                     });
                     if (State != "") {
-                        $('select[name="state"]').val(State);
+                        $('input[name="state"]').val(State);
                     }
                 })
         }
