@@ -1,5 +1,5 @@
 
-@include('header',['title'=>'MOTIF | '.$topic['title']])
+@include('header',['title'=>$topic['title']])
 <input type="text" id="productClick-name" value="name" hidden>
 <input type="text" id="productClick-spu" value="1" hidden>
 <input type="text" id="productClick-price" value="1" hidden>

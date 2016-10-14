@@ -1,5 +1,5 @@
 
-@include('header', ['title' => 'MOTIF | Designer', 'page' => 'designer'])
+@include('header', ['title' => 'Designer', 'page' => 'designer'])
 <!-- 内容 -->
 <section class="m-t-40x" id="designerIndex" data-show="true">
     <!-- 设计师列表 -->

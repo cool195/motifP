@@ -1,5 +1,5 @@
 <!-- header start-->
-@include('header',['title'=>'MOTIF | '.$data['main_title'],'description'=>$data['intro_short'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$data['main_image_url']])
+@include('header',['title'=>$data['main_title'],'description'=>$data['intro_short'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$data['main_image_url']])
 <!-- header end-->
 <!-- 添加购物车 -->
 <input type="text" id="addToCart-quantity" value="1" hidden>

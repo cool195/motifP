@@ -1,4 +1,4 @@
-@include('header')
+@include('header',['title'=>'promotions'])
 
 <!-- 内容 -->
 <section class="m-y-40x">

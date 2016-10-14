@@ -1,4 +1,4 @@
-@include('header', ['title' => 'wishlist'])
+@include('header', ['title' => 'Wishlist'])
         <!-- 内容 -->
 <section class="m-y-40x">
     <div class="container">

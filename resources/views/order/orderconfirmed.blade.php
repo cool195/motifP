@@ -1,4 +1,4 @@
-@include('header')
+@include('header',['title'=>'Order Confirmed'])
 
 @if(!empty($order))
     <script type="text/javascript">
