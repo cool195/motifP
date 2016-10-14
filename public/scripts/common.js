@@ -1375,7 +1375,8 @@ function HideSeeMore(seemoreName) {
         //var $warningInfo = $('.warning-info');
         var $warningInfo = $email.parent().siblings('.warning-info');
         var inputText = $email.val();
-        var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        //var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        var reg = /^[\.a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
         if ("" == inputText || undefined == inputText || null == inputText) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(emailNull);
@@ -1980,7 +1981,8 @@ function HideSeeMore(seemoreName) {
         //var $warningInfo = $('.warning-info');
         var $warningInfo = $email.siblings('.warning-info');
         var inputText = $email.val();
-        var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        //var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
+        var reg = /^[\.a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
         if ("" == inputText || undefined == inputText || null == inputText) {
             $warningInfo.removeClass('off');
             $warningInfo.children('span').html(emailNull);
