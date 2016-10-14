@@ -1,5 +1,5 @@
 <!-- 头部 -->
-@include('header',['title'=>'MOTIF | Checkout'])
+@include('header',['title'=>'Checkout'])
 <script type="text/javascript">
     // 支付埋点
     function onCheckout() {

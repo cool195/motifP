@@ -41,10 +41,6 @@ class UserController extends BaseController
 
     public function login(Request $request)
     {
-        if (Session::has('user')) {
-            //return redirect('daily');
-        }
-
         $referer = $request->input('url') ? $request->input('url') : $request->header('referer');
         Session::put('redirectUrl', $referer);
         return view('user.login', ['referer' => $referer]);
@@ -93,7 +89,7 @@ class UserController extends BaseController
                 'token' => self::Token
             );
             $result = $this->request('user', $params);
-            $result['redirectUrl'] = "/login?referer=/daily";
+            $result['redirectUrl'] = "/login?url=/daily";
             return $result;
         } else {
             return view('user.resetpassword', ['tp' => $request->input('tp'), 'sig' => $request->input('sig')]);

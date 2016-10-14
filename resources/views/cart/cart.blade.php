@@ -1,5 +1,5 @@
 <!-- header start-->
-@include('header', ['title' => 'MOTIF | Cart'])
+@include('header', ['title' => 'Cart'])
 <!-- header end-->
 <!-- 横幅 -->
 <input type="text" id="removeFromCart-name" value="" hidden>
