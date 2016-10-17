@@ -285,7 +285,7 @@ Route::get('error',function (){
 });
 // Ask End
 
-Route::get('/test', 'TestController@index');
+Route::get('/aes', 'TestController@index');
 
 
 
