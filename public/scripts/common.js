@@ -1076,8 +1076,9 @@ function HideSeeMore(seemoreName) {
     // 选择国家 联动洲
     $('select[name="country"]').change(function () {
         var Country = $('select[name="country"] option:selected').val();
-        var label = $('select[name="country"] option:selected').data('label');
-        initCityState(Country, label);
+        var child_label = $('select[name="country"] option:selected').data('child_label');
+        var zipcode_label = $('select[name="country"] option:selected').data('zipcode_label');
+        initCityState(Country, child_label, zipcode_label);
 
         if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
             validateState();
@@ -1088,7 +1089,7 @@ function HideSeeMore(seemoreName) {
 
 
     // 初始化 国家,洲
-    function initCityState(Country, State) {
+    function initCityState(Country, State, Zipcode) {
         // CountryId  国家Id
         // SelectType 国家对应洲类型
         var CountryId = $('select[name="country"] > option[value="' + Country + '"]').data('id');
@@ -1096,11 +1097,13 @@ function HideSeeMore(seemoreName) {
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
             $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">');
-            $('input[name="state"]').val(State);
+            $('input[name="state"]').attr('placeholder', State);
+            $('input[name="zip"]').attr('placeholder', Zipcode);
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
             $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
-            $('input[name="state"]').val(State);
+            $('input[name="state"]').attr('placeholder', State);
+            $('input[name="zip"]').attr('placeholder', Zipcode);
         } else {
             // 洲为下拉列选择
             // 获取 洲 列表
