@@ -6,9 +6,8 @@ class TestController extends BaseController
 {
     public function index()
     {
-        //$randomKey = str_random(6);
-        $randomKey = "abcdef";
-        $encryptStr = $this->encrypt($randomKey,"123456789");
+        $randomKey = str_random(6);
+        $encryptStr = $this->encrypt($randomKey,"0320181234567890123456/720");
         $start = substr($encryptStr, 0, 4);
         $end = substr($encryptStr, 4);
         $aesStr = ($start . $randomKey . $end);
@@ -34,12 +33,11 @@ class TestController extends BaseController
 
         if (!$keyLonger) {
             // 剩余的都补上data
-            $input .= substr($data,strlen($key),strlen($data)-strlen($key)).'2';
+            $input .= substr($data,strlen($key),strlen($data)-strlen($key)).'1';
         } else {
             // 剩余的都补上key
-            $input .= substr($key,strlen($data),strlen($key)-strlen($data)).'1';
+            $input .= substr($key,strlen($data),strlen($key)-strlen($data)).'2';
         }
-
         return base64_encode($input);
     }
 }
