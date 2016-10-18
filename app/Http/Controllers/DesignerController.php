@@ -25,6 +25,16 @@ class DesignerController extends BaseController
 
         $data = $this->request('designer', $params);
         $result = $this->getDesignerFollowedStatus($data);
+        foreach($result['data']['list'] as &$list){
+            $list['spus'] = "";
+            if(isset($list['products'])){
+                $spus = array();
+                foreach($list['products'] as $product){
+                    $spus[] = $product['spu'];
+                }
+                $list['spus'] = implode('_', $spus);
+            }
+        }
         if ($request->input('ajax')) {
             return $result;
         }

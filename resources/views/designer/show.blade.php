@@ -244,7 +244,7 @@
                             <!--设计师 商品-->
                                 <div class="container m-y-20x">
                                     <div class="row designerDetail-goods">
-                                        @foreach($value['spus'] as $spu)
+                                        @foreach($value['spus'] as $key => $spu)
                                             <div class="col-md-3 col-xs-6 goods-item">
                                                 <div class="productList-item">
                                                     <div class="image-container">
