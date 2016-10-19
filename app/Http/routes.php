@@ -62,6 +62,12 @@ Route::group(['middleware' => 'pcguide'], function() {
     Route::get('/rae', function (){
         return redirect("/designer/99");
     });
+    Route::get('/Rae', function (){
+        return redirect("/designer/99");
+    });
+    Route::get('/RAE', function (){
+        return redirect("/designer/99");
+    });
 });
 
 //Shopping End
@@ -278,6 +284,9 @@ Route::get('error',function (){
     abort(404);
 });
 // Ask End
+
+Route::get('/aes', 'TestController@index');
+
 
 
 
