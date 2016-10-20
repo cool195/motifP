@@ -1040,7 +1040,9 @@ function HideSeeMore(seemoreName) {
 
             // 初始化 国家,洲
             var Country = $('select[name="country"] option:selected').text();
-            initCityState(Country, '');
+            var child_label = $('select[name="country"] option:selected').data('child_label');
+            var zipcode_label = $('select[name="country"] option:selected').data('zipcode_label');
+            initCityState(Country, child_label, zipcode_label);
         } else {
             // 修改地址
             $.ajax({
@@ -1060,7 +1062,7 @@ function HideSeeMore(seemoreName) {
                     $('select[name="country"]').val(data.country);
 
                     // 初始化 国家,洲
-                    initCityState(data.country, data.state);
+                    initCityState(data.country, data.state, data.zip);
 
                     if (data.isDefault == 1) {
                         $('.isDefault').addClass('active');
@@ -1128,7 +1130,9 @@ function HideSeeMore(seemoreName) {
         if ($('#checkoutView').data('status') || $('#addressView').data('status')) {
             // 初始化 国家,洲
             var Country = $('select[name="country"] option:selected').text();
-            initCityState(Country, '');
+            var child_label = $('select[name="country"] option:selected').data('child_label');
+            var zipcode_label = $('select[name="country"] option:selected').data('zipcode_label');
+            initCityState(Country, child_label, zipcode_label);
         }
     } catch (e) {
     }
