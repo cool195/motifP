@@ -1094,16 +1094,14 @@ function HideSeeMore(seemoreName) {
         // SelectType 国家对应洲类型
         var CountryId = $('select[name="country"] > option[value="' + Country + '"]').data('id');
         var SelectType = $('select[name="country"] > option[value="' + Country + '"]').data('type');
+        $('input[name="zip"]').siblings('.warning-info').children('span').html('Please enter your '+ Zipcode + ' !');
+        $('input[name="zip"]').attr('placeholder', Zipcode);
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
-            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">');
-            $('input[name="state"]').attr('placeholder', State);
-            $('input[name="zip"]').attr('placeholder', Zipcode);
+            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="'+ State + '(optional)">');
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
-            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
-            $('input[name="state"]').attr('placeholder', State);
-            $('input[name="zip"]').attr('placeholder', Zipcode);
+            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="' + State + '"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your ' + State + '!</span> </div>');
         } else {
             // 洲为下拉列选择
             // 获取 洲 列表
