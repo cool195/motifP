@@ -108,9 +108,11 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="text-center m-x-20x">
-                        <div class="m-b-10x"><img class="img-circle img-border-white-4x"
-                                                  src="{{config('runtime.CDN_URL')}}/n0/{{$designer['icon']}}"
-                                                  width="120" height="120" alt=""></div>
+                        <div class="m-b-10x" data-impr='http://clk.motif.me/log.gif?t=designer.600001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"PC"}'>
+                            <img class="img-circle img-border-white-4x"
+                                 src="{{config('runtime.CDN_URL')}}/n0/{{$designer['icon']}}"
+                                 width="120" height="120" alt="">
+                        </div>
                         <div class="font-size-md helveBold">{{$designer['nickname']}}</div>
                         <div class="p-t-15x">
                             @if(Session::has('user'))
@@ -319,8 +321,8 @@
                     <div class="col-md-3 col-xs-6">
                         <div class="productList-item">
                             <div class="image-container">
-                                <a data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
-                                   data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
+                                <a data-impr="{{ $product['impr'] }}"
+                                   data-clk="{{ $product['clk'] }}"
                                    href="/detail/{{$product['spu']}}" data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}" data-price="{{number_format($product['skuPrice']['sale_price']/100,2)}}">
                                     <img class="img-fluid img-lazy"
                                          data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}"

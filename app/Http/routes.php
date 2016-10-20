@@ -59,14 +59,14 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::post('/checkStock', 'ShoppingController@checkStock');
 
-    Route::get('/rae', function (){
-        return redirect("/designer/99");
+    Route::get('rae', function (){
+        return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
     });
     Route::get('/Rae', function (){
-        return redirect("/designer/99");
+        return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
     });
     Route::get('/RAE', function (){
-        return redirect("/designer/99");
+        return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
     });
 });
 

@@ -1204,7 +1204,6 @@ function HideSeeMore(seemoreName) {
 
     // 生成订单
     $('.btn-toCheckout').on('click', function () {
-        onCheckout();
 
         if ($('#defaultAddr').data('aid') < 1) {
             checkValid($('input[name="name"]'));
