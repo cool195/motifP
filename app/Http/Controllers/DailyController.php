@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class DailyController extends BaseController
 {
@@ -79,6 +80,22 @@ class DailyController extends BaseController
         $result = $this->service($id);
         
         return View('daily.topic', ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
+    }
+
+/*    public function subscribe(Request $request)
+    {
+        $email = $request->input('email');
+        $fileName = "/tmp/email.txt";
+        $handle = fopen($fileName, "a") or die("open $fileName failed");
+        fwrite($handle, $email."\n");
+        fclose($handle);
+    }*/
+
+    public function subscribe(Request $request)
+    {
+        $email = $request->input('email');
+        $userName = Session::get('user.nickname');
+        Storage::append('email.txt', $userName." : ".$email);
     }
 
 }

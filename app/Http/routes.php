@@ -24,6 +24,8 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::get('/template/{id}', 'DailyController@staticShow')->where(['id' => '[0-9]+']);
 
+    Route::get('/subscribe', 'DailyController@subscribe')->middleware('loginCheck');
+
 });
 //Daily End
 
