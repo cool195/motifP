@@ -35,10 +35,10 @@
 
                         </div>
                         <div class="swiper-container">
-                            <div class="productImg-list p-t-20x swiper-wrapper" data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":{{ $designer['spus'] }},"expid":0,"version":"1.0.1","src":"PC"}'>
+                            <div class="productImg-list p-t-20x swiper-wrapper" data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ $designer['spus'] }}","expid":0,"version":"1.0.1","src":"PC"}'>
                                 @foreach($designer['products']  as $k => $product)
                                 <div class="productImg-item swiper-slide m-r-10x">
-                                    <a data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
+                                    <a data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$product['spu']}}","expid":0,"version":"1.0.1","src":"PC"}'
                                        href="/detail/{{$product['spu']}}">
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110">
                                         {{--售完--}}
@@ -141,10 +141,10 @@
                             @endif
                         </div>
                         <div class="swiper-container">
-                            <div class="productImg-list p-t-20x swiper-wrapper" data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":{{$designer['spus']}},"expid":0,"version":"1.0.1","src":"PC"}'>
+                            <div class="productImg-list p-t-20x swiper-wrapper" data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{$designer['spus']}}","expid":0,"version":"1.0.1","src":"PC"}'>
                                 @foreach($designer['products'] as $k => $product)
                                 <div class="productImg-item swiper-slide m-r-10x">
-                                    <a data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":{{$product['spu']}},"expid":0,"version":"1.0.1","src":"PC"}'
+                                    <a data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$product['spu']}}","expid":0,"version":"1.0.1","src":"PC"}'
                                        href="/detail/{{$product['spu']}}" >
                                         <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                         {{--售完--}}
@@ -439,10 +439,10 @@
                         @{{ /if }}
                     </div>
                     <div class="swiper-container">
-                        <div class="productImg-list p-t-20x swiper-wrapper" data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":@{{ $value.spus }},"expid":0,"version":"1.0.1","src":"PC"}'>
+                        <div class="productImg-list p-t-20x swiper-wrapper" data-impr='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"@{{ $value.spus }}","expid":0,"version":"1.0.1","src":"PC"}'>
                             @{{ each value.products }}
                             <div class="productImg-item swiper-slide m-r-10x">
-                                <a data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":@{{ $value.spu }},"expid":0,"version":"1.0.1","src":"PC"}'
+                                <a data-clk='http://clk.motif.me/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"@{{ $value.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
                                    href="/detail/@{{$value.spu}}" >
                                     <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.mainImage }}" width="110" height="110" alt="">
                                     @{{ if $value.sale_type == 1  }}
