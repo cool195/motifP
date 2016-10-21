@@ -715,6 +715,9 @@ function HideSeeMore(seemoreName) {
         // inviteFriend share 内容
         var ShareModal = $('[data-remodal-id=sharemodal]').remodal(OptionsShare);
 
+        // 邮件订阅 弹出框
+        var redeemModal = $('[data-remodal-id=redeem-modal]').remodal(Options);
+
     } catch (e) {
     }
 
@@ -3207,10 +3210,9 @@ function HideSeeMore(seemoreName) {
     // invite Friends begin
     $('#btn-inviteFriend').on('click', function () {
         ShareModal.open();
-    })
+    });
 
     // invite Friends end
-
 
     // 回到顶部
     $(window).scroll(function () {
@@ -3226,6 +3228,11 @@ function HideSeeMore(seemoreName) {
             "scroll-top": 0
         }, "fast");
     });
+
+    //邮件订阅
+    $('.redeem-fixed').on('click', function(){
+        redeemModal.open();
+    })
 
 })(jQuery, Swiper);
 

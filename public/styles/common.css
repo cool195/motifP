@@ -1483,8 +1483,8 @@ footer .text-Copyright{
 
 .download-img{
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 540px;
 }
 .download-footer{
@@ -1516,6 +1516,72 @@ footer .text-Copyright{
   .loginFooter-contactUs {
     margin-bottom: 0 !important;
   }
+}
+/* sort by*/
+.dropdown-sortBy{
+  text-align: left;
+  width: 190px;
+  height: 40px;
+  border: 1px solid #ddd;
+  background: #fff;
+  position: relative;
+}
+.dropdown-sortBy .dropdown-nav-hover{
+  width: 190px !important;
+}
+.dropdown-sortBy::after{
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #6d91ff;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+/*订阅*/
+.redeem-content{
+  border: none;
+  border-radius: 0;
+}
+.redeem-fixed{
+  display: inline-block;
+  background-color: #6d91ff;
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+  position: fixed;
+  bottom: 0;
+  right: 10%;
+}
+.redeem-fixed:hover{
+  cursor: pointer;
+  background-color: #7f9cf5;
+}
+.redeem-right{
+  position: relative;
+}
+.redeem-close{
+  position: absolute;
+  right: 6px;
+  top: 13px;
+  cursor: pointer;
+}
+.redeem-text{
+  max-width: 289px;
+}
+.redeem-right input{
+  width: 100%;
+  height: 38px;
+  padding: 0 15px;
+  border: 2px solid #ddd;
+}
+.redeem-enter{
+  background-color: #54565b;
+  color: #fff;
+  cursor: pointer;
 }
 
 @media (max-width: 544px) {

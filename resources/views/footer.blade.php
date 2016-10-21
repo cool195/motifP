@@ -62,6 +62,9 @@
         </div>
         <div class="p-t-10x m-t-10x text-center text-white font-size-xs text-Copyright">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
     </div>
+
+    <!-- 固定 弹框订阅 -->
+    <div class="redeem-fixed p-y-10x p-x-20x">GET 15% OFF YOUR FIRST ORDER!</div>
 </footer>
 
 <div id="top">
@@ -69,6 +72,28 @@
         <i class="iconfont icon-top font-size-lx text-white"></i>
     </div>
 </div>
+
+<!-- 邮件订阅 弹出框 -->
+<div class="remodal modal-content remodal-lg redeem-content" data-remodal-id="redeem-modal">
+    <div class="row m-a-0">
+        <div class="col-md-6 p-a-0">
+            <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_pic.png" class="img-fluid">
+        </div>
+        <div class="col-md-6 p-`b-20x">
+            <div class="redeem-right p-a-30x">
+                <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
+                <div class="redeem-text m-y-20x">
+                    <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_font.png" class="img-fluid">
+                </div>
+                <input type="text" placeholder="Name" class="m-b-10x">
+                <input type="email" placeholder="Email" class="m-b-10x">
+                <div class="redeem-enter font-size-lx p-y-10x m-t-10x">ENTER</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
