@@ -94,8 +94,11 @@ class DailyController extends BaseController
     public function subscribe(Request $request)
     {
         $email = $request->input('email');
-        $userName = Session::get('user.nickname');
-        Storage::append('email.txt', $userName." : ".$email);
+        $name = $request->input('name');
+        $success = Storage::append('email.txt', $name." : ".$email);
+        $result = array();
+        $result['success'] = $success;
+        return $result;
     }
 
 }

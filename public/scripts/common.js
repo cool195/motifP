@@ -3232,6 +3232,26 @@ function HideSeeMore(seemoreName) {
     //邮件订阅
     $('.redeem-fixed').on('click', function(){
         redeemModal.open();
+    });
+
+    $('.redeem-enter').on('click', function(){
+        if($(this).hasClass('disabled')){
+            return;
+        }
+        $.ajax({
+                url: '/subscribe',
+                type: 'get',
+                data: $('#subscribe').serialize()
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $('.subscribe-name').val('');
+                    $('.subscribe-email').val('');
+                    redeemModal.close();
+                } else {
+
+                }
+            });
     })
 
 })(jQuery, Swiper);

@@ -79,18 +79,19 @@
         <div class="col-md-6 p-a-0">
             <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_pic.png" class="img-fluid">
         </div>
-        <div class="col-md-6 p-`b-20x">
-            <div class="redeem-right p-a-30x">
-                <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
-                <div class="redeem-text m-y-20x">
-                    <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_font.png" class="img-fluid">
+        <form id="subscribe" action="" method="">
+            <div class="col-md-6 p-`b-20x">
+                <div class="redeem-right p-a-30x">
+                    <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
+                    <div class="redeem-text m-y-20x">
+                        <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_font.png" class="img-fluid">
+                    </div>
+                    <input type="text" name="name" placeholder="Name" class="m-b-10x subscribe-name">
+                    <input type="text" name="email" placeholder="Email" class="m-b-10x subscribe-email">
+                    <div class="redeem-enter font-size-lx p-y-10x m-t-10x">ENTER</div>
                 </div>
-                <input type="text" placeholder="Name" class="m-b-10x">
-                <input type="email" placeholder="Email" class="m-b-10x">
-                <div class="redeem-enter font-size-lx p-y-10x m-t-10x">ENTER</div>
             </div>
-
-        </div>
+        </form>
     </div>
 </div>
 
