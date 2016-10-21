@@ -1117,7 +1117,7 @@ function HideSeeMore(seemoreName) {
                     $.each(data, function (n, value) {
                         var StateNameId = value['state_name_sn'];
                         var StateNameEn = value['state_name_en'];
-                        $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($("select"));
+                        $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($('select[name="state"]'));
                     });
                     if (State != "") {
                         $('input[name="state"]').val(State);
