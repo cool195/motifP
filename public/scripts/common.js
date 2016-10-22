@@ -3233,7 +3233,14 @@ function HideSeeMore(seemoreName) {
     $('.redeem-fixed').on('click', function(){
         redeemModal.open();
     });
-
+        // 校验 email
+    $('.subscribe-email').on('keyup blur', function () {
+        if (login_validationEmail($(this))){
+            $('.redeem-enter').removeClass('disabled');
+        } else {
+            $('.redeem-enter').addClass('disabled');
+        }
+    });
     $('.redeem-enter').on('click', function(){
         if($(this).hasClass('disabled')){
             return;
@@ -3245,14 +3252,16 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
                 if (data.success) {
-                    $('.subscribe-name').val('');
-                    $('.subscribe-email').val('');
-                    redeemModal.close();
+                    $('.redeem-leftWrapper').addClass('hidden');
+                    $('.redeem-rightWrapper').removeClass('hidden');
                 } else {
 
                 }
             });
-    })
+    });
+
+
+
 
 })(jQuery, Swiper);
 

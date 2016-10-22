@@ -1518,18 +1518,23 @@ footer .text-Copyright{
   }
 }
 /* sort by*/
+
 .dropdown-sortBy{
-  text-align: left;
   width: 190px;
   height: 40px;
   border: 1px solid #ddd;
   background: #fff;
-  position: relative;
 }
 .dropdown-sortBy .dropdown-nav-hover{
   width: 190px !important;
+  margin: 0;
+  list-style: none;
+  background-color: #fff;
 }
-.dropdown-sortBy::after{
+.sortBy-btn{
+  display: inline-block;
+}
+.sortBy-btn::after{
   content: '';
   display: inline-block;
   width: 0;
@@ -1543,6 +1548,9 @@ footer .text-Copyright{
 }
 
 /*订阅*/
+.redeem-leftWrapper.hidden,.redeem-rightWrapper.hidden{
+  display: none;
+}
 .redeem-content{
   border: none;
   border-radius: 0;
@@ -1578,10 +1586,19 @@ footer .text-Copyright{
   padding: 0 15px;
   border: 2px solid #ddd;
 }
-.redeem-enter{
+.redeem-btn{
   background-color: #54565b;
   color: #fff;
   cursor: pointer;
+  display: block;
+}
+.redeem-btn:hover{
+  background-color: #b6a00b;
+  cursor: pointer;
+  color: #fff;
+}
+.redeem-code{
+  border: 1px solid #ddd;
 }
 
 @media (max-width: 544px) {

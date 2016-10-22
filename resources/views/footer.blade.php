@@ -79,19 +79,36 @@
         <div class="col-md-6 p-a-0">
             <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_pic.png" class="img-fluid">
         </div>
-        <form id="subscribe" action="" method="">
-            <div class="col-md-6 p-`b-20x">
-                <div class="redeem-right p-a-30x">
+        <form id="subscribe" action="" method="" class="redeem-leftWrapper">
+            <div class="col-md-6">
+                <div class="redeem-right p-x-20x p-t-20x">
                     <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
                     <div class="redeem-text m-y-20x">
                         <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_font.png" class="img-fluid">
                     </div>
                     <input type="text" name="name" placeholder="Name" class="m-b-10x subscribe-name">
-                    <input type="text" name="email" placeholder="Email" class="m-b-10x subscribe-email">
-                    <div class="redeem-enter font-size-lx p-y-10x m-t-10x">ENTER</div>
+                    <div class="m-b-10x">
+                        <div><input type="text" name="email" placeholder="Email" class="subscribe-email"></div>
+                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                            <span class="font-size-base"></span>
+                        </div>
+                    </div>
+                    <div class="font-size-lx p-y-10x m-t-10x redeem-btn redeem-enter disabled">ENTER</div>
                 </div>
             </div>
         </form>
+        <div class="col-md-6 redeem-rightWrapper hidden">
+            <div class="redeem-right p-x-20x p-t-20x">
+                <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
+                <div class="redeem-text m-y-20x">
+                    <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_font2.png" class="img-fluid">
+                </div>
+
+                <div class="font-size-lx p-y-10x m-t-10x redeem-code">MOTIFATED15</div>
+                <a href="/shopping/0" class="font-size-lx p-y-10x m-t-10x redeem-btn">SHOW ME THE GOODS</a>
+            </div>
+        </div>
     </div>
 </div>
 
