@@ -82,15 +82,6 @@ class DailyController extends BaseController
         return View('daily.topic', ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
     }
 
-/*    public function subscribe(Request $request)
-    {
-        $email = $request->input('email');
-        $fileName = "/tmp/email.txt";
-        $handle = fopen($fileName, "a") or die("open $fileName failed");
-        fwrite($handle, $email."\n");
-        fclose($handle);
-    }*/
-
     public function subscribe(Request $request)
     {
         $email = $request->input('email');
