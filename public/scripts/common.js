@@ -3293,7 +3293,7 @@ function HideSeeMore(seemoreName) {
         }
         $.ajax({
                 url: '/subscribe',
-                type: 'get',
+                type: 'post',
                 data: $('#subscribe').serialize()
             })
             .done(function (data) {

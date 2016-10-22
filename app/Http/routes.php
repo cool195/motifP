@@ -24,7 +24,7 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::get('/template/{id}', 'DailyController@staticShow')->where(['id' => '[0-9]+']);
 
-    Route::get('/subscribe', 'DailyController@subscribe')->middleware('loginCheck');
+    Route::post('/subscribe', 'DailyController@subscribe');
 
 });
 //Daily End
@@ -135,6 +135,15 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
     Route::get('/paypalStatus', 'PaypalController@paypal');
 });
 //Paypal End
+
+//wordpay Start
+Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
+
+
+});
+
+
+//wordpay End
 
 
 //User Start
