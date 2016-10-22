@@ -136,6 +136,15 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 });
 //Paypal End
 
+//wordpay Start
+Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
+
+
+});
+
+
+//wordpay End
+
 
 //User Start
 Route::group(['middleware' => 'pcguide'], function () {
