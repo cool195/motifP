@@ -146,7 +146,7 @@
                     </div>
                     <div class="row p-x-10x p-t-20x address-list"></div>
                     <div class="text-right p-t-10x">
-                        <a href="javascript:;" class="btn btn-primary btn-md" id="btnAddrShowHide">Continue</a>
+                        <a href="javascript:;" class="btn btn-primary btn-md btnAddrShowHide">Continue</a>
                     </div>
                 </div>
                 {{--添加\修改 地址--}}
@@ -161,7 +161,6 @@
                     <div class="row p-t-30x">
                         <form id="addAddressForm" data-aid="">
                             <div class="col-md-5">
-
                                 <input type="hidden" name="email" value="{{Session::get('user.login_email')}}">
                                 <div class="p-l-20x m-b-20x">
                                     <input type="text" name="name"
@@ -194,12 +193,9 @@
                                     <input type="text" name="addr2" class="form-control contrlo-lg text-primary"
                                            placeholder="Street 2 (optional)">
                                 </div>
-
-
                             </div>
                             <div class="col-md-1"></div>
                             <div class="col-md-5">
-
                                 <div class="p-l-20x m-b-20x">
                                     <input type="text" name="city"
                                            class="form-control contrlo-lg text-primary address-city" placeholder="City">
@@ -286,6 +282,229 @@
                     <div class="text-right"><a href="javascript:;" id="smsubmit"
                                                class="btn btn-primary btn-md">Continue</a></div>
                 </div>
+            </div>
+        </div>
+
+        {{--Payment Method--}}
+        <div class="box-shadow bg-white m-t-20x active">
+            <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="pmShowHide">
+                <span class="sanBold">Payment Method</span>
+                <span class="pull-right showHide-simpleInfo">
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
+                    <span class="p-l-10x">Paypal</span>
+                    <a class="p-l-40x">Edit</a>
+                </span>
+            </div>
+            <hr class="hr-common m-a-0">
+            <div class="showHide-body payment-content">
+                <!--选择支付方式-->
+                <div class="p-a-20x select-payment">
+                    <span class="font-size-md">Select Payment Method</span>
+                    <div class="row p-x-10x p-t-20x">
+                        <div class="payment-list">  <!--之前添加过卡 遍历模板-->
+                            <div class="col-md-6">
+                                <div class="p-a-10x">
+                                    <div class="address-item flex p-x-20x active">
+                                        <div class="paycard-sign p-t-20x">
+                                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
+                                            <p class="p-t-20x">Exp:12/2016</p>
+                                        </div>
+                                        <div class="paycard-info m-l-20x m-t-10x">
+                                            <span class="sanBold font-size-lx">XXXX XXXX XXXX 2837</span>
+                                            <p class="billingTxt"><span>Billing:</span>sanlitunkjdsvjkfvndskncjc...</p>
+                                        </div>
+                                        <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-a-10x">
+                                    <div class="address-item flex p-x-20x">
+                                        <div class="paycard-sign p-t-20x">
+                                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
+                                            <p class="p-t-20x">Exp:12/2016</p>
+                                        </div>
+                                        <div class="paycard-info m-l-20x m-t-10x">
+                                            <span class="sanBold font-size-lx">XXXX XXXX XXXX 2837</span>
+                                            <p class="billingTxt"><span>Billing:</span>sanlitunkjdsvjkfvndskncjc...</p>
+                                        </div>
+                                        <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-a-10x">
+                                <div class="address-item flex flex-alignCenter p-x-20x active">
+                                    <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
+                                    <span class="font-size-lxx p-l-40x">Pay with Paypal</span>
+                                    <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-a-10x">
+                                <div class="address-item flex flex-alignCenter flex-fullJustified p-x-20x active addCreditCard">
+                                    <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
+                                    <span class="font-size-lxx">Add New Credit Card</span>
+                                    <i class="iconfont icon-add m-r-20x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right p-t-10x">
+                        <a href="javascript:void(0);" class="btn btn-primary btn-md" id="btnPaymentShowHide">Continue</a>
+                    </div>
+                </div>
+                <!--添加卡-->
+                <div class="p-a-20x add-newCard disabled">
+                    <div class="inline">
+                        <span class="font-size-md sanBold">Add New Credit Card</span>
+                        <span class="font-size-md pull-right">
+                            <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg active"></i>
+                            <span class="p-l-5x">Make Primary</span>
+                        </span>
+                    </div>
+
+                    <div class="p-a-20x">
+                        <div>We Accept:
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="33" class="m-l-10x">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="33" class="m-l-20x">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="33" class="m-l-20x">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="33" class="m-l-20x">
+                        </div>
+                        <div class="row p-t-20x">
+                            <div class="col-md-5">
+                                <input type="text" name="number" class="form-control contrlo-lg text-primary card-number" placeholder="Credit Card Number">
+                                <div class="warning-info flex flex-alignCenter text-warning p-t-5x">
+                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                    <span class="font-size-base">The credit card number is incorrect!</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" name="securityCode" class="form-control contrlo-lg text-primary card-date" placeholder="MM/YYYY">
+                                <div class="warning-info flex flex-alignCenter text-warning p-t-5x">
+                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                    <span class="font-size-base">日期格式不正确</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" name="securityCode" class="form-control contrlo-lg text-primary card-code" placeholder="Security Code">
+                                <div class="warning-info flex flex-alignCenter text-warning p-t-5x">
+                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                    <span class="font-size-base">Security Code不正确</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-t-30x">
+                            <div class="col-md-6 p-b-10x">
+                                <div>
+                                    <input class="choose-oldAddr" type="radio" checked="checked" name="card-address">
+                                    <label for="" class="p-l-10x">Billing address same as the shipping address</label>
+                                </div>
+                                {{--账单地址信息--}}
+                                <div class="card-message">
+                                    <div class="sanBold">UserName</div>
+                                    <div>New York</div>
+                                    <div>12030</div>
+                                    <div>United States</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 p-b-10x">
+                                <div>
+                                    <input class="choose-addNewAddr" type="radio" name="card-address">
+                                    <label for="" class="p-l-10x">Use a different billing address</label>
+                                </div>
+                            </div>
+                        </div>
+                        {{--start添加新的账单地址--}}
+                        <div class="row p-t-30x card-addNewAddr disabled">
+                            <form id="addAddressForm">
+                                <div class="col-md-5">
+                                    <input type="hidden" name="email" value="{{Session::get('user.login_email')}}">
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="name"
+                                               class="form-control contrlo-lg text-primary address-name"
+                                               placeholder="Full name">
+                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">Please enter your name !</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="tel"
+                                               class="form-control contrlo-lg text-primary address-phone"
+                                               placeholder="Phone">
+                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">Please enter your Phone !</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="addr1"
+                                               class="form-control contrlo-lg text-primary address-street"
+                                               placeholder="Street 1">
+                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">Please enter your street !</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="addr2" class="form-control contrlo-lg text-primary"
+                                               placeholder="Street 2 (optional)">
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5">
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="city"
+                                               class="form-control contrlo-lg text-primary address-city" placeholder="City">
+                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">Please enter your city !</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-l-20x m-b-20x">
+                                        <select name="country" class="form-control contrlo-lg select-country">
+                                            @foreach($Address->getCountry() as $value)
+                                                <option value="{{$value['country_name_en']}}"
+                                                        data-type="{{$value['child_type']}}"
+                                                        data-id="{{$value['country_id']}}">{{$value['country_name_en']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="p-l-20x m-b-20x state-info">
+                                        <input type="text" name="state" class="form-control contrlo-lg text-primary"
+                                               placeholder="State">
+                                    </div>
+                                    <div class="p-l-20x m-b-20x">
+                                        <input type="text" name="zip" id="zip"
+                                               class="form-control contrlo-lg text-primary address-zipcode"
+                                               placeholder="Zip Code">
+                                        <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                            <span class="font-size-base">Please enter your zip code !</span>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <input type="hidden" name="isd"
+                                               value="@if(empty($address['data']['list'])){{'1'}}@else{{'0'}}@endif">
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </form>
+                        </div>
+                        <div class="text-right">
+                            <a href="javascript:void(0);" id="card-addAddress-cancel"
+                               class="btn btn-secondary btn-md m-r-10x">Cancel</a>
+                            <a href="javascript:void(0);" id="addAddress" class="btn btn-primary btn-md address-save">Continue</a>
+                        </div>
+                        {{--end添加新的账单地址--}}
+                    </div>
+                </div>
+
             </div>
         </div>
 

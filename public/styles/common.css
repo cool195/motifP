@@ -1517,36 +1517,6 @@ footer .text-Copyright{
     margin-bottom: 0 !important;
   }
 }
-/* sort by*/
-
-.dropdown-sortBy{
-  width: 190px;
-  height: 40px;
-  border: 1px solid #ddd;
-  background: #fff;
-}
-.dropdown-sortBy .dropdown-nav-hover{
-  width: 190px !important;
-  margin: 0;
-  list-style: none;
-  background-color: #fff;
-}
-.sortBy-btn{
-  display: inline-block;
-}
-.sortBy-btn::after{
-  content: '';
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #6d91ff;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-}
-
 /*订阅*/
 .redeem-leftWrapper.hidden,.redeem-rightWrapper.hidden{
   display: none;
@@ -1600,6 +1570,30 @@ footer .text-Copyright{
 .redeem-code{
   border: 1px solid #ddd;
 }
+/* Payment Method 支付*/
+.select-payment .address-item{
+  height: 7.5rem;
+}
+.addCreditCard .icon-add{
+  font-size: 3.5rem;
+  color: #000;
+  text-align: right;
+}
+.addCreditCard:hover{
+  color: #6d91ff;
+  border: 1px solid #6d91ff;
+}
+.addCreditCard:hover .icon-add{
+  color: #6d91ff;
+}
+.paycard-info .billingTxt{
+  padding-top: 2.2rem;
+}
+
+.select-payment.disabled,.card-message.disabled,.add-newCard.disabled,.card-addNewAddr.disabled{
+  display: none;
+}
+
 
 @media (max-width: 544px) {
   .login-container {

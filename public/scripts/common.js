@@ -985,7 +985,7 @@ function HideSeeMore(seemoreName) {
     });
 
     // 控制 div 显示隐藏
-    $('#btnAddrShowHide').on('click', function () {
+    $('.btnAddrShowHide').on('click', function () {
         if ($('#addrShowHide').children('.showHide-simpleInfo').length > 0) {
             var $AddressContent = $('#addrShowHide').siblings('.showHide-body');
             if ($AddressContent.hasClass('active')) {
@@ -1313,6 +1313,52 @@ function HideSeeMore(seemoreName) {
     if ($('#checkoutView').data('status') == true) {
         getAddressList();
     }
+
+    // start 支付方式 Payment Method
+
+        // 点击添加信用卡
+    $('.addCreditCard').on('click', function () {
+        $('.select-payment').addClass('disabled');
+        $('.add-newCard').removeClass('disabled');
+    });
+
+    // 控制 支付选项div 显示/隐藏
+    $('#btnPaymentShowHide').on('click', function () {
+        if ($('#pmShowHide').children('.showHide-simpleInfo').length > 0 || true) {
+            console.log('234234234');
+            var $pmContent = $('#pmShowHide').siblings('.showHide-body');
+            if ($pmContent.hasClass('active')) {
+                $pmContent.slideUp(500);
+                $pmContent.removeClass('active');
+                $('#pmShowHide').removeClass('active');
+            }
+        }
+
+
+    });
+    $('#card-addAddress-cancel').on('click', function () {
+        $('.select-payment').removeClass('disabled');
+        $('.add-newCard').addClass('disabled');
+        //$('#addAddressForm').find('input[type="text"]').val('');
+        //$('select[name="country"]').prop('selectedIndex', 0);
+
+    });
+
+
+    $('.choose-oldAddr').on('click', function () {
+        $('.card-message').removeClass('disabled');
+        $('.card-addNewAddr').addClass('disabled');
+
+    });
+    $('.choose-addNewAddr').on('click', function () {
+        $('.card-message').addClass('disabled');
+        $('.card-addNewAddr').removeClass('disabled');
+    });
+
+
+
+
+    // end 支付方式 Payment Method
 
     // Checkout End
 
