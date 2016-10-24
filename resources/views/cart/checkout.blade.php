@@ -423,12 +423,12 @@
                         </div>
                         {{--start添加新的账单地址--}}
                         <div class="row p-t-30x card-addNewAddr disabled">
-                            <form id="addAddressForm">
+                            <form id="card-addAddressForm">
                                 <div class="col-md-5">
                                     <input type="hidden" name="email" value="{{Session::get('user.login_email')}}">
                                     <div class="p-l-20x m-b-20x">
-                                        <input type="text" name="name"
-                                               class="form-control contrlo-lg text-primary address-name"
+                                        <input type="text" name="name" data-optional="false" data-inputrole="name"
+                                               class="form-control contrlo-lg text-primary"
                                                placeholder="Full name">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -436,17 +436,17 @@
                                         </div>
                                     </div>
                                     <div class="p-l-20x m-b-20x">
-                                        <input type="text" name="tel"
-                                               class="form-control contrlo-lg text-primary address-phone"
+                                        <input type="text" name="tel" data-optional="false" data-inputrole="phone"
+                                               class="form-control contrlo-lg text-primary"
                                                placeholder="Phone">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                            <span class="font-size-base">Please enter your Phone !</span>
+                                            <span class="font-size-base">Please enter your phone !</span>
                                         </div>
                                     </div>
                                     <div class="p-l-20x m-b-20x">
-                                        <input type="text" name="addr1"
-                                               class="form-control contrlo-lg text-primary address-street"
+                                        <input type="text" name="addr1" data-optional="false" data-inputrole="street"
+                                               class="form-control contrlo-lg text-primary"
                                                placeholder="Street 1">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -461,8 +461,8 @@
                                 <div class="col-md-1"></div>
                                 <div class="col-md-5">
                                     <div class="p-l-20x m-b-20x">
-                                        <input type="text" name="city"
-                                               class="form-control contrlo-lg text-primary address-city" placeholder="City">
+                                        <input type="text" name="city" data-optional="false" data-inputrole="city"
+                                               class="form-control contrlo-lg text-primary" placeholder="City">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                             <span class="font-size-base">Please enter your city !</span>
@@ -478,12 +478,12 @@
                                         </select>
                                     </div>
                                     <div class="p-l-20x m-b-20x state-info">
-                                        <input type="text" name="state" class="form-control contrlo-lg text-primary"
-                                               placeholder="State">
+                                       {{-- <input type="text" name="state" class="form-control contrlo-lg text-primary"
+                                               placeholder="State">--}}
                                     </div>
                                     <div class="p-l-20x m-b-20x">
-                                        <input type="text" name="zip" id="zip"
-                                               class="form-control contrlo-lg text-primary address-zipcode"
+                                        <input type="text" name="zip" id="zip" data-optional="false" data-inputrole="zip code"
+                                               class="form-control contrlo-lg text-primary"
                                                placeholder="Zip Code">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -502,7 +502,7 @@
                         <div class="text-right">
                             <a href="javascript:void(0);" id="card-addAddress-cancel"
                                class="btn btn-secondary btn-md m-r-10x">Cancel</a>
-                            <a href="javascript:void(0);" id="addNewCard" class="btn btn-primary btn-md address-save">Continue</a>
+                            <a href="javascript:void(0);" id="addNewCard" class="btn btn-primary btn-md disabled">Continue</a>
                         </div>
                         {{--end添加新的账单地址--}}
                     </div>

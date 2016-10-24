@@ -224,7 +224,6 @@ function HideSeeMore(seemoreName) {
 
     if (spuAttrs != undefined && spuAttrs.length == 1) {
         if (spuAttrs[0].skuAttrValues.length == 1) {
-            console.log(spuAttrs[0].attr_type)
             $('#p_a_w' + spuAttrs[0].attr_type).data('sel', 1);
             $('#productsku').val(product_data.main_sku)
             $('#skutype' + spuAttrs[0].skuAttrValues[0].attr_value_id).addClass('active');
@@ -397,7 +396,6 @@ function HideSeeMore(seemoreName) {
                 //alert('库存不足');
                 $('#addQtySku').addClass('disabled');
                 $(this).parent().siblings('.warning-info').removeClass('off');
-                console.log(skuQty);
                 if (skuQty >= 50) {
                     $(this).parent().siblings('.warning-info').children('span').html("Warning: " + product_stock_qtty + ' items limit');
                 } else {
@@ -1032,14 +1030,14 @@ function HideSeeMore(seemoreName) {
             }
             // 添加地址
             //初始化 修改地址 from 表单
-            $('input[name="email"]').val('');
-            $('input[name="name"]').val('');
-            $('input[name="city"]').val('');
-            $('input[name="state"]').val('');
-            $('input[name="tel"]').val('');
-            $('input[name="addr1"]').val('');
-            $('input[name="addr2"]').val('');
-            $('input[name="zip"]').val('');
+            $('#addAddressForm input[name="email"]').val('');
+            $('#addAddressForm input[name="name"]').val('');
+            $('#addAddressForm input[name="city"]').val('');
+            $('#addAddressForm input[name="state"]').val('');
+            $('#addAddressForm input[name="tel"]').val('');
+            $('#addAddressForm input[name="addr1"]').val('');
+            $('#addAddressForm input[name="addr2"]').val('');
+            $('#addAddressForm input[name="zip"]').val('');
             $('.address-save').addClass('disabled');
             $('select[name="country"]').prop('selectedIndex', 0);
 
@@ -1054,15 +1052,15 @@ function HideSeeMore(seemoreName) {
                 })
                 .done(function (data) {
                     //初始化 修改地址 from 表单
-                    $('input[name="email"]').val(data.email);
-                    $('input[name="name"]').val(data.name);
-                    $('input[name="city"]').val(data.city);
-                    $('input[name="state"]').val(data.state);
-                    $('input[name="tel"]').val(data.telephone);
-                    $('input[name="addr1"]').val(data.detail_address1);
-                    $('input[name="addr2"]').val(data.detail_address2);
-                    $('input[name="zip"]').val(data.zip);
-                    $('select[name="country"]').val(data.country);
+                    $('#addAddressForm input[name="email"]').val(data.email);
+                    $('#addAddressForm input[name="name"]').val(data.name);
+                    $('#addAddressForm input[name="city"]').val(data.city);
+                    $('#addAddressForm input[name="state"]').val(data.state);
+                    $('#addAddressForm input[name="tel"]').val(data.telephone);
+                    $('#addAddressForm input[name="addr1"]').val(data.detail_address1);
+                    $('#addAddressForm input[name="addr2"]').val(data.detail_address2);
+                    $('#addAddressForm input[name="zip"]').val(data.zip);
+                    $('#addAddressForm select[name="country"]').val(data.country);
 
                     // 初始化 国家,洲
                     initCityState(data.country, data.state);
@@ -1079,8 +1077,8 @@ function HideSeeMore(seemoreName) {
     }
 
     // 选择国家 联动洲
-    $('select[name="country"]').change(function () {
-        var Country = $('select[name="country"]').val();
+    $('#addAddressForm select[name="country"]').change(function () {
+        var Country = $(this).val();
         initCityState(Country, '');
 
         if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
@@ -1090,21 +1088,20 @@ function HideSeeMore(seemoreName) {
         }
     });
 
-
     // 初始化 国家,洲
     function initCityState(Country, State) {
         // CountryId  国家Id
         // SelectType 国家对应洲类型
-        var CountryId = $('select[name="country"] > option[value="' + Country + '"]').data('id');
-        var SelectType = $('select[name="country"] > option[value="' + Country + '"]').data('type');
+        var CountryId = $('#addAddressForm select[name="country"] > option[value="' + Country + '"]').data('id');
+        var SelectType = $('#addAddressForm select[name="country"] > option[value="' + Country + '"]').data('type');
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
-            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">');
-            $('input[name="state"]').val(State);
+            $('#addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">');
+            $('#addAddressForm input[name="state"]').val(State);
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
-            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
-            $('input[name="state"]').val(State);
+            $('#addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
+            $('#addAddressForm input[name="state"]').val(State);
         } else {
             // 洲为下拉列选择
             // 获取 洲 列表
@@ -1113,15 +1110,15 @@ function HideSeeMore(seemoreName) {
                     type: 'GET'
                 })
                 .done(function (data) {
-                    $('.state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
+                    $('#addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
                     // 添加选项
                     $.each(data, function (n, value) {
                         var StateNameId = value['state_name_sn'];
                         var StateNameEn = value['state_name_en'];
-                        $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($('select[name="state"]'));
+                        $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($('#addAddressForm select[name="state"]'));
                     });
                     if (State != "") {
-                        $('select[name="state"]').val(State);
+                        $('#addAddressForm select[name="state"]').val(State);
                     }
                 })
         }
@@ -1130,7 +1127,7 @@ function HideSeeMore(seemoreName) {
     try {
         if ($('#checkoutView').data('status') || $('#addressView').data('status')) {
             // 初始化 国家,洲
-            var Country = $('select[name="country"] option:selected').text();
+            var Country = $('#addAddressForm select[name="country"] option:selected').text();
             initCityState(Country, '');
         }
     } catch (e) {
@@ -1285,7 +1282,6 @@ function HideSeeMore(seemoreName) {
                 if (data.success) {
                     var payPrice = data.data.list[0].pay_price > 0 ? ' +$' + (data.data.list[0].pay_price / 100).toFixed(2) : '';
                     $('.shippingMethodShow').html(data.data.list[0].logistics_name + payPrice);
-                    console.log(data.data.list.length);
                     if (data.data.list.length < 2) {
                         $('.shippingMethodButton').html('');
                     } else {
@@ -1324,7 +1320,7 @@ function HideSeeMore(seemoreName) {
         $('.add-newCard').removeClass('disabled');
     });
 
-    // 控制 支付选项div 显示/隐藏
+    // 控制 支付方式div 显示/隐藏
     $('#btnPaymentShowHide').on('click', function () {
         if ($('#pmShowHide').children('.showHide-simpleInfo').length > 0 || true) {
             var $pmContent = $('#pmShowHide').siblings('.showHide-body');
@@ -1349,19 +1345,100 @@ function HideSeeMore(seemoreName) {
         $('.card-addNewAddr').addClass('disabled');
 
     });
+    // 选择 新增账单地址
     $('.choose-addNewAddr').on('click', function () {
         $('.card-message').addClass('disabled');
         $('.card-addNewAddr').removeClass('disabled');
+
+        var Country = $('#card-addAddressForm select[name="country"] option:selected').text();
+        initPaymentCityState(Country, '')
     });
+    // card 选择国家 联动洲
+    $('#card-addAddressForm select[name="country"]').change(function () {
+        var Country = $(this).val();
+        initPaymentCityState(Country, '');
+
+        if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
+            validateState();
+        } else {
+            $('.address-save').addClass('disabled');
+        }
+    });
+
+    $('input[data-optional="false"]').on('blur keyup', function () {
+        checkInput($(this));
+    });
+    // 验证 State
+    $('#card-addAddressForm .state-info').on('keyup blur', '.address-state', function () {
+        checkInput($(this));
+    });
+    
+    // 验证input非空 并 添加提示文本
+    function checkInput(thisElem){
+        if (thisElem.val() === ''){
+            thisElem.siblings('.warning-info').removeClass('off');
+            thisElem.siblings('.warning-info').children('span').html('Please enter your ' + thisElem.data('inputrole') + ' !');
+            return false;
+        }else{
+            thisElem.siblings('.warning-info').addClass('off');
+            return true;
+        }
+    }
+
+    $('input[data-optional="false"]').each(function () {
+        if (checkInput($(this))){
+            console.log('true');
+            $('#addNewCard').removeClass('disabled');
+        }else {
+            console.log('false');
+        }
+    });
+
+
+    //初始化 账单地址 国家洲
+    function initPaymentCityState(Country, State) {
+        // CountryId  国家Id
+        // SelectType 国家对应洲类型
+        var CountryId = $('#card-addAddressForm select[name="country"] > option[value="' + Country + '"]').data('id');
+        var SelectType = $('#card-addAddressForm select[name="country"] > option[value="' + Country + '"]').data('type');
+        if (SelectType != undefined && SelectType === 0) {
+            // 洲为选填
+            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">');
+            $('#card-addAddressForm input[name="state"]').val(State);
+        } else if (SelectType != undefined && SelectType === 1) {
+            // 洲为必填
+            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" data-optional="false" data-inputrole="State" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
+            $('#card-addAddressForm input[name="state"]').val(State);
+        } else {
+            // 洲为下拉列选择
+            // 获取 洲 列表
+            $.ajax({
+                    url: '/statelist/' + CountryId,
+                    type: 'GET'
+                })
+                .done(function (data) {
+                    $('#card-addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
+                    // 添加选项
+                    $.each(data, function (n, value) {
+                        var StateNameId = value['state_name_sn'];
+                        var StateNameEn = value['state_name_en'];
+                        $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($('#card-addAddressForm select[name="state"]'));
+                    });
+                    if (State != "") {
+                        $('#card-addAddressForm select[name="state"]').val(State);
+                    }
+                })
+        }
+    }
 
 
     //设置为默认卡
 
 
-    // 添加新卡
+    // 添加新卡 Continue
     $('#addNewCard').on('click', function () {
 
-    })
+    });
 
 
     //Credit Card 校验
@@ -1628,7 +1705,6 @@ function HideSeeMore(seemoreName) {
     //第三方登录开始
     // google 第三方登录
     function attachSignin(element) {
-        console.log(element.id);
         auth2.attachClickHandler(element, {},
             function (googleUser) {
                 var profile = googleUser.getBasicProfile();
@@ -2115,6 +2191,7 @@ function HideSeeMore(seemoreName) {
     //    }
     //});
 
+
     $('.address-name').on('keyup blur', function () {
         var name = $(this).val();
         if (address_check($(this)) && address_check($('.address-city'))
@@ -2162,7 +2239,7 @@ function HideSeeMore(seemoreName) {
     });
 
     // 验证 State
-    $('.state-info').on('keyup blur', '.address-state', function () {
+    $('#addAddressForm .state-info').on('keyup blur', '.address-state', function () {
         if (address_check($(this)) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
             validateState();
@@ -2878,7 +2955,6 @@ function HideSeeMore(seemoreName) {
 
             operate.push(operateItem);
         });
-        console.log(operate);
         return operate;
     }
 
@@ -3185,8 +3261,7 @@ function HideSeeMore(seemoreName) {
                         }
                     }
                 } else {
-                    //显示添加code的页面
-                    console.log('111111');
+
                 }
             })
 
@@ -3272,15 +3347,8 @@ function HideSeeMore(seemoreName) {
             var banW = $(this).width();
             var banH = $(this).height();
             if (banW > banH) {
-                console.log('111');
-                console.log(banW);
-                console.log(banH);
                 $(this).css('width', '100%');
-
             } else {
-                console.log('222');
-                console.log(banW);
-                console.log(banH);
                 $(this).css({
                     width: '50%',
                     margin: '0 auto'
