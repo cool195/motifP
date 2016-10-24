@@ -236,9 +236,9 @@
                         </form>
                     </div>
                     <div class="text-right">
-                        <a href="javascript:;" id="addAddress-cancel"
+                        <a href="javascript:void(0);" id="addAddress-cancel"
                            class="btn btn-secondary btn-md m-r-10x">Cancel</a>
-                        <a href="javascript:;" id="addAddress" class="btn btn-primary btn-md address-save">Save</a>
+                        <a href="javascript:void(0);" id="addAddress" class="btn btn-primary btn-md address-save">Save</a>
                     </div>
                 </div>
             </div>
@@ -374,28 +374,31 @@
                             <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="33" class="m-l-20x">
                             <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="33" class="m-l-20x">
                         </div>
+                        <div class="card-wrapper" style="display: none;"></div>
                         <div class="row p-t-20x">
-                            <div class="col-md-5">
-                                <input type="text" name="number" class="form-control contrlo-lg text-primary card-number" placeholder="Credit Card Number">
-                                <div class="warning-info flex flex-alignCenter text-warning p-t-5x">
-                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                    <span class="font-size-base">The credit card number is incorrect!</span>
+                            <form action="" id="addCard-container">
+                                <div class="col-md-5">
+                                    <input type="text" name="card" maxlength="20" class="form-control contrlo-lg text-primary card-number" placeholder="Credit Card Number">
+                                    <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                        <span class="font-size-base">Please enter your credit card number!</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" name="securityCode" class="form-control contrlo-lg text-primary card-date" placeholder="MM/YYYY">
-                                <div class="warning-info flex flex-alignCenter text-warning p-t-5x">
-                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                    <span class="font-size-base">日期格式不正确</span>
+                                <div class="col-md-3">
+                                    <input type="text" name="expiry" maxlength="9" class="form-control contrlo-lg text-primary card-date" placeholder="MM/YYYY">
+                                    <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                        <span class="font-size-base"></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" name="securityCode" class="form-control contrlo-lg text-primary card-code" placeholder="Security Code">
-                                <div class="warning-info flex flex-alignCenter text-warning p-t-5x">
-                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                    <span class="font-size-base">Security Code不正确</span>
+                                <div class="col-md-3">
+                                    <input type="text" name="cvc" maxlength="4" class="form-control contrlo-lg text-primary card-code" placeholder="Security Code">
+                                    <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                        <span class="font-size-base">Please enter your Security Code!</span>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                         <div class="row m-t-30x">
                             <div class="col-md-6 p-b-10x">
@@ -499,7 +502,7 @@
                         <div class="text-right">
                             <a href="javascript:void(0);" id="card-addAddress-cancel"
                                class="btn btn-secondary btn-md m-r-10x">Cancel</a>
-                            <a href="javascript:void(0);" id="addAddress" class="btn btn-primary btn-md address-save">Continue</a>
+                            <a href="javascript:void(0);" id="addNewCard" class="btn btn-primary btn-md address-save">Continue</a>
                         </div>
                         {{--end添加新的账单地址--}}
                     </div>
@@ -743,5 +746,6 @@
     @{{ /each }}
 </template>
 @include('footer')
+
 
 
