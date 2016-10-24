@@ -35,7 +35,7 @@ class ShoppingController extends BaseController
             'cid' => $request->input('cid', $cid),
             'pagenum' => $request->input('pagenum', 1),
             'pagesize' => $request->input('pagesize', 32),
-            'extra' => $request->input('extra_kv', "")
+            'extra_kv' => $request->input('extra_kv', "")
         );
         $data = $this->request('rec', $params);
         $result = $this->getListWishedStatus($data);

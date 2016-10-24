@@ -298,50 +298,45 @@
             <hr class="hr-common m-a-0">
             <div class="showHide-body payment-content">
                 <!--选择支付方式-->
+                @inject('Wordpay', 'App\Http\Controllers\WordpayController')
+                {{$paylist = $Wordpay->getPayList()}}
                 <div class="p-a-20x select-payment">
                     <span class="font-size-md">Select Payment Method</span>
                     <div class="row p-x-10x p-t-20x">
                         <div class="payment-list">  <!--之前添加过卡 遍历模板-->
-                            <div class="col-md-6">
-                                <div class="p-a-10x">
-                                    <div class="address-item flex p-x-20x active">
-                                        <div class="paycard-sign p-t-20x">
-                                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
-                                            <p class="p-t-20x">Exp:12/2016</p>
+                            @foreach($paylist['data']['list'] as $list)
+                                @if(isset($list['creditCards']))
+                                    @foreach($list['creditCards'] as $card)
+                                        <div class="col-md-6">
+                                            <div class="p-a-10x">
+                                                <div class="address-item flex p-x-20x @if(0) active @endif">
+                                                    <div class="paycard-sign p-t-20x">
+                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png"
+                                                             width="55">
+                                                        <p class="p-t-20x">Exp:{{$card['month']}}/{{$card['year']}}</p>
+                                                    </div>
+                                                    <div class="paycard-info m-l-20x m-t-10x">
+                                                        <span class="sanBold font-size-lx">{{  $card['card_number'] }}</span>
+                                                        <p class="billingTxt"><span>Billing:</span>{{$card['detail_address1']}} {{$card['detail_address2']}} {{$card['city']}} {{$card['state']}} {{$card['country']}}
+                                                        </p>
+                                                    </div>
+                                                    <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="paycard-info m-l-20x m-t-10x">
-                                            <span class="sanBold font-size-lx">XXXX XXXX XXXX 2837</span>
-                                            <p class="billingTxt"><span>Billing:</span>sanlitunkjdsvjkfvndskncjc...</p>
+                                    @endforeach
+                                @else
+                                    <div class="col-md-6">
+                                        <div class="p-a-10x">
+                                            <div class="address-item flex flex-alignCenter p-x-20x active">
+                                                <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
+                                                <span class="font-size-lxx p-l-40x">{{$list['pay_name']}}</span>
+                                                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                            </div>
                                         </div>
-                                        <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-a-10x">
-                                    <div class="address-item flex p-x-20x">
-                                        <div class="paycard-sign p-t-20x">
-                                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
-                                            <p class="p-t-20x">Exp:12/2016</p>
-                                        </div>
-                                        <div class="paycard-info m-l-20x m-t-10x">
-                                            <span class="sanBold font-size-lx">XXXX XXXX XXXX 2837</span>
-                                            <p class="billingTxt"><span>Billing:</span>sanlitunkjdsvjkfvndskncjc...</p>
-                                        </div>
-                                        <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-a-10x">
-                                <div class="address-item flex flex-alignCenter p-x-20x active">
-                                    <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
-                                    <span class="font-size-lxx p-l-40x">Pay with Paypal</span>
-                                    <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
-                                </div>
-                            </div>
+                                @endif
+                            @endforeach
                         </div>
                         <div class="col-md-6">
                             <div class="p-a-10x">
@@ -407,11 +402,12 @@
                                     <label for="" class="p-l-10x">Billing address same as the shipping address</label>
                                 </div>
                                 {{--账单地址信息--}}
+                                {{$defaultAddr = $Address->getUserDefaultAddr()['data']}}
                                 <div class="card-message">
-                                    <div class="sanBold">UserName</div>
-                                    <div>New York</div>
-                                    <div>12030</div>
-                                    <div>United States</div>
+                                    <div class="sanBold">{{$defaultAddr['name']}}</div>
+                                    <div>{{$defaultAddr['city']}}</div>
+                                    <div>{{$defaultAddr['zip']}}</div>
+                                    <div>{{$defaultAddr['state']}}</div>
                                 </div>
                             </div>
                             <div class="col-md-6 p-b-10x">
@@ -660,7 +656,11 @@
             <div class="address-item p-x-20x p-y-15x @{{ if $value.isDefault == 1 }} active @{{ /if }}"
                  data-info="@{{ $value.name }} @{{ $value.detail_address1 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }} @{{ $value.zip }}"
                  data-csn="@{{ $value.country_name_sn }}"
-                 data-aid="@{{ $value.receiving_id }}">
+                 data-aid="@{{ $value.receiving_id }}"
+                 data-name="@{{ $value.name }}"
+                 data-city="@{{ $value.city }}"
+                 data-zip="@{{ $value.zip }}"
+                 data-state="@{{ $value.state }}">
                 <div class="address-info">
                     @{{ $value.name }}<br>
                     @{{ $value.zip }}<br>

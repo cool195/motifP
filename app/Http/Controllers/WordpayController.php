@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Session;
 
 class WordpayController extends BaseController
 {
-    public function getPayList(Request $request)
+    public function getPayList()
     {
         $params = array(
             'cmd' => 'plist',
-            'src' => 'PC',
+            'uuid' => $_COOKIE['uid'],
+            'src' => 'h5',
+            'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'token' => Session::get('user.token')
         );
         $result = $this->request('pay', $params);
         return $result;
