@@ -153,5 +153,7 @@
     /></noscript>
 </body>
 <script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
+<script src="{{config('runtime.Image_URL')}}/scripts/card.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
+
 </html>
