@@ -1005,6 +1005,12 @@ function HideSeeMore(seemoreName) {
         $('#defaultAddr').html($(this).parent('.address-item').data('info'));
         $('#defaultAddr').data('csn', $(this).parent('.address-item').data('csn'));
         $('#defaultAddr').data('aid', $(this).parent('.address-item').data('aid'));
+
+        var userName = $(this).parent('.address-item').data('name');
+        var city = $(this).parent('.address-item').data('city');
+        var zip = $(this).parent('.address-item').data('zip');
+        var state = $(this).parent('.address-item').data('state');
+        $('.card-message').html('<div class="sanBold">' + userName + '</div><div>' + city + '</div><div>' + zip + '</div><div>' + state + '</div>');
         getshiplist();
     });
 
