@@ -260,7 +260,7 @@
                                                                  alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                             <div class="bg-heart"></div>
                                                             @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
-                                                                @if(!isset($product['spuInfos'][$spu]['skuPrice']['skuPromotion']) || $product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                                                @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
                                                                     <div class="bg-soldout">
                                                                         <span class="text helve font-size-sm">SOLD OUT</span>
                                                                     </div>
