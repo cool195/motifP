@@ -1376,7 +1376,13 @@ function HideSeeMore(seemoreName) {
     });
     // 验证 State
     $('#card-addAddressForm .state-info').on('keyup blur', '.address-state', function () {
-        checkInput($(this));
+        if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
+            && checkInput($('#card-addAddressForm input[name="name"]')) && checkInput($('#card-addAddressForm input[name="tel"]')) && checkInput($('#card-addAddressForm input[name="addr1"]'))
+            && checkInput($('#card-addAddressForm input[name="city"]')) && checkInput($(this)) && checkInput($('#card-addAddressForm input[name="zip"]')) ){
+            $('#addNewCard').removeClass('disabled')
+        }else{
+            $('#addNewCard').addClass('disabled')
+        }
     });
     
     // 验证input非空 并 添加提示文本
@@ -1391,15 +1397,37 @@ function HideSeeMore(seemoreName) {
         }
     }
 
-    $('input[data-optional="false"]').each(function () {
-        if (checkInput($(this))){
-            console.log('true');
-            $('#addNewCard').removeClass('disabled');
-        }else {
-            console.log('false');
+    $('input[data-optional="false"]').on('blur keyup', function () {
+        if( $('.card-addNewAddr').hasClass('disabled')){
+            if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))){
+                $('#addNewCard').removeClass('disabled')
+            }else{
+                $('#addNewCard').addClass('disabled')
+            }
+        }else{
+            if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
+                && checkInput($('#card-addAddressForm input[name="name"]')) && checkInput($('#card-addAddressForm input[name="tel"]')) && checkInput($('#card-addAddressForm input[name="addr1"]'))
+                && checkInput($('#card-addAddressForm input[name="city"]')) && checkInput($('#card-addAddressForm input[name="zip"]')) ){
+                $('#addNewCard').removeClass('disabled')
+            }else{
+                $('#addNewCard').addClass('disabled')
+            }
         }
     });
 
+
+
+/*
+    $('#add-newCard .warning-info').each(function () {
+        console.log('1111111111111111111');
+        if ($(this).hasClass('off')){
+            console.log('无错误');
+            $('#addNewCard').removeClass('disabled')
+        }else{
+            console.log('有错误')
+            $('#addNewCard').addClass('disabled')
+        }
+    });*/
 
     //初始化 账单地址 国家洲
     function initPaymentCityState(Country, State) {
@@ -1415,6 +1443,7 @@ function HideSeeMore(seemoreName) {
             // 洲为必填
             $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" data-optional="false" data-inputrole="State" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
             $('#card-addAddressForm input[name="state"]').val(State);
+            $('#addNewCard').addClass('disabled');
         } else {
             // 洲为下拉列选择
             // 获取 洲 列表
@@ -1451,7 +1480,7 @@ function HideSeeMore(seemoreName) {
     $('#addCard-container').card({
         container: '.card-wrapper'
     });
-    $('input[name="card"]').on('keyup', function () {
+   /* $('input[name="card"]').on('keyup', function () {
         var cardNumber = $(this).val();
         if ("" == cardNumber || undefined == cardNumber || null == cardNumber) {
             $(this).siblings('.warning-info').removeClass('off');
@@ -1466,20 +1495,20 @@ function HideSeeMore(seemoreName) {
         } else {
             $(this).siblings('.warning-info').addClass('off');
         }
-    });
+    });*/
 
     $('input[name="expiry"]').on('keyup', function () {
         var expiryText = $(this).val();
         var MyDate = new Date(),
             MyYear = MyDate.getFullYear(),
             $WarningInfo = $(this).siblings('.warning-info');
-        // 验证日期不为空
+  /*      // 验证日期不为空
         if ("" == expiryText || undefined == expiryText || null == expiryText) {
             $WarningInfo.removeClass('off');
             $WarningInfo.children('span').html('Please enter maturity date!');
         } else {
             $WarningInfo.addClass('off');
-        }
+        }*/
         // 验证月份
         if (expiryText.length == 5) {
             var month = parseInt(expiryText.substring(0, 2));
