@@ -107,9 +107,9 @@
                     Dropdown
                 </button>
                 <div class="dropdown-menu sortBy-menu p-t-15x" aria-labelledby="dropdownMenu1">
-                    <li class="dropdown-item active"><a href="#">Newest</a></li>
-                    <li class="dropdown-item"><a href="#">Price: Low to High</a></li>
-                    <li class="dropdown-item"><a href="#">Price: High to Low</a></li>
+                    @foreach($search['list'] as $key => $value)
+                        <li class="dropdown-item @if(0 == $key) active @endif" data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}"><a href="#">{{$value['attr_label']}}</a></li>
+                    @endforeach
                 </div>
             </div>
         </div>
