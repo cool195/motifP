@@ -99,6 +99,21 @@
     </div>
     <!-- 商品列表 -->
     <div class="container m-t-20x m-b-40x" id="productList-container" data-categoryid="{{$cid}}" data-pagenum="1" data-loading="false">
+        <!-- sort by -->
+        <div class="m-b-20x text-right">
+            <span class="sanBold p-r-15x">Sort By:</span>
+            <div class="dropdown sortBy-dropdown">
+                <button class="btn btn-sortBy dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </button>
+                <div class="dropdown-menu sortBy-menu p-t-15x" aria-labelledby="dropdownMenu1">
+                    <li class="dropdown-item active"><a href="#">Newest</a></li>
+                    <li class="dropdown-item"><a href="#">Price: Low to High</a></li>
+                    <li class="dropdown-item"><a href="#">Price: High to Low</a></li>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             @foreach($productAll['list'] as $product)
             <div class="col-md-3 col-xs-6">
