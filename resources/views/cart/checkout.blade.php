@@ -402,11 +402,12 @@
                                     <label for="" class="p-l-10x">Billing address same as the shipping address</label>
                                 </div>
                                 {{--账单地址信息--}}
+                                {{$defaultAddr = $Address->getUserDefaultAddr()['data']}}
                                 <div class="card-message">
-                                    <div class="sanBold">UserName</div>
-                                    <div>New York</div>
-                                    <div>12030</div>
-                                    <div>United States</div>
+                                    <div class="sanBold">{{$defaultAddr['name']}}</div>
+                                    <div>{{$defaultAddr['city']}}</div>
+                                    <div>{{$defaultAddr['zip']}}</div>
+                                    <div>{{$defaultAddr['state']}}</div>
                                 </div>
                             </div>
                             <div class="col-md-6 p-b-10x">
@@ -655,7 +656,11 @@
             <div class="address-item p-x-20x p-y-15x @{{ if $value.isDefault == 1 }} active @{{ /if }}"
                  data-info="@{{ $value.name }} @{{ $value.detail_address1 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }} @{{ $value.zip }}"
                  data-csn="@{{ $value.country_name_sn }}"
-                 data-aid="@{{ $value.receiving_id }}">
+                 data-aid="@{{ $value.receiving_id }}"
+                 data-name="@{{ $value.name }}"
+                 data-city="@{{ $value.city }}"
+                 data-zip="@{{ $value.zip }}"
+                 data-state="@{{ $value.state }}">
                 <div class="address-info">
                     @{{ $value.name }}<br>
                     @{{ $value.zip }}<br>
