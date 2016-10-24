@@ -140,6 +140,8 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::get('/paylist', 'WordpayController@getPayList');
+
+    Route::post('/wordpay/addCard', 'WordpayController@addCreditCard');
 });
 
 
