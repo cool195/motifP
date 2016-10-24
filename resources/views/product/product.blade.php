@@ -233,7 +233,7 @@
                                 </span>
                                         </div>
                                     @endif
-                                        @if(($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'])<=0 && $data['skuPrice']['skuPromotion']['remain_time'] < 0)
+                                        @if(($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'])<=0 && $data['skuPrice']['skuPromotion']['remain_time'] >= 0)
                                             <div class="p-x-20x p-y-10x font-size-md limited-content">
                                                 <img src="/images/product/icon-flash@2x.png">
                                                 <span class="p-l-10x">Orders Closed</span>
