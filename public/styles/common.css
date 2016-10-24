@@ -1512,19 +1512,21 @@ footer .text-Copyright{
 
 .sortBy-menu .dropdown-item{
   border-left: solid 2px #ffffff;
+  padding: 5px 18px;
 }
 .sortBy-menu .dropdown-item.active{
-  border-left: solid 2px #6d91ff;
+  border-left: solid 2px #ffffff;
+  color: #6d91ff;
 }
 .dropdown-item:hover{
   border-left: solid 2px #6d91ff;
+  cursor: pointer;
 }
 
 .btn-sortBy::after{
   position: absolute;
   top: 44%;
   right: 1rem;
-  color: #6d91ff;
   border-top: 0.4em solid;
   border-right: 0.4em solid transparent;
   border-left: 0.4em solid transparent;
@@ -1535,6 +1537,15 @@ footer .text-Copyright{
   box-shadow: 0px 0px 8px rgba(196, 200, 211, 0.5);
   border-radius: .5rem .5rem 0 0;
   border-bottom: solid 1px #6d91ff;
+  color: #6d91ff;
+}
+
+.sortBy-dropdown.open .btn-sortBy::after{
+  border-left: 0.4em solid transparent;
+  border-right: 0.4em solid transparent;
+  border-bottom: 0.4em solid #6d91ff;
+  border-top: none;
+  color: #6d91ff;
 }
 
 @media screen and (max-width: 1460px) {
