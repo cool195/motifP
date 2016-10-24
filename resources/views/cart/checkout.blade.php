@@ -309,11 +309,11 @@
                                     @foreach($list['creditCards'] as $card)
                                         <div class="col-md-6">
                                             <div class="p-a-10x">
-                                                <div class="address-item flex p-x-20x active">
+                                                <div class="address-item flex p-x-20x @if(0) active @endif">
                                                     <div class="paycard-sign p-t-20x">
                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png"
                                                              width="55">
-                                                        <p class="p-t-20x">Exp:12/2016</p>
+                                                        <p class="p-t-20x">Exp:{{$card['month']}}/{{$card['year']}}</p>
                                                     </div>
                                                     <div class="paycard-info m-l-20x m-t-10x">
                                                         <span class="sanBold font-size-lx">{{  $card['card_number'] }}</span>
@@ -330,38 +330,13 @@
                                         <div class="p-a-10x">
                                             <div class="address-item flex flex-alignCenter p-x-20x active">
                                                 <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
-                                                <span class="font-size-lxx p-l-40x">{{$card['pay_name']}}</span>
+                                                <span class="font-size-lxx p-l-40x">{{$list['pay_name']}}</span>
                                                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                                             </div>
                                         </div>
                                     </div>
                                 @endif
                             @endforeach
-                            <div class="col-md-6">
-                                <div class="p-a-10x">
-                                    <div class="address-item flex p-x-20x">
-                                        <div class="paycard-sign p-t-20x">
-                                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
-                                            <p class="p-t-20x">Exp:12/2016</p>
-                                        </div>
-                                        <div class="paycard-info m-l-20x m-t-10x">
-                                            <span class="sanBold font-size-lx">XXXX XXXX XXXX 2837</span>
-                                            <p class="billingTxt"><span>Billing:</span>sanlitunkjdsvjkfvndskncjc...</p>
-                                        </div>
-                                        <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-a-10x">
-                                <div class="address-item flex flex-alignCenter p-x-20x active">
-                                    <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
-                                    <span class="font-size-lxx p-l-40x">Pay with Paypal</span>
-                                    <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
-                                </div>
-                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="p-a-10x">
