@@ -112,7 +112,7 @@
                             @endif
                         </div>
                         <div class="product-price">
-                            @if(isset($data['skuPrice']['skuPromotion']))
+                            @if(isset($data['skuPrice']['skuPromotion']) && ($data['skuPrice']['skuPromotion']['promot_price']<$data['skuPrice']['skuPromotion']['price']))
                                 <span class="sanBold p-r-10x text-primary newPrice text-red">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
                                 <span class="sanBold font-size-lxx text-common text-throughLine oldPrice">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
                             @else
