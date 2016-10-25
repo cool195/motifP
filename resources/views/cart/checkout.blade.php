@@ -769,7 +769,7 @@
     @{{ each list }}
     <div class="col-md-6">
         <div class="m-a-10x">
-            <div class="row promotion-item checkoutPromotion-item flex flex-alignCenter @{{ if $value.usable == true }} codeItem @{{ /if }} @{{ if $value.selected == true }} active @{{ /if }}"
+            <div class="row promotion-item checkoutPromotion-item flex flex-alignCenter @{{ if $value.usable == true }} codeItem @{{ /if }} @{{ if $value.selected == 1 }} active @{{ /if }}"
                  data-promotioncode="@{{ $value.cp_title }}" data-bindid="@{{ $value.bind_id }}">
                 <div class="col-md-8">
                     <div class="text-right p-left p-r-15x p-y-15x">

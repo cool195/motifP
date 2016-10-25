@@ -136,10 +136,13 @@ class WordpayController extends BaseController
     public function selCode($bindid)
     {
         $coupon = $this->getCouponInfo();
+        Session::forget('user.checkout.couponInfo');
         foreach ($coupon['data']['list'] as $value) {
-            if ($value['bind_id'] == $bindid && $value['usable']) {
-                $couponInfo = $value;
-                Session::put('user.checkout.couponInfo', $couponInfo);
+            if ($value['bind_id'] == $bindid) {
+                Session::put('user.checkout.couponInfo', $value);
+                error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+                error_log(print_r(Session::get('user.checkout.couponInfo'), "\n"), 3, '/tmp/myerror.log');
+                return $value;
             }
         }
     }

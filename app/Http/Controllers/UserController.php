@@ -431,7 +431,7 @@ class UserController extends BaseController
         }
         if(Session::has('user.checkout.couponInfo')){
             foreach($result['data']['list'] as &$value){
-                $value['selected'] = 0;
+                $value['selected'] = null;
                 if($value['bind_id'] == Session::get('user.checkout.couponInfo.bind_id')){
                     $value['selected'] = 1;
                 }
