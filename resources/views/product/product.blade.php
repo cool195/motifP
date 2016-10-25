@@ -54,13 +54,19 @@
                         @if(isset($data['productImages']))
                             @foreach($data['productImages'] as $key => $image)
                                 @if(0 == $key)
-                                    <li style="display:block; width: 100%;">
+                                    <li style="display:block; width: 100%; position: relative;">
                                         <a href="{{config('runtime.CDN_URL')}}/n0/{{$image['img_path']}}"
                                            class="jqzoom" rel="gal1" title="triumph" id="jqzoom">
                                             <img class="img-fluid product-bigImg img-lazy"
                                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png"
                                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}">
                                         </a>
+                                        <!-- 视频 -->
+                                        <div class="bg-productDetailPlayer flex flex-alignCenter flex-justifyCenter">
+                                            <div class="play-content">
+                                                <div id="ytplayer" class="ytplayer" data-playid=""></div>
+                                            </div>
+                                        </div>
                                     </li>
                                 @else
                                     <li style="display:none">
@@ -78,13 +84,18 @@
                         <div class="productImg-list p-t-20x swiper-wrapper">
                             @if(isset($data['productImages']))
                                 @foreach($data['productImages'] as $key => $image)
-                                    <div class="productImg-item swiper-slide p-r-10x">
-                                        <a href="javascript:void(0);"
+                                    <div class="productImg-item swiper-slide m-r-10x">
+                                        <a href="javascript:void(0);" class="product-smallImg"
                                            rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$image['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$image['img_path']."'}"}}">
                                             <img class="img-thumbnail small-img img-lazy @if(0 == $key) active @endif"
                                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png"
                                                  data-original="{{config('runtime.CDN_URL')}}/n3/{{$image['img_path']}}"
-                                                 width="110" height="110" alt="{{ $data['main_title'] }}">
+                                                 width="110" height="110" alt="{{ $data['main_title'] }}" data-idplay="true" data-playid="YQcEdsKrgVg">
+
+                                            <!-- 视频 -->
+                                            <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter">
+                                                <img class="btn-productPlayer" src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt="" style="width: 35px;">
+                                            </div>
                                         </a>
                                     </div>
                                 @endforeach

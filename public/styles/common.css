@@ -1548,6 +1548,32 @@ footer .text-Copyright{
   color: #6d91ff;
 }
 
+/* 视频 */
+.bg-productPlayer{
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 100;
+}
+
+.bg-productDetailPlayer{
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  z-index: 100;
+  display: none;
+}
+
 @media screen and (max-width: 1460px) {
   .container {
     max-width: 960px;
