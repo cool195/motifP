@@ -300,7 +300,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="text-right"><a href="javascript:;" id="smsubmit"
+                    <div class="text-right"><a href="javascript:void(0);" id="smsubmit"
                                                class="btn btn-primary btn-md">Continue</a></div>
                 </div>
             </div>
@@ -385,14 +385,16 @@
 
                     <div class="p-a-20x">
                         <div>We Accept:
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="33" class="m-l-10x">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="33" class="m-l-20x">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="33" class="m-l-20x">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="33" class="m-l-20x">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="33" class="m-l-10x" id="img-visa" data-type="Visa">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="33" class="m-l-20x" id="img-mastercard" data-type="MasterCard">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="33" class="m-l-20x" id="img-amex" data-type="AmericanExpress">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="33" class="m-l-20x" id="img-jcb" data-type="JCB">
                         </div>
                         <div class="card-wrapper" style="display: none;"></div>
                         <div class="row p-t-20x">
                             <form action="" id="addCard-container">
+                                <input name="card_type" type="hidden">
+
                                 <div class="col-md-5">
                                     <input type="text" name="card" maxlength="20" class="form-control contrlo-lg text-primary card-number" data-optional="false" data-inputrole="credit card number" placeholder="Credit Card Number">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">

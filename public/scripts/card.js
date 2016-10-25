@@ -357,9 +357,9 @@
         $target.removeClass(allTypes.join(' '));
         $target.addClass(cardType);
         $target.toggleClass('identified', cardType !== 'unknown');
-        $('.img-card').removeClass('active');
-        $('input[name="card_type"]').val($('#img-'+ cardType).data('type'));
-        $('#img-'+ cardType).addClass('active');
+        //$('.img-card').removeClass('active');
+        $('input[name="card_type"]').val( $('#img-'+ cardType).data('type') );
+        //$('#img-'+ cardType).addClass('active');
         return $target.trigger('payment.cardType', cardType);
       }
     };

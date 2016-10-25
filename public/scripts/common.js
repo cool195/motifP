@@ -1563,9 +1563,10 @@ function HideSeeMore(seemoreName) {
         var cardDate = $('.card-date').val();
         var cardCode = $('.card-code').val();
         var cardName = '', cardTel = '', cardAddr1 = '', cardAddr2 = '', cardCity = '', cardCountry = '',cardZip = '', cardState = '', csn='';
-
+        var cardType = $('input[name="card_type"]').val();
         if( $('.card-addNewAddr').hasClass('disabled') ){ //选择了与shipping相同的地址信息
             cardName = $('.def-name').html();
+
             cardTel = $('.def-tel').val();
             cardAddr1 = $('.def-addr1').val();
             cardAddr2 = $('.def-addr2').val();
@@ -1578,6 +1579,7 @@ function HideSeeMore(seemoreName) {
 
         }else{
             cardName = $('.card-name').val();
+
             cardTel = $('.card-tel').val();
             cardAddr1 = $('.card-addr1').val();
             cardAddr2 = $('.card-addr2').val();
@@ -1598,7 +1600,7 @@ function HideSeeMore(seemoreName) {
                     card: cardNum,
                     expiry: cardDate,
                     cvv: cardCode,
-
+                    card_type: cardType,
                     name: cardName,
                     tel: cardTel,
                     addr1: cardAddr1,
@@ -1612,7 +1614,8 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
                 if (data.success) {
-                    getCardList();
+                    //getCardList();
+                    console.log('添加卡成功');
                 } else {
                     $('.addCard-warning').removeClass('off');
                     $('.addCard-warning').children('span').html(data.error_msg);
