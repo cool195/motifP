@@ -62,9 +62,19 @@
                                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}">
                                         </a>
                                         <!-- 视频 -->
-                                        <div class="bg-productDetailPlayer flex flex-alignCenter flex-justifyCenter">
+                                        {{--<div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter" id="btn-Player" data-playerid="7n-dIXlyQ3M">--}}
+                                            {{--<div class="play-content">--}}
+                                                {{--<img class="btn-productPlayer"--}}
+                                                     {{--src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt=""--}}
+                                                     {{--style="width: 45px;">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+
+                                        <div class="bg-productDetailPlayer flex flex-alignCenter flex-justifyCenter" data-isplay="true">
                                             <div class="play-content">
-                                                <div id="ytplayer" class="ytplayer" data-playid=""></div>
+                                                {{--<div id="ytplayer" class="ytplayer" data-playid=""></div>--}}
+
+                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/FAdzzEKCvvk" frameborder="0" allowfullscreen></iframe>
                                             </div>
                                         </div>
                                     </li>
