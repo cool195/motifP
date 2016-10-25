@@ -1518,7 +1518,7 @@ footer .text-Copyright{
   border-left: solid 2px #ffffff;
   color: #6d91ff;
 }
-.dropdown-item:hover{
+.sortBy-menu .dropdown-item:hover{
   border-left: solid 2px #6d91ff;
   cursor: pointer;
 }
