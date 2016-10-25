@@ -1152,7 +1152,7 @@ function HideSeeMore(seemoreName) {
         } else {
             $('.address-save').addClass('disabled');
         }
-    }
+    });
 
     // 初始化 国家,洲
     // country: 国家名称
