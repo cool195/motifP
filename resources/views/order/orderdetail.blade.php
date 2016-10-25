@@ -21,7 +21,7 @@
                         <div class="p-x-20x p-y-15x">
                             <div>
                                 <span class="orderDetail-title">Order Date</span>
-                                <span>{{ date("M d, Y" ,strtotime($data['create_time'])) }}</span>
+                                <span>{{ date("M d, Y H:i:s" ,strtotime($data['create_time'])) }}</span>
                             </div>
                             <div>
                                 <span class="orderDetail-title">Order #</span>
@@ -46,7 +46,7 @@
                         </span>
                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
                             <div>
-                                <h5 class="sanBold font-size-md">{{ $data['status_info'] }}: {{ date("M d, Y" ,strtotime($data['create_time'])) }}</h5>
+                                <h5 class="sanBold font-size-md">{{ $data['status_info'] }}: {{ date("M d, Y H:i:s" ,strtotime($data['update_time'])) }}</h5>
                                 <p class="m-b-0 p-t-5x">{{ $data['status_explain'] }}</p>
                             </div>
 
