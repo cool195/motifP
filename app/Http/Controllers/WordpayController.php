@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\libs\MCrypt;
 
 class WordpayController extends BaseController
 {
@@ -82,9 +83,9 @@ class WordpayController extends BaseController
     public function selAddr($aid)
     {
         $address = $this->addrList();
+        Session::forget('user.checkout.address');
         foreach ($address['data']['list'] as $value) {
             if ($value['receiving_id'] == $aid) {
-                Session::forget('user.checkout.address');
                 Session::put('user.checkout.address', $value);
                 return $value;
             }
@@ -109,13 +110,41 @@ class WordpayController extends BaseController
     public function selShip($type)
     {
         $shippingMethods = $this->getShippingMethod();
+        Session::forget('user.checkout.selship');
         foreach($shippingMethods as $value){
             if($value['logistics_type'] == $type){
-                Session::forget('user.checkout.selship');
                 Session::put('user.checkout.selship', $value);
                 return $value;
             }
         }
     }
+
+    private function getCouponInfo()
+    {
+        $params = array(
+            'cmd' => 'couponlist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('cart', $params);
+        foreach ($result['data']['list'] as &$value) {
+            $value['start_time'] = date("M d, Y", ($value['start_time'] / 1000));
+            $value['expiry_time'] = date("M d, Y", ($value['expiry_time'] / 1000));
+        }
+        return $result;
+    }
+
+    public function selCode($bindid)
+    {
+        $coupon = $this->getCouponInfo();
+        foreach ($coupon['data']['list'] as $value) {
+            if ($value['bind_id'] == $bindid && $value['usable']) {
+                $couponInfo = $value;
+                Session::put('user.checkout.couponInfo', $couponInfo);
+            }
+        }
+    }
+
+
 
 }

@@ -3484,6 +3484,11 @@ function HideSeeMore(seemoreName) {
             getCheckoutInfo();
         }
 
+        $.ajax({
+            url: '/wordpay/selCode/' + $(this).data('bindid'),
+            type: 'post'
+        });
+
     });
 
     //end 个人中心 Promotions

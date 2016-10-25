@@ -429,6 +429,16 @@ class UserController extends BaseController
             $value['start_time'] = date("M d, Y", ($value['start_time'] / 1000));
             $value['expiry_time'] = date("M d, Y", ($value['expiry_time'] / 1000));
         }
+        if(Session::has('user.checkout.couponInfo')){
+            foreach($result['data']['list'] as &$value){
+                $value['selected'] = 0;
+                if($value['bind_id'] == Session::get('user.checkout.couponInfo.bind_id')){
+                    $value['selected'] = 1;
+                }
+            }
+        }
+        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         return $result;
     }
 
@@ -445,7 +455,6 @@ class UserController extends BaseController
             $value['start_time'] = date("M d, Y", ($value['start_time'] / 1000));
             $value['expiry_time'] = date("M d, Y", ($value['expiry_time'] / 1000));
         }
-
         return $result;
     }
 
