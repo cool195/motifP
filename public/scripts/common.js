@@ -211,12 +211,64 @@ function HideSeeMore(seemoreName) {
     swiperBtnHover();
 
     // 点击选择图片
-    $('.small-img').on('click', function (e) {
-        if (!$(this).hasClass('active')) {
+    $('.product-smallImg').on('click', function (e) {
+        if (!$(this).children('.small-img').hasClass('active')) {
+            $('#btn-startPlayer').remove();
             $('.productImg-item img').removeClass('active');
-            $(this).addClass('active');
+            $(this).children('.small-img').addClass('active');
+
+            if($(this).children('.small-img').data('idplay')){
+                if($('#btn-startPlayer').length > 0){
+                    $('#btn-startPlayer').remove();
+                }
+                $('.bg-productDetailPlayer').css('display','flex');
+                var playid=$(this).children('.small-img').data('playid');
+                shoppingDetailPlayer(playid);
+            } else {
+                $('.bg-productDetailPlayer').css('display','none');
+                $('.play-content').html('<div id="ytplayer" class="ytplayer" data-playid=""></div>');
+            }
         }
     });
+
+    // shipppingDetail 视频播放 begin
+    var player;
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    }
+    // 视频播放-- 控制显示隐藏
+    function shoppingDetailPlayer(PlayerId){
+        $('.play-content').html('<div id="ytplayer" class="ytplayer" data-playid=""></div>');
+
+        $('#ytplayer').data('playid',PlayerId);
+
+        // youtube 视频播放
+        // 视频比例
+        var MediaScale = 9 / 16;
+        var Width = $('.zoomPad').width(),
+            MediaHeight = Width * MediaScale;
+
+        player = new YT.Player('ytplayer', {
+            height: MediaHeight,
+            width: Width,
+            videoId: PlayerId,
+            playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    // 播放第一个视频
+    $('#btn-startPlayer').on('click',function(){
+        var PlayerId=$(this).data('playerid');
+        $(this).remove();
+        $('.bg-productDetailPlayer').css('display','flex');
+        shoppingDetailPlayer(PlayerId);
+    });
+    // shipppingDetail 视频播放 end
+
+
 
     // 选择 商品属性
     var product_data = eval('(' + $('#jsonStr').val() + ')');
@@ -826,7 +878,8 @@ function HideSeeMore(seemoreName) {
             });
     });
 
-    //购物车删除操作
+
+    //购物车删除操作q
     $('.delCartM').on('click', function () {
         onRemoveFromCart();
 
@@ -1009,6 +1062,12 @@ function HideSeeMore(seemoreName) {
         var zip = $(this).parent('.address-item').data('zip');
         var state = $(this).parent('.address-item').data('state');
         $('.card-message').html('<div class="sanBold">' + userName + '</div><div>' + city + '</div><div>' + zip + '</div><div>' + state + '</div>');
+
+        $.ajax({
+            url: '/wordpay/selAddr/' + $(this).parent('.address-item').data('aid'),
+            type: 'post'
+        })
+
         getshiplist();
     });
 
@@ -1048,9 +1107,8 @@ function HideSeeMore(seemoreName) {
             $('.select-country').prop('selectedIndex', 0);
 
             // 初始化 国家,洲
+
             var Country = $('.select-country option:selected').text();
-            //var child_label = $('.select-country option:selected').data('child_label');
-           // var zipcode_label = $('.select-country option:selected').data('zipcode_label');
             initCityState(Country, '');
         } else {
             // 修改地址
@@ -1071,7 +1129,7 @@ function HideSeeMore(seemoreName) {
                     $('.select-country').val(data.country);
 
                     // 初始化 国家,洲
-                    initCityState(data.country, data.state, data.zip);
+                    initCityState(data.country, data.state);
 
                     if (data.isDefault == 1) {
                         $('.isDefault').addClass('active');
@@ -1085,19 +1143,20 @@ function HideSeeMore(seemoreName) {
     }
 
     // 选择国家 联动洲
-
     $('.select-country').change(function () {
         var Country = $('.select-country option:selected').text();
-        initCityState(Country, '');
 
+        initCityState(Country, '');
         if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
             validateState();
         } else {
             $('.address-save').addClass('disabled');
         }
-    });
+    }
 
     // 初始化 国家,洲
+    // country: 国家名称
+    // State: 修改地址时,州名称
     function initCityState(Country, State) {
         // CountryId  国家Id
         // SelectType 国家对应洲类型
@@ -1105,15 +1164,16 @@ function HideSeeMore(seemoreName) {
         var SelectType = $('.select-country > option[value="' + Country + '"]').data('type');
         var child_label = $('.select-country > option[value="' + Country + '"]').data('child_label');
         var zipcode_label = $('.select-country > option[value="' + Country + '"]').data('zipcode_label');
-
         $('.address-zipcode').siblings('.warning-info').children('span').html('Please enter your '+ zipcode_label + ' !');
         $('.address-zipcode').attr('placeholder', zipcode_label);
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
             $('#addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="'+ child_label + '(optional)">');
+            $('#addAddressForm input[name="state"]').val(State);
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
-            $('#addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="' + child_label + '"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your ' + State + '!</span> </div>');
+            $('#addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="' + child_label + '"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your ' + child_label + '!</span> </div>');
+            $('#addAddressForm input[name="state"]').val(State);
         } else {
             // 洲为下拉列选择
             // 获取 洲 列表
@@ -1130,7 +1190,7 @@ function HideSeeMore(seemoreName) {
                         $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($('#addAddressForm select[name="state"]'));
                     });
                     if (State != "") {
-                        $('#addAddressForm input[name="state"]').val(State);
+                        $('#addAddressForm select[name="state"]').val(State);
                     }
                 })
         }
@@ -1140,7 +1200,6 @@ function HideSeeMore(seemoreName) {
         if ($('#checkoutView').data('status') || $('#addressView').data('status')) {
             // 初始化 国家,洲
             var Country = $('.select-country option:selected').text();
-
             initCityState(Country, '');
         }
     } catch (e) {
@@ -1150,6 +1209,11 @@ function HideSeeMore(seemoreName) {
         var payPrice = $(this).data('price') > 0 ? ' +$' + ($(this).data('price') / 100).toFixed(2) : '';
         $('.shippingMethodShow').html($(this).data('show') + payPrice);
         getCheckoutInfo();
+
+        $.ajax({
+            url: '/wordpay/selShip/' + $(this).val(),
+            type: 'post'
+        });
     });
 
     // 收起地址增值服务
@@ -3444,6 +3508,11 @@ function HideSeeMore(seemoreName) {
             $(this).addClass('active');
             getCheckoutInfo();
         }
+
+        $.ajax({
+            url: '/wordpay/selCode/' + $(this).data('bindid'),
+            type: 'post'
+        });
 
     });
 

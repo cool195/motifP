@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\libs\MCrypt;
 
 class WordpayController extends BaseController
 {
@@ -60,6 +61,90 @@ class WordpayController extends BaseController
         $result = $this->request('pay', $params);
         return $result;
     }
+
+    //获取地址列表
+    private function addrList()
+    {
+        $params = array(
+            'cmd' => 'list',
+            'uuid' => $_COOKIE['uid'],
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('useraddr', $params);
+        if (empty($result)) {
+            $result['success'] = false;
+            $result['error_msg'] = "Data access failed";
+            $result['data'] = array();
+        }
+        return $result;
+    }
+
+    public function selAddr($aid)
+    {
+        $address = $this->addrList();
+        Session::forget('user.checkout.address');
+        foreach ($address['data']['list'] as $value) {
+            if ($value['receiving_id'] == $aid) {
+                Session::put('user.checkout.address', $value);
+                return $value;
+            }
+        }
+    }
+
+    private function getShippingMethod($country = 0, $price = 0)
+    {
+        $params = array(
+            'cmd' => 'logis',
+            'token' => Session::get('user.token')
+        );
+        if($price != 0){
+            $params['amount'] = $price;
+            $params['country'] = $country;
+        }
+        $result = $this->request('general', $params);
+
+        return $result['data']['list'];
+    }
+
+    public function selShip($type)
+    {
+        $shippingMethods = $this->getShippingMethod();
+        Session::forget('user.checkout.selship');
+        foreach($shippingMethods as $value){
+            if($value['logistics_type'] == $type){
+                Session::put('user.checkout.selship', $value);
+                return $value;
+            }
+        }
+    }
+
+    private function getCouponInfo()
+    {
+        $params = array(
+            'cmd' => 'couponlist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('cart', $params);
+        foreach ($result['data']['list'] as &$value) {
+            $value['start_time'] = date("M d, Y", ($value['start_time'] / 1000));
+            $value['expiry_time'] = date("M d, Y", ($value['expiry_time'] / 1000));
+        }
+        return $result;
+    }
+
+    public function selCode($bindid)
+    {
+        $coupon = $this->getCouponInfo();
+        foreach ($coupon['data']['list'] as $value) {
+            if ($value['bind_id'] == $bindid && $value['usable']) {
+                $couponInfo = $value;
+                Session::put('user.checkout.couponInfo', $couponInfo);
+            }
+        }
+    }
+
 
 
 }

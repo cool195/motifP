@@ -30,6 +30,14 @@ class AddressController extends BaseController
             }
             $result['data']['list'] = $addrList;
         }
+        if(Session::has('user.checkout.address')){
+            foreach($result['data']['list'] as &$list){
+                $list['isSel'] = 0;
+                if($list['receiving_id'] == Session::get('user.checkout.address.receiving_id')){
+                    $list['isSel'] = 1;
+                }
+            }
+        }
         return $result;
     }
 
@@ -160,21 +168,16 @@ class AddressController extends BaseController
     //获取国家列表
     public function getCountry()
     {
-        $value = Cache::remember('getcountrylist', 1000, function () {
-            $params = array(
-                'cmd' => 'country',
-                'token' => Session::get('user.token'),
-                'pin' => Session::get('user.pin')
-            );
-            $result = $this->request('addr', $params);
-            if ($result['success']) {
-                return $result['data']['list'];
-            }
-            return array();
-        });
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($value, "\n"), 3, '/tmp/myerror.log');
-        return $value;
+        $params = array(
+            'cmd' => 'country',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin')
+        );
+        $result = $this->request('addr', $params);
+        if ($result['success']) {
+            return $result['data']['list'];
+        }
+        return array();
     }
 
     //获取洲列表
