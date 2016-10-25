@@ -881,12 +881,12 @@ function HideSeeMore(seemoreName) {
     // Checkout Start
     $('#addAddress').on('click', function () {
         //var reg = /^[a-zA-Z0-9_-]+@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i;
-        var $email = $('input[name="email"]'),
-            $name = $('input[name="name"]'),
-            $city = $('input[name="city"]'),
-            $tel = $('input[name="tel"]'),
-            $addr1 = $('input[name="addr1"]'),
-            $zip = $('input[name="zip"]');
+        var $email = $('.address-email'),
+            $name = $('.address-name'),
+            $city = $('.address-city'),
+            $tel = $('.address-phone'),
+            $addr1 = $('.address-addr1'),
+            $zip = $('.address-zipcode');
         if (checkValid($name) && checkValid($city) && checkValid($tel) && checkValid($addr1) && checkValid($zip)) {
             var Aid = $('#addAddressForm').data('aid');
             if (Aid === '' || Aid === undefined) {
@@ -1036,22 +1036,22 @@ function HideSeeMore(seemoreName) {
             }
             // 添加地址
             //初始化 修改地址 from 表单
-            $('#addAddressForm input[name="email"]').val('');
-            $('#addAddressForm input[name="name"]').val('');
-            $('#addAddressForm input[name="city"]').val('');
+            $('.address-email').val('');
+            $('.address-name').val('');
+            $('.address-city').val('');
             $('#addAddressForm input[name="state"]').val('');
-            $('#addAddressForm input[name="tel"]').val('');
-            $('#addAddressForm input[name="addr1"]').val('');
-            $('#addAddressForm input[name="addr2"]').val('');
-            $('#addAddressForm input[name="zip"]').val('');
+            $('.address-phone').val('');
+            $('.address-addr1').val('');
+            $('.address-addr2').val('');
+            $('.address-zipcode').val('');
             $('.address-save').addClass('disabled');
-            $('select[name="country"]').prop('selectedIndex', 0);
+            $('.select-country').prop('selectedIndex', 0);
 
             // 初始化 国家,洲
-            var Country = $('select[name="country"] option:selected').text();
-            var child_label = $('select[name="country"] option:selected').data('child_label');
-            var zipcode_label = $('select[name="country"] option:selected').data('zipcode_label');
-            initCityState(Country, child_label, zipcode_label);
+            var Country = $('.select-country option:selected').text();
+            //var child_label = $('.select-country option:selected').data('child_label');
+           // var zipcode_label = $('.select-country option:selected').data('zipcode_label');
+            initCityState(Country, '');
         } else {
             // 修改地址
             $.ajax({
@@ -1060,15 +1060,15 @@ function HideSeeMore(seemoreName) {
                 })
                 .done(function (data) {
                     //初始化 修改地址 from 表单
-                    $('#addAddressForm input[name="email"]').val(data.email);
-                    $('#addAddressForm input[name="name"]').val(data.name);
-                    $('#addAddressForm input[name="city"]').val(data.city);
+                    $('.address-email').val(data.email);
+                    $('.address-name').val(data.name);
+                    $('.address-city').val(data.city);
                     $('#addAddressForm input[name="state"]').val(data.state);
-                    $('#addAddressForm input[name="tel"]').val(data.telephone);
-                    $('#addAddressForm input[name="addr1"]').val(data.detail_address1);
-                    $('#addAddressForm input[name="addr2"]').val(data.detail_address2);
-                    $('#addAddressForm input[name="zip"]').val(data.zip);
-                    $('#addAddressForm select[name="country"]').val(data.country);
+                    $('.address-phone').val(data.telephone);
+                    $('.address-addr1').val(data.detail_address1);
+                    $('.address-addr2').val(data.detail_address2);
+                    $('.address-zipcode').val(data.zip);
+                    $('.select-country').val(data.country);
 
                     // 初始化 国家,洲
                     initCityState(data.country, data.state, data.zip);
@@ -1086,11 +1086,9 @@ function HideSeeMore(seemoreName) {
 
     // 选择国家 联动洲
 
-    $('select[name="country"]').change(function () {
-        var Country = $('select[name="country"] option:selected').val();
-        var child_label = $('select[name="country"] option:selected').data('child_label');
-        var zipcode_label = $('select[name="country"] option:selected').data('zipcode_label');
-        initCityState(Country, child_label, zipcode_label);
+    $('.select-country').change(function () {
+        var Country = $('.select-country option:selected').text();
+        initCityState(Country, '');
 
         if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
             validateState();
@@ -1100,19 +1098,22 @@ function HideSeeMore(seemoreName) {
     });
 
     // 初始化 国家,洲
-    function initCityState(Country, State, Zipcode) {
+    function initCityState(Country, State) {
         // CountryId  国家Id
         // SelectType 国家对应洲类型
-        var CountryId = $('select[name="country"] > option[value="' + Country + '"]').data('id');
-        var SelectType = $('select[name="country"] > option[value="' + Country + '"]').data('type');
-        $('input[name="zip"]').siblings('.warning-info').children('span').html('Please enter your '+ Zipcode + ' !');
-        $('input[name="zip"]').attr('placeholder', Zipcode);
+        var CountryId = $('.select-country > option[value="' + Country + '"]').data('id');
+        var SelectType = $('.select-country > option[value="' + Country + '"]').data('type');
+        var child_label = $('.select-country > option[value="' + Country + '"]').data('child_label');
+        var zipcode_label = $('.select-country > option[value="' + Country + '"]').data('zipcode_label');
+
+        $('.address-zipcode').siblings('.warning-info').children('span').html('Please enter your '+ zipcode_label + ' !');
+        $('.address-zipcode').attr('placeholder', zipcode_label);
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
-            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="'+ State + '(optional)">');
+            $('#addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="'+ child_label + '(optional)">');
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
-            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="' + State + '"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your ' + State + '!</span> </div>');
+            $('#addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="' + child_label + '"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your ' + State + '!</span> </div>');
         } else {
             // 洲为下拉列选择
             // 获取 洲 列表
@@ -1129,7 +1130,7 @@ function HideSeeMore(seemoreName) {
                         $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($('#addAddressForm select[name="state"]'));
                     });
                     if (State != "") {
-                        $('input[name="state"]').val(State);
+                        $('#addAddressForm input[name="state"]').val(State);
                     }
                 })
         }
@@ -1138,10 +1139,9 @@ function HideSeeMore(seemoreName) {
     try {
         if ($('#checkoutView').data('status') || $('#addressView').data('status')) {
             // 初始化 国家,洲
-            var Country = $('select[name="country"] option:selected').text();
-            var child_label = $('select[name="country"] option:selected').data('child_label');
-            var zipcode_label = $('select[name="country"] option:selected').data('zipcode_label');
-            initCityState(Country, child_label, zipcode_label);
+            var Country = $('.select-country option:selected').text();
+
+            initCityState(Country, '');
         }
     } catch (e) {
     }
@@ -1150,7 +1150,7 @@ function HideSeeMore(seemoreName) {
         var payPrice = $(this).data('price') > 0 ? ' +$' + ($(this).data('price') / 100).toFixed(2) : '';
         $('.shippingMethodShow').html($(this).data('show') + payPrice);
         getCheckoutInfo();
-    })
+    });
 
     // 收起地址增值服务
     $('#smsubmit').on('click', function () {
@@ -1369,14 +1369,14 @@ function HideSeeMore(seemoreName) {
         $('.card-addNewAddr').removeClass('disabled');
 
         if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
-            && checkInput($('#card-addAddressForm input[name="name"]')) && checkInput($('#card-addAddressForm input[name="tel"]')) && checkInput($('#card-addAddressForm input[name="addr1"]'))
-            && checkInput($('#card-addAddressForm input[name="city"]')) && checkInput($('#card-addAddressForm input[name="zip"]')) ){
+            && checkInput($('.card-name')) && checkInput($('.card-tel')) && checkInput($('.card-addr1'))
+            && checkInput($('.card-city')) && checkInput($('.card-zip')) ){
             $('#btn-addNewCard').removeClass('disabled')
         }else{
             $('#btn-addNewCard').addClass('disabled')
         }
 
-        var Country = $('#card-addAddressForm select[name="country"] option:selected').text();
+        var Country = $('.card-selectCountry option:selected').text();
         initPaymentCityState(Country, '')
     });
 
@@ -1385,17 +1385,19 @@ function HideSeeMore(seemoreName) {
     function initPaymentCityState(Country, State) {
         // CountryId  国家Id
         // SelectType 国家对应洲类型
-        var CountryId = $('#card-addAddressForm select[name="country"] > option[value="' + Country + '"]').data('id');
-        var SelectType = $('#card-addAddressForm select[name="country"] > option[value="' + Country + '"]').data('type');
+        var CountryId = $('.card-selectCountry > option[value="' + Country + '"]').data('id');
+        var SelectType = $('.card-selectCountry > option[value="' + Country + '"]').data('type');
+        var child_label = $('.card-selectCountry > option[value="' + Country + '"]').data('child_label');
+        var zipcode_label = $('.card-selectCountry > option[value="' + Country + '"]').data('zipcode_label');
+        $('.card-zip').siblings('.warning-info').children('span').html('Please enter your '+ zipcode_label + ' !');
+        $('.card-zip').attr('placeholder', zipcode_label);
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
-            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="State (optional)">');
-            $('#card-addAddressForm input[name="state"]').val(State);
+            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" placeholder="State (optional)">');
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
-            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" data-optional="false" data-inputrole="State" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
-            $('#card-addAddressForm input[name="state"]').val(State);
-            $('#btn-addNewCard').addClass('disabled');
+            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" data-optional="false" data-inputrole="State" placeholder="'+child_label+'"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
+
         } else {
             // 洲为下拉列选择
             // 获取 洲 列表
@@ -1404,7 +1406,7 @@ function HideSeeMore(seemoreName) {
                     type: 'GET'
                 })
                 .done(function (data) {
-                    $('#card-addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
+                    $('#card-addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg card-selectCountry"></select>');
                     // 添加选项
                     $.each(data, function (n, value) {
                         var StateNameId = value['state_name_sn'];
@@ -1417,6 +1419,12 @@ function HideSeeMore(seemoreName) {
                 })
         }
     }
+    // card 选择国家 联动洲
+    $('.card-selectCountry').change(function () {
+        var Country = $(this).val();
+        initPaymentCityState(Country, '');
+
+    });
     // 验证input非空 并 添加提示文本
     function checkInput(thisElem){
         if (thisElem.val() === ''){
@@ -1428,18 +1436,6 @@ function HideSeeMore(seemoreName) {
             return true;
         }
     }
-    // card 选择国家 联动洲
-    $('#card-addAddressForm select[name="country"]').change(function () {
-        var Country = $(this).val();
-        initPaymentCityState(Country, '');
-
-        if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
-            validateState();
-        } else {
-            $('.address-save').addClass('disabled');
-        }
-    });
-
     $('input[data-optional="false"]').on('keyup blur', function () {
         if( $('.card-addNewAddr').hasClass('disabled')){
             if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]')) ){
@@ -1449,19 +1445,19 @@ function HideSeeMore(seemoreName) {
             }
         }else {
             if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
-                && checkInput($('#card-addAddressForm input[name="name"]')) && checkInput($('#card-addAddressForm input[name="tel"]')) && checkInput($('#card-addAddressForm input[name="addr1"]'))
-                && checkInput($('#card-addAddressForm input[name="city"]')) && checkInput($('#card-addAddressForm input[name="zip"]')) ){
+                && checkInput($('.card-name')) && checkInput($('.card-tel')) && checkInput($('.card-addr1'))
+                && checkInput($('.card-city')) && checkInput($('.card-zip')) ){
                 $('#btn-addNewCard').removeClass('disabled')
             }else{
                 $('#btn-addNewCard').addClass('disabled')
             }
         }
     });
-    // 验证 State
+    // card 验证 State
     $('#card-addAddressForm .state-info').on('keyup blur', '.card-state', function () {
         if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
-            && checkInput($('#card-addAddressForm input[name="name"]')) && checkInput($('#card-addAddressForm input[name="tel"]')) && checkInput($('#card-addAddressForm input[name="addr1"]'))
-            && checkInput($('#card-addAddressForm input[name="city"]')) && checkInput($(this)) && checkInput($('#card-addAddressForm input[name="zip"]')) ){
+            && checkInput($('.card-name')) && checkInput($('.card-tel')) && checkInput($('.card-addr1'))
+            && checkInput($('.card-city')) && checkInput($(this)) && checkInput($('.card-zip')) ){
             $('#btn-addNewCard').removeClass('disabled')
         }else{
             $('#btn-addNewCard').addClass('disabled')
@@ -1502,19 +1498,35 @@ function HideSeeMore(seemoreName) {
         var cardNum =  $('.card-number').val();
         var cardDate = $('.card-date').val();
         var cardCode = $('.card-code').val();
-        var cardName = '', cardTel = '', cardAddr1 = '', cardCity = '', cardCountry = '',cardZip = '', cardState = '';
+        var cardName = '', cardTel = '', cardAddr1 = '', cardAddr2 = '', cardCity = '', cardCountry = '',cardZip = '', cardState = '', csn='';
 
         if( $('.card-addNewAddr').hasClass('disabled') ){ //选择了与shipping相同的地址信息
+            cardName = $('.def-name').html();
+            cardTel = $('.def-tel').val();
+            cardAddr1 = $('.def-addr1').val();
+            cardAddr2 = $('.def-addr2').val();
+            cardCity = $('.def-city').html();
+            cardCountry = $('.def-country').val();
+            cardZip = $('.def-zip').html();
+            cardState = $('.def-state').html();
+            //csn = $('.def-countrySn').val();
+            csn = $('.card-selectCountry > option[value="' + cardCountry + '"]').data('csn');
+
+        }else{
             cardName = $('.card-name').val();
             cardTel = $('.card-tel').val();
             cardAddr1 = $('.card-addr1').val();
+            cardAddr2 = $('.card-addr2').val();
             cardCity = $('.card-city').val();
+            cardCountry = $('.card-selectCountry > option:selected').text();
+            csn = $('.card-selectCountry > option[value="' + cardCountry + '"]').data('csn');
             cardZip = $('.card-zip').val();
-            cardState = $('.card-state').val();
-        }else{
-
+            cardState = $("#card-addAddressForm input[name='state']").val();
 
         }
+        console.log(cardCountry)
+        console.log(csn)
+        console.log(cardState);
         $.ajax({
                 url: '/wordpay/addCard',
                 type: 'POST',
@@ -1522,27 +1534,44 @@ function HideSeeMore(seemoreName) {
                     card: cardNum,
                     expiry: cardDate,
                     cvv: cardCode,
+
                     name: cardName,
                     tel: cardTel,
                     addr1: cardAddr1,
+                    addr2: cardAddr2,
                     city: cardCity,
                     country: cardCountry,
+                    csn: csn,
                     zip: cardZip,
                     state: cardState
                 }
             })
             .done(function (data) {
                 if (data.success) {
-                    window.location.href = '/checkout/payment';
+                    getCardList();
                 } else {
-                    $('.warning-info').removeClass('hidden-xs-up');
-                    $('.warning-info').children('span').html(data.error_msg);
+                    $('.addCard-warning').removeClass('off');
+                    $('.addCard-warning').children('span').html(data.error_msg);
                 }
             })
 
-
     });
 
+    function getCardList(){
+        $.ajax({
+            url:'/wordpay/paylist',
+            type: 'GET'
+        }).done(function (data) {
+            if (data.success){
+                appendCardList(data.data);
+            }
+        })
+    }
+    function appendCardList(cardList){
+        var tplHtml = template('tpl-creditCard', cardList);
+        var StageCache = $.parseHTML(tplHtml);
+        $('.payment-list').html(StageCache);
+    }
     // end 支付方式 Payment Method
 
     // Checkout End
@@ -2229,22 +2258,11 @@ function HideSeeMore(seemoreName) {
         }
         return flag;
     }
-
-    //$('.address-email').on('keyup blur', function () {
-    //    var email = $(this).val();
-    //    if (address_validationEmail($(this)) && address_check($('.address-name')) && address_check($('.address-city'))
-    //        && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
-    //        $('.address-save').removeClass('disabled');
-    //    } else {
-    //        $('.address-save').addClass('disabled');
-    //    }
-    //});
-
-
+    
     $('.address-name').on('keyup blur', function () {
         var name = $(this).val();
         if (address_check($(this)) && address_check($('.address-city'))
-            && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
+            && address_check($('.address-phone')) && address_check($('.address-addr1')) && address_check($('.address-zipcode'))) {
             validateState();
         } else {
             $('.address-save').addClass('disabled');
@@ -2253,7 +2271,7 @@ function HideSeeMore(seemoreName) {
 
     $('.address-city').on('keyup blur', function () {
         if (address_check($(this)) && address_check($('.address-name'))
-            && address_check($('.address-phone')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
+            && address_check($('.address-phone')) && address_check($('.address-addr1')) && address_check($('.address-zipcode'))) {
             validateState();
         } else {
             $('.address-save').addClass('disabled');
@@ -2262,14 +2280,14 @@ function HideSeeMore(seemoreName) {
 
     $('.address-phone').on('keyup blur', function () {
         if (address_check($(this)) && address_check($('.address-name'))
-            && address_check($('.address-city')) && address_check($('.address-street')) && address_check($('.address-zipcode'))) {
+            && address_check($('.address-city')) && address_check($('.address-addr1')) && address_check($('.address-zipcode'))) {
             validateState();
         } else {
             $('.address-save').addClass('disabled');
         }
-    })
+    });
 
-    $('.address-street').on('keyup blur', function () {
+    $('.address-addr1').on('keyup blur', function () {
         if (address_check($(this)) && address_check($('.address-name'))
             && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
             validateState();
@@ -2280,7 +2298,7 @@ function HideSeeMore(seemoreName) {
 
     $('.address-zipcode').on('keyup blur', function () {
         if (address_check($(this)) && address_check($('.address-name'))
-            && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-street'))) {
+            && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-addr1'))) {
             validateState();
         } else {
             $('.address-save').addClass('disabled');

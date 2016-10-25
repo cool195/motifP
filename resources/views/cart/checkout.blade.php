@@ -161,7 +161,7 @@
                     <div class="row p-t-30x">
                         <form id="addAddressForm" data-aid="">
                             <div class="col-md-5">
-                                <input type="hidden" name="email" value="{{Session::get('user.login_email')}}">
+                                <input type="hidden" name="email" class="address-email" value="{{Session::get('user.login_email')}}">
                                 <div class="p-l-20x m-b-20x">
                                     <input type="text" name="name"
                                            class="form-control contrlo-lg text-primary address-name"
@@ -182,7 +182,7 @@
                                 </div>
                                 <div class="p-l-20x m-b-20x">
                                     <input type="text" name="addr1"
-                                           class="form-control contrlo-lg text-primary address-street"
+                                           class="form-control contrlo-lg text-primary address-addr1"
                                            placeholder="Street 1">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -190,7 +190,7 @@
                                     </div>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="addr2" class="form-control contrlo-lg text-primary"
+                                    <input type="text" name="addr2" class="form-control contrlo-lg text-primary address-addr2"
                                            placeholder="Street 2 (optional)">
                                 </div>
                             </div>
@@ -378,11 +378,11 @@
                                     <input type="text" name="card" maxlength="20" class="form-control contrlo-lg text-primary card-number" data-optional="false" data-inputrole="credit card number" placeholder="Credit Card Number">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                        <span class="font-size-base">Please enter your credit card number!</span>
+                                        <span class="font-size-base"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="text" name="expiry" maxlength="9" class="form-control contrlo-lg text-primary card-date" data-optional="false" placeholder="MM/YYYY">
+                                    <input type="text" name="expiry" maxlength="9" class="form-control contrlo-lg text-primary card-date" data-optional="false" data-inputrole="effective date" placeholder="MM/YYYY">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                         <span class="font-size-base"></span>
@@ -392,7 +392,7 @@
                                     <input type="text" name="cvc" maxlength="4" class="form-control contrlo-lg text-primary card-code" data-optional="false" data-inputrole="Security Code" placeholder="Security Code">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                        <span class="font-size-base">Please enter your Security Code!</span>
+                                        <span class="font-size-base"></span>
                                     </div>
                                 </div>
                             </form>
@@ -406,20 +406,16 @@
                                 {{--账单地址信息--}}
                                 {{$defaultAddr = $Address->getUserDefaultAddr()['data']}}
                                 <div class="card-message">
-                                    <div class="sanBold">{{$defaultAddr['name']}}</div>
-                                    <div>{{$defaultAddr['city']}}</div>
-                                    <div>{{$defaultAddr['zip']}}</div>
-                                    <div>{{$defaultAddr['state']}}</div>
+                                    <div class="sanBold def-name">{{$defaultAddr['name']}}</div>
+                                    <div class="def-city">{{$defaultAddr['city']}}</div>
+                                    <div class="def-zip">{{$defaultAddr['zip']}}</div>
+                                    <div class="def-state">{{$defaultAddr['state']}}</div>
 
+                                    <input type="hidden" name="tel" class="def-tel" value="{{$defaultAddr['telephone']}}">
+                                    <input type="hidden" name="addr1" class="def-addr1" value="{{$defaultAddr['detail_address1']}}">
+                                    <input type="hidden" name="addr2" class="def-addr2" value="{{$defaultAddr['detail_address2']}}">
+                                    <input type="hidden" name="country" class="def-country" value="{{$defaultAddr['country']}}">
                                 </div>
-                                <input type="hidden" name="tel" value="{{$defaultAddr['telephone']}}">
-                                <input type="hidden" name="name" value="{{$defaultAddr['name']}}">
-                                <input type="hidden" name="addr1" value="{{$defaultAddr['detail_address1']}}">
-                                <input type="hidden" name="addr2" value="{{$defaultAddr['detail_address2']}}">
-                                <input type="hidden" name="city" value="{{$defaultAddr['city']}}">
-                                <input type="hidden" name="state" value="{{$defaultAddr['state']}}">
-                                <input type="hidden" name="zip" value="{{$defaultAddr['zip']}}">
-                                <input type="hidden" name="country" value="{{$defaultAddr['country']}}">
                             </div>
                             <div class="col-md-6 p-b-10x">
                                 <div>
@@ -476,12 +472,14 @@
                                         </div>
                                     </div>
                                     <div class="p-l-20x m-b-20x">
-                                        <select name="country" class="form-control contrlo-lg select-country">
+                                        <select name="country" class="form-control contrlo-lg card-selectCountry">
                                             @foreach($Address->getCountry() as $value)
                                                 <option value="{{$value['country_name_en']}}"
                                                         data-type="{{$value['child_type']}}"
                                                         data-id="{{$value['country_id']}}"
-                                                        data-csn="{{$value['country_name_sn']}}">{{$value['country_name_en']}}</option>
+                                                        data-csn="{{$value['country_name_sn']}}"
+                                                        data-child_label="{{$value['child_label']}}"
+                                                        data-zipcode_label="{{$value['zipcode_label']}}">{{$value['country_name_en']}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -511,6 +509,10 @@
                             <a href="javascript:void(0);" id="card-addAddress-cancel"
                                class="btn btn-secondary btn-md m-r-10x">Cancel</a>
                             <a href="javascript:void(0);" id="btn-addNewCard" class="btn btn-primary btn-md disabled">Continue</a>
+                            <div class="warning-info flex flex-alignCenter text-warning p-t-5x addCard-warning off">
+                                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                <span class="font-size-base">信用卡添加失败!</span>
+                            </div>
                         </div>
                         {{--end添加新的账单地址--}}
                     </div>
@@ -689,6 +691,51 @@
             </div>
         </div>
     </div>
+    @{{ /each }}
+</template>
+
+<!-- card 模板 -->
+<template id="tpl-creditCard">
+    @{{ each list }}
+    @{{ if $value.pay_method === 'Worldpay' }}
+    <div class="col-md-6">
+        <div class="p-a-10x">
+            <div class="address-item flex flex-alignCenter flex-fullJustified p-x-20x active addCreditCard">
+
+                <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
+                <span class="font-size-lxx">Add New Credit Card</span>
+                <i class="iconfont icon-add m-r-20x"></i>
+            </div>
+        </div>
+    </div>
+    {{--@{{ each $value.creditCards }}
+
+    @{{ /each }}--}}
+
+
+    @{{ else if $value.pay_method === 'PayPalNative' }}
+    <div class="col-md-6">
+        <div class="p-a-10x">
+            <div class="address-item flex flex-alignCenter p-x-20x active">
+                <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
+                <span class="font-size-lxx p-l-40x">@{{$value.pay_name}}</span>
+                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+            </div>
+        </div>
+    </div>
+    @{{ else if $value.pay_method === 'Oceanpay' }}
+    <div class="col-md-6">
+        <div class="p-a-10x">
+            <div class="address-item flex flex-alignCenter flex-fullJustified p-x-20x active addCreditCard">
+                <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
+                <span class="font-size-lxx">Add New Credit Card</span>
+                <i class="iconfont icon-add m-r-20x"></i>
+            </div>
+        </div>
+    </div>
+
+    @{{ /if }}
+
     @{{ /each }}
 </template>
 
