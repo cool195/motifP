@@ -356,10 +356,10 @@
                 <div class="p-a-20x add-newCard disabled">
                     <div class="inline">
                         <span class="font-size-md sanBold">Add New Credit Card</span>
-                        <span class="font-size-md pull-right">
+                        {{--<span class="font-size-md pull-right">
                             <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg active"></i>
                             <span class="p-l-5x">Make Primary</span>
-                        </span>
+                        </span>--}}
                     </div>
 
                     <div class="p-a-20x">
@@ -498,7 +498,7 @@
                         <div class="text-right">
                             <a href="javascript:void(0);" id="card-addAddress-cancel"
                                class="btn btn-secondary btn-md m-r-10x">Cancel</a>
-                            <a href="javascript:void(0);" id="addNewCard" class="btn btn-primary btn-md disabled">Continue</a>
+                            <a href="javascript:void(0);" id="btn-addNewCard" class="btn btn-primary btn-md disabled">Continue</a>
                         </div>
                         {{--end添加新的账单地址--}}
                     </div>
