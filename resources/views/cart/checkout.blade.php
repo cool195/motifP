@@ -411,6 +411,14 @@
                                     <div>{{$defaultAddr['zip']}}</div>
                                     <div>{{$defaultAddr['state']}}</div>
                                 </div>
+                                <input type="hidden" name="tel" value="{{$defaultAddr['telephone']}}">
+                                <input type="hidden" name="name" value="{{$defaultAddr['name']}}">
+                                <input type="hidden" name="addr1" value="{{$defaultAddr['detail_address1']}}">
+                                <input type="hidden" name="addr2" value="{{$defaultAddr['detail_address2']}}">
+                                <input type="hidden" name="city" value="{{$defaultAddr['city']}}">
+                                <input type="hidden" name="state" value="{{$defaultAddr['state']}}">
+                                <input type="hidden" name="zip" value="{{$defaultAddr['zip']}}">
+                                <input type="hidden" name="country" value="{{$defaultAddr['country']}}">
                             </div>
                             <div class="col-md-6 p-b-10x">
                                 <div>
@@ -471,7 +479,8 @@
                                             @foreach($Address->getCountry() as $value)
                                                 <option value="{{$value['country_name_en']}}"
                                                         data-type="{{$value['child_type']}}"
-                                                        data-id="{{$value['country_id']}}">{{$value['country_name_en']}}</option>
+                                                        data-id="{{$value['country_id']}}"
+                                                        data-csn="{{$value['country_name_sn']}}">{{$value['country_name_en']}}</option>
                                             @endforeach
                                         </select>
                                     </div>
