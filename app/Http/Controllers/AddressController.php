@@ -160,19 +160,16 @@ class AddressController extends BaseController
     //获取国家列表
     public function getCountry()
     {
-        $value = Cache::remember('getcountrylist', 1000, function () {
-            $params = array(
-                'cmd' => 'country',
-                'token' => Session::get('user.token'),
-                'pin' => Session::get('user.pin')
-            );
-            $result = $this->request('addr', $params);
-            if ($result['success']) {
-                return $result['data']['list'];
-            }
-            return array();
-        });
-        return $value;
+        $params = array(
+            'cmd' => 'country',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin')
+        );
+        $result = $this->request('addr', $params);
+        if ($result['success']) {
+            return $result['data']['list'];
+        }
+        return array();
     }
 
     //获取洲列表
