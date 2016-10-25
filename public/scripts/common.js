@@ -1107,9 +1107,7 @@ function HideSeeMore(seemoreName) {
 
             // 初始化 国家,洲
             var Country = $('select[name="country"] option:selected').text();
-            var child_label = $('select[name="country"] option:selected').data('child_label');
-            var zipcode_label = $('select[name="country"] option:selected').data('zipcode_label');
-            initCityState(Country, child_label, zipcode_label);
+            initCityState(Country, '');
         } else {
             // 修改地址
             $.ajax({
@@ -1129,7 +1127,7 @@ function HideSeeMore(seemoreName) {
                     $('#addAddressForm select[name="country"]').val(data.country);
 
                     // 初始化 国家,洲
-                    initCityState(data.country, data.state, data.zip);
+                    initCityState(data.country, data.state);
 
                     if (data.isDefault == 1) {
                         $('.isDefault').addClass('active');
@@ -1146,9 +1144,7 @@ function HideSeeMore(seemoreName) {
 
     $('select[name="country"]').change(function () {
         var Country = $('select[name="country"] option:selected').val();
-        var child_label = $('select[name="country"] option:selected').data('child_label');
-        var zipcode_label = $('select[name="country"] option:selected').data('zipcode_label');
-        initCityState(Country, child_label, zipcode_label);
+        initCityState(Country, '');
 
         if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
             validateState();
@@ -1158,19 +1154,25 @@ function HideSeeMore(seemoreName) {
     });
 
     // 初始化 国家,洲
-    function initCityState(Country, State, Zipcode) {
+    // country: 国家名称
+    // State: 修改地址时,州名称
+    function initCityState(Country, State) {
         // CountryId  国家Id
         // SelectType 国家对应洲类型
         var CountryId = $('select[name="country"] > option[value="' + Country + '"]').data('id');
         var SelectType = $('select[name="country"] > option[value="' + Country + '"]').data('type');
-        $('input[name="zip"]').siblings('.warning-info').children('span').html('Please enter your '+ Zipcode + ' !');
-        $('input[name="zip"]').attr('placeholder', Zipcode);
+        var child_label = $('select[name="country"] > option[value="' + Country + '"]').data('child_label');
+        var zipcode_label = $('select[name="country"] > option[value="' + Country + '"]').data('zipcode_label');
+        $('input[name="zip"]').siblings('.warning-info').children('span').html('Please enter your '+ zipcode_label + ' !');
+        $('input[name="zip"]').attr('placeholder', zipcode_label);
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
-            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="'+ State + '(optional)">');
+            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="'+ child_label + '(optional)">');
+            $('input[name="state"]').val(State);
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
-            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="' + State + '"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your ' + State + '!</span> </div>');
+            $('.state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" placeholder="' + child_label + '"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your ' + child_label + '!</span> </div>');
+            $('input[name="state"]').val(State);
         } else {
             // 洲为下拉列选择
             // 获取 洲 列表
@@ -1187,7 +1189,7 @@ function HideSeeMore(seemoreName) {
                         $("<option></option>").val(StateNameId).text(StateNameEn).appendTo($('#addAddressForm select[name="state"]'));
                     });
                     if (State != "") {
-                        $('input[name="state"]').val(State);
+                        $('select[name="state"]').val(State);
                     }
                 })
         }
@@ -1197,9 +1199,7 @@ function HideSeeMore(seemoreName) {
         if ($('#checkoutView').data('status') || $('#addressView').data('status')) {
             // 初始化 国家,洲
             var Country = $('select[name="country"] option:selected').text();
-            var child_label = $('select[name="country"] option:selected').data('child_label');
-            var zipcode_label = $('select[name="country"] option:selected').data('zipcode_label');
-            initCityState(Country, child_label, zipcode_label);
+            initCityState(Country, '');
         }
     } catch (e) {
     }
@@ -1208,6 +1208,10 @@ function HideSeeMore(seemoreName) {
         var payPrice = $(this).data('price') > 0 ? ' +$' + ($(this).data('price') / 100).toFixed(2) : '';
         $('.shippingMethodShow').html($(this).data('show') + payPrice);
         getCheckoutInfo();
+        $.ajax({
+            url: '/wordpay/selShip/' + $(this).val(),
+            type: 'post'
+        });
     })
 
     // 收起地址增值服务

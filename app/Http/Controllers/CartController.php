@@ -122,6 +122,7 @@ class CartController extends BaseController
             $params['country'] = $country;
         }
         $result = $this->request('general', $params);
+        
         return $result;
     }
 
