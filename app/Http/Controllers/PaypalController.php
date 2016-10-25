@@ -40,7 +40,7 @@ class PaypalController extends BaseController
             $params['nonce'] = '';
         }
 
-        $content = $this->request('openapi', "", "pay", $params);
+        $content = $this->request("pay", $params);
 
         if (!empty($content) && $content['success'] && $content['data']['id']) {
             Session::forget('user.checkout');
