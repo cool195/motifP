@@ -213,10 +213,14 @@ function HideSeeMore(seemoreName) {
     // 点击选择图片
     $('.product-smallImg').on('click', function (e) {
         if (!$(this).children('.small-img').hasClass('active')) {
+            $('#btn-startPlayer').remove();
             $('.productImg-item img').removeClass('active');
             $(this).children('.small-img').addClass('active');
 
             if($(this).children('.small-img').data('idplay')){
+                if($('#btn-startPlayer').length > 0){
+                    $('#btn-startPlayer').remove();
+                }
                 $('.bg-productDetailPlayer').css('display','flex');
                 var playid=$(this).children('.small-img').data('playid');
                 shoppingDetailPlayer(playid);
@@ -229,12 +233,6 @@ function HideSeeMore(seemoreName) {
 
     // shipppingDetail 视频播放 begin
     var player;
-    $(function () {
-        if($('.bg-productDetailPlayer').data('isplay')){
-            $('.bg-productDetailPlayer').css('display','flex');
-            //shoppingDetailPlayer($('.bg-productDetailPlayer').data('playerid'));
-        }
-    });
     function onPlayerReady(event) {
         event.target.playVideo();
     }
@@ -243,7 +241,6 @@ function HideSeeMore(seemoreName) {
         $('.play-content').html('<div id="ytplayer" class="ytplayer" data-playid=""></div>');
 
         $('#ytplayer').data('playid',PlayerId);
-        alert(PlayerId);
 
         // youtube 视频播放
         // 视频比例
@@ -261,6 +258,14 @@ function HideSeeMore(seemoreName) {
             }
         });
     }
+
+    // 播放第一个视频
+    $('#btn-startPlayer').on('click',function(){
+        var PlayerId=$(this).data('playerid');
+        $(this).remove();
+        $('.bg-productDetailPlayer').css('display','flex');
+        shoppingDetailPlayer(PlayerId);
+    });
     // shipppingDetail 视频播放 end
 
 

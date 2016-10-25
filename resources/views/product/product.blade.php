@@ -61,20 +61,19 @@
                                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png"
                                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}">
                                         </a>
-                                        <!-- 视频 -->
-                                        {{--<div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter" id="btn-Player" data-playerid="7n-dIXlyQ3M">--}}
-                                            {{--<div class="play-content">--}}
-                                                {{--<img class="btn-productPlayer"--}}
-                                                     {{--src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt=""--}}
-                                                     {{--style="width: 45px;">--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
 
-                                        <div class="bg-productDetailPlayer flex flex-alignCenter flex-justifyCenter" data-isplay="true">
+                                        <!-- 判断是否是视频 -->
+                                        <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter" id="btn-startPlayer" data-playerid="7n-dIXlyQ3M">
                                             <div class="play-content">
-                                                {{--<div id="ytplayer" class="ytplayer" data-playid=""></div>--}}
-
-                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/FAdzzEKCvvk" frameborder="0" allowfullscreen></iframe>
+                                                <img class="btn-productPlayer"
+                                                     src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt=""
+                                                     style="width: 45px;">
+                                            </div>
+                                        </div>
+                                        <!-- 视频播放 -->
+                                        <div class="bg-productDetailPlayer flex flex-alignCenter flex-justifyCenter">
+                                            <div class="play-content" style="width: 100%">
+                                                <div id="ytplayer" class="ytplayer" data-playid=""></div>
                                             </div>
                                         </div>
                                     </li>
