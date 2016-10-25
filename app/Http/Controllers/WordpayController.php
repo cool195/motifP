@@ -42,7 +42,7 @@ class WordpayController extends BaseController
         $params['zip'] = $request->input('zip');
         $params['country'] = $request->input('country');
         $params['csn'] = $request->input('csn');
-
+        $params['ctype'] = $request->get('card_type');
         $result = $this->request('pay', $params);
         return $result;
 
