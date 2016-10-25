@@ -286,6 +286,7 @@ Route::get('error',function (){
 // Ask End
 
 Route::get('/aes', 'TestController@index');
+Route::get('/testcountry', 'AddressController@getCountry');
 
 
 
