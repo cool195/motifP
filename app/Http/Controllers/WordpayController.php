@@ -28,7 +28,6 @@ class WordpayController extends BaseController
         $params = array(
             'cmd' => 'acrd',
             'uuid' => $_COOKIE['uid'],
-            'src' => 'PC',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'ci' => $cardInfo,
