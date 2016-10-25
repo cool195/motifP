@@ -91,5 +91,31 @@ class WordpayController extends BaseController
         }
     }
 
+    private function getShippingMethod($country = 0, $price = 0)
+    {
+        $params = array(
+            'cmd' => 'logis',
+            'token' => Session::get('user.token')
+        );
+        if($price != 0){
+            $params['amount'] = $price;
+            $params['country'] = $country;
+        }
+        $result = $this->request('general', $params);
+
+        return $result['data']['list'];
+    }
+
+    public function selShip($type)
+    {
+        $shippingMethods = $this->getShippingMethod();
+        foreach($shippingMethods as $value){
+            if($value['logistics_type'] == $type){
+                Session::forget('user.checkout.selship');
+                Session::put('user.checkout.selship', $value);
+                return $value;
+            }
+        }
+    }
 
 }

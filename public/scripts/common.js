@@ -1201,6 +1201,10 @@ function HideSeeMore(seemoreName) {
         var payPrice = $(this).data('price') > 0 ? ' +$' + ($(this).data('price') / 100).toFixed(2) : '';
         $('.shippingMethodShow').html($(this).data('show') + payPrice);
         getCheckoutInfo();
+        $.ajax({
+            url: '/wordpay/selShip/' + $(this).val(),
+            type: 'post'
+        });
     })
 
     // 收起地址增值服务

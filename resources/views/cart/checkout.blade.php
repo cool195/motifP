@@ -257,9 +257,15 @@
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="smShowHide">
                 <span class="sanBold">Shipping</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} @if($list['pay_price']>0)
+                    @if(Session::has('user.checkout.selship'))
+                        <span class="shippingMethodShow">{{Session::get('user.checkout.selship.logistics_name')}} @if(Session::get('user.checkout.selship.pay_price')>0)
+                                +${{ number_format((Session::get('user.checkout.selship.pay_price') / 100), 2) }}@endif</span>
+                        <a class="p-l-40x shippingMethodButton">Edit</a>
+                    @else
+                        <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} @if($list['pay_price']>0)
                             +${{ number_format(($logisticsList['list'][0]['pay_price'] / 100), 2) }}@endif</span>
-                    <a class="p-l-40x shippingMethodButton">@if(count($logisticsList['list'])>1){{'Edit'}}@endif</a>
+                        <a class="p-l-40x shippingMethodButton">@if(count($logisticsList['list'])>1){{'Edit'}}@endif</a>
+                    @endif
                 </span>
             </div>
             <hr class="hr-common m-a-0">
@@ -269,15 +275,22 @@
                     <div class="row p-x-20x p-t-20x checkout-method">
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
-                                @if($k==0)
-                                <input class="methodRadio" type="radio"
-                                       checked="checked" name="shippingMethod"
-                                       data-price="{{$list['pay_price']}}"
-                                       value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
+                                @if(Session::has('user.checkout.selship'))
+                                    <input class="methodRadio" type="radio"
+                                           @if( Session::get('user.checkout.selship.logistics_type') == $list['logistics_type'] ) checked="checked" @endif name="shippingMethod"
+                                           data-price="{{$list['pay_price']}}"
+                                           value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
                                 @else
+                                    @if($k==0)
+                                        <input class="methodRadio" type="radio"
+                                            checked="checked" name="shippingMethod"
+                                            data-price="{{$list['pay_price']}}"
+                                            value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
+                                    @else
                                         <input class="methodRadio" type="radio" name="shippingMethod"
                                                data-price="{{$list['pay_price']}}"
                                                value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
+                                    @endif
                                 @endif
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
                                     @if($list['pay_price']>0)
