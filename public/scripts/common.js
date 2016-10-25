@@ -218,7 +218,7 @@ function HideSeeMore(seemoreName) {
 
             if($(this).children('.small-img').data('idplay')){
                 $('.bg-productDetailPlayer').css('display','flex');
-                var playid=$(this).data('playid');
+                var playid=$(this).children('.small-img').data('playid');
                 shoppingDetailPlayer(playid);
             } else {
                 $('.bg-productDetailPlayer').css('display','none');
@@ -228,26 +228,28 @@ function HideSeeMore(seemoreName) {
     });
 
     // shipppingDetail 视频播放 begin
+    var player;
     $(function () {
-        // 加载 youtube api
-        var tag = document.createElement('script');
-        tag.src = 'https://www.youtube.com/player_api';
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        if($('.bg-productDetailPlayer').data('isplay')){
+            $('.bg-productDetailPlayer').css('display','flex');
+            //shoppingDetailPlayer($('.bg-productDetailPlayer').data('playerid'));
+        }
     });
     function onPlayerReady(event) {
         event.target.playVideo();
     }
     // 视频播放-- 控制显示隐藏
     function shoppingDetailPlayer(PlayerId){
+        $('.play-content').html('<div id="ytplayer" class="ytplayer" data-playid=""></div>');
+
         $('#ytplayer').data('playid',PlayerId);
+        alert(PlayerId);
 
         // youtube 视频播放
         // 视频比例
         var MediaScale = 9 / 16;
         var Width = $('.zoomPad').width(),
             MediaHeight = Width * MediaScale;
-        var player;
 
         player = new YT.Player('ytplayer', {
             height: MediaHeight,
