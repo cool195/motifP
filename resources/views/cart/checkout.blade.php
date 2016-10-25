@@ -410,6 +410,7 @@
                                     <div>{{$defaultAddr['city']}}</div>
                                     <div>{{$defaultAddr['zip']}}</div>
                                     <div>{{$defaultAddr['state']}}</div>
+
                                 </div>
                             </div>
                             <div class="col-md-6 p-b-10x">
@@ -426,7 +427,7 @@
                                     <input type="hidden" name="email" value="{{Session::get('user.login_email')}}">
                                     <div class="p-l-20x m-b-20x">
                                         <input type="text" name="name" data-optional="false" data-inputrole="name"
-                                               class="form-control contrlo-lg text-primary"
+                                               class="form-control contrlo-lg text-primary card-name"
                                                placeholder="Full name">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -435,7 +436,7 @@
                                     </div>
                                     <div class="p-l-20x m-b-20x">
                                         <input type="text" name="tel" data-optional="false" data-inputrole="phone"
-                                               class="form-control contrlo-lg text-primary"
+                                               class="form-control contrlo-lg text-primary card-tel"
                                                placeholder="Phone">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -444,7 +445,7 @@
                                     </div>
                                     <div class="p-l-20x m-b-20x">
                                         <input type="text" name="addr1" data-optional="false" data-inputrole="street"
-                                               class="form-control contrlo-lg text-primary"
+                                               class="form-control contrlo-lg text-primary card-addr1"
                                                placeholder="Street 1">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -452,7 +453,7 @@
                                         </div>
                                     </div>
                                     <div class="p-l-20x m-b-20x">
-                                        <input type="text" name="addr2" class="form-control contrlo-lg text-primary"
+                                        <input type="text" name="addr2" class="form-control contrlo-lg text-primary card-addr2"
                                                placeholder="Street 2 (optional)">
                                     </div>
                                 </div>
@@ -460,7 +461,7 @@
                                 <div class="col-md-5">
                                     <div class="p-l-20x m-b-20x">
                                         <input type="text" name="city" data-optional="false" data-inputrole="city"
-                                               class="form-control contrlo-lg text-primary" placeholder="City">
+                                               class="form-control contrlo-lg text-primary card-city" placeholder="City">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                             <span class="font-size-base">Please enter your city !</span>
@@ -481,7 +482,7 @@
                                     </div>
                                     <div class="p-l-20x m-b-20x">
                                         <input type="text" name="zip" id="zip" data-optional="false" data-inputrole="zip code"
-                                               class="form-control contrlo-lg text-primary"
+                                               class="form-control contrlo-lg text-primary card-zip"
                                                placeholder="Zip Code">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
