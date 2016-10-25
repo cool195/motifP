@@ -1370,6 +1370,7 @@ function HideSeeMore(seemoreName) {
         getAddressList();
     }
 
+
     // start 支付方式 Payment Method
 
     // 点击添加信用卡
@@ -1392,15 +1393,19 @@ function HideSeeMore(seemoreName) {
     $('#card-addAddress-cancel').on('click', function () {
         $('.select-payment').removeClass('disabled');
         $('.add-newCard').addClass('disabled');
-        //$('#addAddressForm').find('input[type="text"]').val('');
-        //$('select[name="country"]').prop('selectedIndex', 0);
 
     });
 
-
+    // 选择与shipping相同的地址
     $('.choose-oldAddr').on('click', function () {
         $('.card-message').removeClass('disabled');
         $('.card-addNewAddr').addClass('disabled');
+
+        if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))){
+            $('#btn-addNewCard').removeClass('disabled')
+        }else{
+            $('#btn-addNewCard').addClass('disabled')
+        }
 
     });
     // 选择 新增账单地址
@@ -1408,78 +1413,18 @@ function HideSeeMore(seemoreName) {
         $('.card-message').addClass('disabled');
         $('.card-addNewAddr').removeClass('disabled');
 
+        if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
+            && checkInput($('#card-addAddressForm input[name="name"]')) && checkInput($('#card-addAddressForm input[name="tel"]')) && checkInput($('#card-addAddressForm input[name="addr1"]'))
+            && checkInput($('#card-addAddressForm input[name="city"]')) && checkInput($('#card-addAddressForm input[name="zip"]')) ){
+            $('#btn-addNewCard').removeClass('disabled')
+        }else{
+            $('#btn-addNewCard').addClass('disabled')
+        }
+
         var Country = $('#card-addAddressForm select[name="country"] option:selected').text();
         initPaymentCityState(Country, '')
     });
-    // card 选择国家 联动洲
-    $('#card-addAddressForm select[name="country"]').change(function () {
-        var Country = $(this).val();
-        initPaymentCityState(Country, '');
 
-        if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
-            validateState();
-        } else {
-            $('.address-save').addClass('disabled');
-        }
-    });
-
-    $('input[data-optional="false"]').on('blur keyup', function () {
-        checkInput($(this));
-    });
-    // 验证 State
-    $('#card-addAddressForm .state-info').on('keyup blur', '.address-state', function () {
-        if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
-            && checkInput($('#card-addAddressForm input[name="name"]')) && checkInput($('#card-addAddressForm input[name="tel"]')) && checkInput($('#card-addAddressForm input[name="addr1"]'))
-            && checkInput($('#card-addAddressForm input[name="city"]')) && checkInput($(this)) && checkInput($('#card-addAddressForm input[name="zip"]')) ){
-            $('#addNewCard').removeClass('disabled')
-        }else{
-            $('#addNewCard').addClass('disabled')
-        }
-    });
-    
-    // 验证input非空 并 添加提示文本
-    function checkInput(thisElem){
-        if (thisElem.val() === ''){
-            thisElem.siblings('.warning-info').removeClass('off');
-            thisElem.siblings('.warning-info').children('span').html('Please enter your ' + thisElem.data('inputrole') + ' !');
-            return false;
-        }else{
-            thisElem.siblings('.warning-info').addClass('off');
-            return true;
-        }
-    }
-
-    $('input[data-optional="false"]').on('blur keyup', function () {
-        if( $('.card-addNewAddr').hasClass('disabled')){
-            if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))){
-                $('#addNewCard').removeClass('disabled')
-            }else{
-                $('#addNewCard').addClass('disabled')
-            }
-        }else{
-            if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
-                && checkInput($('#card-addAddressForm input[name="name"]')) && checkInput($('#card-addAddressForm input[name="tel"]')) && checkInput($('#card-addAddressForm input[name="addr1"]'))
-                && checkInput($('#card-addAddressForm input[name="city"]')) && checkInput($('#card-addAddressForm input[name="zip"]')) ){
-                $('#addNewCard').removeClass('disabled')
-            }else{
-                $('#addNewCard').addClass('disabled')
-            }
-        }
-    });
-
-
-
-/*
-    $('#add-newCard .warning-info').each(function () {
-        console.log('1111111111111111111');
-        if ($(this).hasClass('off')){
-            console.log('无错误');
-            $('#addNewCard').removeClass('disabled')
-        }else{
-            console.log('有错误')
-            $('#addNewCard').addClass('disabled')
-        }
-    });*/
 
     //初始化 账单地址 国家洲
     function initPaymentCityState(Country, State) {
@@ -1493,9 +1438,9 @@ function HideSeeMore(seemoreName) {
             $('#card-addAddressForm input[name="state"]').val(State);
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
-            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary address-state" data-optional="false" data-inputrole="State" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
+            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" data-optional="false" data-inputrole="State" placeholder="State"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
             $('#card-addAddressForm input[name="state"]').val(State);
-            $('#addNewCard').addClass('disabled');
+            $('#btn-addNewCard').addClass('disabled');
         } else {
             // 洲为下拉列选择
             // 获取 洲 列表
@@ -1517,52 +1462,68 @@ function HideSeeMore(seemoreName) {
                 })
         }
     }
+    // 验证input非空 并 添加提示文本
+    function checkInput(thisElem){
+        if (thisElem.val() === ''){
+            thisElem.siblings('.warning-info').removeClass('off');
+            thisElem.siblings('.warning-info').children('span').html('Please enter your ' + thisElem.data('inputrole') + ' !');
+            return false;
+        }else{
+            thisElem.siblings('.warning-info').addClass('off');
+            return true;
+        }
+    }
+    // card 选择国家 联动洲
+    $('#card-addAddressForm select[name="country"]').change(function () {
+        var Country = $(this).val();
+        initPaymentCityState(Country, '');
 
-
-    //设置为默认卡
-
-
-    // 添加新卡 Continue
-    $('#addNewCard').on('click', function () {
-
+        if (address_check($('.address-name')) && address_check($('.address-city')) && address_check($('.address-phone')) && address_check($('.address-zipcode'))) {
+            validateState();
+        } else {
+            $('.address-save').addClass('disabled');
+        }
     });
 
-
+    $('input[data-optional="false"]').on('keyup blur', function () {
+        if( $('.card-addNewAddr').hasClass('disabled')){
+            if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]')) ){
+                $('#btn-addNewCard').removeClass('disabled')
+            }else{
+                $('#btn-addNewCard').addClass('disabled')
+            }
+        }else {
+            if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
+                && checkInput($('#card-addAddressForm input[name="name"]')) && checkInput($('#card-addAddressForm input[name="tel"]')) && checkInput($('#card-addAddressForm input[name="addr1"]'))
+                && checkInput($('#card-addAddressForm input[name="city"]')) && checkInput($('#card-addAddressForm input[name="zip"]')) ){
+                $('#btn-addNewCard').removeClass('disabled')
+            }else{
+                $('#btn-addNewCard').addClass('disabled')
+            }
+        }
+    });
+    // 验证 State
+    $('#card-addAddressForm .state-info').on('keyup blur', '.card-state', function () {
+        if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
+            && checkInput($('#card-addAddressForm input[name="name"]')) && checkInput($('#card-addAddressForm input[name="tel"]')) && checkInput($('#card-addAddressForm input[name="addr1"]'))
+            && checkInput($('#card-addAddressForm input[name="city"]')) && checkInput($(this)) && checkInput($('#card-addAddressForm input[name="zip"]')) ){
+            $('#btn-addNewCard').removeClass('disabled')
+        }else{
+            $('#btn-addNewCard').addClass('disabled')
+        }
+    });
     //Credit Card 校验
     if($('#addCard-container').length > 0){
         $('#addCard-container').card({
             container: '.card-wrapper'
         });
     }
-   /* $('input[name="card"]').on('keyup', function () {
-        var cardNumber = $(this).val();
-        if ("" == cardNumber || undefined == cardNumber || null == cardNumber) {
-            $(this).siblings('.warning-info').removeClass('off');
-        } else {
-            $(this).siblings('.warning-info').addClass('off');
-        }
-    });
-    $('input[name="cvc"]').on('keyup', function () {
-        var cardNumber = $(this).val();
-        if ("" == cardNumber || undefined == cardNumber || null == cardNumber) {
-            $(this).siblings('.warning-info').removeClass('off');
-        } else {
-            $(this).siblings('.warning-info').addClass('off');
-        }
-    });*/
-
+    // 有效日期校验
     $('input[name="expiry"]').on('keyup', function () {
         var expiryText = $(this).val();
         var MyDate = new Date(),
             MyYear = MyDate.getFullYear(),
             $WarningInfo = $(this).siblings('.warning-info');
-  /*      // 验证日期不为空
-        if ("" == expiryText || undefined == expiryText || null == expiryText) {
-            $WarningInfo.removeClass('off');
-            $WarningInfo.children('span').html('Please enter maturity date!');
-        } else {
-            $WarningInfo.addClass('off');
-        }*/
         // 验证月份
         if (expiryText.length == 5) {
             var month = parseInt(expiryText.substring(0, 2));
@@ -1579,9 +1540,53 @@ function HideSeeMore(seemoreName) {
                 $WarningInfo.children('span').html('The year is incorrect!');
             }
         }
-
     });
 
+    // 提交卡信息
+    $('#btn-addNewCard').on('click', function () {
+        var cardNum =  $('.card-number').val();
+        var cardDate = $('.card-date').val();
+        var cardCode = $('.card-code').val();
+        var cardName = '', cardTel = '', cardAddr1 = '', cardCity = '', cardCountry = '',cardZip = '', cardState = '';
+
+        if( $('.card-addNewAddr').hasClass('disabled') ){ //选择了与shipping相同的地址信息
+            cardName = $('.card-name').val();
+            cardTel = $('.card-tel').val();
+            cardAddr1 = $('.card-addr1').val();
+            cardCity = $('.card-city').val();
+            cardZip = $('.card-zip').val();
+            cardState = $('.card-state').val();
+        }else{
+
+
+        }
+        $.ajax({
+                url: '/wordpay/addCard',
+                type: 'POST',
+                data: {
+                    card: cardNum,
+                    expiry: cardDate,
+                    cvv: cardCode,
+                    name: cardName,
+                    tel: cardTel,
+                    addr1: cardAddr1,
+                    city: cardCity,
+                    country: cardCountry,
+                    zip: cardZip,
+                    state: cardState
+                }
+            })
+            .done(function (data) {
+                if (data.success) {
+                    window.location.href = '/checkout/payment';
+                } else {
+                    $('.warning-info').removeClass('hidden-xs-up');
+                    $('.warning-info').children('span').html(data.error_msg);
+                }
+            })
+
+
+    });
 
     // end 支付方式 Payment Method
 
