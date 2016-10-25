@@ -1477,9 +1477,11 @@ function HideSeeMore(seemoreName) {
 
 
     //Credit Card 校验
-    $('#addCard-container').card({
-        container: '.card-wrapper'
-    });
+    if($('#addCard-container').length > 0){
+        $('#addCard-container').card({
+            container: '.card-wrapper'
+        });
+    }
    /* $('input[name="card"]').on('keyup', function () {
         var cardNumber = $(this).val();
         if ("" == cardNumber || undefined == cardNumber || null == cardNumber) {
