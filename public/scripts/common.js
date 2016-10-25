@@ -211,12 +211,57 @@ function HideSeeMore(seemoreName) {
     swiperBtnHover();
 
     // 点击选择图片
-    $('.small-img').on('click', function (e) {
-        if (!$(this).hasClass('active')) {
+    $('.product-smallImg').on('click', function (e) {
+        if (!$(this).children('.small-img').hasClass('active')) {
             $('.productImg-item img').removeClass('active');
-            $(this).addClass('active');
+            $(this).children('.small-img').addClass('active');
+
+            if($(this).children('.small-img').data('idplay')){
+                $('.bg-productDetailPlayer').css('display','flex');
+                var playid=$(this).data('playid');
+                shoppingDetailPlayer(playid);
+            } else {
+                $('.bg-productDetailPlayer').css('display','none');
+                $('.play-content').html('<div id="ytplayer" class="ytplayer" data-playid=""></div>');
+            }
         }
     });
+
+    // shipppingDetail 视频播放 begin
+    $(function () {
+        // 加载 youtube api
+        var tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/player_api';
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    });
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    }
+    // 视频播放-- 控制显示隐藏
+    function shoppingDetailPlayer(PlayerId){
+        $('#ytplayer').data('playid',PlayerId);
+
+        // youtube 视频播放
+        // 视频比例
+        var MediaScale = 9 / 16;
+        var Width = $('.zoomPad').width(),
+            MediaHeight = Width * MediaScale;
+        var player;
+
+        player = new YT.Player('ytplayer', {
+            height: MediaHeight,
+            width: Width,
+            videoId: PlayerId,
+            playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+    // shipppingDetail 视频播放 end
+
+
 
     // 选择 商品属性
     var product_data = eval('(' + $('#jsonStr').val() + ')');
