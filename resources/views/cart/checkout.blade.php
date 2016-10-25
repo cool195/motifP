@@ -121,15 +121,21 @@
                  id="addrShowHide">
                 <span class="sanBold">Shipping to</span>
                 <span class="pull-right showHide-simpleInfo">
-                    @forelse ($address['data']['list'] as $value)
-                        @if($value['isDefault'])
-                            <span id="defaultAddr" data-csn="{{$value['country_name_sn']}}"
+                    @if(Session::has('user.checkout.address'))
+                        {{$value = Session::get('user.checkout.address')}}
+                        <span id="defaultAddr" data-csn="{{$value['country_name_sn']}}"
+                              data-aid="{{$value['receiving_id']}}">{{$value['name']}} {{$value['detail_address1']}} {{$value['city']}} {{$value['state']}} {{$value['country']}} {{$value['zip']}}</span>
+                    @else
+                        @forelse ($address['data']['list'] as $value)
+                            @if($value['isDefault'])
+                                <span id="defaultAddr" data-csn="{{$value['country_name_sn']}}"
                                   data-aid="{{$value['receiving_id']}}">{{$value['name']}} {{$value['detail_address1']}} {{$value['city']}} {{$value['state']}} {{$value['country']}} {{$value['zip']}}</span>
-                        @endif
-                        @break($value['isDefault'])
-                    @empty
-                        <span id="defaultAddr" data-aid="0"></span>
-                    @endforelse
+                            @endif
+                            @break($value['isDefault'])
+                        @empty
+                            <span id="defaultAddr" data-aid="0"></span>
+                        @endforelse
+                    @endif
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
@@ -404,7 +410,11 @@
                                     <label for="" class="p-l-10x">Billing address same as the shipping address</label>
                                 </div>
                                 {{--账单地址信息--}}
-                                {{$defaultAddr = $Address->getUserDefaultAddr()['data']}}
+                                @if(Session::has('user.checkout.address'))
+                                    {{$defaultAddr = Session::get('user.checkout.address')}}
+                                @else
+                                    {{$defaultAddr = $Address->getUserDefaultAddr()['data']}}
+                                @endif
                                 <div class="card-message">
                                     <div class="sanBold">{{$defaultAddr['name']}}</div>
                                     <div>{{$defaultAddr['city']}}</div>
@@ -665,7 +675,7 @@
     @{{ each list }}
     <div class="col-md-6">
         <div class="p-a-10x">
-            <div class="address-item p-x-20x p-y-15x @{{ if $value.isDefault == 1 }} active @{{ /if }}"
+            <div class="address-item p-x-20x p-y-15x @{{ if $value.isSel == 0 || $value.isSel == 1 }}  @{{ if $value.isSel == 1 }} active  @{{ /if }} @{{ else }} @{{ if $value.isDefault == 1 }} active @{{ /if }} @{{ /if }}"
                  data-info="@{{ $value.name }} @{{ $value.detail_address1 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }} @{{ $value.zip }}"
                  data-csn="@{{ $value.country_name_sn }}"
                  data-aid="@{{ $value.receiving_id }}"
