@@ -61,5 +61,35 @@ class WordpayController extends BaseController
         return $result;
     }
 
+    //获取地址列表
+    private function addrList()
+    {
+        $params = array(
+            'cmd' => 'list',
+            'uuid' => $_COOKIE['uid'],
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+        );
+        $result = $this->request('useraddr', $params);
+        if (empty($result)) {
+            $result['success'] = false;
+            $result['error_msg'] = "Data access failed";
+            $result['data'] = array();
+        }
+        return $result;
+    }
+
+    public function selAddr($aid)
+    {
+        $address = $this->addrList();
+        foreach ($address['data']['list'] as $value) {
+            if ($value['receiving_id'] == $aid) {
+                Session::forget('user.checkout.address');
+                Session::put('user.checkout.address', $value);
+                return $value;
+            }
+        }
+    }
+
 
 }

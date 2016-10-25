@@ -1056,6 +1056,12 @@ function HideSeeMore(seemoreName) {
         var zip = $(this).parent('.address-item').data('zip');
         var state = $(this).parent('.address-item').data('state');
         $('.card-message').html('<div class="sanBold">' + userName + '</div><div>' + city + '</div><div>' + zip + '</div><div>' + state + '</div>');
+
+        $.ajax({
+            url: '/wordpay/selAddr/' + $(this).parent('.address-item').data('aid'),
+            type: 'post'
+        })
+
         getshiplist();
     });
 
