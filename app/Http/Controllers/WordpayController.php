@@ -24,7 +24,7 @@ class WordpayController extends BaseController
     public function addCreditCard(Request $request)
     {
         $expiry = explode('/',$request->input('expiry'));
-        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . trim($expiry[1]) . $request->input('card') . '/' . $request->input('cvv'));
+        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . trim($expiry[1]) . trim($request->input('card')) . '/' . $request->input('cvv'));
         $params = array(
             'cmd' => 'acrd',
             'uuid' => $_COOKIE['uid'],
