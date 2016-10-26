@@ -323,51 +323,56 @@
                 {{$paylist = $Wordpay->getPayList()}}
                 <div class="p-a-20x select-payment">
                     <span class="font-size-md">Select Payment Method</span>
-                    <div class="row p-x-10x p-t-20x">
-                        <div class="payment-list">  <!--之前添加过卡 遍历模板-->
-                            @foreach($paylist['data']['list'] as $list)
-                                @if(isset($list['creditCards']))
-                                    @foreach($list['creditCards'] as $card)
-                                        <div class="col-md-6">
-                                            <div class="p-a-10x">
-                                                <div class="address-item flex p-x-20x @if(0) active @endif">
-                                                    <div class="paycard-sign p-t-20x">
-                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png"
-                                                             width="55">
-                                                        <p class="p-t-20x">Exp:{{$card['month']}}/{{$card['year']}}</p>
-                                                    </div>
-                                                    <div class="paycard-info m-l-20x m-t-10x">
-                                                        <span class="sanBold font-size-lx">{{  $card['card_number'] }}</span>
-                                                        <p class="billingTxt"><span>Billing:</span>{{$card['detail_address1']}} {{$card['detail_address2']}} {{$card['city']}} {{$card['state']}} {{$card['country']}}
-                                                        </p>
-                                                    </div>
-                                                    <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                @else
+                    <div class="row p-x-10x p-t-20x payment-list">
+                        @foreach($paylist['data']['list'] as $list)
+                            @if(isset($list['creditCards']))
+                                @foreach($list['creditCards'] as $card)
                                     <div class="col-md-6">
                                         <div class="p-a-10x">
-                                            <div class="address-item flex flex-alignCenter p-x-20x active">
-                                                <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
-                                                <span class="font-size-lxx p-l-40x">{{$list['pay_name']}}</span>
+                                            <div class="address-item flex p-x-20x @if(0) active @endif">
+                                                <div class="paycard-sign p-t-20x">
+                                                    @if($card['card_type'] == 'Visa')
+                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="55">
+                                                    @elseif($card['card_type'] == 'MasterCard')
+                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
+                                                    @elseif($card['card_type'] == 'AmericanExpress')
+                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="55">
+                                                    @elseif($card['card_type'] == 'JCB')
+                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="55">
+                                                    @endif
+                                                    <p class="p-t-20x">Exp:{{$card['month']}}/{{$card['year']}}</p>
+                                                </div>
+                                                <div class="paycard-info m-l-20x m-t-10x">
+                                                    <span class="sanBold font-size-lx">{{  $card['card_number'] }}</span>
+                                                    <p class="billingTxt"><span>Billing:</span>{{$card['detail_address1']}} {{$card['detail_address2']}} {{$card['city']}} {{$card['state']}} {{$card['country']}}
+                                                    </p>
+                                                </div>
                                                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                                             </div>
                                         </div>
                                     </div>
-                                @endif
-                            @endforeach
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-a-10x">
-                                <div class="address-item flex flex-alignCenter flex-fullJustified p-x-20x active addCreditCard">
-                                    <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
-                                    <span class="font-size-lxx">Add New Credit Card</span>
-                                    <i class="iconfont icon-add m-r-20x"></i>
+                                @endforeach
+                                <div class="col-md-6">
+                                    <div class="p-a-10x">
+                                        <div class="address-item flex flex-alignCenter flex-fullJustified p-x-20x active addCreditCard">
+                                            <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
+                                            <span class="font-size-lxx">Add New Credit Card</span>
+                                            <i class="iconfont icon-add m-r-20x"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            @else
+                                <div class="col-md-6">
+                                    <div class="p-a-10x">
+                                        <div class="address-item flex flex-alignCenter p-x-20x active">
+                                            <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
+                                            <span class="font-size-lxx p-l-40x">{{$list['pay_name']}}</span>
+                                            <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                     <div class="text-right p-t-10x">
                         <a href="javascript:void(0);" class="btn btn-primary btn-md" id="btnPaymentShowHide">Continue</a>
@@ -385,10 +390,10 @@
 
                     <div class="p-a-20x">
                         <div>We Accept:
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="33" class="m-l-10x" id="img-visa" data-type="Visa">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="33" class="m-l-20x" id="img-mastercard" data-type="MasterCard">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="33" class="m-l-20x" id="img-amex" data-type="AmericanExpress">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="33" class="m-l-20x" id="img-jcb" data-type="JCB">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="33" class="m-l-10x" id="img-mastercard" data-type="MasterCard">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="33" class="m-l-20x" id="img-visa" data-type="Visa">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="33" class="m-l-20x" id="img-jcb" data-type="JCB">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="33" class="m-l-20x" id="img-amex" data-type="AmericanExpress">
                         </div>
                         <div class="card-wrapper" style="display: none;"></div>
                         <div class="row p-t-20x">
@@ -723,6 +728,34 @@
 <template id="tpl-creditCard">
     @{{ each list }}
     @{{ if $value.pay_method === 'Worldpay' }}
+        @{{ each $value.creditCards }}
+    <div class="col-md-6">
+        <div class="p-a-10x">
+            <div class="address-item flex p-x-20x">
+                <div class="paycard-sign p-t-20x">
+                    @{{ if $value.card_type === 'MasterCard' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
+                    @{{ else if $value.card_type === 'Visa' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="55">
+                    @{{ else if $value.card_type === 'JCB' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="55">
+                    @{{ else if $value.card_type === 'AmericanExpress' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="55">
+                    @{{ /if }}
+
+                    <p class="p-t-20x">Exp:@{{ $value.month }}/@{{ $value.year }}</p>
+
+                </div>
+                <div class="paycard-info m-l-20x m-t-10x">
+                    <span class="sanBold font-size-lx">@{{ $value.card_number }}</span>
+                    <p class="billingTxt"><span>Billing:</span>@{{ $value.detail_address1 }} @{{ $value.detail_address2 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }}
+                    </p>
+                </div>
+                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+            </div>
+        </div>
+    </div>
+        @{{ /each }}
     <div class="col-md-6">
         <div class="p-a-10x">
             <div class="address-item flex flex-alignCenter flex-fullJustified p-x-20x active addCreditCard">
@@ -733,10 +766,6 @@
             </div>
         </div>
     </div>
-    {{--@{{ each $value.creditCards }}
-
-    @{{ /each }}--}}
-
 
     @{{ else if $value.pay_method === 'PayPalNative' }}
     <div class="col-md-6">
@@ -748,7 +777,36 @@
             </div>
         </div>
     </div>
+
     @{{ else if $value.pay_method === 'Oceanpay' }}
+        @{{ each $value.creditCards }}
+    <div class="col-md-6">
+        <div class="p-a-10x">
+            <div class="address-item flex p-x-20x">
+                <div class="paycard-sign p-t-20x">
+                    @{{ if $value.card_type === 'MasterCard' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
+                    @{{ else if $value.card_type === 'Visa' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="55">
+                    @{{ else if $value.card_type === 'JCB' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="55">
+                    @{{ else if $value.card_type === 'AmericanExpress' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="55">
+                    @{{ /if }}
+
+                    <p class="p-t-20x">Exp:@{{ $value.month }}/@{{ $value.year }}</p>
+
+                </div>
+                <div class="paycard-info m-l-20x m-t-10x">
+                    <span class="sanBold font-size-lx">@{{ $value.card_number }}</span>
+                    <p class="billingTxt"><span>Billing:</span>@{{ $value.detail_address1 }} @{{ $value.detail_address2 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }}
+                    </p>
+                </div>
+                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+            </div>
+        </div>
+    </div>
+        @{{ /each }}
     <div class="col-md-6">
         <div class="p-a-10x">
             <div class="address-item flex flex-alignCenter flex-fullJustified p-x-20x active addCreditCard">

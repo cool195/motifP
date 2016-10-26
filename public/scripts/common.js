@@ -1398,7 +1398,7 @@ function HideSeeMore(seemoreName) {
     // start 支付方式 Payment Method
 
     // 点击添加信用卡
-    $('.addCreditCard').on('click', function () {
+    $('.payment-list').on('click', '.addCreditCard', function () {
         $('.select-payment').addClass('disabled');
         $('.add-newCard').removeClass('disabled');
     });
@@ -1569,6 +1569,7 @@ function HideSeeMore(seemoreName) {
         var cardCode = $('.card-code').val();
         var cardName = '', cardTel = '', cardAddr1 = '', cardAddr2 = '', cardCity = '', cardCountry = '',cardZip = '', cardState = '', csn='';
         var cardType = $('input[name="card_type"]').val();
+
         if( $('.card-addNewAddr').hasClass('disabled') ){ //选择了与shipping相同的地址信息
             cardName = $('.def-name').html();
 
@@ -1595,9 +1596,10 @@ function HideSeeMore(seemoreName) {
             cardState = $("#card-addAddressForm input[name='state']").val();
 
         }
-        console.log(cardCountry)
-        console.log(csn)
+        console.log(cardCountry);
+        console.log(csn);
         console.log(cardState);
+        console.log(cardType);
         $.ajax({
                 url: '/wordpay/addCard',
                 type: 'POST',
@@ -1618,13 +1620,20 @@ function HideSeeMore(seemoreName) {
                 }
             })
             .done(function (data) {
-                if (data.success) {
-                    //getCardList();
+              /*  if (data.success) {
+                    $('.select-payment').removeClass('disabled');
+                    $('.add-newCard').addClass('disabled');
+                    getCardList();
                     console.log('添加卡成功');
                 } else {
                     $('.addCard-warning').removeClass('off');
                     $('.addCard-warning').children('span').html(data.error_msg);
-                }
+                }*/
+
+                $('.select-payment').removeClass('disabled');
+                $('.add-newCard').addClass('disabled');
+                getCardList();
+                console.log('添加卡成功');
             })
 
     });
@@ -1635,10 +1644,13 @@ function HideSeeMore(seemoreName) {
             type: 'GET'
         }).done(function (data) {
             if (data.success){
+                console.info(data.data);
                 appendCardList(data.data);
+
             }
         })
     }
+    getCardList();
     function appendCardList(cardList){
         var tplHtml = template('tpl-creditCard', cardList);
         var StageCache = $.parseHTML(tplHtml);
