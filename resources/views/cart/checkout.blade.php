@@ -333,7 +333,7 @@
                                 @foreach($list['creditCards'] as $card)
                                     <div class="col-md-6">
                                         <div class="p-a-10x">
-                                            <div class="card-item choose-item flex p-x-20x" data-cardtype="" data-cardnum="" >
+                                            <div class="card-item choose-item flex p-x-20x" data-cardtype="{{$card['cart_type']}}" data-cardnum="{{$card['card_number']}}" >
                                                 <div class="paycard-sign p-t-20x">
                                                     @if($card['card_type'] == 'Visa')
                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="55">
@@ -368,7 +368,7 @@
                             @else
                                 <div class="col-md-6">
                                     <div class="p-a-10x">
-                                        <div class="card-item choose-item flex flex-alignCenter p-x-20x" data-cardtype="" data-cardnum="">
+                                        <div class="card-item choose-item flex flex-alignCenter p-x-20x" data-cardtype="paypal" data-cardnum="PayPal">
                                             <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
                                             <span class="font-size-lxx p-l-40x">{{$list['pay_name']}}</span>
                                             <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
