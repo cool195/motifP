@@ -143,9 +143,9 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::post('/wordpay/addCard', 'WordpayController@addCreditCard');
 
-    Route::get('/wordpay/delCard', 'WordpayController@delCreditCard');
+    Route::get('/wordpay/selAddr/{aid}', 'WordpayController@selAddr');
 
-    Route::post('/wordpay/selAddr/{aid}', 'WordpayController@selAddr');
+    Route::get('/wordpay/delCard', 'WordpayController@delCreditCard');
 
     Route::post('/wordpay/selShip/{type}', 'WordpayController@selShip');
 
@@ -307,7 +307,6 @@ Route::get('error',function (){
 // Ask End
 
 Route::get('/aes', 'TestController@index');
-Route::get('/testcountry', 'AddressController@getCountry');
 
 
 

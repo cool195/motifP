@@ -1063,12 +1063,17 @@ function HideSeeMore(seemoreName) {
         var state = $(this).parent('.address-item').data('state');
         $('.card-message').html('<div class="sanBold">' + userName + '</div><div>' + city + '</div><div>' + zip + '</div><div>' + state + '</div>');
 
+
+
+
+
         $.ajax({
             url: '/wordpay/selAddr/' + $(this).parent('.address-item').data('aid'),
-            type: 'post'
+            type: 'get'
         })
-
-        getshiplist();
+            .done(function () {
+                getshiplist();
+            })
     });
 
     // 修改地址
