@@ -1398,7 +1398,7 @@ function HideSeeMore(seemoreName) {
                     var payPrice = data.data.list[0].pay_price > 0 ? ' +$' + (data.data.list[0].pay_price / 100).toFixed(2) : '';
                     $('.shippingMethodShow').html(data.data.list[0].logistics_name + payPrice);
                     if (data.data.list.length < 2) {
-                        $('.shippingMethodButton').html('');
+                        $('.shippingMethodButton').html('&nbsp;');
                     } else {
                         $('.shippingMethodButton').html('Edit');
                     }
@@ -1438,10 +1438,6 @@ function HideSeeMore(seemoreName) {
         var cardNum = $(this).data('cardnum');
         var cardId = $(this).data('cardid');
         var payType = $(this).data('paytype');
-
-        console.log(cardType);
-        console.log(cardNum);
-
 
         $('.pay-img').removeClass('active');
         if (cardType == 'Visa'){
@@ -1685,10 +1681,12 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
               if (data.success) {
+                    getCardList();
+                    $('#addCard-container input[type="text"]').val('');
+                    $('#card-addAddressForm input[type="text"]').val('');
                     $('.select-payment').removeClass('disabled');
                     $('.add-newCard').addClass('disabled');
-                    getCardList();
-                    console.log('添加卡成功');
+
                 } else {
                     $('.addCard-warning').removeClass('off');
                     $('.addCard-warning').children('span').html(data.error_msg);
