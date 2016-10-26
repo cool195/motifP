@@ -143,8 +143,6 @@ class WordpayController extends BaseController
                         $value['withCard'] = $card;
                         Session::put('user.checkout.paywith', $value);
                         Session::forget('user.checkout.paywith.creditCards');
-                        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-                        error_log(print_r(Session::get('user.checkout.paywith'), "\n"), 3, '/tmp/myerror.log');
                         return $value;
                     }
                 }
@@ -152,8 +150,6 @@ class WordpayController extends BaseController
                 if ($value['pay_type'] == $type) {
                     Session::put('user.checkout.paywith', $value);
                     Session::forget('user.checkout.paywith.creditCards');
-                    error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-                    error_log(print_r(Session::get('user.checkout.paywith'), "\n"), 3, '/tmp/myerror.log');
                     return $value;
                 }
             }

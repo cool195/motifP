@@ -159,7 +159,8 @@ class OrderController extends BaseController
     }
 
     //New 提交订单并支付
-    public function payOrder(Request $request){
+    public function payOrder(Request $request)
+    {
         $params = array(
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),

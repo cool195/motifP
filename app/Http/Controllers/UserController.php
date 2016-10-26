@@ -429,14 +429,6 @@ class UserController extends BaseController
             $value['start_time'] = date("M d, Y", ($value['start_time'] / 1000));
             $value['expiry_time'] = date("M d, Y", ($value['expiry_time'] / 1000));
         }
-        if(Session::has('user.checkout.couponInfo')){
-            foreach($result['data']['list'] as &$value){
-                $value['selected'] = null;
-                if($value['bind_id'] == Session::get('user.checkout.couponInfo.bind_id')){
-                    $value['selected'] = 1;
-                }
-            }
-        }
         return $result;
     }
 
