@@ -445,7 +445,6 @@ function HideSeeMore(seemoreName) {
                 }
                 $('#addQtySku').addClass('disabled');
             } else if (skuQty >= product_stock_qtty && $(this).data('num') > 0) {
-                //alert('库存不足');
                 $('#addQtySku').addClass('disabled');
                 $(this).parent().siblings('.warning-info').removeClass('off');
                 if (skuQty >= 50) {
@@ -1063,12 +1062,17 @@ function HideSeeMore(seemoreName) {
         var state = $(this).parent('.address-item').data('state');
         $('.card-message').html('<div class="sanBold">' + userName + '</div><div>' + city + '</div><div>' + zip + '</div><div>' + state + '</div>');
 
+
+
+
+
         $.ajax({
             url: '/wordpay/selAddr/' + $(this).parent('.address-item').data('aid'),
-            type: 'post'
+            type: 'get'
         })
-
-        getshiplist();
+            .done(function () {
+                getshiplist();
+            })
     });
 
     // 修改地址
@@ -1108,7 +1112,7 @@ function HideSeeMore(seemoreName) {
 
             // 初始化 国家,洲
 
-            var Country = $('.select-country option:selected').text();
+            var Country = $('#addAddressForm .select-country option:selected').text();
             initCityState(Country, '');
         } else {
             // 修改地址
@@ -1182,7 +1186,7 @@ function HideSeeMore(seemoreName) {
                     type: 'GET'
                 })
                 .done(function (data) {
-                    $('#addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
+                    $('#addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg select-state"></select>');
                     // 添加选项
                     $.each(data, function (n, value) {
                         var StateNameId = value['state_name_sn'];
@@ -1320,6 +1324,8 @@ function HideSeeMore(seemoreName) {
         $('#addAddressForm').data('aid', '');
         $('.address-text').html('Add Shipping Address');
         initAddAddressForm();
+
+
     });
 
     // 加载地址列表
@@ -1391,6 +1397,31 @@ function HideSeeMore(seemoreName) {
 
 
     // start 支付方式 Payment Method
+
+    // 选择卡
+    $('.payment-list').on('click', '.address-item', function () {
+        $('.payment-list').find('.address-item').removeClass('active');
+        $(this).addClass('active');
+
+        var cardType = $(this).data('cardtype');
+        var cardNum = $(this).data('cardnum');
+
+        $('.pay-img').removeClass('active');
+        if (cardType == 'Visa'){
+            $('.pay-img.pay-visa').addClass('active');
+        }else if (cardType === 'MasterCard'){
+            $('.pay-img.pay-masc').addClass('active');
+        }else if (cardType === 'AmericanExpress'){
+            $('.pay-img.pay-amc').addClass('active');
+        }else if (cardType === 'JCB'){
+            $('.pay-img.pay-jcb').addClass('active');
+        }else if (cardType === 'paypal'){
+            $('.pay-img.pay-paypal').addClass('active');
+        }
+
+        $('.payment-text').html(cardNum);
+
+    });
 
     // 点击添加信用卡
     $('.payment-list').on('click', '.addCreditCard', function () {
@@ -1689,7 +1720,6 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
                 if (data.success) {
-                    alert(data.prompt_msg);
                     $('.restPwd-content').addClass('hidden').removeClass('active');
                     $('.login-content').removeClass('hidden').addClass('active');
                     $('.login-title').text('Sign in with Motif Account');
