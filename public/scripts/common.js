@@ -1425,6 +1425,11 @@ function HideSeeMore(seemoreName) {
 
         $('.payment-text').html(cardNum);
 
+        $.ajax({
+            url: '/wordpay/paywith/' + cardType + '/' + cardNum,
+            type: 'get'
+        })
+
     });
 
     // 点击添加信用卡
