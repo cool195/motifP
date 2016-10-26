@@ -176,18 +176,18 @@ class OrderController extends BaseController
             $params['payid'] = Session::get('user.checkout.paywith.withCard.card_id');
         }
 
-        $result = $this->request('openapi', "", "order", $params);
+        $result = $this->request("order", $params);
 
         if (!empty($result) && $result['success']) {
             if ($params['paym'] == 'PayPalNative') {
-                $result['redirectUrl'] = "/paypalorder?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
+                $result['redirectUrl'] = "/paypal?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
             } else {
                 Session::forget('user.checkout');
                 $result['redirectUrl'] = '/success';
             }
         } else {
             //支付失败
-            $result['redirectUrl'] = '/checkout/review';
+            $result['redirectUrl'] = '/cart/ordercheckout';
         }
         return $result;
     }
