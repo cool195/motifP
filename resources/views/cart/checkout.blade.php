@@ -332,7 +332,7 @@
                                             <div class="p-a-10x">
                                                 <div class="address-item flex p-x-20x @if(0) active @endif">
                                                     <div class="paycard-sign p-t-20x">
-                                                        
+
                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="55">
                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="55">
@@ -362,7 +362,7 @@
                                 @endif
                             @endforeach
                         </div>
-                        <div class="col-md-6">
+                      {{--  <div class="col-md-6">
                             <div class="p-a-10x">
                                 <div class="address-item flex flex-alignCenter flex-fullJustified p-x-20x active addCreditCard">
                                     <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
@@ -370,7 +370,7 @@
                                     <i class="iconfont icon-add m-r-20x"></i>
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
                     </div>
                     <div class="text-right p-t-10x">
                         <a href="javascript:void(0);" class="btn btn-primary btn-md" id="btnPaymentShowHide">Continue</a>
@@ -739,7 +739,7 @@
     @{{ each $value.creditCards }}
     <div class="col-md-6">
         <div class="p-a-10x">
-            <div class="address-item flex p-x-20x @if(0) active @endif">
+            <div class="address-item flex p-x-20x">
                 <div class="paycard-sign p-t-20x">
                     @{{ if $value.card_type === 'MasterCard' }}
                     <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
@@ -776,6 +776,7 @@
             </div>
         </div>
     </div>
+
     @{{ else if $value.pay_method === 'Oceanpay' }}
     <div class="col-md-6">
         <div class="p-a-10x">
@@ -786,6 +787,34 @@
             </div>
         </div>
     </div>
+    @{{ each $value.creditCards }}
+    <div class="col-md-6">
+        <div class="p-a-10x">
+            <div class="address-item flex p-x-20x">
+                <div class="paycard-sign p-t-20x">
+                    @{{ if $value.card_type === 'MasterCard' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
+                    @{{ else if $value.card_type === 'Visa' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="55">
+                    @{{ else if $value.card_type === 'JCB' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="55">
+                    @{{ else if $value.card_type === 'AmericanExpress' }}
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="55">
+                    @{{ /if }}
+
+                    <p class="p-t-20x">Exp:@{{ $value.month }}/@{{ $value.year }}</p>
+
+                </div>
+                <div class="paycard-info m-l-20x m-t-10x">
+                    <span class="sanBold font-size-lx">@{{ $value.card_number }}</span>
+                    <p class="billingTxt"><span>Billing:</span>@{{ $value.detail_address1 }} @{{ $value.detail_address2 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }}
+                    </p>
+                </div>
+                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+            </div>
+        </div>
+    </div>
+    @{{ /each }}
 
     @{{ /if }}
 

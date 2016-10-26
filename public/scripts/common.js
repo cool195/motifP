@@ -1615,7 +1615,7 @@ function HideSeeMore(seemoreName) {
                 }
             })
             .done(function (data) {
-                if (data.success) {
+              /*  if (data.success) {
                     $('.select-payment').removeClass('disabled');
                     $('.add-newCard').addClass('disabled');
                     getCardList();
@@ -1623,7 +1623,12 @@ function HideSeeMore(seemoreName) {
                 } else {
                     $('.addCard-warning').removeClass('off');
                     $('.addCard-warning').children('span').html(data.error_msg);
-                }
+                }*/
+
+                $('.select-payment').removeClass('disabled');
+                $('.add-newCard').addClass('disabled');
+                getCardList();
+                console.log('添加卡成功');
             })
 
     });
@@ -1634,10 +1639,13 @@ function HideSeeMore(seemoreName) {
             type: 'GET'
         }).done(function (data) {
             if (data.success){
+                console.info(data.data);
                 appendCardList(data.data);
+
             }
         })
     }
+    getCardList();
     function appendCardList(cardList){
         var tplHtml = template('tpl-creditCard', cardList);
         var StageCache = $.parseHTML(tplHtml);
