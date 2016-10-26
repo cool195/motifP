@@ -30,13 +30,8 @@ class AddressController extends BaseController
             }
             $result['data']['list'] = $addrList;
         }
-        if(Session::has('user.checkout.address')){
-            foreach($result['data']['list'] as &$list){
-                $list['isSel'] = 0;
-                if($list['receiving_id'] == Session::get('user.checkout.address.receiving_id')){
-                    $list['isSel'] = 1;
-                }
-            }
+        if(Session::has('user.checkout.address.receiving_id')){
+            $result['data']['selAddr'] = Session::get('user.checkout.address');
         }
         return $result;
     }
@@ -45,7 +40,7 @@ class AddressController extends BaseController
      * 添加地址 POST
      *
      * @param Request $request
-     * @return Response 
+     * @return Response
      */
     public function store(Request $request)
     {
