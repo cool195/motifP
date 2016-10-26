@@ -1406,9 +1406,11 @@ function HideSeeMore(seemoreName) {
     $('.payment-list').on('click', '.card-item', function () {
         $('.payment-list').find('.card-item').removeClass('active');
         $(this).addClass('active');
-
         var cardType = $(this).data('cardtype');
         var cardNum = $(this).data('cardnum');
+
+        console.log(cardType);
+        console.log(cardNum);
 
         $('.pay-img').removeClass('active');
         if (cardType == 'Visa'){
