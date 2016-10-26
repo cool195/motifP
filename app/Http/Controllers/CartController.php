@@ -37,14 +37,19 @@ class CartController extends BaseController
         $config = $this->request('general', $params);
         $config['data']['cart_checkout_top_notification'];
 
-        //获取默认地址
-        $params = array(
-            'cmd' => 'gdefault',
-            'uuid' => $_COOKIE['uid'],
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $result = $this->request('useraddr', $params);
+        if(Session::has('user.checkout.address.receiving_id')){
+            $result['data'] = Session::get('user.checkout.address');
+        }else{
+            //获取默认地址
+            $params = array(
+                'cmd' => 'gdefault',
+                'uuid' => $_COOKIE['uid'],
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            $result = $this->request('useraddr', $params);
+        }
+
         $_accountList = $this->getCartAccountList($request,-1,"","",$result['data']['receiving_id']);
         $logisticsList = $this->getLogisticsList($result['data']['country_name_sn'],$_accountList['data']['total_amount']+$_accountList['data']['vas_amount']);
         $accountList = $this->getCartAccountList($request,$logisticsList['data']['list'][0]['logistics_type'],"","",$result['data']['receiving_id']);
