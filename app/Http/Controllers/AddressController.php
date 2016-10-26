@@ -32,7 +32,14 @@ class AddressController extends BaseController
         }
         
         if(Session::has('user.checkout.address.receiving_id')){
-            $result['data']['selAddr'] = Session::get('user.checkout.address');
+            //$result['data']['selAddr'] = Session::get('user.checkout.address');
+            foreach($result['data']['list'] as &$list){
+                $list['isSel'] = 0;
+                if($list['receiving_id'] == Session::get('user.checkout.address.receiving_id')){
+                    $list['isSel'] = 1;
+                }
+            }
+
         }
         return $result;
     }

@@ -311,12 +311,12 @@
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="pmShowHide">
                 <span class="sanBold">Payment Method</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" class="pay-img pay-paypal active">
+                    <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" class="pay-img pay-paypal">
                     <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" class="pay-img pay-visa">
                     <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" class="pay-img pay-masc">
                     <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" class="pay-img pay-amc">
                     <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" class="pay-img pay-jcb">
-                    <span class="p-l-10x payment-text">Paypal</span>
+                    <span class="p-l-10x payment-text"></span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
