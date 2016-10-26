@@ -1108,7 +1108,8 @@ function HideSeeMore(seemoreName) {
 
             // 初始化 国家,洲
 
-            var Country = $('.select-country option:selected').text();
+            var Country = $('#addAddressForm .select-country option:selected').text();
+            alert(Country)
             initCityState(Country, '');
         } else {
             // 修改地址
@@ -1182,7 +1183,7 @@ function HideSeeMore(seemoreName) {
                     type: 'GET'
                 })
                 .done(function (data) {
-                    $('#addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg select-country"></select>');
+                    $('#addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg select-state"></select>');
                     // 添加选项
                     $.each(data, function (n, value) {
                         var StateNameId = value['state_name_sn'];
@@ -1320,6 +1321,8 @@ function HideSeeMore(seemoreName) {
         $('#addAddressForm').data('aid', '');
         $('.address-text').html('Add Shipping Address');
         initAddAddressForm();
+
+
     });
 
     // 加载地址列表
@@ -1391,6 +1394,26 @@ function HideSeeMore(seemoreName) {
 
 
     // start 支付方式 Payment Method
+
+    // 选择卡
+    $('.payment-list').on('click', '.address-item', function () {
+        $('.payment-list').find('.address-item').removeClass('active');
+        $(this).addClass('active');
+
+        var cardType = $(this).data('cardtype');
+        var cardNum = $(this.data('cardnum'));
+        if (cardType == 'Visa'){
+
+        }else if (cardType === 'MasterCard'){
+
+        }else if (cardType === 'AmericanExpress'){
+
+        }else if (cardType === 'JCB'){
+
+        }
+
+
+    });
 
     // 点击添加信用卡
     $('.payment-list').on('click', '.addCreditCard', function () {
