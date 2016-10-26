@@ -1403,8 +1403,8 @@ function HideSeeMore(seemoreName) {
     // start 支付方式 Payment Method
 
     // 选择卡
-    $('.payment-list').on('click', '.address-item', function () {
-        $('.payment-list').find('.address-item').removeClass('active');
+    $('.payment-list').on('click', '.card-item', function () {
+        $('.payment-list').find('.card-item').removeClass('active');
         $(this).addClass('active');
 
         var cardType = $(this).data('cardtype');

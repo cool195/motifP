@@ -542,13 +542,13 @@ footer .text-Copyright{
   display: block;
 }
 
-.address-item {
+.choose-item {
   position: relative;
   overflow: hidden;
   border: 1px solid #dddde1;
 }
 
-.address-item .bg-address {
+.choose-item .bg-address {
   position: absolute;
   top: 0;
   left: 0;
@@ -560,7 +560,7 @@ footer .text-Copyright{
   transition: all .3s ease;
 }
 
-.address-item .btn-edit {
+.choose-item .btn-edit {
   position: absolute;
   right: 10px;
   top: 5px;
@@ -569,7 +569,7 @@ footer .text-Copyright{
   transition: all .3s ease;
 }
 
-.address-item .btn-delAddress {
+.choose-item .btn-delAddress {
   position: absolute;
   right: 4rem;
   top: 5px;
@@ -578,7 +578,7 @@ footer .text-Copyright{
   transition: all .3s ease;
 }
 
-.address-item .btn-addPrimary {
+.choose-item .btn-addPrimary {
   position: absolute;
   bottom: -3.75rem;
   right: -3.75rem;
@@ -603,12 +603,12 @@ footer .text-Copyright{
   transition: all .3s ease;
 }
 
-.address-item .btn-addPrimary i {
+.choose-item .btn-addPrimary i {
   -webkit-transform: rotate(-135deg);
           transform: rotate(-135deg);
 }
 
-.address-item .primary-address {
+.choose-item .primary-address {
   position: absolute;
   right: 5rem;
   top: 50%;
@@ -619,16 +619,16 @@ footer .text-Copyright{
   transition: all .3s ease;
 }
 
-.address-item:hover, .address-item.active {
+.choose-item:hover, .choose-item.active {
   border: 1px solid #36405b;
   cursor: pointer;
 }
 
-.address-item:hover .bg-address, .address-item.active .bg-address {
+.choose-item:hover .bg-address, .choose-item.active .bg-address {
   opacity: 0;
 }
 
-.address-item:hover .btn-edit, .address-item:hover .btn-delAddress, .address-item:hover .btn-addPrimary, .address-item:hover .primary-address, .address-item.active .btn-edit, .address-item.active .btn-delAddress, .address-item.active .btn-addPrimary, .address-item.active .primary-address {
+.choose-item:hover .btn-edit, .choose-item:hover .btn-delAddress, .choose-item:hover .btn-addPrimary, .choose-item:hover .primary-address, .choose-item.active .btn-edit, .choose-item.active .btn-delAddress, .choose-item.active .btn-addPrimary, .choose-item.active .primary-address {
   opacity: 1;
 }
 
@@ -1654,7 +1654,7 @@ footer .text-Copyright{
   border: 1px solid #ddd;
 }
 /* Payment Method 支付*/
-.select-payment .address-item{
+.select-payment .choose-item{
   height: 7.5rem;
 }
 .addCreditCard .icon-add{
@@ -1682,6 +1682,8 @@ footer .text-Copyright{
 .pay-img.active{
   display: inline-block;
 }
+
+
 
 
 @media (max-width: 544px) {
