@@ -1501,7 +1501,7 @@ function HideSeeMore(seemoreName) {
                     type: 'GET'
                 })
                 .done(function (data) {
-                    $('#card-addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg card-selectCountry"></select>');
+                    $('#card-addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg card-state"></select>');
                     // 添加选项
                     $.each(data, function (n, value) {
                         var StateNameId = value['state_name_sn'];
@@ -1593,8 +1593,9 @@ function HideSeeMore(seemoreName) {
         var cardNum =  $('.card-number').val();
         var cardDate = $('.card-date').val();
         var cardCode = $('.card-code').val();
-        var cardName = '', cardTel = '', cardAddr1 = '', cardAddr2 = '', cardCity = '', cardCountry = '',cardZip = '', cardState = '', csn='';
+        var cardName = '', cardTel = '', cardAddr1 = '', cardAddr2 = '', cardCity = '', cardCountry = '',cardZip = '', cardState = '';
         var cardType = $('input[name="card_type"]').val();
+        var csn = '';
 
         if( $('.card-addNewAddr').hasClass('disabled') ){ //选择了与shipping相同的地址信息
             cardName = $('.def-name').html();
@@ -1606,7 +1607,6 @@ function HideSeeMore(seemoreName) {
             cardCountry = $('.def-country').val();
             cardZip = $('.def-zip').html();
             cardState = $('.def-state').html();
-            //csn = $('.def-countrySn').val();
             csn = $('.card-selectCountry > option[value="' + cardCountry + '"]').data('csn');
 
         }else{
@@ -1617,14 +1617,14 @@ function HideSeeMore(seemoreName) {
             cardAddr2 = $('.card-addr2').val();
             cardCity = $('.card-city').val();
             cardCountry = $('.card-selectCountry > option:selected').text();
-            csn = $('.card-selectCountry > option[value="' + cardCountry + '"]').data('csn');
             cardZip = $('.card-zip').val();
-            cardState = $("#card-addAddressForm input[name='state']").val();
+            cardState = $(".card-state").val();
+            csn = $('.card-selectCountry > option[value="' + cardCountry + '"]').data('csn');
 
         }
-        console.log(cardCountry);
-        console.log(csn);
-        console.log(cardState);
+        console.log("country="+ cardCountry);
+        console.log("csn=" + csn);
+        console.log("state="+ cardState);
         console.log(cardType);
         $.ajax({
                 url: '/wordpay/addCard',
@@ -1646,7 +1646,7 @@ function HideSeeMore(seemoreName) {
                 }
             })
             .done(function (data) {
-              /*  if (data.success) {
+              if (data.success) {
                     $('.select-payment').removeClass('disabled');
                     $('.add-newCard').addClass('disabled');
                     getCardList();
@@ -1654,16 +1654,10 @@ function HideSeeMore(seemoreName) {
                 } else {
                     $('.addCard-warning').removeClass('off');
                     $('.addCard-warning').children('span').html(data.error_msg);
-                }*/
-
-                $('.select-payment').removeClass('disabled');
-                $('.add-newCard').addClass('disabled');
-                getCardList();
-                console.log('添加卡成功');
+                }
             })
 
     });
-
     function getCardList(){
         $.ajax({
             url:'/wordpay/paylist',
@@ -1676,7 +1670,6 @@ function HideSeeMore(seemoreName) {
             }
         })
     }
-    getCardList();
     function appendCardList(cardList){
         var tplHtml = template('tpl-creditCard', cardList);
         var StageCache = $.parseHTML(tplHtml);
