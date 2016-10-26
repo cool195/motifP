@@ -158,6 +158,40 @@ class OrderController extends BaseController
 
     }
 
+    //New 提交订单并支付
+    public function payOrder(Request $request){
+        $params = array(
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'aid' => Session::get('user.checkout.address.receiving_id'),
+            'paym' => Session::get('user.checkout.paywith.pay_method'),
+            'cps' => Session::get('user.checkout.couponInfo.bind_id'),
+            'remark' => $request->input('remark'),
+            'stype' => Session::get('user.checkout.selship.logistics_type')
+        );
+        if ($params['paym'] == 'PayPalNative') {
+            $params['cmd'] = 'ordsubmit';
+        }else{
+            $params['cmd'] = 'ordpay';
+            $params['payid'] = Session::get('user.checkout.paywith.withCard.card_id');
+        }
+
+        $result = $this->request('openapi', "", "order", $params);
+
+        if (!empty($result) && $result['success']) {
+            if ($params['paym'] == 'PayPalNative') {
+                $result['redirectUrl'] = "/paypalorder?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
+            } else {
+                Session::forget('user.checkout');
+                $result['redirectUrl'] = '/success';
+            }
+        } else {
+            //支付失败
+            $result['redirectUrl'] = '/checkout/review';
+        }
+        return $result;
+    }
+
     //重新获取订单信息
     public function orderPayInfo($orderid, $paytype)
     {
