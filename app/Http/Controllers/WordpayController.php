@@ -43,8 +43,6 @@ class WordpayController extends BaseController
         $params['country'] = $request->input('country');
         $params['csn'] = $request->input('csn');
         $params['ctype'] = $request->get('card_type');
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($params, "\n"), 3, '/tmp/myerror.log');
         $result = $this->request('pay', $params);
         return $result;
 
