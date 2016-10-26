@@ -1672,9 +1672,15 @@ footer .text-Copyright{
 .paycard-info .billingTxt{
   padding-top: 2.2rem;
 }
-
 .select-payment.disabled,.card-message.disabled,.add-newCard.disabled,.card-addNewAddr.disabled{
   display: none;
+}
+.pay-img{
+  width: 50px;
+  display: none;
+}
+.pay-img.active{
+  display: inline-block;
 }
 
 

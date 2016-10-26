@@ -1404,17 +1404,22 @@ function HideSeeMore(seemoreName) {
         $(this).addClass('active');
 
         var cardType = $(this).data('cardtype');
-        var cardNum = $(this.data('cardnum'));
+        var cardNum = $(this).data('cardnum');
+
+        $('.pay-img').removeClass('active');
         if (cardType == 'Visa'){
-
+            $('.pay-img.pay-visa').addClass('active');
         }else if (cardType === 'MasterCard'){
-
+            $('.pay-img.pay-masc').addClass('active');
         }else if (cardType === 'AmericanExpress'){
-
+            $('.pay-img.pay-amc').addClass('active');
         }else if (cardType === 'JCB'){
-
+            $('.pay-img.pay-jcb').addClass('active');
+        }else if (cardType === 'paypal'){
+            $('.pay-img.pay-paypal').addClass('active');
         }
 
+        $('.payment-text').html(cardNum);
 
     });
 
