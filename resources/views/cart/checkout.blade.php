@@ -725,12 +725,9 @@
         <div class="p-a-10x">
             <div class="address-item choose-item p-x-20x p-y-15x @{{ if $value.isSel == 0 || $value.isSel == 1 }}  @{{ if $value.isSel == 1 }} active  @{{ /if }} @{{ else }} @{{ if $value.isDefault == 1 }} active @{{ /if }} @{{ /if }}"
                  data-info="@{{ $value.name }} @{{ $value.detail_address1 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }} @{{ $value.zip }}"
-                 data-csn="@{{ $value.country_name_sn }}"
-                 data-aid="@{{ $value.receiving_id }}"
-                 data-name="@{{ $value.name }}"
-                 data-city="@{{ $value.city }}"
-                 data-zip="@{{ $value.zip }}"
-                 data-state="@{{ $value.state }}">
+                 data-csn="@{{ $value.country_name_sn }}" data-aid="@{{ $value.receiving_id }}" data-name="@{{ $value.name }}" data-city="@{{ $value.city }}"
+                 data-zip="@{{ $value.zip }}" data-state="@{{ $value.state }}" data-tel="@{{ $value.telephone }}" data-addr1="@{{ $value.detail_address1 }}" data-addr2="@{{ $value.detail_address2 }}"
+                 data-country="@{{ $value.country }}"   >
                 <div class="address-info">
                     @{{ $value.name }}<br>
                     @{{ $value.zip }}<br>
