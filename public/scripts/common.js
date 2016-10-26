@@ -445,7 +445,6 @@ function HideSeeMore(seemoreName) {
                 }
                 $('#addQtySku').addClass('disabled');
             } else if (skuQty >= product_stock_qtty && $(this).data('num') > 0) {
-                //alert('库存不足');
                 $('#addQtySku').addClass('disabled');
                 $(this).parent().siblings('.warning-info').removeClass('off');
                 if (skuQty >= 50) {
@@ -1114,7 +1113,6 @@ function HideSeeMore(seemoreName) {
             // 初始化 国家,洲
 
             var Country = $('#addAddressForm .select-country option:selected').text();
-            alert(Country)
             initCityState(Country, '');
         } else {
             // 修改地址
@@ -1717,7 +1715,6 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
                 if (data.success) {
-                    alert(data.prompt_msg);
                     $('.restPwd-content').addClass('hidden').removeClass('active');
                     $('.login-content').removeClass('hidden').addClass('active');
                     $('.login-title').text('Sign in with Motif Account');
