@@ -1393,7 +1393,7 @@ function HideSeeMore(seemoreName) {
     // start 支付方式 Payment Method
 
     // 点击添加信用卡
-    $('.addCreditCard').on('click', function () {
+    $('.payment-list').on('click', '.addCreditCard', function () {
         $('.select-payment').addClass('disabled');
         $('.add-newCard').removeClass('disabled');
     });
