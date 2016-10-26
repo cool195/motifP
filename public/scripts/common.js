@@ -1062,10 +1062,6 @@ function HideSeeMore(seemoreName) {
         var state = $(this).parent('.address-item').data('state');
         $('.card-message').html('<div class="sanBold">' + userName + '</div><div>' + city + '</div><div>' + zip + '</div><div>' + state + '</div>');
 
-
-
-
-
         $.ajax({
             url: '/wordpay/selAddr/' + $(this).parent('.address-item').data('aid'),
             type: 'get'
@@ -1408,10 +1404,6 @@ function HideSeeMore(seemoreName) {
         $(this).addClass('active');
         var cardType = $(this).data('cardtype');
         var cardNum = $(this).data('cardnum');
-
-        console.log(cardType);
-        console.log(cardNum);
-
         $('.pay-img').removeClass('active');
         if (cardType == 'Visa'){
             $('.pay-img.pay-visa').addClass('active');
@@ -1633,10 +1625,6 @@ function HideSeeMore(seemoreName) {
             csn = $('.card-selectCountry > option[value="' + cardCountry + '"]').data('csn');
 
         }
-        console.log("country="+ cardCountry);
-        console.log("csn=" + csn);
-        console.log("state="+ cardState);
-        console.log(cardType);
         $.ajax({
                 url: '/wordpay/addCard',
                 type: 'POST',
@@ -1675,9 +1663,7 @@ function HideSeeMore(seemoreName) {
             type: 'GET'
         }).done(function (data) {
             if (data.success){
-                console.info(data.data);
                 appendCardList(data.data);
-
             }
         })
     }
@@ -1867,7 +1853,6 @@ function HideSeeMore(seemoreName) {
 
     // 点击 忘记忘记 发送邮件
     $('[data-role="forget-submit"]').on('click', function () {
-        console.info('Reset Password');
         if ($(this).hasClass('disabled')) {
             return;
         } else {
