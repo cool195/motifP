@@ -1407,10 +1407,6 @@ function HideSeeMore(seemoreName) {
         var cardId = $(this).data('cardid');
         var payType = $(this).data('paytype');
 
-        console.log(cardType);
-        console.log(cardNum);
-
-
         $('.pay-img').removeClass('active');
         if (cardType == 'Visa'){
             $('.pay-img.pay-visa').addClass('active');
@@ -1653,10 +1649,12 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
               if (data.success) {
+                    getCardList();
+                    $('#addCard-container input[type="text"]').val('');
+                    $('#card-addAddressForm input[type="text"]').val('');
                     $('.select-payment').removeClass('disabled');
                     $('.add-newCard').addClass('disabled');
-                    getCardList();
-                    console.log('添加卡成功');
+
                 } else {
                     $('.addCard-warning').removeClass('off');
                     $('.addCard-warning').children('span').html(data.error_msg);
