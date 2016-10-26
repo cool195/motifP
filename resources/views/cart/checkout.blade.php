@@ -575,7 +575,7 @@
         </div>
 
         {{--Promotion Code--}}
-        <div class="box-shadow bg-white m-t-20x" id="pcode" data-bindid="{{$accountList['cp_bind_id']}}">
+        <div class="box-shadow bg-white m-t-20x" id="pcode" data-bindid="@if(Session::has('user.checkout.couponInfo')){{ Session::get('user.checkout.couponInfo.bind_id') }}@else{{$accountList['cp_bind_id']}}@endif ">
             <div class="p-x-20x p-y-15x font-size-md btn-showHide" id="">
                 <span class="sanBold">Promotion Code</span>
                 <span class="pull-right showHide-simpleInfo">
