@@ -1212,12 +1212,16 @@ function HideSeeMore(seemoreName) {
     $('.checkout-method').on('click', '.methodRadio', function () {
         var payPrice = $(this).data('price') > 0 ? ' +$' + ($(this).data('price') / 100).toFixed(2) : '';
         $('.shippingMethodShow').html($(this).data('show') + payPrice);
-        getCheckoutInfo();
+
 
         $.ajax({
             url: '/wordpay/selShip/' + $(this).val(),
             type: 'post'
-        });
+        })
+            .done(function (data) {
+                getCheckoutInfo();
+            });
+
     });
 
     // 收起地址增值服务
@@ -3546,18 +3550,19 @@ function HideSeeMore(seemoreName) {
     // checkou promotion
     $('.coupon-list').on('click', '.codeItem', function () {
         $('.codeItem').removeClass('active');
-
-        if (!$(this).hasClass('active')) {
-            $('#codemessage').html($(this).data('promotioncode'));
-            $('#pcode').data('bindid', $(this).data('bindid'));
-            $(this).addClass('active');
-            getCheckoutInfo();
-        }
-
+        var $this = $(this);
         $.ajax({
             url: '/wordpay/selCode/' + $(this).data('bindid'),
             type: 'post'
-        });
+        })
+            .done(function (data) {
+                if (!$this.hasClass('active')) {
+                    $('#codemessage').html($this.data('promotioncode'));
+                    $('#pcode').data('bindid', $this.data('bindid'));
+                    $this.addClass('active');
+                    getCheckoutInfo();
+                }
+            });
 
     });
 
