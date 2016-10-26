@@ -1366,7 +1366,7 @@ function HideSeeMore(seemoreName) {
                     var payPrice = data.data.list[0].pay_price > 0 ? ' +$' + (data.data.list[0].pay_price / 100).toFixed(2) : '';
                     $('.shippingMethodShow').html(data.data.list[0].logistics_name + payPrice);
                     if (data.data.list.length < 2) {
-                        $('.shippingMethodButton').html('');
+                        $('.shippingMethodButton').html('&nbsp;');
                     } else {
                         $('.shippingMethodButton').html('Edit');
                     }

@@ -264,7 +264,7 @@
                     @else
                         <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} @if($list['pay_price']>0)
                             +${{ number_format(($logisticsList['list'][0]['pay_price'] / 100), 2) }}@endif</span>
-                        <a class="p-l-40x shippingMethodButton">@if(count($logisticsList['list'])>1){{'Edit'}}@endif</a>
+                        <a class="p-l-40x shippingMethodButton">@if(count($logisticsList['list'])>1){{'Edit'}} @else &nbsp; @endif</a>
                     @endif
                 </span>
             </div>
