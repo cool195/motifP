@@ -1,4 +1,4 @@
-@include('header',['title'=>"I'm giving you $20 to spend on Motif where you can purchase exclusive accessory designs from your favorite Instagrammers & You Tubers! Use code '{{$code}}' with your first purchase.Enjoy!",'description'=>$data['intro_short'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$data['main_image_url']])
+@include('header',['title'=>"I'm giving you $20 to spend on Motif! Find exclusive jewelry designed by fashion influencers. Use code '{$code}' with first purchase. Enjoy!",'description'=>$data['intro_short'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$data['main_image_url']])
 
 <!-- invite friend -->
 <section class="m-y-40x">

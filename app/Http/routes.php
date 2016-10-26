@@ -118,6 +118,8 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::post('/order', 'OrderController@orderSubmit');
 
+    Route::post('/payorder', 'OrderController@payOrder');
+
     Route::get('/order/orderlist', 'OrderController@orderList');
 
     Route::get('/order/orderdetail/{subno}', 'OrderController@orderDetail')->where(['subno' => '[0-9]+']);
