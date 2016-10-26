@@ -332,11 +332,15 @@
                                             <div class="p-a-10x">
                                                 <div class="address-item flex p-x-20x @if(0) active @endif">
                                                     <div class="paycard-sign p-t-20x">
-                                                        
-                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
-                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="55">
-                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="55">
-                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="55">
+                                                        @if($card['card_type'] == 'Visa')
+                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="55">
+                                                        @elseif($card['card_type'] == 'MasterCard')
+                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="55">
+                                                        @elseif($card['card_type'] == 'AmericanExpress')
+                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="55">
+                                                        @elseif($card['card_type'] == 'JCB')
+                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="55">
+                                                        @endif
                                                         <p class="p-t-20x">Exp:{{$card['month']}}/{{$card['year']}}</p>
                                                     </div>
                                                     <div class="paycard-info m-l-20x m-t-10x">
@@ -349,6 +353,15 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                    <div class="col-md-6">
+                                        <div class="p-a-10x">
+                                            <div class="address-item flex flex-alignCenter flex-fullJustified p-x-20x active addCreditCard">
+                                                <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
+                                                <span class="font-size-lxx">Add New Credit Card</span>
+                                                <i class="iconfont icon-add m-r-20x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @else
                                     <div class="col-md-6">
                                         <div class="p-a-10x">
@@ -361,15 +374,6 @@
                                     </div>
                                 @endif
                             @endforeach
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-a-10x">
-                                <div class="address-item flex flex-alignCenter flex-fullJustified p-x-20x active addCreditCard">
-                                    <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
-                                    <span class="font-size-lxx">Add New Credit Card</span>
-                                    <i class="iconfont icon-add m-r-20x"></i>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="text-right p-t-10x">
