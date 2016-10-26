@@ -1064,16 +1064,17 @@ function HideSeeMore(seemoreName) {
         var addr1 = $(this).parent('.address-item').data('addr1');
         var addr2 = $(this).parent('.address-item').data('addr2');
         var country = $(this).parent('.address-item').data('country');
-        
-        
-        var tpl = '<div class="sanBold">' + userName + '</div><div>' + city + '</div><div>' + zip + '</div><div>' + state + '</div>' +
-                '<input type="hidden" name="tel" class="def-tel" value="' + tel + '">' +
-                '<input type="hidden" name="addr1" class="def-addr1" value="' + addr1 + '">' +
-                '<input type="hidden" name="addr2" class="def-addr2" value="' + addr2 + '">' +
-                '<input type="hidden" name="country" class="def-country" value="' + country + '">';
 
-        $('.card-message').html(tpl);
+        $('.card-message .def-name').html(userName);
+        $('.card-message .def-city').html(city);
+        $('.card-message .def-zip').html(zip);
+        $('.card-message .def-state').html(state);
 
+        $('.card-message .def-tel').val(tel);
+        $('.card-message .def-addr1').val(addr1);
+        $('.card-message .def-addr2').val(addr2);
+        $('.card-message .def-country').val(country);
+        
         $.ajax({
             url: '/wordpay/selAddr/' + $(this).parent('.address-item').data('aid'),
             type: 'get'
