@@ -377,7 +377,7 @@
                                 @endforeach
                                 <div class="col-md-6">
                                     <div class="p-a-10x">
-                                        <div class=" choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard" data-cardtype="{{""}}" data-cardnum="{{""}}">
+                                        <div class="card-item choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
                                             <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
                                             <span class="font-size-lxx">Add New Credit Card</span>
                                             <i class="iconfont icon-add m-r-20x"></i>
@@ -446,7 +446,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="row m-t-30x">
+                        <div class="row m-t-40x">
                             <div class="col-md-6 p-b-10x">
                                 <div>
                                     <input class="choose-oldAddr" type="radio" checked="checked" name="card-address">
@@ -478,7 +478,7 @@
                             </div>
                         </div>
                         {{--start添加新的账单地址--}}
-                        <div class="row p-t-30x card-addNewAddr disabled">
+                        <div class="row card-addNewAddr disabled">
                             <form id="card-addAddressForm">
                                 <div class="col-md-5">
                                     <input type="hidden" name="email" value="{{Session::get('user.login_email')}}">
