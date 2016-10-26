@@ -132,6 +132,34 @@ class WordpayController extends BaseController
         return $result;
     }
 
+    //选择支付方式
+    public function paywith($type, $cardid)
+    {
+        $payList = $this->getPayList();
+        foreach ($payList['data']['list'] as $value) {
+            if ($cardid > 0) {
+                foreach ($value['creditCards'] as $card) {
+                    if ($card['card_id'] == $cardid) {
+                        $value['withCard'] = $card;
+                        Session::put('user.checkout.paywith', $value);
+                        Session::forget('user.checkout.paywith.creditCards');
+                        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+                        error_log(print_r(Session::get('user.checkout.paywith'), "\n"), 3, '/tmp/myerror.log');
+                        return $value;
+                    }
+                }
+            } else {
+                if ($value['pay_type'] == $type) {
+                    Session::put('user.checkout.paywith', $value);
+                    Session::forget('user.checkout.paywith.creditCards');
+                    error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+                    error_log(print_r(Session::get('user.checkout.paywith'), "\n"), 3, '/tmp/myerror.log');
+                    return $value;
+                }
+            }
+        }
+    }
+
     public function selCode($bindid)
     {
         $coupon = $this->getCouponInfo();
@@ -139,8 +167,6 @@ class WordpayController extends BaseController
         foreach ($coupon['data']['list'] as $value) {
             if ($value['bind_id'] == $bindid) {
                 Session::put('user.checkout.couponInfo', $value);
-                error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-                error_log(print_r(Session::get('user.checkout.couponInfo'), "\n"), 3, '/tmp/myerror.log');
                 return $value;
             }
         }
