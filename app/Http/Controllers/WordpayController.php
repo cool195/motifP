@@ -84,11 +84,10 @@ class WordpayController extends BaseController
     public function selAddr($aid)
     {
         $address = $this->addrList();
-        Session::forget('user.checkout.address');
         foreach ($address['data']['list'] as $value) {
             if ($value['receiving_id'] == $aid) {
                 Session::put('user.checkout.address', $value);
-                return $value;
+                return Session::get('user.checkout.address');
             }
         }
     }
