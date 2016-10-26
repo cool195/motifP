@@ -18,6 +18,8 @@ class WordpayController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('pay', $params);
+        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         return $result;
     }
 
@@ -143,8 +145,6 @@ class WordpayController extends BaseController
                         $value['withCard'] = $card;
                         Session::put('user.checkout.paywith', $value);
                         Session::forget('user.checkout.paywith.creditCards');
-                        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-                        error_log(print_r(Session::get('user.checkout.paywith'), "\n"), 3, '/tmp/myerror.log');
                         return $value;
                     }
                 }
@@ -152,8 +152,6 @@ class WordpayController extends BaseController
                 if ($value['pay_type'] == $type) {
                     Session::put('user.checkout.paywith', $value);
                     Session::forget('user.checkout.paywith.creditCards');
-                    error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-                    error_log(print_r(Session::get('user.checkout.paywith'), "\n"), 3, '/tmp/myerror.log');
                     return $value;
                 }
             }

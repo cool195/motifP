@@ -333,7 +333,7 @@
                                 @foreach($list['creditCards'] as $card)
                                     <div class="col-md-6">
                                         <div class="p-a-10x">
-                                            <div class="card-item choose-item flex p-x-20x" data-cardtype="{{$card['cart_type']}}" data-cardnum="{{$card['card_number']}}" >
+                                            <div class="card-item choose-item flex p-x-20x" data-cardtype="{{ $card['card_type'] }}" data-cardnum="{{ $card['card_number'] }}" >
                                                 <div class="paycard-sign p-t-20x">
                                                     @if($card['card_type'] == 'Visa')
                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="55">
