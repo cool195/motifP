@@ -1408,6 +1408,8 @@ function HideSeeMore(seemoreName) {
         $(this).addClass('active');
         var cardType = $(this).data('cardtype');
         var cardNum = $(this).data('cardnum');
+        var cardId = $(this).data('cardid');
+        var payType = $(this).data('paytype');
 
         console.log(cardType);
         console.log(cardNum);
@@ -1428,7 +1430,7 @@ function HideSeeMore(seemoreName) {
         $('.payment-text').html(cardNum);
 
         $.ajax({
-            url: '/wordpay/paywith/' + cardType + '/' + cardNum,
+            url: '/wordpay/paywith/' + payType + '/' + cardId,
             type: 'get'
         })
 

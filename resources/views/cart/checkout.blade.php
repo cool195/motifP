@@ -311,12 +311,31 @@
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="pmShowHide">
                 <span class="sanBold">Payment Method</span>
                 <span class="pull-right showHide-simpleInfo">
-                    <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" class="pay-img pay-paypal">
-                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" class="pay-img pay-visa">
-                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" class="pay-img pay-masc">
-                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" class="pay-img pay-amc">
-                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" class="pay-img pay-jcb">
-                    <span class="p-l-10x payment-text"></span>
+                    @if(Session::has('user.checkout.paywith'))
+                        @if(Session::has('user.checkout.paywith.withCard'))
+                            {{$withCard = Session::get('user.checkout.paywith.withCard')}}
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" class="pay-img pay-paypal">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" class="pay-img pay-visa @if($withCard['card_type'] == 'Visa') active @endif ">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" class="pay-img pay-masc @if($withCard['card_type'] == 'MasterCard') active @endif ">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" class="pay-img pay-amc @if($withCard['card_type'] == 'AmericanExpress') active @endif ">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" class="pay-img pay-jcb @if($withCard['card_type'] == 'JCB') active @endif ">
+                            <span class="p-l-10x payment-text">{{$withCard['card_number']}}</span>
+                        @else
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" class="pay-img pay-paypal active">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" class="pay-img pay-visa">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" class="pay-img pay-masc">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" class="pay-img pay-amc">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" class="pay-img pay-jcb">
+                            <span class="p-l-10x payment-text">PayPal</span>
+                        @endif
+                    @else
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" class="pay-img pay-paypal">
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" class="pay-img pay-visa">
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" class="pay-img pay-masc">
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" class="pay-img pay-amc">
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" class="pay-img pay-jcb">
+                        <span class="p-l-10x payment-text"></span>
+                    @endif
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
@@ -333,7 +352,7 @@
                                 @foreach($list['creditCards'] as $card)
                                     <div class="col-md-6">
                                         <div class="p-a-10x">
-                                            <div class="card-item choose-item flex p-x-20x" data-cardtype="{{ $card['card_type'] }}" data-cardnum="{{ $card['card_number'] }}" >
+                                            <div class="card-item choose-item flex p-x-20x @if($card['card_id'] == Session::get('user.checkout.paywith.withCard.card_id')) active @endif" data-cardtype="{{ $card['card_type'] }}" data-cardnum="{{ $card['card_number'] }}" data-cardid="{{ $card['card_id'] }}" data-paytype="{{ $card['pay_type'] }}" >
                                                 <div class="paycard-sign p-t-20x">
                                                     @if($card['card_type'] == 'Visa')
                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="55">
@@ -358,7 +377,7 @@
                                 @endforeach
                                 <div class="col-md-6">
                                     <div class="p-a-10x">
-                                        <div class="card-item choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard" data-cardtype="" data-cardnum="">
+                                        <div class=" choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard" data-cardtype="{{""}}" data-cardnum="{{""}}">
                                             <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
                                             <span class="font-size-lxx">Add New Credit Card</span>
                                             <i class="iconfont icon-add m-r-20x"></i>
@@ -368,7 +387,7 @@
                             @else
                                 <div class="col-md-6">
                                     <div class="p-a-10x">
-                                        <div class="card-item choose-item flex flex-alignCenter p-x-20x" data-cardtype="paypal" data-cardnum="PayPal">
+                                        <div class="card-item choose-item flex flex-alignCenter p-x-20x @if($list['pay_type'] == Session::get('user.checkout.paywith.pay_type')) active @endif" data-cardtype="paypal" data-cardnum="PayPal" data-cardid="PayPal" data-paytype="{{$list['pay_type']}}">
                                             <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
                                             <span class="font-size-lxx p-l-40x">{{$list['pay_name']}}</span>
                                             <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
