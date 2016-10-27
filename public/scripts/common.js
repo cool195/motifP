@@ -769,6 +769,9 @@ function HideSeeMore(seemoreName) {
         // 邮件订阅 弹出框
         var redeemModal = $('[data-remodal-id=redeem-modal]').remodal(Options);
 
+        // checkout loading浮层
+        var loadingModal = $('[data-remodal-id=loading-modal]').remodal(Options);
+
     } catch (e) {
     }
 
@@ -3665,6 +3668,12 @@ function HideSeeMore(seemoreName) {
                 }
             });
     });
+    // checkout页面的loading
+    if($('#checkoutView').length > 0){
+        loadingModal.open()
+        //loadingModal.close()
+    }
+
 
 
 })(jQuery, Swiper);

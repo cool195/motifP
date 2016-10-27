@@ -703,6 +703,17 @@
     </div>
 </section>
 
+
+<!-- loading -->
+<div class="remodal-overlay remodal-is-opened" style="display: block; background: none!important;"></div>
+<div class="remodal" data-remodal-id="loading-modal">
+    <div class="loading daily-loading centerLoading">
+        <div class="loader"></div>
+        <div class="text-center p-l-15x">Loading...</div>
+    </div>
+</div>
+
+<!-- 移除商品弹框 -->
 <div class="remodal modal-content remodal-md" data-remodal-id="modal" id="modalDialog" data-spu="">
     <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Bag?</div>
     <hr class="hr-common m-a-0">
