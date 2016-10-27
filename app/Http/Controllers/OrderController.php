@@ -190,10 +190,6 @@ class OrderController extends BaseController
             //支付失败
             $result['redirectUrl'] = '/cart/ordercheckout';
         }
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($params, "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         return $result;
     }
 

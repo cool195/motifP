@@ -308,6 +308,8 @@
 
         {{--Payment Method--}}
         <div class="box-shadow bg-white m-t-20x active">
+            @inject('Wordpay', 'App\Http\Controllers\WordpayController')
+            {{$paylist = $Wordpay->getPayList()}}
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="pmShowHide">
                 <span class="sanBold">Payment Method</span>
                 <span class="pull-right showHide-simpleInfo">
@@ -342,8 +344,6 @@
             <hr class="hr-common m-a-0">
             <div class="showHide-body payment-content">
                 <!--选择支付方式-->
-                @inject('Wordpay', 'App\Http\Controllers\WordpayController')
-                {{$paylist = $Wordpay->getPayList()}}
                 <div class="p-a-20x select-payment">
                     <span class="font-size-md">Select Payment Method</span>
                     <div class="row p-x-10x p-t-20x payment-list">
