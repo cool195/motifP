@@ -862,6 +862,38 @@ footer .text-Copyright{
   transition: all 150ms ease;
 }*/
 
+/* 设计师详情 预售样式 begin */
+.designer-img{
+  min-height: 18rem;
+}
+.designer-basicInfo{
+  position: relative;
+}
+.designer-basicInfo .designer-headImg{
+  position: absolute;
+  top: -58px;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  background: url("/images/designer/bg-designerimg.png") repeat-x top;
+}
+.newPresale-sign{
+  top:20px;
+  left: 20px;
+}
+.newPresale-text{
+  text-align: center;
+  display: inline-block;
+  min-width: 6rem;
+  padding: 2px 0 1px;
+  border: solid 1px #171a2b;
+  color: #171a2b;
+  font-style: italic;
+}
+
+/* 设计师详情 预售样式 end */
+
 .designer-item {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
