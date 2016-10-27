@@ -61,16 +61,18 @@
                                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png"
                                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}">
                                         </a>
-
+                                    @if(!empty($image['video_path']))
                                         <!-- 判断是否是视频 -->
-                                        <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter" id="btn-startPlayer" data-playerid="7n-dIXlyQ3M">
-                                            <div class="play-content">
-                                                <img class="btn-productPlayer"
-                                                     src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt=""
-                                                     style="width: 45px;">
+                                            <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter"
+                                                 id="btn-startPlayer" data-playerid="7n-dIXlyQ3M">
+                                                <div class="play-content">
+                                                    <img class="btn-productPlayer"
+                                                         src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt=""
+                                                         style="width: 45px;">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- 视频播放 -->
+                                    @endif
+                                    <!-- 视频播放 -->
                                         <div class="bg-productDetailPlayer flex flex-alignCenter flex-justifyCenter">
                                             <div class="play-content" style="width: 100%">
                                                 <div id="ytplayer" class="ytplayer" data-playid=""></div>
@@ -264,7 +266,7 @@
                                 </span>
                                         </div>
                                     @endif
-                                        @if($data['isPutOn'] ==0  || ($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'])<=0)
+                                    @if($data['isPutOn'] ==0  || ($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'])<=0)
                                         <div class="p-x-20x p-y-10x font-size-md limited-content">
                                             <img src="/images/product/icon-flash@2x.png">
                                             <span class="p-l-10x">Orders Closed</span>

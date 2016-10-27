@@ -78,9 +78,10 @@
             LLC. All rights reserved.
         </div>
     </div>
-
+    @if(!isset($CartCheck))
     <!-- 固定 弹框订阅 -->
-    <div class="redeem-fixed p-y-10x p-x-20x">GET 15% OFF YOUR FIRST ORDER!</div>
+        <div class="redeem-fixed p-y-10x p-x-20x">GET 15% OFF YOUR FIRST ORDER!</div>
+    @endif
 </footer>
 
 <div id="top">
@@ -88,6 +89,7 @@
         <i class="iconfont icon-top font-size-lx text-white"></i>
     </div>
 </div>
+
 
 <!-- 邮件订阅 弹出框 -->
 <div class="remodal modal-content remodal-lg redeem-content" data-remodal-id="redeem-modal">
@@ -116,22 +118,21 @@
                 </div>
             </div>
         </form>
-        @if(!isset($CartCheck))
-            <div class="col-md-6 col-xs-6 redeem-rightWrapper hidden">
-                <div class="p-a-30x">
-                    <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
-                    <div class="text-left p-b-20x">
-                        <div class="subs-tit bigNoodle">WELCOME!</div>
-                        <div class="openSans font-size-lg subs-subTit">
-                            <span>Here’s your 15% off promo code! You have 48 hours left to use it  on your purchase.</span>
-                            <div class="p-t-10x">Happy Shopping!</div>
-                        </div>
+        <div class="col-md-6 col-xs-6 redeem-rightWrapper hidden">
+            <div class="p-a-30x">
+                <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
+                <div class="text-left p-b-20x">
+                    <div class="subs-tit bigNoodle">WELCOME!</div>
+                    <div class="openSans font-size-lg subs-subTit">
+                        <span>Here’s your 15% off promo code! You have 48 hours left to use it  on your purchase.</span>
+                        <div class="p-t-10x">Happy Shopping!</div>
                     </div>
-                    <div class="subs-btnText bigNoodle m-b-10x redeem-code">MOTIFATED15</div>
-                    <a href="/shopping/0" class="subs-btnText bigNoodle redeem-btn">SHOW ME THE GOODS</a>
                 </div>
+                <div class="subs-btnText bigNoodle m-b-10x redeem-code">MOTIFATED15</div>
+                <a href="/shopping/0" class="subs-btnText bigNoodle redeem-btn">SHOW ME THE GOODS</a>
             </div>
-        @endif
+        </div>
+
     </div>
 </div>
 
