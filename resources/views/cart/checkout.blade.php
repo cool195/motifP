@@ -212,7 +212,7 @@
                                 </div>
                                 <div class="p-l-20x m-b-20x">
                                     <select name="country" class="form-control contrlo-lg select-country">
-                                        @foreach($Address->getCountry() as $value)
+                                        @foreach($Address->getCountry(0) as $value)
                                             <option value="{{$value['country_name_en']}}"
                                                     data-type="{{$value['child_type']}}"
                                                     data-id="{{$value['country_id']}}"
@@ -528,7 +528,7 @@
                                     </div>
                                     <div class="p-l-20x m-b-20x">
                                         <select name="country" class="form-control contrlo-lg card-selectCountry">
-                                            @foreach($Address->getCountry() as $value)
+                                            @foreach($Address->getCountry(1) as $value)
                                                 <option value="{{$value['country_name_en']}}"
                                                         data-type="{{$value['child_type']}}"
                                                         data-id="{{$value['country_id']}}"

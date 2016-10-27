@@ -169,10 +169,11 @@ class AddressController extends BaseController
     }
 
     //获取国家列表
-    public function getCountry()
+    public function getCountry($scope = 0)
     {
         $params = array(
             'cmd' => 'country',
+            'scope' => $scope,
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin')
         );
