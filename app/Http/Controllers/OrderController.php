@@ -165,7 +165,7 @@ class OrderController extends BaseController
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'aid' => Session::has('user.checkout.address.receiving_id') ? Session::get('user.checkout.address.receiving_id') : $request->input('aid'),
-            'paym' => Session::has('user.checkout.paywith.pay_method') ? Session::get('user.checkout.paywith.pay_method') : $request->input('paym', 'Worldpay'),
+            'paym' => Session::get('user.checkout.paywith.pay_method'),
             'cps' => Session::get('user.checkout.couponInfo.bind_id'),
             'remark' => $request->input('remark'),
             'stype' => Session::has('user.checkout.selship.logistics_type') ? Session::get('user.checkout.selship.logistics_type') : $request->input('stype')
