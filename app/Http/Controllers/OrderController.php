@@ -164,11 +164,11 @@ class OrderController extends BaseController
         $params = array(
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'aid' => Session::get('user.checkout.address.receiving_id'),
-            'paym' => Session::get('user.checkout.paywith.pay_method'),
+            'aid' => Session::has('user.checkout.address.receiving_id') ? Session::get('user.checkout.address.receiving_id') : $request->input('aid'),
+            'paym' => Session::has('user.checkout.paywith.pay_method') ? Session::get('user.checkout.paywith.pay_method') : $request->input('paym', 'Worldpay'),
             'cps' => Session::get('user.checkout.couponInfo.bind_id'),
             'remark' => $request->input('remark'),
-            'stype' => Session::get('user.checkout.selship.logistics_type')
+            'stype' => Session::has('user.checkout.selship.logistics_type') ? Session::get('user.checkout.selship.logistics_type') : $request->input('stype')
         );
         if ($params['paym'] == 'PayPalNative') {
             $params['cmd'] = 'ordsubmit';
@@ -190,6 +190,10 @@ class OrderController extends BaseController
             //支付失败
             $result['redirectUrl'] = '/cart/ordercheckout';
         }
+        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($params, "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         return $result;
     }
 

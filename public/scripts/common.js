@@ -1074,7 +1074,7 @@ function HideSeeMore(seemoreName) {
         $('.card-message .def-addr1').val(addr1);
         $('.card-message .def-addr2').val(addr2);
         $('.card-message .def-country').val(country);
-        
+
         $.ajax({
             url: '/wordpay/selAddr/' + $(this).parent('.address-item').data('aid'),
             type: 'get'
