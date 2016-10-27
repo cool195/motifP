@@ -4,19 +4,19 @@
     <div class="bannerSwiper-container" id="dailyIndex" data-show="true">
         <div class="swiper-wrapper">
             <div class="swiper-slide" >
-                <a href="/topic/186">
-                    <img src="{{config('runtime.Image_URL')}}/images/banner/banluxeedit.jpg" alt="">
+                <a href="/topic/197">
+                    <img src="{{config('runtime.Image_URL')}}/images/banner/noelia.jpg" alt="">
                 </a>
             </div>
 
             <div class="swiper-slide" >
-                <a href="designer/99">
-                    <img src="{{config('runtime.Image_URL')}}/images/banner/ban_rae.jpg" alt="">
+                <a href="/topic/196">
+                    <img src="{{config('runtime.Image_URL')}}/images/banner/heavymetal.jpg" alt="">
                 </a>
             </div>
             <div class="swiper-slide" >
-                <a href="/topic/187">
-                    <img src="{{config('runtime.Image_URL')}}/images/banner/ban_runwayRibbons.jpg" alt="">
+                <a href="/designer/99">
+                    <img src="{{config('runtime.Image_URL')}}/images/banner/rae.jpg" alt="">
                 </a>
             </div>
         </div>
