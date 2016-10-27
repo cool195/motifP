@@ -1646,6 +1646,11 @@ function HideSeeMore(seemoreName) {
 
     // 提交卡信息
     $('#btn-addNewCard').on('click', function () {
+        if($(this).hasClass('disabled')){
+            return;
+        }
+        var $this = $(this);
+        $this.addClass('disabled');
         var cardNum =  $('.card-number').val();
         var cardDate = $('.card-date').val();
         var cardCode = $('.card-code').val();
@@ -1678,6 +1683,7 @@ function HideSeeMore(seemoreName) {
             csn = $('.card-selectCountry > option[value="' + cardCountry + '"]').data('csn');
 
         }
+        loadingModal.open();
         $.ajax({
                 url: '/wordpay/addCard',
                 type: 'POST',
@@ -1698,6 +1704,8 @@ function HideSeeMore(seemoreName) {
                 }
             })
             .done(function (data) {
+              loadingModal.close();
+              $this.removeClass('disabled');
               if (data.success) {
                     getCardList();
                     $('#addCard-container input[type="text"]').val('');
