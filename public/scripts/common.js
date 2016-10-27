@@ -987,6 +987,9 @@ function HideSeeMore(seemoreName) {
                                 $('.card-message .def-addr1').val(data.data.detail_address1);
                                 $('.card-message .def-addr2').val(data.data.detail_address2);
                                 $('.card-message .def-country').val(data.data.country);
+
+                                $('#defaultAddr').html(data.data.name+" "+data.data.detail_address1+" "+data.data.city+" "+data.data.state+" "+data.data.country+" "+ data.data.zip);
+
                                 $.ajax({
                                     url: '/wordpay/selAddr/' + Aid,
                                     type: 'get'
