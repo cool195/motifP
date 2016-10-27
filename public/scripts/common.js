@@ -1304,6 +1304,16 @@ function HideSeeMore(seemoreName) {
             $("html,body").animate({scrollTop: $('#addrShowHide').offset().top}, 100);
             return false;
         }
+
+        if($('.payment-text').html() == ""){
+            $('.checkoutWarning .font-size-base').html('Please choose your payment method!');
+            $('.checkoutWarning').removeAttr('hidden');
+            setTimeout(function () {
+                $('.checkoutWarning').attr('hidden', "");
+            }, 3000);
+            return false;
+        }
+
         var paym = $(this).data('with');
         $.ajax({
                 url: '/payorder',
