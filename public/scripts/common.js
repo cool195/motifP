@@ -1317,6 +1317,8 @@ function HideSeeMore(seemoreName) {
             return false;
         }
 
+        loadingModal.open();
+
         var paym = $(this).data('with');
         $.ajax({
                 url: '/payorder',
@@ -1330,12 +1332,14 @@ function HideSeeMore(seemoreName) {
                 }
             })
             .done(function (data) {
+                loadingModal.close();
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
                     $('.checkoutWarning .font-size-base').html('Payment error, refresh and try again!');
                     $('.checkoutWarning').removeAttr('hidden');
                     setTimeout(function () {
+                        loadingModal.close();
                         location.reload();
                     }, 2000);
                 }
