@@ -976,6 +976,22 @@ function HideSeeMore(seemoreName) {
                             $('.add-address').addClass('disabled');
                             $('#addAddressForm').find('input[type="text"]').val('');
                             getAddressList();
+                            console.log($('div[data-aid = "'+Aid+'"]'));
+                            if ($('.card-message') && $('div[data-aid = "'+Aid+'"]').hasClass('active')) {
+                                $('.card-message .def-name').html(data.data.name);
+                                $('.card-message .def-city').html(data.data.city);
+                                $('.card-message .def-zip').html(data.data.zip);
+                                $('.card-message .def-state').html(data.data.state);
+
+                                $('.card-message .def-tel').val(data.data.telephone);
+                                $('.card-message .def-addr1').val(data.data.detail_address1);
+                                $('.card-message .def-addr2').val(data.data.detail_address2);
+                                $('.card-message .def-country').val(data.data.country);
+                                $.ajax({
+                                    url: '/wordpay/selAddr/' + Aid,
+                                    type: 'get'
+                                })
+                            }
                         }
                     })
             }
