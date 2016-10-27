@@ -144,7 +144,7 @@
         <!-- 设计师预售信息 LIMITED EDITION -->
         <div class="box-shadow bg-white m-t-20x p-x-20x">
             <div class="helveBold text-center p-y-15x font-size-md">LIMITED EDITION</div>
-            
+
             <div class="p-y-15x">
                 <div class="">
                     <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
