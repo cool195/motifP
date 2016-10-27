@@ -1328,38 +1328,7 @@ function HideSeeMore(seemoreName) {
                 }
             })
     });
-
-    $('.btn-toCheckoutTest').on('click', function () {
-
-        if ($('#defaultAddr').data('aid') < 1) {
-            checkValid($('input[name="name"]'));
-            $("html,body").animate({scrollTop: $('#addrShowHide').offset().top}, 100);
-            return false;
-        }
-        var paym = $(this).data('with');
-        $.ajax({
-                url: '/payorder',
-                type: 'POST',
-                data: {
-                    aid: $('#defaultAddr').data('aid'),
-                    bindid: $('#pcode').data('bindid') == undefined ? '' : $('#pcode').data('bindid'),
-                    remark: $('input[name="cremark"]').val(),
-                    stype: $('input[name="shippingMethod"]:checked').val(),
-                    paym: paym
-                }
-            })
-            .done(function (data) {
-                if (data.success) {
-                    window.location.href = data.redirectUrl;
-                } else {
-                    $('.checkoutWarning .font-size-base').html('Payment error, refresh and try again!');
-                    $('.checkoutWarning').removeAttr('hidden');
-                    setTimeout(function () {
-                        location.reload();
-                    }, 2000);
-                }
-            })
-    });
+    
 
     // 进入添加地址界面
     $('.btn-addNewAddress').on('click', function () {

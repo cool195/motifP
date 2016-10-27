@@ -694,7 +694,7 @@
         </div>
         <!-- 提交按钮 -->
         <div class="p-y-20x text-right">
-            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckoutTest m-r-40x" data-with="Worldpay">PlaceOrder</a>
+            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Worldpay">Place Order</a>
             {{--<a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Oceanpay">Pay
                 with Credit Card</a>
             <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay
