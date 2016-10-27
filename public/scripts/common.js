@@ -643,6 +643,8 @@ function HideSeeMore(seemoreName) {
     var beginTimes = $('.limited-content').data('begintime'); // 开始时间
     var endTimes = $('.limited-content').data('endtime');   // 结束时间
     var leftNum = $('.limited-content').data('lefttime');     // 剩余秒数  604358742
+    var secondnum = parseInt(endTimes - beginTimes);   //604802000    // 预售总时长
+    var rate = ((leftNum / secondnum).toFixed(4) * 10000); //剩余时间所占总时长的比例
     var qtty = $('.limited-content').data('qtty');            //  库存量
     var secondnum = parseInt(endTimes - beginTimes);   //604802000    // 预售总时长
     function timer(intDiff) {
@@ -676,6 +678,8 @@ function HideSeeMore(seemoreName) {
                 $('.sec-info').html(second);
             }
             intDiff--;
+            rate = ((intDiff * 1000 / secondnum).toFixed(4) * 10000);
+            $('#limited-progress').attr('value', rate);
         }, 1000);
     }
 

@@ -156,15 +156,17 @@
 
             <hr class="hr-base m-a-0">
             <div class="p-y-15x">
-                <div class="">
+                <div class="limited-content"
+                     data-begintime="1477584000"
+                     data-endtime="1477670400"
+                     data-lefttime="86400">
                     <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
                          srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
                          alt="">
-                    <span class="text-primary font-size-base p-l-5x">Orders Close In <span
-                                class="time_show"></span></span>
+                    <span class="text-primary font-size-base p-l-5x">Orders Close In <span class="time_show"></span></span>
                 </div>
                 <div class="p-t-10x">
-                    <progress class="progress progress-primary" value="2000" max="10000">20%</progress>
+                    <progress class="progress progress-primary" id="limited-progress" value="2000" max="10000">20%</progress>
                 </div>
             </div>
 
