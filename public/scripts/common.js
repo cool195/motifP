@@ -3680,8 +3680,10 @@ function HideSeeMore(seemoreName) {
     });
     // checkout页面的loading
     if($('#checkoutView').length > 0){
-        loadingModal.open()
-        //loadingModal.close()
+        // 需默认关闭
+        loadingModal.close();
+        //loadingModal.open();
+
     }
 
 
