@@ -6,7 +6,7 @@
     <div id="designerContainer" class="container m-b-40x" data-start="{{$start}}" data-loading="false">
         @foreach($list as $key => $designer)
         @if( 0 == $key % 2 )
-        <div class="p-a-20x bg-white designerList-item">
+        <div class="p-a-20x bg-white designerList-item m-b-20x">
             <div class="row designer-item">
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="p-r-30x">
@@ -85,7 +85,7 @@
             </div>
         </div>
         @else
-        <div class="p-a-20x bg-common designerList-item">
+        <div class="p-a-20x bg-white designerList-item m-b-20x">
             <div class="row designer-item">
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="text-center">
@@ -183,7 +183,7 @@
     @{{each list as value index}}
 
     @{{ if 0 == index % 2 }}
-    <div class="p-a-20x bg-white designerList-item">
+    <div class="p-a-20x bg-white designerList-item m-b-20x">
         <div class="row designer-item">
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="p-r-30x">
@@ -256,7 +256,7 @@
         </div>
     </div>
     @{{ else }}
-    <div class="p-a-20x bg-common designerList-item">
+    <div class="p-a-20x bg-white designerList-item m-b-20x">
         <div class="row designer-item">
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="text-center">
@@ -338,7 +338,7 @@
     @{{each list as value index}}
 
     @{{ if 0 == index % 2 }}
-    <div class="p-a-20x bg-common designerList-item">
+    <div class="p-a-20x bg-white designerList-item m-b-20x">
         <div class="row designer-item">
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="text-center">
@@ -411,7 +411,7 @@
         </div>
     </div>
     @{{ else }}
-    <div class="p-a-20x bg-white designerList-item">
+    <div class="p-a-20x bg-white designerList-item m-b-20x">
         <div class="row designer-item">
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="p-r-30x">
