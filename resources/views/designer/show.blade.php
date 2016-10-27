@@ -76,7 +76,7 @@
 <!-- 内容 -->
 <section class="m-t-40x">
 {{--@inject('wishlist', 'App\Http\Controllers\UserController')--}}
-<!-- 设计师列表 -->
+{{--<!-- 设计师列表 -->--}}
     {{--<div class="container m-b-40x">--}}
         {{--<div class="box-shadow p-a-20x bg-white">--}}
             {{--<div class="row designer-item" id="designerDetailContainer">--}}
