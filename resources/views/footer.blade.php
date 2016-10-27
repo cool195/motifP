@@ -1,7 +1,9 @@
 <footer>
     <div class="container p-x-40x">
         <div class="text-center m-b-40x p-t-10x">
-            <a href="/daily"><img class="" src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png{{config('runtime.V')}}" alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/logo-white@2x.png 2x"></a>
+            <a href="/daily"><img class=""
+                                  src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png{{config('runtime.V')}}"
+                                  alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/logo-white@2x.png 2x"></a>
         </div>
         <div class="row">
             <div class="col-md-3 col-xs-6">
@@ -26,12 +28,16 @@
                     <div class="sanBold font-size-sm m-b-20x">Download</div>
                     <div class="list-group-item">
                         <a href="https://itunes.apple.com/us/app/id1125850409" class="btn btn-black">
-                            <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png{{config('runtime.V')}} 3x">
+                            <img class="img-fluid m-x-auto"
+                                 src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png{{config('runtime.V')}}"
+                                 srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png{{config('runtime.V')}} 3x">
                         </a>
                     </div>
                     <div class="list-group-item">
                         <a href="https://play.google.com/store/apps/details?id=me.motif.motif" class="btn btn-black">
-                            <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png{{config('runtime.V')}} 3x">
+                            <img class="img-fluid m-x-auto"
+                                 src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png{{config('runtime.V')}}"
+                                 srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png{{config('runtime.V')}} 3x">
                         </a>
                     </div>
                 </div>
@@ -54,13 +60,23 @@
         <div class="p-y-10x text-center">
             <div class="sanBold font-size-sm m-b-20x text-white">Payment Accepted</div>
             <div>
-                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/paypal@2x.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/payment/paypal@3x.png{{config('runtime.V')}} 2x">
-                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/mastercard@2x.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/payment/mastercard@3x.png{{config('runtime.V')}} 2x">
-                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/maestro@2x.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/payment/maestro@3x.png{{config('runtime.V')}} 2x">
-                <img class="m-x-10x" src="{{config('runtime.Image_URL')}}/images/payment/visa@2x.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/payment/visa@3x.png{{config('runtime.V')}} 2x">
+                <img class="m-x-10x"
+                     src="{{config('runtime.Image_URL')}}/images/payment/paypal@2x.png{{config('runtime.V')}}"
+                     srcset="{{config('runtime.Image_URL')}}/images/payment/paypal@3x.png{{config('runtime.V')}} 2x">
+                <img class="m-x-10x"
+                     src="{{config('runtime.Image_URL')}}/images/payment/mastercard@2x.png{{config('runtime.V')}}"
+                     srcset="{{config('runtime.Image_URL')}}/images/payment/mastercard@3x.png{{config('runtime.V')}} 2x">
+                <img class="m-x-10x"
+                     src="{{config('runtime.Image_URL')}}/images/payment/maestro@2x.png{{config('runtime.V')}}"
+                     srcset="{{config('runtime.Image_URL')}}/images/payment/maestro@3x.png{{config('runtime.V')}} 2x">
+                <img class="m-x-10x"
+                     src="{{config('runtime.Image_URL')}}/images/payment/visa@2x.png{{config('runtime.V')}}"
+                     srcset="{{config('runtime.Image_URL')}}/images/payment/visa@3x.png{{config('runtime.V')}} 2x">
             </div>
         </div>
-        <div class="p-t-10x m-t-10x text-center text-white font-size-xs text-Copyright">Copyright © 2016 Motif Group LLC. All rights reserved.</div>
+        <div class="p-t-10x m-t-10x text-center text-white font-size-xs text-Copyright">Copyright © 2016 Motif Group
+            LLC. All rights reserved.
+        </div>
     </div>
 
     <!-- 固定 弹框订阅 -->
@@ -85,7 +101,8 @@
                     <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
                     <div class="text-left p-b-20x">
                         <div class="subs-tit bigNoodle">GET (MOTIF)ATED</div>
-                        <div class="openSans font-size-lg subs-subTit">Subscribe and enjoy 15% off your first order</div>
+                        <div class="openSans font-size-lg subs-subTit">Subscribe and enjoy 15% off your first order
+                        </div>
                     </div>
                     <input type="text" name="name" placeholder="Name" class="m-b-10x subscribe-name">
                     <div class="m-b-10x">
@@ -99,35 +116,46 @@
                 </div>
             </div>
         </form>
-        <div class="col-md-6 col-xs-6 redeem-rightWrapper hidden">
-            <div class="p-a-30x">
-                <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
-                <div class="text-left p-b-20x">
-                    <div class="subs-tit bigNoodle">WELCOME!</div>
-                    <div class="openSans font-size-lg subs-subTit">
-                        <span>Here’s your 15% off promo code! You have 48 hours left to use it  on your purchase.</span>
-                        <div class="p-t-10x">Happy Shopping!</div>
+        @if(!isset($CartCheck))
+            <div class="col-md-6 col-xs-6 redeem-rightWrapper hidden">
+                <div class="p-a-30x">
+                    <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
+                    <div class="text-left p-b-20x">
+                        <div class="subs-tit bigNoodle">WELCOME!</div>
+                        <div class="openSans font-size-lg subs-subTit">
+                            <span>Here’s your 15% off promo code! You have 48 hours left to use it  on your purchase.</span>
+                            <div class="p-t-10x">Happy Shopping!</div>
+                        </div>
                     </div>
+                    <div class="subs-btnText bigNoodle m-b-10x redeem-code">MOTIFATED15</div>
+                    <a href="/shopping/0" class="subs-btnText bigNoodle redeem-btn">SHOW ME THE GOODS</a>
                 </div>
-                <div class="subs-btnText bigNoodle m-b-10x redeem-code">MOTIFATED15</div>
-                <a href="/shopping/0" class="subs-btnText bigNoodle redeem-btn">SHOW ME THE GOODS</a>
             </div>
-        </div>
+        @endif
     </div>
 </div>
 
 
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-K9J99M');</script>
+<script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-K9J99M');</script>
 <!-- End Google Tag Manager -->
 
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9J99M"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9J99M"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <script>
