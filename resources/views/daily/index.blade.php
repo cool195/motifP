@@ -1,22 +1,22 @@
 <!-- banner -->
 @include('header', ['title' => 'Exclusive Accessory Designs From Your Favorite Instagrammers & YouTubers', 'page' => 'daily'])
 <section>
-    <div class="bannerSwiper-container" id="dailyIndex" data-show="true">
+    <div class="container bannerSwiper-container" id="dailyIndex" data-show="true">
         <div class="swiper-wrapper">
             <div class="swiper-slide" >
-                <a href="/topic/186">
-                    <img src="{{config('runtime.Image_URL')}}/images/banner/banluxeedit.jpg" alt="">
+                <a href="/topic/196">
+                    <img src="{{config('runtime.Image_URL')}}/images/banner/heavymetal100.jpg" alt="">
                 </a>
             </div>
 
             <div class="swiper-slide" >
                 <a href="designer/99">
-                    <img src="{{config('runtime.Image_URL')}}/images/banner/ban_rae.jpg" alt="">
+                    <img src="{{config('runtime.Image_URL')}}/images/banner/rae100.jpg" alt="">
                 </a>
             </div>
             <div class="swiper-slide" >
-                <a href="/topic/187">
-                    <img src="{{config('runtime.Image_URL')}}/images/banner/ban_runwayRibbons.jpg" alt="">
+                <a href="/topic/197">
+                    <img src="{{config('runtime.Image_URL')}}/images/banner/noelia100.jpg" alt="">
                 </a>
             </div>
         </div>
