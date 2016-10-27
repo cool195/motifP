@@ -18,8 +18,37 @@ class WordpayController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('pay', $params);
+
+        if($result['success'] && !Session::has('user.checkout.paywith')){
+            $result = $this->findLast($result);
+        }
         return $result;
     }
+
+    private function findLast(&$result)
+    {
+        foreach($result['data']['list'] as $value){
+            if(isset($value['creditCards'])){
+                foreach($value['creditCards'] as $card){
+                    if(isset($card['isLast']) && $card['isLast'] == 1){
+                        $value['withCard'] = $card;
+                        Session::put('user.checkout.paywith', $value);
+                        Session::forget('user.checkout.paywith.creditCards');
+                        break;
+                    }
+                }
+            } else {
+                if(isset($value['isLast']) && $value['isLast'] == 1){
+                    Session::put('user.checkout.paywith', $value);
+                    Session::forget('user.checkout.paywith.creditCards');
+                    break;
+                }
+            }
+        }
+        return $result;
+    }
+
+
 
     public function addCreditCard(Request $request)
     {

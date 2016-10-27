@@ -308,6 +308,8 @@
 
         {{--Payment Method--}}
         <div class="box-shadow bg-white m-t-20x active">
+            @inject('Wordpay', 'App\Http\Controllers\WordpayController')
+            {{$paylist = $Wordpay->getPayList()}}
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="pmShowHide">
                 <span class="sanBold">Payment Method</span>
                 <span class="pull-right showHide-simpleInfo">
@@ -342,8 +344,6 @@
             <hr class="hr-common m-a-0">
             <div class="showHide-body payment-content">
                 <!--选择支付方式-->
-                @inject('Wordpay', 'App\Http\Controllers\WordpayController')
-                {{$paylist = $Wordpay->getPayList()}}
                 <div class="p-a-20x select-payment">
                     <span class="font-size-md">Select Payment Method</span>
                     <div class="row p-x-10x p-t-20x payment-list">
@@ -577,7 +577,7 @@
         </div>
 
         {{--Promotion Code--}}
-        <div class="box-shadow bg-white m-t-20x" id="pcode" data-bindid="@if(Session::has('user.checkout.couponInfo')){{ Session::get('user.checkout.couponInfo.bind_id') }}@else{{$accountList['cp_bind_id']}}@endif ">
+        <div class="box-shadow bg-white m-t-20x" id="pcode" data-bindid="@if(Session::has('user.checkout.couponInfo')){{Session::get('user.checkout.couponInfo.bind_id')}}@else{{$accountList['cp_bind_id']}}@endif">
             <div class="p-x-20x p-y-15x font-size-md btn-showHide" id="">
                 <span class="sanBold">Promotion Code</span>
                 <span class="pull-right showHide-simpleInfo">
@@ -703,6 +703,17 @@
     </div>
 </section>
 
+
+<!-- loading -->
+<div class="remodal-overlay remodal-is-opened" style="display: block; background: none!important;"></div>
+<div class="remodal" data-remodal-id="loading-modal">
+    <div class="loading daily-loading centerLoading">
+        <div class="loader"></div>
+        <div class="text-center p-l-15x">Loading...</div>
+    </div>
+</div>
+
+<!-- 移除商品弹框 -->
 <div class="remodal modal-content remodal-md" data-remodal-id="modal" id="modalDialog" data-spu="">
     <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Bag?</div>
     <hr class="hr-common m-a-0">

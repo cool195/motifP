@@ -1620,7 +1620,6 @@ footer .text-Copyright{
   cursor: pointer;
   background-color: #7f9cf5;
 }
-
 .redeem-leftWrapper.hidden,.redeem-rightWrapper.hidden{
   display: none;
 }
@@ -1703,8 +1702,13 @@ footer .text-Copyright{
   display: inline-block;
 }
 
-
-
+.centerLoading{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  -webkit-transform: translate(0px, -50%);
+  transform: translate(0px, -50%);
+}
 
 @media (max-width: 544px) {
   .login-container {

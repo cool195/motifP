@@ -769,6 +769,9 @@ function HideSeeMore(seemoreName) {
         // 邮件订阅 弹出框
         var redeemModal = $('[data-remodal-id=redeem-modal]').remodal(Options);
 
+        // checkout loading浮层
+        var loadingModal = $('[data-remodal-id=loading-modal]').remodal(Options);
+
     } catch (e) {
     }
 
@@ -1314,6 +1317,8 @@ function HideSeeMore(seemoreName) {
             return false;
         }
 
+        loadingModal.open();
+
         var paym = $(this).data('with');
         $.ajax({
                 url: '/payorder',
@@ -1327,12 +1332,14 @@ function HideSeeMore(seemoreName) {
                 }
             })
             .done(function (data) {
+                loadingModal.close();
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
                     $('.checkoutWarning .font-size-base').html('Payment error, refresh and try again!');
                     $('.checkoutWarning').removeAttr('hidden');
                     setTimeout(function () {
+                        loadingModal.close();
                         location.reload();
                     }, 2000);
                 }
@@ -3675,6 +3682,14 @@ function HideSeeMore(seemoreName) {
                 }
             });
     });
+    // checkout页面的loading
+    if($('#checkoutView').length > 0){
+        // 需默认关闭
+        loadingModal.close();
+        //loadingModal.open();
+
+    }
+
 
 
 })(jQuery, Swiper);

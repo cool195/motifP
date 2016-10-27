@@ -266,7 +266,7 @@
                                 </span>
                                         </div>
                                     @endif
-                                    @if($data['isPutOn'] ==0  || ($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'])<=0)
+                                    @if(isset($data['spuStock']) && ($data['isPutOn'] ==0  || ($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'])<=0))
                                         <div class="p-x-20x p-y-10x font-size-md limited-content">
                                             <img src="/images/product/icon-flash@2x.png">
                                             <span class="p-l-10x">Orders Closed</span>
