@@ -77,7 +77,12 @@ footer .text-Copyright{
 .sanBold {
   font-family: "sanfranciscodisplay bold";
 }
-
+.bigNoodle {
+  font-family: "BigNoodleTitling";
+}
+.openSans {
+  font-family: "OpenSansRegular";
+}
 .img-border-white {
   border: 2px solid #fff;
   box-shadow: 0px 4px 10px 0px rgba(94, 109, 148, 0.3);
@@ -1600,14 +1605,7 @@ footer .text-Copyright{
     margin-bottom: 0 !important;
   }
 }
-/*订阅*/
-.redeem-leftWrapper.hidden,.redeem-rightWrapper.hidden{
-  display: none;
-}
-.redeem-content{
-  border: none;
-  border-radius: 0;
-}
+/*邮件订阅*/
 .redeem-fixed{
   display: inline-block;
   background-color: #6d91ff;
@@ -1616,26 +1614,40 @@ footer .text-Copyright{
   position: fixed;
   bottom: 0;
   right: 10%;
+  z-index: 999;
 }
 .redeem-fixed:hover{
   cursor: pointer;
   background-color: #7f9cf5;
 }
-.redeem-right{
+
+.redeem-leftWrapper.hidden,.redeem-rightWrapper.hidden{
+  display: none;
+}
+.redeem-content{
+  border: none;
+  border-radius: 0;
   position: relative;
 }
 .redeem-close{
   position: absolute;
-  right: 6px;
-  top: 13px;
+  right: 14px;
+  top: 17px;
   cursor: pointer;
 }
-.redeem-text{
-  max-width: 289px;
+.subs-tit{
+  font-size: 2.875rem;
+  color: #a74e1e;
 }
-.redeem-right input{
+.subs-subTit{
+  color: #54565b;
+}
+.subs-btnText{
+  font-size: 2rem;
+}
+.subscribe-name,.subscribe-email{
   width: 100%;
-  height: 38px;
+  height: 40px;
   padding: 0 15px;
   border: 2px solid #ddd;
 }
@@ -1652,6 +1664,7 @@ footer .text-Copyright{
 }
 .redeem-code{
   border: 1px solid #ddd;
+  color: #808080;
 }
 /* Payment Method 支付*/
 .select-payment .choose-item{

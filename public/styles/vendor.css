@@ -7523,6 +7523,18 @@ a.bg-red:focus, a.bg-red:hover {
   src: url("../../fonts/iconfont.eot?t=1463649380#iefix") format("embedded-opentype"), url("../../fonts/iconfont.woff?t=1463649380") format("woff"), url("../../fonts/iconfont.ttf?t=1463649380") format("truetype"), url("../../fonts/iconfont.svg?t=1463649380#iconfont") format("svg");
   /* iOS 4.1- */
 }
+@font-face {
+  font-family: "BigNoodleTitling";
+  src: url("../../fonts/big_noodle_titling.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OpenSansRegular";
+  src: url("../../fonts/OpenSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 .iconfont {
   display: inline-block;
@@ -8045,7 +8057,7 @@ html.remodal-is-locked {
 }
 
 .remodal-lg {
-  max-width: 780px;
+  max-width: 784px;
 }
 
 .remodal-md {

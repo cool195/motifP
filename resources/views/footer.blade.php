@@ -80,11 +80,12 @@
             <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_pic.png" class="img-fluid">
         </div>
         <form id="subscribe" action="" method="" class="redeem-leftWrapper">
-            <div class="col-md-6">
-                <div class="redeem-right p-x-20x p-t-20x">
+            <div class="col-md-6 col-xs-6">
+                <div class="p-a-30x">
                     <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
-                    <div class="redeem-text m-y-20x">
-                        <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_font.png" class="img-fluid">
+                    <div class="text-left p-b-20x">
+                        <div class="subs-tit bigNoodle">GET (MOTIF)ATED</div>
+                        <div class="openSans font-size-lg subs-subTit">Subscribe and enjoy 15% off your first order</div>
                     </div>
                     <input type="text" name="name" placeholder="Name" class="m-b-10x subscribe-name">
                     <div class="m-b-10x">
@@ -94,19 +95,22 @@
                             <span class="font-size-base"></span>
                         </div>
                     </div>
-                    <div class="font-size-lx p-y-10x m-t-10x redeem-btn redeem-enter disabled">ENTER</div>
+                    <div class="subs-btnText bigNoodle redeem-btn redeem-enter disabled">ENTER</div>
                 </div>
             </div>
         </form>
-        <div class="col-md-6 redeem-rightWrapper hidden">
-            <div class="redeem-right p-x-20x p-t-20x">
+        <div class="col-md-6 col-xs-6 redeem-rightWrapper hidden">
+            <div class="p-a-30x">
                 <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
-                <div class="redeem-text m-y-20x">
-                    <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_font2.png" class="img-fluid">
+                <div class="text-left p-b-20x">
+                    <div class="subs-tit bigNoodle">WELCOME!</div>
+                    <div class="openSans font-size-lg subs-subTit">
+                        <span>Here’s your 15% off promo code! You have 48 hours left to use it  on your purchase.</span>
+                        <div class="p-t-10x">Happy Shopping!</div>
+                    </div>
                 </div>
-
-                <div class="font-size-lx p-y-10x m-t-10x redeem-code">MOTIFATED15</div>
-                <a href="/shopping/0" class="font-size-lx p-y-10x m-t-10x redeem-btn">SHOW ME THE GOODS</a>
+                <div class="subs-btnText bigNoodle m-b-10x redeem-code">MOTIFATED15</div>
+                <a href="/shopping/0" class="subs-btnText bigNoodle redeem-btn">SHOW ME THE GOODS</a>
             </div>
         </div>
     </div>
