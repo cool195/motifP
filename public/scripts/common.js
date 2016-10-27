@@ -1306,7 +1306,7 @@ function HideSeeMore(seemoreName) {
         }
         var paym = $(this).data('with');
         $.ajax({
-                url: '/order',
+                url: '/payorder',
                 type: 'POST',
                 data: {
                     aid: $('#defaultAddr').data('aid'),
