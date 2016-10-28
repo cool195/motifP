@@ -51,7 +51,9 @@ class DailyController extends BaseController
         );
 
         $result = $this->request("topicf", $params);
-
+        if(empty($result['data'])){
+            abort(404);
+        }
         if($request->input('ajax')){
             return $result;
         }
