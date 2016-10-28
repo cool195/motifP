@@ -142,47 +142,97 @@
         </div>
 
         <!-- 设计师预售信息 LIMITED EDITION -->
-        <div class="box-shadow bg-white m-t-20x p-x-20x">
-            <div class="helveBold text-center p-y-15x font-size-md">LIMITED EDITION</div>
+        @if(!empty($pre_product))
+            @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($pre_product['spuStock']))
+                <div class="box-shadow bg-white m-t-20x p-x-20x">
+                    <div class="helveBold text-center p-y-15x font-size-md">LIMITED EDITION</div>
+                    @if($pre_product['isPutOn'] !=1)
+                        <div class="p-y-15x">
+                            <div class="">
+                                <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
+                                     srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
+                                     alt="">
+                                <span class="text-primary font-size-base p-l-5x">Sold Out</span>
+                            </div>
+                        </div>
+                        <hr class="hr-base m-a-0">
+                        <div class="p-y-15x">
+                            <div class="">
+                                <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
+                                     srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
+                                     alt="">
+                                <span class="text-primary font-size-base p-l-5x">Orders Closed</span>
+                            </div>
+                        </div>
+                    @else
+                        @if(!empty($pre_product['spuStock']))
+                            <div class="p-y-15x">
+                                <div class="">
+                                    <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
+                                         srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
+                                         alt="">
+                                <span class="text-primary font-size-base p-l-5x">
+                                    @if(($pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']) > 0)
+                                        Only {{$pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']}}
+                                        Left
+                                    @else
+                                        Sold Out
+                                    @endif
+                                </span>
+                                </div>
+                            </div>
+                            <hr class="hr-base m-a-0">
+                        @endif
 
-            <div class="p-y-15x">
-                <div class="">
-                    <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
-                         srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
-                         alt="">
-                    <span class="text-primary font-size-base p-l-5x">Orders Closed</span>
+                        @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0)
+                            @if($pre_product['skuPrice']['skuPromotion']['remain_time']>0)
+                                <div class="p-y-15x">
+                                    <div class="limited-content"
+                                         data-begintime="{{$pre_product['skuPrice']['skuPromotion']['start_time']}}"
+                                         data-endtime="{{$pre_product['skuPrice']['skuPromotion']['end_time']}}"
+                                         data-lefttime="@if($pre_product['skuPrice']['skuPromotion']['remain_time']>0){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
+                                        <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
+                                             srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
+                                             alt="">
+                                        <span class="text-primary font-size-base p-l-5x">Orders Close In <span
+                                                    class="time_show"></span></span>
+                                    </div>
+                                    <div class="p-t-10x">
+                                        <progress class="progress progress-primary" id="limited-progress" value=""
+                                                  max="10000">0%
+                                        </progress>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="p-y-15x">
+                                    <div class="">
+                                        <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
+                                             srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
+                                             alt="">
+                                        <span class="text-primary font-size-base p-l-5x">Orders Closed</span>
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
+                    @endif
+                </div>
+            @endif
+        @endif
+    <!-- 设计师预售信息 PREORDER -->
+        @if($pre_product['skuPrice']['skuPromotion']['ship_desc'])
+            <div class="box-shadow bg-white m-t-20x p-x-20x">
+                <div class="helveBold text-center p-y-15x font-size-md">PREORDER</div>
+                <hr class="hr-base m-a-0">
+                <div class="p-y-15x">
+                    <div class="text-primary font-size-base">
+                        Expected to ship on <span
+                                class="sanBold">{{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}</span>
+                    </div>
                 </div>
             </div>
+        @endif
 
-            <hr class="hr-base m-a-0">
-            <div class="p-y-15x">
-                <div class="limited-content"
-                     data-begintime="1477584000"
-                     data-endtime="1477670400"
-                     data-lefttime="86400">
-                    <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
-                         srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
-                         alt="">
-                    <span class="text-primary font-size-base p-l-5x">Orders Close In <span class="time_show"></span></span>
-                </div>
-                <div class="p-t-10x">
-                    <progress class="progress progress-primary" id="limited-progress" value="2000" max="10000">20%</progress>
-                </div>
-            </div>
-
-        </div>
-        <!-- 设计师预售信息 PREORDER -->
-        <div class="box-shadow bg-white m-t-20x p-x-20x">
-            <div class="helveBold text-center p-y-15x font-size-md">PREORDER</div>
-            <hr class="hr-base m-a-0">
-            <div class="p-y-15x">
-                <div class="text-primary font-size-base">
-                    Expected to ship on <span class="sanBold">November 25, 2016.</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- 设计师预售 -->
+    <!-- 设计师预售 -->
         @if(!empty($product['infos']))
             <div class="bg-white m-t-20x">
             @if(!empty($product['infos']))
@@ -256,10 +306,13 @@
 
                                                         @if(Session::has('user'))
                                                             <span class="product-heart btn-heart">
-                                                                <i class="iconfont btn-wish font-size-lxx @if(in_array($spu, $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i>
+                                                                <i class="iconfont btn-wish font-size-lxx @if(in_array($spu, $wishlist->wishlist())) active @endif"
+                                                                   data-spu="{{$spu}}"></i>
                                                             </span>
                                                         @else
-                                                            <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$spu}}"></i></span>
+                                                            <span class="product-heart btn-heart"><i
+                                                                        class="iconfont btn-wish font-size-lxx"
+                                                                        data-actionspu="{{$spu}}"></i></span>
                                                         @endif
                                                     </div>
                                                     <div class="price-caption helveBold">
