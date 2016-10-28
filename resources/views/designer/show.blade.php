@@ -198,9 +198,7 @@
                                                     class="time_show"></span></span>
                                     </div>
                                     <div class="p-t-10x">
-                                        <progress class="progress progress-primary" id="limited-progress" value=""
-                                                  max="10000">0%
-                                        </progress>
+                                        <progress class="progress progress-primary" id="limited-progress" value="" max="10000">0%</progress>
                                     </div>
                                 </div>
                             @else
