@@ -69,7 +69,7 @@
                         <span>Bag Subtotal:</span>
                         <span class="sanBold pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span>
 
-                        <a href="/cart/ordercheckout"
+                        <a href="/cart/ordercheckout" data-clk='http://clk.motif.me/log.gif?t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
                            class="m-l-30x btn btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
                             To Checkout</a>
                     @endif
@@ -241,7 +241,7 @@
         {{--提交按钮--}}
         <div class="p-y-40x text-right">
             @if(!empty($cart['showSkus']))
-                <a href="/cart/ordercheckout"
+                <a href="/cart/ordercheckout" data-clk='http://clk.motif.me/log.gif?t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
                    class="btn btn-block btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
                     To Checkout</a>
             @endif

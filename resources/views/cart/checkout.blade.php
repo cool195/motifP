@@ -694,7 +694,8 @@
         </div>
         <!-- 提交按钮 -->
         <div class="p-y-20x text-right">
-            <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Worldpay" data-clk='http://clk.motif.me/log.gif?t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'>Place Order</a>
+            <a href="javascript:void(0)" data-clks='http://clk.motif.me/log.gif?t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
+               class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Worldpay" >Place Order</a>
             {{--<a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Oceanpay">Pay
                 with Credit Card</a>
             <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay

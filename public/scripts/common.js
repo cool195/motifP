@@ -1348,6 +1348,11 @@ function HideSeeMore(seemoreName) {
         }
 
         loadingModal.open();
+        var $this = $(this);
+        $.ajax({
+            url: $this.data('clks'),
+            type: 'get'
+        });
 
         var paym = $(this).data('with');
         $.ajax({
