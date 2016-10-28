@@ -12,8 +12,8 @@ class NetworkRedsController extends BaseController
     {
         $designerUrl = '/designer';
         $queryString = $request->getQueryString();
-        $mrefer = $request->get('mrefer');
-        $msource = $request->get('msource');
+        $utm_medium = $request->get('utm_medium');
+        $utm_source = $request->get('utm_source');
         switch ($request->path()) {
             case 'a':
                 $designerUrl = '/designer/79';
@@ -23,11 +23,11 @@ class NetworkRedsController extends BaseController
                 break;
         }
 
-        $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'http://www.motif.me') . $designerUrl;
+        $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'http://www.motif.me') . $designerUrl . ($queryString ? '?' . $queryString : '');
         $ref = urlencode($request->header('referer'));
-        $clk = 'http://clk.motif.me/log.gif?t=route.600001&m=PC_M2016-1&pin=' . Session::get('user.pin') . '&uuid=' . $_COOKIE['uid'] . '&ref=' . $ref . '&v={"mrefer":"' . $mrefer . '","msource":"' . $msource . '"}';
+        $clk = 'http://clk.motif.me/log.gif?t=route.600001&m=PC_M2016-1&pin=' . Session::get('user.pin') . '&uuid=' . $_COOKIE['uid'] . '&ref=' . $ref . '&v={"utm_medium":"' . $utm_medium . '","utm_source":"' . $utm_source . '"}';
         file_get_contents($clk);
-        return View('designer.networkreds', ['designerUrl' => $designerUrl, 'queryString' => $queryString, 'mrefer' => $mrefer, 'msource' => $msource]);
+        return View('designer.networkreds', ['designerUrl' => $designerUrl, 'utm_medium' => $utm_medium, 'utm_source' => $utm_source]);
     }
 
 
