@@ -6,7 +6,7 @@
     <div id="designerContainer" class="container m-b-40x" data-start="{{$start}}" data-loading="false">
         @foreach($list as $key => $designer)
         @if( 0 == $key % 2 )
-        <div class="p-a-20x bg-white designerList-item m-b-20x">
+        <div class="p-a-20x bg-white designerList-item box-shadow m-b-20x">
             <div class="row designer-item">
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="p-r-30x">
@@ -75,17 +75,17 @@
                             @endif
                         </div>
                         <div class="p-t-15x">{{  $designer['intro'] }}</div>
-                        {{--<div class="p-t-15x">
+                        <div class="p-t-15x">
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                        </div>--}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         @else
-        <div class="p-a-20x bg-white designerList-item m-b-20x">
+        <div class="p-a-20x bg-white designerList-item box-shadow m-b-20x">
             <div class="row designer-item">
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="text-center">
@@ -108,11 +108,11 @@
                             @endif
                         </div>
                         <div class="p-t-15x">{{ $designer['intro'] }}</div>
-                        {{--<div class="p-t-15x">
+                        <div class="p-t-15x">
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                        </div>--}}
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-xs-12">
@@ -183,7 +183,7 @@
     @{{each list as value index}}
 
     @{{ if 0 == index % 2 }}
-    <div class="p-a-20x bg-white designerList-item m-b-20x">
+    <div class="p-a-20x bg-white designerList-item box-shadow m-b-20x">
         <div class="row designer-item">
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="p-r-30x">
@@ -251,12 +251,18 @@
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>
+                    <div class="p-t-15x">
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     @{{ else }}
-    <div class="p-a-20x bg-white designerList-item m-b-20x">
+    <div class="p-a-20x bg-white designerList-item box-shadow m-b-20x">
         <div class="row designer-item">
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="text-center">
@@ -279,6 +285,12 @@
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>
+                    <div class="p-t-15x">
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-xs-12">
@@ -338,7 +350,7 @@
     @{{each list as value index}}
 
     @{{ if 0 == index % 2 }}
-    <div class="p-a-20x bg-white designerList-item m-b-20x">
+    <div class="p-a-20x bg-white designerList-item box-shadow m-b-20x">
         <div class="row designer-item">
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="text-center">
@@ -360,6 +372,12 @@
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>
+                    <div class="p-t-15x">
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-xs-12">
@@ -411,7 +429,7 @@
         </div>
     </div>
     @{{ else }}
-    <div class="p-a-20x bg-white designerList-item m-b-20x">
+    <div class="p-a-20x bg-white designerList-item box-shadow m-b-20x">
         <div class="row designer-item">
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="p-r-30x">
@@ -479,6 +497,12 @@
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>
+                    <div class="p-t-15x">
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                    </div>
                 </div>
             </div>
         </div>
