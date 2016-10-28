@@ -75,11 +75,11 @@
                             @endif
                         </div>
                         <div class="p-t-15x">{{  $designer['intro'] }}</div>
-                        {{--<div class="p-t-15x">
+                        <div class="p-t-15x">
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                        </div>--}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -108,11 +108,11 @@
                             @endif
                         </div>
                         <div class="p-t-15x">{{ $designer['intro'] }}</div>
-                        {{--<div class="p-t-15x">
+                        <div class="p-t-15x">
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                        </div>--}}
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-xs-12">
@@ -251,6 +251,12 @@
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>
+                    <div class="p-t-15x">
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -279,6 +285,12 @@
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>
+                    <div class="p-t-15x">
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-xs-12">
@@ -360,6 +372,12 @@
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>
+                    <div class="p-t-15x">
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-xs-12">
@@ -479,6 +497,12 @@
                         @endif
                     </div>
                     <div class="p-t-15x">@{{ value.intro }}</div>
+                    <div class="p-t-15x">
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                    </div>
                 </div>
             </div>
         </div>
