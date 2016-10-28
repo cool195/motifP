@@ -74,12 +74,28 @@
                                 <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designerId']}}">Follow</a>
                             @endif
                         </div>
-                        <div class="p-t-15x">{{  $designer['intro'] }}</div>
-                        <div class="p-t-15x">
-                            <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
-                            <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
-                            <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                        </div>
+                        <div class="p-t-15x">{{  mb_substr($designer['describe'], 0, 150) }}</div>
+                        @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
+                            <div class="p-t-20x p-l-15x font-size-lxx">
+                                @endif
+                                @if(!empty($designer['instagram_link']))
+                                    <a href="{{$designer['instagram_link']}}" class="m-r-20x"><i class="iconfont icon-instagram1"></i></a>
+                                @endif
+                                @if(!empty($designer['snapchat_link']))
+                                    <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><i class="iconfont icon-snapchat"></i></a>
+                                @endif
+                                @if(!empty($designer['youtube_link']))
+                                    <a href="{{$designer['youtube_link']}}" class="m-r-20x"><i class="iconfont icon-youtube1"></i></a>
+                                @endif
+                                @if(!empty($designer['facebook_link']))
+                                    <a href="{{$designer['facebook_link']}}" class="m-r-20x"><i class="iconfont icon-facebook1"></i></a>
+                                @endif
+                                @if(!empty($designer['blog_link']))
+                                    <a href="{{$designer['blog_link']}}" class="m-r-20x"><i class="iconfont icon-blog"></i></a>
+                                @endif
+                                @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -107,12 +123,33 @@
                                 <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designerId']}}">Follow</a>
                             @endif
                         </div>
-                        <div class="p-t-15x">{{ $designer['intro'] }}</div>
-                        <div class="p-t-15x">
-                            <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
-                            <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
-                            <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                        </div>
+                        <div class="p-t-15x">{{ mb_substr($designer['describe'], 0, 150) }}</div>
+                        @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
+                            <div class="p-t-20x p-l-15x font-size-lxx">
+                                @endif
+                                @if(!empty($designer['instagram_link']))
+                                    <a href="{{$designer['instagram_link']}}" class="m-r-20x"><i
+                                                class="iconfont icon-instagram1"></i></a>
+                                @endif
+                                @if(!empty($designer['snapchat_link']))
+                                    <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><i
+                                                class="iconfont icon-snapchat"></i></a>
+                                @endif
+                                @if(!empty($designer['youtube_link']))
+                                    <a href="{{$designer['youtube_link']}}" class="m-r-20x"><i
+                                                class="iconfont icon-youtube1"></i></a>
+                                @endif
+                                @if(!empty($designer['facebook_link']))
+                                    <a href="{{$designer['facebook_link']}}" class="m-r-20x"><i
+                                                class="iconfont icon-facebook1"></i></a>
+                                @endif
+                                @if(!empty($designer['blog_link']))
+                                    <a href="{{$designer['blog_link']}}" class="m-r-20x"><i
+                                                class="iconfont icon-blog"></i></a>
+                                @endif
+                                @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-xs-12">
@@ -250,13 +287,28 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.intro }}</div>
-                    <div class="p-t-15x">
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                    </div>
+                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
+                        <div class="p-t-20x p-l-15x font-size-lxx">
+                    @{{ /if }}
+                    @{{ if  value.instagram_link != undefined }}
+                            <a href="{{$designer['instagram_link']}}" class="m-r-20x"><i class="iconfont icon-instagram1"></i></a>
+                    @{{ /if }}
+                    @{{ if  value.snapchat_link != undefined }}
+                            <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><i class="iconfont icon-snapchat"></i></a>
+                    @{{ /if }}
+                    @{{ if  value.youtube_link != undefined }}
+                            <a href="{{$designer['youtube_link']}}" class="m-r-20x"><i class="iconfont icon-youtube1"></i></a>
+                    @{{ /if }}
+                    @{{ if  value.facebook_link != undefined}}
+                            <a href="{{$designer['facebook_link']}}" class="m-r-20x"><i class="iconfont icon-facebook1"></i></a>
+                    @{{ /if }}
+                    @{{ if  value.blog_link != undefined}}
+                            <a href="{{$designer['blog_link']}}" class="m-r-20x"><i class="iconfont icon-blog"></i></a>
+                    @{{ /if }}
+                    @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
+                        </div>
+                    @{{ /if }}
                 </div>
             </div>
         </div>
@@ -284,13 +336,28 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.intro }}</div>
-                    <div class="p-t-15x">
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
+                    <div class="p-t-20x p-l-15x font-size-lxx">
+                        @{{ /if }}
+                        @{{ if  value.instagram_link != undefined }}
+                        <a href="{{$designer['instagram_link']}}" class="m-r-20x"><i class="iconfont icon-instagram1"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.snapchat_link != undefined }}
+                        <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><i class="iconfont icon-snapchat"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.youtube_link != undefined }}
+                        <a href="{{$designer['youtube_link']}}" class="m-r-20x"><i class="iconfont icon-youtube1"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.facebook_link != undefined}}
+                        <a href="{{$designer['facebook_link']}}" class="m-r-20x"><i class="iconfont icon-facebook1"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.blog_link != undefined}}
+                        <a href="{{$designer['blog_link']}}" class="m-r-20x"><i class="iconfont icon-blog"></i></a>
+                        @{{ /if }}
+                        @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
                     </div>
+                    @{{ /if }}
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-xs-12">
@@ -371,13 +438,28 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.intro }}</div>
-                    <div class="p-t-15x">
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
+                    <div class="p-t-20x p-l-15x font-size-lxx">
+                        @{{ /if }}
+                        @{{ if  value.instagram_link != undefined }}
+                        <a href="{{$designer['instagram_link']}}" class="m-r-20x"><i class="iconfont icon-instagram1"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.snapchat_link != undefined }}
+                        <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><i class="iconfont icon-snapchat"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.youtube_link != undefined }}
+                        <a href="{{$designer['youtube_link']}}" class="m-r-20x"><i class="iconfont icon-youtube1"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.facebook_link != undefined}}
+                        <a href="{{$designer['facebook_link']}}" class="m-r-20x"><i class="iconfont icon-facebook1"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.blog_link != undefined}}
+                        <a href="{{$designer['blog_link']}}" class="m-r-20x"><i class="iconfont icon-blog"></i></a>
+                        @{{ /if }}
+                        @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
                     </div>
+                    @{{ /if }}
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-xs-12">
@@ -496,13 +578,28 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.intro }}</div>
-                    <div class="p-t-15x">
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                        <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
+                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
+                    <div class="p-t-20x p-l-15x font-size-lxx">
+                        @{{ /if }}
+                        @{{ if  value.instagram_link != undefined }}
+                        <a href="{{$designer['instagram_link']}}" class="m-r-20x"><i class="iconfont icon-instagram1"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.snapchat_link != undefined }}
+                        <a href="{{$designer['snapchat_link']}}" class="m-r-20x"><i class="iconfont icon-snapchat"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.youtube_link != undefined }}
+                        <a href="{{$designer['youtube_link']}}" class="m-r-20x"><i class="iconfont icon-youtube1"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.facebook_link != undefined}}
+                        <a href="{{$designer['facebook_link']}}" class="m-r-20x"><i class="iconfont icon-facebook1"></i></a>
+                        @{{ /if }}
+                        @{{ if  value.blog_link != undefined}}
+                        <a href="{{$designer['blog_link']}}" class="m-r-20x"><i class="iconfont icon-blog"></i></a>
+                        @{{ /if }}
+                        @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
                     </div>
+                    @{{ /if }}
                 </div>
             </div>
         </div>
