@@ -786,6 +786,7 @@ function HideSeeMore(seemoreName) {
     $('.cupn').on('click', function (e) {
         var tObj = $(this);
         var nowsku = tObj.data('sku');
+        var nowkey = tObj.data('key');
         if (nowsku && !tObj.hasClass('disabled')) {
             //tObj.addClass('disabled');
             var skuQty = $('#cskunum' + nowsku).html() * 1 + tObj.data('num');
@@ -823,7 +824,7 @@ function HideSeeMore(seemoreName) {
                                 })
                                 .done(function (data) {
                                     if (data.success) {
-                                        cart_update_info();
+                                        cart_update_info(nowkey);
                                     }
                                 })
 
@@ -840,7 +841,7 @@ function HideSeeMore(seemoreName) {
     });
 
     //动态更新购物车价格总数量
-    function cart_update_info() {
+    function cart_update_info(nowkey) {
         $.ajax({
                 url: '/cart/list',
                 type: 'GET',
@@ -852,6 +853,9 @@ function HideSeeMore(seemoreName) {
                         $('.total_sku_qtty').html('Items (' + data.data.total_sku_qtty + '):');
                         $('.vas_amount').html('$' + (data.data.vas_amount / 100).toFixed(2));
                         $('.pay_amount').html('$' + (data.data.pay_amount / 100).toFixed(2));
+                        if(nowkey != undefined){
+                            $('.skuprice'+nowkey).html('$'+(data.data.showSkus[nowkey].sale_price / 100).toFixed(2));
+                        }
                         if (data.data.pay_amount <= 0) {
                             $('.btn-toCheckout').addClass('disabled');
                         }

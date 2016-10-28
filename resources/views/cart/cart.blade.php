@@ -81,7 +81,7 @@
                 <div class="sanBold font-size-md p-x-20x p-y-15x">In Bag</div>
                 <hr class="hr-base m-a-0">
                 <div class="p-x-20x">
-                    @foreach($cart['showSkus'] as $showSku)
+                    @foreach($cart['showSkus'] as $k=>$showSku)
                         <div class="p-y-20x border-bottom" id="{{'csku'.$showSku['sku']}}">
                             <div class="row flex flex-alignCenter cartProduct-item">
                                 <div class="col-md-4 media">
@@ -109,7 +109,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <div class="p-l-20x">
-                                        <div class="font-size-md text-primary">
+                                        <div class="font-size-md text-primary {{'skuprice'.$k}}">
                                             ${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
                                     </div>
                                 </div>
@@ -117,14 +117,14 @@
                                     <div class="btn-group flex p-l-40x">
                                         <div id="{{'cdsku'.$showSku['sku']}}"
                                              class="btn btn-cartCount btn-xs @if($showSku['sale_qtty']==1 || !$showSku['select']){{'disabled'}}@endif cupn"
-                                             data-num="-1" data-sku="{{$showSku['sku']}}">
+                                             data-num="-1" data-key="{{$k}}" data-sku="{{$showSku['sku']}}">
                                             <i class="iconfont icon-minus font-size-lg"></i>
                                         </div>
                                         <div id="{{'cskunum'.$showSku['sku']}}"
                                              class="btn btn-cartCount btn-xs font-size-base p-x-20x">{{$showSku['sale_qtty']}}</div>
                                         <div id="{{'casku'.$showSku['sku']}}"
                                              class="btn btn-cartCount btn-xs @if(!$showSku['select'] || $showSku['sale_qtty'] >= 50){{'disabled'}}@endif cupn"
-                                             data-num="1" data-sku="{{$showSku['sku']}}">
+                                             data-num="1" data-key="{{$k}}" data-sku="{{$showSku['sku']}}">
                                             <i class="iconfont icon-add font-size-lg"></i>
                                         </div>
                                     </div>
