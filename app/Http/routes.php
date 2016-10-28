@@ -310,7 +310,9 @@ Route::get('error',function (){
 });
 // Ask End
 
-Route::get('/aes', 'TestController@index');
+
+//网红落地路由
+Route::get('/a', 'NetworkRedsController@index');
 
 
 

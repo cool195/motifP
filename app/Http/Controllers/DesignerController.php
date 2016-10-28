@@ -76,6 +76,9 @@ class DesignerController extends BaseController
         );
 
         $result = $this->request('designer', $params);
+        if(empty($result['data'])){
+            abort(404);
+        }
         //设计师商品动态模版
         $params = array(
             'cmd' => 'dmodel',
