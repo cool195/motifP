@@ -1610,33 +1610,6 @@ footer .text-Copyright{
   z-index: 100;
   display: none;
 }
-
-@media screen and (max-width: 1460px) {
-  .container {
-    max-width: 960px;
-  }
-
-  .login-header {
-    height: 70px;
-  }
-  .login-header .navbar-primary .nav-logo {
-    margin-top: .875rem;
-  }
-  .login-header .navbar-primary .nav-link {
-    line-height: 70px;
-  }
-  .login-title {
-    font-size: 2rem;
-    padding-top: 0.875rem !important;
-    padding-bottom: 0.875rem !important;
-  }
-  .login-footer {
-    padding: 1rem !important;
-  }
-  .loginFooter-contactUs {
-    margin-bottom: 0 !important;
-  }
-}
 /*邮件订阅*/
 .redeem-fixed{
   display: inline-block;
@@ -1740,6 +1713,45 @@ footer .text-Copyright{
   left: 50%;
   -webkit-transform: translate(0px, -50%);
   transform: translate(0px, -50%);
+}
+
+@media screen and (min-width: 1280px) {
+  .banner-container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1281px){
+  .banner-container {
+    max-width: 1180px;
+  }
+}
+
+@media screen and (max-width: 1460px) {
+  .container {
+    max-width: 960px;
+  }
+
+  .login-header {
+    height: 70px;
+  }
+  .login-header .navbar-primary .nav-logo {
+    margin-top: .875rem;
+  }
+  .login-header .navbar-primary .nav-link {
+    line-height: 70px;
+  }
+  .login-title {
+    font-size: 2rem;
+    padding-top: 0.875rem !important;
+    padding-bottom: 0.875rem !important;
+  }
+  .login-footer {
+    padding: 1rem !important;
+  }
+  .loginFooter-contactUs {
+    margin-bottom: 0 !important;
+  }
 }
 
 @media (max-width: 544px) {
