@@ -5363,7 +5363,7 @@ a.label:focus, a.label:hover {
 }
 
 .progress[value] {
-  color: #0074d9;
+  color: #36405b;
   border: 0;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -5380,7 +5380,7 @@ a.label:focus, a.label:hover {
 }
 
 .progress[value]::-webkit-progress-value {
-  background-color: #0074d9;
+  background-color: #36405b;
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
@@ -5399,7 +5399,7 @@ a.label:focus, a.label:hover {
     display: inline-block;
     height: 0.625rem;
     text-indent: -999rem;
-    background-color: #0074d9;
+    background-color: #36405b;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
   }
