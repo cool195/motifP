@@ -136,12 +136,12 @@
                                             @endif
                                                 <!--预售标志-->
                                             @if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])
-                                                <div class="presale-sign">
-                                                    <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                                                <div class="presale-sign newPresale-sign">
+                                                    {{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}
                                                     <a data-clk='http://clk.motif.me/log.gif?t=daily.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
                                                        data-link="/detail/{{$spu}}" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}"
                                                        data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}"
-                                                       class="presale-text helve font-size-sm">LIMITED EDITION
+                                                       class="newPresale-text helveBold font-size-xs">Limited Edition
                                                     </a>
                                                 </div>
                                             @endif

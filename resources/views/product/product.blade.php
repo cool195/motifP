@@ -390,10 +390,9 @@
                                                                          data-actionspu="{{$list['spu']}}"></i></span>
                             @endif
                             @if(1 == $list['sale_type'])
-                                <div class="presale-sign">
-                                    <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png">
-                                    </div>
-                                    <div class="presale-text helve font-size-sm">LIMITED EDITION</div>
+                                <div class="newPresale-sign">
+                                    {{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}
+                                    <div class="newPresale-text helveBold font-size-xs">Limited Edition</div>
                                 </div>
                             @endif
                         </div>

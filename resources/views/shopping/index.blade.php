@@ -134,10 +134,10 @@
 
                         @if(1 == $product['sale_type'])
                             <!--预售标志-->
-                            <div class="presale-sign">
-                                <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                            <div class="presale-sign newPresale-sign">
+                                {{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}
                                 <a href="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
-                                   class="presale-text helve font-size-sm">LIMITED EDITION</a>
+                                   class="newPresale-text helveBold font-size-xs">Limited Edition</a>
                             </div>
                         @endif
                     </div>
@@ -188,12 +188,12 @@
             @endif
             @{{ if 1 == $value.sale_type }}
                 <!--预售标志-->
-                <div class="presale-sign">
-                    <div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>
+                <div class="presale-sign newPresale-sign">
+                    {{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}
                     <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                        data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
                        data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}"
-                       class="presale-text helve font-size-sm">LIMITED EDITION</a>
+                       class="newPresale-text helveBold font-size-xs">Limited Edition</a>
                 </div>
             @{{ /if }}
         </div>
