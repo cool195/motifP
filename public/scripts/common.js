@@ -776,6 +776,9 @@ function HideSeeMore(seemoreName) {
         // checkout loading浮层
         var loadingModal = $('[data-remodal-id=loading-modal]').remodal(Options);
 
+        // designerDetail 弹出视频
+        var playerModal = $('[data-remodal-id=playermodal]').remodal(OptionsShare);
+
     } catch (e) {
     }
 
@@ -2789,6 +2792,10 @@ function HideSeeMore(seemoreName) {
         }
     });
 
+    $('#designerDetailContainer').on('click', '.bg-player', function () {
+        playerModal.open();
+    });
+
     //Designer End
 
     // 图片延迟加载
@@ -3720,9 +3727,6 @@ function HideSeeMore(seemoreName) {
         //loadingModal.open();
 
     }
-
-
-
 })(jQuery, Swiper);
 
 
@@ -3846,7 +3850,21 @@ $('#designerContainer').on('click', '.bg-player', function () {
 });
 // designerDetail 页面
 $('#designerDetailContainer').on('click', '.bg-player', function () {
-    startPlayer($(this));
+    var MediaScaleDesigner = 9 / 16;
+    var WidthDesigner = $('.player-media').width(),
+        MediaHeightDesigner = WidthDesigner * MediaScaleDesigner;
+
+    var PlayId=$(this).data('playid');
+    player = new YT.Player('ytplayer', {
+        height: MediaHeightDesigner,
+        width: WidthDesigner,
+        videoId: PlayId,
+        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'playsinline': 1},
+        events: {
+            'onReady': onPlayerReady,
+            'onError': onPlayerError
+        }
+    });
 });
 
 

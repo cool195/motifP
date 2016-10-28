@@ -83,6 +83,18 @@
             <!-- 设计师头图 -->
         @if(isset($designer['detailVideoPath']))
             <!-- 视频 -->
+                <div class="designer-player player-item" id="designerDetailContainer">
+                    <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}">
+                    {{--<div id="{{$designer['listVideoId']}}" class="ytplayer" data-playid="{{$designer['listVideoId']}}"></div>--}}
+                    <div class="bg-player" data-playid="JZuUKZKuwk8">
+                        <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n2/{{$designer['img_video_path']}}" alt="">
+                        <div class="btn-beginPlayer">
+                            <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
+                                 alt="">
+                        </div>
+                    </div>
+                </div>
             @else
                 <div class="designer-img"><img class="img-fluid"
                                                src="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}">
@@ -418,6 +430,11 @@
 
     </div>
 </section>
+
+<!-- 视频播放 -->
+<div class="remodal modal-content remodal-lg player-media" data-remodal-id="playermodal" id="playermodalDialog" >
+    <div id="ytplayer" class="ytplayer" data-playid=""></div>
+</div>
 
 @include('footer')
 
