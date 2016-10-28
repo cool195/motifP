@@ -283,9 +283,9 @@
                                         @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0)
                                             @if($data['sale_status'])
                                                 <div class="p-x-20x p-y-10x font-size-md limited-content"
-                                                     data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
-                                                     data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
-                                                     data-lefttime="@if($data['sale_status'] && $data['isPutOn']==1){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
+                                                     data-begintime="{{$data['skuPrice']['skuPromotion']['start_time']}}"
+                                                     data-endtime="{{$data['skuPrice']['skuPromotion']['end_time']}}"
+                                                     data-lefttime="@if($data['skuPrice']['skuPromotion']['remain_time']>0){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
                                                      data-qtty="{{$data['spuStock']['stock_qtty']}}">
                                                     <img src="/images/product/icon-flash@2x.png" alt="">
                                                 <span class="p-l-10x">Orders Close In <span
