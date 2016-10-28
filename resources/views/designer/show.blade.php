@@ -187,7 +187,7 @@
                         @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0)
                             @if($pre_product['skuPrice']['skuPromotion']['remain_time']>0)
                                 <div class="p-y-15x">
-                                    <div class="limited-content"
+                                    <div class="limited-content limited-data"
                                          data-begintime="{{$pre_product['skuPrice']['skuPromotion']['start_time']}}"
                                          data-endtime="{{$pre_product['skuPrice']['skuPromotion']['end_time']}}"
                                          data-lefttime="@if($pre_product['skuPrice']['skuPromotion']['remain_time']>0){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
