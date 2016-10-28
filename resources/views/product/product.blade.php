@@ -253,39 +253,54 @@
                                     <span class="preorder-fold"></span>
                                 </div>
                             @endif
-                            @if(!isset($data['skuPrice']['skuPromotion']) || $data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] ==0 || !empty($data['spuStock']))
+
+                            @if($data['isPutOn'] !=1)
+                                <div class="p-x-20x p-y-10x font-size-md">
+                                    <img src="/images/product/icon-flash@2x.png" alt="">
+                                    <span class="p-l-10x stock-qtty">Sold Out</span>
+                                </div>
                                 <div class="p-b-10x">
-                                    @if(!isset($data['skuPrice']['skuPromotion']) || $data['isPutOn'] ==0 || !empty($data['spuStock']))
-                                        <div class="p-x-20x p-y-10x font-size-md">
-                                            <img src="/images/product/icon-flash@2x.png" alt="">
-                                <span class="p-l-10x stock-qtty">
-                                    @if(($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0 && $data['sale_status']) && $data['isPutOn']==1)
-                                        Only {{ $data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] }}
-                                        Left
-                                    @else Sold Out @endif
-                                </span>
-                                        </div>
-                                    @endif
-                                    @if(isset($data['spuStock']) && ($data['isPutOn'] ==0  || ($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'])<=0))
-                                        <div class="p-x-20x p-y-10x font-size-md limited-content">
-                                            <img src="/images/product/icon-flash@2x.png">
-                                            <span class="p-l-10x">Orders Closed</span>
-                                        </div>
-                                    @else
-                                        @if(!isset($data['skuPrice']['skuPromotion']) || $data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] ==0)
-                                            <div class="p-x-20x p-y-10x font-size-md limited-content"
-                                                 data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
-                                                 data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
-                                                 data-lefttime="@if($data['sale_status'] && $data['isPutOn']==1){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
-                                                 data-qtty="{{$data['spuStock']['stock_qtty']}}">
+                                    <div class="p-x-20x p-y-10x font-size-md limited-content">
+                                        <img src="/images/product/icon-flash@2x.png">
+                                        <span class="p-l-10x">Orders Closed</span>
+                                    </div>
+                                </div>
+                            @else
+                                @if(!isset($data['skuPrice']['skuPromotion']) || $data['skuPrice']['skuPromotion']['remain_time'] >= 0 || $data['isPutOn'] ==0 || !empty($data['spuStock']))
+                                    <div class="p-b-10x">
+                                        @if(!empty($data['spuStock']))
+                                            <div class="p-x-20x p-y-10x font-size-md">
                                                 <img src="/images/product/icon-flash@2x.png" alt="">
-                                                <span class="p-l-10x">Orders Close In <span
-                                                            class="time_show"></span></span>
+                                            <span class="p-l-10x stock-qtty">
+                                                @if($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0)
+                                                    Only {{$data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty']}}
+                                                    Left
+                                                @else Sold Out @endif
+                                            </span>
                                             </div>
                                         @endif
-                                    @endif
 
-                                </div>
+                                        @if($data['skuPrice']['skuPromotion']['remain_time'] >= 0)
+                                            @if($data['sale_status'])
+                                                <div class="p-x-20x p-y-10x font-size-md limited-content"
+                                                     data-begintime="{{  $data['skuPrice']['skuPromotion']['start_time'] }}"
+                                                     data-endtime="{{  $data['skuPrice']['skuPromotion']['end_time'] }}"
+                                                     data-lefttime="@if($data['sale_status'] && $data['isPutOn']==1){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
+                                                     data-qtty="{{$data['spuStock']['stock_qtty']}}">
+                                                    <img src="/images/product/icon-flash@2x.png" alt="">
+                                                <span class="p-l-10x">Orders Close In <span
+                                                            class="time_show"></span></span>
+                                                </div>
+                                            @else
+                                                <div class="p-x-20x p-y-10x font-size-md limited-content">
+                                                    <img src="/images/product/icon-flash@2x.png">
+                                                    <span class="p-l-10x">Orders Closed</span>
+                                                </div>
+                                            @endif
+                                        @endif
+
+                                    </div>
+                                @endif
                             @endif
                         </div>
                     @endif
