@@ -1,4 +1,4 @@
-@include('header',['title'=>$designer['nickname'],'description'=>$designer['describe'],'ogimage'=>config('runtime.CDN_URL').'/n0/'.$designer['img_video_path'],'page'=>'designer'])
+@include('header',['title'=>$designer['nickname'],'description'=>$designer['describe'],'ogimage'=>config('runtime.CDN_URL').'/n2/'.$designer['img_video_path'],'page'=>'designer'])
 <input type="text" id="productClick-name" value="name" hidden>
 <input type="text" id="productClick-spu" value="1" hidden>
 <input type="text" id="productClick-price" value="1" hidden>
@@ -84,9 +84,9 @@
         @if(isset($designer['detailVideoPath']))
             <!-- 视频 -->
                 <div class="designer-player player-item" id="designerDetailContainer">
-                    <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}">
+                    <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n2/{{$designer['img_video_path']}}">
                     {{--<div id="{{$designer['listVideoId']}}" class="ytplayer" data-playid="{{$designer['listVideoId']}}"></div>--}}
-                    <div class="bg-player" data-playid="JZuUKZKuwk8">
+                    <div class="bg-player" data-playid="{{$designer['detailVideoPath']}}">
                         <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n2/{{$designer['img_video_path']}}" alt="">
                         <div class="btn-beginPlayer">
                             <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
@@ -97,7 +97,7 @@
                 </div>
             @else
                 <div class="designer-img"><img class="img-fluid"
-                                               src="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}">
+                                               src="{{config('runtime.CDN_URL')}}/n2/{{$designer['img_video_path']}}">
                 </div>
         @endif
 
@@ -106,7 +106,7 @@
                 <div class="m-b-10x designer-headImg"
                      data-impr='http://clk.motif.me/log.gif?t=designer.600001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"PC"}'>
                     <img class="img-circle img-border-white-4x"
-                         src="{{config('runtime.CDN_URL')}}/n0/{{$designer['icon']}}"
+                         src="{{config('runtime.CDN_URL')}}/n2/{{$designer['icon']}}"
                          width="120" height="120" alt="">
                 </div>
                 <div class="font-size-md helveBold p-t-40x">{{$designer['nickname']}}</div>
@@ -252,13 +252,13 @@
                             <div class="p-y-0 text-center">
                                 @if(!isset($value['skipType']) || empty($value['skipId']))
                                     <img class="img-lazy img-fluid"
-                                         src="{{config('runtime.CDN_URL')}}/n0/{{$value['imgPath']}}">
+                                         src="{{config('runtime.CDN_URL')}}/n2/{{$value['imgPath']}}">
                                 @else
                                     <a href="@if($value['skipType']=='1')/detail/{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['skipId']}}@endif"
                                        data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":{{$value['skipType']}},"skipId":"{{$value['skipId']}}","expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'
                                        data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":{{$value['skipType']}},"skipId":"{{$value['skipId']}}","expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'>
                                         <img class="img-lazy img-fluid"
-                                             src="{{config('runtime.CDN_URL')}}/n0/{{$value['imgPath']}}">
+                                             src="{{config('runtime.CDN_URL')}}/n2/{{$value['imgPath']}}">
                                     </a>
                                 @endif
                             </div>
@@ -291,7 +291,7 @@
                                                            data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                             <img class="img-fluid img-lazy figure"
                                                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                                                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                                 data-original="{{config('runtime.CDN_URL')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                  alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                         </a>
                                                         <!--预售标志-->
@@ -363,7 +363,7 @@
                                        data-title="{{$product['main_title']}}"
                                        data-price="{{number_format($product['skuPrice']['sale_price']/100,2)}}">
                                         <img class="img-fluid img-lazy figure"
-                                             data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['main_image_url']}}"
+                                             data-original="{{config('runtime.CDN_URL')}}/n2/{{$product['main_image_url']}}"
                                              alt="{{$product['main_title']}}"
                                              src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png">
                                     </a>
