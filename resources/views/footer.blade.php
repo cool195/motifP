@@ -135,8 +135,10 @@
 
     </div>
 </div>
-
-
+<script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
+<script src="{{config('runtime.Image_URL')}}/scripts/card.js{{config('runtime.V')}}"></script>
+<script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
+<script src="{{config('runtime.Image_URL')}}/scripts/wl.js{{config('runtime.V')}}"></script>
 <!-- Google Tag Manager -->
 <script>(function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -185,8 +187,4 @@
                src="https://www.facebook.com/tr?id=1777634412449097&ev=PageView&noscript=1"
     /></noscript>
 </body>
-<script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
-<script src="{{config('runtime.Image_URL')}}/scripts/card.js{{config('runtime.V')}}"></script>
-<script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
-
 </html>
