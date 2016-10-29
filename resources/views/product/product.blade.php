@@ -246,13 +246,12 @@
                 @if(1 == $data['sale_type'])
                     <!-- 预售信息 -->
                         <div class="preorder-info">
-                            @if($data['skuPrice']['skuPromotion']['ship_desc'])
+                            @foreach($data['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
                                 <div class="text-white font-size-md p-a-10x m-b-10x bg-red preorder-title">
-                                    <div class="sanBold">PREORDER: Expected to ship
-                                        on {{$data['skuPrice']['skuPromotion']['ship_desc']}}</div>
+                                    <div class="sanBold">{{$value['desc_title'].' : '.$value['desc_value']}}</div>
                                     <span class="preorder-fold"></span>
                                 </div>
-                            @endif
+                            @endforeach
 
                             @if($data['isPutOn'] !=1)
                                 <div class="p-x-20x p-y-10x font-size-md">
