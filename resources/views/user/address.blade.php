@@ -126,7 +126,7 @@
                                     @foreach($address['data']['list'] as $value)
                                     <div class="col-md-6">
                                         <div class="p-a-10x">
-                                            <div class="address-item p-x-20x p-y-15x @if($value['isDefault']){{'active'}}@endif"
+                                            <div class="address-item choose-item p-x-20x p-y-15x @if($value['isDefault']){{'active'}}@endif"
                                                  data-aid="{{$value['receiving_id']}}">
                                                 <div class="address-info">
                                                     {{$value['name']}}<br>
