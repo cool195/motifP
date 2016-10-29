@@ -1382,7 +1382,7 @@ function HideSeeMore(seemoreName) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
-                    $('.checkoutWarning .font-size-base').html('Payment error, refresh and try again!');
+                    $('.checkoutWarning .font-size-base').html('There was a problem validating your payment. Please verify all payment details and try placing your order again. Thank you.');
                     $('.checkoutWarning').removeAttr('hidden');
                     setTimeout(function () {
                         loadingModal.close();
