@@ -1349,6 +1349,15 @@ function HideSeeMore(seemoreName) {
             return false;
         }
 
+        if($('input[name="shippingMethod"]:checked').val() < 0){
+            $('.checkoutWarning .font-size-base').html('Please choose your shipping method!');
+            $('.checkoutWarning').removeAttr('hidden');
+            setTimeout(function () {
+                $('.checkoutWarning').attr('hidden', "");
+            }, 3000);
+            return false;
+        }
+
         loadingModal.open();
         var $this = $(this);
         $.ajax({
