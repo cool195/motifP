@@ -49,7 +49,7 @@
                                             </div>
                                             <div class="p-l-20x m-b-20x">
                                                 <input type="text" name="addr1"
-                                                       class="form-control contrlo-lg text-primary address-street"
+                                                       class="form-control contrlo-lg text-primary address-addr1"
                                                        placeholder="Street 1">
                                                 <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
@@ -57,7 +57,7 @@
                                                 </div>
                                             </div>
                                             <div class="p-l-20x m-b-20x">
-                                                <input type="text" name="addr2" class="form-control contrlo-lg text-primary"
+                                                <input type="text" name="addr2" class="form-control contrlo-lg text-primary address-addr2"
                                                        placeholder="Street 2 (optional)">
                                             </div>
 
@@ -179,7 +179,7 @@
     @{{ each list }}
     <div class="col-md-6">
         <div class="p-a-10x">
-            <div class="address-item p-x-20x p-y-15x @{{ if $value.isDefault == 1 }} active @{{ /if }}"
+            <div class="address-item choose-item p-x-20x p-y-15x @{{ if $value.isDefault == 1 }} active @{{ /if }}"
                  data-aid="@{{ $value.receiving_id }}">
                 <div class="address-info">
                     @{{ $value.name }}<br>
