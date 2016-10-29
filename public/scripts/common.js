@@ -1113,7 +1113,9 @@ function HideSeeMore(seemoreName) {
             type: 'get'
         })
             .done(function () {
-                getshiplist();
+                if($('#checkoutView').data('status')){
+                    getshiplist();
+                }
             })
     });
 
