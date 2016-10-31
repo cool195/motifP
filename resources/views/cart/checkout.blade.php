@@ -788,7 +788,7 @@
         @{{ /each }}
     <div class="col-md-6">
         <div class="p-a-10x">
-            <div class="card-item choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
+            <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
 
                 <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
                 <span class="font-size-lxx">Add New Credit Card</span>
@@ -839,7 +839,7 @@
         @{{ /each }}
     <div class="col-md-6">
         <div class="p-a-10x">
-            <div class="card-item choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
+            <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
                 <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
                 <span class="font-size-lxx">Add New Credit Card</span>
                 <i class="iconfont icon-add m-r-20x"></i>
