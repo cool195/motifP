@@ -159,6 +159,7 @@
                 <div class="box-shadow bg-white m-t-20x p-x-20x">
                     <div class="helveBold text-center p-y-15x font-size-md">LIMITED EDITION</div>
                     @if($pre_product['isPutOn'] !=1)
+                        <hr class="hr-base m-a-0">
                         <div class="p-y-15x">
                             <div class="">
                                 <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
@@ -178,6 +179,7 @@
                         </div>
                     @else
                         @if(!empty($pre_product['spuStock']))
+                            <hr class="hr-base m-a-0">
                             <div class="p-y-15x">
                                 <div class="">
                                     <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
@@ -193,10 +195,10 @@
                                 </span>
                                 </div>
                             </div>
-                            <hr class="hr-base m-a-0">
                         @endif
 
                         @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0)
+                                <hr class="hr-base m-a-0">
                             @if($pre_product['skuPrice']['skuPromotion']['remain_time']>0)
                                 <div class="p-y-15x">
                                     <div class="limited-content limited-data"
