@@ -1,4 +1,4 @@
-@include('header')
+@include('header', ['title' => 'FAQ'])
 
 <!--内容-->
 <div class="container">

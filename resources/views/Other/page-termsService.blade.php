@@ -1,4 +1,4 @@
-@include('header')
+@include('header', ['title' => 'TERMS & CONDITIONS'])
 <!--服务条款-->
 <div class="container">
     <div class="content-wrap">
