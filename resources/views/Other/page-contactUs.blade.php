@@ -1,4 +1,4 @@
-@include('header')
+@include('header', ['title' => 'Contact Us'])
 <!--内容-->
 <div class="container">
     <div class="content-wrap">

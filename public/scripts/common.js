@@ -1334,6 +1334,7 @@ function HideSeeMore(seemoreName) {
         var aid = $('#defaultAddr').data('aid') == undefined ? '' : $('#defaultAddr').data('aid');
         var bindid = $('#pcode').data('bindid') == undefined ? '' : $('#pcode').data('bindid');
         var smethod = $('input[name="shippingMethod"]:checked').val() == undefined ? '' : $('input[name="shippingMethod"]:checked').val();
+        console.log(smethod);
         $.ajax({
                 url: '/cart/accountlist?aid=' + aid + '&bindid=' + bindid + '&logisticstype=' + smethod,
                 type: 'GET',
@@ -1647,7 +1648,7 @@ function HideSeeMore(seemoreName) {
             return true;
         }
     }
-    $('input[data-optional="false"]').on('blur', function () {
+    $('input[data-optional="false"]').on('keyup blur', function () {
         if( $('.card-addNewAddr').hasClass('disabled')){
             if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]')) ){
                 $('#btn-addNewCard').removeClass('disabled')

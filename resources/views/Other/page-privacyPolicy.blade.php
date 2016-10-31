@@ -1,4 +1,4 @@
-@include('header')
+@include('header', ['title' => 'Privacy Notice'])
 
 <!--隐私政策-->
 <div class="container">

@@ -34,8 +34,9 @@ class DesignerController extends BaseController
                 }
                 $list['spus'] = implode('_', $spus);
             }
-            if(isset($list['describe'])){
+            if(isset($list['describe']) && strlen($list['describe']) > 150 ){
                 $list['describe'] = mb_substr($list['describe'], 0, 150);
+                $list['describe'] = $list['describe']."......";
             }
         }
         if ($request->input('ajax')) {
