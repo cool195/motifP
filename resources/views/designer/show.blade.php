@@ -307,7 +307,7 @@
                                                                        data-spu="{{$spu}}"
                                                                        data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
                                                                        data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}"
-                                                                       class="newPresale-text helveBold font-size-xs">Limited
+                                                                       class="newPresale-text helveBold font-size-xs text-primary">Limited
                                                                         Edition</a>
                                                                 </div>
                                                             @endif
@@ -373,7 +373,7 @@
                                                href="/detail/{{$product['spu']}}" data-spu="{{$product['spu']}}"
                                                data-title="{{$product['main_title']}}"
                                                data-price="{{number_format($product['skuPrice']['sale_price']/100,2)}}"
-                                               class="newPresale-text helveBold font-size-xs">Limited Edition</a>
+                                               class="newPresale-text helveBold font-size-xs text-primary">Limited Edition</a>
                                         </div>
                                     @endif
 

@@ -391,7 +391,7 @@
                             @if(1 == $list['sale_type'])
                                 <div class="newPresale-sign presale-sign ">
                                     {{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}
-                                    <div class="newPresale-text helveBold font-size-xs">Limited Edition</div>
+                                    <div class="newPresale-text helveBold font-size-xs text-primary">Limited Edition</div>
                                 </div>
                             @endif
                         </div>
