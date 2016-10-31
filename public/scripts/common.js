@@ -3747,8 +3747,6 @@ function HideSeeMore(seemoreName) {
     if($('#checkoutView').length > 0){
         // 需默认关闭
         loadingModal.close();
-        //loadingModal.open();
-
     }
 })(jQuery, Swiper);
 

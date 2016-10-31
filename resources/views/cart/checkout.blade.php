@@ -688,10 +688,6 @@
                 </div>
             </div>
         </div>
-        <div class="checkoutWarning p-y-10x text-right text-warning" hidden>
-            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-            <span class="font-size-base"></span>
-        </div>
         <!-- 提交按钮 -->
         <div class="p-y-20x text-right">
             <a href="javascript:void(0)" data-clks='http://clk.motif.me/log.gif?t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
@@ -700,6 +696,10 @@
                 with Credit Card</a>
             <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay
                 with PayPal</a>--}}
+            <div class="checkoutWarning p-y-10x text-warning m-r-40x" hidden>
+                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                <span class="font-size-base"></span>
+            </div>
         </div>
     </div>
 </section>
