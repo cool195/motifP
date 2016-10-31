@@ -72,7 +72,7 @@
                     <li class="nav-item p-x-10x m-l-0">
                         <a href="/shopping/{{ $category['category_id'] }}">
                             <div class="p-t-10x p-b-5x category-item @if($cid == $category['category_id']) active @endif">
-                                <img src="{{config('runtime.CDN_URL')}}/n0/{{$category['img_path']}}" alt="">
+                                <img src="{{config('runtime.CDN_URL')}}/n2/{{$category['img_path']}}" alt="">
                                 <div class="text-center p-t-5x">{{$category['category_name']}}</div>
                             </div>
                         </a>
@@ -123,7 +123,7 @@
                         <a href="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
                            data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}"
                            data-price="{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}">
-                            <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n0/{{$product['main_image_url']}}" alt="商品的名称">
+                            <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n2/{{$product['main_image_url']}}" alt="商品的名称">
                             <div class="bg-heart"></div>
                         </a>
                         @if(Session::has('user'))
@@ -137,7 +137,7 @@
                             <div class="presale-sign newPresale-sign">
                                 {{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}
                                 <a href="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
-                                   class="newPresale-text helveBold font-size-xs">Limited Edition</a>
+                                   class="newPresale-text helveBold font-size-xs text-primary">Limited Edition</a>
                             </div>
                         @endif
                     </div>
@@ -177,7 +177,7 @@
             <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
                data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
-                <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ $value.main_image_url }}"
+                <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ $value.main_image_url }}"
                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
                 <div class="bg-heart"></div>
             </a>
@@ -193,7 +193,7 @@
                     <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                        data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
                        data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}"
-                       class="newPresale-text helveBold font-size-xs">Limited Edition</a>
+                       class="newPresale-text helveBold font-size-xs text-primary text-primary">Limited Edition</a>
                 </div>
             @{{ /if }}
         </div>

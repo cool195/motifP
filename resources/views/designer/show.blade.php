@@ -229,18 +229,17 @@
             @endif
         @endif
     <!-- 设计师预售信息 PREORDER -->
-        @if($pre_product['skuPrice']['skuPromotion']['ship_desc'])
+        @foreach($pre_product['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
             <div class="box-shadow bg-white m-t-20x p-x-20x">
-                <div class="helveBold text-center p-y-15x font-size-md">PREORDER</div>
+                <div class="helveBold text-center p-y-15x font-size-md">{{$pre_product['skuPrice']['skuPromotion']['ship_title']}}</div>
                 <hr class="hr-base m-a-0">
                 <div class="p-y-15x">
                     <div class="text-primary font-size-base">
-                        Expected to ship on <span
-                                class="sanBold">{{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}</span>
+                        {{$pre_product['skuPrice']['skuPromotion']['ship_desc']}}
                     </div>
                 </div>
             </div>
-        @endif
+        @endforeach
 
     <!-- 设计师预售 -->
         @if(!empty($product['infos']))
@@ -308,7 +307,7 @@
                                                                        data-spu="{{$spu}}"
                                                                        data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
                                                                        data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}"
-                                                                       class="newPresale-text helveBold font-size-xs">Limited
+                                                                       class="newPresale-text helveBold font-size-xs text-primary">Limited
                                                                         Edition</a>
                                                                 </div>
                                                             @endif
@@ -374,7 +373,7 @@
                                                href="/detail/{{$product['spu']}}" data-spu="{{$product['spu']}}"
                                                data-title="{{$product['main_title']}}"
                                                data-price="{{number_format($product['skuPrice']['sale_price']/100,2)}}"
-                                               class="newPresale-text helveBold font-size-xs">Limited Edition</a>
+                                               class="newPresale-text helveBold font-size-xs text-primary">Limited Edition</a>
                                         </div>
                                     @endif
 

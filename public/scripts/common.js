@@ -245,7 +245,7 @@ function HideSeeMore(seemoreName) {
         // youtube 视频播放
         // 视频比例
         var MediaScale = 9 / 16;
-        var Width = $('.zoomPad').width(),
+        var Width = ($('.gallery').width()).toFixed(2),
             MediaHeight = Width * MediaScale;
 
         player = new YT.Player('ytplayer', {
@@ -3759,8 +3759,6 @@ function HideSeeMore(seemoreName) {
     if($('#checkoutView').length > 0){
         // 需默认关闭
         loadingModal.close();
-        //loadingModal.open();
-
     }
 })(jQuery, Swiper);
 
