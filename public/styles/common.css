@@ -1722,6 +1722,18 @@ footer .text-Copyright{
   transform: translate(0px, -50%);
 }
 
+#checkoutLoading{
+  background-color:initial;
+}
+
+#checkoutLoading .loader{
+  background-color: rgba(43, 46, 56, 0.5);
+}
+#checkoutLoading .loader::after{
+  width: 30px;
+  height: 30px;
+}
+
 @media screen and (min-width: 1280px) {
   .banner-container {
     max-width: 1280px;

@@ -19,8 +19,31 @@ class WordpayController extends BaseController
         );
         $result = $this->request('pay', $params);
 
-        if($result['success'] && !Session::has('user.checkout.paywith')){
-            $result = $this->findLast($result);
+        if($result['success']){
+            if(Session::has('user.checkout.paywith')){
+                $result = $this->setCardActived($result);
+            }else{
+                $result = $this->findLast($result);
+            }
+        }
+
+        return $result;
+    }
+
+    private function setCardActived(&$result)
+    {
+        foreach($result['data']['list'] as &$value){
+            if(isset($value['creditCards'])){
+                foreach($value['creditCards'] as &$card){
+                    if($card['card_id'] == Session::get('user.checkout.paywith.withCard.card_id')){
+                        $card['actived'] = 1;
+                    }
+                }
+            } else {
+                if(Session::get('user.checkout.paywith.pay_type') == $value['pay_type']){
+                    $value['actived'] = 1;
+                }
+            }
         }
         return $result;
     }
