@@ -264,7 +264,7 @@ footer .text-Copyright{
   font-size: 18px;
 }
 
-.swiper-slide img {
+.banner-container .swiper-slide img {
   width: 100%;
 }
 
@@ -284,8 +284,7 @@ footer .text-Copyright{
   position: relative;
   display: block;
   float: left;
-  width: 110px;
-  padding-bottom: 1px;
+  width: 112px;
 }
 
 .swiper-button-prev, .swiper-button-next {
