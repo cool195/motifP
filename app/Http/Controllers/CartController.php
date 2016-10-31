@@ -55,7 +55,7 @@ class CartController extends BaseController
         if(!Session::get('user.checkout.selship')){
             Session::put('user.checkout.selship',$logisticsList['data']['list'][0]);
         }
-        $accountList = $this->getCartAccountList($request,$logisticsList['data']['list'][0]['logistics_type'],"","",$result['data']['receiving_id']);
+        $accountList = $this->getCartAccountList($request, Session::get('user.checkout.selship.logistics_type'), "", "", $result['data']['receiving_id']);
         if(empty($accountList['data'])){
             return redirect('cart');
         }
