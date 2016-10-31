@@ -129,7 +129,7 @@
                         @forelse ($address['data']['list'] as $value)
                             @if($value['isDefault'])
                                 <span id="defaultAddr" data-csn="{{$value['country_name_sn']}}"
-                                  data-aid="{{$value['receiving_id']}}">{{$value['name']}} {{$value['detail_address1']}} {{$value['city']}} {{$value['state']}} {{$value['country']}} {{$value['zip']}}</span>
+                                      data-aid="{{$value['receiving_id']}}">{{$value['name']}} {{$value['detail_address1']}} {{$value['city']}} {{$value['state']}} {{$value['country']}} {{$value['zip']}}</span>
                             @endif
                             @break($value['isDefault'])
                         @empty
@@ -147,7 +147,8 @@
                         <span class="font-size-md">Shipping Address</span>
                         <span class="font-size-md pull-right">
                             <div class="btn btn-secondary btn-md btn-addNewAddress" href="#">
-                                <i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address</div>
+                                <i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address
+                            </div>
                         </span>
                     </div>
                     <div class="row p-x-10x p-t-20x address-list"></div>
@@ -167,7 +168,8 @@
                     <div class="row p-t-30x">
                         <form id="addAddressForm" data-aid="">
                             <div class="col-md-5">
-                                <input type="hidden" name="email" class="address-email" value="{{Session::get('user.login_email')}}">
+                                <input type="hidden" name="email" class="address-email"
+                                       value="{{Session::get('user.login_email')}}">
                                 <div class="p-l-20x m-b-20x">
                                     <input type="text" name="name"
                                            class="form-control contrlo-lg text-primary address-name"
@@ -196,7 +198,8 @@
                                     </div>
                                 </div>
                                 <div class="p-l-20x m-b-20x">
-                                    <input type="text" name="addr2" class="form-control contrlo-lg text-primary address-addr2"
+                                    <input type="text" name="addr2"
+                                           class="form-control contrlo-lg text-primary address-addr2"
                                            placeholder="Street 2 (optional)">
                                 </div>
                             </div>
@@ -246,7 +249,8 @@
                     <div class="text-right">
                         <a href="javascript:void(0);" id="addAddress-cancel"
                            class="btn btn-secondary btn-md m-r-10x">Cancel</a>
-                        <a href="javascript:void(0);" id="addAddress" class="btn btn-primary btn-md address-save">Save</a>
+                        <a href="javascript:void(0);" id="addAddress"
+                           class="btn btn-primary btn-md address-save">Save</a>
                     </div>
                 </div>
             </div>
@@ -263,8 +267,9 @@
                         <a class="p-l-40x shippingMethodButton">Edit</a>
                     @else
                         <span class="shippingMethodShow">{{$logisticsList['list'][0]['logistics_name']}} @if($list['pay_price']>0)
-                            +${{ number_format(($logisticsList['list'][0]['pay_price'] / 100), 2) }}@endif</span>
-                        <a class="p-l-40x shippingMethodButton">@if(count($logisticsList['list'])>1){{'Edit'}} @else &nbsp; @endif</a>
+                                +${{ number_format(($logisticsList['list'][0]['pay_price'] / 100), 2) }}@endif</span>
+                        <a class="p-l-40x shippingMethodButton">@if(count($logisticsList['list'])>1){{'Edit'}} @else
+                                &nbsp; @endif</a>
                     @endif
                 </span>
             </div>
@@ -277,19 +282,23 @@
                             <div class="col-md-6 p-b-10x">
                                 @if(Session::has('user.checkout.selship'))
                                     <input class="methodRadio" type="radio"
-                                           @if( Session::get('user.checkout.selship.logistics_type') == $list['logistics_type'] ) checked="checked" @endif name="shippingMethod"
+                                           @if( Session::get('user.checkout.selship.logistics_type') == $list['logistics_type'] ) checked="checked"
+                                           @endif name="shippingMethod"
                                            data-price="{{$list['pay_price']}}"
-                                           value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
+                                           value="{{$list['logistics_type']}}"
+                                           data-show="{{ $list['logistics_name'] }}">
                                 @else
                                     @if($k==0)
                                         <input class="methodRadio" type="radio"
-                                            checked="checked" name="shippingMethod"
-                                            data-price="{{$list['pay_price']}}"
-                                            value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
+                                               checked="checked" name="shippingMethod"
+                                               data-price="{{$list['pay_price']}}"
+                                               value="{{$list['logistics_type']}}"
+                                               data-show="{{ $list['logistics_name'] }}">
                                     @else
                                         <input class="methodRadio" type="radio" name="shippingMethod"
                                                data-price="{{$list['pay_price']}}"
-                                               value="{{$list['logistics_type']}}" data-show="{{ $list['logistics_name'] }}">
+                                               value="{{$list['logistics_type']}}"
+                                               data-show="{{ $list['logistics_name'] }}">
                                     @endif
                                 @endif
                                 <label for="" class="p-l-10x">{{ $list['logistics_name'] }}
@@ -316,26 +325,56 @@
                     @if(Session::has('user.checkout.paywith'))
                         @if(Session::has('user.checkout.paywith.withCard'))
                             {{$withCard = Session::get('user.checkout.paywith.withCard')}}
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="50" class="pay-img pay-paypal">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="35" class="pay-img pay-visa @if($withCard['card_type'] == 'Visa') active @endif ">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="35" class="pay-img pay-masc @if($withCard['card_type'] == 'MasterCard') active @endif ">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="35" class="pay-img pay-amc @if($withCard['card_type'] == 'AmericanExpress') active @endif ">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="35" class="pay-img pay-jcb @if($withCard['card_type'] == 'JCB') active @endif ">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43@3x.png{{config('runtime.V')}} 3x"
+                                 class="pay-img pay-paypal">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-visa-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="pay-img pay-visa @if($withCard['card_type'] == 'Visa') active @endif ">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="pay-img pay-masc @if($withCard['card_type'] == 'MasterCard') active @endif ">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-american-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-american-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-american-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="pay-img pay-amc @if($withCard['card_type'] == 'AmericanExpress') active @endif ">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="pay-img pay-jcb @if($withCard['card_type'] == 'JCB') active @endif ">
                             <span class="p-l-10x payment-text">{{$withCard['card_number']}}</span>
                         @else
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="50" class="pay-img pay-paypal active">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="35" class="pay-img pay-visa">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="35" class="pay-img pay-masc">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="35" class="pay-img pay-amc">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="35" class="pay-img pay-jcb">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43@3x.png{{config('runtime.V')}} 3x"
+                                 class="pay-img pay-paypal active">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-visa-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="pay-img pay-visa">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="pay-img pay-masc">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-american-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-american-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-american-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="pay-img pay-amc">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="pay-img pay-jcb">
                             <span class="p-l-10x payment-text">PayPal</span>
                         @endif
                     @else
-                        <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="50" class="pay-img pay-paypal">
-                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="35" class="pay-img pay-visa">
-                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="35" class="pay-img pay-masc">
-                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="35" class="pay-img pay-amc">
-                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="35" class="pay-img pay-jcb">
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43.png"
+                             srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43@3x.png{{config('runtime.V')}} 3x"
+                             class="pay-img pay-paypal">
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-32.png"
+                             srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-visa-32@3x.png{{config('runtime.V')}} 3x"
+                             class="pay-img pay-visa">
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32.png"
+                             srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@3x.png{{config('runtime.V')}} 3x"
+                             class="pay-img pay-masc">
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-american-32.png"
+                             srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-american-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-american-32@3x.png{{config('runtime.V')}} 3x"
+                             class="pay-img pay-amc">
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32.png"
+                             srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@3x.png{{config('runtime.V')}} 3x"
+                             class="pay-img pay-jcb">
                         <span class="p-l-10x payment-text"></span>
                     @endif
                     <a class="p-l-40x">Edit</a>
@@ -352,27 +391,37 @@
                                 @foreach($list['creditCards'] as $card)
                                     <div class="col-md-6">
                                         <div class="p-a-10x">
-                                            <div class="card-item choose-item p-a-20x @if($card['card_id'] == Session::get('user.checkout.paywith.withCard.card_id')) active @endif" data-cardtype="{{ $card['card_type'] }}" data-cardnum="{{ $card['card_number'] }}" data-cardid="{{ $card['card_id'] }}" data-paytype="{{ $card['pay_type'] }}" >
+                                            <div class="card-item choose-item p-a-20x @if($card['card_id'] == Session::get('user.checkout.paywith.withCard.card_id')) active @endif"
+                                                 data-cardtype="{{ $card['card_type'] }}"
+                                                 data-cardnum="{{ $card['card_number'] }}"
+                                                 data-cardid="{{ $card['card_id'] }}"
+                                                 data-paytype="{{ $card['pay_type'] }}">
                                                 <div>
                                                     <span class="payLeft-minW">
                                                     @if($card['card_type'] == 'Visa')
-                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="50">
-                                                    @elseif($card['card_type'] == 'MasterCard')
-                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="50">
-                                                    @elseif($card['card_type'] == 'AmericanExpress')
-                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="50">
-                                                    @elseif($card['card_type'] == 'JCB')
-                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="50">
-                                                    @endif
+                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-52.png"
+                                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-visa-52@3x.png{{config('runtime.V')}} 3x">
+                                                        @elseif($card['card_type'] == 'MasterCard')
+                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-52.png"
+                                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-52@3x.png{{config('runtime.V')}} 3x">
+                                                        @elseif($card['card_type'] == 'AmericanExpress')
+                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-american-52.png"
+                                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-american-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-american-52@3x.png{{config('runtime.V')}} 3x">
+                                                        @elseif($card['card_type'] == 'JCB')
+                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52.png"
+                                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52@3x.png{{config('runtime.V')}} 3x">
+                                                        @endif
                                                     </span>
 
                                                     <span class="sanBold font-size-lx">{{  $card['card_number'] }}</span>
                                                 </div>
                                                 <div class="m-t-20x flex">
-                                                    <span class="payLeft-minW">Exp:{{$card['month']}}/{{$card['year']}}</span>
+                                                    <span class="payLeft-minW">Exp:{{$card['month']}}
+                                                        /{{$card['year']}}</span>
                                                     <span class="billingTxt">Billing:{{$card['detail_address1']}} {{$card['detail_address2']}} {{$card['city']}} {{$card['state']}} {{$card['country']}}</span>
                                                 </div>
-                                                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                                <div class="btn-addPrimary"><i
+                                                            class="iconfont icon-check font-size-lg"></i></div>
                                             </div>
                                         </div>
                                     </div>
@@ -380,7 +429,8 @@
                                 <div class="col-md-6">
                                     <div class="p-a-10x">
                                         <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
-                                            <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
+                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-card.png"
+                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-card@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-card@3x.png{{config('runtime.V')}} 3x">
                                             <span class="font-size-lxx">Add New Credit Card</span>
                                             <i class="iconfont icon-add m-r-20x"></i>
                                         </div>
@@ -389,10 +439,14 @@
                             @else
                                 <div class="col-md-6">
                                     <div class="p-a-10x">
-                                        <div class="card-item choose-item flex flex-alignCenter p-x-20x @if($list['pay_type'] == Session::get('user.checkout.paywith.pay_type')) active @endif" data-cardtype="paypal" data-cardnum="PayPal" data-cardid="PayPal" data-paytype="{{$list['pay_type']}}">
-                                            <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="65">
+                                        <div class="card-item choose-item flex flex-alignCenter p-x-20x @if($list['pay_type'] == Session::get('user.checkout.paywith.pay_type')) active @endif"
+                                             data-cardtype="paypal" data-cardnum="PayPal" data-cardid="PayPal"
+                                             data-paytype="{{$list['pay_type']}}">
+                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-32@2x.png"
+                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-32@3x.png{{config('runtime.V')}} 2x">
                                             <span class="font-size-lxx p-l-40x">{{$list['pay_name']}}</span>
-                                            <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                            <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -400,7 +454,8 @@
                         @endforeach
                     </div>
                     <div class="text-right p-t-10x">
-                        <a href="javascript:void(0);" class="btn btn-primary btn-md" id="btnPaymentShowHide">Continue</a>
+                        <a href="javascript:void(0);" class="btn btn-primary btn-md"
+                           id="btnPaymentShowHide">Continue</a>
                     </div>
                 </div>
                 <!--添加卡-->
@@ -415,10 +470,18 @@
 
                     <div class="p-a-20x">
                         <div>We Accept:
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="33" class="m-l-10x" id="img-mastercard" data-type="MasterCard">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="33" class="m-l-20x" id="img-visa" data-type="Visa">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="33" class="m-l-20x" id="img-jcb" data-type="JCB">
-                            <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="33" class="m-l-20x" id="img-amex" data-type="AmericanExpress">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="m-l-10x" id="img-mastercard" data-type="MasterCard">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-visa-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="m-l-20x" id="img-visa" data-type="Visa">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="m-l-20x" id="img-jcb" data-type="JCB">
+                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-american-32.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-american-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-american-32@3x.png{{config('runtime.V')}} 3x"
+                                 class="m-l-20x" id="img-amex" data-type="AmericanExpress">
                         </div>
                         <div class="card-wrapper" style="display: none;"></div>
                         <div class="row p-t-20x">
@@ -426,21 +489,28 @@
                                 <input name="card_type" type="hidden">
 
                                 <div class="col-md-4">
-                                    <input type="text" name="card" maxlength="20" class="form-control contrlo-lg text-primary card-number" data-optional="false" data-inputrole="credit card number" placeholder="Credit Card Number">
+                                    <input type="text" name="card" maxlength="20"
+                                           class="form-control contrlo-lg text-primary card-number"
+                                           data-optional="false" data-inputrole="credit card number"
+                                           placeholder="Credit Card Number">
                                     <div class="warning-info flex flex-alignLeft text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-t-5x p-r-5x"></i>
                                         <span class="font-size-base"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" name="expiry" maxlength="9" class="form-control contrlo-lg text-primary card-date" data-optional="false" data-inputrole="expiration date" placeholder="MM/YYYY">
+                                    <input type="text" name="expiry" maxlength="9"
+                                           class="form-control contrlo-lg text-primary card-date" data-optional="false"
+                                           data-inputrole="expiration date" placeholder="MM/YYYY">
                                     <div class="warning-info flex flex-alignLeft text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-t-5x p-r-5x"></i>
                                         <span class="font-size-base"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" name="cvc" maxlength="4" class="form-control contrlo-lg text-primary card-code" data-optional="false" data-inputrole="security code" placeholder="Security Code">
+                                    <input type="text" name="cvc" maxlength="4"
+                                           class="form-control contrlo-lg text-primary card-code" data-optional="false"
+                                           data-inputrole="security code" placeholder="Security Code">
                                     <div class="warning-info flex flex-alignLeft text-warning p-t-5x off">
                                         <i class="iconfont icon-caveat icon-size-md p-t-5x p-r-5x"></i>
                                         <span class="font-size-base"></span>
@@ -466,10 +536,14 @@
                                     <div class="def-zip">{{$defaultAddr['zip']}}</div>
                                     <div class="def-state">{{$defaultAddr['state']}}</div>
 
-                                    <input type="hidden" name="tel" class="def-tel" value="{{$defaultAddr['telephone']}}">
-                                    <input type="hidden" name="addr1" class="def-addr1" value="{{$defaultAddr['detail_address1']}}">
-                                    <input type="hidden" name="addr2" class="def-addr2" value="{{$defaultAddr['detail_address2']}}">
-                                    <input type="hidden" name="country" class="def-country" value="{{$defaultAddr['country']}}">
+                                    <input type="hidden" name="tel" class="def-tel"
+                                           value="{{$defaultAddr['telephone']}}">
+                                    <input type="hidden" name="addr1" class="def-addr1"
+                                           value="{{$defaultAddr['detail_address1']}}">
+                                    <input type="hidden" name="addr2" class="def-addr2"
+                                           value="{{$defaultAddr['detail_address2']}}">
+                                    <input type="hidden" name="country" class="def-country"
+                                           value="{{$defaultAddr['country']}}">
                                 </div>
                             </div>
                             <div class="col-md-6 p-b-10x">
@@ -512,7 +586,8 @@
                                         </div>
                                     </div>
                                     <div class="p-l-20x m-b-20x">
-                                        <input type="text" name="addr2" class="form-control contrlo-lg text-primary card-addr2"
+                                        <input type="text" name="addr2"
+                                               class="form-control contrlo-lg text-primary card-addr2"
                                                placeholder="Street 2 (optional)">
                                     </div>
                                 </div>
@@ -520,7 +595,8 @@
                                 <div class="col-md-5">
                                     <div class="p-l-20x m-b-20x">
                                         <input type="text" name="city" data-optional="false" data-inputrole="city"
-                                               class="form-control contrlo-lg text-primary card-city" placeholder="City">
+                                               class="form-control contrlo-lg text-primary card-city"
+                                               placeholder="City">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                                             <span class="font-size-base">Please enter your city !</span>
@@ -539,11 +615,12 @@
                                         </select>
                                     </div>
                                     <div class="p-l-20x m-b-20x state-info">
-                                       {{-- <input type="text" name="state" class="form-control contrlo-lg text-primary"
-                                               placeholder="State">--}}
+                                        {{-- <input type="text" name="state" class="form-control contrlo-lg text-primary"
+                                                placeholder="State">--}}
                                     </div>
                                     <div class="p-l-20x m-b-20x">
-                                        <input type="text" name="zip" id="zip" data-optional="false" data-inputrole="zip code"
+                                        <input type="text" name="zip" id="zip" data-optional="false"
+                                               data-inputrole="zip code"
                                                class="form-control contrlo-lg text-primary card-zip"
                                                placeholder="Zip Code">
                                         <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
@@ -577,7 +654,8 @@
         </div>
 
         {{--Promotion Code--}}
-        <div class="box-shadow bg-white m-t-20x" id="pcode" data-bindid="@if(Session::has('user.checkout.couponInfo')){{Session::get('user.checkout.couponInfo.bind_id')}}@else{{$accountList['cp_bind_id']}}@endif">
+        <div class="box-shadow bg-white m-t-20x" id="pcode"
+             data-bindid="@if(Session::has('user.checkout.couponInfo')){{Session::get('user.checkout.couponInfo.bind_id')}}@else{{$accountList['cp_bind_id']}}@endif">
             <div class="p-x-20x p-y-15x font-size-md btn-showHide" id="">
                 <span class="sanBold">Promotion Code</span>
                 <span class="pull-right showHide-simpleInfo">
@@ -613,7 +691,8 @@
                         <span class="font-size-md sanBold"></span>
                         <span class="font-size-md pull-right">
                             <div class="btn btn-secondary btn-md btn-addNewCode"><i
-                                        class="iconfont icon-add font-size-md p-r-5x"></i>Add New Promotion Code</div>
+                                        class="iconfont icon-add font-size-md p-r-5x"></i>Add New Promotion Code
+                            </div>
                         </span>
                     </div>
                     <div class="row p-x-10x p-t-20x coupon-list">
@@ -690,8 +769,9 @@
         </div>
         <!-- 提交按钮 -->
         <div class="p-y-20x text-right">
-            <a href="javascript:void(0)" data-clks='http://clk.motif.me/log.gif?t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-               class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Worldpay" >Place Order</a>
+            <a href="javascript:void(0)"
+               data-clks='http://clk.motif.me/log.gif?t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
+               class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Worldpay">Place Order</a>
             {{--<a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Oceanpay">Pay
                 with Credit Card</a>
             <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay
@@ -732,9 +812,11 @@
         <div class="p-a-10x">
             <div class="address-item choose-item p-x-20x p-y-15x @{{ if $value.isSel == 0 || $value.isSel == 1 }}  @{{ if $value.isSel == 1 }} active  @{{ /if }} @{{ else }} @{{ if $value.isDefault == 1 }} active @{{ /if }} @{{ /if }}"
                  data-info="@{{ $value.name }} @{{ $value.detail_address1 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }} @{{ $value.zip }}"
-                 data-csn="@{{ $value.country_name_sn }}" data-aid="@{{ $value.receiving_id }}" data-name="@{{ $value.name }}" data-city="@{{ $value.city }}"
-                 data-zip="@{{ $value.zip }}" data-state="@{{ $value.state }}" data-tel="@{{ $value.telephone }}" data-addr1="@{{ $value.detail_address1 }}" data-addr2="@{{ $value.detail_address2 }}"
-                 data-country="@{{ $value.country }}"   >
+                 data-csn="@{{ $value.country_name_sn }}" data-aid="@{{ $value.receiving_id }}"
+                 data-name="@{{ $value.name }}" data-city="@{{ $value.city }}"
+                 data-zip="@{{ $value.zip }}" data-state="@{{ $value.state }}" data-tel="@{{ $value.telephone }}"
+                 data-addr1="@{{ $value.detail_address1 }}" data-addr2="@{{ $value.detail_address2 }}"
+                 data-country="@{{ $value.country }}">
                 <div class="address-info">
                     @{{ $value.name }}<br>
                     @{{ $value.zip }}<br>
@@ -758,10 +840,12 @@
 <template id="tpl-creditCard">
     @{{ each list }}
     @{{ if $value.pay_method === 'Worldpay' }}
-        @{{ each $value.creditCards }}
+    @{{ each $value.creditCards }}
     <div class="col-md-6">
         <div class="p-a-10x">
-            <div class="card-item choose-item p-a-20x @{{ if $value.actived == 1}} active @{{ /if }}" data-cardtype="@{{ $value.card_type }}" data-cardnum="@{{ $value.card_number }}" data-cardid="@{{ $value.card_id }}" data-paytype="@{{ $value.pay_type }}">
+            <div class="card-item choose-item p-a-20x @{{ if $value.actived == 1}} active @{{ /if }}"
+                 data-cardtype="@{{ $value.card_type }}" data-cardnum="@{{ $value.card_number }}"
+                 data-cardid="@{{ $value.card_id }}" data-paytype="@{{ $value.pay_type }}">
                 <div>
                     <span class="payLeft-minW">
                     @{{ if $value.card_type === 'MasterCard' }}
@@ -785,7 +869,7 @@
             </div>
         </div>
     </div>
-        @{{ /each }}
+    @{{ /each }}
     <div class="col-md-6">
         <div class="p-a-10x">
             <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
@@ -800,7 +884,9 @@
     @{{ else if $value.pay_method === 'PayPalNative' }}
     <div class="col-md-6">
         <div class="p-a-10x">
-            <div class="card-item choose-item flex flex-alignCenter p-x-20x @{{ if $value.actived == 1 }} active @{{ /if }}" data-cardtype="paypal" data-cardnum="PayPal" data-cardid="PayPal" data-paytype="@{{ $value.pay_type }}">
+            <div class="card-item choose-item flex flex-alignCenter p-x-20x @{{ if $value.actived == 1 }} active @{{ /if }}"
+                 data-cardtype="paypal" data-cardnum="PayPal" data-cardid="PayPal"
+                 data-paytype="@{{ $value.pay_type }}">
                 <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
                 <span class="font-size-lxx p-l-40x">@{{$value.pay_name}}</span>
                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
@@ -809,21 +895,23 @@
     </div>
 
     @{{ else if $value.pay_method === 'Oceanpay' }}
-        @{{ each $value.creditCards }}
+    @{{ each $value.creditCards }}
     <div class="col-md-6">
         <div class="p-a-10x">
-            <div class="card-item choose-item p-a-20x @{{ if $value.actived == 1 }} active @{{ /if }}" data-cardtype="@{{ $value.card_type }}" data-cardnum="@{{ $value.card_number }}" data-cardid="@{{ $value.card_id }}" data-paytype="@{{ $value.pay_type }}">
+            <div class="card-item choose-item p-a-20x @{{ if $value.actived == 1 }} active @{{ /if }}"
+                 data-cardtype="@{{ $value.card_type }}" data-cardnum="@{{ $value.card_number }}"
+                 data-cardid="@{{ $value.card_id }}" data-paytype="@{{ $value.pay_type }}">
                 <div>
                     <span class="payLeft-minW">
                     @{{ if $value.card_type === 'MasterCard' }}
-                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="50">
-                    @{{ else if $value.card_type === 'Visa' }}
-                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="50">
-                    @{{ else if $value.card_type === 'JCB' }}
-                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="50">
-                    @{{ else if $value.card_type === 'AmericanExpress' }}
-                    <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="50">
-                    @{{ /if }}
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="50">
+                        @{{ else if $value.card_type === 'Visa' }}
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-visa.png" width="50">
+                        @{{ else if $value.card_type === 'JCB' }}
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-jcb.png" width="50">
+                        @{{ else if $value.card_type === 'AmericanExpress' }}
+                        <img src="{{config('runtime.Image_URL')}}/images/payment/pay-amc.png" width="50">
+                        @{{ /if }}
                     </span>
 
                     <span class="sanBold font-size-lx">@{{ $value.card_number }}</span>
@@ -836,7 +924,7 @@
             </div>
         </div>
     </div>
-        @{{ /each }}
+    @{{ /each }}
     <div class="col-md-6">
         <div class="p-a-10x">
             <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
@@ -875,7 +963,7 @@
             </div>
             {{--提示--}}
             @{{ if $value.cp_id == 306 }}
-                <span class="warning-info flex flex-alignCenter text-warning p-t-5x">
+            <span class="warning-info flex flex-alignCenter text-warning p-t-5x">
                     <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                     <span class="font-size-base">This coupon can only be used in our free Motif app.</span>
                 </span>

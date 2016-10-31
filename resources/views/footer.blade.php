@@ -61,17 +61,20 @@
             <div class="sanBold font-size-sm m-b-20x text-white">Payment Accepted</div>
             <div>
                 <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/paypal@2x.png{{config('runtime.V')}}"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/paypal@3x.png{{config('runtime.V')}} 2x">
+                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypal-43.png"
+                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypal-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-paypal-43@3x.png{{config('runtime.V')}} 3x">
                 <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/mastercard@2x.png{{config('runtime.V')}}"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/mastercard@3x.png{{config('runtime.V')}} 2x">
+                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-43.png"
+                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-43@3x.png{{config('runtime.V')}} 3x">
                 <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/maestro@2x.png{{config('runtime.V')}}"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/maestro@3x.png{{config('runtime.V')}} 2x">
+                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-43.png"
+                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-43@3x.png{{config('runtime.V')}} 3x">
                 <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/visa@2x.png{{config('runtime.V')}}"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/visa@3x.png{{config('runtime.V')}} 2x">
+                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-american-43.png"
+                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-american-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-american-43@3x.png{{config('runtime.V')}} 3x">
+                <img class="m-x-10x"
+                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-43.png"
+                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-visa-43@3x.png{{config('runtime.V')}} 3x">
             </div>
         </div>
         <div class="p-t-10x m-t-10x text-center text-white font-size-xs text-Copyright">Copyright © 2016 Motif Group
