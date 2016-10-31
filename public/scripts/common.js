@@ -2819,6 +2819,10 @@ function HideSeeMore(seemoreName) {
         playerModal.open();
     });
 
+    $(document).on('closed', '[data-remodal-id="playermodal"]', function (e) {
+        $('[data-remodal-id="playermodal"]').html('<div id="ytplayer" class="ytplayer" data-playid=""></div>');
+    });
+
     //Designer End
 
     // 图片延迟加载
