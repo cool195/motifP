@@ -1648,7 +1648,7 @@ function HideSeeMore(seemoreName) {
         });
     }
     // 有效日期校验
-    $('input[name="expiry"]').on('keyup', function () {
+    $('input[name="expiry"]').on('blur', function () {
         var expiryText = $(this).val();
         var MyDate = new Date(),
             MyYear = MyDate.getFullYear(),
