@@ -697,7 +697,7 @@
             <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay
                 with PayPal</a>--}}
             <div class="checkoutWarning p-y-10x text-warning m-r-40x" hidden>
-                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                <i class="iconfont icon-caveat icon-size-md"></i>
                 <span class="font-size-base"></span>
             </div>
         </div>
