@@ -1333,6 +1333,11 @@ function HideSeeMore(seemoreName) {
 
     // 生成订单
     $('.btn-toCheckout').on('click', function () {
+        if($(this).hasClass('disabled')){
+            return;
+        }
+        var $this = $(this);
+        $this.addClass('disabled');
 
         if ($('#defaultAddr').data('aid') < 1) {
             checkValid($('input[name="name"]'));
@@ -1378,17 +1383,21 @@ function HideSeeMore(seemoreName) {
                 }
             })
             .done(function (data) {
-                loadingModal.close();
                 if (data.success) {
+                    //$this.removeClass('disabled')
                     window.location.href = data.redirectUrl;
                 } else {
                     $('.checkoutWarning .font-size-base').html('There was a problem validating your payment. Please verify all payment details and try placing your order again. Thank you.');
                     $('.checkoutWarning').removeAttr('hidden');
                     setTimeout(function () {
-                        loadingModal.close();
+                        $('.checkoutWarning').attr('hidden', "");
+                        //$this.removeClass('disabled');
                         location.reload();
                     }, 2000);
                 }
+            })
+            .always(function() {
+                loadingModal.close();
             })
     });
     
@@ -1731,22 +1740,25 @@ function HideSeeMore(seemoreName) {
                 }
             })
             .done(function (data) {
-              loadingModal.close();
-              $this.removeClass('disabled');
               if (data.success) {
                     getCardList();
                     $('#addCard-container input[type="text"]').val('');
                     $('#card-addAddressForm input[type="text"]').val('');
                     $('.select-payment').removeClass('disabled');
                     $('.add-newCard').addClass('disabled');
+                    $this.removeClass('disabled');
 
                 } else {
                     $('.addCard-warning').removeClass('off');
-                    //$('.addCard-warning').children('span').html(data.error_msg);
+                    $('.addCard-warning').children('span').html(data.error_msg);
                     setTimeout(function () {
                         $('.addCard-warning').addClass('off');
+                        $this.removeClass('disabled');
                     }, 2000);
                 }
+            })
+            .always(function(data) {
+                loadingModal.close();
             })
 
     });
