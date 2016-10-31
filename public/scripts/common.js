@@ -1448,7 +1448,7 @@ function HideSeeMore(seemoreName) {
             .done(function (data) {
                 if (data.success) {
                     appendAddressList(data.data);
-                    if ($('.address-item').length === 1) {
+                    if ($('.address-item').length === 1 && $('#addrlength').data('addrlength') == 0) {
                         $.each(data.data.list, function (n, value) {
                             var country = value['country'],
                                 city = value['city'],

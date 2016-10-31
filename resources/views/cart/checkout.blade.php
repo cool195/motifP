@@ -116,7 +116,7 @@
         {{--Address 注入服务--}}
         @inject('Address', 'App\Http\Controllers\AddressController')
         {{--*/ $address = $Address->index() /*--}}
-        <div class="box-shadow bg-white m-t-20x">
+        <div class="box-shadow bg-white m-t-20x" id="addrlength" data-addrlength ="{{ count($address['data']['list']) }}">
             <div class="font-size-md p-x-20x p-y-15x btn-showHide @if(empty($address['data']['list'])){{'active'}}@endif"
                  id="addrShowHide">
                 <span class="sanBold">Shipping to</span>
