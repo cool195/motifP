@@ -120,7 +120,7 @@
                     @endif
                 </div>
 
-                <div class="p-t-20x p-x-20x">
+                <div class="p-t-20x p-x-20x text-left">
                     <p class="m-b-0">{{$designer['describe']}}</p>
                 </div>
 
