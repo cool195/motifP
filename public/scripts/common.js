@@ -3886,6 +3886,8 @@ $('#designerDetailContainer').on('click', '.bg-player', function () {
             'onError': onPlayerError
         }
     });
+
+    $('#playermodalDialog').css('background-color','rgba(0, 0, 0, 0)');
 });
 
 
