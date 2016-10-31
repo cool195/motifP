@@ -245,7 +245,7 @@ function HideSeeMore(seemoreName) {
         // youtube 视频播放
         // 视频比例
         var MediaScale = 9 / 16;
-        var Width = $('.zoomPad').width(),
+        var Width = ($('.gallery').width()).toFixed(2),
             MediaHeight = Width * MediaScale;
 
         player = new YT.Player('ytplayer', {
