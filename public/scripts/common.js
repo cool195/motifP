@@ -1627,7 +1627,7 @@ function HideSeeMore(seemoreName) {
             return true;
         }
     }
-    $('input[data-optional="false"]').on('keyup blur', function () {
+    $('input[data-optional="false"]').on('blur', function () {
         if( $('.card-addNewAddr').hasClass('disabled')){
             if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]')) ){
                 $('#btn-addNewCard').removeClass('disabled')
