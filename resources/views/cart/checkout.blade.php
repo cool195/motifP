@@ -566,7 +566,7 @@
                             <a href="javascript:void(0);" id="btn-addNewCard" class="btn btn-primary btn-md disabled">Continue</a>
                             <div class="warning-info text-warning p-t-10x addCard-warning off">
                                 <i class="iconfont icon-caveat icon-size-md"></i>
-                                <span class="font-size-base">信用卡添加失败!</span>
+                                <span class="font-size-base">Add Card Error!</span>
                             </div>
                         </div>
                         {{--end添加新的账单地址--}}

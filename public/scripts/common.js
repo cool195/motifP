@@ -1742,7 +1742,7 @@ function HideSeeMore(seemoreName) {
 
                 } else {
                     $('.addCard-warning').removeClass('off');
-                    $('.addCard-warning').children('span').html(data.error_msg);
+                    //$('.addCard-warning').children('span').html(data.error_msg);
                     setTimeout(function () {
                         $('.addCard-warning').addClass('off');
                     }, 2000);
