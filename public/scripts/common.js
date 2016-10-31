@@ -1334,6 +1334,7 @@ function HideSeeMore(seemoreName) {
         var aid = $('#defaultAddr').data('aid') == undefined ? '' : $('#defaultAddr').data('aid');
         var bindid = $('#pcode').data('bindid') == undefined ? '' : $('#pcode').data('bindid');
         var smethod = $('input[name="shippingMethod"]:checked').val() == undefined ? '' : $('input[name="shippingMethod"]:checked').val();
+        console.log(smethod);
         $.ajax({
                 url: '/cart/accountlist?aid=' + aid + '&bindid=' + bindid + '&logisticstype=' + smethod,
                 type: 'GET',
