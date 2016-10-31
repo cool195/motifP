@@ -704,14 +704,9 @@
     </div>
 </section>
 
-
 <!-- loading -->
-<div class="remodal-overlay remodal-is-opened" style="display: block; background: none!important;"></div>
-<div class="remodal" data-remodal-id="loading-modal">
-    <div class="loading daily-loading centerLoading">
-        <div class="loader"></div>
-        <div class="text-center p-l-15x">Loading...</div>
-    </div>
+<div class="loading loading-screen loading-switch loading-hidden" id="checkoutLoading">
+    <div class="loader loader-screen"></div>
 </div>
 
 <!-- 移除商品弹框 -->

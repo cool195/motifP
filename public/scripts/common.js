@@ -101,6 +101,21 @@ function HideSeeMore(seemoreName) {
         $('.download-info').remove();
     });
 
+    // 全局 loading
+    function openCheckoutLoading() {
+        $('#checkoutLoading').toggleClass('loading-hidden');
+        setTimeout(function () {
+            $('#checkoutLoading').toggleClass('loading-open');
+        }, 25);
+    }
+
+    // loading 隐藏
+    function closeCheckoutLoading() {
+        $('#checkoutLoading').addClass('loading-close');
+        setTimeout(function () {
+            $('#checkoutLoading').toggleClass('loading-hidden loading-open').removeClass('loading-close');
+        }, 500);
+    }
 
     /**
      * pushAjax - 依次发送 ajax 请求，遍历所有项
@@ -773,9 +788,6 @@ function HideSeeMore(seemoreName) {
         // 邮件订阅 弹出框
         var redeemModal = $('[data-remodal-id=redeem-modal]').remodal(Options);
 
-        // checkout loading浮层
-        var loadingModal = $('[data-remodal-id=loading-modal]').remodal(Options);
-
         // designerDetail 弹出视频
         var playerModal = $('[data-remodal-id=playermodal]').remodal(OptionsShare);
 
@@ -1358,7 +1370,7 @@ function HideSeeMore(seemoreName) {
             return false;
         }
 
-        loadingModal.open();
+        openCheckoutLoading();
         var $this = $(this);
         $.ajax({
             url: $this.data('clks'),
@@ -1378,17 +1390,18 @@ function HideSeeMore(seemoreName) {
                 }
             })
             .done(function (data) {
-                loadingModal.close();
                 if (data.success) {
                     window.location.href = data.redirectUrl;
                 } else {
                     $('.checkoutWarning .font-size-base').html('There was a problem validating your payment. Please verify all payment details and try placing your order again. Thank you.');
                     $('.checkoutWarning').removeAttr('hidden');
                     setTimeout(function () {
-                        loadingModal.close();
                         location.reload();
                     }, 2000);
                 }
+            })
+            .always(function(){
+                closeCheckoutLoading();
             })
     });
     
@@ -1676,6 +1689,7 @@ function HideSeeMore(seemoreName) {
         if($(this).hasClass('disabled')){
             return;
         }
+        openCheckoutLoading();
         var $this = $(this);
         $this.addClass('disabled');
         var cardNum =  $('.card-number').val();
@@ -1710,7 +1724,6 @@ function HideSeeMore(seemoreName) {
             csn = $('.card-selectCountry > option[value="' + cardCountry + '"]').data('csn');
 
         }
-        loadingModal.open();
         $.ajax({
                 url: '/wordpay/addCard',
                 type: 'POST',
@@ -1731,8 +1744,6 @@ function HideSeeMore(seemoreName) {
                 }
             })
             .done(function (data) {
-              loadingModal.close();
-              $this.removeClass('disabled');
               if (data.success) {
                     getCardList();
                     $('#addCard-container input[type="text"]').val('');
@@ -1745,9 +1756,14 @@ function HideSeeMore(seemoreName) {
                     //$('.addCard-warning').children('span').html(data.error_msg);
                     setTimeout(function () {
                         $('.addCard-warning').addClass('off');
+
                     }, 2000);
                 }
+                $this.removeClass('disabled');
             })
+            .always(function() {
+                closeCheckoutLoading();
+            });
 
     });
     function getCardList(){
@@ -3747,11 +3763,6 @@ function HideSeeMore(seemoreName) {
                 }
             });
     });
-    // checkout页面的loading
-    if($('#checkoutView').length > 0){
-        // 需默认关闭
-        loadingModal.close();
-    }
 })(jQuery, Swiper);
 
 
