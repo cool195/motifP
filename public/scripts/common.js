@@ -1648,7 +1648,7 @@ function HideSeeMore(seemoreName) {
         });
     }
     // 有效日期校验
-    $('input[name="expiry"]').on('keyup', function () {
+    $('input[name="expiry"]').on('blur', function () {
         var expiryText = $(this).val();
         var MyDate = new Date(),
             MyYear = MyDate.getFullYear(),
@@ -1742,7 +1742,10 @@ function HideSeeMore(seemoreName) {
 
                 } else {
                     $('.addCard-warning').removeClass('off');
-                    $('.addCard-warning').children('span').html(data.error_msg);
+                    //$('.addCard-warning').children('span').html(data.error_msg);
+                    setTimeout(function () {
+                        $('.addCard-warning').addClass('off');
+                    }, 2000);
                 }
             })
 
