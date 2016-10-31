@@ -1640,7 +1640,7 @@ function HideSeeMore(seemoreName) {
     function checkInput(thisElem){
         if (thisElem.val() === ''){
             thisElem.siblings('.warning-info').removeClass('off');
-            thisElem.siblings('.warning-info').children('span').html('Please enter your ' + thisElem.data('inputrole') + ' !');
+            thisElem.siblings('.warning-info').children('span').html('Please enter a valid ' + thisElem.data('inputrole') + ' !');
             return false;
         }else{
             thisElem.siblings('.warning-info').addClass('off');
@@ -1681,7 +1681,7 @@ function HideSeeMore(seemoreName) {
         });
     }
     // 有效日期校验
-    $('input[name="expiry"]').on('blur', function () {
+    /*$('input[name="expiry"]').on('blur', function () {
         var expiryText = $(this).val();
         var MyDate = new Date(),
             MyYear = MyDate.getFullYear(),
@@ -1702,7 +1702,7 @@ function HideSeeMore(seemoreName) {
                 $WarningInfo.children('span').html('The year is incorrect!');
             }
         }
-    });
+    });*/
 
     // 提交卡信息
     $('#btn-addNewCard').on('click', function () {

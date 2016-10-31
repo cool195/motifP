@@ -425,24 +425,24 @@
                             <form action="" id="addCard-container">
                                 <input name="card_type" type="hidden">
 
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <input type="text" name="card" maxlength="20" class="form-control contrlo-lg text-primary card-number" data-optional="false" data-inputrole="credit card number" placeholder="Credit Card Number">
-                                    <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
-                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                    <div class="warning-info flex flex-alignLeft text-warning p-t-5x off">
+                                        <i class="iconfont icon-caveat icon-size-md p-t-5x p-r-5x"></i>
                                         <span class="font-size-base"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" name="expiry" maxlength="9" class="form-control contrlo-lg text-primary card-date" data-optional="false" data-inputrole="effective date" placeholder="MM/YYYY">
-                                    <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
-                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                <div class="col-md-4">
+                                    <input type="text" name="expiry" maxlength="9" class="form-control contrlo-lg text-primary card-date" data-optional="false" data-inputrole="expiration date" placeholder="MM/YYYY">
+                                    <div class="warning-info flex flex-alignLeft text-warning p-t-5x off">
+                                        <i class="iconfont icon-caveat icon-size-md p-t-5x p-r-5x"></i>
                                         <span class="font-size-base"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" name="cvc" maxlength="4" class="form-control contrlo-lg text-primary card-code" data-optional="false" data-inputrole="Security Code" placeholder="Security Code">
-                                    <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
-                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                <div class="col-md-4">
+                                    <input type="text" name="cvc" maxlength="4" class="form-control contrlo-lg text-primary card-code" data-optional="false" data-inputrole="security code" placeholder="Security Code">
+                                    <div class="warning-info flex flex-alignLeft text-warning p-t-5x off">
+                                        <i class="iconfont icon-caveat icon-size-md p-t-5x p-r-5x"></i>
                                         <span class="font-size-base"></span>
                                     </div>
                                 </div>
