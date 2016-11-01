@@ -1655,11 +1655,17 @@ function HideSeeMore(seemoreName) {
     $('#btn-addNewCard').on('click', function () {
         //校验
         if( $('.card-addNewAddr').hasClass('disabled')){
-            checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'));
+            if( !checkInput($('input[name="card"]')) || !checkInput($('input[name="expiry"]')) || !checkInput($('input[name="cvc"]')) ){
+                return;
+            }
+            
         }else {
-            checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
-                && checkInput($('.card-name')) && checkInput($('.card-tel')) && checkInput($('.card-addr1'))
-                && checkInput($('.card-city')) && checkInput($('.card-zip')) && checkInput($('.card-state'))
+            if ( !checkInput($('input[name="card"]')) || !checkInput($('input[name="expiry"]')) || !checkInput($('input[name="cvc"]')) ||
+                !checkInput($('.card-name')) || !checkInput($('.card-tel')) || !checkInput($('.card-addr1')) || !checkInput($('.card-city')) ||
+                !checkInput($('.card-zip')) || !checkInput($('.card-state')) ){
+                return;
+            }
+            
         }
 
         openCheckoutLoading();
