@@ -19,10 +19,10 @@ class WordpayController extends BaseController
         );
         $result = $this->request('pay', $params);
 
-        if($result['success']){
-            if(Session::has('user.checkout.paywith')){
+        if ($result['success']) {
+            if (Session::has('user.checkout.paywith')) {
                 $result = $this->setCardActived($result);
-            }else{
+            } else {
                 $result = $this->findLast($result);
             }
         }
@@ -32,15 +32,15 @@ class WordpayController extends BaseController
 
     private function setCardActived(&$result)
     {
-        foreach($result['data']['list'] as &$value){
-            if(isset($value['creditCards'])){
-                foreach($value['creditCards'] as &$card){
-                    if($card['card_id'] == Session::get('user.checkout.paywith.withCard.card_id')){
+        foreach ($result['data']['list'] as &$value) {
+            if (isset($value['creditCards'])) {
+                foreach ($value['creditCards'] as &$card) {
+                    if ($card['card_id'] == Session::get('user.checkout.paywith.withCard.card_id')) {
                         $card['actived'] = 1;
                     }
                 }
             } else {
-                if(Session::get('user.checkout.paywith.pay_type') == $value['pay_type']){
+                if (Session::get('user.checkout.paywith.pay_type') == $value['pay_type']) {
                     $value['actived'] = 1;
                 }
             }
@@ -50,10 +50,10 @@ class WordpayController extends BaseController
 
     private function findLast(&$result)
     {
-        foreach($result['data']['list'] as $value){
-            if(isset($value['creditCards'])){
-                foreach($value['creditCards'] as $card){
-                    if(isset($card['isLast']) && $card['isLast'] == 1){
+        foreach ($result['data']['list'] as $value) {
+            if (isset($value['creditCards'])) {
+                foreach ($value['creditCards'] as $card) {
+                    if (isset($card['isLast']) && $card['isLast'] == 1) {
                         $value['withCard'] = $card;
                         Session::put('user.checkout.paywith', $value);
                         Session::forget('user.checkout.paywith.creditCards');
@@ -63,7 +63,7 @@ class WordpayController extends BaseController
             } else {
                 Session::put('user.checkout.paywith', $value);
                 Session::forget('user.checkout.paywith.creditCards');
-                if(isset($value['isLast']) && $value['isLast'] == 1){
+                if (isset($value['isLast']) && $value['isLast'] == 1) {
                     return $result;
                 }
             }
@@ -72,11 +72,10 @@ class WordpayController extends BaseController
     }
 
 
-
     public function addCreditCard(Request $request)
     {
-        $expiry = explode('/',$request->input('expiry'));
-        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . trim($expiry[1]) . str_replace(' ', '', $request->get('card')) . '/' . $request->get('cvv'));
+        $expiry = explode('/', $request->input('expiry'));
+        $cardInfo = MCrypt::encrypt(trim($expiry[0]) . '20' . trim($expiry[1]) . str_replace(' ', '', $request->get('card')) . '/' . $request->get('cvv'));
         $params = array(
             'cmd' => 'acrd',
             'uuid' => $_COOKIE['uid'],
@@ -151,7 +150,7 @@ class WordpayController extends BaseController
             'cmd' => 'logis',
             'token' => Session::get('user.token')
         );
-        if($price != 0){
+        if ($price != 0) {
             $params['amount'] = $price;
             $params['country'] = $country;
         }
@@ -164,15 +163,16 @@ class WordpayController extends BaseController
     {
         $shippingMethods = $this->getShippingMethod();
         Session::forget('user.checkout.selship');
-        foreach($shippingMethods as $value){
-            if($value['logistics_type'] == $type){
+        foreach ($shippingMethods as $value) {
+            if ($value['logistics_type'] == $type) {
                 Session::put('user.checkout.selship', $value);
                 return $value;
             }
         }
     }
 
-    public function test(){
+    public function test()
+    {
         return Session::get('user.checkout');
     }
 
@@ -226,7 +226,6 @@ class WordpayController extends BaseController
             }
         }
     }
-
 
 
 }
