@@ -1818,9 +1818,7 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
                 if (data.success) {
-                    $('.restPwd-content').addClass('hidden').removeClass('active');
-                    $('.login-content').removeClass('hidden').addClass('active');
-                    $('.login-title').text('Sign in with Motif Account');
+                    window.location.href = '/login';
                 } else {
                     $('.forget-email').parent().siblings('.warning-info').removeClass('off');
                     $('.forget-email').parent().siblings('.warning-info').children('span').html(data.error_msg);
