@@ -76,7 +76,8 @@
 
 </body>
 <script src="/scripts/vendor.js"></script>
-<script src="https://apis.google.com/js/api:client.js"></script>
 <script src="/scripts/common.js"></script>
+<script src="https://apis.google.com/js/api:client.js"></script>
+
 
 </html>
