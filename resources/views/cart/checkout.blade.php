@@ -499,7 +499,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" name="expiry" maxlength="9"
+                                    <input type="text" name="expiry" maxlength="7"
                                            class="form-control contrlo-lg text-primary card-date" data-optional="false"
                                            data-inputrole="expiration date" placeholder="MM/YYYY">
                                     <div class="warning-info flex flex-alignLeft text-warning p-t-5x off">
