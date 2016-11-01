@@ -181,6 +181,8 @@ Route::group(['middleware' => 'pcguide'], function () {
 
     Route::get('/forgetpwd', 'UserController@reset');
 
+    Route::get('/forgetpassword', 'UserController@forgetpwd');
+
 });
 
 Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {

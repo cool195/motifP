@@ -469,5 +469,10 @@ class UserController extends BaseController
         return view('user.promotions',['title'=>'Promotions']);
     }
 
+    public function forgetpwd()
+    {
+        return view('user.forgetpwd');
+    }
+
 
 }
