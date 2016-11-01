@@ -294,7 +294,7 @@
                                                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                                  data-original="{{config('runtime.CDN_URL')}}/n2/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                  alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
-                                                        </a>
+
                                                         <!--预售标志-->
                                                         @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
                                                             @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
@@ -314,6 +314,7 @@
                                                                 </div>
                                                             @endif
                                                         @endif
+                                                        </a>
 
                                                         @if(Session::has('user'))
                                                             <span class="product-heart btn-heart">
