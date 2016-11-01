@@ -81,7 +81,7 @@
             LLC. All rights reserved.
         </div>
     </div>
-    @if(!isset($CartCheck))
+    @if(false && !isset($CartCheck))
     <!-- 固定 弹框订阅 -->
         <div class="redeem-fixed p-y-10x p-x-20x">GET 15% OFF YOUR FIRST ORDER!</div>
     @endif
