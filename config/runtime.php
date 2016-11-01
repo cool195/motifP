@@ -12,7 +12,7 @@ if (env('APP_ENV') == 'production') {
 
     $secureCode = '4646r88B';
     $terminal = '16044402';
-
+    $clkUrl = '//clk.motif.me';
     $selfUrl = '//www.motif.me/';
 } elseif (env('APP_ENV') == 'publish') {
     //预发布
@@ -26,7 +26,7 @@ if (env('APP_ENV') == 'production') {
 
     $secureCode = 'jt688j00';
     $terminal = '16044405';
-
+    $clkUrl = '//test.clk.motif.me';
     $selfUrl = 'http://test.pc.motif.me/';
 } else {
     //测试
@@ -40,7 +40,7 @@ if (env('APP_ENV') == 'production') {
 
     $secureCode = 'jt688j00';
     $terminal = '16044405';
-
+    $clkUrl = '//test.clk.motif.me';
     $selfUrl = 'http://pc.motif.app/';
 }
 
@@ -56,6 +56,6 @@ return [
     'PAYPAL_SECRET' => $paypalsecret,
     'PAYPAL_MODE' => $paypalmode,
     'SELF_URL' => $selfUrl,
-    'CLK_URL' => '//clk.motif.me',
+    'CLK_URL' => $clkUrl,
     'V' => '?v=1.5b',
 ];
