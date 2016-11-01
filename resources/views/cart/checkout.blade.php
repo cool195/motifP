@@ -640,7 +640,7 @@
                         <div class="text-right">
                             <a href="javascript:void(0);" id="card-addAddress-cancel"
                                class="btn btn-secondary btn-md m-r-10x">Cancel</a>
-                            <a href="javascript:void(0);" id="btn-addNewCard" class="btn btn-primary btn-md disabled">Continue</a>
+                            <a href="javascript:void(0);" id="btn-addNewCard" class="btn btn-primary btn-md">Continue</a>
                             <div class="warning-info text-warning p-t-10x addCard-warning off">
                                 <i class="iconfont icon-caveat icon-size-md"></i>
                                 <span class="font-size-base">Add Card Error!</span>

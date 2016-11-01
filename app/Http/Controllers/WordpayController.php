@@ -61,9 +61,9 @@ class WordpayController extends BaseController
                     }
                 }
             } else {
-                Session::put('user.checkout.paywith', $value);
-                Session::forget('user.checkout.paywith.creditCards');
                 if (isset($value['isLast']) && $value['isLast'] == 1) {
+                    Session::put('user.checkout.paywith', $value);
+                    Session::forget('user.checkout.paywith.creditCards');
                     return $result;
                 }
             }
@@ -95,6 +95,9 @@ class WordpayController extends BaseController
         $params['csn'] = $request->input('csn');
         $params['ctype'] = $request->get('card_type');
         $result = $this->request('pay', $params);
+        if($result['success']){
+            $this->paywith($result['data']['pay_type'], $result['data']['card_id']);
+        }
         return $result;
 
     }

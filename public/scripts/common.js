@@ -1459,6 +1459,7 @@ function HideSeeMore(seemoreName) {
                             $('#defaultAddr').html(name + detail_address1 + " " + city + " " + state + " " + country + " " + zip);
                             $('#defaultAddr').data('csn', value['country_name_sn']);
                             $('#defaultAddr').data('aid', value['receiving_id']);
+                            $('#addrlength').data('addrlength', 1);
                         });
                         getshiplist();
                     }
@@ -1580,14 +1581,6 @@ function HideSeeMore(seemoreName) {
         $('.card-message').addClass('disabled');
         $('.card-addNewAddr').removeClass('disabled');
 
-        if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
-            && checkInput($('.card-name')) && checkInput($('.card-tel')) && checkInput($('.card-addr1'))
-            && checkInput($('.card-city')) && checkInput($('.card-zip')) ){
-            $('#btn-addNewCard').removeClass('disabled')
-        }else{
-            $('#btn-addNewCard').addClass('disabled')
-        }
-
         var Country = $('.card-selectCountry option:selected').text();
         initPaymentCityState(Country, '')
     });
@@ -1648,32 +1641,9 @@ function HideSeeMore(seemoreName) {
             return true;
         }
     }
-    $('input[data-optional="false"]').on('keyup blur', function () {
-        if( $('.card-addNewAddr').hasClass('disabled')){
-            if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]')) ){
-                $('#btn-addNewCard').removeClass('disabled')
-            }else{
-                $('#btn-addNewCard').addClass('disabled')
-            }
-        }else {
-            if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
-                && checkInput($('.card-name')) && checkInput($('.card-tel')) && checkInput($('.card-addr1'))
-                && checkInput($('.card-city')) && checkInput($('.card-zip')) ){
-                $('#btn-addNewCard').removeClass('disabled')
-            }else{
-                $('#btn-addNewCard').addClass('disabled')
-            }
-        }
-    });
-    // card 验证 State
-    $('#card-addAddressForm .state-info').on('keyup blur', '.card-state', function () {
-        if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))
-            && checkInput($('.card-name')) && checkInput($('.card-tel')) && checkInput($('.card-addr1'))
-            && checkInput($('.card-city')) && checkInput($(this)) && checkInput($('.card-zip')) ){
-            $('#btn-addNewCard').removeClass('disabled')
-        }else{
-            $('#btn-addNewCard').addClass('disabled')
-        }
+    //获得焦点时移除提示
+    $('input[data-optional="false"]').on('focus', function () {
+        $(this).siblings('.warning-info').addClass('off');
     });
     //Credit Card 校验
     if($('#addCard-container').length > 0){
@@ -1681,35 +1651,23 @@ function HideSeeMore(seemoreName) {
             container: '.card-wrapper'
         });
     }
-    // 有效日期校验
-    /*$('input[name="expiry"]').on('blur', function () {
-        var expiryText = $(this).val();
-        var MyDate = new Date(),
-            MyYear = MyDate.getFullYear(),
-            $WarningInfo = $(this).siblings('.warning-info');
-        // 验证月份
-        if (expiryText.length == 5) {
-            var month = parseInt(expiryText.substring(0, 2));
-            if (month > 12 || month === 0) {
-                $WarningInfo.removeClass('off');
-                $WarningInfo.children('span').html('The month is incorrect!');
-            }
-        }
-        // 验证年份
-        if (expiryText.length == 9) {
-            var year = parseInt(expiryText.substring(5, 9));
-            if (year < MyYear || year > MyYear + 30) {
-                $WarningInfo.removeClass('off');
-                $WarningInfo.children('span').html('The year is incorrect!');
-            }
-        }
-    });*/
-
     // 提交卡信息
     $('#btn-addNewCard').on('click', function () {
-        if($(this).hasClass('disabled')){
-            return;
+        //校验
+        if( $('.card-addNewAddr').hasClass('disabled')){
+            if( !checkInput($('input[name="card"]')) || !checkInput($('input[name="expiry"]')) || !checkInput($('input[name="cvc"]')) ){
+                return;
+            }
+            
+        }else {
+            if ( !checkInput($('input[name="card"]')) || !checkInput($('input[name="expiry"]')) || !checkInput($('input[name="cvc"]')) ||
+                !checkInput($('.card-name')) || !checkInput($('.card-tel')) || !checkInput($('.card-addr1')) || !checkInput($('.card-city')) ||
+                !checkInput($('.card-zip')) || !checkInput($('.card-state')) ){
+                return;
+            }
+            
         }
+
         openCheckoutLoading();
         var $this = $(this);
         $this.addClass('disabled');
@@ -1772,13 +1730,33 @@ function HideSeeMore(seemoreName) {
                     $('.select-payment').removeClass('disabled');
                     $('.add-newCard').addClass('disabled');
 
-                } else {
+                    var cardType = data.data.card_type;
+                    var cardNum = data.data.card_number;
+                    var cardId = data.data.card_id;
+                    var payType = data.data.pay_type;
+
+                    $('.pay-img').removeClass('active');
+                    if (cardType == 'Visa'){
+                        $('.pay-img.pay-visa').addClass('active');
+                    }else if (cardType === 'MasterCard'){
+                        $('.pay-img.pay-masc').addClass('active');
+                    }else if (cardType === 'AmericanExpress'){
+                        $('.pay-img.pay-amc').addClass('active');
+                    }else if (cardType === 'JCB'){
+                        $('.pay-img.pay-jcb').addClass('active');
+                    }else if (cardType === 'paypal'){
+                        $('.pay-img.pay-paypal').addClass('active');
+                    }
+
+                    $('.payment-text').html(cardNum);
+
+
+              } else {
                     $('.addCard-warning').removeClass('off');
-                    //$('.addCard-warning').children('span').html(data.error_msg);
                     setTimeout(function () {
                         $('.addCard-warning').addClass('off');
 
-                    }, 2000);
+                    }, 5000);
                 }
                 $this.removeClass('disabled');
             })
