@@ -1459,6 +1459,7 @@ function HideSeeMore(seemoreName) {
                             $('#defaultAddr').html(name + detail_address1 + " " + city + " " + state + " " + country + " " + zip);
                             $('#defaultAddr').data('csn', value['country_name_sn']);
                             $('#defaultAddr').data('aid', value['receiving_id']);
+                            $('#addrlength').data('addrlength', 1);
                         });
                         getshiplist();
                     }

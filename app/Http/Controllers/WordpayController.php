@@ -96,6 +96,9 @@ class WordpayController extends BaseController
         $params['csn'] = $request->input('csn');
         $params['ctype'] = $request->get('card_type');
         $result = $this->request('pay', $params);
+        if($result['success']){
+            $this->paywith($result['data']['pay_type'], $result['data']['card_id']);
+        }
         return $result;
 
     }
