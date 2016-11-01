@@ -1773,7 +1773,28 @@ function HideSeeMore(seemoreName) {
                     $('.select-payment').removeClass('disabled');
                     $('.add-newCard').addClass('disabled');
 
-                } else {
+                    var cardType = data.data.card_type;
+                    var cardNum = data.data.card_number;
+                    var cardId = data.data.card_id;
+                    var payType = data.data.pay_type;
+
+                    $('.pay-img').removeClass('active');
+                    if (cardType == 'Visa'){
+                        $('.pay-img.pay-visa').addClass('active');
+                    }else if (cardType === 'MasterCard'){
+                        $('.pay-img.pay-masc').addClass('active');
+                    }else if (cardType === 'AmericanExpress'){
+                        $('.pay-img.pay-amc').addClass('active');
+                    }else if (cardType === 'JCB'){
+                        $('.pay-img.pay-jcb').addClass('active');
+                    }else if (cardType === 'paypal'){
+                        $('.pay-img.pay-paypal').addClass('active');
+                    }
+
+                    $('.payment-text').html(cardNum);
+
+
+              } else {
                     $('.addCard-warning').removeClass('off');
                     //$('.addCard-warning').children('span').html(data.error_msg);
                     setTimeout(function () {
