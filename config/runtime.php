@@ -13,7 +13,7 @@ if (env('APP_ENV') == 'production') {
     $secureCode = '4646r88B';
     $terminal = '16044402';
 
-    $selfUrl = 'http://www.motif.me/';
+    $selfUrl = '//www.motif.me/';
 } elseif (env('APP_ENV') == 'publish') {
     //预发布
     $CDN_URL = 'https://s3-us-west-1.amazonaws.com/emimagetest';//后台图片服务地址
@@ -56,5 +56,6 @@ return [
     'PAYPAL_SECRET' => $paypalsecret,
     'PAYPAL_MODE' => $paypalmode,
     'SELF_URL' => $selfUrl,
+    'CLK_URL' => '//clk.motif.me',
     'V' => '?v=1.5b',
 ];

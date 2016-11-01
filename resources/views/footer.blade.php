@@ -141,7 +141,7 @@
 <script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/card.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
-<script src="http://clk.motif.me/wl.js"></script>
+<script src="{{config('runtime.CLK_URL')}}/wl.js"></script>
 <!-- Google Tag Manager -->
 <script>(function (w, d, s, l, i) {
         w[l] = w[l] || [];

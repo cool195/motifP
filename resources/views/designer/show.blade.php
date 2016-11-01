@@ -77,7 +77,7 @@
 <section class="m-t-40x">
 @inject('wishlist', 'App\Http\Controllers\UserController')
 <!-- 新版设计师详情页 -->
-    <div class="topic-wrap" data-impr='http://clk.motif.me/log.gif?t=page.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"PC","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{Session::get('user.uuid')}}"}'>
+    <div class="topic-wrap" data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=page.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"PC","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{Session::get('user.uuid')}}"}'>
         <!-- 设计师信息 -->
         <div class="box-shadow bg-white">
             <!-- 设计师头图 -->
@@ -104,7 +104,7 @@
         <!-- 设计师头像 follow 介绍 社交 -->
             <div class="text-center p-b-20x p-t-30x designer-basicInfo">
                 <div class="m-b-10x designer-headImg"
-                     data-impr='http://clk.motif.me/log.gif?t=designer.600001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"PC"}'>
+                     data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.600001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"PC"}'>
                     <img class="img-circle img-border-white-4x"
                          src="{{config('runtime.CDN_URL')}}/n2/{{$designer['icon']}}"
                          width="120" height="120" alt="">
@@ -256,8 +256,8 @@
                                          src="{{config('runtime.CDN_URL')}}/n2/{{$value['imgPath']}}">
                                 @else
                                     <a href="@if($value['skipType']=='1')/detail/{{$value['skipId']}}@elseif($value['skipType']=='2')/designer/{{$value['skipId']}}@elseif($value['skipType']=='3')/topic/{{$value['skipId']}}@elseif($value['skipType']=='4')/shopping#{{$value['skipId']}}@else{{$value['skipId']}}@endif"
-                                       data-impr='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'
-                                       data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'>
+                                       data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'
+                                       data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.400001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":"{{$value['skipType']}}","skipId":"{{$value['skipId']}}","expid":0,"index":{{$k}},"version":"1.0.1","ver":"9.2","src":"PC"}'>
                                         <img class="img-lazy img-fluid"
                                              src="{{config('runtime.CDN_URL')}}/n2/{{$value['imgPath']}}">
                                     </a>
@@ -286,7 +286,7 @@
                                                 <div class="productList-item">
                                                     <div class="image-container">
                                                         <a href="/detail/{{$spu}}"
-                                                           data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"PC"}'
+                                                           data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.400001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"PC"}'
                                                            data-spu="{{$spu}}"
                                                            data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
                                                            data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
@@ -305,7 +305,7 @@
                                                             <!--预售标志-->
                                                                 <div class="presale-sign newPresale-sign">
                                                                     <a href="/detail/{{$spu}}"
-                                                                       data-clk='http://clk.motif.me/log.gif?t=designer.400001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"PC"}'
+                                                                       data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.400001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"PC"}'
                                                                        data-spu="{{$spu}}"
                                                                        data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
                                                                        data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}"
