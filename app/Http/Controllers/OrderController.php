@@ -184,7 +184,7 @@ class OrderController extends BaseController
                 $result['redirectUrl'] = "/paypal?orderid=" . $result['data']['orderID'] . "&orderDetail=" . $result['data']['shortInfo'] . "&totalPrice=" . $result['data']['pay_amount'] / 100;
             } else {
                 Session::forget('user.checkout');
-                $result['redirectUrl'] = '/success';
+                $result['redirectUrl'] = '/success?orderid=' . $result['data']['orderID'];
             }
         } else {
             //支付失败
