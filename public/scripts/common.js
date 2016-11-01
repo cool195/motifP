@@ -1823,7 +1823,7 @@ function HideSeeMore(seemoreName) {
                     $('.login-title').text('Sign in with Motif Account');
                 } else {
                     $('.forget-email').parent().siblings('.warning-info').removeClass('off');
-                    $('.forget-email').parent().siblings('.warning-info').children('span').html(data.prompt_msg);
+                    $('.forget-email').parent().siblings('.warning-info').children('span').html(data.error_msg);
                 }
             })
             .always(function () {
@@ -1971,18 +1971,18 @@ function HideSeeMore(seemoreName) {
 
 
     // 忘记密码入口
-    $('.btn-forgotPwd').on('click', function () {
-        $('.login-content').addClass('hidden').removeClass('active');
-        $('.restPwd-content').removeClass('hidden').addClass('active');
-        $('.login-title').text('Forget Password?');
-    });
-
-    // 返回登录入口
-    $('.btn-backLogin').on('click', function () {
-        $('.restPwd-content').addClass('hidden').removeClass('active');
-        $('.login-content').removeClass('hidden').addClass('active');
-        $('.login-title').text('Sign in with Motif Account');
-    });
+    //$('.btn-forgotPwd').on('click', function () {
+    //    $('.login-content').addClass('hidden').removeClass('active');
+    //    $('.restPwd-content').removeClass('hidden').addClass('active');
+    //    $('.login-title').text('Forget Password?');
+    //});
+    //
+    //// 返回登录入口
+    //$('.btn-backLogin').on('click', function () {
+    //    $('.restPwd-content').addClass('hidden').removeClass('active');
+    //    $('.login-content').removeClass('hidden').addClass('active');
+    //    $('.login-title').text('Sign in with Motif Account');
+    //});
 
     //Login end
 
