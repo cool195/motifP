@@ -1418,7 +1418,7 @@ function HideSeeMore(seemoreName) {
                     $('.checkoutWarning').removeAttr('hidden');
                     setTimeout(function () {
                         location.reload();
-                    }, 2000);
+                    }, 5000);
                 }
             })
             .always(function(){
