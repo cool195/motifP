@@ -15,11 +15,14 @@ class NetworkRedsController extends BaseController
         $utm_medium = $request->get('utm_medium');
         $utm_source = $request->get('utm_source');
         switch ($request->path()) {
-            case 'a':
-                $designerUrl = '/designer/79';
+            case 'rae':
+                $designerUrl = '/designer/99';
                 break;
-            case 'b':
-                $designerUrl = '/designer/83';
+            case 'RAE':
+                $designerUrl = '/designer/99';
+                break;
+            case 'Rae':
+                $designerUrl = '/designer/99';
                 break;
         }
 

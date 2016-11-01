@@ -61,15 +61,6 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::post('/checkStock', 'ShoppingController@checkStock');
 
-    Route::get('rae', function (){
-        return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
-    });
-    Route::get('/Rae', function (){
-        return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
-    });
-    Route::get('/RAE', function (){
-        return redirect("/designer/99".($_SERVER["QUERY_STRING"] ? '?'.$_SERVER["QUERY_STRING"] : ''));
-    });
 });
 
 //Shopping End
@@ -314,7 +305,9 @@ Route::get('error',function (){
 
 
 //网红落地路由
-Route::get('/a', 'NetworkRedsController@index');
+Route::get('/rae', 'NetworkRedsController@index');
+Route::get('/Rae', 'NetworkRedsController@index');
+Route::get('/RAE', 'NetworkRedsController@index');
 
 Route::get('/testSession', 'WordpayController@test');
 
