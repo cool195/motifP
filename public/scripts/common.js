@@ -1800,7 +1800,7 @@ function HideSeeMore(seemoreName) {
                     setTimeout(function () {
                         $('.addCard-warning').addClass('off');
 
-                    }, 2000);
+                    }, 5000);
                 }
                 $this.removeClass('disabled');
             })
