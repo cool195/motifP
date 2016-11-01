@@ -61,9 +61,9 @@ class WordpayController extends BaseController
                     }
                 }
             } else {
-                Session::put('user.checkout.paywith', $value);
-                Session::forget('user.checkout.paywith.creditCards');
                 if (isset($value['isLast']) && $value['isLast'] == 1) {
+                    Session::put('user.checkout.paywith', $value);
+                    Session::forget('user.checkout.paywith.creditCards');
                     return $result;
                 }
             }
