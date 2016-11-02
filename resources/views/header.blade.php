@@ -48,7 +48,7 @@
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if(isset($page) && 'designer' == $page) active @endif" href="/designer">DESIGNERS</a></li>
                 <li class="nav-item dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
-                    <a href="javascript:void(0)" class="nav-link border-b p-x-10x sanBold @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" @endif>SHOPPING</a>
+                    <a href="javascript:void(0)" class="nav-link border-b p-x-10x sanBold @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" @endif>SHOP</a>
                     <ul class="dropdown-menu dropdown-nav-hover">
                         @foreach($Category->getShoppingCategoryList() as $category)
                             <li class="dropdown-item @if('shopping' == $page && $cid == $category['category_id']) active @endif"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
