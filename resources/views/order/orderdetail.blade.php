@@ -46,14 +46,16 @@
                         </span>
                         <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
                             <div>
-                                <h5 class="sanBold font-size-md">{{ $data['status_info'] }}: {{ date("M d, Y" ,strtotime($data['update_time'])) }}</h5>
+                                <h5 class="sanBold font-size-md">{{ $data['status_info'] }}
+                                    : {{ date("M d, Y" ,strtotime($data['update_time'])) }}</h5>
                                 <p class="m-b-0 p-t-5x">{{ $data['status_explain'] }}</p>
                             </div>
 
                             <!-- 被取消的订单 -->
                             @if(in_array($data['status_code'], array(21, 22, 23)))
                                 <span>
-                                    <a id="buyAgain" class="btn btn-primary btn-md" href="javascript:void(0)" data-orderList="{{json_encode($data['lineOrderList'])}}" >Buy Again</a>
+                                    <a id="buyAgain" class="btn btn-primary btn-md" href="javascript:void(0)"
+                                       data-orderList="{{json_encode($data['lineOrderList'])}}">Buy Again</a>
                                 </span>
                             @endif
                         </div>
@@ -65,9 +67,9 @@
                                         <div class="media-left m-r-15x">
                                             <a href="/detail/{{$lineOrder['spu']}}">
                                                 <img class="img-fluid img-lazy"
-                                                    src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                                                    data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
-                                                    width="120" height="120" alt="">
+                                                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
+                                                     width="120" height="120" alt="">
                                             </a>
                                         </div>
                                         <div class="media-body no-border">
@@ -131,12 +133,18 @@
                             @endforeach
                         </div>
                         <!-- Track order -->
-                        <hr class="hr-base m-a-0">
-                        <div class="p-x-20x p-y-15x flex flex-alignCenter flex-rightJustify">
-                            <span class="p-r-10x"><i class="iconfont icon-car font-size-llxx"></i></span>
-                            <span class="sanBold p-r-10x">Track order</span>
-                            <span><strong><i class="iconfont icon-arrow-right font-size-base"></i></strong></span>
-                        </div>
+                        @if(isset($data['logistics_info_url']))
+                            <hr class="hr-base m-a-0">
+                            <a href="{{$data['logistics_info_url']}}">
+                                <div class="p-x-20x p-y-15x flex flex-alignCenter flex-rightJustify">
+                                    <span class="p-r-10x"><i class="iconfont icon-car font-size-llxx"></i></span>
+                                    <span class="sanBold p-r-10x">Track order</span>
+                                    <span><strong><i
+                                                    class="iconfont icon-arrow-right font-size-base"></i></strong></span>
+                                </div>
+                            </a>
+                        @endif
+
 
                     </div>
                     <div class="box-shadow bg-white m-b-20x">
@@ -157,20 +165,14 @@
                             <hr class="hr-base">
                             <div class="media">
                                 <div class="media-left sanBold orderInfo-title">Shipping</div>
-                                <div class="media-right">{{  $data['logistics_name'] }} ${{number_format(($data['logistics_price'] / 100), 2)}}</div>
+                                <div class="media-right">{{  $data['logistics_name'] }}
+                                    ${{number_format(($data['logistics_price'] / 100), 2)}}</div>
                             </div>
                             @if(!in_array($data['status_code'], array(11, 21, 27)))
                                 <hr class="hr-base">
                                 <div class="media">
                                     <div class="media-left sanBold orderInfo-title">Paid with</div>
                                     <div class="media-right">@if($data['payinfo']['pay_type']=="Oceanpay"){{'Credit Card'}}@else{{'PayPal'}}@endif</div>
-                                </div>
-                            @endif
-                            @if(isset($data['logistics_info_url']))
-                                <hr class="hr-base">
-                                <div class="media">
-                                    <div class="media-left sanBold orderInfo-title"></div>
-                                    <div class="media-right"><a href="{{$data['logistics_info_url']}}">Track order</a></div>
                                 </div>
                             @endif
                             @if(!empty($data['order_remark']))
@@ -219,7 +221,8 @@
                             {{--地址服务--}}
                             <div class="text-right">
                                 <span>Shipping and handling:</span>
-                                <span class="sanBold cart-price freight_amount">@if(0 == $data['freight_amount']) Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
+                                <span class="sanBold cart-price freight_amount">@if(0 == $data['freight_amount'])
+                                        Free @else${{ number_format(($data['freight_amount'] / 100), 2)}} @endif</span>
                             </div>
                             {{--结算价--}}
                             <div class="text-right ">
@@ -230,12 +233,15 @@
                     </div>
 
                     <div class="p-t-30x">
-                        <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="text-left">Contact Customer Service</a>
+                        <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="text-left">Contact
+                            Customer Service</a>
                         <!-- 未支付订单 支付按钮 -->
                         <div class="text-right">
                             @if( 11 == $data['status_code'])
-                                <a href="/payagain/{{  $data['sub_order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Pay with Credit Card</a>
-                                <a href="/payagain/{{  $data['sub_order_no'] }}/1" class="btn btn-primary btn-lg btn-200">Pay with Paypal</a>
+                                <a href="/payagain/{{  $data['sub_order_no'] }}/0"
+                                   class="btn btn-primary btn-lg btn-200 m-r-20x">Pay with Credit Card</a>
+                                <a href="/payagain/{{  $data['sub_order_no'] }}/1"
+                                   class="btn btn-primary btn-lg btn-200">Pay with Paypal</a>
                             @endif
                         </div>
                     </div>
