@@ -1991,7 +1991,6 @@ function HideSeeMore(seemoreName) {
             function (googleUser) {
                 $.ajax({url: '/loginfo?data=googleuser', type: 'get'})
                 var profile = googleUser.getBasicProfile();
-                $.ajax({url: '/loginfo?data='+profile.getEmail(), type: 'get'})
                 $.ajax({
                         url: '/googlelogin',
                         type: 'POST',
