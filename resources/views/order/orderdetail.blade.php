@@ -130,6 +130,14 @@
                                 </div>
                             @endforeach
                         </div>
+                        <!-- Track order -->
+                        <hr class="hr-base m-a-0">
+                        <div class="p-x-20x p-y-15x flex flex-alignCenter flex-rightJustify">
+                            <span class="p-r-10x"><i class="iconfont icon-car font-size-llxx"></i></span>
+                            <span class="sanBold p-r-10x">Track order</span>
+                            <span><strong><i class="iconfont icon-arrow-right font-size-base"></i></strong></span>
+                        </div>
+
                     </div>
                     <div class="box-shadow bg-white m-b-20x">
                         <div class="p-a-20x">

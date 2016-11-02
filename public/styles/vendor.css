@@ -7809,6 +7809,7 @@ a.bg-red:focus, a.bg-red:hover {
 .icon-snapchat:before { content: "\e649"; }
 .icon-youtube1:before { content: "\e645"; }
 .icon-blog:before { content: "\e646"; }
+.icon-car:before { content: "\e696"; }
 .footer-icon{
   font-size: 24px;
 }
