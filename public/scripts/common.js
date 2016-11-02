@@ -1989,7 +1989,6 @@ function HideSeeMore(seemoreName) {
     function attachSignin(element) {
         auth2.attachClickHandler(element, {},
             function (googleUser) {
-                $.ajax({url: '/loginfo?data=googleuser', type: 'get'})
                 var profile = googleUser.getBasicProfile();
                 $.ajax({
                         url: '/googlelogin',
@@ -2019,6 +2018,7 @@ function HideSeeMore(seemoreName) {
 
             },
             function (error) {
+                $.ajax({url: '/loginfo?data=error', type: 'get'})
                 console.error(JSON.stringify(error, undefined, 2));
             });
     }
