@@ -4,7 +4,7 @@
 <section class="m-y-40x">
     <div class="container text-center p-y-40x">
         <div class="order_comfirmed_content">
-            <img src="/images/error/404@2x.png" srcset="/images/error/404@3x.png 2x">
+            <img src="{{config('runtime.Image_URL')}}/images/error/404@2x.png" srcset="{{config('runtime.Image_URL')}}/images/error/404@3x.png 2x">
             <h3 class="helveBold m-b-20x m-t-30x text-primary">Seems like you're lost…</h3>
             <p class="p-t-20x">
                 Your requested URL was not found<br>

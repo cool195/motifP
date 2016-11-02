@@ -67,7 +67,7 @@
                                                  id="btn-startPlayer" data-playerid="7n-dIXlyQ3M">
                                                 <div class="play-content">
                                                     <img class="btn-productPlayer"
-                                                         src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt=""
+                                                         src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png" alt=""
                                                          style="width: 45px;">
                                                 </div>
                                             </div>
@@ -108,7 +108,7 @@
                                                      data-idplay="true" data-playid="{{$image['video_path']}}">
                                                 <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter">
                                                     <img class="btn-productPlayer"
-                                                         src="{{env('CDN_Static')}}/images/daily/icon-player.png" alt=""
+                                                         src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png" alt=""
                                                          style="width: 35px;">
                                                 </div>
                                             @else
@@ -255,12 +255,12 @@
 
                             @if($data['isPutOn'] !=1)
                                 <div class="p-x-20x p-y-10x font-size-md">
-                                    <img src="/images/product/icon-flash@2x.png" alt="">
+                                    <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png" alt="">
                                     <span class="p-l-10x stock-qtty">Sold Out</span>
                                 </div>
                                 <div class="p-b-10x">
                                     <div class="p-x-20x p-y-10x font-size-md limited-content">
-                                        <img src="/images/product/icon-flash@2x.png">
+                                        <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png">
                                         <span class="p-l-10x">Orders Closed</span>
                                     </div>
                                 </div>
@@ -269,7 +269,7 @@
                                     <div class="p-b-10x">
                                         @if(!empty($data['spuStock']))
                                             <div class="p-x-20x p-y-10x font-size-md">
-                                                <img src="/images/product/icon-flash@2x.png" alt="">
+                                                <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png" alt="">
                                             <span class="p-l-10x stock-qtty">
                                                 @if($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0)
                                                     Only {{$data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty']}}
@@ -286,13 +286,13 @@
                                                      data-endtime="{{$data['skuPrice']['skuPromotion']['end_time']}}"
                                                      data-lefttime="@if($data['skuPrice']['skuPromotion']['remain_time']>0){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
                                                      data-qtty="{{$data['spuStock']['stock_qtty']}}">
-                                                    <img src="/images/product/icon-flash@2x.png" alt="">
+                                                    <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png" alt="">
                                                 <span class="p-l-10x">Orders Close In <span
                                                             class="time_show"></span></span>
                                                 </div>
                                             @else
                                                 <div class="p-x-20x p-y-10x font-size-md limited-content">
-                                                    <img src="/images/product/icon-flash@2x.png">
+                                                    <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png">
                                                     <span class="p-l-10x">Orders Closed</span>
                                                 </div>
                                             @endif
