@@ -2018,8 +2018,8 @@ function HideSeeMore(seemoreName) {
 
             },
             function (error) {
-                $.ajax({url: '/loginfo?data=error', type: 'get'})
-                console.error(JSON.stringify(error, undefined, 2));
+                alert("something went wrong and we can't sign you in right now. please try again");
+                window.location.reload();
             });
     }
 
