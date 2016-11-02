@@ -10,10 +10,10 @@
 <a href="#" onclick="signOut();">Sign out</a>
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 <script>
-    gapi.auth2.init({
-        client_id: '344651811353-qqgbjruqute7t6heftrcquu0iq2u2jd6.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin'
-    });
+//    gapi.auth2.init({
+//        client_id: '344651811353-qqgbjruqute7t6heftrcquu0iq2u2jd6.apps.googleusercontent.com',
+//        cookiepolicy: 'single_host_origin'
+//    });
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
