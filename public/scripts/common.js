@@ -83,8 +83,12 @@ function HideSeeMore(seemoreName) {
     try {
         $(function () {
             var $downloadInfo = $('.download-info');
-            $downloadInfo.click(function () {
-                window.location = '/download';
+            $downloadInfo.click(function (e) {
+                if(e.target != $('.img-fluid')[0] && e.target != $('.img-fluid')[1]
+                    && e.target != $('.btn-black')[0] && e.target != $('.btn-black')[1]){
+                    //window.location = '/download';
+                    window.open('/download');
+                }
             });
             if (getCookie('pcdownloadingApp')) {
                 $downloadInfo.remove();
