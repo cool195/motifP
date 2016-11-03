@@ -19,7 +19,7 @@ class PaypalController extends BaseController
     //paypal回调
     public function paypal(Request $request)
     {
-        $skipUrl = 'cart/ordercheckout?pay=error';
+        $skipUrl = 'cart/ordercheckout';
         $params = array(
             'cmd' => "payord",
             'uuid' => $_COOKIE['uid'],

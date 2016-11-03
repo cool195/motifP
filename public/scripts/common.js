@@ -83,8 +83,12 @@ function HideSeeMore(seemoreName) {
     try {
         $(function () {
             var $downloadInfo = $('.download-info');
-            $downloadInfo.click(function () {
-                window.location = '/download';
+            $downloadInfo.click(function (e) {
+                if(e.target != $('.img-fluid')[0] && e.target != $('.img-fluid')[1]
+                    && e.target != $('.btn-black')[0] && e.target != $('.btn-black')[1]){
+                    //window.location = '/download';
+                    window.open('/download');
+                }
             });
             if (getCookie('pcdownloadingApp')) {
                 $downloadInfo.remove();
@@ -1421,7 +1425,7 @@ function HideSeeMore(seemoreName) {
                     $('.checkoutWarning').removeAttr('hidden');
                     setTimeout(function () {
                         location.reload();
-                    }, 2000);
+                    }, 5000);
                 }
             })
             .always(function(){
@@ -1844,9 +1848,7 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
                 if (data.success) {
-                    $('.restPwd-content').addClass('hidden').removeClass('active');
-                    $('.login-content').removeClass('hidden').addClass('active');
-                    $('.login-title').text('Sign in with Motif Account');
+                    window.location.href = '/login';
                 } else {
                     $('.forget-email').parent().siblings('.warning-info').removeClass('off');
                     $('.forget-email').parent().siblings('.warning-info').children('span').html(data.error_msg);
@@ -2046,7 +2048,8 @@ function HideSeeMore(seemoreName) {
 
             },
             function (error) {
-                console.error(JSON.stringify(error, undefined, 2));
+                alert("something went wrong and we can't sign you in right now. please try again");
+                window.location.reload();
             });
     }
 

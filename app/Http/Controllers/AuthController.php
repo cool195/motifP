@@ -5,10 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cache;
+use Log;
 
 class AuthController extends BaseController
 {
     const Token = 'eeec7a32dcb6115abfe4a871c6b08b47';
+
+    /**
+     * @return string
+     */
+    public function logInfo(Request $request)
+    {
+        Log::info($request->all());
+    }
 
     //google login
     public function googleLogin(Request $request)
@@ -28,6 +37,7 @@ class AuthController extends BaseController
                 'avatar' => urlencode($request->get('avatar')),
             )
         );
+        Log::info($params);
         $result = $this->request("user", $params);
         if ($result['success']) {
             $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
@@ -60,6 +70,7 @@ class AuthController extends BaseController
                 'avatar' => urlencode($request->get('avatar')),
             )
         );
+        Log::info($params);
         $result = $this->request("user", $params);
         if ($result['success']) {
             $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";

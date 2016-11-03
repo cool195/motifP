@@ -19,6 +19,7 @@
                         @else
                             @foreach($data['list'] as $order)
                                 @foreach($order['subOrderList'] as $subOrder)
+                                    @if($subOrder['status_code'] != 11)
                                     <div class="box-shadow bg-white m-b-20x order-item">
                                         <span class="horn @if(in_array($subOrder['status_code'], array(11))) horn-red
                                             @elseif(in_array($subOrder['status_code'], array(12, 14, 15, 16, 24))) horn-orange
@@ -133,6 +134,7 @@
                                             </div>
                                         @endif
                                     </div>
+                                    @endif
                                 @endforeach
                             @endforeach
                         @endif
@@ -159,7 +161,7 @@
 <template id="tpl-orderList">
     @{{ each list }}
     @{{ each $value.subOrderList as value index }}
-
+    @{{ if value.status_code != 11 }}
     <div class="box-shadow bg-white m-b-20x order-item">
         <span class="horn @{{ if 11 == value.status_code }} horn-red
         @{{ else if value.status_code == 12 || value.status_code == 14 || value.status_code == 15 || value.status_code == 16 || value.status_code == 24  }} horn-orange
@@ -268,6 +270,7 @@
         @{{ /if }}
 
     </div>
+    @{{ /if }}
     @{{ /each }}
     @{{ /each }}
 </template>
