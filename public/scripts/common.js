@@ -791,6 +791,9 @@ function HideSeeMore(seemoreName) {
         // designerDetail 弹出视频
         var playerModal = $('[data-remodal-id=playermodal]').remodal(OptionsShare);
 
+        // 删除 card 提示框
+        var DelCardModal = $('[data-remodal-id=paymentmodal-modal]').remodal(Options);
+
     } catch (e) {
     }
 
@@ -1782,6 +1785,28 @@ function HideSeeMore(seemoreName) {
         $('.payment-list').html(StageCache);
     }
     // end 支付方式 Payment Method
+
+    // 触发 删除卡
+    $('.payment-list').on('click','.btn-deleteCard',function(){
+        var CardId=$(this).data('cardid');
+        $('[data-remodal-id="paymentmodal-modal"]').data('cardid', CardId);
+        DelCardModal.open();
+    });
+    // 确认删除卡
+    $('.delPaymentCard').on('click',function(){
+        var CardId=$('[data-remodal-id="paymentmodal-modal"]').data('cardid');
+        $.ajax({
+                url: '/wordpay/delCard?card_id='+CardId,
+                type: 'post',
+                data: {}
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $('.payment-list div[data-paymentcardid="' + CardId + '"]').remove();
+                    DelCardModal.close();
+                }
+            })
+    });
 
     // Checkout End
 

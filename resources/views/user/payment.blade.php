@@ -22,7 +22,7 @@
                                     @foreach($paylist['data']['list'] as $list)
                                         @if(isset($list['creditCards']))
                                             @foreach($list['creditCards'] as $card)
-                                                <div class="col-md-6">
+                                                <div class="col-md-6" data-paymentcardid="{{$card['card_id']}}">
                                                     <div class="p-a-10x">
                                                         <div class="card-item choose-item p-a-20x @if($card['card_id'] == Session::get('user.checkout.paywith.withCard.card_id')) active @endif"
                                                              data-cardtype="{{ $card['card_type'] }}"
@@ -30,31 +30,29 @@
                                                              data-cardid="{{ $card['card_id'] }}"
                                                              data-paytype="{{ $card['pay_type'] }}">
                                                             <div>
-                                                    <span class="payLeft-minW">
-                                                    @if($card['card_type'] == 'Visa')
-                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-52.png"
-                                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-visa-52@3x.png{{config('runtime.V')}} 3x">
-                                                        @elseif($card['card_type'] == 'MasterCard')
-                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-52.png"
-                                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-52@3x.png{{config('runtime.V')}} 3x">
-                                                        @elseif($card['card_type'] == 'AmericanExpress')
-                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-american-52.png"
-                                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-american-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-american-52@3x.png{{config('runtime.V')}} 3x">
-                                                        @elseif($card['card_type'] == 'JCB')
-                                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52.png"
-                                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52@3x.png{{config('runtime.V')}} 3x">
-                                                        @endif
-                                                    </span>
-
+                                                                <span class="payLeft-minW">
+                                                                @if($card['card_type'] == 'Visa')
+                                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-52.png"
+                                                                             srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-visa-52@3x.png{{config('runtime.V')}} 3x">
+                                                                    @elseif($card['card_type'] == 'MasterCard')
+                                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-52.png"
+                                                                             srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-52@3x.png{{config('runtime.V')}} 3x">
+                                                                    @elseif($card['card_type'] == 'AmericanExpress')
+                                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-american-52.png"
+                                                                             srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-american-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-american-52@3x.png{{config('runtime.V')}} 3x">
+                                                                    @elseif($card['card_type'] == 'JCB')
+                                                                        <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52.png"
+                                                                             srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52@3x.png{{config('runtime.V')}} 3x">
+                                                                    @endif
+                                                                </span>
                                                                 <span class="sanBold font-size-lx">{{  $card['card_number'] }}</span>
                                                             </div>
                                                             <div class="m-t-20x flex">
-                                                    <span class="payLeft-minW">Exp:{{$card['month']}}
-                                                        /{{$card['year']}}</span>
+                                                                <span class="payLeft-minW">Exp:{{$card['month']}} /{{$card['year']}}</span>
                                                                 <span class="billingTxt">Billing:{{$card['detail_address1']}} {{$card['detail_address2']}} {{$card['city']}} {{$card['state']}} {{$card['country']}}</span>
                                                             </div>
-                                                            <div class="btn-addPrimary"><i
-                                                                        class="iconfont icon-check font-size-lg"></i></div>
+                                                            <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                                                            <div class="btn-deleteCard btn-edit font-size-md hover-blue" data-cardid="{{$card['card_id']}}">Delete</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -298,14 +296,14 @@
 </div>
 
 <!-- 删除地址 确认框 -->
-<div class="remodal modal-content remodal-md p-a-0" data-remodal-id="addressmodal-modal" data-addressid="">
-    <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Address?</div>
+<div class="remodal modal-content remodal-md p-a-0" data-remodal-id="paymentmodal-modal" data-cardid="">
+    <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Payment?</div>
     <hr class="hr-common m-a-0">
     <div class="text-center dialog-info">Are you sure you want to remove this item?</div>
     <hr class="hr-common m-a-0">
     <div class="row">
         <div class="col-md-6">
-            <div class="m-y-20x m-l-20x"><a href="javascript:;" class="btn btn-block btn-secondary btn-lg delAddress">Remove</a></div>
+            <div class="m-y-20x m-l-20x"><a href="javascript:;" class="btn btn-block btn-secondary btn-lg delPaymentCard">Remove</a></div>
         </div>
         <div class="col-md-6">
             <div class="m-y-20x m-r-20x"><a href="javascript:;" class="btn btn-block btn-primary btn-lg" data-remodal-action="close">Cancel</a>
@@ -319,7 +317,7 @@
     @{{ each list }}
     @{{ if $value.pay_method === 'Worldpay' }}
     @{{ each $value.creditCards }}
-    <div class="col-md-6">
+    <div class="col-md-6" data-paymentcardid="@{{ $value.card_id }}">
         <div class="p-a-10x">
             <div class="card-item choose-item p-a-20x @{{ if $value.actived == 1}} active @{{ /if }}"
                  data-cardtype="@{{ $value.card_type }}" data-cardnum="@{{ $value.card_number }}"
@@ -344,6 +342,7 @@
                     <span class="billingTxt">@{{ $value.detail_address1 }} @{{ $value.detail_address2 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }}</span>
                 </div>
                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                <div class="btn-deleteCard btn-edit font-size-md hover-blue" data-cardid="@{{ $value.card_id }}">Delete</div>
             </div>
         </div>
     </div>
@@ -374,7 +373,7 @@
 
     @{{ else if $value.pay_method === 'Oceanpay' }}
     @{{ each $value.creditCards }}
-    <div class="col-md-6">
+    <div class="col-md-6" data-paymentcardid="@{{ $value.card_id }}">
         <div class="p-a-10x">
             <div class="card-item choose-item p-a-20x @{{ if $value.actived == 1 }} active @{{ /if }}"
                  data-cardtype="@{{ $value.card_type }}" data-cardnum="@{{ $value.card_number }}"
@@ -399,6 +398,7 @@
                     <span class="billingTxt">@{{ $value.detail_address1 }} @{{ $value.detail_address2 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }}</span>
                 </div>
                 <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
+                <div class="btn-deleteCard btn-edit font-size-md hover-blue" data-cardid="@{{ $value.card_id }}">Delete</div>
             </div>
         </div>
     </div>
