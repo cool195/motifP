@@ -7518,9 +7518,9 @@ a.bg-red:focus, a.bg-red:hover {
 
 @font-face {
   font-family: "iconfont";
-  src: url("../../fonts/iconfont.eot?t=1463649380");
+  src: url("../../fonts/iconfont.eot?v=1.0");
   /* IE9*/
-  src: url("../../fonts/iconfont.eot?t=1463649380#iefix") format("embedded-opentype"), url("../../fonts/iconfont.woff?t=1463649380") format("woff"), url("../../fonts/iconfont.ttf?t=1463649380") format("truetype"), url("../../fonts/iconfont.svg?t=1463649380#iconfont") format("svg");
+  src: url("../../fonts/iconfont.eot?v=1.0") format("embedded-opentype"), url("../../fonts/iconfont.woff?v=1.0") format("woff"), url("../../fonts/iconfont.ttf?v=1.0") format("truetype"), url("../../fonts/iconfont.svg?v=1.0") format("svg");
   /* iOS 4.1- */
 }
 @font-face {
@@ -7809,6 +7809,7 @@ a.bg-red:focus, a.bg-red:hover {
 .icon-snapchat:before { content: "\e649"; }
 .icon-youtube1:before { content: "\e645"; }
 .icon-blog:before { content: "\e646"; }
+.icon-car:before { content: "\e696"; }
 .footer-icon{
   font-size: 24px;
 }

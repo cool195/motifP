@@ -309,7 +309,7 @@ Route::get('/rae', 'NetworkRedsController@index');
 Route::get('/Rae', 'NetworkRedsController@index');
 Route::get('/RAE', 'NetworkRedsController@index');
 
-Route::get('/testSession', 'WordpayController@test');
+Route::get('/loginfo', 'AuthController@logInfo');
 
 
 
