@@ -13,22 +13,6 @@
     <link rel="apple-touch-icon" href="{{config('runtime.Image_URL')}}/images/icon/apple-touch-icon.png{{config('runtime.V')}}">
     <link rel="stylesheet" href="{{config('runtime.Image_URL')}}/styles/vendor.css{{config('runtime.V')}}">
     <link rel="stylesheet" href="{{config('runtime.Image_URL')}}/styles/common.css{{config('runtime.V')}}">
-
-    <script type='text/javascript'>
-        var _vds = _vds || [];
-        window._vds = _vds;
-        (function(){
-            _vds.push(['setAccountId', '94d5fde2c5246fe8']);
-            (function() {
-                var vds = document.createElement('script');
-                vds.type='text/javascript';
-                vds.async = true;
-                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(vds, s);
-            })();})();
-    </script>
-
 </head>
 <body>
 @if(!isset($CartCheck))
@@ -41,10 +25,10 @@
                     <span class="text-main font-size-base p-l-15x sanBold text-red">Use our free app for 20% off your first purchase!</span>
                 </div>
                 <div class="col-md-6 text-right">
-                    <a href="https://itunes.apple.com/us/app/id1125850409" class="btn btn-black m-r-20x p-x-10x p-y-5x">
+                    <a href="https://itunes.apple.com/us/app/id1125850409" target="_blank" class="btn btn-black m-r-20x p-x-10x p-y-5x">
                         <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png{{config('runtime.V')}} 3x">
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=me.motif.motif" class="btn btn-black p-x-10x p-y-5x">
+                    <a href="https://play.google.com/store/apps/details?id=me.motif.motif" target="_blank" class="btn btn-black p-x-10x p-y-5x">
                         <img class="img-fluid m-x-auto" src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png{{config('runtime.V')}}" srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png{{config('runtime.V')}} 3x">
                     </a>
                 </div>
@@ -64,7 +48,7 @@
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if(isset($page) && 'designer' == $page) active @endif" href="/designer">DESIGNERS</a></li>
                 <li class="nav-item dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
-                    <a href="javascript:void(0)" class="nav-link border-b p-x-10x sanBold @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" @endif>SHOPPING</a>
+                    <a href="javascript:void(0)" class="nav-link border-b p-x-10x sanBold @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" @endif>SHOP</a>
                     <ul class="dropdown-menu dropdown-nav-hover">
                         @foreach($Category->getShoppingCategoryList() as $category)
                             <li class="dropdown-item @if('shopping' == $page && $cid == $category['category_id']) active @endif"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>

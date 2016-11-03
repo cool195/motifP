@@ -43,8 +43,8 @@
             </div>
             <div class="p-x-20x p-b-10x">
                 <p class="sanBold"><strong>How long will it take for my order to arrive? </strong></p>
-                <p class="m-b-0">We provide three options for delivery:</p>
-                <p class="m-b-0">Option 1. Registered Airmail (10-15 business days upon receiving shipping confirmation)</p>
+                <p class="m-b-0">We provide two options for delivery:</p>
+                <p class="m-b-0">Option 1. Registered Airmail (7-15 business days upon receiving shipping confirmation)</p>
                 <p class="m-b-0">Option 2. Expedited Shipping (3-7 business days upon receiving shipping confirmation)</p>
                 <p class="m-b-0">Please note: For countries other than US, Canada and Australia, Registered Airmail may take up to 22 business days to arrive due to local dispatch or other reasons.</p>
             </div>
