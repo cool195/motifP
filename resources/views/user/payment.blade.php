@@ -24,7 +24,7 @@
                                             @foreach($list['creditCards'] as $card)
                                                 <div class="col-md-6" data-paymentcardid="{{$card['card_id']}}">
                                                     <div class="p-a-10x">
-                                                        <div class="card-item choose-item p-a-20x @if($card['card_id'] == Session::get('user.checkout.paywith.withCard.card_id')) active @endif"
+                                                        <div class="choose-item p-a-20x"
                                                              data-cardtype="{{ $card['card_type'] }}"
                                                              data-cardnum="{{ $card['card_number'] }}"
                                                              data-cardid="{{ $card['card_id'] }}"
@@ -51,7 +51,6 @@
                                                                 <span class="payLeft-minW">Exp:{{$card['month']}} /{{$card['year']}}</span>
                                                                 <span class="billingTxt">Billing:{{$card['detail_address1']}} {{$card['detail_address2']}} {{$card['city']}} {{$card['state']}} {{$card['country']}}</span>
                                                             </div>
-                                                            <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                                                             <div class="btn-deleteCard btn-edit font-size-md hover-blue" data-cardid="{{$card['card_id']}}">Delete</div>
                                                         </div>
                                                     </div>
@@ -70,13 +69,12 @@
                                         @else
                                             <div class="col-md-6">
                                                 <div class="p-a-10x">
-                                                    <div class="card-item choose-item flex flex-alignCenter p-x-20x @if($list['pay_type'] == Session::get('user.checkout.paywith.pay_type')) active @endif"
+                                                    <div class="choose-item flex flex-alignCenter p-x-20x"
                                                          data-cardtype="paypal" data-cardnum="PayPal" data-cardid="PayPal"
                                                          data-paytype="{{$list['pay_type']}}">
                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-32@2x.png"
                                                              srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-32@3x.png{{config('runtime.V')}} 2x">
                                                         <span class="font-size-lxx p-l-40x">{{$list['pay_name']}}</span>
-                                                        <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -93,10 +91,10 @@
                             <div class="p-a-20x add-newCard disabled">
                                 <div class="inline">
                                     <span class="font-size-md sanBold">Payment Method</span>
-                                    <span class="font-size-md pull-right">
-                                        <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg active"></i>
-                                        <span class="p-l-5x">Make Primary</span>
-                                    </span>
+                                    {{--<span class="font-size-md pull-right">--}}
+                                        {{--<i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg active"></i>--}}
+                                        {{--<span class="p-l-5x">Make Primary</span>--}}
+                                    {{--</span>--}}
                                 </div>
 
                                 <div class="p-y-10x font-size-md">Add New Credit Card</div>
@@ -319,7 +317,7 @@
     @{{ each $value.creditCards }}
     <div class="col-md-6" data-paymentcardid="@{{ $value.card_id }}">
         <div class="p-a-10x">
-            <div class="card-item choose-item p-a-20x @{{ if $value.actived == 1}} active @{{ /if }}"
+            <div class="choose-item p-a-20x"
                  data-cardtype="@{{ $value.card_type }}" data-cardnum="@{{ $value.card_number }}"
                  data-cardid="@{{ $value.card_id }}" data-paytype="@{{ $value.pay_type }}">
                 <div>
@@ -341,7 +339,6 @@
                     <span class="payLeft-minW">Exp:@{{ $value.month }}/@{{ $value.year }}</span>
                     <span class="billingTxt">@{{ $value.detail_address1 }} @{{ $value.detail_address2 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }}</span>
                 </div>
-                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                 <div class="btn-deleteCard btn-edit font-size-md hover-blue" data-cardid="@{{ $value.card_id }}">Delete</div>
             </div>
         </div>
@@ -361,12 +358,11 @@
     @{{ else if $value.pay_method === 'PayPalNative' }}
     <div class="col-md-6">
         <div class="p-a-10x">
-            <div class="card-item choose-item flex flex-alignCenter p-x-20x @{{ if $value.actived == 1 }} active @{{ /if }}"
+            <div class="choose-item flex flex-alignCenter p-x-20x"
                  data-cardtype="paypal" data-cardnum="PayPal" data-cardid="PayPal"
                  data-paytype="@{{ $value.pay_type }}">
                 <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
                 <span class="font-size-lxx p-l-40x">@{{$value.pay_name}}</span>
-                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
             </div>
         </div>
     </div>
@@ -375,7 +371,7 @@
     @{{ each $value.creditCards }}
     <div class="col-md-6" data-paymentcardid="@{{ $value.card_id }}">
         <div class="p-a-10x">
-            <div class="card-item choose-item p-a-20x @{{ if $value.actived == 1 }} active @{{ /if }}"
+            <div class="choose-item p-a-20x"
                  data-cardtype="@{{ $value.card_type }}" data-cardnum="@{{ $value.card_number }}"
                  data-cardid="@{{ $value.card_id }}" data-paytype="@{{ $value.pay_type }}">
                 <div>
@@ -397,7 +393,6 @@
                     <span class="payLeft-minW">Exp:@{{ $value.month }}/@{{ $value.year }}</span>
                     <span class="billingTxt">@{{ $value.detail_address1 }} @{{ $value.detail_address2 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }}</span>
                 </div>
-                <div class="btn-addPrimary"><i class="iconfont icon-check font-size-lg"></i></div>
                 <div class="btn-deleteCard btn-edit font-size-md hover-blue" data-cardid="@{{ $value.card_id }}">Delete</div>
             </div>
         </div>
