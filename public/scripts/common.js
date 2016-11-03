@@ -1596,12 +1596,13 @@ function HideSeeMore(seemoreName) {
         var zipcode_label = $('.card-selectCountry > option[value="' + Country + '"]').data('zipcode_label');
         $('.card-zip').siblings('.warning-info').children('span').html('Please enter your '+ zipcode_label + ' !');
         $('.card-zip').attr('placeholder', zipcode_label);
+        $('.card-zip').attr('data-inputrole',zipcode_label);
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
             $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" placeholder="State (optional)">');
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
-            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" data-optional="false" data-inputrole="State" placeholder="'+child_label+'"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
+            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" data-optional="false" data-inputrole="'+child_label+'" placeholder="'+child_label+'"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your "'+child_label+'" !</span> </div>');
 
         } else {
             // 洲为下拉列选择
