@@ -104,7 +104,7 @@
         <!-- 设计师头像 follow 介绍 社交 -->
             <div class="text-center p-b-20x p-t-30x designer-basicInfo">
                 <div class="m-b-10x designer-headImg"
-                     data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.600001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"PC"}'>
+                     data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=page.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"PC"}'>
                     <img class="img-circle img-border-white-4x"
                          src="{{config('runtime.CDN_URL')}}/n2/{{$designer['icon']}}"
                          width="120" height="120" alt="">
