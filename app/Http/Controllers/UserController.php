@@ -474,5 +474,9 @@ class UserController extends BaseController
         return view('user.forgetpwd');
     }
 
+    public function payment()
+    {
+        return view('user.payment');
+    }
 
 }
