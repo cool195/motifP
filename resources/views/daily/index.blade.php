@@ -6,7 +6,7 @@
             <div class="swiper-wrapper">
                 @foreach($banner as $value)
                     <div class="swiper-slide">
-                        <a href="@if(1 == $value['banner_skip_type'])/detail/@elseif(2==$value['banner_skip_type'])/designer/@elseif(3==$value['banner_skip_type'])/topic/@elseif(4 == $value['banner_skip_type'])/shopping/@else{{"javascript:;"}}@endif{{ $value['banner_skip'] }}">
+                        <a href="@if(1 == $value['banner_skip_type'])/detail/@elseif(2==$value['banner_skip_type'])/designer/@elseif(3==$value['banner_skip_type'])/topic/@elseif(4 == $value['banner_skip_type'])/shopping/@endif{{ $value['banner_skip'] }}">
                             <img src="{{config('runtime.CDN_URL').'/n0/'.$value['img_path']}}" alt="">
                         </a>
                     </div>
