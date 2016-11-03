@@ -23,10 +23,10 @@ class DailyController extends BaseController
         );
 
         $result = $this->request('daily', $params);
-        if(!empty($result['data']['list'])){
-            foreach ($result['data']['list'] as &$value){
-                $pathArr = explode('/',$value['imgPath']);
-                $WH = explode('X',$pathArr[3]);
+        if (!empty($result['data']['list'])) {
+            foreach ($result['data']['list'] as &$value) {
+                $pathArr = explode('/', $value['imgPath']);
+                $WH = explode('X', $pathArr[3]);
                 $value['weight'] = $WH[0];
                 $value['height'] = $WH[1];
             }
@@ -34,7 +34,10 @@ class DailyController extends BaseController
         if ($request->input('ajax')) {
             return $result;
         }
-        return View('daily.index', ['list' => $result['data']['list']]);
+
+        //banner
+        $banner = $this->request("banner", ['cmd' => 'bannerList']);
+        return View('daily.index', ['list' => $result['data']['list'], 'banner' => $banner['data']]);
     }
 
     /**
@@ -51,13 +54,13 @@ class DailyController extends BaseController
         );
 
         $result = $this->request("topicf", $params);
-        if(empty($result['data'])){
+        if (empty($result['data'])) {
             abort(404);
         }
-        if($request->input('ajax')){
+        if ($request->input('ajax')) {
             return $result;
         }
-        return View('daily.topic', ['topic' => $result['data'], 'topicID' => $id, 'shareFlag'=>true]);
+        return View('daily.topic', ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => true]);
     }
 
     /**
@@ -80,7 +83,7 @@ class DailyController extends BaseController
     public function staticShow($id)
     {
         $result = $this->service($id);
-        
+
         return View('daily.topic', ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
     }
 
@@ -88,7 +91,7 @@ class DailyController extends BaseController
     {
         $email = $request->input('email');
         $name = $request->input('name');
-        $success = Storage::append('email.txt', $name." : ".$email);
+        $success = Storage::append('email.txt', $name . " : " . $email);
         $result = array();
         $result['success'] = $success;
         return $result;

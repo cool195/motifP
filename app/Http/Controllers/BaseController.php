@@ -28,12 +28,12 @@ class BaseController extends Controller
             $key = md5(json_encode($params));
             if (!$return = Cache::get($key)) {
                 $return = $this->send($Api, $params, $method);
-                $return['cache'] = array('cache' => true, 'date' => date('Y-m-d H:i:s', time()));
+                //$return['cache'] = array('cache' => true, 'date' => date('Y-m-d H:i:s', time()));
                 Cache::put($key, $return, $cacheTime / 60);
             }
         } else {
             $return = $this->send($Api, $params, $method);
-            $return['cache'] = array('cache' => false, 'date' => date('Y-m-d H:i:s', time()));
+            //$return['cache'] = array('cache' => false, 'date' => date('Y-m-d H:i:s', time()));
         }
 
         return $return;
