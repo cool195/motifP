@@ -15,6 +15,9 @@ class NetworkRedsController extends BaseController
         $utm_medium = $request->get('utm_medium');
         $utm_source = $request->get('utm_source');
         switch ($request->path()) {
+            case 'cassandra':
+                $designerUrl = '/designer/103';
+                break;
             case 'rae':
                 $designerUrl = '/designer/99';
                 break;
@@ -26,7 +29,7 @@ class NetworkRedsController extends BaseController
                 break;
         }
 
-        $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'http://www.motif.me') . $designerUrl . ($queryString ? '?' . $queryString : '');
+        $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($queryString ? '?' . $queryString : '');
         $ref = urlencode($request->header('referer'));
         $clk = config('runtime.CLK_URL').'/log.gif?t=route.600001&m=PC_M2016-1&pin=' . Session::get('user.pin') . '&uuid=' . $_COOKIE['uid'] . '&ref=' . $ref . '&v={"utm_medium":"' . $utm_medium . '","utm_source":"' . $utm_source . '"}';
         file_get_contents($clk);
