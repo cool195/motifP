@@ -31,7 +31,7 @@ class NetworkRedsController extends BaseController
 
         $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($queryString ? '?' . $queryString : '');
         $ref = urlencode($request->header('referer'));
-        $clk = config('runtime.CLK_URL').'/log.gif?t=route.600001&m=PC_M2016-1&pin=' . Session::get('user.pin') . '&uuid=' . $_COOKIE['uid'] . '&ref=' . $ref . '&v={"utm_medium":"' . $utm_medium . '","utm_source":"' . $utm_source . '"}';
+        $clk = 'https://clk.motif.me/log.gif?t=route.600001&m=PC_M2016-1&pin=' . Session::get('user.pin') . '&uuid=' . $_COOKIE['uid'] . '&ref=' . $ref . '&v={"utm_medium":"' . $utm_medium . '","utm_source":"' . $utm_source . '"}';
         file_get_contents($clk);
         return View('designer.networkreds', ['designerUrl' => $designerUrl, 'utm_medium' => $utm_medium, 'utm_source' => $utm_source]);
     }
