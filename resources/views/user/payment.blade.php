@@ -401,8 +401,8 @@
         <div class="p-a-10x">
             <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
                 <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
-                <span class="font-size-lxx">Add New Credit Card</span>
-                <i class="iconfont icon-add m-r-20x"></i>
+                <span class="font-size-lg p-l-20x">Add New Credit Card</span>
+                <i class="iconfont icon-add"></i>
             </div>
         </div>
     </div>
