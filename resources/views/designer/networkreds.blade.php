@@ -14,12 +14,12 @@
         if (/iPhone/i.test(Agent)) {
             window.location.href = "motif://o.c?a=url&url="+url;
             setTimeout(function () {
-                window.location.href = "{!! $AUrl !!}";
+                window.location.href = "{!! $IosUrl !!}";
             }, 2000);
         } else if (/Android/i.test(Agent) || /Linux/i.test(Agent)) {
             window.location.href = "motif://o.c?a=url&url="+url;
             setTimeout(function () {
-                window.location.href = "{!! $IosUrl !!}";
+                window.location.href = "{!! $AUrl !!}";
             }, 2000);
         } else {
             window.location.href = url;
