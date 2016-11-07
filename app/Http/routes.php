@@ -138,7 +138,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::get('/wordpay/selAddr/{aid}', 'WordpayController@selAddr');
 
-    Route::get('/wordpay/delCard', 'WordpayController@delCreditCard');
+    Route::post('/wordpay/delCard', 'WordpayController@delCreditCard');
 
     Route::post('/wordpay/selShip/{type}', 'WordpayController@selShip');
 
@@ -199,6 +199,8 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
     Route::get('/user/changeprofile', 'UserController@profile');
 
     Route::get('/user/setting', 'UserController@profile');
+
+    Route::get('/user/payment', 'UserController@payment');
 
     Route::get('/invitefriends', 'UserController@inviteFriends');
 

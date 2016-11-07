@@ -795,6 +795,9 @@ function HideSeeMore(seemoreName) {
         // designerDetail 弹出视频
         var playerModal = $('[data-remodal-id=playermodal]').remodal(OptionsShare);
 
+        // 删除 card 提示框
+        var DelCardModal = $('[data-remodal-id=paymentmodal-modal]').remodal(Options);
+
     } catch (e) {
     }
 
@@ -1600,12 +1603,13 @@ function HideSeeMore(seemoreName) {
         var zipcode_label = $('.card-selectCountry > option[value="' + Country + '"]').data('zipcode_label');
         $('.card-zip').siblings('.warning-info').children('span').html('Please enter your '+ zipcode_label + ' !');
         $('.card-zip').attr('placeholder', zipcode_label);
+        $('.card-zip').attr('data-inputrole',zipcode_label);
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
             $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" placeholder="State (optional)">');
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
-            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" data-optional="false" data-inputrole="State" placeholder="'+child_label+'"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your State !</span> </div>');
+            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" data-optional="false" data-inputrole="'+child_label+'" placeholder="'+child_label+'"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your "'+child_label+'" !</span> </div>');
 
         } else {
             // 洲为下拉列选择
@@ -1785,6 +1789,28 @@ function HideSeeMore(seemoreName) {
         $('.payment-list').html(StageCache);
     }
     // end 支付方式 Payment Method
+
+    // 触发 删除卡
+    $('.payment-list').on('click','.btn-deleteCard',function(){
+        var CardId=$(this).data('cardid');
+        $('[data-remodal-id="paymentmodal-modal"]').data('cardid', CardId);
+        DelCardModal.open();
+    });
+    // 确认删除卡
+    $('.delPaymentCard').on('click',function(){
+        var CardId=$('[data-remodal-id="paymentmodal-modal"]').data('cardid');
+        $.ajax({
+                url: '/wordpay/delCard?card_id='+CardId,
+                type: 'post',
+                data: {}
+            })
+            .done(function (data) {
+                if (data.success) {
+                    $('.payment-list div[data-paymentcardid="' + CardId + '"]').remove();
+                    DelCardModal.close();
+                }
+            })
+    });
 
     // Checkout End
 
