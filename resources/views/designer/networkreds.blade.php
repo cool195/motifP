@@ -7,7 +7,7 @@
 
 <script type="text/javascript">
 
-    window.location.href = "{{$designerUrl}}";
+    window.location.href = "{!! $designerUrl !!}";
 
     function switchDevice() {
         var Agent = navigator.userAgent;
