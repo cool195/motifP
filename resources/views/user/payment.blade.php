@@ -75,7 +75,6 @@
                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-32@2x.png"
                                                              srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-32@3x.png{{config('runtime.V')}} 2x">
                                                         <span class="font-size-lxx p-l-40x">{{$list['pay_name']}}</span>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
