@@ -2,7 +2,7 @@
 
         <!-- 内容 -->
 <section class="m-y-40x">
-    <div class="container" id="addressView" data-status="true">
+    <div class="container" data-status="true">
         <div class="myHome-content">
             @include('user.left', ['title' => 'Payment Method'])
             @inject('Address', 'App\Http\Controllers\AddressController')
