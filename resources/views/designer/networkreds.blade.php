@@ -12,7 +12,6 @@
 
         var Agent = navigator.userAgent;
         if (/iPhone/i.test(Agent)) {
-            alert(encodeURI(url))
             window.location.href = "motif://o.c?a=url&url="+encodeURI(url);
             setTimeout(function () {
                 window.location.href = "{!! $IosUrl !!}";
