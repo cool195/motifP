@@ -14,7 +14,7 @@
         if (/iPhone/i.test(Agent)) {
             window.location.href = "motif://o.c?a=url&url="+encodeURI(url);
             setTimeout(function () {
-                window.location.href = url;
+                window.location.href = encodeURI(url);
             }, 2000);
         } else if (/Android/i.test(Agent) || /Linux/i.test(Agent)) {
             window.location.href = "motif://o.c?a=url&url="+encodeURI(url);
