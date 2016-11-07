@@ -19,7 +19,7 @@ class NetworkRedsController extends BaseController
                 $designerUrl = '/designer/103';
                 $designerID = '103';
                 $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium='.$utm_medium.'&utm_source='.$utm_source : '');
-                $AUrl = 'https://c89mm.app.goo.gl/UysX';
+                $AUrl = 'https://c89mm.app.goo.gl/?link=http://m.motif.me/designer/103&al=motif://o.c?a%3Durl%26url%3Dhttp%253A%252F%252Fm.motif.me%252Fdesigner%252F103%253Futm_medium%253D1%2526utm_source%253Dyoutube&apn=me.motif.motif&ad=1';
                 $IosUrl = $designerUrl;
                 break;
             case 'rae':
