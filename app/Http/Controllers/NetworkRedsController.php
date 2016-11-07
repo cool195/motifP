@@ -18,26 +18,38 @@ class NetworkRedsController extends BaseController
             case 'cassandra':
                 $designerUrl = '/designer/103';
                 $designerID = '103';
+                $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium='.$utm_medium.'&utm_source='.$utm_source : '');
+                $AUrl = 'https://c89mm.app.goo.gl/UysX';
+                $IosUrl = $designerUrl;
                 break;
             case 'rae':
                 $designerUrl = '/designer/99';
                 $designerID = '99';
+                $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium='.$utm_medium.'&utm_source='.$utm_source : '');
+                $AUrl = $designerUrl;
+                $IosUrl = $designerUrl;
                 break;
             case 'RAE':
                 $designerUrl = '/designer/99';
                 $designerID = '99';
+                $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium='.$utm_medium.'&utm_source='.$utm_source : '');
+                $AUrl = $designerUrl;
+                $IosUrl = $designerUrl;
                 break;
             case 'Rae':
                 $designerUrl = '/designer/99';
                 $designerID = '99';
+                $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium='.$utm_medium.'&utm_source='.$utm_source : '');
+                $AUrl = $designerUrl;
+                $IosUrl = $designerUrl;
                 break;
         }
 
-        $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium='.$utm_medium.'&utm_source='.$utm_source : '');
+
         $ref = urlencode($request->header('referer'));
         $clk = 'https://clk.motif.me/log.gif?t=route.600001&m=PC_M2016-1&pin=' . Session::get('user.pin') . '&uuid=' . $_COOKIE['uid'] . '&ref=' . $ref . '&v={"DesignerName":"'.$request->path().'","designerID":"'.$designerID.'","utm_medium":"' . $utm_medium . '","utm_source":"' . $utm_source . '"}';
         file_get_contents($clk);
-        return View('designer.networkreds', ['designerUrl' => $designerUrl, 'utm_medium' => $utm_medium, 'utm_source' => $utm_source]);
+        return View('designer.networkreds', ['designerUrl' => $designerUrl, 'AUrl' => $AUrl, 'IosUrl' => $IosUrl]);
     }
 
 

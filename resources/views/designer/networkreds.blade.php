@@ -7,18 +7,24 @@
 
 <script type="text/javascript">
 
-    window.location.href = "{!! $designerUrl !!}";
+    var url = "{!! $designerUrl !!}";
 
-    function switchDevice() {
+
         var Agent = navigator.userAgent;
         if (/iPhone/i.test(Agent)) {
-            return 1;
+            window.location.href = "motif://o.c?a=url&url="+url;
+            setTimeout(function () {
+                window.location.href = "{!! $AUrl !!}";
+            }, 2000);
         } else if (/Android/i.test(Agent) || /Linux/i.test(Agent)) {
-            return 0;
+            window.location.href = "motif://o.c?a=url&url="+url;
+            setTimeout(function () {
+                window.location.href = "{!! $IosUrl !!}";
+            }, 2000);
         } else {
-            return -1;
+            window.location.href = url;
         }
-    }
+
 </script>
 
 <script src="{{config('runtime.Image_URL')}}/scripts/wl.js{{config('runtime.V')}}"></script>
