@@ -12,7 +12,7 @@ class NetworkRedsController extends BaseController
     {
         $designerUrl = '/designer';
         //$queryString = $request->getQueryString();
-        $ref = urlencode($request->header('referer'));
+        $ref = urlencode($_SERVER['HTTP_REFERER']);
         $utm_medium = $request->get('utm_medium','motif2016');
         $utm_source = $request->get('utm_source',$ref);
         switch ($request->path()) {
