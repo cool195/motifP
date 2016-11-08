@@ -155,7 +155,7 @@
         @if(!empty($pre_product) && $designer['designer_id']!=99)
             @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($pre_product['spuStock']))
                 <div class="box-shadow bg-white m-t-20x p-x-20x">
-                    <div class="helveBold text-center p-y-15x font-size-md">LIMITED EDITION</div>
+                    <div class="helveBold text-left p-y-15x font-size-md">LIMITED EDITION</div>
                     @if($pre_product['isPutOn'] !=1)
                         <hr class="hr-base m-a-0">
                         <div class="p-y-15x">
