@@ -74,7 +74,7 @@
                                 <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designerId']}}">Follow</a>
                             @endif
                         </div>
-                        <div class="p-t-15x">{{$designer['describe']}}</div>
+                        <div class="m-t-15x designer-intro" data-designerid="{{$designer['designerId']}}">{{$designer['describe']}}</div>
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                             <div class="p-t-20x p-l-15x font-size-lxx">
                                 @endif
@@ -123,7 +123,7 @@
                                 <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designerId']}}">Follow</a>
                             @endif
                         </div>
-                        <div class="p-t-15x">{{$designer['describe']}}</div>
+                        <div class="m-t-15x designer-intro" data-designerid="{{$designer['designerId']}}">{{$designer['describe']}}</div>
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                             <div class="p-t-20x p-l-15x font-size-lxx">
                                 @endif
@@ -282,7 +282,7 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    <div class="m-t-15x designer-intro" data-designerid="@{{ value.designerId }}">@{{ value.describe }}</div>
                     @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
                         <div class="p-t-20x p-l-15x font-size-lxx">
                     @{{ /if }}
@@ -331,7 +331,7 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    <div class="m-t-15x designer-intro" data-designerid="@{{ value.designerId }}">@{{ value.describe }}</div>
                     @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
                     <div class="p-t-20x p-l-15x font-size-lxx">
                         @{{ /if }}
@@ -433,7 +433,7 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    <div class="m-t-15x designer-intro" data-designerid="@{{ value.designerId }}">@{{ value.describe }}</div>
                     @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
                     <div class="p-t-20x p-l-15x font-size-lxx">
                         @{{ /if }}
@@ -573,7 +573,7 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    <div class="m-t-15x designer-intro" data-designerid="@{{ value.designerId }}">@{{ value.describe }}</div>
                     @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
                     <div class="p-t-20x p-l-15x font-size-lxx">
                         @{{ /if }}

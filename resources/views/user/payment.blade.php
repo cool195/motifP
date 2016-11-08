@@ -75,7 +75,6 @@
                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-32@2x.png"
                                                              srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-32@3x.png{{config('runtime.V')}} 2x">
                                                         <span class="font-size-lxx p-l-40x">{{$list['pay_name']}}</span>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -402,8 +401,8 @@
         <div class="p-a-10x">
             <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
                 <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
-                <span class="font-size-lxx">Add New Credit Card</span>
-                <i class="iconfont icon-add m-r-20x"></i>
+                <span class="font-size-lg p-l-20x">Add New Credit Card</span>
+                <i class="iconfont icon-add"></i>
             </div>
         </div>
     </div>

@@ -31,8 +31,16 @@ function HideSeeMore(seemoreName) {
     function SubstringText(strinfo, strlenght) {  //'.designer-intro'
         $(strinfo).each(function () {
             var str = $(this).html();
+
             if (str.length > strlenght) {
-                str = str.substring(0, strlenght) + '...';
+                str = str.substring(0, strlenght);
+                var lastIndex = str.lastIndexOf(' ');
+                var lastStr = str.substring(0, lastIndex);
+                if($(this).data('designerid') != ''){
+                    str = lastStr + '... <a class="text-link" href="/designer/'+$(this).data('designerid')+'">View More</a>';
+                } else {
+                    str = lastStr + '...';
+                }
             }
             $(this).html(str);
         });
@@ -1432,7 +1440,7 @@ function HideSeeMore(seemoreName) {
                 closeCheckoutLoading();
             })
     });
-    
+
 
     // 进入添加地址界面
     $('.btn-addNewAddress').on('click', function () {
@@ -1666,14 +1674,14 @@ function HideSeeMore(seemoreName) {
             if( !checkInput($('input[name="card"]')) || !checkInput($('input[name="expiry"]')) || !checkInput($('input[name="cvc"]')) ){
                 return;
             }
-            
+
         }else {
             if ( !checkInput($('input[name="card"]')) || !checkInput($('input[name="expiry"]')) || !checkInput($('input[name="cvc"]')) ||
                 !checkInput($('.card-name')) || !checkInput($('.card-tel')) || !checkInput($('.card-addr1')) || !checkInput($('.card-city')) ||
                 !checkInput($('.card-zip')) || !checkInput($('.card-state')) ){
                 return;
             }
-            
+
         }
 
         openCheckoutLoading();
@@ -2493,7 +2501,7 @@ function HideSeeMore(seemoreName) {
         }
         return flag;
     }
-    
+
     $('.address-name').on('keyup blur', function () {
         var name = $(this).val();
         if (address_check($(this)) && address_check($('.address-city'))
@@ -2645,7 +2653,7 @@ function HideSeeMore(seemoreName) {
                 HideSeeMore('.designerList-seeMore');
             }
         });
-        SubstringText('.designer-intro', 140);
+        SubstringText('.designer-intro', 260);
     } catch (e) {
     }
 
@@ -2728,7 +2736,7 @@ function HideSeeMore(seemoreName) {
                     swiperBtnHover();
 
                     // 截取 设计师说明 长度
-                    SubstringText('.designer-intro', 140);
+                    SubstringText('.designer-intro', 260);
 
                     // 图片延迟加载
                     $('img.img-lazy').lazyload({
