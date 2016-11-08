@@ -12,8 +12,9 @@ class NetworkRedsController extends BaseController
     {
         $designerUrl = '/designer';
         //$queryString = $request->getQueryString();
-        $utm_medium = $request->get('utm_medium','qAku4nOInuA');
-        $utm_source = $request->get('utm_source','youtube');
+        $ref = urlencode($request->header('referer'));
+        $utm_medium = $request->get('utm_medium');
+        $utm_source = $request->get('utm_source',$ref);
         switch ($request->path()) {
             case 'cassandra':
                 $designerUrl = '/designer/103';
@@ -34,7 +35,7 @@ class NetworkRedsController extends BaseController
         }
 
         $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium=' . $utm_medium . '&utm_source=' . $utm_source : '');
-        $ref = urlencode($request->header('referer'));
+
         $clk = 'https://clk.motif.me/log.gif?t=route.600001&m=PC_M2016-1&pin=' . Session::get('user.pin') . '&uuid=' . $_COOKIE['uid'] . '&ref=' . $ref . '&v={"DesignerName":"' . $request->path() . '","designerID":"' . $designerID . '","utm_medium":"' . $utm_medium . '","utm_source":"' . $utm_source . '"}';
         file_get_contents($clk);
         return View('designer.networkreds', ['designerUrl' => $designerUrl]);
