@@ -59,7 +59,7 @@
                         <div class="m-b-10x">
                             <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                href="/designer/{{ $designer['designerId'] }}" >
-                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/{{$designer['avatar']}}" width="120" height="120" alt="">
+                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
@@ -74,7 +74,7 @@
                                 <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designerId']}}">Follow</a>
                             @endif
                         </div>
-                        <div class="p-t-15x">{{  mb_substr($designer['describe'], 0, 150) }}</div>
+                        <div class="m-t-15x designer-intro" data-designerid="{{$designer['designerId']}}">{{$designer['describe']}}</div>
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                             <div class="p-t-20x p-l-15x font-size-lxx">
                                 @endif
@@ -108,7 +108,7 @@
                         <div class="m-b-10x">
                             <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                href="/designer/{{ $designer['designerId'] }}" >
-                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/{{$designer['avatar']}}" width="120" height="120" alt="">
+                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
@@ -123,7 +123,7 @@
                                 <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designerId']}}">Follow</a>
                             @endif
                         </div>
-                        <div class="p-t-15x">{{ mb_substr($designer['describe'], 0, 150) }}</div>
+                        <div class="m-t-15x designer-intro" data-designerid="{{$designer['designerId']}}">{{$designer['describe']}}</div>
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                             <div class="p-t-20x p-l-15x font-size-lxx">
                                 @endif
@@ -267,7 +267,7 @@
                     <div class="m-b-10x">
                         <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -282,7 +282,7 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    <div class="m-t-15x designer-intro" data-designerid="@{{ value.designerId }}">@{{ value.describe }}</div>
                     @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
                         <div class="p-t-20x p-l-15x font-size-lxx">
                     @{{ /if }}
@@ -316,7 +316,7 @@
                     <div class="m-b-10x">
                         <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -331,7 +331,7 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    <div class="m-t-15x designer-intro" data-designerid="@{{ value.designerId }}">@{{ value.describe }}</div>
                     @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
                     <div class="p-t-20x p-l-15x font-size-lxx">
                         @{{ /if }}
@@ -419,7 +419,7 @@
                     <div class="m-b-10x">
                         <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -433,7 +433,7 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    <div class="m-t-15x designer-intro" data-designerid="@{{ value.designerId }}">@{{ value.describe }}</div>
                     @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
                     <div class="p-t-20x p-l-15x font-size-lxx">
                         @{{ /if }}
@@ -559,7 +559,7 @@
                     <div class="m-b-10x">
                         <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -573,7 +573,7 @@
                             <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-following" data-actiondid="@{{ value.designerId }}">Follow</a>
                         @endif
                     </div>
-                    <div class="p-t-15x">@{{ value.describe }}</div>
+                    <div class="m-t-15x designer-intro" data-designerid="@{{ value.designerId }}">@{{ value.describe }}</div>
                     @{{ if value.instagram_link != undefined || value.snapchat_link != undefined || value.youtube_link != undefined || value.facebook_link != undefined || value.blog_link != undefined }}
                     <div class="p-t-20x p-l-15x font-size-lxx">
                         @{{ /if }}

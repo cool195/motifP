@@ -102,30 +102,33 @@
         @endif
 
         <!-- 设计师头像 follow 介绍 社交 -->
-            <div class="text-center p-b-20x p-t-30x designer-basicInfo">
+            <div class="text-center p-b-20x p-t-20x designer-basicInfo">
                 <div class="m-b-10x designer-headImg"
                      data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=page.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"PC"}'>
-                    <img class="img-circle img-border-white-4x"
-                         src="{{config('runtime.CDN_URL')}}/n2/{{$designer['icon']}}"
-                         width="120" height="120" alt="">
+                    {{--<img class="img-circle img-border-white-4x"--}}
+                         {{--src="{{config('runtime.CDN_URL')}}/n2/{{$designer['icon']}}"--}}
+                         {{--width="120" height="120" alt="">--}}
                 </div>
-                <div class="font-size-md helveBold p-t-40x">{{$designer['nickname']}}</div>
-                <div class="p-t-15x">
-                    @if(Session::has('user'))
-                        <div class="btn btn-gray btn-sm p-x-20x btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
-                             data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>
-                    @else
-                        <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow"
-                           data-actiondid="{{$designer['designer_id']}}">Follow</a>
-                    @endif
+                <div class="flex flex-alignCenter flex-fullJustified p-x-20x">
+                    <div class="font-size-md helveBold">{{$designer['nickname']}}</div>
+                    <div class="">
+                        @if(Session::has('user'))
+                            <div class="btn btn-gray btn-sm p-x-20x btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
+                                 data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>
+                        @else
+                            <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow"
+                               data-actiondid="{{$designer['designer_id']}}">Follow</a>
+                        @endif
+                    </div>
                 </div>
+
 
                 <div class="p-t-20x p-x-20x text-left">
                     <p class="m-b-0">{{$designer['describe']}}</p>
                 </div>
 
                 @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
-                    <div class="p-t-20x p-l-15x font-size-lxx">
+                    <div class="p-t-20x p-x-20x font-size-lxx text-left">
                         @endif
                         @if(!empty($designer['instagram_link']))
                             <a href="{{$designer['instagram_link']}}" target="_blank" class="m-r-20x"><i class="iconfont icon-instagram1"></i></a>
@@ -228,7 +231,7 @@
     <!-- 设计师预售信息 PREORDER -->
         @foreach($pre_product['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
             <div class="box-shadow bg-white m-t-20x p-x-20x">
-                <div class="helveBold text-center p-y-15x font-size-md">{{$value['desc_title']}}</div>
+                <div class="helveBold text-left p-y-15x font-size-md">{{$value['desc_title']}}</div>
                 <hr class="hr-base m-a-0">
                 <div class="p-y-15x">
                     <div class="text-primary font-size-base">
