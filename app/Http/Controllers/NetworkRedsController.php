@@ -18,38 +18,26 @@ class NetworkRedsController extends BaseController
             case 'cassandra':
                 $designerUrl = '/designer/103';
                 $designerID = '103';
-                $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium='.$utm_medium.'&utm_source='.$utm_source : '');
-                $AUrl = 'https://c89mm.app.goo.gl/?link=http://m.motif.me/designer/103&al=motif://o.c?a%3Durl%26url%3Dhttp%253A%252F%252Fm.motif.me%252Fdesigner%252F103%253Futm_medium%253D1%2526utm_source%253Dyoutube&apn=me.motif.motif&ad=1';
-                $IosUrl = 'https://control.kochava.com/v1/cpi/click?campaign_id=komotif-kvced5a84d7bcc8fb267&network_id=5237&device_id=device_id&site_id=1';
                 break;
             case 'rae':
                 $designerUrl = '/designer/99';
                 $designerID = '99';
-                $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium='.$utm_medium.'&utm_source='.$utm_source : '');
-                $AUrl = $designerUrl;
-                $IosUrl = $designerUrl;
                 break;
             case 'RAE':
                 $designerUrl = '/designer/99';
                 $designerID = '99';
-                $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium='.$utm_medium.'&utm_source='.$utm_source : '');
-                $AUrl = $designerUrl;
-                $IosUrl = $designerUrl;
                 break;
             case 'Rae':
                 $designerUrl = '/designer/99';
                 $designerID = '99';
-                $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium='.$utm_medium.'&utm_source='.$utm_source : '');
-                $AUrl = $designerUrl;
-                $IosUrl = $designerUrl;
                 break;
         }
 
-
+        $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium=' . $utm_medium . '&utm_source=' . $utm_source : '');
         $ref = urlencode($request->header('referer'));
-        $clk = 'https://clk.motif.me/log.gif?t=route.600001&m=PC_M2016-1&pin=' . Session::get('user.pin') . '&uuid=' . $_COOKIE['uid'] . '&ref=' . $ref . '&v={"DesignerName":"'.$request->path().'","designerID":"'.$designerID.'","utm_medium":"' . $utm_medium . '","utm_source":"' . $utm_source . '"}';
+        $clk = 'https://clk.motif.me/log.gif?t=route.600001&m=PC_M2016-1&pin=' . Session::get('user.pin') . '&uuid=' . $_COOKIE['uid'] . '&ref=' . $ref . '&v={"DesignerName":"' . $request->path() . '","designerID":"' . $designerID . '","utm_medium":"' . $utm_medium . '","utm_source":"' . $utm_source . '"}';
         file_get_contents($clk);
-        return View('designer.networkreds', ['designerUrl' => $designerUrl, 'AUrl' => $AUrl, 'IosUrl' => $IosUrl]);
+        return View('designer.networkreds', ['designerUrl' => $designerUrl]);
     }
 
 
