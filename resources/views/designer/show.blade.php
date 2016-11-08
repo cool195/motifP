@@ -105,9 +105,6 @@
             <div class="text-center p-b-20x p-t-20x designer-basicInfo">
                 <div class="m-b-10x designer-headImg"
                      data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=page.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"action":0,"skipType":2,"skipId":{{$designer['designer_id']}},"expid":0,"version":"1.0.1","ver":"9.2","src":"PC"}'>
-                    {{--<img class="img-circle img-border-white-4x"--}}
-                         {{--src="{{config('runtime.CDN_URL')}}/n2/{{$designer['icon']}}"--}}
-                         {{--width="120" height="120" alt="">--}}
                 </div>
                 <div class="flex flex-alignCenter flex-fullJustified p-x-20x">
                     <div class="font-size-md helveBold">{{$designer['nickname']}}</div>

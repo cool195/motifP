@@ -86,13 +86,6 @@
                     </a>
                 </li>
                 @endif
-                <li class="nav-item @if('Payment Method' == $title) active @endif">
-                    <a href="/user/payment">
-                        <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">
-                            <span class="font-size-md">Payment Method</span>
-                        </div>
-                    </a>
-                </li>
                 <li class="nav-item @if('Shipping Address' == $title) active @endif">
                     <a href="/user/shippingaddress">
                         <div class="flex flex-alignCenter p-y-5x m-b-15x p-x-40x">

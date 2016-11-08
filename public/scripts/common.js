@@ -31,6 +31,7 @@ function HideSeeMore(seemoreName) {
     function SubstringText(strinfo, strlenght) {  //'.designer-intro'
         $(strinfo).each(function () {
             var str = $(this).html();
+
             if (str.length > strlenght) {
                 str = str.substring(0, strlenght);
                 var lastIndex = str.lastIndexOf(' ');
@@ -208,7 +209,7 @@ function HideSeeMore(seemoreName) {
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
             pagination: '.swiper-pagination',
-            autoplay: 4000,
+            autoplay: 5000,
             autoplayDisableOnInteraction: false,
             spaceBetween: 30,
             effect: 'fade',
