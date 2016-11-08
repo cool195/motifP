@@ -205,7 +205,7 @@ function HideSeeMore(seemoreName) {
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
             pagination: '.swiper-pagination',
-            autoplay: 4000,
+            autoplay: 5000,
             autoplayDisableOnInteraction: false,
             spaceBetween: 30,
             effect: 'fade',
