@@ -74,7 +74,7 @@
                                 <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designerId']}}">Follow</a>
                             @endif
                         </div>
-                        <div class="p-t-15x">{{  mb_substr($designer['describe'], 0, 150) }}</div>
+                        <div class="p-t-15x">{{  mb_substr($designer['describe'], 0, 150).(count($designer['describe'])>150 ? '...' : '')}}</div>
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                             <div class="p-t-20x p-l-15x font-size-lxx">
                                 @endif
@@ -123,7 +123,7 @@
                                 <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow" data-actiondid="{{$designer['designerId']}}">Follow</a>
                             @endif
                         </div>
-                        <div class="p-t-15x">{{ mb_substr($designer['describe'], 0, 150) }}</div>
+                        <div class="p-t-15x">{{  mb_substr($designer['describe'], 0, 150).(count($designer['describe'])>150 ? '...' : '')}}</div>
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                             <div class="p-t-20x p-l-15x font-size-lxx">
                                 @endif
