@@ -51,7 +51,6 @@ function HideSeeMore(seemoreName) {
     }
 
     // public 公共方法start
-    var testIndex = 0;
 
     function switchImpr(Impr) {
         // 当前视窗浏览位置
@@ -145,7 +144,6 @@ function HideSeeMore(seemoreName) {
                 var impr = $(element).data('impr');
                 $(element).removeAttr('data-impr');
                 if (impr != undefined && impr != null && impr != "") {
-                    testIndex++;
                     $.ajax({
                             url: impr
                         })
@@ -153,6 +151,8 @@ function HideSeeMore(seemoreName) {
                             //$(element).removeAttr('data-impr');
                         });
                 }
+            }else{
+                return;
             }
         });
     }
