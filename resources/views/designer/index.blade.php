@@ -59,7 +59,7 @@
                         <div class="m-b-10x">
                             <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                href="/designer/{{ $designer['designerId'] }}" >
-                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/{{$designer['avatar']}}" width="120" height="120" alt="">
+                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
@@ -108,7 +108,7 @@
                         <div class="m-b-10x">
                             <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":{{$designer['designerId']}},"expid":0,"version":"1.0.1","src":"PC"}'
                                href="/designer/{{ $designer['designerId'] }}" >
-                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/{{$designer['avatar']}}" width="120" height="120" alt="">
+                                <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
@@ -267,7 +267,7 @@
                     <div class="m-b-10x">
                         <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -316,7 +316,7 @@
                     <div class="m-b-10x">
                         <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -419,7 +419,7 @@
                     <div class="m-b-10x">
                         <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
@@ -559,7 +559,7 @@
                     <div class="m-b-10x">
                         <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":@{{ value.designerId }},"expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
-                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n3/@{{ value.avatar }}" width="120" height="120" alt="">
+                            <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
