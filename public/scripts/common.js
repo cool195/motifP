@@ -35,7 +35,11 @@ function HideSeeMore(seemoreName) {
             if (str.length > strlenght) {
                 str = str.substring(0, strlenght);
                 var lastIndex = str.lastIndexOf(' ');
-                var lastStr = str.substring(0, lastIndex);
+                if(lastIndex != '-1'){
+                    var lastStr = str.substring(0, lastIndex);
+                } else {
+                    var lastStr = str;
+                }
                 if($(this).data('designerid') != ''){
                     str = lastStr + '... <a class="text-link" href="/designer/'+$(this).data('designerid')+'">View More</a>';
                 } else {

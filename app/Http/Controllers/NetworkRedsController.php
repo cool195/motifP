@@ -11,9 +11,9 @@ class NetworkRedsController extends BaseController
     public function index(Request $request)
     {
         $designerUrl = '/designer';
-        $queryString = $request->getQueryString();
-        $utm_medium = $request->get('utm_medium');
-        $utm_source = $request->get('utm_source');
+        //$queryString = $request->getQueryString();
+        $utm_medium = $request->get('utm_medium','qAku4nOInuA');
+        $utm_source = $request->get('utm_source','youtube');
         switch ($request->path()) {
             case 'cassandra':
                 $designerUrl = '/designer/103';
