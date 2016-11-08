@@ -1,8 +1,8 @@
 
 @include('header', ['title' => 'Designer', 'page' => 'designer'])
-<!-- 内容 -->
+{{--内容--}}
 <section class="m-t-40x" id="designerIndex" data-show="true">
-    <!-- 设计师列表 -->
+    {{--设计师列表--}}
     <div id="designerContainer" class="container m-b-40x" data-start="{{$start}}" data-loading="false">
         @foreach($list as $key => $designer)
         @if( 0 == $key % 2 )
