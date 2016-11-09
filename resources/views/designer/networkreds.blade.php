@@ -5,27 +5,7 @@
 </head>
 <body>
 
-<script type="text/javascript">
 
-    var url = "{!! $designerUrl !!}";
-
-
-        var Agent = navigator.userAgent;
-        if (/iPhone/i.test(Agent)) {
-            window.location.href = "motif://o.c?a=url&url="+encodeURIComponent(url);
-            setTimeout(function () {
-                window.location.href = url;
-            }, 2000);
-        } else if (/Android/i.test(Agent) || /Linux/i.test(Agent)) {
-            window.location.href = "motif://o.c?a=url&url="+encodeURIComponent(url);
-            setTimeout(function () {
-                window.location.href = url;
-            }, 2000);
-        } else {
-            window.location.href = url;
-        }
-
-</script>
 
 <script src="{{config('runtime.Image_URL')}}/scripts/wl.js{{config('runtime.V')}}"></script>
 <!-- Google Tag Manager -->
@@ -75,5 +55,27 @@
 <noscript><img height="1" width="1" style="display:none"
                src="https://www.facebook.com/tr?id=1777634412449097&ev=PageView&noscript=1"
     /></noscript>
+
+<script type="text/javascript">
+
+    var url = "{!! $designerUrl !!}";
+
+
+    var Agent = navigator.userAgent;
+    if (/iPhone/i.test(Agent)) {
+        window.location.href = "motif://o.c?a=url&url="+encodeURIComponent(url);
+        setTimeout(function () {
+            window.location.href = url;
+        }, 2000);
+    } else if (/Android/i.test(Agent) || /Linux/i.test(Agent)) {
+        window.location.href = "motif://o.c?a=url&url="+encodeURIComponent(url);
+        setTimeout(function () {
+            window.location.href = url;
+        }, 2000);
+    } else {
+        window.location.href = url;
+    }
+
+</script>
 </body>
 </html>

@@ -136,8 +136,7 @@
                             <!--预售标志-->
                             <div class="presale-sign newPresale-sign">
                                 {{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}
-                                <a href="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
-                                   class="newPresale-text helveBold font-size-xs text-primary">Limited Edition</a>
+                                <a href="/detail/{{$product['spu']}}" data-clk="{{$product['clk']}}" class="newPresale-text helveBold font-size-xs text-primary">Limited Edition</a>
                             </div>
                         @endif
                     </div>
