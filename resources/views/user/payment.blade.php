@@ -29,7 +29,7 @@
                                                              data-cardnum="{{ $card['card_number'] }}"
                                                              data-cardid="{{ $card['card_id'] }}"
                                                              data-paytype="{{ $card['pay_type'] }}">
-                                                            <div>
+                                                            <div class="flex flex-alignCenter">
                                                                 <span class="payLeft-minW">
                                                                 @if($card['card_type'] == 'Visa')
                                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-52.png"
@@ -45,9 +45,9 @@
                                                                              srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52@3x.png{{config('runtime.V')}} 3x">
                                                                     @endif
                                                                 </span>
-                                                                <span class="sanBold font-size-lx">{{  $card['card_number'] }}</span>
+                                                                <span class="sanBold font-size-md">{{  $card['card_number'] }}</span>
                                                             </div>
-                                                            <div class="m-t-20x flex">
+                                                            <div class="m-t-10x flex">
                                                                 <span class="payLeft-minW">Exp:{{$card['month']}} /{{$card['year']}}</span>
                                                                 <span class="billingTxt">Billing:{{$card['detail_address1']}} {{$card['detail_address2']}} {{$card['city']}} {{$card['state']}} {{$card['country']}}</span>
                                                             </div>
@@ -319,7 +319,7 @@
             <div class="choose-item p-a-20x"
                  data-cardtype="@{{ $value.card_type }}" data-cardnum="@{{ $value.card_number }}"
                  data-cardid="@{{ $value.card_id }}" data-paytype="@{{ $value.pay_type }}">
-                <div>
+                <div class="flex flex-alignCenter">
                     <span class="payLeft-minW">
                     @{{ if $value.card_type === 'MasterCard' }}
                         <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="50">
@@ -332,9 +332,9 @@
                         @{{ /if }}
                     </span>
 
-                    <span class="sanBold font-size-lx">@{{ $value.card_number }}</span>
+                    <span class="sanBold font-size-md">@{{ $value.card_number }}</span>
                 </div>
-                <div class="m-t-20x flex">
+                <div class="m-t-10x flex">
                     <span class="payLeft-minW">Exp:@{{ $value.month }}/@{{ $value.year }}</span>
                     <span class="billingTxt">@{{ $value.detail_address1 }} @{{ $value.detail_address2 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }}</span>
                 </div>
@@ -373,7 +373,7 @@
             <div class="choose-item p-a-20x"
                  data-cardtype="@{{ $value.card_type }}" data-cardnum="@{{ $value.card_number }}"
                  data-cardid="@{{ $value.card_id }}" data-paytype="@{{ $value.pay_type }}">
-                <div>
+                <div class="flex flex-alignCenter">
                     <span class="payLeft-minW">
                     @{{ if $value.card_type === 'MasterCard' }}
                         <img src="{{config('runtime.Image_URL')}}/images/payment/pay-mastercard.png" width="50">
@@ -386,9 +386,9 @@
                         @{{ /if }}
                     </span>
 
-                    <span class="sanBold font-size-lx">@{{ $value.card_number }}</span>
+                    <span class="sanBold font-size-md">@{{ $value.card_number }}</span>
                 </div>
-                <div class="m-t-20x flex">
+                <div class="m-t-10x flex">
                     <span class="payLeft-minW">Exp:@{{ $value.month }}/@{{ $value.year }}</span>
                     <span class="billingTxt">@{{ $value.detail_address1 }} @{{ $value.detail_address2 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }}</span>
                 </div>

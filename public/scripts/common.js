@@ -1588,11 +1588,11 @@ function HideSeeMore(seemoreName) {
         $('.card-message').removeClass('disabled');
         $('.card-addNewAddr').addClass('disabled');
 
-        if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))){
-            $('#btn-addNewCard').removeClass('disabled')
-        }else{
-            $('#btn-addNewCard').addClass('disabled')
-        }
+        //if (checkInput($('input[name="card"]')) && checkInput($('input[name="expiry"]')) && checkInput($('input[name="cvc"]'))){
+        //    $('#btn-addNewCard').removeClass('disabled')
+        //}else{
+        //    $('#btn-addNewCard').addClass('disabled')
+        //}
 
     });
     // 选择 新增账单地址
