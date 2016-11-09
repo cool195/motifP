@@ -283,7 +283,7 @@ function HideSeeMore(seemoreName) {
             height: MediaHeight,
             width: Width,
             videoId: PlayerId,
-            playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0},
+            playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'rel': 0},
             events: {
                 'onReady': onPlayerReady
             }
@@ -3935,7 +3935,7 @@ $('#designerDetailContainer').on('click', '.bg-player', function () {
         height: MediaHeightDesigner,
         width: WidthDesigner,
         videoId: PlayId,
-        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'playsinline': 1},
+        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'playsinline': 1, 'rel': 0},
         events: {
             'onReady': onPlayerReady,
             'onError': onPlayerError
@@ -3952,7 +3952,7 @@ function startPlayer($this) {
         height: MediaHeight,
         width: Width,
         videoId: PlayId,
-        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'playsinline': 1},
+        playerVars: {'autoplay': 1, 'controls': 2, 'showinfo': 0, 'playsinline': 1, 'rel': 0},
         events: {
             'onReady': onPlayerReady,
             'onError': onPlayerError
