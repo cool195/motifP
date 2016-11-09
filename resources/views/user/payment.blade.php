@@ -74,7 +74,7 @@
                                                          data-paytype="{{$list['pay_type']}}">
                                                         <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-32@2x.png"
                                                              srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-32@3x.png{{config('runtime.V')}} 2x">
-                                                        <span class="font-size-lxx p-l-40x">{{$list['pay_name']}}</span>
+                                                        <span class="font-size-lg p-l-40x">{{$list['pay_name']}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -361,7 +361,7 @@
                  data-cardtype="paypal" data-cardnum="PayPal" data-cardid="PayPal"
                  data-paytype="@{{ $value.pay_type }}">
                 <img src="{{config('runtime.Image_URL')}}/images/payment/paypal-color@3x.png" width="60">
-                <span class="font-size-lxx p-l-40x">@{{$value.pay_name}}</span>
+                <span class="font-size-lg p-l-40x">@{{$value.pay_name}}</span>
             </div>
         </div>
     </div>
