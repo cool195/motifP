@@ -143,7 +143,7 @@
                     <div class="price-caption helveBold">
                         <div class="text-center font-size-md text-main text-truncate p-x-20x">{{$product['main_title']}}</div>
                         <div class="text-center">
-                            @if($product['skuPrice']['skuPromotion']['sale_price'] != $product['skuPrice']['skuPromotion']['price'])
+                            @if($product['skuPrice']['skuPromotion']['promot_price'] != $product['skuPrice']['skuPromotion']['price'])
                                 <span class="font-size-md text-main p-r-5x text-red">${{ number_format(($product['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
                                 <span class="font-size-base text-common text-throughLine">${{ number_format(($product['skuPrice']['skuPromotion']['price'] / 100), 2) }}</span>
                             @else
