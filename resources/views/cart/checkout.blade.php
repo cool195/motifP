@@ -428,7 +428,7 @@
                                 @endforeach
                                 <div class="col-md-6">
                                     <div class="p-a-10x">
-                                        <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
+                                        <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard" data-method="{{$list['pay_method']}}">
                                             <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-card.png"
                                                  srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-card@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-card@3x.png{{config('runtime.V')}} 3x">
                                             <span class="font-size-lxx">Add New Credit Card</span>

@@ -1564,6 +1564,13 @@ function HideSeeMore(seemoreName) {
     $('.payment-list').on('click', '.addCreditCard', function () {
         $('.select-payment').addClass('disabled');
         $('.add-newCard').removeClass('disabled');
+        if('Oceanpay' == $(this).data('method')){
+            $('#img-amex').css('display', 'none');
+            $('#img-jcb').css('display', 'none');
+        }else{
+            $('#img-amex').css('display', 'inline-flex');
+            $('#img-jcb').css('display','inline-flex');
+        }
     });
 
     // 控制 支付方式div 显示/隐藏

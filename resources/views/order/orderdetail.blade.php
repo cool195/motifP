@@ -172,7 +172,27 @@
                                 <hr class="hr-base">
                                 <div class="media">
                                     <div class="media-left sanBold orderInfo-title">Paid with</div>
-                                    <div class="media-right">@if($data['payinfo']['pay_type']=="PayPalNative"){{'PayPal'}}@else{{'Credit Card'}}@endif</div>
+                                    <div class="media-right">
+                                        @if($data['payinfo']['pay_type']=="PayPalNative")
+                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43.png"
+                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43@3x.png{{config('runtime.V')}} 3x"
+                                                 class="pay-img pay-paypal active">
+                                        @else
+                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-32.png"
+                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-visa-32@3x.png{{config('runtime.V')}} 3x"
+                                                 class="pay-img pay-visa @if($data['payinfo']['card_type']=="Visa") active @endif">
+                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32.png"
+                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@3x.png{{config('runtime.V')}} 3x"
+                                                 class="pay-img pay-masc @if($data['payinfo']['card_type'] == "MasterCard") active @endif">
+                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-american-32.png"
+                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-american-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-american-32@3x.png{{config('runtime.V')}} 3x"
+                                                 class="pay-img pay-amc @if($data['payinfo']['card_type'] == "AmericanExpress") active @endif">
+                                            <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32.png"
+                                                 srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@3x.png{{config('runtime.V')}} 3x"
+                                                 class="pay-img pay-jcb @if($data['payinfo']['card_type'] == "JCB") active @endif">
+                                        @endif
+                                        <span class="p-l-10x">@if($data['payinfo']['pay_type']=="PayPalNative"){{'PayPal'}}@else{{$data['payinfo']['show_name']}}@endif</span>
+                                    </div>
                                 </div>
                             @endif
                             @if(!empty($data['order_remark']))
