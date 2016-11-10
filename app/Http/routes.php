@@ -114,7 +114,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
     Route::get('/order/orderlist', 'OrderController@orderList');
 
     Route::get('/order/orderdetail/{subno}', 'OrderController@orderDetail')->where(['subno' => '[0-9]+']);
-    
+
     Route::get('/success', 'OrderController@orderConfirmed');
 });
 //Order End
@@ -125,7 +125,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::get('/paypal', 'PaypalController@index');
 
-    Route::get('/paypalstatus', 'PaypalController@paypal');
+    Route::get('/paypalStatus', 'PaypalController@paypal');
 });
 //Paypal End
 
@@ -136,11 +136,11 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::post('/wordpay/addCard', 'WordpayController@addCreditCard');
 
-    Route::get('/wordpay/seladdr/{aid}', 'WordpayController@selAddr');
+    Route::get('/wordpay/selAddr/{aid}', 'WordpayController@selAddr');
 
     Route::post('/wordpay/delCard', 'WordpayController@delCreditCard');
 
-    Route::get('/wordpay/selship/{type}', 'WordpayController@selShip');
+    Route::post('/wordpay/selShip/{type}', 'WordpayController@selShip');
 
     Route::get('/wordpay/paywith/{type}/{cardid}', 'WordpayController@paywith');
 
@@ -163,7 +163,7 @@ Route::group(['middleware' => 'pcguide'], function () {
     Route::get('/register', 'UserController@register');
 
     Route::post('/signup', 'UserController@signup');
-    
+
     Route::get('/signout', 'UserController@signout');
 
     Route::post('/forget', 'UserController@forgetPassword');
@@ -242,7 +242,7 @@ Route::group(['middleware' => 'pcguide'], function () {
 
     Route::post('/facebooklogin', 'AuthController@facebookLogin');
 
-    Route::get('/addfacebookemail', 'AuthController@addFacebookEmail');
+    Route::get('/addFacebookEmail', 'AuthController@addFacebookEmail');
 
     Route::get('/facebookstatus/{trdid}', 'AuthController@faceBookAuthStatus');
 
@@ -277,11 +277,11 @@ Route::group(['middleware' => 'pcguide'], function () {
 
     Route::get('/privacynotice', 'PageController@privacyPolicy');
 
-    Route::get('/sizeguide', 'PageController@sizeGuide');
+    Route::get('/sizeGuide', 'PageController@sizeGuide');
 
     Route::get('/termsconditions', 'PageController@termsService');
 
-    Route::get('/useragreement', 'PageController@userAgreement');
+    Route::get('/userAgreement', 'PageController@userAgreement');
 
     Route::get('/saleinfo', 'PageController@saleinfo');
 
@@ -308,6 +308,8 @@ Route::get('error',function (){
 
 //网红落地路由
 Route::get('/rae', 'NetworkRedsController@index');
+Route::get('/Rae', 'NetworkRedsController@index');
+Route::get('/RAE', 'NetworkRedsController@index');
 
 Route::get('/cassandra', 'NetworkRedsController@index');
 
