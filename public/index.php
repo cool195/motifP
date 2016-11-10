@@ -18,7 +18,10 @@
 | loading any of our classes later on. It feels nice to relax.
 |
 */
-
+$skipURI = strtolower($_SERVER['REQUEST_URI']);
+if ($skipURI != $_SERVER['REQUEST_URI']) {
+    Header("Location: https://www.motif.me$skipURI");
+}
 require __DIR__.'/../bootstrap/autoload.php';
 
 /*
