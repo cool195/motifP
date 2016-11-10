@@ -113,7 +113,7 @@ class WordpayController extends BaseController
         );
 
         $result = $this->request('pay', $params);
-        if($result['sucesss'] && $card_id == Session::get('user.checkout.paywith.withCard.card_id')) {
+        if($result['success'] && $card_id == Session::get('user.checkout.paywith.withCard.card_id')) {
             Session::forget('user.checkout.paywith');
         }
         return $result;
