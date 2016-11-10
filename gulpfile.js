@@ -39,5 +39,5 @@ gulp.task('js', function() {
 // 默认任务
 gulp.task('default', function(){
     //gulp.start('js','css','img');
-    gulp.start('js');
+    gulp.start('js','css');
 });
