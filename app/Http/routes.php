@@ -92,11 +92,11 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::put('/cart/add', 'CartController@promptlyBuy');
 
-    Route::post('/cart/proBuy', 'CartController@promptlyBuy');
+    Route::post('/cart/probuy', 'CartController@promptlyBuy');
 
-    Route::post('/cart/addBatch', 'CartController@addBatchCart');
+    Route::post('/cart/addbatch', 'CartController@addBatchCart');
 
-    Route::post('/cart/alterQtty', 'CartController@alterCartProQtty');
+    Route::post('/cart/alterqtty', 'CartController@alterCartProQtty');
 
     Route::post('/cart/operate', 'CartController@operateCartProduct');
 
@@ -125,7 +125,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::get('/paypal', 'PaypalController@index');
 
-    Route::get('/paypalStatus', 'PaypalController@paypal');
+    Route::get('/paypalstatus', 'PaypalController@paypal');
 });
 //Paypal End
 
@@ -134,17 +134,17 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::get('/wordpay/paylist', 'WordpayController@getPayList');
 
-    Route::post('/wordpay/addCard', 'WordpayController@addCreditCard');
+    Route::post('/wordpay/addcard', 'WordpayController@addCreditCard');
 
-    Route::get('/wordpay/selAddr/{aid}', 'WordpayController@selAddr');
+    Route::get('/wordpay/seladdr/{aid}', 'WordpayController@selAddr');
 
-    Route::post('/wordpay/delCard', 'WordpayController@delCreditCard');
+    Route::post('/wordpay/delcard', 'WordpayController@delCreditCard');
 
-    Route::post('/wordpay/selShip/{type}', 'WordpayController@selShip');
+    Route::post('/wordpay/selship/{type}', 'WordpayController@selShip');
 
     Route::get('/wordpay/paywith/{type}/{cardid}', 'WordpayController@paywith');
 
-    Route::post('/wordpay/selCode/{bindid}', 'WordpayController@selCode');
+    Route::post('/wordpay/selcode/{bindid}', 'WordpayController@selCode');
 });
 
 
@@ -180,7 +180,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::get('/user/detail', 'UserController@getUserDetailInfo');
 
-    Route::post('/user/modifyUserPwd', 'UserController@modifyUserPwd');
+    Route::post('/user/modifyuserpwd', 'UserController@modifyUserPwd');
 
     Route::match(['get', 'post'], '/user/modifyUserInfo', 'UserController@modifyUserInfo');
 
@@ -242,7 +242,7 @@ Route::group(['middleware' => 'pcguide'], function () {
 
     Route::post('/facebooklogin', 'AuthController@facebookLogin');
 
-    Route::get('/addFacebookEmail', 'AuthController@addFacebookEmail');
+    Route::get('/addFacebookemail', 'AuthController@addFacebookEmail');
 
     Route::get('/facebookstatus/{trdid}', 'AuthController@faceBookAuthStatus');
 
@@ -277,11 +277,11 @@ Route::group(['middleware' => 'pcguide'], function () {
 
     Route::get('/privacynotice', 'PageController@privacyPolicy');
 
-    Route::get('/sizeGuide', 'PageController@sizeGuide');
+    Route::get('/sizeguide', 'PageController@sizeGuide');
 
     Route::get('/termsconditions', 'PageController@termsService');
 
-    Route::get('/userAgreement', 'PageController@userAgreement');
+    Route::get('/useragreement', 'PageController@userAgreement');
 
     Route::get('/saleinfo', 'PageController@saleinfo');
 
