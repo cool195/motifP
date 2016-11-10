@@ -20,7 +20,7 @@
 */
 $skipURI = strtolower($_SERVER['REQUEST_URI']);
 if (empty($_POST) && $skipURI != $_SERVER['REQUEST_URI']) {
-    $skipUrl = 'https://'.$_SERVER['SERVER_NAME'].$skipURI;
+    $skipUrl = ($_SERVER['SERVER_NAME']=='www.motif.me' ? 'https://' : 'http://') .$_SERVER['SERVER_NAME'].$skipURI;
     Header("Location: $skipUrl");
     exit;
 }
