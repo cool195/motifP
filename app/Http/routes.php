@@ -308,8 +308,6 @@ Route::get('error',function (){
 
 //网红落地路由
 Route::get('/rae', 'NetworkRedsController@index');
-Route::get('/Rae', 'NetworkRedsController@index');
-Route::get('/RAE', 'NetworkRedsController@index');
 
 Route::get('/cassandra', 'NetworkRedsController@index');
 
