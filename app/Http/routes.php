@@ -125,7 +125,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::get('/paypal', 'PaypalController@index');
 
-    Route::get('/paypalStatus', 'PaypalController@paypal');
+    Route::get('/paypalstatus', 'PaypalController@paypal');
 });
 //Paypal End
 
@@ -136,7 +136,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::post('/wordpay/addCard', 'WordpayController@addCreditCard');
 
-    Route::get('/wordpay/selAddr/{aid}', 'WordpayController@selAddr');
+    Route::get('/wordpay/seladdr/{aid}', 'WordpayController@selAddr');
 
     Route::post('/wordpay/delCard', 'WordpayController@delCreditCard');
 
@@ -242,7 +242,7 @@ Route::group(['middleware' => 'pcguide'], function () {
 
     Route::post('/facebooklogin', 'AuthController@facebookLogin');
 
-    Route::get('/addFacebookEmail', 'AuthController@addFacebookEmail');
+    Route::get('/addfacebookemail', 'AuthController@addFacebookEmail');
 
     Route::get('/facebookstatus/{trdid}', 'AuthController@faceBookAuthStatus');
 
@@ -281,7 +281,7 @@ Route::group(['middleware' => 'pcguide'], function () {
 
     Route::get('/termsconditions', 'PageController@termsService');
 
-    Route::get('/userAgreement', 'PageController@userAgreement');
+    Route::get('/useragreement', 'PageController@userAgreement');
 
     Route::get('/saleinfo', 'PageController@saleinfo');
 
@@ -308,8 +308,6 @@ Route::get('error',function (){
 
 //网红落地路由
 Route::get('/rae', 'NetworkRedsController@index');
-Route::get('/Rae', 'NetworkRedsController@index');
-Route::get('/RAE', 'NetworkRedsController@index');
 
 Route::get('/cassandra', 'NetworkRedsController@index');
 
