@@ -104,14 +104,18 @@ class WordpayController extends BaseController
 
     public function delCreditCard(Request $request)
     {
+        $card_id = $request->input('card_id');
         $params = array(
             'cmd' => 'dcrd',
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token'),
-            'cd' => $request->input('card_id'),
+            'cd' => $card_id,
         );
 
         $result = $this->request('pay', $params);
+        if($result['sucesss'] && $card_id == Session::get('user.checkout.paywith.withCard.card_id')) {
+            Session::forget('user.checkout.paywith');
+        }
         return $result;
     }
 
