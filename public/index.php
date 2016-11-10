@@ -18,12 +18,12 @@
 | loading any of our classes later on. It feels nice to relax.
 |
 */
-$skipURI = strtolower($_SERVER['REQUEST_URI']);
-if (empty($_POST) && $skipURI != $_SERVER['REQUEST_URI']) {
-    $skipUrl = ($_SERVER['SERVER_NAME']=='www.motif.me' ? 'https://' : 'http://') .$_SERVER['SERVER_NAME'].$skipURI;
-    Header("Location: $skipUrl");
-    exit;
-}
+//$skipURI = strtolower($_SERVER['REQUEST_URI']);
+//if (empty($_POST) && $skipURI != $_SERVER['REQUEST_URI']) {
+//    $skipUrl = ($_SERVER['SERVER_NAME']=='www.motif.me' ? 'https://' : 'http://') .$_SERVER['SERVER_NAME'].$skipURI;
+//    Header("Location: $skipUrl");
+//    exit;
+//}
 require __DIR__.'/../bootstrap/autoload.php';
 
 /*
