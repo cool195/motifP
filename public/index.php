@@ -20,7 +20,8 @@
 */
 $skipURI = strtolower($_SERVER['REQUEST_URI']);
 if (empty($_POST) && $skipURI != $_SERVER['REQUEST_URI']) {
-    Header("Location: https://www.motif.me$skipURI");
+    $skipUrl = 'https://'.$_SERVER['SERVER_NAME'].$skipURI;
+    Header("Location: $skipUrl");
     exit;
 }
 require __DIR__.'/../bootstrap/autoload.php';

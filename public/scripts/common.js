@@ -1310,8 +1310,8 @@ function HideSeeMore(seemoreName) {
 
 
         $.ajax({
-            url: '/wordpay/selShip/' + $(this).val(),
-            type: 'post'
+            url: '/wordpay/selship/' + $(this).val(),
+            type: 'get'
         })
             .done(function (data) {
                 getCheckoutInfo();
