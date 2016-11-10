@@ -191,7 +191,7 @@
                                                  srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@3x.png{{config('runtime.V')}} 3x"
                                                  class="pay-img pay-jcb @if($data['payinfo']['card_type'] == "JCB") active @endif">
                                         @endif
-                                        <span class="p-l-10x">@if($data['payinfo']['pay_type']=="PayPalNative"){{'PayPal'}}@else{{$data['payinfo']['show_name']}}@endif</span>
+                                        <span class="p-l-10x">{{$data['payinfo']['show_name']}}</span>
                                     </div>
                                 </div>
                             @endif
