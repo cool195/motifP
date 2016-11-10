@@ -143,7 +143,7 @@
                     <div class="price-caption helveBold">
                         <div class="text-center font-size-md text-main text-truncate p-x-20x">{{$product['main_title']}}</div>
                         <div class="text-center">
-                            @if(isset($product['skuPrice']['skuPromotion']))
+                            @if($product['skuPrice']['skuPromotion']['promot_price'] != $product['skuPrice']['skuPromotion']['price'])
                                 <span class="font-size-md text-main p-r-5x text-red">${{ number_format(($product['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
                                 <span class="font-size-base text-common text-throughLine">${{ number_format(($product['skuPrice']['skuPromotion']['price'] / 100), 2) }}</span>
                             @else
@@ -199,7 +199,7 @@
         <div class="price-caption helveBold">
             <div class="text-center font-size-md text-main text-truncate p-x-20x">@{{ $value.main_title }}</div>
             <div class="text-center">
-                @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
+                @{{ if $value.skuPrice.sale_price != $value.skuPrice.price }}
                     <span class="font-size-md text-main p-r-5x text-red">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
                     <span class="font-size-base text-common text-throughLine">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
                 @{{ else }}
