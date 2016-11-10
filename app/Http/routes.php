@@ -277,7 +277,7 @@ Route::group(['middleware' => 'pcguide'], function () {
 
     Route::get('/privacynotice', 'PageController@privacyPolicy');
 
-    Route::get('/sizeGuide', 'PageController@sizeGuide');
+    Route::get('/sizeguide', 'PageController@sizeGuide');
 
     Route::get('/termsconditions', 'PageController@termsService');
 
