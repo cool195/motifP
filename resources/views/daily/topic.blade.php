@@ -26,7 +26,7 @@
                 }
             },
         });
-        console.log('GA.Click');
+        console.log('GA.Click'+name);
     }
 
     dataLayer.push({
