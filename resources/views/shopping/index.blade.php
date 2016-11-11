@@ -58,6 +58,7 @@
                 }
             },
         });
+        console.log('GA.Click');
     }
 </script>
 

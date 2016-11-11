@@ -26,6 +26,7 @@
                 }
             },
         });
+        console.log('GA.Click');
     }
 
     dataLayer.push({
