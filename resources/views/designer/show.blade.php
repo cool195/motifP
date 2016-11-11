@@ -74,7 +74,7 @@
 </script>
 
 <!-- 内容 -->
-<section class="m-t-40x">
+<section class="m-t-40x" id="gaProductClick">
 @inject('wishlist', 'App\Http\Controllers\UserController')
 <!-- 新版设计师详情页 -->
     <div class="topic-wrap"

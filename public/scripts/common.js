@@ -177,7 +177,9 @@ function HideSeeMore(seemoreName) {
             $('#productClick-spu').val($this.data('spu'));
             $('#productClick-price').val($this.data('price'));
 
-            //onProductClick();
+            if($('#gaProductClick').length>0){
+                onProductClick();
+            }
 
             $.ajax({
                 url: $this.data('clk'),
@@ -2720,7 +2722,9 @@ function HideSeeMore(seemoreName) {
                     $('[data-clk]').unbind('click');
                     $('[data-clk]').click(function () {
                         var $this = $(this);
-                        //onProductClick();
+                        if($('#gaProductClick').length>0){
+                            onProductClick();
+                        }
 
 
                         $.ajax({
@@ -3028,7 +3032,9 @@ function HideSeeMore(seemoreName) {
                     $('#productClick-spu').val($this.data('spu'));
                     $('#productClick-price').val($this.data('price'));
 
-                    //onProductClick();
+                    if($('#gaProductClick').length>0){
+                        onProductClick();
+                    }
 
                     $.ajax({
                         url: $this.data('clk'),

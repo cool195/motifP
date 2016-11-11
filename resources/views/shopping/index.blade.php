@@ -62,7 +62,7 @@
 </script>
 
 <!-- 内容 -->
-<section style="margin-top: 1px;">
+<section style="margin-top: 1px;"  id="gaProductClick">
     <!-- 商品类别 二级导航 -->
   {{--  <div class="bg-white product-category">
         <div class="container">

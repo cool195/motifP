@@ -55,7 +55,7 @@
 </script>
 <!--内容-->
 
-<section class="p-y-40x">
+<section class="p-y-40x" id="gaProductClick">
     @inject('wishlist', 'App\Http\Controllers\UserController')
     <div class="topic-wrap">
         @if(isset($topic['infos']))
