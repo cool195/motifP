@@ -12,7 +12,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'designer'},      // Optional list property.
+                    'actionField': {'list': '{{'designer_'.$designer['nickname']}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -43,7 +43,7 @@
                     'brand': '{{$designer['nickname']}}',
                     'category': 'designerDetail',
                     'variant': '',
-                    'list': 'designer',
+                    'list': '{{'designer_'.$designer['nickname']}}',
                     'position': '{{$k}}'
                 },
                     @endforeach
@@ -62,7 +62,7 @@
                     'brand': '{{$designer['nickname']}}',
                     'category': 'designerDetail',
                     'variant': '',
-                    'list': 'designer',
+                    'list': '{{'designer_'.$designer['nickname']}}',
                     'position': '{{$k}}'
                 },
                 @endforeach

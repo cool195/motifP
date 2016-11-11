@@ -13,7 +13,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'topic'},      // Optional list property.
+                    'actionField': {'list': '{{'topic_'.$topic['title']}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -43,7 +43,7 @@
                     'brand': '{{$topic['title']}}',
                     'category': 'topicPCWeb',
                     'variant': '',
-                    'list': 'topic'
+                    'list': '{{'topic_'.$topic['title']}}'
                 },
                 @endforeach
                 @endif
