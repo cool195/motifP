@@ -1386,7 +1386,7 @@ function HideSeeMore(seemoreName) {
     }
 
     // 生成订单
-    $('.btn-toCheckout').on('click', function () {
+    $('#placeOrder').on('click', function () {
 
         if ($('#defaultAddr').data('aid') < 1) {
             checkValid($('input[name="name"]'));
