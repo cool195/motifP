@@ -1,14 +1,14 @@
 <!-- 头部 -->
 @include('header',['title'=>'Checkout'])
 <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
     // 支付埋点
     function onCheckout() {
-        window.dataLayer = window.dataLayer || [];
         dataLayer.push({
             'event': 'checkout',
             'ecommerce': {
                 'checkout': {
-                    'actionField': {'step': 1, 'total': '{{ number_format(($accountList['pay_amount'] / 100), 2)}}'},
+                    'actionField': {'step': 1, 'option': 'CheckOut'},
                     'products': [
                             @foreach($accountList['showSkus'] as $showSku)
                         {
