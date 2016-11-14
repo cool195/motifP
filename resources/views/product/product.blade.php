@@ -16,7 +16,7 @@
                     'id': '{{$product['spu']}}',
                     'price': '{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}',
                     'brand': 'Motif PC',
-                    'list': 'shopping detail',
+                    'list': '{{'shopping detail_'.$data['main_title'].'_'.$data['spu']}}',
                     'position': 1
                 },
                 @endforeach
