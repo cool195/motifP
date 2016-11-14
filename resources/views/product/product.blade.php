@@ -5,20 +5,22 @@
 <input type="text" id="addToCart-quantity" value="1" hidden>
 <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
-    // shopping detail 总商品浏览 埋点
+    // 推荐商品埋点
     dataLayer.push({
         'ecommerce': {
-            'detail': {
-                'actionField': {'list': 'shopping detail'},    // 'detail' actions have an optional list property.
-                'products': [{
-                    'name': '{{$data['main_title']}}',         // Name or ID is required.
-                    'id': '{{ $data['spu'] }}',
-                    'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
+            'currencyCode': 'EUR',                       // Local currency is optional.
+            'impressions': [
+                    @foreach($recommended['list'] as $product)
+                {
+                    'name': '{{$product['main_title']}}',       // Name or ID is required.
+                    'id': '{{$product['spu']}}',
+                    'price': '{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}',
                     'brand': 'Motif PC',
-                    'category': '',
-                    'variant': ''
-                }]
-            }
+                    'list': 'shopping detail',
+                    'position': 1
+                },
+                @endforeach
+            ]
         }
     });
 
@@ -67,7 +69,8 @@
                                                  id="btn-startPlayer" data-playerid="7n-dIXlyQ3M">
                                                 <div class="play-content">
                                                     <img class="btn-productPlayer"
-                                                         src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png" alt=""
+                                                         src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                                         alt=""
                                                          style="width: 45px;">
                                                 </div>
                                             </div>
@@ -108,7 +111,8 @@
                                                      data-idplay="true" data-playid="{{$image['video_path']}}">
                                                 <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter">
                                                     <img class="btn-productPlayer"
-                                                         src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png" alt=""
+                                                         src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                                         alt=""
                                                          style="width: 35px;">
                                                 </div>
                                             @else
@@ -269,7 +273,8 @@
                                     <div class="p-b-10x">
                                         @if(!empty($data['spuStock']))
                                             <div class="p-x-20x p-y-10x font-size-md">
-                                                <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png" alt="">
+                                                <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png"
+                                                     alt="">
                                             <span class="p-l-10x stock-qtty">
                                                 @if($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0)
                                                     Only {{$data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty']}}
@@ -286,7 +291,8 @@
                                                      data-endtime="{{$data['skuPrice']['skuPromotion']['end_time']}}"
                                                      data-lefttime="@if($data['skuPrice']['skuPromotion']['remain_time']>0){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
                                                      data-qtty="{{$data['spuStock']['stock_qtty']}}">
-                                                    <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png" alt="">
+                                                    <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png"
+                                                         alt="">
                                                 <span class="p-l-10x">Orders Close In <span
                                                             class="time_show"></span></span>
                                                 </div>
@@ -391,7 +397,8 @@
                             @if(1 == $list['sale_type'])
                                 <div class="newPresale-sign presale-sign ">
                                     {{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}
-                                    <div class="newPresale-text helveBold font-size-xs text-primary">Limited Edition</div>
+                                    <div class="newPresale-text helveBold font-size-xs text-primary">Limited Edition
+                                    </div>
                                 </div>
                             @endif
                         </div>
