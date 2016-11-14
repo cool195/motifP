@@ -8,7 +8,7 @@
             'event': 'checkout',
             'ecommerce': {
                 'checkout': {
-                    'actionField': {'step': 1, 'total': '{{ number_format(($data['pay_amount'] / 100), 2)}}'},
+                    'actionField': {'step': 1, 'total': '{{ number_format(($accountList['pay_amount'] / 100), 2)}}'},
                     'products': [
                             @foreach($accountList['showSkus'] as $showSku)
                         {
@@ -29,7 +29,7 @@
 </script>
 
 <!-- 内容 -->
-<section class="m-t-40x">
+<section class="m-t-40x" id="GACheckout">
     <div class="container" id="checkoutView" data-status="true">
         <h4 class="helveBold text-main p-l-10x">Checkout</h4>
 
