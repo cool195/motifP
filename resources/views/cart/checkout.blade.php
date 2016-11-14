@@ -25,7 +25,7 @@
                 }
             }
         });
-        console.log('GA.Click-'+checkout);
+        console.log('GA.Click-oncheckout');
     }
 </script>
 
