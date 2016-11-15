@@ -162,7 +162,11 @@
                data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
                 <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ $value.main_image_url }}"
                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
-                <img class="img-fluid productImg-hover" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/product/motif/6139/750X750/f1b1c2d9a60d4871ee2f432424c9cf18.jpg" alt="@{{ $value.main_title }}">
+                @{{ each $value.image_paths as value index }}
+                    @{{ if 0 == index }}
+                    <img class="img-fluid productImg-hover" src="{{config('runtime.CDN_URL')}}/n2/@{{ value }}" alt="@{{ $value.main_title }}">
+                    @{{ /if }}
+                @{{ /each }}
                 <div class="bg-heart"></div>
             </a>
             @if(Session::has('user'))
