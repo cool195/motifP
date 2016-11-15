@@ -12,7 +12,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'designer'},      // Optional list property.
+                    'actionField': {'list': '{{'designer_'.$designer['nickname'].'_'.$designer['designer_id']}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -25,6 +25,7 @@
                 }
             },
         });
+        console.log('GA.Click');
     }
 
     dataLayer.push({
@@ -43,7 +44,7 @@
                     'brand': '{{$designer['nickname']}}',
                     'category': 'designerDetail',
                     'variant': '',
-                    'list': 'designer',
+                    'list': '{{'designer_'.$designer['nickname'].'_'.$designer['designer_id']}}',
                     'position': '{{$k}}'
                 },
                     @endforeach
@@ -62,7 +63,7 @@
                     'brand': '{{$designer['nickname']}}',
                     'category': 'designerDetail',
                     'variant': '',
-                    'list': 'designer',
+                    'list': '{{'designer_'.$designer['nickname'].'_'.$designer['designer_id']}}',
                     'position': '{{$k}}'
                 },
                 @endforeach
@@ -74,7 +75,7 @@
 </script>
 
 <!-- 内容 -->
-<section class="m-t-40x">
+<section class="m-t-40x" id="gaProductClick">
 @inject('wishlist', 'App\Http\Controllers\UserController')
 <!-- 新版设计师详情页 -->
     <div class="topic-wrap"

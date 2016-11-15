@@ -30,7 +30,7 @@
                     'id': '{{$product['spu']}}',
                     'price': '{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}',
                     'brand': 'Motif PC',
-                    'list': 'shopping list',
+                    'list': 'shopping list__',
                     'position': 1
                 },
                 @endforeach
@@ -47,7 +47,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'shopping list'},      // Optional list property.
+                    'actionField': {'list': 'shopping list__'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -58,6 +58,7 @@
                 }
             },
         });
+        console.log('GA.Click'+name);
     }
 </script>
 

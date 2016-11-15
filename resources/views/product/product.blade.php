@@ -5,20 +5,22 @@
 <input type="text" id="addToCart-quantity" value="1" hidden>
 <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
-    // shopping detail 总商品浏览 埋点
+    // 推荐商品埋点
     dataLayer.push({
         'ecommerce': {
-            'detail': {
-                'actionField': {'list': 'shopping detail'},    // 'detail' actions have an optional list property.
-                'products': [{
-                    'name': '{{$data['main_title']}}',         // Name or ID is required.
-                    'id': '{{ $data['spu'] }}',
-                    'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
+            'currencyCode': 'EUR',                       // Local currency is optional.
+            'impressions': [
+                    @foreach($recommended['list'] as $product)
+                {
+                    'name': '{{$product['main_title']}}',       // Name or ID is required.
+                    'id': '{{$product['spu']}}',
+                    'price': '{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}',
                     'brand': 'Motif PC',
-                    'category': '',
-                    'variant': ''
-                }]
-            }
+                    'list': '{{'shopping detail_'.$data['main_title'].'_'.$data['spu']}}',
+                    'position': 1
+                },
+                @endforeach
+            ]
         }
     });
 

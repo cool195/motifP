@@ -274,7 +274,7 @@ class UserController extends BaseController
     {
         if (Session::get('user.pin')) {
 
-            $value = Cache::rememberForever(Session::get('user.pin') . $_COOKIE['uid'] . 'wishlist', function () {
+            $value = Cache::remember(Session::get('user.pin') . $_COOKIE['uid'] . 'wishlist',60, function () {
                 $params = array(
                     'cmd' => 'list',
                     'num' => 1,

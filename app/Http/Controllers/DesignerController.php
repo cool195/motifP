@@ -146,7 +146,7 @@ class DesignerController extends BaseController
     public function followList()
     {
         if (Session::get('user.pin')) {
-            $value = Cache::rememberForever(Session::get('user.pin') . 'followlist', function () {
+            $value = Cache::remember(Session::get('user.pin') . 'followlist',60, function () {
                 $params = array(
                     'cmd' => 'list',
                     'pin' => Session::get('user.pin'),
