@@ -69,7 +69,8 @@
                                                  id="btn-startPlayer" data-playerid="7n-dIXlyQ3M">
                                                 <div class="play-content">
                                                     <img class="btn-productPlayer"
-                                                         src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png" alt=""
+                                                         src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                                         alt=""
                                                          style="width: 45px;">
                                                 </div>
                                             </div>
@@ -110,7 +111,8 @@
                                                      data-idplay="true" data-playid="{{$image['video_path']}}">
                                                 <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter">
                                                     <img class="btn-productPlayer"
-                                                         src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png" alt=""
+                                                         src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                                         alt=""
                                                          style="width: 35px;">
                                                 </div>
                                             @else
@@ -136,9 +138,10 @@
                     <span class="font-size-md sanBold">Add to wishlist for later view</span>
                     <span class="product-heart p-t-5x p-l-10x">
                         @if(Session::has('user'))
-                        <i class="iconfont btn-wish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$data['spu']}}"></i>
+                            <i class="iconfont btn-wish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                               data-spu="{{$data['spu']}}"></i>
                         @else
-                        <i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$data['spu']}}"></i>
+                            <i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$data['spu']}}"></i>
                         @endif
                     </span>
                 </div>
@@ -279,7 +282,8 @@
                                     <div class="p-b-10x">
                                         @if(!empty($data['spuStock']))
                                             <div class="p-x-20x p-y-10x font-size-md">
-                                                <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png" alt="">
+                                                <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png"
+                                                     alt="">
                                             <span class="p-l-10x stock-qtty">
                                                 @if($data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty'] > 0)
                                                     Only {{$data['spuStock']['stock_qtty'] - $data['spuStock']['saled_qtty']}}
@@ -296,7 +300,8 @@
                                                      data-endtime="{{$data['skuPrice']['skuPromotion']['end_time']}}"
                                                      data-lefttime="@if($data['skuPrice']['skuPromotion']['remain_time']>0){{$data['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif"
                                                      data-qtty="{{$data['spuStock']['stock_qtty']}}">
-                                                    <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png" alt="">
+                                                    <img src="{{config('runtime.Image_URL')}}/images/product/icon-flash@2x.png"
+                                                         alt="">
                                                 <span class="p-l-10x">Orders Close In <span
                                                             class="time_show"></span></span>
                                                 </div>
@@ -345,73 +350,76 @@
 </section>
 
 {{--@if(isset($data['designer']))--}}
-    {{--<div class="container m-t-30x">--}}
-        {{--<span class="sanBold font-size-md p-x-20x">Designer:</span>--}}
-        {{--<a href="/designer/{{$data['designer']['designer_id']}}"><span--}}
-                    {{--class="sanBold">{{ $data['designer']['designer_name'] }}</span></a>--}}
-    {{--</div>--}}
+{{--<div class="container m-t-30x">--}}
+{{--<span class="sanBold font-size-md p-x-20x">Designer:</span>--}}
+{{--<a href="/designer/{{$data['designer']['designer_id']}}"><span--}}
+{{--class="sanBold">{{ $data['designer']['designer_name'] }}</span></a>--}}
+{{--</div>--}}
 {{--@endif--}}
 
 {{--<div class="container m-t-30x">--}}
-    {{--<ul class="nav nav-tabs">--}}
-        {{--<li class="nav-item">--}}
-            {{--<a class="nav-link font-size-md active" href="#Description" data-toggle="tab">Description</a>--}}
-        {{--</li>--}}
-        {{--@if(isset($data['templates']))--}}
-            {{--@foreach($data['templates'] as $template)--}}
-                {{--<li class="nav-item">--}}
-                    {{--<a class="nav-link font-size-md btn-productTemplate" href="#template{{$template['template_id']}}"--}}
-                       {{--data-tid="{{$template['template_id']}}" data-toggle="tab">{{$template['template_title']}}</a>--}}
-                {{--</li>--}}
-            {{--@endforeach--}}
-        {{--@endif--}}
-    {{--</ul>--}}
-    {{--<div class="tab-content bg-white p-a-20x">--}}
-        {{--<div class="tab-pane text-primary active" id="Description">--}}
-            {{--<p class="m-b-0">{!! str_replace("\n", "<br>",  $data['intro_short']) !!}</p>--}}
-        {{--</div>--}}
+{{--<ul class="nav nav-tabs">--}}
+{{--<li class="nav-item">--}}
+{{--<a class="nav-link font-size-md active" href="#Description" data-toggle="tab">Description</a>--}}
+{{--</li>--}}
+{{--@if(isset($data['templates']))--}}
+{{--@foreach($data['templates'] as $template)--}}
+{{--<li class="nav-item">--}}
+{{--<a class="nav-link font-size-md btn-productTemplate" href="#template{{$template['template_id']}}"--}}
+{{--data-tid="{{$template['template_id']}}" data-toggle="tab">{{$template['template_title']}}</a>--}}
+{{--</li>--}}
+{{--@endforeach--}}
+{{--@endif--}}
+{{--</ul>--}}
+{{--<div class="tab-content bg-white p-a-20x">--}}
+{{--<div class="tab-pane text-primary active" id="Description">--}}
+{{--<p class="m-b-0">{!! str_replace("\n", "<br>",  $data['intro_short']) !!}</p>--}}
+{{--</div>--}}
 
-        {{--@if(isset($data['templates']))--}}
-            {{--@foreach($data['templates'] as $template)--}}
-                {{--<div class="tab-pane text-primary" id="template{{$template['template_id']}}">--}}
-                    {{--<div class="loading" style="display: block;">--}}
-                        {{--<div class="loader"></div>--}}
-                        {{--<div class="text-center p-t-10x">Loading...</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--@endforeach--}}
-        {{--@endif--}}
+{{--@if(isset($data['templates']))--}}
+{{--@foreach($data['templates'] as $template)--}}
+{{--<div class="tab-pane text-primary" id="template{{$template['template_id']}}">--}}
+{{--<div class="loading" style="display: block;">--}}
+{{--<div class="loader"></div>--}}
+{{--<div class="text-center p-t-10x">Loading...</div>--}}
+{{--</div>--}}
+{{--</div>--}}
+{{--@endforeach--}}
+{{--@endif--}}
 
-    {{--</div>--}}
+{{--</div>--}}
 {{--</div>--}}
 
 <!-- 文字说明 -->
-<div class="container m-t-20x p-x-20x">
-    <div class="row box-shadow bg-white">
-        <div class="col-lg-4">
-            <div class=" p-a-20x">
-                <div class="text-center font-size-md sanBold">Free U.S Shipping</div>
-                <div class="p-t-10x">We offer free shipping on all U.S. orders via USPS and UPS. Learn more. <a
-                            href="#" class="text-underLine">Learn more</a>.</div>
+@if(isset($data['templates']))
+    <div class="container m-t-20x p-x-20x">
+        <div class="row box-shadow bg-white">
+            <div class="col-lg-4">
+                <div class=" p-a-20x">
+                    <div class="text-center font-size-md sanBold">Free U.S Shipping</div>
+                    <div class="p-t-10x">We offer free shipping on all U.S. orders via USPS and UPS. Learn more. <a target="_blank" href="{{'/service/'.$data['templates'][0]['template_id'].'?template=1'}}" class="text-underLine">Learn more</a>.
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-4">
-            <div class=" p-a-20x">
-                <div class="text-center font-size-md sanBold">Easy Returns</div>
-                <div class="p-t-10x">Send your return request to service@motif.me and get the return label so you can easily send us your return. <a
-                            href="#" class="text-underLine">Learn more</a>.</div>
+            <div class="col-lg-4">
+                <div class=" p-a-20x">
+                    <div class="text-center font-size-md sanBold">Easy Returns</div>
+                    <div class="p-t-10x">Send your return request to service@motif.me and get the return label so you
+                        can easily send us your return. <a target="_blank" href="{{'/service/'.$data['templates'][0]['template_id'].'?template=1'}}" class="text-underLine">Learn more</a>.
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-4">
-            <div class=" p-a-20x">
-                <div class="text-center font-size-md sanBold">International Shipping</div>
-                <div class="p-t-10x">We offer free shipping on over 30+ countries and order over $79 will be free express shipping. <a
-                            href="#" class="text-underLine">Learn more</a>.</div>
+            <div class="col-lg-4">
+                <div class=" p-a-20x">
+                    <div class="text-center font-size-md sanBold">International Shipping</div>
+                    <div class="p-t-10x">We offer free shipping on over 30+ countries and order over $79 will be free
+                        express shipping. <a target="_blank" href="{{'/service/'.$data['templates'][0]['template_id'].'?template=1'}}" class="text-underLine">Learn more</a>.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
+@endif
 <div class="container m-t-30x m-b-30x">
     @if(isset($recommended['list']) && !empty($recommended['list']))
         <h4 class="helveBold text-main p-l-10x">You May Also Like</h4>
@@ -440,7 +448,8 @@
                             @if(1 == $list['sale_type'])
                                 <div class="newPresale-sign presale-sign ">
                                     {{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}
-                                    <div class="newPresale-text helveBold font-size-xs text-primary">Limited Edition</div>
+                                    <div class="newPresale-text helveBold font-size-xs text-primary">Limited Edition
+                                    </div>
                                 </div>
                             @endif
                         </div>
