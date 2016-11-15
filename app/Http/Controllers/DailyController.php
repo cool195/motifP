@@ -69,7 +69,7 @@ class DailyController extends BaseController
      * @param int $id
      * @return Response
      */
-    public function service($id)
+    public function service(Request $request, $id)
     {
         $params = array(
             'cmd' => 'template',
@@ -77,6 +77,9 @@ class DailyController extends BaseController
         );
 
         $result = $this->request("topicf", $params);
+        if ($request->input('template')) {
+            return View('daily.topic', ['topic' => $result['data']]);
+        }
         return $result;
     }
 
