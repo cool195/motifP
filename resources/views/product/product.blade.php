@@ -207,8 +207,9 @@
                                                     @endif
                                                 </div>
                                             @endforeach
-                                                <!-- size guide -->
-                                                <div class="p-y-10x p-r-10x"><a class="text-underLine" target="_blank" href="#">Size Guide</a></div>
+                                                @if(in_array($spuAttr['attr_type_value'],array('Ring Size','Women Size','Men Size')))
+                                                    <div class="p-y-10x p-r-10x"><a class="text-underLine" target="_blank" href="{{'/service/24?template=1'}}">Size Guide</a></div>
+                                                @endif
                                         </div>
                                     </div>
                                 </fieldset>
@@ -352,23 +353,21 @@
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">Free U.S Shipping</div>
-                    <div class="p-t-10x">We offer Free Shipping on all U.S. orders, with free upgrade to Expedited Shipping on orders over $79. <a target="_blank" href="{{'/service/'.$data['templates'][0]['template_id'].'?template=1'}}" class="text-underLine">Learn more</a>.
+                    <div class="p-t-10x">We offer Free Shipping on all U.S. orders, with free upgrade to Expedited Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}" class="text-underLine">Learn more</a>.
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">Easy Returns</div>
-                    <div class="p-t-10x">Send your return request to service@motif.me and get the return label so you
-                        can easily send us your return. <a target="_blank" href="{{'/service/'.$data['templates'][0]['template_id'].'?template=1'}}" class="text-underLine">Learn more</a>.
+                    <div class="p-t-10x">Simply send your return request to service@motif.me within 30 days of delivery. Additional terms may apply. <a target="_blank" href="{{'/service/23?template=1'}}" class="text-underLine">Learn more</a>.
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">International Shipping</div>
-                    <div class="p-t-10x">We offer free shipping on over 30+ countries and order over $79 will be free
-                        express shipping. <a target="_blank" href="{{'/service/'.$data['templates'][0]['template_id'].'?template=1'}}" class="text-underLine">Learn more</a>.
+                    <div class="p-t-10x">We offer Free Shipping to over 30+ countries, with free upgrade to Expedited Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}" class="text-underLine">Learn more</a>.
                     </div>
                 </div>
             </div>
