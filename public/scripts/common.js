@@ -35,13 +35,13 @@ function HideSeeMore(seemoreName) {
             if (str.length > strlenght) {
                 str = str.substring(0, strlenght);
                 var lastIndex = str.lastIndexOf(' ');
-                if(lastIndex != '-1'){
+                if (lastIndex != '-1') {
                     var lastStr = str.substring(0, lastIndex);
                 } else {
                     var lastStr = str;
                 }
-                if($(this).data('designerid') != ''){
-                    str = lastStr + '... <a class="text-link" href="/designer/'+$(this).data('designerid')+'">View More</a>';
+                if ($(this).data('designerid') != '') {
+                    str = lastStr + '... <a class="text-link" href="/designer/' + $(this).data('designerid') + '">View More</a>';
                 } else {
                     str = lastStr + '...';
                 }
@@ -95,8 +95,8 @@ function HideSeeMore(seemoreName) {
         $(function () {
             var $downloadInfo = $('.download-info');
             $downloadInfo.click(function (e) {
-                if(e.target != $('.img-fluid')[0] && e.target != $('.img-fluid')[1]
-                    && e.target != $('.btn-black')[0] && e.target != $('.btn-black')[1]){
+                if (e.target != $('.img-fluid')[0] && e.target != $('.img-fluid')[1]
+                    && e.target != $('.btn-black')[0] && e.target != $('.btn-black')[1]) {
                     //window.location = '/download';
                     window.open('/download');
                 }
@@ -151,13 +151,13 @@ function HideSeeMore(seemoreName) {
                 $(element).removeAttr('data-impr');
                 if (impr != undefined && impr != null && impr != "") {
                     $.ajax({
-                            url: impr
-                        })
+                        url: impr
+                    })
                         .always(function () {
                             //$(element).removeAttr('data-impr');
                         });
                 }
-            }else{
+            } else {
                 return;
             }
         });
@@ -183,7 +183,9 @@ function HideSeeMore(seemoreName) {
             $('#productClick-spu').val($this.data('spu'));
             $('#productClick-price').val($this.data('price'));
 
-            //onProductClick();
+            if ($('#gaProductClick').length > 0) {
+                onProductClick();
+            }
 
             $.ajax({
                 url: $this.data('clk'),
@@ -254,15 +256,15 @@ function HideSeeMore(seemoreName) {
             $('.productImg-item img').removeClass('active');
             $(this).children('.small-img').addClass('active');
 
-            if($(this).children('.small-img').data('idplay')){
-                if($('#btn-startPlayer').length > 0){
+            if ($(this).children('.small-img').data('idplay')) {
+                if ($('#btn-startPlayer').length > 0) {
                     $('#btn-startPlayer').remove();
                 }
-                $('.bg-productDetailPlayer').css('display','flex');
-                var playid=$(this).children('.small-img').data('playid');
+                $('.bg-productDetailPlayer').css('display', 'flex');
+                var playid = $(this).children('.small-img').data('playid');
                 shoppingDetailPlayer(playid);
             } else {
-                $('.bg-productDetailPlayer').css('display','none');
+                $('.bg-productDetailPlayer').css('display', 'none');
                 $('.play-content').html('<div id="ytplayer" class="ytplayer" data-playid=""></div>');
             }
         }
@@ -270,14 +272,16 @@ function HideSeeMore(seemoreName) {
 
     // shipppingDetail 视频播放 begin
     var player;
+
     function onPlayerReady(event) {
         event.target.playVideo();
     }
+
     // 视频播放-- 控制显示隐藏
-    function shoppingDetailPlayer(PlayerId){
+    function shoppingDetailPlayer(PlayerId) {
         $('.play-content').html('<div id="ytplayer" class="ytplayer" data-playid=""></div>');
 
-        $('#ytplayer').data('playid',PlayerId);
+        $('#ytplayer').data('playid', PlayerId);
 
         // youtube 视频播放
         // 视频比例
@@ -297,14 +301,13 @@ function HideSeeMore(seemoreName) {
     }
 
     // 播放第一个视频
-    $('#btn-startPlayer').on('click',function(){
-        var PlayerId=$(this).data('playerid');
+    $('#btn-startPlayer').on('click', function () {
+        var PlayerId = $(this).data('playerid');
         $(this).remove();
-        $('.bg-productDetailPlayer').css('display','flex');
+        $('.bg-productDetailPlayer').css('display', 'flex');
         shoppingDetailPlayer(PlayerId);
     });
     // shipppingDetail 视频播放 end
-
 
 
     // 选择 商品属性
@@ -504,12 +507,12 @@ function HideSeeMore(seemoreName) {
     //检查库存
     function checkStock(skus) {
         $.ajax({
-                url: '/checkStock',
-                type: 'POST',
-                data: {
-                    skus: skus
-                }
-            })
+            url: '/checkStock',
+            type: 'POST',
+            data: {
+                skus: skus
+            }
+        })
             .done(function (data) {
                 if (data.success) {
                     if (data.data.list[0].stockStatus === 1) {
@@ -562,12 +565,12 @@ function HideSeeMore(seemoreName) {
             onAddToCart();
 
             $.ajax({
-                    url: '/cart/add',
-                    type: action,
-                    data: {
-                        operate: operate
-                    }
-                })
+                url: '/cart/add',
+                type: action,
+                data: {
+                    operate: operate
+                }
+            })
                 .done(function (data) {
                     $('#productAddBag').removeClass('disabled');
                     if (data.success) {
@@ -642,9 +645,9 @@ function HideSeeMore(seemoreName) {
         var spu = $this.data('spu');
         if (spu != undefined) {
             $.ajax({
-                    url: '/wishlist/' + spu,
-                    type: 'GET'
-                })
+                url: '/wishlist/' + spu,
+                type: 'GET'
+            })
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
@@ -659,13 +662,13 @@ function HideSeeMore(seemoreName) {
         } else {
             spu = $this.data('actionspu');
             $.ajax({
-                    url: '/noteaction',
-                    type: 'get',
-                    data: {
-                        action: 'wish',
-                        spu: spu
-                    }
-                })
+                url: '/noteaction',
+                type: 'get',
+                data: {
+                    action: 'wish',
+                    spu: spu
+                }
+            })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
@@ -678,9 +681,9 @@ function HideSeeMore(seemoreName) {
         var spu = $this.data('spu');
         if (spu != undefined) {
             $.ajax({
-                    url: '/wishlist/' + spu,
-                    type: 'GET'
-                })
+                url: '/wishlist/' + spu,
+                type: 'GET'
+            })
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
@@ -695,13 +698,13 @@ function HideSeeMore(seemoreName) {
         } else {
             spu = $this.data('actionspu');
             $.ajax({
-                    url: '/noteaction',
-                    type: 'get',
-                    data: {
-                        action: 'wish',
-                        spu: spu
-                    }
-                })
+                url: '/noteaction',
+                type: 'get',
+                data: {
+                    action: 'wish',
+                    spu: spu
+                }
+            })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
@@ -718,9 +721,9 @@ function HideSeeMore(seemoreName) {
             return;
         } else {
             $.ajax({
-                    url: '/service/' + TemplateId,
-                    type: 'GET',
-                })
+                url: '/service/' + TemplateId,
+                type: 'GET',
+            })
                 .done(function (data) {
                     if (data.success) {
                         $this.data('tid', -1);
@@ -846,12 +849,12 @@ function HideSeeMore(seemoreName) {
             //tObj.addClass('disabled');
             var skuQty = $('#cskunum' + nowsku).html() * 1 + tObj.data('num');
             $.ajax({
-                    url: '/checkStock',
-                    type: 'POST',
-                    data: {
-                        skus: nowsku + '_' + skuQty
-                    }
-                })
+                url: '/checkStock',
+                type: 'POST',
+                data: {
+                    skus: nowsku + '_' + skuQty
+                }
+            })
                 .done(function (data) {
                     if (data.success) {
                         if (data.data.list[0].stockStatus === 1) {
@@ -870,13 +873,13 @@ function HideSeeMore(seemoreName) {
                                 $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').addClass('off');
                             }
                             $.ajax({
-                                    url: 'cart/alterQtty',
-                                    type: 'POST',
-                                    data: {
-                                        sku: nowsku,
-                                        qtty: skuQty
-                                    }
-                                })
+                                url: 'cart/alterQtty',
+                                type: 'POST',
+                                data: {
+                                    sku: nowsku,
+                                    qtty: skuQty
+                                }
+                            })
                                 .done(function (data) {
                                     if (data.success) {
                                         cart_update_info(nowkey);
@@ -898,9 +901,9 @@ function HideSeeMore(seemoreName) {
     //动态更新购物车价格总数量
     function cart_update_info(nowkey) {
         $.ajax({
-                url: '/cart/list',
-                type: 'GET',
-            })
+            url: '/cart/list',
+            type: 'GET',
+        })
             .done(function (data) {
                 if (data.success) {
                     if (data.data != '') {
@@ -908,8 +911,8 @@ function HideSeeMore(seemoreName) {
                         $('.total_sku_qtty').html('Items (' + data.data.total_sku_qtty + '):');
                         $('.vas_amount').html('$' + (data.data.vas_amount / 100).toFixed(2));
                         $('.pay_amount').html('$' + (data.data.pay_amount / 100).toFixed(2));
-                        if(nowkey != undefined){
-                            $('.skuprice'+nowkey).html('$'+(data.data.showSkus[nowkey].sale_price / 100).toFixed(2));
+                        if (nowkey != undefined) {
+                            $('.skuprice' + nowkey).html('$' + (data.data.showSkus[nowkey].sale_price / 100).toFixed(2));
                         }
                         if (data.data.pay_amount <= 0) {
                             $('.btn-toCheckout').addClass('disabled');
@@ -928,10 +931,10 @@ function HideSeeMore(seemoreName) {
         var sku = $(this).data('sku');
         var thisParent = $(this).parents('.cartProduct-item');
         $.ajax({
-                url: '/cart/operate',
-                type: 'POST',
-                data: {cmd: action, sku: sku}
-            })
+            url: '/cart/operate',
+            type: 'POST',
+            data: {cmd: action, sku: sku}
+        })
             .done(function (data) {
                 if (data.success) {
                     if (action == 'movetocart' || action == 'save') {
@@ -956,10 +959,10 @@ function HideSeeMore(seemoreName) {
         var id = $('#modalDialog').data('id');
 
         $.ajax({
-                url: '/cart/operate',
-                type: 'POST',
-                data: {cmd: action, sku: sku}
-            })
+            url: '/cart/operate',
+            type: 'POST',
+            data: {cmd: action, sku: sku}
+        })
             .done(function (data) {
                 if (data.success) {
                     if (action == 'movetocart' || action == 'save') {
@@ -1012,10 +1015,10 @@ function HideSeeMore(seemoreName) {
             var Aid = $('#addAddressForm').data('aid');
             if (Aid === '' || Aid === undefined) {
                 $.ajax({
-                        url: '/address',
-                        type: 'POST',
-                        data: $('#addAddressForm').serialize()
-                    })
+                    url: '/address',
+                    type: 'POST',
+                    data: $('#addAddressForm').serialize()
+                })
                     .done(function (data) {
                         if (data.success) {
                             $('.select-address').removeClass('disabled');
@@ -1053,17 +1056,17 @@ function HideSeeMore(seemoreName) {
                 }
 
                 $.ajax({
-                        url: '/address/' + Aid,
-                        type: 'PUT',
-                        data: $('#addAddressForm').serialize()
-                    })
+                    url: '/address/' + Aid,
+                    type: 'PUT',
+                    data: $('#addAddressForm').serialize()
+                })
                     .done(function (data) {
                         if (data.success) {
                             $('.select-address').removeClass('disabled');
                             $('.add-address').addClass('disabled');
                             $('#addAddressForm').find('input[type="text"]').val('');
                             getAddressList();
-                            if ($('.card-message') && $('div[data-aid = "'+Aid+'"]').hasClass('active')) {
+                            if ($('.card-message') && $('div[data-aid = "' + Aid + '"]').hasClass('active')) {
                                 $('.card-message .def-name').html(data.data.name);
                                 $('.card-message .def-city').html(data.data.city);
                                 $('.card-message .def-zip').html(data.data.zip);
@@ -1074,7 +1077,7 @@ function HideSeeMore(seemoreName) {
                                 $('.card-message .def-addr2').val(data.data.detail_address2);
                                 $('.card-message .def-country').val(data.data.country);
 
-                                $('#defaultAddr').html(data.data.name+" "+data.data.detail_address1+" "+data.data.city+" "+data.data.state+" "+data.data.country+" "+ data.data.zip);
+                                $('#defaultAddr').html(data.data.name + " " + data.data.detail_address1 + " " + data.data.city + " " + data.data.state + " " + data.data.country + " " + data.data.zip);
 
                                 $.ajax({
                                     url: '/wordpay/selAddr/' + Aid,
@@ -1188,7 +1191,7 @@ function HideSeeMore(seemoreName) {
             type: 'get'
         })
             .done(function () {
-                if($('#checkoutView').data('status')){
+                if ($('#checkoutView').data('status')) {
                     getshiplist();
                 }
             })
@@ -1236,9 +1239,9 @@ function HideSeeMore(seemoreName) {
         } else {
             // 修改地址
             $.ajax({
-                    url: '/address/' + AddressId,
-                    type: 'GET'
-                })
+                url: '/address/' + AddressId,
+                type: 'GET'
+            })
                 .done(function (data) {
                     //初始化 修改地址 from 表单
                     $('.address-email').val(data.email);
@@ -1287,11 +1290,11 @@ function HideSeeMore(seemoreName) {
         var SelectType = $('.select-country > option[value="' + Country + '"]').data('type');
         var child_label = $('.select-country > option[value="' + Country + '"]').data('child_label');
         var zipcode_label = $('.select-country > option[value="' + Country + '"]').data('zipcode_label');
-        $('.address-zipcode').siblings('.warning-info').children('span').html('Please enter your '+ zipcode_label + ' !');
+        $('.address-zipcode').siblings('.warning-info').children('span').html('Please enter your ' + zipcode_label + ' !');
         $('.address-zipcode').attr('placeholder', zipcode_label);
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
-            $('#addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="'+ child_label + '(optional)">');
+            $('#addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary" placeholder="' + child_label + '(optional)">');
             $('#addAddressForm input[name="state"]').val(State);
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
@@ -1301,9 +1304,9 @@ function HideSeeMore(seemoreName) {
             // 洲为下拉列选择
             // 获取 洲 列表
             $.ajax({
-                    url: '/statelist/' + CountryId,
-                    type: 'GET'
-                })
+                url: '/statelist/' + CountryId,
+                type: 'GET'
+            })
                 .done(function (data) {
                     $('#addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg select-state"></select>');
                     // 添加选项
@@ -1379,9 +1382,9 @@ function HideSeeMore(seemoreName) {
         var smethod = $('input[name="shippingMethod"]:checked').val() == undefined ? '' : $('input[name="shippingMethod"]:checked').val();
         console.log(smethod);
         $.ajax({
-                url: '/cart/accountlist?aid=' + aid + '&bindid=' + bindid + '&logisticstype=' + smethod,
-                type: 'GET',
-            })
+            url: '/cart/accountlist?aid=' + aid + '&bindid=' + bindid + '&logisticstype=' + smethod,
+            type: 'GET',
+        })
             .done(function (data) {
                 if (data.success) {
                     if (data.data.cps_amount > 0) {
@@ -1408,7 +1411,11 @@ function HideSeeMore(seemoreName) {
     }
 
     // 生成订单
-    $('.btn-toCheckout').on('click', function () {
+    $('#placeOrder').on('click', function () {
+
+        if ($('#GACheckout').length > 0) {
+            onCheckout();
+        }
 
         if ($('#defaultAddr').data('aid') < 1) {
             checkValid($('input[name="name"]'));
@@ -1416,7 +1423,7 @@ function HideSeeMore(seemoreName) {
             return false;
         }
 
-        if($('.payment-text').html() == ""){
+        if ($('.payment-text').html() == "") {
             $('.checkoutWarning .font-size-base').html('Please choose your payment method!');
             $('.checkoutWarning').removeAttr('hidden');
             setTimeout(function () {
@@ -1425,7 +1432,7 @@ function HideSeeMore(seemoreName) {
             return false;
         }
 
-        if($('input[name="shippingMethod"]:checked').val() < 0){
+        if ($('input[name="shippingMethod"]:checked').val() < 0) {
             $('.checkoutWarning .font-size-base').html('Please choose your shipping method!');
             $('.checkoutWarning').removeAttr('hidden');
             setTimeout(function () {
@@ -1443,16 +1450,16 @@ function HideSeeMore(seemoreName) {
 
         var paym = $(this).data('with');
         $.ajax({
-                url: '/payorder',
-                type: 'POST',
-                data: {
-                    aid: $('#defaultAddr').data('aid'),
-                    bindid: $('#pcode').data('bindid') == undefined ? '' : $('#pcode').data('bindid'),
-                    remark: $('input[name="cremark"]').val(),
-                    stype: $('input[name="shippingMethod"]:checked').val(),
-                    paym: paym
-                }
-            })
+            url: '/payorder',
+            type: 'POST',
+            data: {
+                aid: $('#defaultAddr').data('aid'),
+                bindid: $('#pcode').data('bindid') == undefined ? '' : $('#pcode').data('bindid'),
+                remark: $('input[name="cremark"]').val(),
+                stype: $('input[name="shippingMethod"]:checked').val(),
+                paym: paym
+            }
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -1464,7 +1471,7 @@ function HideSeeMore(seemoreName) {
                     }, 5000);
                 }
             })
-            .always(function(){
+            .always(function () {
                 closeCheckoutLoading();
             })
     });
@@ -1485,9 +1492,9 @@ function HideSeeMore(seemoreName) {
     // 加载地址列表
     function getAddressList() {
         $.ajax({
-                url: '/address',
-                type: 'GET'
-            })
+            url: '/address',
+            type: 'GET'
+        })
             .done(function (data) {
                 if (data.success) {
                     appendAddressList(data.data);
@@ -1513,9 +1520,9 @@ function HideSeeMore(seemoreName) {
     //设置配送服务
     function getshiplist() {
         $.ajax({
-                url: '/getshiplist?country=' + $('#defaultAddr').data('csn') + '&price=' + $('.checkoutInfo').data('price'),
-                type: 'GET'
-            })
+            url: '/getshiplist?country=' + $('#defaultAddr').data('csn') + '&price=' + $('.checkoutInfo').data('price'),
+            type: 'GET'
+        })
             .done(function (data) {
                 if (data.success) {
                     var payPrice = data.data.list[0].pay_price > 0 ? ' +$' + (data.data.list[0].pay_price / 100).toFixed(2) : '';
@@ -1563,15 +1570,15 @@ function HideSeeMore(seemoreName) {
         var payType = $(this).data('paytype');
 
         $('.pay-img').removeClass('active');
-        if (cardType == 'Visa'){
+        if (cardType == 'Visa') {
             $('.pay-img.pay-visa').addClass('active');
-        }else if (cardType === 'MasterCard'){
+        } else if (cardType === 'MasterCard') {
             $('.pay-img.pay-masc').addClass('active');
-        }else if (cardType === 'AmericanExpress'){
+        } else if (cardType === 'AmericanExpress') {
             $('.pay-img.pay-amc').addClass('active');
-        }else if (cardType === 'JCB'){
+        } else if (cardType === 'JCB') {
             $('.pay-img.pay-jcb').addClass('active');
-        }else if (cardType === 'paypal'){
+        } else if (cardType === 'paypal') {
             $('.pay-img.pay-paypal').addClass('active');
         }
 
@@ -1588,12 +1595,12 @@ function HideSeeMore(seemoreName) {
     $('.payment-list').on('click', '.addCreditCard', function () {
         $('.select-payment').addClass('disabled');
         $('.add-newCard').removeClass('disabled');
-        if('Oceanpay' == $(this).data('method')){
+        if ('Oceanpay' == $(this).data('method')) {
             $('#img-amex').css('display', 'none');
             $('#img-jcb').css('display', 'none');
-        }else{
+        } else {
             $('#img-amex').css('display', 'inline-flex');
-            $('#img-jcb').css('display','inline-flex');
+            $('#img-jcb').css('display', 'inline-flex');
         }
     });
 
@@ -1644,23 +1651,23 @@ function HideSeeMore(seemoreName) {
         var SelectType = $('.card-selectCountry > option[value="' + Country + '"]').data('type');
         var child_label = $('.card-selectCountry > option[value="' + Country + '"]').data('child_label');
         var zipcode_label = $('.card-selectCountry > option[value="' + Country + '"]').data('zipcode_label');
-        $('.card-zip').siblings('.warning-info').children('span').html('Please enter your '+ zipcode_label + ' !');
+        $('.card-zip').siblings('.warning-info').children('span').html('Please enter your ' + zipcode_label + ' !');
         $('.card-zip').attr('placeholder', zipcode_label);
-        $('.card-zip').attr('data-inputrole',zipcode_label);
+        $('.card-zip').attr('data-inputrole', zipcode_label);
         if (SelectType != undefined && SelectType === 0) {
             // 洲为选填
             $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" placeholder="State (optional)">');
         } else if (SelectType != undefined && SelectType === 1) {
             // 洲为必填
-            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" data-optional="false" data-inputrole="'+child_label+'" placeholder="'+child_label+'"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your "'+child_label+'" !</span> </div>');
+            $('#card-addAddressForm .state-info').html('<input type="text" name="state" class="form-control contrlo-lg text-primary card-state" data-optional="false" data-inputrole="' + child_label + '" placeholder="' + child_label + '"><div class="warning-info flex flex-alignCenter text-warning p-t-5x off"> <i class="iconfont icon-caveat icon-size-md p-r-5x"></i> <span class="font-size-base">Please enter your "' + child_label + '" !</span> </div>');
 
         } else {
             // 洲为下拉列选择
             // 获取 洲 列表
             $.ajax({
-                    url: '/statelist/' + CountryId,
-                    type: 'GET'
-                })
+                url: '/statelist/' + CountryId,
+                type: 'GET'
+            })
                 .done(function (data) {
                     $('#card-addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg card-state"></select>');
                     // 添加选项
@@ -1675,6 +1682,7 @@ function HideSeeMore(seemoreName) {
                 })
         }
     }
+
     // card 选择国家 联动洲
     $('.card-selectCountry').change(function () {
         var Country = $(this).val();
@@ -1682,22 +1690,23 @@ function HideSeeMore(seemoreName) {
 
     });
     // 验证input非空 并 添加提示文本
-    function checkInput(thisElem){
-        if (thisElem.val() === ''){
+    function checkInput(thisElem) {
+        if (thisElem.val() === '') {
             thisElem.siblings('.warning-info').removeClass('off');
             thisElem.siblings('.warning-info').children('span').html('Please enter a valid ' + thisElem.data('inputrole') + ' !');
             return false;
-        }else{
+        } else {
             thisElem.siblings('.warning-info').addClass('off');
             return true;
         }
     }
+
     //获得焦点时移除提示
     $('input[data-optional="false"]').on('focus', function () {
         $(this).siblings('.warning-info').addClass('off');
     });
     //Credit Card 校验
-    if($('#addCard-container').length > 0){
+    if ($('#addCard-container').length > 0) {
         $('#addCard-container').card({
             container: '.card-wrapper'
         });
@@ -1705,15 +1714,13 @@ function HideSeeMore(seemoreName) {
     // 提交卡信息
     $('#btn-addNewCard').on('click', function () {
         //校验
-        if( $('.card-addNewAddr').hasClass('disabled')){
-            if( !checkInput($('input[name="card"]')) || !checkInput($('input[name="expiry"]')) || !checkInput($('input[name="cvc"]')) ){
+        if ($('.card-addNewAddr').hasClass('disabled')) {
+            if (!checkInput($('input[name="card"]')) || !checkInput($('input[name="expiry"]')) || !checkInput($('input[name="cvc"]'))) {
                 return;
             }
 
-        }else {
-            if ( !checkInput($('input[name="card"]')) || !checkInput($('input[name="expiry"]')) || !checkInput($('input[name="cvc"]')) ||
-                !checkInput($('.card-name')) || !checkInput($('.card-tel')) || !checkInput($('.card-addr1')) || !checkInput($('.card-city')) ||
-                !checkInput($('.card-zip')) || !checkInput($('.card-state')) ){
+        } else {
+            if (!checkInput($('input[name="card"]')) || !checkInput($('input[name="expiry"]')) || !checkInput($('input[name="cvc"]')) || !checkInput($('.card-name')) || !checkInput($('.card-tel')) || !checkInput($('.card-addr1')) || !checkInput($('.card-city')) || !checkInput($('.card-zip')) || !checkInput($('.card-state'))) {
                 return;
             }
 
@@ -1722,14 +1729,14 @@ function HideSeeMore(seemoreName) {
         openCheckoutLoading();
         var $this = $(this);
         $this.addClass('disabled');
-        var cardNum =  $('.card-number').val();
+        var cardNum = $('.card-number').val();
         var cardDate = $('.card-date').val();
         var cardCode = $('.card-code').val();
-        var cardName = '', cardTel = '', cardAddr1 = '', cardAddr2 = '', cardCity = '', cardCountry = '',cardZip = '', cardState = '';
+        var cardName = '', cardTel = '', cardAddr1 = '', cardAddr2 = '', cardCity = '', cardCountry = '', cardZip = '', cardState = '';
         var cardType = $('input[name="card_type"]').val();
         var csn = '';
 
-        if( $('.card-addNewAddr').hasClass('disabled') ){ //选择了与shipping相同的地址信息
+        if ($('.card-addNewAddr').hasClass('disabled')) { //选择了与shipping相同的地址信息
             cardName = $('.def-name').html();
 
             cardTel = $('.def-tel').val();
@@ -1741,7 +1748,7 @@ function HideSeeMore(seemoreName) {
             cardState = $('.def-state').html();
             csn = $('.card-selectCountry > option[value="' + cardCountry + '"]').data('csn');
 
-        }else{
+        } else {
             cardName = $('.card-name').val();
 
             cardTel = $('.card-tel').val();
@@ -1755,26 +1762,26 @@ function HideSeeMore(seemoreName) {
 
         }
         $.ajax({
-                url: '/wordpay/addCard',
-                type: 'POST',
-                data: {
-                    card: cardNum,
-                    expiry: cardDate,
-                    cvv: cardCode,
-                    card_type: cardType,
-                    name: cardName,
-                    tel: cardTel,
-                    addr1: cardAddr1,
-                    addr2: cardAddr2,
-                    city: cardCity,
-                    country: cardCountry,
-                    csn: csn,
-                    zip: cardZip,
-                    state: cardState
-                }
-            })
+            url: '/wordpay/addCard',
+            type: 'POST',
+            data: {
+                card: cardNum,
+                expiry: cardDate,
+                cvv: cardCode,
+                card_type: cardType,
+                name: cardName,
+                tel: cardTel,
+                addr1: cardAddr1,
+                addr2: cardAddr2,
+                city: cardCity,
+                country: cardCountry,
+                csn: csn,
+                zip: cardZip,
+                state: cardState
+            }
+        })
             .done(function (data) {
-              if (data.success) {
+                if (data.success) {
                     getCardList();
                     $('#addCard-container input[type="text"]').val('');
                     $('#card-addAddressForm input[type="text"]').val('');
@@ -1787,22 +1794,22 @@ function HideSeeMore(seemoreName) {
                     var payType = data.data.pay_type;
 
                     $('.pay-img').removeClass('active');
-                    if (cardType == 'Visa'){
+                    if (cardType == 'Visa') {
                         $('.pay-img.pay-visa').addClass('active');
-                    }else if (cardType === 'MasterCard'){
+                    } else if (cardType === 'MasterCard') {
                         $('.pay-img.pay-masc').addClass('active');
-                    }else if (cardType === 'AmericanExpress'){
+                    } else if (cardType === 'AmericanExpress') {
                         $('.pay-img.pay-amc').addClass('active');
-                    }else if (cardType === 'JCB'){
+                    } else if (cardType === 'JCB') {
                         $('.pay-img.pay-jcb').addClass('active');
-                    }else if (cardType === 'paypal'){
+                    } else if (cardType === 'paypal') {
                         $('.pay-img.pay-paypal').addClass('active');
                     }
 
                     $('.payment-text').html(cardNum);
 
 
-              } else {
+                } else {
                     $('.addCard-warning').removeClass('off');
                     setTimeout(function () {
                         $('.addCard-warning').addClass('off');
@@ -1811,42 +1818,44 @@ function HideSeeMore(seemoreName) {
                 }
                 $this.removeClass('disabled');
             })
-            .always(function() {
+            .always(function () {
                 closeCheckoutLoading();
             });
 
     });
-    function getCardList(){
+    function getCardList() {
         $.ajax({
-            url:'/wordpay/paylist',
+            url: '/wordpay/paylist',
             type: 'GET'
         }).done(function (data) {
-            if (data.success){
+            if (data.success) {
                 appendCardList(data.data);
             }
         })
     }
-    function appendCardList(cardList){
+
+    function appendCardList(cardList) {
         var tplHtml = template('tpl-creditCard', cardList);
         var StageCache = $.parseHTML(tplHtml);
         $('.payment-list').html(StageCache);
     }
+
     // end 支付方式 Payment Method
 
     // 触发 删除卡
-    $('.payment-list').on('click','.btn-deleteCard',function(){
-        var CardId=$(this).data('cardid');
+    $('.payment-list').on('click', '.btn-deleteCard', function () {
+        var CardId = $(this).data('cardid');
         $('[data-remodal-id="paymentmodal-modal"]').data('cardid', CardId);
         DelCardModal.open();
     });
     // 确认删除卡
-    $('.delPaymentCard').on('click',function(){
-        var CardId=$('[data-remodal-id="paymentmodal-modal"]').data('cardid');
+    $('.delPaymentCard').on('click', function () {
+        var CardId = $('[data-remodal-id="paymentmodal-modal"]').data('cardid');
         $.ajax({
-                url: '/wordpay/delCard?card_id='+CardId,
-                type: 'post',
-                data: {}
-            })
+            url: '/wordpay/delCard?card_id=' + CardId,
+            type: 'post',
+            data: {}
+        })
             .done(function (data) {
                 if (data.success) {
                     $('.payment-list div[data-paymentcardid="' + CardId + '"]').remove();
@@ -1866,10 +1875,10 @@ function HideSeeMore(seemoreName) {
             return;
         }
         $.ajax({
-                url: '/signin',
-                type: 'POST',
-                data: $('#login').serialize()
-            })
+            url: '/signin',
+            type: 'POST',
+            data: $('#login').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -1885,10 +1894,10 @@ function HideSeeMore(seemoreName) {
 
     function login_forgetPassword() {
         $.ajax({
-                url: '/forget',
-                type: 'POST',
-                data: $('#forgetPassword').serialize()
-            })
+            url: '/forget',
+            type: 'POST',
+            data: $('#forgetPassword').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = '/login';
@@ -2064,15 +2073,15 @@ function HideSeeMore(seemoreName) {
             function (googleUser) {
                 var profile = googleUser.getBasicProfile();
                 $.ajax({
-                        url: '/googlelogin',
-                        type: 'POST',
-                        data: {
-                            email: profile.getEmail(),
-                            id: profile.getId(),
-                            name: profile.getName(),
-                            avatar: profile.getImageUrl()
-                        }
-                    })
+                    url: '/googlelogin',
+                    type: 'POST',
+                    data: {
+                        email: profile.getEmail(),
+                        id: profile.getId(),
+                        name: profile.getName(),
+                        avatar: profile.getImageUrl()
+                    }
+                })
                     .done(function (data) {
                         console.log("success");
                         if (data.success) {
@@ -2165,9 +2174,9 @@ function HideSeeMore(seemoreName) {
         FB.api('/me', 'GET', {fields: 'id,name,picture.width(750).height(750),email'}, function (response) {
             if (response.email == '' || response == undefined) {
                 $.ajax({
-                        url: '/facebookstatus/' + response.id,
-                        type: 'get'
-                    })
+                    url: '/facebookstatus/' + response.id,
+                    type: 'get'
+                })
                     .done(function (data) {
 
                         if (data.status) {
@@ -2186,15 +2195,15 @@ function HideSeeMore(seemoreName) {
 
     function loginSuccess(response) {
         $.ajax({
-                url: '/facebooklogin',
-                type: 'POST',
-                data: {
-                    email: response.email,
-                    id: response.id,
-                    name: response.name,
-                    avatar: response.picture.data.url
-                }
-            })
+            url: '/facebooklogin',
+            type: 'POST',
+            data: {
+                email: response.email,
+                id: response.id,
+                name: response.name,
+                avatar: response.picture.data.url
+            }
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -2233,10 +2242,10 @@ function HideSeeMore(seemoreName) {
     $('div[data-role="emailRequired-submit"]').on('click', function () {
         if (!$(this).hasClass('disabled')) {
             $.ajax({
-                    url: '/facebooklogin',
-                    type: 'post',
-                    data: $('#register').serialize()
-                })
+                url: '/facebooklogin',
+                type: 'post',
+                data: $('#register').serialize()
+            })
                 .done(function (data) {
                     if (data.success) {
                         window.location.href = data.redirectUrl;
@@ -2275,10 +2284,10 @@ function HideSeeMore(seemoreName) {
     function register_signup() {
         $('[data-role="register-submit"]').addClass('disabled');
         $.ajax({
-                url: '/signup',
-                type: 'POST',
-                data: $('#register').serialize()
-            })
+            url: '/signup',
+            type: 'POST',
+            data: $('#register').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -2336,10 +2345,10 @@ function HideSeeMore(seemoreName) {
     function reset_password() {
         $('[data-role="reset-submit"]').addClass('disabled');
         $.ajax({
-                type: 'POST',
-                url: '/reset',
-                data: $('#reset').serialize()
-            })
+            type: 'POST',
+            url: '/reset',
+            data: $('#reset').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -2407,10 +2416,10 @@ function HideSeeMore(seemoreName) {
     function change_password() {
         $('.change-save').addClass('disabled');
         $.ajax({
-                url: '/user/modifyUserPwd',
-                type: 'POST',
-                data: $('#changepassword').serialize()
-            })
+            url: '/user/modifyUserPwd',
+            type: 'POST',
+            data: $('#changepassword').serialize()
+        })
             .done(function (data) {
                 $('.changepwd-info').html(data.prompt_msg);
                 var $changePwdBtn = $('#changePwdBtn');
@@ -2473,10 +2482,10 @@ function HideSeeMore(seemoreName) {
     //User Address Start
     function address_delete($addressItem) {
         $.ajax({
-                url: '/address/' + $addressItem.data('aid'),
-                type: 'delete',
-                data: {}
-            })
+            url: '/address/' + $addressItem.data('aid'),
+            type: 'delete',
+            data: {}
+        })
             .done(function (data) {
                 if (data.success) {
                     DelAddressModal.close();
@@ -2613,10 +2622,10 @@ function HideSeeMore(seemoreName) {
     //User Profile Start
     function profile_updateUser() {
         $.ajax({
-                url: '/user/modify',
-                type: 'post',
-                data: $('#changeProfile').serialize()
-            })
+            url: '/user/modify',
+            type: 'post',
+            data: $('#changeProfile').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     $('input[name="nick"]').attr('placeholder', data.data.nickname);
@@ -2711,13 +2720,13 @@ function HideSeeMore(seemoreName) {
         // 加载动画loading 显示
         loadingShow('.designer-loading', '.designerList-seeMore');
         $.ajax({
-                url: '/designer',
-                data: {
-                    start: Start,
-                    size: Size,
-                    ajax: 1
-                }
-            })
+            url: '/designer',
+            data: {
+                start: Start,
+                size: Size,
+                ajax: 1
+            }
+        })
             .done(function (data) {
                 if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '' || data.data.list.length === 0) {
                     $DesignerContainer.data('start', -1);
@@ -2744,7 +2753,9 @@ function HideSeeMore(seemoreName) {
                     $('[data-clk]').unbind('click');
                     $('[data-clk]').click(function () {
                         var $this = $(this);
-                        //onProductClick();
+                        if ($('#gaProductClick').length > 0) {
+                            onProductClick();
+                        }
 
 
                         $.ajax({
@@ -2828,9 +2839,9 @@ function HideSeeMore(seemoreName) {
         var did = $this.data('did')
         if (did != undefined) {
             $.ajax({
-                    url: '/follow/' + did,
-                    type: 'GET'
-                })
+                url: '/follow/' + did,
+                type: 'GET'
+            })
                 .done(function (data) {
                     if (data.success) {
                         if ($('#designerIndex').data('show') || $('#designerUser').data('show')) {
@@ -2854,13 +2865,13 @@ function HideSeeMore(seemoreName) {
         } else {
             did = $this.data('actiondid')
             $.ajax({
-                    url: '/noteaction',
-                    type: 'get',
-                    data: {
-                        action: 'follow',
-                        did: did
-                    }
-                })
+                url: '/noteaction',
+                type: 'get',
+                data: {
+                    action: 'follow',
+                    did: did
+                }
+            })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
@@ -2873,9 +2884,9 @@ function HideSeeMore(seemoreName) {
         var did = $this.data('did')
         if (did != undefined) {
             $.ajax({
-                    url: '/follow/' + did,
-                    type: 'GET'
-                })
+                url: '/follow/' + did,
+                type: 'GET'
+            })
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
@@ -2889,13 +2900,13 @@ function HideSeeMore(seemoreName) {
         } else {
             did = $this.data('actiondid')
             $.ajax({
-                    url: '/noteaction',
-                    type: 'get',
-                    data: {
-                        action: 'follow',
-                        did: did
-                    }
-                })
+                url: '/noteaction',
+                type: 'get',
+                data: {
+                    action: 'follow',
+                    did: did
+                }
+            })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
@@ -3052,7 +3063,9 @@ function HideSeeMore(seemoreName) {
                     $('#productClick-spu').val($this.data('spu'));
                     $('#productClick-price').val($this.data('price'));
 
-                    //onProductClick();
+                    if ($('#gaProductClick').length > 0) {
+                        onProductClick();
+                    }
 
                     $.ajax({
                         url: $this.data('clk'),
@@ -3097,7 +3110,7 @@ function HideSeeMore(seemoreName) {
         $(this).addClass('active');
 
         var CurrentSearch = $('#productList-container').data('searchid');
-        if(SearchId != CurrentSearch){
+        if (SearchId != CurrentSearch) {
             // 设置排序 方式
             $('#productList-container').data('searchid', SearchId);
             $('#productList-container').data('pagenum', 0);
@@ -3357,12 +3370,12 @@ function HideSeeMore(seemoreName) {
     function order_buyAgain() {
         var operate = order_getOperate();
         $.ajax({
-                url: '/cart/addBatch',
-                type: 'POST',
-                data: {
-                    operate: operate
-                }
-            })
+            url: '/cart/addBatch',
+            type: 'POST',
+            data: {
+                operate: operate
+            }
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -3482,9 +3495,9 @@ function HideSeeMore(seemoreName) {
         var $this = $(e.target);
         var spu = $this.data('spu');
         $.ajax({
-                url: '/wishlist/' + spu,
-                type: 'GET'
-            })
+            url: '/wishlist/' + spu,
+            type: 'GET'
+        })
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
@@ -3593,9 +3606,9 @@ function HideSeeMore(seemoreName) {
     $('#followList-container').on('click', '.btn-following', function () {
         var $this = $(this);
         $.ajax({
-                url: '/follow/' + $this.data('did'),
-                type: 'GET'
-            })
+            url: '/follow/' + $this.data('did'),
+            type: 'GET'
+        })
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
@@ -3640,9 +3653,9 @@ function HideSeeMore(seemoreName) {
             var CouponUrl = '/usercoupon';
         }
         $.ajax({
-                url: CouponUrl,
-                type: 'GET'
-            })
+            url: CouponUrl,
+            type: 'GET'
+        })
             .done(function (data) {
                 if (data.success) {
                     appendCouponList(data.data);
@@ -3681,10 +3694,10 @@ function HideSeeMore(seemoreName) {
         //验证code码
         if (!$(this).hasClass('disabled')) {
             $.ajax({
-                    url: '/coupon',
-                    type: 'post',
-                    data: {cps: $('input[name="cps"]').val()}
-                })
+                url: '/coupon',
+                type: 'post',
+                data: {cps: $('input[name="cps"]').val()}
+            })
                 .done(function (data) {
                     if (data.success) {
                         $('#pcode').data('bindid', data.data.bind_id);
@@ -3771,10 +3784,10 @@ function HideSeeMore(seemoreName) {
     //Ask Start
     function ask_addMessage() {
         $.ajax({
-                url: '/askshopping',
-                type: 'POST',
-                data: $('#form-askQuestion').serialize()
-            })
+            url: '/askshopping',
+            type: 'POST',
+            data: $('#form-askQuestion').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -3827,10 +3840,10 @@ function HideSeeMore(seemoreName) {
             return;
         }
         $.ajax({
-                url: '/subscribe',
-                type: 'post',
-                data: $('#subscribe').serialize()
-            })
+            url: '/subscribe',
+            type: 'post',
+            data: $('#subscribe').serialize()
+        })
             .done(function (data) {
                 if (data.success) {
                     $('.redeem-leftWrapper').addClass('hidden');
@@ -3967,7 +3980,7 @@ $('#designerDetailContainer').on('click', '.bg-player', function () {
     var WidthDesigner = $('.player-media').width(),
         MediaHeightDesigner = WidthDesigner * MediaScaleDesigner;
 
-    var PlayId=$(this).data('playid');
+    var PlayId = $(this).data('playid');
     player = new YT.Player('ytplayer', {
         height: MediaHeightDesigner,
         width: WidthDesigner,
@@ -3979,7 +3992,7 @@ $('#designerDetailContainer').on('click', '.bg-player', function () {
         }
     });
 
-    $('#playermodalDialog').css('background-color','rgba(0, 0, 0, 0)');
+    $('#playermodalDialog').css('background-color', 'rgba(0, 0, 0, 0)');
 });
 
 

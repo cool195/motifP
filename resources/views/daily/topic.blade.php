@@ -13,7 +13,7 @@
             'event': 'productClick',
             'ecommerce': {
                 'click': {
-                    'actionField': {'list': 'topic'},      // Optional list property.
+                    'actionField': {'list': '{{'topic_'.$topic['title'].'_'.$topicID}}'},      // Optional list property.
                     'products': [{
                         'name': name,                      // Name or ID is required.
                         'id': spu,
@@ -26,6 +26,7 @@
                 }
             },
         });
+        console.log('GA.Click'+name);
     }
 
     dataLayer.push({
@@ -43,7 +44,7 @@
                     'brand': '{{$topic['title']}}',
                     'category': 'topicPCWeb',
                     'variant': '',
-                    'list': 'topic'
+                    'list': '{{'topic_'.$topic['title'].'_'.$topicID}}'
                 },
                 @endforeach
                 @endif
@@ -55,7 +56,7 @@
 </script>
 <!--内容-->
 
-<section class="p-y-40x">
+<section class="p-y-40x" id="gaProductClick">
     @inject('wishlist', 'App\Http\Controllers\UserController')
     <div class="topic-wrap">
         @if(isset($topic['infos']))

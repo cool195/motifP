@@ -1,14 +1,14 @@
 <!-- 头部 -->
 @include('header',['title'=>'Checkout'])
 <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
     // 支付埋点
     function onCheckout() {
-        window.dataLayer = window.dataLayer || [];
         dataLayer.push({
             'event': 'checkout',
             'ecommerce': {
                 'checkout': {
-                    'actionField': {'step': 1, 'total': '{{ number_format(($data['pay_amount'] / 100), 2)}}'},
+                    'actionField': {'step': 1, 'option': 'CheckOut'},
                     'products': [
                             @foreach($accountList['showSkus'] as $showSku)
                         {
@@ -25,11 +25,12 @@
                 }
             }
         });
+        console.log('GA.Click-oncheckout');
     }
 </script>
 
 <!-- 内容 -->
-<section class="m-t-40x">
+<section class="m-t-40x" id="GACheckout">
     <div class="container" id="checkoutView" data-status="true">
         <h4 class="helveBold text-main p-l-10x">Checkout</h4>
 
@@ -770,7 +771,7 @@
         <!-- 提交按钮 -->
         <div class="p-y-20x text-right">
             <div data-clks='{{config('runtime.CLK_URL')}}/log.gif?t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-               class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Worldpay">Place Order</div>
+               class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" id="placeOrder" data-with="Worldpay">Place Order</div>
             {{--<a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Oceanpay">Pay
                 with Credit Card</a>
             <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay
