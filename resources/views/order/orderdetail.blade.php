@@ -135,7 +135,7 @@
                         <!-- Track order -->
                         @if(isset($data['logistics_info_url']))
                             <hr class="hr-base m-a-0">
-                            <a href="{{$data['logistics_info_url']}}">
+                            <a target="_blank" href="{{$data['logistics_info_url']}}">
                                 <div class="p-x-20x p-y-15x flex flex-alignCenter flex-rightJustify">
                                     <span class="p-r-10x"><i class="iconfont icon-car font-size-llxx"></i></span>
                                     <span class="sanBold p-r-10x">Track order</span>
