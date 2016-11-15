@@ -138,7 +138,7 @@
                 </div>
                 @inject('wishlist', 'App\Http\Controllers\UserController')
                 <div class="flex flex-alignCenter m-y-20x p-l-5x">
-                    <span class="font-size-md sanBold">Add to wishlist for later view</span>
+                    <span class="font-size-md sanBold">Add to wishlist</span>
                     <span class="product-heart p-t-5x p-l-10x">
                         @if(Session::has('user'))
                             <i class="iconfont btn-wish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"

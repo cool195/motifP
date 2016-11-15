@@ -46,7 +46,7 @@
                 </li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if(isset($page) && 'daily' == $page) active @endif" href="/daily">DAILY</a></li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if(isset($page) && 'designer' == $page) active @endif" href="/designer">DESIGNERS</a></li>
-                <li class="nav-item shop-dropdown">
+                <li class="nav-item {{$page}} @if('shopping' != $page) shop-dropdown @endif">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
                     <a href="/shopping" class="nav-link border-b p-x-10x sanBold @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) @endif>SHOP</a>
                     <ul class="dropdown-menu dropdown-nav-hover shop-dropdownMenu">
