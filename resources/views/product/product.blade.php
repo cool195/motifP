@@ -399,7 +399,9 @@
                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{ $list['main_image_url']}}"
                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                      alt="{{ $list['main_title'] }}">
-                                <img class="img-fluid productImg-hover" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/product/motif/6139/750X750/f1b1c2d9a60d4871ee2f432424c9cf18.jpg" alt="{{ $list['main_title'] }}">
+                                @if($list['image_paths'][0])
+                                    <img class="img-fluid productImg-hover" src="{{config('runtime.CDN_URL')}}/n2/{{$list['image_paths'][0]}}" alt="{{$list['main_title']}}">
+                                @endif
                                 <div class="bg-heart"></div>
                             </a>
                             @if(Session::has('user'))
