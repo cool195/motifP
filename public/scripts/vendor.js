@@ -21909,25 +21909,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					ScrollTop = ScrollTop + $(window).height() - outerHeight - opts.bottom;
 				}
 				if (ScrollTop > toTop && (ScrollTop < endfix)) {
-					if (ie6) { //IE6鍒欎娇鐢ㄨ繖涓牱寮�
-						obj.addClass(opts.baseClassName).css({
-							"z-index": zIndex,
-							"position": "absolute",
-							"top": opts.bottom == -1 ? ScrollTop + optsTop - parentOffsetTop : ScrollTop - parentOffsetTop,
-							"bottom": 'auto',
-							"left": selfLeft - parentOffsetLeft,
-							'width': objWidth
-						})
-					} else {
-						obj.addClass(opts.baseClassName).css({
-							"z-index": zIndex,
-							"position": "fixed",
-							"top": opts.bottom == -1 ? optsTop : '',
-							"bottom": opts.bottom == -1 ? '' : opts.bottom,
-							"left": selfLeft,
-							"width": objWidth
-						});
-					}
+					obj.addClass(opts.baseClassName).css({
+						"z-index": zIndex,
+						"position": "fixed",
+						"top": opts.bottom == -1 ? optsTop : '',
+						"bottom": opts.bottom == -1 ? '' : opts.bottom,
+						"left": selfLeft,
+						"width": objWidth
+					});
 					placeholder.css({
 						'height': outerHeight,
 						'width': outerWidth,
@@ -21936,10 +21925,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				} else if (ScrollTop >= endfix) {
 					obj.addClass(opts.baseClassName).css({
 						"z-index": zIndex,
-						"position": "absolute",
-						"top": endfix - parentOffsetTop + optsTop,
-						'bottom': '',
-						"left": selfLeft - parentOffsetLeft,
+						"position": "fixed",
+						"top": opts.bottom == -1 ? optsTop : '',
+						"bottom": opts.bottom == -1 ? '' : opts.bottom,
+						"left": selfLeft,
 						"width": objWidth
 					});
 					placeholder.css({
@@ -21962,14 +21951,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			// if (isUnfixed) {
 			resetScroll();
 			// }
-			$(window).on("scroll", function() {
+			$(document).on("scroll", function() {
 				if (Timer) {
 					clearTimeout(Timer);
 				}
 				Timer = setTimeout(onScroll, 0);
 			});
 			// 褰撳彂鐜拌皟鏁村睆骞曞ぇ灏忔椂锛岄噸鏂版墽琛屼唬鐮�
-			$(window).on("resize", function() {
+			$(document).on("resize", function() {
 				if (Timer) {
 					clearTimeout(Timer);
 				}
