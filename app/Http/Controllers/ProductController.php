@@ -15,7 +15,7 @@ class ProductController extends BaseController
         if ($result['success'] == false) {
             abort(404);
         } else {
-            $category = Cache::rememberForever('category', function () {
+            $category = Cache::remember('category',60, function () {
                 $params = array(
                     'cmd' => 'categorylist',
                 );
