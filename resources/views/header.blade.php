@@ -48,10 +48,10 @@
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if(isset($page) && 'designer' == $page) active @endif" href="/designer">DESIGNERS</a></li>
                 <li class="nav-item shop-dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
-                    <a href="javascript:void(0)" class="nav-link border-b p-x-10x sanBold @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) @endif>SHOP</a>
+                    <a href="/shopping" class="nav-link border-b p-x-10x sanBold @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) @endif>SHOP</a>
                     <ul class="dropdown-menu dropdown-nav-hover shop-dropdownMenu">
                         @foreach($Category->getShoppingCategoryList() as $category)
-                            <li class="dropdown-item @if('shopping' == $page && $cid == $category['category_id']) active @endif"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
+                            <li class="dropdown-item @if('shopping' == $page && $cid == $category['category_id']) active @endif"><a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -70,7 +70,6 @@
                                 <li class="@if('wishlist' == $title) active @endif "><a href="/wish">Wishlist</a></li>
                                 <li class="@if('following' == $title) active @endif "><a href="/following">Following</a></li>
                                 <li class="@if('Promotions' == $title) active @endif "><a href="/promocode">Promotions</a></li>
-                                <li><a class="sanBold text-red" href="/invitefriends">GET $20 OFF</a></li>
                                 <li class="@if('Change Profile' == $title) active @endif "><a href="/user/changeprofile">Settings</a></li>
                                 <li><a href="/signout">Sign Out</a></li>
                             </ul>
@@ -117,7 +116,7 @@
                     </li>
                 @else
                     <li class="nav-item p-x-10x"><a class="nav-link" href="/login">SIGN IN</a></li>
-                    <li class="nav-item p-x-10x"><a class="nav-link" href="/invitefriends">GET $20 OFF</a></li>
+                    <li class="nav-item p-x-10x"><a class="nav-link sanBold text-red" href="/invitefriends">GET $20 OFF</a></li>
                 @endif
             </ul>
         </nav>

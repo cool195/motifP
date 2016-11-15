@@ -63,32 +63,13 @@
 
 <!-- 内容 -->
 <section style="margin-top: 1px;">
-    <!-- 商品类别 二级导航 -->
-  {{--  <div class="bg-white product-category">
-        <div class="container">
-            <nav class="nav navbar-nav">
-                <ul class="nav flex flex-alignCenter flex-justifyCenter">
-                    @foreach($categories as $category)
-                    <li class="nav-item p-x-10x m-l-0">
-                        <a href="/shopping/{{ $category['category_id'] }}">
-                            <div class="p-t-10x p-b-5x category-item @if($cid == $category['category_id']) active @endif">
-                                <img src="{{config('runtime.CDN_URL')}}/n2/{{$category['img_path']}}" alt="">
-                                <div class="text-center p-t-5x">{{$category['category_name']}}</div>
-                            </div>
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-            </nav>
-        </div>
-    </div>--}}
     <div class="bg-white product-category">
         <div class="container">
             <nav class="nav navbar-nav">
                 <ul class="nav flex flex-alignCenter flex-justifyCenter">
                     @foreach($categories as $category)
                         <li class="text-center category-item p-x-30x p-y-10x @if($cid == $category['category_id']) active @endif">
-                            <a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}
+                            <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}
                                 <span class="triangle-up"></span>
                             </a>
                         </li>

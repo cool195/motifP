@@ -48,7 +48,10 @@
 <section class="">
     <div class="container">
         <!-- 面包屑 地址 -->
-        <div class="p-y-15x"><a href="#" class="text-productmMenu">Shop / Rings/Sassy </a>Sequins Cami</div>
+        <div class="p-y-15x">
+            <a href="/shopping" class="text-productmMenu">SHOP</a>
+            / <a href="/shopping/{{$data['category_id']}}" class="text-productmMenu">{{$data['category_name']}}</a>
+            / <a href="/detail/{{$data['spu']}}" class="text-productmMenu">{{$data['main_title']}}</a></div>
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="p-a-20x box-shadow bg-white" id="productImg">
@@ -207,9 +210,11 @@
                                                     @endif
                                                 </div>
                                             @endforeach
-                                                @if(in_array($spuAttr['attr_type_value'],array('Ring Size','Women Size','Men Size')))
-                                                    <div class="p-y-10x p-r-10x"><a class="text-underLine" target="_blank" href="{{'/service/24?template=1'}}">Size Guide</a></div>
-                                                @endif
+                                            @if(in_array($spuAttr['attr_type_value'],array('Ring Size','Women Size','Men Size')))
+                                                <div class="p-y-10x p-r-10x"><a class="text-underLine" target="_blank"
+                                                                                href="{{'/service/24?template=1'}}">Size
+                                                        Guide</a></div>
+                                            @endif
                                         </div>
                                     </div>
                                 </fieldset>
@@ -353,21 +358,27 @@
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">Free U.S Shipping</div>
-                    <div class="p-t-10x">We offer Free Shipping on all U.S. orders, with free upgrade to Expedited Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}" class="text-underLine">Learn more</a>.
+                    <div class="p-t-10x">We offer Free Shipping on all U.S. orders, with free upgrade to Expedited
+                        Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}"
+                                                        class="text-underLine">Learn more</a>.
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">Easy Returns</div>
-                    <div class="p-t-10x">Simply send your return request to service@motif.me within 30 days of delivery. Additional terms may apply. <a target="_blank" href="{{'/service/23?template=1'}}" class="text-underLine">Learn more</a>.
+                    <div class="p-t-10x">Simply send your return request to service@motif.me within 30 days of delivery.
+                        Additional terms may apply. <a target="_blank" href="{{'/service/23?template=1'}}"
+                                                       class="text-underLine">Learn more</a>.
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">International Shipping</div>
-                    <div class="p-t-10x">We offer Free Shipping to over 30+ countries, with free upgrade to Expedited Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}" class="text-underLine">Learn more</a>.
+                    <div class="p-t-10x">We offer Free Shipping to over 30+ countries, with free upgrade to Expedited
+                        Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}"
+                                                        class="text-underLine">Learn more</a>.
                     </div>
                 </div>
             </div>

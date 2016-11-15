@@ -3,18 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Cache;
 
 class ProductController extends BaseController
 {
     public function product(Request $request, $spu)
     {
         $result = $this->getProductDetail($spu);
+
+
+        if ($result['success'] == false) {
+            abort(404);
+        } else {
+            $category = Cache::rememberForever('category', function () {
+                $params = array(
+                    'cmd' => 'categorylist',
+                );
+                return $this->request('product', $params);
+            });
+            $categoryName = '';
+            foreach ($category['data']['list'] as $value) {
+                if ($value['category_id'] == $result['data']['front_category_ids'][0]) {
+                    $categoryName = $value['category_name'];
+                    $result['data']['category_id'] = $result['data']['front_category_ids'][0];
+                    break;
+                }
+            }
+            $result['data']['category_name'] = $categoryName;
+        }
         if ($request->input('ajax')) {
             return $result;
-        }
-
-        if($result['success']==false){
-            abort(404);
         }
         $recommended = $this->recommended($spu, current($result['data']['front_category_ids']));
         return View('product.product', ['jsonResult' => json_encode($result['data']), 'data' => $result['data'], 'recommended' => $recommended['data']]);
@@ -26,7 +44,7 @@ class ProductController extends BaseController
             'recid' => '100002',
             'uuid' => $_COOKIE['uid'],
             'pagenum' => 1,
-            'pagesize' => 20,
+            'pagesize' => 16,
             'spu' => $spu,
         );
         $params['cid'] = isset($cid) ? $cid : -1;
@@ -43,11 +61,11 @@ class ProductController extends BaseController
         $result = $this->request('product', $params);
         if ($result['success']) {
             //$result['data']['spuAttrs'] = $this->getSpuAttrsStockStatus($result['data']['spuAttrs'], $result['data']['skuExps']);
-            if(isset($result['data']['spuAttrs'])) {
+            if (isset($result['data']['spuAttrs'])) {
                 $result['data']['spuAttrs'] = $this->findSkuStatus($result['data']);
             }
             $result['data']['sale_status'] = true;
-            if(1 == $result['data']['sale_type']){
+            if (1 == $result['data']['sale_type']) {
                 $result['data']['sale_status'] = $this->getSaleStatus($result['data']);
             }
 
@@ -58,18 +76,13 @@ class ProductController extends BaseController
     private function getSaleStatus(Array $data)
     {
         $flag = true;
-        if(1 == $data['sale_type'] && !isset($data['skuPrice']['skuPromotion']))
-        {
+        if (1 == $data['sale_type'] && !isset($data['skuPrice']['skuPromotion'])) {
             $flag = false;
-        }
-        elseif(!empty($data['spuStock']) && $data['spuStock']['stock_qtty'] == $data['spuStock']['saled_qtty'] )
-        {
+        } elseif (!empty($data['spuStock']) && $data['spuStock']['stock_qtty'] == $data['spuStock']['saled_qtty']) {
             $flag = false;
-        }
-        elseif(0 == $data['skuPrice']['skuPromotion']['remain_time'])
-        {
+        } elseif (0 == $data['skuPrice']['skuPromotion']['remain_time']) {
             $flag = false;
-        }else{
+        } else {
 
         }
         return $flag;
