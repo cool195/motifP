@@ -274,7 +274,7 @@ class UserController extends BaseController
     {
         if (Session::get('user.pin')) {
 
-            $value = Cache::rememberForever(Session::get('user.pin') . 'wishlist', function () {
+            $value = Cache::rememberForever(Session::get('user.pin') . $_COOKIE['uid'] . 'wishlist', function () {
                 $params = array(
                     'cmd' => 'list',
                     'num' => 1,
@@ -307,7 +307,7 @@ class UserController extends BaseController
         );
         $result = $this->request('wishlist', $params);
         if ($result['success']) {
-            Cache::forget(Session::get('user.pin') . 'wishlist');
+            Cache::forget(Session::get('user.pin') . $_COOKIE['uid'] . 'wishlist');
         }
         return $result;
     }
@@ -335,7 +335,7 @@ class UserController extends BaseController
         );
         $result = $this->request('wishlist', $params);
         $result['cmd'] = $cmd == 'add' ? true : false;
-        Cache::forget(Session::get('user.pin') . 'wishlist');
+        Cache::forget(Session::get('user.pin') . $_COOKIE['uid'] . 'wishlist');
         return $result;
     }
 
@@ -466,7 +466,7 @@ class UserController extends BaseController
 
     public function promotions()
     {
-        return view('user.promotions',['title'=>'Promotions']);
+        return view('user.promotions', ['title' => 'Promotions']);
     }
 
     public function forgetpwd()
