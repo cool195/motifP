@@ -45,8 +45,10 @@
     }
 </script>
 <!-- 内容 -->
-<section class="m-t-40x">
+<section class="">
     <div class="container">
+        <!-- 面包屑 地址 -->
+        <div class="p-y-15x"><a href="#" class="text-productmMenu">Shop / Rings/Sassy </a>Sequins Cami</div>
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="p-a-20x box-shadow bg-white" id="productImg">
@@ -129,24 +131,32 @@
                         </div>
                     </div>
                 </div>
+                @inject('wishlist', 'App\Http\Controllers\UserController')
+                <div class="flex flex-alignCenter m-y-20x p-l-5x">
+                    <span class="font-size-md sanBold">Add to wishlist for later view</span>
+                    <span class="product-heart p-t-5x p-l-10x">
+                        @if(Session::has('user'))
+                        <i class="iconfont btn-wish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif" data-spu="{{$data['spu']}}"></i>
+                        @else
+                        <i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$data['spu']}}"></i>
+                        @endif
+                    </span>
+                </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="box-shadow bg-white">
                     <div class="p-x-20x p-t-20x">
-                        @inject('wishlist', 'App\Http\Controllers\UserController')
-                        <div class="flex flex-fullJustified">
+                        <div class="">
                             <span data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"expid":0,"version":"1.0.1","src":"PC"}'
                                   class="product-title helveBold">{{ $data['main_title'] }}</span>
-                            @if(Session::has('user'))
-                                <span class="product-heart p-t-5x p-l-10x">
-                                    <i class="iconfont btn-wish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
-                                       data-spu="{{$data['spu']}}"></i>
-                                </span>
-                            @else
-                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"
-                                                                         data-actionspu="{{$data['spu']}}"></i></span>
-                            @endif
                         </div>
+                        <!-- 设计师名称 -->
+                        @if(isset($data['designer']))
+                            <div class="p-t-5x p-b-10x">
+                                {{--<span class="sanBold font-size-md p-l-5x p-r-20x">Designer:</span>--}}
+                                <a href="/designer/{{$data['designer']['designer_id']}}"><span>{{ $data['designer']['designer_name'] }}</span></a>
+                            </div>
+                        @endif
                         <div class="product-price">
                             @if(isset($data['skuPrice']['skuPromotion']) && ($data['skuPrice']['skuPromotion']['promot_price']<$data['skuPrice']['skuPromotion']['price']))
                                 <span class="sanBold p-r-10x text-primary newPrice text-red">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
@@ -317,56 +327,95 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="box-shadow bg-white m-t-20x p-x-20x p-b-20x">
+                    <!-- shipping 说明 -->
+                    <div class="p-t-15x p-b-10x flex flex-alignCenter">
+                        <span class="p-r-10x"><i class="iconfont icon-car font-size-llxx"></i></span>
+                        <span class="p-r-10x">This item is available for immediate shipping</span>
+                    </div>
+                    <hr class="hr-base m-a-0">
+                    <!-- Description -->
+                    <div class="sanBold font-size-md p-y-15x">Description:</div>
+                    <div><p class="m-b-0">{!! str_replace("\n", "<br>",  $data['intro_short']) !!}</p></div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-@if(isset($data['designer']))
-    <div class="container m-t-30x">
-        <span class="sanBold font-size-md p-x-20x">Designer:</span>
-        <a href="/designer/{{$data['designer']['designer_id']}}"><span
-                    class="sanBold">{{ $data['designer']['designer_name'] }}</span></a>
-    </div>
-@endif
+{{--@if(isset($data['designer']))--}}
+    {{--<div class="container m-t-30x">--}}
+        {{--<span class="sanBold font-size-md p-x-20x">Designer:</span>--}}
+        {{--<a href="/designer/{{$data['designer']['designer_id']}}"><span--}}
+                    {{--class="sanBold">{{ $data['designer']['designer_name'] }}</span></a>--}}
+    {{--</div>--}}
+{{--@endif--}}
 
-<div class="container m-t-30x">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link font-size-md active" href="#Description" data-toggle="tab">Description</a>
-        </li>
-        @if(isset($data['templates']))
-            @foreach($data['templates'] as $template)
-                <li class="nav-item">
-                    <a class="nav-link font-size-md btn-productTemplate" href="#template{{$template['template_id']}}"
-                       data-tid="{{$template['template_id']}}" data-toggle="tab">{{$template['template_title']}}</a>
-                </li>
-            @endforeach
-        @endif
-    </ul>
-    <div class="tab-content bg-white p-a-20x">
-        <div class="tab-pane text-primary active" id="Description">
-            <p class="m-b-0">{!! str_replace("\n", "<br>",  $data['intro_short']) !!}</p>
+{{--<div class="container m-t-30x">--}}
+    {{--<ul class="nav nav-tabs">--}}
+        {{--<li class="nav-item">--}}
+            {{--<a class="nav-link font-size-md active" href="#Description" data-toggle="tab">Description</a>--}}
+        {{--</li>--}}
+        {{--@if(isset($data['templates']))--}}
+            {{--@foreach($data['templates'] as $template)--}}
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link font-size-md btn-productTemplate" href="#template{{$template['template_id']}}"--}}
+                       {{--data-tid="{{$template['template_id']}}" data-toggle="tab">{{$template['template_title']}}</a>--}}
+                {{--</li>--}}
+            {{--@endforeach--}}
+        {{--@endif--}}
+    {{--</ul>--}}
+    {{--<div class="tab-content bg-white p-a-20x">--}}
+        {{--<div class="tab-pane text-primary active" id="Description">--}}
+            {{--<p class="m-b-0">{!! str_replace("\n", "<br>",  $data['intro_short']) !!}</p>--}}
+        {{--</div>--}}
+
+        {{--@if(isset($data['templates']))--}}
+            {{--@foreach($data['templates'] as $template)--}}
+                {{--<div class="tab-pane text-primary" id="template{{$template['template_id']}}">--}}
+                    {{--<div class="loading" style="display: block;">--}}
+                        {{--<div class="loader"></div>--}}
+                        {{--<div class="text-center p-t-10x">Loading...</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--@endforeach--}}
+        {{--@endif--}}
+
+    {{--</div>--}}
+{{--</div>--}}
+
+<!-- 文字说明 -->
+<div class="container m-t-20x p-x-20x">
+    <div class="row box-shadow bg-white">
+        <div class="col-lg-4">
+            <div class=" p-a-20x">
+                <div class="text-center font-size-md sanBold">Free U.S Shipping</div>
+                <div class="p-t-10x">We offer free shipping on all U.S. orders via USPS and UPS. Learn more. <a
+                            href="#" class="text-underLine">Learn more</a>.</div>
+            </div>
         </div>
-
-        @if(isset($data['templates']))
-            @foreach($data['templates'] as $template)
-                <div class="tab-pane text-primary" id="template{{$template['template_id']}}">
-                    <div class="loading" style="display: block;">
-                        <div class="loader"></div>
-                        <div class="text-center p-t-10x">Loading...</div>
-                    </div>
-                </div>
-            @endforeach
-        @endif
-
+        <div class="col-lg-4">
+            <div class=" p-a-20x">
+                <div class="text-center font-size-md sanBold">Easy Returns</div>
+                <div class="p-t-10x">Send your return request to service@motif.me and get the return label so you can easily send us your return. <a
+                            href="#" class="text-underLine">Learn more</a>.</div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class=" p-a-20x">
+                <div class="text-center font-size-md sanBold">International Shipping</div>
+                <div class="p-t-10x">We offer free shipping on over 30+ countries and order over $79 will be free express shipping. <a
+                            href="#" class="text-underLine">Learn more</a>.</div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="container m-t-30x m-b-40x">
+<div class="container m-t-30x m-b-30x">
     @if(isset($recommended['list']) && !empty($recommended['list']))
         <h4 class="helveBold text-main p-l-10x">You May Also Like</h4>
-        <div class="row p-t-20x" data-impr="{{$recommended['impr']}}">
+        <div class="row p-t-20x" id="alsoLike-list" data-impr="{{$recommended['impr']}}">
             @foreach($recommended['list'] as $list)
                 <div class="col-md-3 col-xs-6">
                     <div class="productList-item">
@@ -409,6 +458,16 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="text-center m-y-10x seeMore-info">
+            <div class="">
+                <div class="btn btn-gray btn-lg btn-380 btn-seeMoreALP">VIEW MORE</div>
+            </div>
+            <div class="loading product-loading" style="display: none">
+                <div class="loader">
+                </div>
+                <div class="text-center p-l-15x">Loading...</div>
+            </div>
         </div>
     @endif
 </div>

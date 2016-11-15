@@ -37,7 +37,7 @@
     </div>
 @endif
 <!-- 头部 -->
-<header class="">
+<header class="fix box-shadow">
     <div class="container">
         <nav class="navbar-left">
             <ul class="nav navbar-primary clearfix">
@@ -46,10 +46,10 @@
                 </li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if(isset($page) && 'daily' == $page) active @endif" href="/daily">DAILY</a></li>
                 <li class="nav-item"><a class="nav-link border-b p-x-10x sanBold @if(isset($page) && 'designer' == $page) active @endif" href="/designer">DESIGNERS</a></li>
-                <li class="nav-item dropdown">
+                <li class="nav-item shop-dropdown">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
-                    <a href="javascript:void(0)" class="nav-link border-b p-x-10x sanBold @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" @endif>SHOP</a>
-                    <ul class="dropdown-menu dropdown-nav-hover">
+                    <a href="javascript:void(0)" class="nav-link border-b p-x-10x sanBold @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) @endif>SHOP</a>
+                    <ul class="dropdown-menu dropdown-nav-hover shop-dropdownMenu">
                         @foreach($Category->getShoppingCategoryList() as $category)
                             <li class="dropdown-item @if('shopping' == $page && $cid == $category['category_id']) active @endif"><a href="/shopping/{{$category['category_id']}}">{{$category['category_name']}}</a></li>
                         @endforeach
@@ -60,16 +60,8 @@
         <nav class="navbar-right">
             <ul class="nav navbar-primary clearfix">
                 @if(Session::has('user'))
-                    <li class="nav-item p-x-10x">
-                        <a href="/user/changeprofile" class="nav-link name sanBold">{{Session::get('user.nickname')}}</a>
-                    </li>
                     <li class="nav-item p-x-10x header-img">
-                        <a href="/user/changeprofile" class="nav-link">
-                            <img class="img-circle img-border-white img-lazy"
-                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png{{config('runtime.V')}}"
-                                 data-original="@if(Session::has('user.icon')){{config('runtime.CDN_URL').'/n1/'.Session::get('user.icon')}}@else{{config('runtime.Image_URL').'/images/icon/apple-touch-icon.png'}}{{config('runtime.V')}}@endif"
-                                 width="40" height="40" alt="">
-                        </a>
+                        <a href="/user/changeprofile" class="nav-link name sanBold">{{Session::get('user.nickname')}}</a>
                         <!--个人中心下拉框-->
                         <div class="dropdown-img">
                             <span class="triangle-up"></span>
@@ -84,16 +76,44 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item p-x-20x">
+
+                    <!-- get off -->
+                    <li class="nav-item p-x-10x">
+                        <a href="#" class="helveBold text-red nav-link">get $20 off</a>
+                    </li>
+
+                    <!-- 收藏商品 -->
+                    <li class="nav-item p-l-20x p-r-0">
+                        <a href="/wish">
+                            <div class="nav-shoppingCart flex flex-alignCenter">
+                                <i class="iconfont icon-like font-size-lxx text-primary"></i>
+                                @if(Session::get('user.nickname'))
+                                    {{--购物车数量 注入服务--}}
+                                    @inject('Cart', 'App\Http\Controllers\CartController')
+                                    {{--<span class="shoppingCart-number @if($Cart->getCartAmount()['data']['skusAmout'] <= 0){{'hidden'}}@endif">{{$Cart->getCartAmount()['data']['skusAmount']}}</span>--}}
+                                    <span class="p-l-5x text-link">10</span>
+                                @else
+                                    {{--<span class="shoppingCart-number hidden"></span>--}}
+                                    <span class="p-l-5x">0</span>
+                                @endif
+
+                            </div>
+                        </a>
+                    </li>
+
+                    <!-- 购物车商品 -->
+                    <li class="nav-item p-l-20x p-r-10x">
                         <a href="/cart">
-                            <div class="nav-shoppingCart">
+                            <div class="nav-shoppingCart flex flex-alignCenter">
                                 <i class="iconfont icon-iconshoppingbag font-size-lxx text-primary"></i>
                                 @if(Session::get('user.nickname'))
                                     {{--购物车数量 注入服务--}}
                                     @inject('Cart', 'App\Http\Controllers\CartController')
-                                    <span class="shoppingCart-number @if($Cart->getCartAmount()['data']['skusAmout'] <= 0){{'hidden'}}@endif">{{$Cart->getCartAmount()['data']['skusAmount']}}</span>
+{{--                                    <span class="shoppingCart-number @if($Cart->getCartAmount()['data']['skusAmout'] <= 0){{'hidden'}}@endif">{{$Cart->getCartAmount()['data']['skusAmount']}}</span>--}}
+                                    <span class="p-l-5x text-link">10</span>
                                 @else
-                                    <span class="shoppingCart-number hidden"></span>
+                                    {{--<span class="shoppingCart-number hidden"></span>--}}
+                                    <span class="p-l-5x text-link">0</span>
                                 @endif
 
                             </div>

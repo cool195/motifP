@@ -112,8 +112,9 @@ footer .text-Copyright{
 
 .nav-shoppingCart {
   position: relative;
-  line-height: 30px;
-  display: inline-block;
+  /*line-height: 30px;*/
+  display: inline-flex;
+  padding-top: 23px;
 }
 
 .nav-shoppingCart .shoppingCart-number {
@@ -139,9 +140,13 @@ footer .text-Copyright{
   display: none;
 }
 
-.nav-shoppingCart .icon-iconshoppingbag {
+.nav-shoppingCart .icon-iconshoppingbag,.nav-shoppingCart .icon-like {
   font-size: 24px;
-  margin-top: 25px;
+  /*margin-top: 22px;*/
+}
+
+.text-productmMenu{
+  color: #7f7f7f;
 }
 
 .btn-wish:hover {
@@ -1061,6 +1066,13 @@ footer .text-Copyright{
 }
 
 /*个人中心下拉框*/
+.shop-dropdown{
+  position: relative;
+}
+.shop-dropdown:hover .shop-dropdownMenu{
+  display: block;
+}
+
 .dropdown-nav-hover li {
   padding: 3px 0 3px 0;
 }

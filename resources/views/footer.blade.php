@@ -189,5 +189,7 @@
 <noscript><img height="1" width="1" style="display:none"
                src="https://www.facebook.com/tr?id=1777634412449097&ev=PageView&noscript=1"
     /></noscript>
+
+    <script src="http://zaole.net/test/scrollfix/js/scrollfix.js"></script>
 </body>
 </html>

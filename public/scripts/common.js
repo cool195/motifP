@@ -132,6 +132,12 @@ function HideSeeMore(seemoreName) {
         }, 500);
     }
 
+    // 头部导航 靠上
+    $(function(){
+        var fix = $(".fix");
+        fix.scrollFix({zIndex:1000000});
+    });
+
     /**
      * pushAjax - 依次发送 ajax 请求，遍历所有项
      *
@@ -770,6 +776,11 @@ function HideSeeMore(seemoreName) {
             timer(leftNum / 1000);
         });
     }
+
+    // You May Also Like 查看更多
+    $('.btn-seeMoreALP').on('click',function(){
+       alert('11');
+    });
 
 
     // ShoppingDetail.html  end
