@@ -791,7 +791,8 @@ function HideSeeMore(seemoreName) {
 
     // You May Also Like 查看更多
     $('.btn-seeMoreALP').on('click',function(){
-       alert('11');
+        $('.detailCommendShop').removeAttr('hidden');
+        $(this).remove();
     });
 
 

@@ -389,8 +389,8 @@
     @if(isset($recommended['list']) && !empty($recommended['list']))
         <h4 class="helveBold text-main p-l-10x">You May Also Like</h4>
         <div class="row p-t-20x" id="alsoLike-list" data-impr="{{$recommended['impr']}}">
-            @foreach($recommended['list'] as $list)
-                <div class="col-md-3 col-xs-6">
+            @foreach($recommended['list'] as $k=>$list)
+                <div class="col-md-3 col-xs-6 detailCommendShop" @if($k>3){{'hidden'}}@endif>
                     <div class="productList-item">
                         <div class="image-container">
                             <a href="/detail/{{$list['spu']}}" data-impr="{{$list['impr']}}"
@@ -436,11 +436,6 @@
         <div class="text-center m-y-10x seeMore-info">
             <div class="">
                 <div class="btn btn-gray btn-lg btn-380 btn-seeMoreALP">VIEW MORE</div>
-            </div>
-            <div class="loading product-loading" style="display: none">
-                <div class="loader">
-                </div>
-                <div class="text-center p-l-15x">Loading...</div>
             </div>
         </div>
     @endif
