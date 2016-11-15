@@ -79,7 +79,7 @@
 
                     <!-- get off -->
                     <li class="nav-item p-x-10x">
-                        <a href="#" class="helveBold text-red nav-link">get $20 off</a>
+                        <a href="/invitefriends" class="helveBold text-red nav-link">GET $20 OFF</a>
                     </li>
 
                     <!-- 收藏商品 -->
@@ -88,12 +88,10 @@
                             <div class="nav-shoppingCart flex flex-alignCenter">
                                 <i class="iconfont icon-like font-size-lxx text-primary"></i>
                                 @if(Session::get('user.nickname'))
-                                    {{--购物车数量 注入服务--}}
-                                    @inject('Cart', 'App\Http\Controllers\CartController')
-                                    {{--<span class="shoppingCart-number @if($Cart->getCartAmount()['data']['skusAmout'] <= 0){{'hidden'}}@endif">{{$Cart->getCartAmount()['data']['skusAmount']}}</span>--}}
-                                    <span class="p-l-5x text-link">10</span>
+                                    {{--收藏商品数量 注入服务--}}
+                                    @inject('wishlist', 'App\Http\Controllers\UserController')
+                                    <span class="p-l-5x text-link headerWish" data-num="{{count($wishlist->wishlist())}}">{{count($wishlist->wishlist())}}</span>
                                 @else
-                                    {{--<span class="shoppingCart-number hidden"></span>--}}
                                     <span class="p-l-5x">0</span>
                                 @endif
 
@@ -109,10 +107,8 @@
                                 @if(Session::get('user.nickname'))
                                     {{--购物车数量 注入服务--}}
                                     @inject('Cart', 'App\Http\Controllers\CartController')
-{{--                                    <span class="shoppingCart-number @if($Cart->getCartAmount()['data']['skusAmout'] <= 0){{'hidden'}}@endif">{{$Cart->getCartAmount()['data']['skusAmount']}}</span>--}}
-                                    <span class="p-l-5x text-link">10</span>
+                                    <span class="p-l-5x text-link headerCart" data-num="{{$Cart->getCartAmount()['data']['skusAmout']}}">{{$Cart->getCartAmount()['data']['skusAmout']}}</span>
                                 @else
-                                    {{--<span class="shoppingCart-number hidden"></span>--}}
                                     <span class="p-l-5x text-link">0</span>
                                 @endif
 
@@ -121,7 +117,7 @@
                     </li>
                 @else
                     <li class="nav-item p-x-10x"><a class="nav-link" href="/login">SIGN IN</a></li>
-                    <li class="nav-item p-x-10x"><a class="nav-link" href="/register">REGISTER</a></li>
+                    <li class="nav-item p-x-10x"><a class="nav-link" href="/invitefriends">GET $20 OFF</a></li>
                 @endif
             </ul>
         </nav>

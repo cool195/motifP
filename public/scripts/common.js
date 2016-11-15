@@ -576,9 +576,9 @@ function HideSeeMore(seemoreName) {
                         setTimeout(function () {
                             AddItemModal.close();
                         }, 1500);
-                        if ($('.shoppingCart-number').hasClass('hidden')) {
-                            $('.shoppingCart-number').removeClass('hidden');
-                        }
+
+                        $('.headerCart').data('num',$('.headerCart').data('num')+1);
+                        $('.headerCart').html($('.headerCart').data('num'));
                         if (data.redirectUrl != null) {
                             window.location.href = data.redirectUrl;
                         }
@@ -648,6 +648,12 @@ function HideSeeMore(seemoreName) {
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
+                        if($this.hasClass('active')){
+                            $('.headerWish').data('num',$('.headerWish').data('num')+1);
+                        }else{
+                            $('.headerWish').data('num',$('.headerWish').data('num')-1);
+                        }
+                        $('.headerWish').html($('.headerWish').data('num'));
                     }
                 });
         } else {
@@ -678,6 +684,12 @@ function HideSeeMore(seemoreName) {
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
+                        if($this.hasClass('active')){
+                            $('.headerWish').data('num',$('.headerWish').data('num')+1);
+                        }else{
+                            $('.headerWish').data('num',$('.headerWish').data('num')-1);
+                        }
+                        $('.headerWish').html($('.headerWish').data('num'));
                     }
                 })
         } else {
@@ -3475,6 +3487,12 @@ function HideSeeMore(seemoreName) {
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
+                    if($this.hasClass('active')){
+                        $('.headerWish').data('num',$('.headerWish').data('num')+1);
+                    }else{
+                        $('.headerWish').data('num',$('.headerWish').data('num')-1);
+                    }
+                    $('.headerWish').html($('.headerWish').data('num'));
                 }
             })
     });
