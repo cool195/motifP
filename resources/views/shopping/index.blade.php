@@ -105,7 +105,9 @@
                            data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}"
                            data-price="{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}">
                             <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n2/{{$product['main_image_url']}}" alt="{{$product['main_title']}}">
-                            <img class="img-fluid productImg-hover" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/product/motif/6139/750X750/f1b1c2d9a60d4871ee2f432424c9cf18.jpg" alt="{{$product['main_title']}}">
+                            @if($product['image_paths'][0])
+                                <img class="img-fluid productImg-hover" src="{{config('runtime.CDN_URL')}}/n2/{{$product['image_paths'][0]}}" alt="{{$product['main_title']}}">
+                            @endif
                             <div class="bg-heart"></div>
                         </a>
                         @if(Session::has('user'))
