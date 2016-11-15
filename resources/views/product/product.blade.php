@@ -334,12 +334,6 @@
                 </div>
 
                 <div class="box-shadow bg-white m-t-20x p-x-20x p-b-20x">
-                    <!-- shipping 说明 -->
-                    <div class="p-t-15x p-b-10x flex flex-alignCenter">
-                        <span class="p-r-10x"><i class="iconfont icon-car font-size-llxx"></i></span>
-                        <span class="p-r-10x">This item is available for immediate shipping</span>
-                    </div>
-                    <hr class="hr-base m-a-0">
                     <!-- Description -->
                     <div class="sanBold font-size-md p-y-15x">Description:</div>
                     <div><p class="m-b-0">{!! str_replace("\n", "<br>",  $data['intro_short']) !!}</p></div>
@@ -349,47 +343,6 @@
     </div>
 </section>
 
-{{--@if(isset($data['designer']))--}}
-{{--<div class="container m-t-30x">--}}
-{{--<span class="sanBold font-size-md p-x-20x">Designer:</span>--}}
-{{--<a href="/designer/{{$data['designer']['designer_id']}}"><span--}}
-{{--class="sanBold">{{ $data['designer']['designer_name'] }}</span></a>--}}
-{{--</div>--}}
-{{--@endif--}}
-
-{{--<div class="container m-t-30x">--}}
-{{--<ul class="nav nav-tabs">--}}
-{{--<li class="nav-item">--}}
-{{--<a class="nav-link font-size-md active" href="#Description" data-toggle="tab">Description</a>--}}
-{{--</li>--}}
-{{--@if(isset($data['templates']))--}}
-{{--@foreach($data['templates'] as $template)--}}
-{{--<li class="nav-item">--}}
-{{--<a class="nav-link font-size-md btn-productTemplate" href="#template{{$template['template_id']}}"--}}
-{{--data-tid="{{$template['template_id']}}" data-toggle="tab">{{$template['template_title']}}</a>--}}
-{{--</li>--}}
-{{--@endforeach--}}
-{{--@endif--}}
-{{--</ul>--}}
-{{--<div class="tab-content bg-white p-a-20x">--}}
-{{--<div class="tab-pane text-primary active" id="Description">--}}
-{{--<p class="m-b-0">{!! str_replace("\n", "<br>",  $data['intro_short']) !!}</p>--}}
-{{--</div>--}}
-
-{{--@if(isset($data['templates']))--}}
-{{--@foreach($data['templates'] as $template)--}}
-{{--<div class="tab-pane text-primary" id="template{{$template['template_id']}}">--}}
-{{--<div class="loading" style="display: block;">--}}
-{{--<div class="loader"></div>--}}
-{{--<div class="text-center p-t-10x">Loading...</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--@endforeach--}}
-{{--@endif--}}
-
-{{--</div>--}}
-{{--</div>--}}
-
 <!-- 文字说明 -->
 @if(isset($data['templates']))
     <div class="container m-t-20x p-x-20x">
@@ -397,7 +350,7 @@
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">Free U.S Shipping</div>
-                    <div class="p-t-10x">We offer free shipping on all U.S. orders via USPS and UPS. Learn more. <a target="_blank" href="{{'/service/'.$data['templates'][0]['template_id'].'?template=1'}}" class="text-underLine">Learn more</a>.
+                    <div class="p-t-10x">We offer Free Shipping on all U.S. orders, with free upgrade to Expedited Shipping on orders over $79. <a target="_blank" href="{{'/service/'.$data['templates'][0]['template_id'].'?template=1'}}" class="text-underLine">Learn more</a>.
                     </div>
                 </div>
             </div>
