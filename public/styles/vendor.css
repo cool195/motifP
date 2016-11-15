@@ -4473,7 +4473,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-primary .nav-logo {
-  margin-top: 1rem;
+  margin-top: .625rem;
   padding-left: 1rem;
 }
 
@@ -4483,7 +4483,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-primary .nav-link {
-  line-height: 68px;
+  line-height: 58px;
 }
 
 .nav-stacked .nav-item {

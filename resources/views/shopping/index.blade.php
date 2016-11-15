@@ -104,7 +104,8 @@
                         <a href="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
                            data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}"
                            data-price="{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}">
-                            <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n2/{{$product['main_image_url']}}" alt="商品的名称">
+                            <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n2/{{$product['main_image_url']}}" alt="{{$product['main_title']}}">
+                            <img class="img-fluid productImg-hover" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/product/motif/6139/750X750/f1b1c2d9a60d4871ee2f432424c9cf18.jpg" alt="{{$product['main_title']}}">
                             <div class="bg-heart"></div>
                         </a>
                         @if(Session::has('user'))
@@ -159,6 +160,7 @@
                data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
                 <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ $value.main_image_url }}"
                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
+                <img class="img-fluid productImg-hover" src="https://s3-us-west-1.amazonaws.com/emimagetest/n2/product/motif/6139/750X750/f1b1c2d9a60d4871ee2f432424c9cf18.jpg" alt="@{{ $value.main_title }}">
                 <div class="bg-heart"></div>
             </a>
             @if(Session::has('user'))
