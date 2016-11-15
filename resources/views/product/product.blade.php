@@ -207,6 +207,8 @@
                                                     @endif
                                                 </div>
                                             @endforeach
+                                                <!-- size guide -->
+                                                <div class="p-y-10x p-r-10x"><a class="text-underLine" target="_blank" href="#">Size Guide</a></div>
                                         </div>
                                     </div>
                                 </fieldset>
