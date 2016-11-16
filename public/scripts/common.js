@@ -72,12 +72,21 @@ function HideSeeMore(seemoreName) {
         }
     }
 
-    // 设置cookie
+    // 设置cookie 5分钟
     function setCookie(name, value) {
         //var Time = 24;
         var exp = new Date();
         //exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
         exp.setTime(exp.getTime() + 5 * 60 * 1000);
+        document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
+    }
+
+    // 设置cookie 2分钟
+    function setCookieTwo(name, value ,minute) {
+        //var Time = 24;
+        var exp = new Date();
+        //exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
+        exp.setTime(exp.getTime() + minute * 60 * 1000);
         document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
     }
 
@@ -115,6 +124,37 @@ function HideSeeMore(seemoreName) {
         setCookie('pcdownloadingApp', 'true');
         $('.download-info').remove();
     });
+
+
+    // 订阅窗口显示
+    var redTimer;
+    try{
+        $(function(){
+            if($('#logged-user').length <= 0){
+                if(getCookie('motifAted')) {
+                    setRedTimer();
+                } else {
+                    setCookieTwo('motifAted','true',1);
+                    setRedTimer();
+                }
+            }
+        });
+    }catch (e){}
+    // 关闭订阅窗口
+    $('[data-remodal-id="redeem-modal"]').on('click',function(){
+        setCookieTwo('motifAted','true',2);
+        setRedTimer();
+    });
+    // 设定定时器
+    function setRedTimer(){
+        redTimer = window.setInterval(function () {
+            if(getCookie('motifAted') != 'true'){
+                redeemModal.open();
+                clearInterval(redTimer);
+            }
+        },1000);
+    }
+
 
     // 全局 loading
     function openCheckoutLoading() {
@@ -642,12 +682,23 @@ function HideSeeMore(seemoreName) {
     // 点击 "心" 关注商品
     $('.btn-wish').on('click', function () {
         var $this = $(this);
+        addToWishlist($this);
+    });
+
+    // 点击关注 detail 商品
+    $('#productDetail-wish').on('click',function(){
+        var $this = $(this).children('.product-heart').children('.btn-detailWish');
+        addToWishlist($this);
+    });
+
+    // wish 方法
+    function addToWishlist($this){
         var spu = $this.data('spu');
         if (spu != undefined) {
             $.ajax({
-                url: '/wishlist/' + spu,
-                type: 'GET'
-            })
+                    url: '/wishlist/' + spu,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
@@ -662,19 +713,18 @@ function HideSeeMore(seemoreName) {
         } else {
             spu = $this.data('actionspu');
             $.ajax({
-                url: '/noteaction',
-                type: 'get',
-                data: {
-                    action: 'wish',
-                    spu: spu
-                }
-            })
+                    url: '/noteaction',
+                    type: 'get',
+                    data: {
+                        action: 'wish',
+                        spu: spu
+                    }
+                })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
         }
-
-    });
+    }
 
     $('#productList-container').on('click', '.btn-wishList', function (e) {
         var $this = $(e.target);
@@ -3826,6 +3876,7 @@ function HideSeeMore(seemoreName) {
     //邮件订阅
     $('.redeem-fixed').on('click', function () {
         redeemModal.open();
+        clearInterval(redTimer);
     });
     // 校验 email
     $('.subscribe-email').on('keyup blur', function () {
