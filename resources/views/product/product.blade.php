@@ -155,8 +155,7 @@
                 <div class="box-shadow bg-white">
                     <div class="p-x-20x p-t-20x">
                         <div class="">
-                            <span data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"expid":0,"version":"1.0.1","src":"PC"}'
-                                  class="product-title helveBold">{{ $data['main_title'] }}</span>
+                            <span class="product-title helveBold">{{ $data['main_title'] }}</span>
                         </div>
                         <!-- 设计师名称 -->
                         @if(isset($data['designer']))
@@ -456,6 +455,7 @@
      data-spu="">
     <div class="text-center font-size-md m-y-10x">Added Failled</div>
 </div>
+<img src='{{config('runtime.CLK_URL')}}/log.gif?t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"expid":0,"version":"1.0.1","src":"PC"}' hidden>
 
 <!-- footer start -->
 @include('footer')
