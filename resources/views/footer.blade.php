@@ -141,6 +141,7 @@
 <script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/card.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
+@if (env('APP_ENV') == 'production') {
 <script src="{{config('runtime.CLK_URL')}}/wl.js"></script>
 <!-- Google Tag Manager -->
 <script>(function (w, d, s, l, i) {
@@ -189,6 +190,6 @@
 <noscript><img height="1" width="1" style="display:none"
                src="https://www.facebook.com/tr?id=1777634412449097&ev=PageView&noscript=1"
     /></noscript>
-
+@endif
 </body>
 </html>
