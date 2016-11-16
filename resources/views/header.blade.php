@@ -60,7 +60,7 @@
         <nav class="navbar-right">
             <ul class="nav navbar-primary clearfix">
                 @if(Session::has('user'))
-                    <li class="nav-item p-x-10x header-img">
+                    <li class="nav-item p-x-10x header-img" id="logged-user">
                         <a href="/user/changeprofile" class="nav-link name sanBold">{{Session::get('user.nickname')}}</a>
                         <!--个人中心下拉框-->
                         <div class="dropdown-img">

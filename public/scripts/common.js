@@ -130,7 +130,7 @@ function HideSeeMore(seemoreName) {
     var redTimer;
     try{
         $(function(){
-            if($('.login-header').length <= 0){
+            if($('#logged-user').length <= 0){
                 if(getCookie('motifAted')) {
                     setRedTimer();
                 } else {
