@@ -86,7 +86,7 @@ function HideSeeMore(seemoreName) {
         //var Time = 24;
         var exp = new Date();
         //exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
-        exp.setTime(exp.getTime() + 8 * 1000);
+        exp.setTime(exp.getTime() + 2 * 60 * 1000);
         document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
     }
 
