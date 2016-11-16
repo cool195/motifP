@@ -51,7 +51,7 @@
     <div class="container">
         <!-- 面包屑 地址 -->
         <div class="p-y-15x">
-            <a href="/shopping" class="text-productmMenu">SHOP</a>
+            <a href="/shopping" class="text-productmMenu">Shop</a>
             / <a href="/shopping/{{$data['category_id']}}" class="text-productmMenu">{{$data['category_name']}}</a>
             / <a href="/detail/{{$data['spu']}}" class="text-productmMenu">{{$data['main_title']}}</a></div>
         <div class="row">
@@ -173,13 +173,12 @@
                                 <span class="sanBold p-r-10x text-primary newPrice">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                             @endif
                         </div>
-                        <div class="p-y-5x">
-                            @if(isset($data['skuPrice']['skuPromotion']))
-                                <span class="font-size-md">{{ $data['skuPrice']['skuPromotion']['promo_words'] }}</span>
-                                <br/>
-                            @endif
-                            <span>{{$data['prompt_words']}}</span>
-                        </div>
+                        @if($data['prompt_words'] || $data['skuPrice']['skuPromotion']['promo_words'])
+                            <div class="p-y-5x">
+                                <div class="font-size-md">{{ $data['skuPrice']['skuPromotion']['promo_words'] }}</div>
+                                <div>{{$data['prompt_words']}}</div>
+                            </div>
+                        @endif
                         <hr class="hr-base">
                         <input hidden id="jsonStr" value="{{$jsonResult}}">
                         @if(!empty($data['spuAttrs']))
