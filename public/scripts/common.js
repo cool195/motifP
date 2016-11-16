@@ -86,7 +86,7 @@ function HideSeeMore(seemoreName) {
         //var Time = 24;
         var exp = new Date();
         //exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
-        exp.setTime(exp.getTime() + 2 * 60 * 1000);
+        exp.setTime(exp.getTime() + 6 * 1000);
         document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
     }
 
@@ -130,7 +130,14 @@ function HideSeeMore(seemoreName) {
     var redTimer;
     try{
         $(function(){
-            setRedTimer();
+            if($('.login-header').length <= 0){
+                if(getCookie('motifAted')) {
+                    setRedTimer();
+                } else {
+                    setCookieTwo('motifAted','true');
+                    setRedTimer();
+                }
+            }
         });
     }catch (e){}
     // 关闭订阅窗口
@@ -141,7 +148,7 @@ function HideSeeMore(seemoreName) {
     // 设定定时器
     function setRedTimer(){
         redTimer = window.setInterval(function () {
-            if(!getCookie('motifAted')){
+            if(getCookie('motifAted') != 'true'){
                 redeemModal.open();
                 clearInterval(redTimer);
             }
