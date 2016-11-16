@@ -82,11 +82,11 @@ function HideSeeMore(seemoreName) {
     }
 
     // 设置cookie 2分钟
-    function setCookieTwo(name, value) {
+    function setCookieTwo(name, value ,minute) {
         //var Time = 24;
         var exp = new Date();
         //exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
-        exp.setTime(exp.getTime() + 60 * 1000);
+        exp.setTime(exp.getTime() + minute * 60 * 1000);
         document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
     }
 
@@ -134,7 +134,7 @@ function HideSeeMore(seemoreName) {
                 if(getCookie('motifAted')) {
                     setRedTimer();
                 } else {
-                    setCookieTwo('motifAted','true');
+                    setCookieTwo('motifAted','true',1);
                     setRedTimer();
                 }
             }
@@ -142,7 +142,7 @@ function HideSeeMore(seemoreName) {
     }catch (e){}
     // 关闭订阅窗口
     $('[data-remodal-id="redeem-modal"]').on('click',function(){
-        setCookieTwo('motifAted','true');
+        setCookieTwo('motifAted','true',2);
         setRedTimer();
     });
     // 设定定时器
