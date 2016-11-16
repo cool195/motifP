@@ -682,12 +682,23 @@ function HideSeeMore(seemoreName) {
     // 点击 "心" 关注商品
     $('.btn-wish').on('click', function () {
         var $this = $(this);
+        addToWishlist($this);
+    });
+
+    // 点击关注 detail 商品
+    $('#productDetail-wish').on('click',function(){
+        var $this = $(this).children('.product-heart').children('.btn-detailWish');
+        addToWishlist($this);
+    });
+
+    // wish 方法
+    function addToWishlist($this){
         var spu = $this.data('spu');
         if (spu != undefined) {
             $.ajax({
-                url: '/wishlist/' + spu,
-                type: 'GET'
-            })
+                    url: '/wishlist/' + spu,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
@@ -702,19 +713,18 @@ function HideSeeMore(seemoreName) {
         } else {
             spu = $this.data('actionspu');
             $.ajax({
-                url: '/noteaction',
-                type: 'get',
-                data: {
-                    action: 'wish',
-                    spu: spu
-                }
-            })
+                    url: '/noteaction',
+                    type: 'get',
+                    data: {
+                        action: 'wish',
+                        spu: spu
+                    }
+                })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
         }
-
-    });
+    }
 
     $('#productList-container').on('click', '.btn-wishList', function (e) {
         var $this = $(e.target);

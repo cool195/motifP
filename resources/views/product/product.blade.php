@@ -139,14 +139,14 @@
                     </div>
                 </div>
                 @inject('wishlist', 'App\Http\Controllers\UserController')
-                <div class="flex flex-alignCenter m-y-20x p-l-5x">
+                <div class="flex flex-alignCenter m-y-20x p-l-5x" id="productDetail-wish">
                     <span class="font-size-md sanBold">Add to wishlist</span>
                     <span class="product-heart p-t-5x p-l-10x">
                         @if(Session::has('user'))
-                            <i class="iconfont btn-wish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                            <i class="iconfont btn-detailWish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
                                data-spu="{{$data['spu']}}"></i>
                         @else
-                            <i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$data['spu']}}"></i>
+                            <i class="iconfont btn-detailWish font-size-lxx" data-actionspu="{{$data['spu']}}"></i>
                         @endif
                     </span>
                 </div>
@@ -359,7 +359,7 @@
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">Free U.S Shipping</div>
-                    <div class="p-t-10x">We offer Free Shipping on all U.S. orders, with free upgrade to Expedited
+                    <div class="p-t-10x text-center">We offer Free Shipping on all U.S. orders, with free upgrade to Expedited
                         Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}"
                                                         class="text-underLine">Learn more</a>.
                     </div>
@@ -368,7 +368,7 @@
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">Easy Returns</div>
-                    <div class="p-t-10x">Simply send your return request to service@motif.me within 30 days of delivery.
+                    <div class="p-t-10x text-center">Simply send your return request to service@motif.me within 30 days of delivery.
                         Additional terms may apply. <a target="_blank" href="{{'/service/23?template=1'}}"
                                                        class="text-underLine">Learn more</a>.
                     </div>
@@ -377,7 +377,7 @@
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">International Shipping</div>
-                    <div class="p-t-10x">We offer Free Shipping to over 30+ countries, with free upgrade to Expedited
+                    <div class="p-t-10x text-center">We offer Free Shipping to over 30+ countries, with free upgrade to Expedited
                         Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}"
                                                         class="text-underLine">Learn more</a>.
                     </div>
