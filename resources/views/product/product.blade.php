@@ -198,13 +198,16 @@
                                             @foreach($spuAttr['skuAttrValues'] as $skuAttrValue )
                                                 <div class="p-y-5x p-r-10x">
                                                     @if(!empty($skuAttrValue['skus']))
-                                                        <div class="btn btn-itemProperty btn-sm"
-                                                             id="{{'skutype'.$skuAttrValue['attr_value_id']}}"
-                                                             data-type="{{'attr_type'.$spuAttr['attr_type']}}"
-                                                             data-attr-type="{{$spuAttr['attr_type']}}"
-                                                             data-attr-value-id="{{$skuAttrValue['attr_value_id']}}"
-                                                             data-id="{{'skutype'.$skuAttrValue['attr_value_id']}}">{{$skuAttrValue['attr_value']}}
-                                                        </div>
+                                                        <a href="javascript:;" class="btn btn-itemProperty btn-sm"
+                                                           @if($skuAttrValue['img_path'])
+                                                           rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$skuAttrValue['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$skuAttrValue['img_path']."'}"}}"
+                                                           @endif
+                                                           id="{{'skutype'.$skuAttrValue['attr_value_id']}}"
+                                                           data-type="{{'attr_type'.$spuAttr['attr_type']}}"
+                                                           data-attr-type="{{$spuAttr['attr_type']}}"
+                                                           data-attr-value-id="{{$skuAttrValue['attr_value_id']}}"
+                                                           data-id="{{'skutype'.$skuAttrValue['attr_value_id']}}">{{$skuAttrValue['attr_value']}}
+                                                        </a>
                                                     @else
                                                         <div class="btn btn-itemProperty btn-sm disabled">{{$skuAttrValue['attr_value']}}</div>
                                                     @endif
@@ -358,7 +361,8 @@
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">Free U.S Shipping</div>
-                    <div class="p-t-10x text-center">We offer Free Shipping on all U.S. orders, with free upgrade to Expedited
+                    <div class="p-t-10x text-center">We offer Free Shipping on all U.S. orders, with free upgrade to
+                        Expedited
                         Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}"
                                                         class="text-underLine">Learn more</a>.
                     </div>
@@ -367,7 +371,8 @@
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">Easy Returns</div>
-                    <div class="p-t-10x text-center">Simply send your return request to service@motif.me within 30 days of delivery.
+                    <div class="p-t-10x text-center">Simply send your return request to service@motif.me within 30 days
+                        of delivery.
                         Additional terms may apply. <a target="_blank" href="{{'/service/23?template=1'}}"
                                                        class="text-underLine">Learn more</a>.
                     </div>
@@ -376,7 +381,8 @@
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md sanBold">International Shipping</div>
-                    <div class="p-t-10x text-center">We offer Free Shipping to over 30+ countries, with free upgrade to Expedited
+                    <div class="p-t-10x text-center">We offer Free Shipping to over 30+ countries, with free upgrade to
+                        Expedited
                         Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}"
                                                         class="text-underLine">Learn more</a>.
                     </div>
@@ -400,7 +406,9 @@
                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                      alt="{{ $list['main_title'] }}">
                                 @if($list['image_paths'][0])
-                                    <img class="img-fluid productImg-hover" src="{{config('runtime.CDN_URL')}}/n2/{{$list['image_paths'][0]}}" alt="{{$list['main_title']}}">
+                                    <img class="img-fluid productImg-hover"
+                                         src="{{config('runtime.CDN_URL')}}/n2/{{$list['image_paths'][0]}}"
+                                         alt="{{$list['main_title']}}">
                                 @endif
                                 <div class="bg-heart"></div>
                             </a>
@@ -455,7 +463,8 @@
      data-spu="">
     <div class="text-center font-size-md m-y-10x">Added Failled</div>
 </div>
-<img src='{{config('runtime.CLK_URL')}}/log.gif?t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"expid":0,"version":"1.0.1","src":"PC"}' hidden>
+<img src='{{config('runtime.CLK_URL')}}/log.gif?t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"expid":0,"version":"1.0.1","src":"PC"}'
+     hidden>
 
 <!-- footer start -->
 @include('footer')
