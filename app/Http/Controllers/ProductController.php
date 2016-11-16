@@ -41,7 +41,7 @@ class ProductController extends BaseController
     public function recommended($spu, $cid)
     {
         $params = array(
-            'recid' => '100002',
+            'recid' => '100012',
             'uuid' => $_COOKIE['uid'],
             'pagenum' => 1,
             'pagesize' => 16,

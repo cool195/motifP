@@ -90,8 +90,6 @@
                                     {{--收藏商品数量 注入服务--}}
                                     @inject('wishlist', 'App\Http\Controllers\UserController')
                                     <span class="p-l-5x text-link headerWish" data-num="{{count($wishlist->wishlist())}}">{{count($wishlist->wishlist())}}</span>
-                                @else
-                                    <span class="p-l-5x">0</span>
                                 @endif
 
                             </div>
@@ -107,8 +105,6 @@
                                     {{--购物车数量 注入服务--}}
                                     @inject('Cart', 'App\Http\Controllers\CartController')
                                     <span class="p-l-5x text-link headerCart" data-num="{{$Cart->getCartAmount()['data']['skusAmout']}}">{{$Cart->getCartAmount()['data']['skusAmout']}}</span>
-                                @else
-                                    <span class="p-l-5x text-link">0</span>
                                 @endif
 
                             </div>
@@ -117,6 +113,22 @@
                 @else
                     <li class="nav-item p-x-10x"><a class="nav-link" href="/login">SIGN IN</a></li>
                     <li class="nav-item p-x-10x"><a class="nav-link sanBold text-red" href="/invitefriends">GET $20 OFF</a></li>
+                    <li class="nav-item p-l-20x p-r-0">
+                        <a href="/wish">
+                            <div class="nav-shoppingCart flex flex-alignCenter">
+                                <i class="iconfont icon-like font-size-lxx text-primary"></i>
+                                <span class="p-l-5x text-link">0</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item p-l-20x p-r-10x">
+                        <a href="/cart">
+                            <div class="nav-shoppingCart flex flex-alignCenter">
+                                <i class="iconfont icon-iconshoppingbag font-size-lxx text-primary"></i>
+                                    <span class="p-l-5x text-link">0</span>
+                            </div>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </nav>
