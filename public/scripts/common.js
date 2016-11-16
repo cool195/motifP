@@ -72,12 +72,21 @@ function HideSeeMore(seemoreName) {
         }
     }
 
-    // 设置cookie
+    // 设置cookie 5分钟
     function setCookie(name, value) {
         //var Time = 24;
         var exp = new Date();
         //exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
         exp.setTime(exp.getTime() + 5 * 60 * 1000);
+        document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
+    }
+
+    // 设置cookie 2分钟
+    function setCookieTwo(name, value) {
+        //var Time = 24;
+        var exp = new Date();
+        //exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
+        exp.setTime(exp.getTime() + 8 * 1000);
         document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
     }
 
@@ -115,6 +124,30 @@ function HideSeeMore(seemoreName) {
         setCookie('pcdownloadingApp', 'true');
         $('.download-info').remove();
     });
+
+
+    // 订阅窗口显示
+    var redTimer;
+    try{
+        $(function(){
+            setRedTimer();
+        });
+    }catch (e){}
+    // 关闭订阅窗口
+    $('[data-remodal-id="redeem-modal"]').on('click',function(){
+        setCookieTwo('motifAted','true');
+        setRedTimer();
+    });
+    // 设定定时器
+    function setRedTimer(){
+        redTimer = window.setInterval(function () {
+            if(!getCookie('motifAted')){
+                redeemModal.open();
+                clearInterval(redTimer);
+            }
+        },1000);
+    }
+
 
     // 全局 loading
     function openCheckoutLoading() {
@@ -3826,6 +3859,7 @@ function HideSeeMore(seemoreName) {
     //邮件订阅
     $('.redeem-fixed').on('click', function () {
         redeemModal.open();
+        clearInterval(redTimer);
     });
     // 校验 email
     $('.subscribe-email').on('keyup blur', function () {
