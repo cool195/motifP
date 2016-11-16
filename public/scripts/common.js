@@ -134,7 +134,7 @@ function HideSeeMore(seemoreName) {
                 if(getCookie('motifAted')) {
                     setRedTimer();
                 } else {
-                    setCookieTwo('motifAted','true',1);
+                    setCookieTwo('motifAted','true',2);
                     setRedTimer();
                 }
             }
@@ -142,7 +142,7 @@ function HideSeeMore(seemoreName) {
     }catch (e){}
     // 关闭订阅窗口
     $('[data-remodal-id="redeem-modal"]').on('click',function(){
-        setCookieTwo('motifAted','true',2);
+        setCookieTwo('motifAted','true',30);
         setRedTimer();
     });
     // 设定定时器
