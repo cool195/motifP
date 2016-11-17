@@ -44,7 +44,7 @@ class ProductController extends BaseController
             'recid' => '100012',
             'uuid' => $_COOKIE['uid'],
             'pagenum' => 1,
-            'pagesize' => 16,
+            'pagesize' => 8,
             'spu' => $spu,
         );
         $params['cid'] = isset($cid) ? $cid : -1;
