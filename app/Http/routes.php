@@ -310,7 +310,7 @@ Route::get('error',function (){
 Route::get('/rae', 'NetworkRedsController@index');
 Route::get('/cassandra', 'NetworkRedsController@index');
 
-Route::get('/loginfo', 'AuthController@logInfo');
+Route::get('/test', 'PageController@test');
 
 
 
