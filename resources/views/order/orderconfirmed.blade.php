@@ -32,6 +32,10 @@
     </script>
     @endif
 
+<script>
+    var totalPrice="{{ number_format($order['total_amount'] / 100, 2) }}";
+    var content_ids = [@foreach($order['lineOrderList'] as $key => $product) @if(0 == $key)'{{$product['sku']}}' @else ,'{{$product['sku']}}' @endif @endforeach];
+</script>
 <!--订单成功主体内容-->
 <section class="m-y-40x">
     <div class="container bg-white text-center">

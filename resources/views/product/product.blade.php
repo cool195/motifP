@@ -45,6 +45,11 @@
             }
         });
     }
+
+    var content_name = '{{$data['main_title']}}';
+    var content_category = '{{ $data['category_name'] }}';
+    var content_ids = ['{{$data['spu']}}'];
+    var totalPrice = '{{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}';
 </script>
 <!-- 内容 -->
 <section class="">
