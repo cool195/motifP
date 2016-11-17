@@ -360,7 +360,7 @@
         <div class="row box-shadow bg-white">
             <div class="col-lg-4">
                 <div class=" p-a-20x">
-                    <div class="text-center font-size-md sanBold">Free U.S Shipping</div>
+                    <div class="text-center font-size-md sanBold">Free U.S. Shipping</div>
                     <div class="p-t-10x text-center">We offer Free Shipping on all U.S. orders, with free upgrade to
                         Expedited
                         Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}"
