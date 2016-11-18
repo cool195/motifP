@@ -81,7 +81,7 @@
     <a href="javascript:window.open('http://twitter.com/home?status='+encodeURIComponent('{{config('runtime.SELF_URL').'d/invite/'.$code}}'),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)" class="btn btn-circle btn-shareTwitter m-r-20x p-a-5x"><i class="iconfont icon-twitter-o font-size-lxx text-white"></i></a>
     {{--<a href="#" class="btn btn-circle btn-shareGoogle m-r-20x p-a-5x"><i class="iconfont icon-google-o font-size-lxx text-white"></i></a>--}}
 </div>
-<img src='{{config('runtime.CLK_URL')}}/log.gif?t=order.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"orderno":"{{$order['sub_order_no']}}","expid":0,"version":"1.0.1","src":"PC"}' hidden>
+<img src='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=order.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"orderno":"{{$order['sub_order_no']}}","expid":0,"version":"1.0.1","src":"PC"}' hidden>
 @include('footer')
 <script src="{{config('runtime.Image_URL')}}/scripts/clipboard.min.js"></script>
 <script type="text/javascript">

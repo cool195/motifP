@@ -26,8 +26,8 @@
                                     </div>
                                 </div>
                             @else
-                                <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
-                                   data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
+                                <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
+                                   data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
                                    href="/designer/{{ $designer['designerId'] }}">
                                     <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/{{$designer['listImg']}}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png">
                                 </a>
@@ -38,7 +38,7 @@
                             <div class="productImg-list p-t-20x swiper-wrapper" data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{ $designer['spus'] }}","expid":0,"version":"1.0.1","src":"PC"}'>
                                 @foreach($designer['products']  as $k => $product)
                                 <div class="productImg-item swiper-slide m-r-10x">
-                                    <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$product['spu']}}","expid":0,"version":"1.0.1","src":"PC"}'
+                                    <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$product['spu']}}","expid":0,"version":"1.0.1","src":"PC"}'
                                        href="/detail/{{$product['spu']}}">
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n3/{{$product['mainImage']}}" width="110" height="110">
                                         {{--售完--}}
@@ -57,13 +57,13 @@
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="text-center">
                         <div class="m-b-10x">
-                            <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
+                            <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
                                href="/designer/{{ $designer['designerId'] }}" >
                                 <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
-                            <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
+                            <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
                                href="/designer/{{ $designer['designerId'] }}">{{ $designer['nickName'] }}</a>
                         </div>
                         <div class="p-t-15x">
@@ -106,13 +106,13 @@
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="text-center">
                         <div class="m-b-10x">
-                            <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
+                            <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
                                href="/designer/{{ $designer['designerId'] }}" >
                                 <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/{{$designer['avatar']}}" width="120" height="120" alt="">
                             </a>
                         </div>
                         <div class="font-size-md helveBold">
-                            <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
+                            <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
                                href="/designer/{{ $designer['designerId'] }}" >{{ $designer['nickName'] }}</a>
                         </div>
                         <div class="p-t-15x">
@@ -165,18 +165,18 @@
                                     </div>
                                 </div>
                             @else
-                                <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
-                                   data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
+                                <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
+                                   data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
                                    href="/designer/{{ $designer['designerId'] }}" >
                                     <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/{{$designer['listImg']}}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="商品的名称">
                                 </a>
                             @endif
                         </div>
                         <div class="swiper-container">
-                            <div class="productImg-list p-t-20x swiper-wrapper" data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{$designer['spus']}}","expid":0,"version":"1.0.1","src":"PC"}'>
+                            <div class="productImg-list p-t-20x swiper-wrapper" data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"{{$designer['spus']}}","expid":0,"version":"1.0.1","src":"PC"}'>
                                 @foreach($designer['products'] as $k => $product)
                                 <div class="productImg-item swiper-slide m-r-10x">
-                                    <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$product['spu']}}","expid":0,"version":"1.0.1","src":"PC"}'
+                                    <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$product['spu']}}","expid":0,"version":"1.0.1","src":"PC"}'
                                        href="/detail/{{$product['spu']}}" >
                                         <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n3/{{$product['mainImage']}}" width="110" height="110" alt="商品图片">
                                         {{--售完--}}
@@ -221,7 +221,7 @@
                 <div class="p-r-30x">
                     <div class="product-bigImg">
                         @{{ if value.listVideoId == undefined }}
-                            <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                            <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                                href="/designer/@{{ value.designerId }}" >
                                 <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ value.listImg }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="@{{ value.name }}">
                             </a>
@@ -242,10 +242,10 @@
                         @{{ /if }}
                     </div>
                     <div class="swiper-container">
-                        <div class="productImg-list p-t-20x swiper-wrapper" data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"@{{ value.spus }}","expid":0,"version":"1.0.1","src":"PC"}'>
+                        <div class="productImg-list p-t-20x swiper-wrapper" data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"@{{ value.spus }}","expid":0,"version":"1.0.1","src":"PC"}'>
                             @{{ each value.products as product }}
                                 <div class="productImg-item swiper-slide m-r-10x">
-                                    <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"@{{ product.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
+                                    <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"@{{ product.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
                                        href="/detail/@{{product.spu}}" >
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n3/@{{ product.mainImage }}" width="110" height="110" alt="">
                                         @{{ if product.sale_type == 1  }}
@@ -265,13 +265,13 @@
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="text-center">
                     <div class="m-b-10x">
-                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
                             <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
-                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >@{{ value.name }}</a>
                     </div>
                     <div class="p-t-15x">
@@ -314,13 +314,13 @@
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="text-center">
                     <div class="m-b-10x">
-                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
                             <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
-                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >@{{ value.name }}</a>
                     </div>
                     <div class="p-t-15x">
@@ -359,8 +359,8 @@
                 <div class="p-l-30x">
                     <div class="product-bigImg">
                         @{{ if value.listVideoId == undefined }}
-                        <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
-                           data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                           data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}">
                             <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ value.listImg }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="@{{ value.name }}">
                         </a>
@@ -381,10 +381,10 @@
                         @{{ /if }}
                     </div>
                     <div class="swiper-container">
-                        <div class="productImg-list p-t-20x swiper-wrapper" data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"@{{ value.spus }}","expid":0,"version":"1.0.1","src":"PC"}'>
+                        <div class="productImg-list p-t-20x swiper-wrapper" data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"@{{ value.spus }}","expid":0,"version":"1.0.1","src":"PC"}'>
                             @{{ each value.products as product}}
                                 <div class="productImg-item swiper-slide m-r-10x" >
-                                    <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"@{{ product.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
+                                    <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"@{{ product.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
                                        href="/detail/@{{product.spu}}" >
                                         <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n3/@{{ product.mainImage }}" width="110" height="110" alt="">
                                         @{{ if product.sale_type == 1  }}
@@ -417,13 +417,13 @@
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="text-center">
                     <div class="m-b-10x">
-                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
                             <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
-                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >@{{ value.name }}</a>
                     </div>
                     <div class="p-t-15x">
@@ -461,8 +461,8 @@
                 <div class="p-l-30x">
                     <div class="product-bigImg">
                         @{{ if value.listVideoId == undefined }}
-                        <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
-                           data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                           data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
                             <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ value.listImg }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="@{{ value.name }}">
                         </a>
@@ -483,10 +483,10 @@
                         @{{ /if }}
                     </div>
                     <div class="swiper-container">
-                        <div class="productImg-list p-t-20x swiper-wrapper" data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"@{{ value.spus }}","expid":0,"version":"1.0.1","src":"PC"}'>
+                        <div class="productImg-list p-t-20x swiper-wrapper" data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"@{{ value.spus }}","expid":0,"version":"1.0.1","src":"PC"}'>
                             @{{ each value.products as product}}
                             <div class="productImg-item swiper-slide m-r-10x" >
-                                <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"@{{ product.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
+                                <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"@{{ product.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
                                    href="/detail/@{{product.spu}}" >
                                     <img class="img-thumbnail small-img img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n3/@{{ product.mainImage }}" width="110" height="110" alt="">
                                     @{{ if product.sale_type == 1  }}
@@ -512,8 +512,8 @@
                 <div class="p-r-30x">
                     <div class="product-bigImg">
                         @{{ if value.listVideoId == undefined }}
-                        <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
-                           data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                           data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
                             <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ value.listImg }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png" alt="@{{ value.name }}">
                         </a>
@@ -534,10 +534,10 @@
                         @{{ /if }}
                     </div>
                     <div class="swiper-container">
-                        <div class="productImg-list p-t-20x swiper-wrapper" data-impr='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"@{{ value.spus }}","expid":0,"version":"1.0.1","src":"PC"}'>
+                        <div class="productImg-list p-t-20x swiper-wrapper" data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":1,"skipId":"@{{ value.spus }}","expid":0,"version":"1.0.1","src":"PC"}'>
                             @{{ each value.products as product}}
                             <div class="productImg-item swiper-slide m-r-10x">
-                                <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"@{{ product.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
+                                <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.300001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"@{{ product.spu }}","expid":0,"version":"1.0.1","src":"PC"}'
                                    href="/detail/@{{product.spu}}" >
                                     <img class="img-thumbnail small-img img-lazy" src="/images/product/bg-product@140.png" data-original="{{config('runtime.CDN_URL')}}/n3/@{{ product.mainImage }}" width="110" height="110" alt="">
                                     @{{ if product.sale_type == 1  }}
@@ -557,13 +557,13 @@
             <div class="col-lg-6 col-md-12 col-xs-12">
                 <div class="text-center">
                     <div class="m-b-10x">
-                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >
                             <img class="img-circle img-border-white-4x" src="{{config('runtime.CDN_URL')}}/n1/@{{ value.avatar }}" width="120" height="120" alt="">
                         </a>
                     </div>
                     <div class="font-size-md helveBold">
-                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
+                        <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","skipType":"2","skipId":"@{{ value.designerId }}","expid":"0","version":"1.0.1","src":"PC"}'
                            href="/designer/@{{ value.designerId }}" >@{{ value.name }}</a>
                     </div>
                     <div class="p-t-15x">

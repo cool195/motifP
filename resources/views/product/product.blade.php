@@ -468,7 +468,7 @@
      data-spu="">
     <div class="text-center font-size-md m-y-10x">Added Failled</div>
 </div>
-<img src='{{config('runtime.CLK_URL')}}/log.gif?t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"expid":0,"version":"1.0.1","src":"PC"}'
+<img src='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ $data['skuPrice']['sale_price'] }},"expid":0,"version":"1.0.1","src":"PC"}'
      hidden>
 
 <!-- footer start -->
