@@ -32,7 +32,7 @@
         });
     }
 
-    var content_ids = [@foreach($cart['showSkus'] as $key => $product) @if(0 == $key)'{{$product['sku']}}' @else ,'{{$product['sku']}}' @endif @endforeach];
+    var content_ids = [@foreach($cart['showSkus'] as $key => $product) @if(0 == $key)'{{$product['spu']}}' @else ,'{{$product['spu']}}' @endif @endforeach];
     var totalPrice = "{{ number_format($cart['pay_amount'] / 100, 2)}}";
 </script>
 
