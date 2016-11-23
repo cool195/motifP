@@ -126,6 +126,18 @@
                                                 <span>${{ number_format(($subOrder['pay_amount'] / 100), 2) }}</span>
                                             </span>
                                         </div>
+
+                                        <!-- 订单物流信息 begin -->
+                                        <hr class="hr-base m-a-0">
+                                        <a target="_blank" href="{{$data['logistics_info_url']}}">
+                                            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-rightJustify">
+                                                <span class="p-r-10x"><i class="iconfont icon-car font-size-llxx"></i></span>
+                                                <span class="sanBold p-r-10x">Track order</span>
+                                            <span><strong><i class="iconfont icon-arrow-right font-size-base"></i></strong></span>
+                                            </div>
+                                        </a>
+                                        <!-- 订单物流信息 end -->
+
                                         @if( 11 == $subOrder['status_code'])
                                             <hr class="hr-base m-a-0">
                                             <div class="text-right p-a-20x">

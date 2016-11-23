@@ -283,7 +283,6 @@ function HideSeeMore(seemoreName) {
                 $btnNext.hide();
                 $btnPrev.hide();
             });
-
         })
     }
 
@@ -291,6 +290,16 @@ function HideSeeMore(seemoreName) {
 
     // 点击选择图片
     $('.product-smallImg').on('mouseover', function (e) {
+
+        // 判断 左右按钮显示问题
+        var itemNum = $('#productImg .productImg-item').length,
+            $btnNext = $('.swiper-button-next'),
+            $btnPrev = $('.swiper-button-prev');
+        if (itemNum > 3) {
+            $btnNext.show();
+            $btnPrev.show();
+        }
+
         if (!$(this).children('.small-img').hasClass('active')) {
             $('#btn-startPlayer').remove();
             $('.productImg-item img').removeClass('active');
