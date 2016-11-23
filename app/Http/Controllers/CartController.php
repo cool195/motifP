@@ -222,6 +222,7 @@ class CartController extends BaseController
                 }
                 if (!$selectSku) {
                     $cartCache[] = $request->input('operate');
+                    $skusAmout += $request->input('operate')['sale_qtty'];
                 }
                 $operate = $cartCache;
             } else {
