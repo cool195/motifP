@@ -97,7 +97,7 @@ class ProductController extends BaseController
                 foreach ($skuAttrValues['skus'] as $k3 => $sku) {
                     foreach ($result['skuExps'] as $skuExp) {
                         if ($skuExp['sku'] == $sku) {
-                            if ($skuExp['stock_qtty'] > 1) {
+                            if ($skuExp['stock_qtty'] > 0) {
                                 $tempSkus[] = $sku;
                             }
                         }
