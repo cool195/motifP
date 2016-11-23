@@ -238,8 +238,7 @@
             {{--购物袋总价--}}
             <div class="box-shadow bg-white m-t-20x">
                 <div class="p-a-20x font-size-md">
-                    <div class="text-right"><span class="total_sku_qtty">Items ({{$cart['total_sku_qtty'] }}
-                            ):</span><span
+                    <div class="text-right"><span class="total_sku_qtty">Items ({{$cart['total_sku_qtty'] }}):</span><span
                                 class="sanBold cart-price total_amount"
                         >${{number_format($cart['total_amount'] /100, 2)}}</span></div>
                     @if($cart['vas_amount'] > 0)
