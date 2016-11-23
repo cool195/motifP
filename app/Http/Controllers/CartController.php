@@ -94,10 +94,16 @@ class CartController extends BaseController
             }
         } else {
             $skusAmout = 0;
-            $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
-            foreach ($cartCache as $value) {
-                $skusAmout += $value['sale_qtty'];
+            if ($cartCache = Cache::get('CartCache' . $_COOKIE['uid'])) {
+                $params = array(
+                    'cmd' => 'cartinfo',
+                    'token' => 'eeec7a32dcb6115abfe4a871c6b08b47',
+                    'operate' => json_encode($cartCache)
+                );
+                $cartList = $this->request('cart', $params);
+                $skusAmout = $cartList['data']['total_sku_qtty'];
             }
+
             $result = array('success' => true, 'data' => array('skusAmout' => $skusAmout));
         }
         return $result;
@@ -196,6 +202,7 @@ class CartController extends BaseController
         } else {
             if ($cartCache = Cache::get('CartCache' . $_COOKIE['uid'])) {
                 $selectSku = false;
+                $skusAmout = 0;
                 foreach ($cartCache as &$value) {
                     if ($value['sku'] == $request->input('operate')['sku']) {
                         $selectSku = true;
@@ -204,6 +211,7 @@ class CartController extends BaseController
                             $value['VAList'] = $request->input('operate')['VAList'];
                         }
                     }
+                    $skusAmout += $value['sale_qtty'];
                 }
                 if (!$selectSku) {
                     $cartCache[] = $request->input('operate');
@@ -211,9 +219,10 @@ class CartController extends BaseController
                 $operate = $cartCache;
             } else {
                 $operate = [$request->input('operate')];
+                $skusAmout = $request->input('operate')['sale_qtty'];
             }
             Cache::put('CartCache' . $_COOKIE['uid'], $operate, 1440 * 30);
-            return array('success' => true);
+            return array('success' => true,'data'=>array('skusAmout'=>$skusAmout));
         }
 
     }

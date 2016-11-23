@@ -620,7 +620,7 @@ function HideSeeMore(seemoreName) {
                             AddItemModal.close();
                         }, 1500);
 
-                        $('.headerCart').data('num',$('.headerCart').data('num')+1);
+                        $('.headerCart').data('num',data.data.skusAmout);
                         $('.headerCart').html($('.headerCart').data('num'));
                         if (data.redirectUrl != null) {
                             window.location.href = data.redirectUrl;
