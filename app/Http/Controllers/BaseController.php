@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Cache;
+use Illuminate\Support\Facades\Session;
 use Ixudra\Curl\Facades\Curl;
 
 error_reporting(0);
@@ -45,5 +46,20 @@ class BaseController extends Controller
         //添加日志
         //$curl = Curl::to($Api)->withData($params)->enableDebug();
         return $method ? $curl->get() : $curl->post();
+    }
+
+    //登录后合并购物车
+    protected function mergeCartSkus()
+    {
+        if ($operate = Cache::get('CartCache' . $_COOKIE['uid'])) {
+            $params = array(
+                'cmd' => 'batchaddskus',
+                'operate' => json_encode($operate),
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            $this->request('cart', $params);
+            Cache::forget('CartCache' . $_COOKIE['uid']);
+        }
     }
 }

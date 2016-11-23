@@ -48,6 +48,7 @@ class AuthController extends BaseController
             } elseif($_COOKIE['followDid']){
                 $this->addFollowDesigner($_COOKIE['followDid']);
             }
+            $this->mergeCartSkus();
         }
         return $result;
     }
@@ -81,6 +82,7 @@ class AuthController extends BaseController
             } elseif($_COOKIE['followDid']){
                 $this->addFollowDesigner($_COOKIE['followDid']);
             }
+            $this->mergeCartSkus();
         }
         return $result;
     }

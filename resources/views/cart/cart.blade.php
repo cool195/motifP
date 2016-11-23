@@ -32,14 +32,16 @@
         });
     }
 
-    var content_ids = [@foreach($cart['showSkus'] as $key => $product) @if(0 == $key)'{{$product['spu']}}' @else ,'{{$product['spu']}}' @endif @endforeach];
+    var content_ids = [@foreach($cart['showSkus'] as $key => $product) @if(0 == $key)'{{$product['spu']}}' @else , '{{$product['spu']}}' @endif @endforeach];
     var totalPrice = "{{ number_format($cart['pay_amount'] / 100, 2)}}";
 </script>
 
 @if($config)
     <div class="active-banner p-y-10x text-center">
         <span class="sanBold font-size-md">{{$config}}</span>
-        <a href="/daily"><div class="btn btn-100 btn-share btn-md m-l-20x text-link">SHOP NOW</div></a>
+        <a href="/daily">
+            <div class="btn btn-100 btn-share btn-md m-l-20x text-link">SHOP NOW</div>
+        </a>
     </div>
 @endif
 
@@ -71,10 +73,16 @@
                         @endif
                         <span>Bag Subtotal:</span>
                         <span class="sanBold pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span>
-
-                        <a href="/cart/ordercheckout" data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-                           class="m-l-30x btn btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
-                            To Checkout</a>
+                        @if(Session::get('user.pin'))
+                            <a href="/cart/ordercheckout"
+                               data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
+                               class="m-l-30x btn btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
+                                To Checkout</a>
+                        @else
+                            <a href="/login"
+                               class="m-l-30x btn btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
+                                To Checkout</a>
+                        @endif
                     @endif
                 </div>
             </div>
@@ -134,11 +142,14 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="p-l-40x m-l-10x">
-                                        <a class="btn-block cartManage" data-action="save"
-                                           data-sku="{{$showSku['sku']}}" href="javascript:;">Save for Later</a><br>
+                                        @if(Session::get('user.pin'))
+                                            <a class="btn-block cartManage" data-action="save"
+                                               data-sku="{{$showSku['sku']}}" href="javascript:;">Save for Later</a><br>
+                                        @endif
                                         <a class="btn-block" data-type="cart-remove" data-action="delsku"
                                            data-sku="{{$showSku['sku']}}" data-spu="{{$showSku['spu']}}"
-                                           data-title="{{$showSku['main_title']}}" data-price="{{number_format(($showSku['sale_price'] / 100), 2)}}"
+                                           data-title="{{$showSku['main_title']}}"
+                                           data-price="{{number_format(($showSku['sale_price'] / 100), 2)}}"
                                            data-qtty="{{$showSku['sale_qtty']}}" href="javascript:;">Remove</a>
                                     </div>
                                 </div>
@@ -162,7 +173,8 @@
                 <hr class="hr-base m-a-0">
                 <div class="p-x-20x border-bottom">
                     @foreach($save['showSkus'] as $showSku)
-                        <div class="row p-y-20x flex flex-alignCenter cartProduct-item border-bottom" id="{{'csku'.$showSku['sku']}}">
+                        <div class="row p-y-20x flex flex-alignCenter cartProduct-item border-bottom"
+                             id="{{'csku'.$showSku['sku']}}">
                             <div class="col-md-4 media">
                                 <a class="media-left" href="/detail/{{$showSku['spu']}}">
                                     <img class="img-lazy"
@@ -226,27 +238,35 @@
             {{--购物袋总价--}}
             <div class="box-shadow bg-white m-t-20x">
                 <div class="p-a-20x font-size-md">
-                    <div class="text-right"><span class="total_sku_qtty">Items ({{$cart['total_sku_qtty'] }}):</span><span
+                    <div class="text-right"><span class="total_sku_qtty">Items ({{$cart['total_sku_qtty'] }}
+                            ):</span><span
                                 class="sanBold cart-price total_amount"
-                                >${{number_format($cart['total_amount'] /100, 2)}}</span></div>
+                        >${{number_format($cart['total_amount'] /100, 2)}}</span></div>
                     @if($cart['vas_amount'] > 0)
                         <div class="text-right"><span>Additional Services:</span><span
                                     class="sanBold cart-price vas_amount"
-                                    >${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
+                            >${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
                         </div>
                     @endif
                     <div class="text-right"><span>Bag Subtotal:</span><span
                                 class="sanBold cart-price pay_amount"
-                                >${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
+                        >${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
                 </div>
             </div>
         @endif
         {{--提交按钮--}}
         <div class="p-y-40x text-right">
             @if(!empty($cart['showSkus']))
-                <a href="/cart/ordercheckout" data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-                   class="btn btn-block btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
-                    To Checkout</a>
+                @if(Session::get('user.pin'))
+                    <a href="/cart/ordercheckout"
+                       data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
+                       class="btn btn-block btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
+                        To Checkout</a>
+                @else
+                    <a href="/login"
+                       class="btn btn-block btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
+                        To Checkout</a>
+                @endif
             @endif
         </div>
     </div>
