@@ -1376,6 +1376,16 @@ footer .text-Copyright{
   height: 25px;
 }
 
+#productImg{
+  position: relative;
+}
+
+#productImg .presale-sign {
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
 .presale-sign {
   text-align: center;
   position: absolute;

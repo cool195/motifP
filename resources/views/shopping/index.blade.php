@@ -85,7 +85,7 @@
         <div class="m-b-20x text-right">
             <span class="sanBold p-r-15x">Sort By:</span>
             <div class="dropdown sortBy-dropdown">
-                <button class="btn btn-sortBy dropdown-toggle" type="button">
+                <button class="btn btn-sortBy dropdown-toggle" type="button" id="searchDropdown">
                     Featured
                 </button>
                 <div class="dropdown-menu sortBy-menu p-t-15x">

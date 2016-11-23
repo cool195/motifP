@@ -142,6 +142,12 @@
                         <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i>
                         </div>
                     </div>
+
+                    <!--预售标志-->
+                    <div class="presale-sign">
+                        <span class="newPresale-text helveBold font-size-base p-x-10x text-primary text-primary">Limited Edition</span>
+                    </div>
+
                 </div>
                 @inject('wishlist', 'App\Http\Controllers\UserController')
                 <div class="flex flex-alignCenter m-y-20x p-l-5x" id="productDetail-wish">
