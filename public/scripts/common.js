@@ -290,7 +290,7 @@ function HideSeeMore(seemoreName) {
     swiperBtnHover();
 
     // 点击选择图片
-    $('.product-smallImg').on('click', function (e) {
+    $('.product-smallImg').on('mouseover', function (e) {
         if (!$(this).children('.small-img').hasClass('active')) {
             $('#btn-startPlayer').remove();
             $('.productImg-item img').removeClass('active');
