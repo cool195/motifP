@@ -3154,6 +3154,12 @@ function HideSeeMore(seemoreName) {
     }
 
     // 排序
+    $('.sortBy-dropdown').hover(function () {
+        $(this).addClass('open');
+    }, function () {
+        $(this).removeClass('open');
+    });
+
     $('.dropdown-item').on('click', function () {
         var SearchId = $(this).data('search'),
             SearchName = $(this).data('searchtext');
