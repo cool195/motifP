@@ -28,14 +28,16 @@ class CartController extends BaseController
             return view('cart.cart', ['CartCheck' => true, 'cart' => $cartList['data'], 'save' => $saveList['data'], 'config' => $config['data']['cart_checkout_top_notification']]);
         } else {
             $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
-            $params = array(
-                'cmd' => 'cartinfo',
-                'token' => 'eeec7a32dcb6115abfe4a871c6b08b47',
-                'operate' => json_encode($cartCache)
-            );
-
-            $cartList = $this->request('cart', $params);
-
+            if(empty($cartCache)){
+                $cartList = array();
+            }else{
+                $params = array(
+                    'cmd' => 'cartinfo',
+                    'token' => 'eeec7a32dcb6115abfe4a871c6b08b47',
+                    'operate' => json_encode($cartCache)
+                );
+                $cartList = $this->request('cart', $params);
+            }
             return view('cart.cart', ['CartCheck' => true, 'cart' => $cartList['data'], 'config' => $config['data']['cart_checkout_top_notification']]);
         }
     }
@@ -121,13 +123,18 @@ class CartController extends BaseController
             return $result;
         } else {
             $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
-            $params = array(
-                'cmd' => 'cartinfo',
-                'token' => 'eeec7a32dcb6115abfe4a871c6b08b47',
-                'operate' => json_encode($cartCache)
-            );
+            if(!empty($cartCache)){
+                $params = array(
+                    'cmd' => 'cartinfo',
+                    'token' => 'eeec7a32dcb6115abfe4a871c6b08b47',
+                    'operate' => json_encode($cartCache)
+                );
 
-            return $this->request('cart', $params);
+                return $this->request('cart', $params);
+            }else{
+                return array('success'=>true,'data'=>array());
+            }
+
         }
 
     }
