@@ -120,7 +120,7 @@
         <div class="box-shadow bg-white m-t-20x" id="addrlength" data-addrlength ="{{ count($address['data']['list']) }}">
             <div class="font-size-md p-x-20x p-y-15x btn-showHide @if(empty($address['data']['list'])){{'active'}}@endif"
                  id="addrShowHide">
-                <span class="sanBold">Shipping to</span>
+                <span class="sanBold">Ship to</span>
                 <span class="pull-right showHide-simpleInfo">
                     @if(Session::has('user.checkout.address'))
                         {{$value = Session::get('user.checkout.address')}}
