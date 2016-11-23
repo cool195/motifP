@@ -85,7 +85,7 @@ class DailyController extends BaseController
 
     public function staticShow($id)
     {
-        $result = $this->service(null,$id);
+        $result = $this->service($id);
 
         return View('daily.topic', ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => false]);
     }

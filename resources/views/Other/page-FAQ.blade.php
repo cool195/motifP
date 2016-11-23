@@ -132,7 +132,7 @@
                 <p class="sanBold"><strong>I’ve changed my mind. Can I return a product if don’t want it anymore?</strong></p>
                 <p>Yes, we offer a 30 day free return if you are not 100% satisfied with your purchase.
                     We can help you return the product, but we reserve the right to charge shipping & handling, and restocking fees.
-                    For more details, please visit our Return <a href="/template/23" class="text-underLine">Policy</a> Page.</p>
+                    For more details, please visit our Return <a href="/service/23?template=1" class="text-underLine">Policy</a> Page.</p>
             </div>
         </div>
 
