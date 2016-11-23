@@ -137,10 +137,10 @@
                             <hr class="hr-base m-a-0">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <div class="p-y-20x p-l-20x">Shipping carrier: <span>UPS</span></div>
+                                    <div class="p-y-20x p-l-20x">Shipping carrier: <span>{{$data['logistics_comany']}}</span></div>
                                 </div>
                                 <div class="col-md-5">
-                                    <div class="p-y-20x p-l-20x">Tracking number: <span>LX786786877PX</span></div>
+                                    <div class="p-y-20x p-l-20x">Tracking number: <span>{{$data['shipping_no']}}</span></div>
                                 </div>
                                 <div class="col-md-4">
                                     <a target="_blank" href="{{$data['logistics_info_url']}}">

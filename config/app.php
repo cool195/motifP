@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://www.motif.me'),
+    'url' => env('APP_URL', 'https://www.motif.me'),
 
     /*
     |--------------------------------------------------------------------------

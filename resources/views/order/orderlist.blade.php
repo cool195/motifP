@@ -20,7 +20,7 @@
                             @foreach($data['list'] as $order)
                                 @foreach($order['subOrderList'] as $subOrder)
                                     @if($subOrder['status_code'] != 11)
-                                    <div class="box-shadow bg-white m-b-20x order-item">
+                                        <div class="box-shadow bg-white m-b-20x order-item">
                                         <span class="horn @if(in_array($subOrder['status_code'], array(11))) horn-red
                                             @elseif(in_array($subOrder['status_code'], array(12, 14, 15, 16, 24))) horn-orange
                                             @elseif(in_array($subOrder['status_code'], array(17, 18))) horn-green
@@ -30,122 +30,127 @@
                                             @else horn-orange
                                             @endif">
                                         </span>
-                                        <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-                                            <div>
-                                                <h5 class="sanBold font-size-md">{{$subOrder['status_info']}}
-                                                    : {{ date("M d, Y" ,strtotime($subOrder['create_time'])) }}</h5>
-                                                <p class="m-b-0 p-t-5x">{{ $subOrder['status_explain'] }}</p>
-                                            </div>
+                                            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
+                                                <div>
+                                                    <h5 class="sanBold font-size-md">{{$subOrder['status_info']}}
+                                                        : {{ date("M d, Y" ,strtotime($subOrder['create_time'])) }}</h5>
+                                                    <p class="m-b-0 p-t-5x">{{ $subOrder['status_explain'] }}</p>
+                                                </div>
                                             <span class="text-right" style="width: 28%;">
                                                 <a class="btn btn-primary btn-md"
                                                    href="/order/orderdetail/{{  $subOrder['order_no'] }}">Order Detail</a>
                                             </span>
-                                        </div>
-                                        <hr class="hr-base m-a-0">
-                                        <div class="p-x-20x">
-                                            @foreach($subOrder['lineOrderList'] as $lineOrder)
-                                                <div class="checkout-Item p-y-20x border-bottom">
-                                                    <div class="media">
-                                                        <div class="media-left m-r-15x">
-                                                            <a href="/detail/{{$lineOrder['spu']}}">
-                                                                <img class="img-lazy img-fluid"
-                                                                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                                                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
-                                                                     width="120" height="120" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="row flex flex-alignCenter">
-                                                                <div class="col-md-3">
-                                                                    <div class="font-size-md text-main p-l-20x">{{ $lineOrder['main_title'] }}</div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    @if(isset($lineOrder['attrValues']))
-                                                                        @foreach($lineOrder['attrValues'] as $attr)
-                                                                            {{$attr['attr_type_value']}}
-                                                                            :{{$attr['attr_value']}}<br>
-                                                                        @endforeach
-                                                                    @endif
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <div class="text-center">
-                                                                        ${{ number_format(($lineOrder['sale_price'] / 100), 2) }}</div>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <div class="text-center">
-                                                                        x{{ $lineOrder['sale_qtty'] }}</div>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <div class="text-center">
-                                                                        ${{ number_format(($lineOrder['total_amount'] / 100), 2) }}</div>
-                                                                </div>
+                                            </div>
+                                            <hr class="hr-base m-a-0">
+                                            <div class="p-x-20x">
+                                                @foreach($subOrder['lineOrderList'] as $lineOrder)
+                                                    <div class="checkout-Item p-y-20x border-bottom">
+                                                        <div class="media">
+                                                            <div class="media-left m-r-15x">
+                                                                <a href="/detail/{{$lineOrder['spu']}}">
+                                                                    <img class="img-lazy img-fluid"
+                                                                         src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                                                         data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
+                                                                         width="120" height="120" alt="">
+                                                                </a>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    @if(!empty($lineOrder['vas_info']))
-                                                        @foreach($lineOrder['vas_info'] as $value)
-                                                            <div class="media">
-                                                                <div class="media-left m-r-15x">
-                                                                    &nbsp;
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="row flex flex-alignCenter border-top">
-                                                                        <div class="col-md-3">
-                                                                            <div class="p-l-20x">{{$value['vas_name']}}</div>
-                                                                        </div>
-                                                                        <div class="col-md-3">
-                                                                            <div>{{ $value['user_remark'] }}</div>
-                                                                        </div>
-                                                                        <div class="col-md-2">
-                                                                            <div class="text-center">
-                                                                                ${{ number_format(($value['vas_price'] / 100), 2) }}</div>
-                                                                        </div>
-                                                                        <div class="col-md-2">
-                                                                            <div class="text-center">
-                                                                                x{{ $lineOrder['sale_qtty'] }}</div>
-                                                                        </div>
-                                                                        <div class="col-md-2">
-                                                                            <div class="text-center">
-                                                                                ${{ number_format($value['vas_price'] / 100 * $lineOrder['sale_qtty'], 2) }}</div>
-                                                                        </div>
+                                                            <div class="media-body">
+                                                                <div class="row flex flex-alignCenter">
+                                                                    <div class="col-md-3">
+                                                                        <div class="font-size-md text-main p-l-20x">{{ $lineOrder['main_title'] }}</div>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        @if(isset($lineOrder['attrValues']))
+                                                                            @foreach($lineOrder['attrValues'] as $attr)
+                                                                                {{$attr['attr_type_value']}}
+                                                                                :{{$attr['attr_value']}}<br>
+                                                                            @endforeach
+                                                                        @endif
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <div class="text-center">
+                                                                            ${{ number_format(($lineOrder['sale_price'] / 100), 2) }}</div>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <div class="text-center">
+                                                                            x{{ $lineOrder['sale_qtty'] }}</div>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <div class="text-center">
+                                                                            ${{ number_format(($lineOrder['total_amount'] / 100), 2) }}</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                        <hr class="hr-base m-a-0">
-                                        <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
-                                            <div>
-                                                Order # {{$subOrder['order_no']}}
+                                                        </div>
+                                                        @if(!empty($lineOrder['vas_info']))
+                                                            @foreach($lineOrder['vas_info'] as $value)
+                                                                <div class="media">
+                                                                    <div class="media-left m-r-15x">
+                                                                        &nbsp;
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <div class="row flex flex-alignCenter border-top">
+                                                                            <div class="col-md-3">
+                                                                                <div class="p-l-20x">{{$value['vas_name']}}</div>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <div>{{ $value['user_remark'] }}</div>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <div class="text-center">
+                                                                                    ${{ number_format(($value['vas_price'] / 100), 2) }}</div>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <div class="text-center">
+                                                                                    x{{ $lineOrder['sale_qtty'] }}</div>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <div class="text-center">
+                                                                                    ${{ number_format($value['vas_price'] / 100 * $lineOrder['sale_qtty'], 2) }}</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        @endif
+                                                    </div>
+                                                @endforeach
                                             </div>
+                                            <hr class="hr-base m-a-0">
+                                            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
+                                                <div>
+                                                    Order # {{$subOrder['order_no']}}
+                                                </div>
                                             <span>
                                                 <span class="p-r-30x">Order Total</span>
                                                 <span>${{ number_format(($subOrder['pay_amount'] / 100), 2) }}</span>
                                             </span>
+                                            </div>
+                                            @if($subOrder['logistics_info_url'])
+                                                {{--订单物流信息 begin--}}
+                                                <hr class="hr-base m-a-0">
+                                                <a target="_blank" href="{{$subOrder['logistics_info_url']}}">
+                                                    <div class="p-x-20x p-y-15x flex flex-alignCenter flex-rightJustify">
+                                                        <span class="p-r-10x"><i
+                                                                    class="iconfont icon-car font-size-llxx"></i></span>
+                                                        <span class="sanBold p-r-10x">Track order</span>
+                                                        <span><strong><i
+                                                                        class="iconfont icon-arrow-right font-size-base"></i></strong></span>
+                                                    </div>
+                                                </a>
+                                                {{--订单物流信息 end --}}
+                                            @endif
+                                            @if( 11 == $subOrder['status_code'])
+                                                <hr class="hr-base m-a-0">
+                                                <div class="text-right p-a-20x">
+                                                    <a href="/payagain/{{  $subOrder['order_no'] }}/0"
+                                                       class="btn btn-primary btn-lg btn-200 m-r-20x">Pay with Credit
+                                                        Card</a>
+                                                    <a href="/payagain/{{  $subOrder['order_no'] }}/1"
+                                                       class="btn btn-primary btn-lg btn-200">Pay with Paypal</a>
+                                                </div>
+                                            @endif
                                         </div>
-
-                                        <!-- 订单物流信息 begin -->
-                                        <hr class="hr-base m-a-0">
-                                        <a target="_blank" href="{{$data['logistics_info_url']}}">
-                                            <div class="p-x-20x p-y-15x flex flex-alignCenter flex-rightJustify">
-                                                <span class="p-r-10x"><i class="iconfont icon-car font-size-llxx"></i></span>
-                                                <span class="sanBold p-r-10x">Track order</span>
-                                            <span><strong><i class="iconfont icon-arrow-right font-size-base"></i></strong></span>
-                                            </div>
-                                        </a>
-                                        <!-- 订单物流信息 end -->
-
-                                        @if( 11 == $subOrder['status_code'])
-                                            <hr class="hr-base m-a-0">
-                                            <div class="text-right p-a-20x">
-                                                <a href="/payagain/{{  $subOrder['order_no'] }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Pay with Credit Card</a>
-                                                <a href="/payagain/{{  $subOrder['order_no'] }}/1" class="btn btn-primary btn-lg btn-200">Pay with Paypal</a>
-                                            </div>
-                                        @endif
-                                    </div>
                                     @endif
                                 @endforeach
                             @endforeach
@@ -153,15 +158,15 @@
                     </div>
                     <!-- 查看更多 按钮 loading -->
                     @if(!empty($data['list']))
-                    <div class="text-center m-y-30x seeMore-info">
-                        <div class="orderList-seeMore" style="display: none;">
-                            <a class="btn btn-gray btn-lg btn-380" href="javascript:void(0)">VIEW MORE</a>
+                        <div class="text-center m-y-30x seeMore-info">
+                            <div class="orderList-seeMore" style="display: none;">
+                                <a class="btn btn-gray btn-lg btn-380" href="javascript:void(0)">VIEW MORE</a>
+                            </div>
+                            <div class="loading orderList-loading" style="display: none">
+                                <div class="loader"></div>
+                                <div class="text-center p-l-15x">Loading...</div>
+                            </div>
                         </div>
-                        <div class="loading orderList-loading" style="display: none">
-                            <div class="loader"></div>
-                            <div class="text-center p-l-15x">Loading...</div>
-                        </div>
-                    </div>
                     @endif
                 </div>
             </div>
@@ -272,11 +277,24 @@
                 <span>$@{{ (value.pay_amount/100).toFixed(2) }}</span>
             </span>
         </div>
-        @{{ if value.status_code == 11 }}
-        <!-- 订单未支付 支付按钮 -->
+        @{{ if value.logistics_info_url }}
+            <hr class="hr-base m-a-0">
+            <a target="_blank" href="@{{value.logistics_info_url}}">
+                <div class="p-x-20x p-y-15x flex flex-alignCenter flex-rightJustify">
+                                                        <span class="p-r-10x"><i
+                                                                    class="iconfont icon-car font-size-llxx"></i></span>
+                    <span class="sanBold p-r-10x">Track order</span>
+                                                        <span><strong><i
+                                                                        class="iconfont icon-arrow-right font-size-base"></i></strong></span>
+                </div>
+            </a>
+        @{{ /if }}
+    @{{ if value.status_code == 11 }}
+    <!-- 订单未支付 支付按钮 -->
         <hr class="hr-base m-a-0">
         <div class="text-right p-a-20x">
-            <a href="/payagain/@{{  $value.order_no }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Pay with Credit Card</a>
+            <a href="/payagain/@{{  $value.order_no }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Pay with Credit
+                Card</a>
             <a href="/payagain/@{{  $value.order_no }}/1" class="btn btn-primary btn-lg btn-200">Pay with Paypal</a>
         </div>
         @{{ /if }}

@@ -142,12 +142,12 @@
                         <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i>
                         </div>
                     </div>
-
-                    <!--预售标志-->
-                    <div class="presale-sign">
-                        <span class="newPresale-text helveBold font-size-base p-x-10x text-primary text-primary">Limited Edition</span>
-                    </div>
-
+                    @if(1 == $data['sale_type'])
+                        {{--预售标志--}}
+                        <div class="presale-sign">
+                            <span class="newPresale-text helveBold font-size-base p-x-10x text-primary text-primary">Limited Edition</span>
+                        </div>
+                    @endif
                 </div>
                 @inject('wishlist', 'App\Http\Controllers\UserController')
                 <div class="flex flex-alignCenter m-y-20x p-l-5x" id="productDetail-wish">
@@ -345,11 +345,11 @@
                         <hr class="hr-base m-a-0">
                         <div class="text-center p-y-30x">
                             {{--@if(Session::has('user'))--}}
-                                <a href="javascript:void(0);" id="productAddBag"
-                                   class="btn btn-primary btn-lg btn-350 btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']!=1 || $data['status_code'] != 100){{'disabled'}}@endif"
-                                   data-action="post"> Add to Bag </a>
+                            <a href="javascript:void(0);" id="productAddBag"
+                               class="btn btn-primary btn-lg btn-350 btn-addToBag @if(!$data['sale_status'] || $data['isPutOn']!=1 || $data['status_code'] != 100){{'disabled'}}@endif"
+                               data-action="post"> Add to Bag </a>
                             {{--@else--}}
-                                {{--<a href="/login" class="btn btn-primary btn-lg btn-350 btn-addToBag"> Add to Bag </a>--}}
+                            {{--<a href="/login" class="btn btn-primary btn-lg btn-350 btn-addToBag"> Add to Bag </a>--}}
                             {{--@endif--}}
                         </div>
                     </div>
