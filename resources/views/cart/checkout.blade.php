@@ -260,7 +260,7 @@
         {{--Shipping Method--}}
         <div class="box-shadow bg-white m-t-20x">
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="smShowHide">
-                <span class="sanBold">Shipping</span>
+                <span class="sanBold">Shipping Method</span>
                 <span class="pull-right showHide-simpleInfo">
                     @if(Session::has('user.checkout.selship'))
                         <span class="shippingMethodShow">{{Session::get('user.checkout.selship.logistics_name')}} @if(Session::get('user.checkout.selship.pay_price')>0)
