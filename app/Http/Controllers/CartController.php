@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Cache;
 
 class CartController extends BaseController
 {
@@ -15,16 +16,30 @@ class CartController extends BaseController
         );
         $config = $this->request('general', $params);
         $config['data']['cart_checkout_top_notification'];
-
-        $cartList = $this->getCartList();
-        $saveList = $this->getCartSaveList();
-        if($request->input('ajax')){
-            $result = array();
-            $result['cart'] = $cartList['data'];
-            $result['save'] = $cartList['data'];
-            return $result;
+        if (Session::get('user.pin')) {
+            $cartList = $this->getCartList();
+            $saveList = $this->getCartSaveList();
+            if ($request->input('ajax')) {
+                $result = array();
+                $result['cart'] = $cartList['data'];
+                $result['save'] = $cartList['data'];
+                return $result;
+            }
+            return view('cart.cart', ['CartCheck' => true, 'cart' => $cartList['data'], 'save' => $saveList['data'], 'config' => $config['data']['cart_checkout_top_notification']]);
+        } else {
+            $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
+            if(empty($cartCache)){
+                $cartList = array();
+            }else{
+                $params = array(
+                    'cmd' => 'cartinfo',
+                    'token' => 'eeec7a32dcb6115abfe4a871c6b08b47',
+                    'operate' => json_encode($cartCache)
+                );
+                $cartList = $this->request('cart', $params);
+            }
+            return view('cart.cart', ['CartCheck' => true, 'cart' => $cartList['data'], 'config' => $config['data']['cart_checkout_top_notification']]);
         }
-        return view('cart.cart', ['CartCheck'=>true,'cart' => $cartList['data'], 'save' => $saveList['data'],'config'=>$config['data']['cart_checkout_top_notification']]);
     }
 
     public function checkout(Request $request)
@@ -37,9 +52,9 @@ class CartController extends BaseController
         $config = $this->request('general', $params);
         $config['data']['cart_checkout_top_notification'];
 
-        if(Session::has('user.checkout.address.receiving_id')){
+        if (Session::has('user.checkout.address.receiving_id')) {
             $result['data'] = Session::get('user.checkout.address');
-        }else{
+        } else {
             //获取默认地址
             $params = array(
                 'cmd' => 'gdefault',
@@ -50,46 +65,78 @@ class CartController extends BaseController
             $result = $this->request('useraddr', $params);
         }
 
-        $_accountList = $this->getCartAccountList($request,-1,"","",$result['data']['receiving_id']);
-        $logisticsList = $this->getLogisticsList($result['data']['country_name_sn'],$_accountList['data']['total_amount']+$_accountList['data']['vas_amount']);
-        if(!Session::get('user.checkout.selship')){
-            Session::put('user.checkout.selship',$logisticsList['data']['list'][0]);
+        $_accountList = $this->getCartAccountList($request, -1, "", "", $result['data']['receiving_id']);
+        $logisticsList = $this->getLogisticsList($result['data']['country_name_sn'], $_accountList['data']['total_amount'] + $_accountList['data']['vas_amount']);
+        if (!Session::get('user.checkout.selship')) {
+            Session::put('user.checkout.selship', $logisticsList['data']['list'][0]);
         }
         $accountList = $this->getCartAccountList($request, Session::get('user.checkout.selship.logistics_type'), "", "", $result['data']['receiving_id']);
-        if(empty($accountList['data'])){
+        if (empty($accountList['data'])) {
             return redirect('cart');
         }
-        return view('cart.checkout', ['CartCheck'=>true,'accountList' => $accountList['data'], 'logisticsList' => $logisticsList['data'],'config'=>$config['data']['cart_checkout_top_notification']]);
+        return view('cart.checkout', ['CartCheck' => true, 'accountList' => $accountList['data'], 'logisticsList' => $logisticsList['data'], 'config' => $config['data']['cart_checkout_top_notification']]);
     }
 
     public function getCartAmount()
     {
-        $params = array(
-            'cmd' => 'amount',
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $result = $this->request('cart', $params);
-        if($result['success']){
-            if(empty($result['data']['saveAmout'])){
-                $result['data']['saveAmout'] = 0;
+        if (Session::get('user.pin')) {
+            $params = array(
+                'cmd' => 'amount',
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            $result = $this->request('cart', $params);
+            if ($result['success']) {
+                if (empty($result['data']['saveAmout'])) {
+                    $result['data']['saveAmout'] = 0;
+                }
+                if (empty($result['data']['skusAmout'])) {
+                    $result['data']['skusAmout'] = 0;
+                }
             }
-            if(empty($result['data']['skusAmout'])){
-                $result['data']['skusAmout'] = 0;
+        } else {
+            $skusAmout = 0;
+            if ($cartCache = Cache::get('CartCache' . $_COOKIE['uid'])) {
+                $params = array(
+                    'cmd' => 'cartinfo',
+                    'token' => 'eeec7a32dcb6115abfe4a871c6b08b47',
+                    'operate' => json_encode($cartCache)
+                );
+                $cartList = $this->request('cart', $params);
+                $skusAmout = $cartList['data']['total_sku_qtty'];
             }
+
+            $result = array('success' => true, 'data' => array('skusAmout' => $skusAmout));
         }
         return $result;
     }
 
     public function getCartList()
     {
-        $params = array(
-            'cmd' =>"cartlist",
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $result = $this->request('cart', $params);
-        return $result;
+        if (Session::get('user.pin')) {
+            $params = array(
+                'cmd' => "cartlist",
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            $result = $this->request('cart', $params);
+            return $result;
+        } else {
+            $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
+            if(!empty($cartCache)){
+                $params = array(
+                    'cmd' => 'cartinfo',
+                    'token' => 'eeec7a32dcb6115abfe4a871c6b08b47',
+                    'operate' => json_encode($cartCache)
+                );
+
+                return $this->request('cart', $params);
+            }else{
+                return array('success'=>true,'data'=>array());
+            }
+
+        }
+
     }
 
     public function getCartSaveList()
@@ -103,10 +150,10 @@ class CartController extends BaseController
         return $result;
     }
 
-    public function getCartAccountList(Request $request, $logisticstype = 1, $bindid = "", $paytype = "",$aid)
+    public function getCartAccountList(Request $request, $logisticstype = 1, $bindid = "", $paytype = "", $aid)
     {
         $params = array(
-            'cmd'=>'accountlist',
+            'cmd' => 'accountlist',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
             'logisticstype' => $request->input('logisticstype', $logisticstype),
@@ -119,18 +166,18 @@ class CartController extends BaseController
         return $result;
     }
 
-    private function getLogisticsList($country=0,$price=0)
+    private function getLogisticsList($country = 0, $price = 0)
     {
         $params = array(
             'cmd' => 'logis',
             'token' => Session::get('user.token')
         );
-        if($price != 0){
+        if ($price != 0) {
             $params['amount'] = $price;
             $params['country'] = $country;
         }
         $result = $this->request('general', $params);
-        
+
         return $result;
     }
 
@@ -140,7 +187,7 @@ class CartController extends BaseController
             'cmd' => 'logis',
             'token' => Session::get('user.token')
         );
-        if($request->input('price') != 0){
+        if ($request->input('price') != 0) {
             $params['amount'] = $request->input('price');
             $params['country'] = $request->input('country');
         }
@@ -150,14 +197,42 @@ class CartController extends BaseController
 
     public function addCart(Request $request)
     {
-        $params = array(
-            'cmd' => 'addsku',
-            'operate' => json_encode($request->input('operate')),
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $result = $this->request('cart', $params);
-        return $result;
+        if (Session::get('user.pin')) {
+            $params = array(
+                'cmd' => 'addsku',
+                'operate' => json_encode($request->input('operate')),
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            $result = $this->request('cart', $params);
+            return $result;
+        } else {
+            if ($cartCache = Cache::get('CartCache' . $_COOKIE['uid'])) {
+                $selectSku = false;
+                $skusAmout = 0;
+                foreach ($cartCache as &$value) {
+                    if ($value['sku'] == $request->input('operate')['sku']) {
+                        $selectSku = true;
+                        $value['sale_qtty'] = intval($value['sale_qtty']) + intval($request->input('operate')['sale_qtty']);
+                        if ($request->input('operate')['VAList']) {
+                            $value['VAList'] = $request->input('operate')['VAList'];
+                        }
+                    }
+                    $skusAmout += $value['sale_qtty'];
+                }
+                if (!$selectSku) {
+                    $cartCache[] = $request->input('operate');
+                    $skusAmout += $request->input('operate')['sale_qtty'];
+                }
+                $operate = $cartCache;
+            } else {
+                $operate = [$request->input('operate')];
+                $skusAmout = $request->input('operate')['sale_qtty'];
+            }
+            Cache::put('CartCache' . $_COOKIE['uid'], $operate, 1440 * 30);
+            return array('success' => true,'data'=>array('skusAmout'=>$skusAmout));
+        }
+
     }
 
     public function addBatchCart(Request $request)
@@ -169,7 +244,7 @@ class CartController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('cart', $params);
-        if(!empty($result) && $result['success']){
+        if (!empty($result) && $result['success']) {
             $result['redirectUrl'] = '/cart';
         }
         return $result;
@@ -177,15 +252,27 @@ class CartController extends BaseController
 
     public function alterCartProQtty(Request $request)
     {
-        $params = array(
-            'cmd' => 'alterqtty',
-            'sku' => $request->input('sku'),
-            'qtty' => $request->input('qtty'),
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-        );
-        $result = $this->request('cart', $params);
-        return $result;
+        if (Session::get('user.pin')) {
+            $params = array(
+                'cmd' => 'alterqtty',
+                'sku' => $request->input('sku'),
+                'qtty' => $request->input('qtty'),
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            $result = $this->request('cart', $params);
+            return $result;
+        } else {
+            $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
+            foreach ($cartCache as &$value) {
+                if ($value['sku'] == $request->input('sku')) {
+                    $value['sale_qtty'] = $request->input('qtty');
+                    break;
+                }
+            }
+            Cache::put('CartCache' . $_COOKIE['uid'], $cartCache, 1440 * 30);
+            return ['success' => true];
+        }
     }
 
     public function promptlyBuy(Request $request)
@@ -198,7 +285,7 @@ class CartController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('cart', $params);
-        if($result['success']){
+        if ($result['success']) {
             $result['redirectUrl'] = '/checkout';
         }
         return $result;
@@ -208,17 +295,29 @@ class CartController extends BaseController
     {
         $cmdSelector = array("select", "cancal", "delsku", "save", "movetocart", "delsave");
         $cmd = $request->input('cmd');
-        if(in_array($cmd, $cmdSelector))
-        {
-            $params = array(
-                'cmd' => $cmd,
-                'sku' => $request->input('sku'),
-                'token' => Session::get('user.token'),
-                'pin' => Session::get('user.pin'),
-            );
-            $result = $this->request('cart', $params);
-            if(!empty($result) && $result['success']){
-                return $result;
+        if (in_array($cmd, $cmdSelector)) {
+            if (Session::get('user.pin')) {
+                $params = array(
+                    'cmd' => $cmd,
+                    'sku' => $request->input('sku'),
+                    'token' => Session::get('user.token'),
+                    'pin' => Session::get('user.pin'),
+                );
+                $result = $this->request('cart', $params);
+                if (!empty($result) && $result['success']) {
+                    return $result;
+                }
+            } else {
+                if ($cmd == 'delsku') {
+                    $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
+                    foreach ($cartCache as $k => $value) {
+                        if ($value['sku'] == $request->input('sku')) {
+                            array_splice($cartCache, $k, 1);
+                            Cache::put('CartCache' . $_COOKIE['uid'], $cartCache, 1440 * 30);
+                            return ['success' => true];
+                        }
+                    }
+                }
             }
         }
     }

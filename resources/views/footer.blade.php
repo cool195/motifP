@@ -20,7 +20,7 @@
                     <a class="list-group-item font-size-xs text-white" href="/contactus">Contact Us</a>
                     <a class="list-group-item font-size-xs text-white" href="/faq">FAQ</a>
                     {{--<a class="list-group-item font-size-xs text-white" href="/payments">Payments</a>--}}
-                    <a class="list-group-item font-size-xs text-white" href="/template/23">Shipping & Returns</a>
+                    <a class="list-group-item font-size-xs text-white" href="/service/23?template=1">Shipping & Returns</a>
                 </div>
             </div>
             <div class="col-md-3 col-xs-6">
@@ -141,6 +141,7 @@
 <script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/card.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
+@if (env('APP_ENV') == 'production') {
 <script src="{{config('runtime.CLK_URL')}}/wl.js"></script>
 <!-- Google Tag Manager -->
 <script>(function (w, d, s, l, i) {
@@ -164,31 +165,6 @@
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<script>
-    !function (f, b, e, v, n, t, s) {
-        if (f.fbq)return;
-        n = f.fbq = function () {
-            n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-        };
-        if (!f._fbq)f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = '2.0';
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s)
-    }(window,
-            document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', '1777634412449097');
-    fbq('track', "PageView");</script>
-<noscript><img height="1" width="1" style="display:none"
-               src="https://www.facebook.com/tr?id=1777634412449097&ev=PageView&noscript=1"
-    /></noscript>
-
+@endif
 </body>
 </html>

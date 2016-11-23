@@ -290,7 +290,7 @@ function HideSeeMore(seemoreName) {
     swiperBtnHover();
 
     // 点击选择图片
-    $('.product-smallImg').on('click', function (e) {
+    $('.product-smallImg').on('mouseover', function (e) {
         if (!$(this).children('.small-img').hasClass('active')) {
             $('#btn-startPlayer').remove();
             $('.productImg-item img').removeClass('active');
@@ -620,7 +620,7 @@ function HideSeeMore(seemoreName) {
                             AddItemModal.close();
                         }, 1500);
 
-                        $('.headerCart').data('num',$('.headerCart').data('num')+1);
+                        $('.headerCart').data('num',data.data.skusAmout);
                         $('.headerCart').html($('.headerCart').data('num'));
                         if (data.redirectUrl != null) {
                             window.location.href = data.redirectUrl;
@@ -957,6 +957,8 @@ function HideSeeMore(seemoreName) {
             .done(function (data) {
                 if (data.success) {
                     if (data.data != '') {
+                        $('.headerCart').html(data.data.total_sku_qtty);
+                        $('.headerCart').data('num',data.data.total_sku_qtty);
                         $('.total_amount').html('$' + (data.data.total_amount / 100).toFixed(2));
                         $('.total_sku_qtty').html('Items (' + data.data.total_sku_qtty + '):');
                         $('.vas_amount').html('$' + (data.data.vas_amount / 100).toFixed(2));
@@ -3152,6 +3154,12 @@ function HideSeeMore(seemoreName) {
     }
 
     // 排序
+    $('.sortBy-dropdown').hover(function () {
+        $(this).addClass('open');
+    }, function () {
+        $(this).removeClass('open');
+    });
+
     $('.dropdown-item').on('click', function () {
         var SearchId = $(this).data('search'),
             SearchName = $(this).data('searchtext');
