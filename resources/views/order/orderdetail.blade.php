@@ -139,12 +139,12 @@
                                 <div class="col-md-3">
                                     <div class="p-y-20x p-l-20x">Shipping carrier: <span>{{$data['logistics_comany']}}</span></div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="p-y-20x p-l-20x">Tracking number: <span>{{$data['shipping_no']}}</span></div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <a target="_blank" href="{{$data['logistics_info_url']}}">
-                                        <div class="p-x-20x p-y-15x flex flex-alignCenter flex-rightJustify">
+                                        <div class="p-r-20x p-y-15x flex flex-alignCenter flex-rightJustify">
                                             <span class="p-r-10x"><i class="iconfont icon-car font-size-llxx"></i></span>
                                             <span class="sanBold p-r-10x">Track order</span>
                                     <span><strong><i
