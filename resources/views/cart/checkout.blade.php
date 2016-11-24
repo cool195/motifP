@@ -120,7 +120,7 @@
         <div class="box-shadow bg-white m-t-20x" id="addrlength" data-addrlength ="{{ count($address['data']['list']) }}">
             <div class="font-size-md p-x-20x p-y-15x btn-showHide @if(empty($address['data']['list'])){{'active'}}@endif"
                  id="addrShowHide">
-                <span class="sanBold">Shipping to</span>
+                <span class="sanBold">Ship to</span>
                 <span class="pull-right showHide-simpleInfo">
                     @if(Session::has('user.checkout.address'))
                         {{$value = Session::get('user.checkout.address')}}
@@ -260,7 +260,7 @@
         {{--Shipping Method--}}
         <div class="box-shadow bg-white m-t-20x">
             <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="smShowHide">
-                <span class="sanBold">Shipping</span>
+                <span class="sanBold">Shipping Method</span>
                 <span class="pull-right showHide-simpleInfo">
                     @if(Session::has('user.checkout.selship'))
                         <span class="shippingMethodShow">{{Session::get('user.checkout.selship.logistics_name')}} @if(Session::get('user.checkout.selship.pay_price')>0)
@@ -770,7 +770,7 @@
         </div>
         <!-- 提交按钮 -->
         <div class="p-y-20x text-right">
-            <div data-clks='{{config('runtime.CLK_URL')}}/log.gif?t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
+            <div data-clks='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
                class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" id="placeOrder" data-with="Worldpay">Place Order</div>
             {{--<a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Oceanpay">Pay
                 with Credit Card</a>

@@ -61,6 +61,14 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::post('/checkStock', 'ShoppingController@checkStock');
 
+    //未登录添加购物车
+    Route::get('/cart/amount', 'CartController@getCartAmount');
+    Route::get('/cart', 'CartController@cart');
+    Route::post('/cart/add', 'CartController@addCart');
+    Route::post('/cart/alterQtty', 'CartController@alterCartProQtty');
+    Route::post('/cart/operate', 'CartController@operateCartProduct');
+    Route::get('/cart/list', 'CartController@getCartList');
+
 });
 
 //Shopping End
@@ -74,13 +82,9 @@ Route::get('/detail/{spu}', 'ProductController@product')->middleware(['pcguide']
 //Cart Start
 Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
-    Route::get('/cart', 'CartController@cart');
+
 
     Route::get('/cart/ordercheckout', 'CartController@checkout');
-
-    Route::get('/cart/amount', 'CartController@getCartAmount');
-
-    Route::get('/cart/list', 'CartController@getCartList');
 
     Route::get('/cart/accountlist', 'CartController@getCartAccountList');
 
@@ -88,17 +92,11 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::get('/cart/savelist', 'CartController@getCartSaveList');
 
-    Route::post('/cart/add', 'CartController@addCart');
-
     Route::put('/cart/add', 'CartController@promptlyBuy');
 
     Route::post('/cart/proBuy', 'CartController@promptlyBuy');
 
     Route::post('/cart/addBatch', 'CartController@addBatchCart');
-
-    Route::post('/cart/alterQtty', 'CartController@alterCartProQtty');
-
-    Route::post('/cart/operate', 'CartController@operateCartProduct');
 
 });
 //Cart End
@@ -310,7 +308,7 @@ Route::get('error',function (){
 Route::get('/rae', 'NetworkRedsController@index');
 Route::get('/cassandra', 'NetworkRedsController@index');
 
-Route::get('/loginfo', 'AuthController@logInfo');
+Route::get('/test', 'PageController@test');
 
 
 

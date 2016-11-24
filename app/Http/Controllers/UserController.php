@@ -32,6 +32,7 @@ class UserController extends BaseController
         if ($result['success']) {
             Session::forget('user');
             Session::put('user', $result['data']);
+            $this->mergeCartSkus();
             $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'login')) ? $request->input('referer') : "/daily";
         } else {
             $result['prompt_msg'] = $result['error_msg'];
@@ -65,6 +66,7 @@ class UserController extends BaseController
             } elseif ($_COOKIE['followDid']) {
                 $this->addFollowDesigner($_COOKIE['followDid']);
             }
+            $this->mergeCartSkus();
         }
         return $result;
     }

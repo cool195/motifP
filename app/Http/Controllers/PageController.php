@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 class PageController extends BaseController
 {
-    //aboutMotif
-    public function error()
+
+
+    public function test()
     {
-        return View('error');
+        return View('Other.test');
     }
 
     //aboutMotif
