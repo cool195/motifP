@@ -134,6 +134,7 @@ function HideSeeMore(seemoreName) {
                 if (getCookie('motifAtedIsShow') != 'true' && getCookie('userShow2016') != 'true') {
                     setCookieTwo('motifAted', 'true', 2);
                     setCookieTwo('userShow2016', 'true', 1440 * 7);
+                    setRedTimer();
                 }
             }
         });
