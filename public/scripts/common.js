@@ -132,7 +132,7 @@ function HideSeeMore(seemoreName) {
         $(function(){
             if ($('#logged-user').length <= 0 && $('.login-container').length <= 0) {
                 if (getCookie('motifAtedIsShow') != 'true' && getCookie('userShow2016') != 'true') {
-                    setCookieTwo('motifAted', 'true', 0.1);
+                    setCookieTwo('motifAted', 'true', 2);
                     setCookieTwo('userShow2016', 'true', 1440 * 7);
                 }
             }
