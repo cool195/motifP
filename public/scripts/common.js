@@ -127,33 +127,27 @@ function HideSeeMore(seemoreName) {
 
 
     // 订阅窗口显示
-    // var redTimer;
-    // try{
-    //     $(function(){
-    //         if ($('#logged-user').length <= 0 && $('.login-container').length <= 0) {
-    //             if (getCookie('motifAtedIsShow') != 'true' && getCookie('userShow2016') != 'true') {
-    //                 setCookieTwo('motifAted', 'true', 2);
-    //                 setCookieTwo('userShow2016', 'true', 1440 * 7);
-    //                 setRedTimer();
-    //             }
-    //         }
-    //     });
-    // }catch (e){}
-    // // 关闭订阅窗口
-    // //$('[data-remodal-id="redeem-modal"]').on('click',function(){
-    // //    setCookieTwo('motifAted','true',30);
-    // //    setRedTimer();
-    // //});
-    // // 设定定时器
-    // function setRedTimer(){
-    //     redTimer = window.setInterval(function () {
-    //         if(getCookie('motifAted') != 'true' && getCookie('motifAted') != true){
-    //             setCookieTwo('motifAtedIsShow','true',1440*7);
-    //             redeemModal.open();
-    //             clearInterval(redTimer);
-    //         }
-    //     },1000);
-    // }
+     try{
+         $(function(){
+             if($('#logged-user').length <= 0 && $('.login-container').length <=0 ){
+                 if (!sessionStorage.getItem('afterTime')){
+                     var date = new Date();
+                     var afterTime =  (date.getTime()+10*1000);
+                     sessionStorage.setItem('afterTime', afterTime);
+                     date.setTime(afterTime);
+                     document.cookie = "motifAted=1; expires="+date.toUTCString();
+                 }
+
+                 if (sessionStorage.getItem('afterTime') && getCookie('motifAted')){
+                     var t = sessionStorage.getItem('afterTime') - new Date().getTime();
+                     setTimeout(function () {
+                         redeemModal.open();
+                     }, t);
+
+                 }
+             }
+         });
+     }catch (e){}
 
 
     // 全局 loading
@@ -3893,7 +3887,6 @@ function HideSeeMore(seemoreName) {
     //邮件订阅
     $('.redeem-fixed').on('click', function () {
         redeemModal.open();
-        clearInterval(redTimer);
     });
     // 校验 email
     $('.subscribe-email').on('keyup blur', function () {
