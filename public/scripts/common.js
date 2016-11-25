@@ -82,7 +82,7 @@ function HideSeeMore(seemoreName) {
     }
 
     // 设置cookie 2分钟
-    function setCookieTwo(name, value ,minute) {
+    function setCookieTwo(name, value, minute) {
         //var Time = 24;
         var exp = new Date();
         //exp.setTime(exp.getTime() + Time * 60 * 60 * 1000);
@@ -127,27 +127,33 @@ function HideSeeMore(seemoreName) {
 
 
     // 订阅窗口显示
-     try{
-         $(function(){
-             if($('#logged-user').length <= 0 && $('.login-container').length <=0 ){
-                 if (!sessionStorage.getItem('afterTime')){
-                     var date = new Date();
-                     var afterTime =  (date.getTime()+2 * 60 * 1000);
-                     sessionStorage.setItem('afterTime', afterTime);
-                     date.setTime(afterTime);
-                     document.cookie = "motifAted=1; expires="+date.toUTCString();
-                 }
+    try {
+        $(function () {
+            if ($('#logged-user').length <= 0 && $('.login-container').length <= 0) {
+                if (!sessionStorage.getItem('afterTime')) {
+                    var date = new Date();
+                    var afterTime = (date.getTime() + 2 * 60 * 1000);
+                    sessionStorage.setItem('afterTime', afterTime);
+                    date.setTime(afterTime);
+                    document.cookie = "motifAted=1; expires=" + date.toUTCString();
+                }
 
-                 if (sessionStorage.getItem('afterTime') && getCookie('motifAted')){
-                     var t = sessionStorage.getItem('afterTime') - new Date().getTime();
-                     setTimeout(function () {
-                         redeemModal.open();
-                     }, t);
+                if (sessionStorage.getItem('afterTime') && getCookie('motifAted') && !getCookie('userShow2016')) {
+                    var t = sessionStorage.getItem('afterTime') - new Date().getTime();
+                    setTimeout(function () {
+                        redeemModal.open();
+                    }, t);
 
-                 }
-             }
-         });
-     }catch (e){}
+                }
+            }
+        });
+    } catch (e) {
+    }
+
+    // 关闭订阅窗口
+    $('.redeem-close').on('click', function () {
+        setCookieTwo('userShow2016', 'true', 7 * 24 * 60 * 60 * 1000);
+    });
 
 
     // 全局 loading
@@ -167,9 +173,9 @@ function HideSeeMore(seemoreName) {
     }
 
     // 头部导航 靠上
-    $(function(){
+    $(function () {
         var fix = $(".fix");
-        fix.scrollFix({zIndex:1000000});
+        fix.scrollFix({zIndex: 1000000});
     });
 
     /**
@@ -185,8 +191,8 @@ function HideSeeMore(seemoreName) {
                 $(element).removeAttr('data-impr');
                 if (impr != undefined && impr != null && impr != "") {
                     $.ajax({
-                        url: impr
-                    })
+                            url: impr
+                        })
                         .always(function () {
                             //$(element).removeAttr('data-impr');
                         });
@@ -550,12 +556,12 @@ function HideSeeMore(seemoreName) {
     //检查库存
     function checkStock(skus) {
         $.ajax({
-            url: '/checkStock',
-            type: 'POST',
-            data: {
-                skus: skus
-            }
-        })
+                url: '/checkStock',
+                type: 'POST',
+                data: {
+                    skus: skus
+                }
+            })
             .done(function (data) {
                 if (data.success) {
                     if (data.data.list[0].stockStatus === 1) {
@@ -608,12 +614,12 @@ function HideSeeMore(seemoreName) {
             onAddToCart();
 
             $.ajax({
-                url: '/cart/add',
-                type: action,
-                data: {
-                    operate: operate
-                }
-            })
+                    url: '/cart/add',
+                    type: action,
+                    data: {
+                        operate: operate
+                    }
+                })
                 .done(function (data) {
                     $('#productAddBag').removeClass('disabled');
                     if (data.success) {
@@ -623,7 +629,7 @@ function HideSeeMore(seemoreName) {
                             AddItemModal.close();
                         }, 1500);
 
-                        $('.headerCart').data('num',data.data.skusAmout);
+                        $('.headerCart').data('num', data.data.skusAmout);
                         $('.headerCart').html($('.headerCart').data('num'));
                         if (data.redirectUrl != null) {
                             window.location.href = data.redirectUrl;
@@ -689,13 +695,13 @@ function HideSeeMore(seemoreName) {
     });
 
     // 点击关注 detail 商品
-    $('#productDetail-wish').on('click',function(){
+    $('#productDetail-wish').on('click', function () {
         var $this = $(this).children('.product-heart').children('.btn-detailWish');
         addToWishlist($this);
     });
 
     // wish 方法
-    function addToWishlist($this){
+    function addToWishlist($this) {
         var spu = $this.data('spu');
         if (spu != undefined) {
             $.ajax({
@@ -705,10 +711,10 @@ function HideSeeMore(seemoreName) {
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
-                        if($this.hasClass('active')){
-                            $('.headerWish').data('num',$('.headerWish').data('num')+1);
-                        }else{
-                            $('.headerWish').data('num',$('.headerWish').data('num')-1);
+                        if ($this.hasClass('active')) {
+                            $('.headerWish').data('num', $('.headerWish').data('num') + 1);
+                        } else {
+                            $('.headerWish').data('num', $('.headerWish').data('num') - 1);
                         }
                         $('.headerWish').html($('.headerWish').data('num'));
                     }
@@ -734,16 +740,16 @@ function HideSeeMore(seemoreName) {
         var spu = $this.data('spu');
         if (spu != undefined) {
             $.ajax({
-                url: '/wishlist/' + spu,
-                type: 'GET'
-            })
+                    url: '/wishlist/' + spu,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
-                        if($this.hasClass('active')){
-                            $('.headerWish').data('num',$('.headerWish').data('num')+1);
-                        }else{
-                            $('.headerWish').data('num',$('.headerWish').data('num')-1);
+                        if ($this.hasClass('active')) {
+                            $('.headerWish').data('num', $('.headerWish').data('num') + 1);
+                        } else {
+                            $('.headerWish').data('num', $('.headerWish').data('num') - 1);
                         }
                         $('.headerWish').html($('.headerWish').data('num'));
                     }
@@ -751,13 +757,13 @@ function HideSeeMore(seemoreName) {
         } else {
             spu = $this.data('actionspu');
             $.ajax({
-                url: '/noteaction',
-                type: 'get',
-                data: {
-                    action: 'wish',
-                    spu: spu
-                }
-            })
+                    url: '/noteaction',
+                    type: 'get',
+                    data: {
+                        action: 'wish',
+                        spu: spu
+                    }
+                })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
@@ -774,9 +780,9 @@ function HideSeeMore(seemoreName) {
             return;
         } else {
             $.ajax({
-                url: '/service/' + TemplateId,
-                type: 'GET',
-            })
+                    url: '/service/' + TemplateId,
+                    type: 'GET',
+                })
                 .done(function (data) {
                     if (data.success) {
                         $this.data('tid', -1);
@@ -846,7 +852,7 @@ function HideSeeMore(seemoreName) {
     }
 
     // You May Also Like 查看更多
-    $('.btn-seeMoreALP').on('click',function(){
+    $('.btn-seeMoreALP').on('click', function () {
         $('.detailCommendShop').removeAttr('hidden');
         $(this).remove();
     });
@@ -902,12 +908,12 @@ function HideSeeMore(seemoreName) {
             //tObj.addClass('disabled');
             var skuQty = $('#cskunum' + nowsku).html() * 1 + tObj.data('num');
             $.ajax({
-                url: '/checkStock',
-                type: 'POST',
-                data: {
-                    skus: nowsku + '_' + skuQty
-                }
-            })
+                    url: '/checkStock',
+                    type: 'POST',
+                    data: {
+                        skus: nowsku + '_' + skuQty
+                    }
+                })
                 .done(function (data) {
                     if (data.success) {
                         if (data.data.list[0].stockStatus === 1) {
@@ -926,13 +932,13 @@ function HideSeeMore(seemoreName) {
                                 $('#casku' + nowsku).parents('.cartProduct-item').siblings('.warning-info').addClass('off');
                             }
                             $.ajax({
-                                url: 'cart/alterQtty',
-                                type: 'POST',
-                                data: {
-                                    sku: nowsku,
-                                    qtty: skuQty
-                                }
-                            })
+                                    url: 'cart/alterQtty',
+                                    type: 'POST',
+                                    data: {
+                                        sku: nowsku,
+                                        qtty: skuQty
+                                    }
+                                })
                                 .done(function (data) {
                                     if (data.success) {
                                         cart_update_info(nowkey);
@@ -954,14 +960,14 @@ function HideSeeMore(seemoreName) {
     //动态更新购物车价格总数量
     function cart_update_info(nowkey) {
         $.ajax({
-            url: '/cart/list',
-            type: 'GET',
-        })
+                url: '/cart/list',
+                type: 'GET',
+            })
             .done(function (data) {
                 if (data.success) {
                     if (data.data != '') {
                         $('.headerCart').html(data.data.total_sku_qtty);
-                        $('.headerCart').data('num',data.data.total_sku_qtty);
+                        $('.headerCart').data('num', data.data.total_sku_qtty);
                         $('.total_amount').html('$' + (data.data.total_amount / 100).toFixed(2));
                         $('.total_sku_qtty').html('Items (' + data.data.total_sku_qtty + '):');
                         $('.vas_amount').html('$' + (data.data.vas_amount / 100).toFixed(2));
@@ -986,10 +992,10 @@ function HideSeeMore(seemoreName) {
         var sku = $(this).data('sku');
         var thisParent = $(this).parents('.cartProduct-item');
         $.ajax({
-            url: '/cart/operate',
-            type: 'POST',
-            data: {cmd: action, sku: sku}
-        })
+                url: '/cart/operate',
+                type: 'POST',
+                data: {cmd: action, sku: sku}
+            })
             .done(function (data) {
                 if (data.success) {
                     if (action == 'movetocart' || action == 'save') {
@@ -1014,10 +1020,10 @@ function HideSeeMore(seemoreName) {
         var id = $('#modalDialog').data('id');
 
         $.ajax({
-            url: '/cart/operate',
-            type: 'POST',
-            data: {cmd: action, sku: sku}
-        })
+                url: '/cart/operate',
+                type: 'POST',
+                data: {cmd: action, sku: sku}
+            })
             .done(function (data) {
                 if (data.success) {
                     if (action == 'movetocart' || action == 'save') {
@@ -1070,10 +1076,10 @@ function HideSeeMore(seemoreName) {
             var Aid = $('#addAddressForm').data('aid');
             if (Aid === '' || Aid === undefined) {
                 $.ajax({
-                    url: '/address',
-                    type: 'POST',
-                    data: $('#addAddressForm').serialize()
-                })
+                        url: '/address',
+                        type: 'POST',
+                        data: $('#addAddressForm').serialize()
+                    })
                     .done(function (data) {
                         if (data.success) {
                             $('.select-address').removeClass('disabled');
@@ -1111,10 +1117,10 @@ function HideSeeMore(seemoreName) {
                 }
 
                 $.ajax({
-                    url: '/address/' + Aid,
-                    type: 'PUT',
-                    data: $('#addAddressForm').serialize()
-                })
+                        url: '/address/' + Aid,
+                        type: 'PUT',
+                        data: $('#addAddressForm').serialize()
+                    })
                     .done(function (data) {
                         if (data.success) {
                             $('.select-address').removeClass('disabled');
@@ -1242,9 +1248,9 @@ function HideSeeMore(seemoreName) {
         $('.card-message .def-country').val(country);
 
         $.ajax({
-            url: '/wordpay/selAddr/' + $(this).parent('.address-item').data('aid'),
-            type: 'get'
-        })
+                url: '/wordpay/selAddr/' + $(this).parent('.address-item').data('aid'),
+                type: 'get'
+            })
             .done(function () {
                 if ($('#checkoutView').data('status')) {
                     getshiplist();
@@ -1294,9 +1300,9 @@ function HideSeeMore(seemoreName) {
         } else {
             // 修改地址
             $.ajax({
-                url: '/address/' + AddressId,
-                type: 'GET'
-            })
+                    url: '/address/' + AddressId,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     //初始化 修改地址 from 表单
                     $('.address-email').val(data.email);
@@ -1359,9 +1365,9 @@ function HideSeeMore(seemoreName) {
             // 洲为下拉列选择
             // 获取 洲 列表
             $.ajax({
-                url: '/statelist/' + CountryId,
-                type: 'GET'
-            })
+                    url: '/statelist/' + CountryId,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     $('#addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg select-state"></select>');
                     // 添加选项
@@ -1392,9 +1398,9 @@ function HideSeeMore(seemoreName) {
 
 
         $.ajax({
-            url: '/wordpay/selship/' + $(this).val(),
-            type: 'get'
-        })
+                url: '/wordpay/selship/' + $(this).val(),
+                type: 'get'
+            })
             .done(function (data) {
                 getCheckoutInfo();
             });
@@ -1437,9 +1443,9 @@ function HideSeeMore(seemoreName) {
         var smethod = $('input[name="shippingMethod"]:checked').val() == undefined ? '' : $('input[name="shippingMethod"]:checked').val();
         console.log(smethod);
         $.ajax({
-            url: '/cart/accountlist?aid=' + aid + '&bindid=' + bindid + '&logisticstype=' + smethod,
-            type: 'GET',
-        })
+                url: '/cart/accountlist?aid=' + aid + '&bindid=' + bindid + '&logisticstype=' + smethod,
+                type: 'GET',
+            })
             .done(function (data) {
                 if (data.success) {
                     if (data.data.cps_amount > 0) {
@@ -1505,16 +1511,16 @@ function HideSeeMore(seemoreName) {
 
         var paym = $(this).data('with');
         $.ajax({
-            url: '/payorder',
-            type: 'POST',
-            data: {
-                aid: $('#defaultAddr').data('aid'),
-                bindid: $('#pcode').data('bindid') == undefined ? '' : $('#pcode').data('bindid'),
-                remark: $('input[name="cremark"]').val(),
-                stype: $('input[name="shippingMethod"]:checked').val(),
-                paym: paym
-            }
-        })
+                url: '/payorder',
+                type: 'POST',
+                data: {
+                    aid: $('#defaultAddr').data('aid'),
+                    bindid: $('#pcode').data('bindid') == undefined ? '' : $('#pcode').data('bindid'),
+                    remark: $('input[name="cremark"]').val(),
+                    stype: $('input[name="shippingMethod"]:checked').val(),
+                    paym: paym
+                }
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -1547,9 +1553,9 @@ function HideSeeMore(seemoreName) {
     // 加载地址列表
     function getAddressList() {
         $.ajax({
-            url: '/address',
-            type: 'GET'
-        })
+                url: '/address',
+                type: 'GET'
+            })
             .done(function (data) {
                 if (data.success) {
                     appendAddressList(data.data);
@@ -1575,9 +1581,9 @@ function HideSeeMore(seemoreName) {
     //设置配送服务
     function getshiplist() {
         $.ajax({
-            url: '/getshiplist?country=' + $('#defaultAddr').data('csn') + '&price=' + $('.checkoutInfo').data('price'),
-            type: 'GET'
-        })
+                url: '/getshiplist?country=' + $('#defaultAddr').data('csn') + '&price=' + $('.checkoutInfo').data('price'),
+                type: 'GET'
+            })
             .done(function (data) {
                 if (data.success) {
                     var payPrice = data.data.list[0].pay_price > 0 ? ' +$' + (data.data.list[0].pay_price / 100).toFixed(2) : '';
@@ -1720,9 +1726,9 @@ function HideSeeMore(seemoreName) {
             // 洲为下拉列选择
             // 获取 洲 列表
             $.ajax({
-                url: '/statelist/' + CountryId,
-                type: 'GET'
-            })
+                    url: '/statelist/' + CountryId,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     $('#card-addAddressForm .state-info').html('<select name="state" class="form-control contrlo-lg card-state"></select>');
                     // 添加选项
@@ -1817,24 +1823,24 @@ function HideSeeMore(seemoreName) {
 
         }
         $.ajax({
-            url: '/wordpay/addCard',
-            type: 'POST',
-            data: {
-                card: cardNum,
-                expiry: cardDate,
-                cvv: cardCode,
-                card_type: cardType,
-                name: cardName,
-                tel: cardTel,
-                addr1: cardAddr1,
-                addr2: cardAddr2,
-                city: cardCity,
-                country: cardCountry,
-                csn: csn,
-                zip: cardZip,
-                state: cardState
-            }
-        })
+                url: '/wordpay/addCard',
+                type: 'POST',
+                data: {
+                    card: cardNum,
+                    expiry: cardDate,
+                    cvv: cardCode,
+                    card_type: cardType,
+                    name: cardName,
+                    tel: cardTel,
+                    addr1: cardAddr1,
+                    addr2: cardAddr2,
+                    city: cardCity,
+                    country: cardCountry,
+                    csn: csn,
+                    zip: cardZip,
+                    state: cardState
+                }
+            })
             .done(function (data) {
                 if (data.success) {
                     getCardList();
@@ -1907,10 +1913,10 @@ function HideSeeMore(seemoreName) {
     $('.delPaymentCard').on('click', function () {
         var CardId = $('[data-remodal-id="paymentmodal-modal"]').data('cardid');
         $.ajax({
-            url: '/wordpay/delCard?card_id=' + CardId,
-            type: 'post',
-            data: {}
-        })
+                url: '/wordpay/delCard?card_id=' + CardId,
+                type: 'post',
+                data: {}
+            })
             .done(function (data) {
                 if (data.success) {
                     $('.payment-list div[data-paymentcardid="' + CardId + '"]').remove();
@@ -1930,10 +1936,10 @@ function HideSeeMore(seemoreName) {
             return;
         }
         $.ajax({
-            url: '/signin',
-            type: 'POST',
-            data: $('#login').serialize()
-        })
+                url: '/signin',
+                type: 'POST',
+                data: $('#login').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -1949,10 +1955,10 @@ function HideSeeMore(seemoreName) {
 
     function login_forgetPassword() {
         $.ajax({
-            url: '/forget',
-            type: 'POST',
-            data: $('#forgetPassword').serialize()
-        })
+                url: '/forget',
+                type: 'POST',
+                data: $('#forgetPassword').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = '/login';
@@ -2128,15 +2134,15 @@ function HideSeeMore(seemoreName) {
             function (googleUser) {
                 var profile = googleUser.getBasicProfile();
                 $.ajax({
-                    url: '/googlelogin',
-                    type: 'POST',
-                    data: {
-                        email: profile.getEmail(),
-                        id: profile.getId(),
-                        name: profile.getName(),
-                        avatar: profile.getImageUrl()
-                    }
-                })
+                        url: '/googlelogin',
+                        type: 'POST',
+                        data: {
+                            email: profile.getEmail(),
+                            id: profile.getId(),
+                            name: profile.getName(),
+                            avatar: profile.getImageUrl()
+                        }
+                    })
                     .done(function (data) {
                         console.log("success");
                         if (data.success) {
@@ -2229,9 +2235,9 @@ function HideSeeMore(seemoreName) {
         FB.api('/me', 'GET', {fields: 'id,name,picture.width(750).height(750),email'}, function (response) {
             if (response.email == '' || response == undefined) {
                 $.ajax({
-                    url: '/facebookstatus/' + response.id,
-                    type: 'get'
-                })
+                        url: '/facebookstatus/' + response.id,
+                        type: 'get'
+                    })
                     .done(function (data) {
 
                         if (data.status) {
@@ -2250,15 +2256,15 @@ function HideSeeMore(seemoreName) {
 
     function loginSuccess(response) {
         $.ajax({
-            url: '/facebooklogin',
-            type: 'POST',
-            data: {
-                email: response.email,
-                id: response.id,
-                name: response.name,
-                avatar: response.picture.data.url
-            }
-        })
+                url: '/facebooklogin',
+                type: 'POST',
+                data: {
+                    email: response.email,
+                    id: response.id,
+                    name: response.name,
+                    avatar: response.picture.data.url
+                }
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -2297,10 +2303,10 @@ function HideSeeMore(seemoreName) {
     $('div[data-role="emailRequired-submit"]').on('click', function () {
         if (!$(this).hasClass('disabled')) {
             $.ajax({
-                url: '/facebooklogin',
-                type: 'post',
-                data: $('#register').serialize()
-            })
+                    url: '/facebooklogin',
+                    type: 'post',
+                    data: $('#register').serialize()
+                })
                 .done(function (data) {
                     if (data.success) {
                         window.location.href = data.redirectUrl;
@@ -2339,10 +2345,10 @@ function HideSeeMore(seemoreName) {
     function register_signup() {
         $('[data-role="register-submit"]').addClass('disabled');
         $.ajax({
-            url: '/signup',
-            type: 'POST',
-            data: $('#register').serialize()
-        })
+                url: '/signup',
+                type: 'POST',
+                data: $('#register').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -2400,10 +2406,10 @@ function HideSeeMore(seemoreName) {
     function reset_password() {
         $('[data-role="reset-submit"]').addClass('disabled');
         $.ajax({
-            type: 'POST',
-            url: '/reset',
-            data: $('#reset').serialize()
-        })
+                type: 'POST',
+                url: '/reset',
+                data: $('#reset').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -2471,10 +2477,10 @@ function HideSeeMore(seemoreName) {
     function change_password() {
         $('.change-save').addClass('disabled');
         $.ajax({
-            url: '/user/modifyUserPwd',
-            type: 'POST',
-            data: $('#changepassword').serialize()
-        })
+                url: '/user/modifyUserPwd',
+                type: 'POST',
+                data: $('#changepassword').serialize()
+            })
             .done(function (data) {
                 $('.changepwd-info').html(data.prompt_msg);
                 var $changePwdBtn = $('#changePwdBtn');
@@ -2537,10 +2543,10 @@ function HideSeeMore(seemoreName) {
     //User Address Start
     function address_delete($addressItem) {
         $.ajax({
-            url: '/address/' + $addressItem.data('aid'),
-            type: 'delete',
-            data: {}
-        })
+                url: '/address/' + $addressItem.data('aid'),
+                type: 'delete',
+                data: {}
+            })
             .done(function (data) {
                 if (data.success) {
                     DelAddressModal.close();
@@ -2677,10 +2683,10 @@ function HideSeeMore(seemoreName) {
     //User Profile Start
     function profile_updateUser() {
         $.ajax({
-            url: '/user/modify',
-            type: 'post',
-            data: $('#changeProfile').serialize()
-        })
+                url: '/user/modify',
+                type: 'post',
+                data: $('#changeProfile').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     $('input[name="nick"]').attr('placeholder', data.data.nickname);
@@ -2775,13 +2781,13 @@ function HideSeeMore(seemoreName) {
         // 加载动画loading 显示
         loadingShow('.designer-loading', '.designerList-seeMore');
         $.ajax({
-            url: '/designer',
-            data: {
-                start: Start,
-                size: Size,
-                ajax: 1
-            }
-        })
+                url: '/designer',
+                data: {
+                    start: Start,
+                    size: Size,
+                    ajax: 1
+                }
+            })
             .done(function (data) {
                 if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '' || data.data.list.length === 0) {
                     $DesignerContainer.data('start', -1);
@@ -2894,9 +2900,9 @@ function HideSeeMore(seemoreName) {
         var did = $this.data('did')
         if (did != undefined) {
             $.ajax({
-                url: '/follow/' + did,
-                type: 'GET'
-            })
+                    url: '/follow/' + did,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     if (data.success) {
                         if ($('#designerIndex').data('show') || $('#designerUser').data('show')) {
@@ -2920,13 +2926,13 @@ function HideSeeMore(seemoreName) {
         } else {
             did = $this.data('actiondid')
             $.ajax({
-                url: '/noteaction',
-                type: 'get',
-                data: {
-                    action: 'follow',
-                    did: did
-                }
-            })
+                    url: '/noteaction',
+                    type: 'get',
+                    data: {
+                        action: 'follow',
+                        did: did
+                    }
+                })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
@@ -2939,9 +2945,9 @@ function HideSeeMore(seemoreName) {
         var did = $this.data('did')
         if (did != undefined) {
             $.ajax({
-                url: '/follow/' + did,
-                type: 'GET'
-            })
+                    url: '/follow/' + did,
+                    type: 'GET'
+                })
                 .done(function (data) {
                     if (data.success) {
                         $this.toggleClass('active');
@@ -2955,13 +2961,13 @@ function HideSeeMore(seemoreName) {
         } else {
             did = $this.data('actiondid')
             $.ajax({
-                url: '/noteaction',
-                type: 'get',
-                data: {
-                    action: 'follow',
-                    did: did
-                }
-            })
+                    url: '/noteaction',
+                    type: 'get',
+                    data: {
+                        action: 'follow',
+                        did: did
+                    }
+                })
                 .done(function (data) {
                     window.location.href = '/login';
                 })
@@ -3431,12 +3437,12 @@ function HideSeeMore(seemoreName) {
     function order_buyAgain() {
         var operate = order_getOperate();
         $.ajax({
-            url: '/cart/addBatch',
-            type: 'POST',
-            data: {
-                operate: operate
-            }
-        })
+                url: '/cart/addBatch',
+                type: 'POST',
+                data: {
+                    operate: operate
+                }
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -3556,16 +3562,16 @@ function HideSeeMore(seemoreName) {
         var $this = $(e.target);
         var spu = $this.data('spu');
         $.ajax({
-            url: '/wishlist/' + spu,
-            type: 'GET'
-        })
+                url: '/wishlist/' + spu,
+                type: 'GET'
+            })
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
-                    if($this.hasClass('active')){
-                        $('.headerWish').data('num',$('.headerWish').data('num')+1);
-                    }else{
-                        $('.headerWish').data('num',$('.headerWish').data('num')-1);
+                    if ($this.hasClass('active')) {
+                        $('.headerWish').data('num', $('.headerWish').data('num') + 1);
+                    } else {
+                        $('.headerWish').data('num', $('.headerWish').data('num') - 1);
                     }
                     $('.headerWish').html($('.headerWish').data('num'));
                 }
@@ -3667,9 +3673,9 @@ function HideSeeMore(seemoreName) {
     $('#followList-container').on('click', '.btn-following', function () {
         var $this = $(this);
         $.ajax({
-            url: '/follow/' + $this.data('did'),
-            type: 'GET'
-        })
+                url: '/follow/' + $this.data('did'),
+                type: 'GET'
+            })
             .done(function (data) {
                 if (data.success) {
                     $this.toggleClass('active');
@@ -3714,9 +3720,9 @@ function HideSeeMore(seemoreName) {
             var CouponUrl = '/usercoupon';
         }
         $.ajax({
-            url: CouponUrl,
-            type: 'GET'
-        })
+                url: CouponUrl,
+                type: 'GET'
+            })
             .done(function (data) {
                 if (data.success) {
                     appendCouponList(data.data);
@@ -3755,10 +3761,10 @@ function HideSeeMore(seemoreName) {
         //验证code码
         if (!$(this).hasClass('disabled')) {
             $.ajax({
-                url: '/coupon',
-                type: 'post',
-                data: {cps: $('input[name="cps"]').val()}
-            })
+                    url: '/coupon',
+                    type: 'post',
+                    data: {cps: $('input[name="cps"]').val()}
+                })
                 .done(function (data) {
                     if (data.success) {
                         $('#pcode').data('bindid', data.data.bind_id);
@@ -3805,9 +3811,9 @@ function HideSeeMore(seemoreName) {
         $('.codeItem').removeClass('active');
         var $this = $(this);
         $.ajax({
-            url: '/wordpay/selCode/' + $(this).data('bindid'),
-            type: 'post'
-        })
+                url: '/wordpay/selCode/' + $(this).data('bindid'),
+                type: 'post'
+            })
             .done(function (data) {
                 if (!$this.hasClass('active')) {
                     $('#codemessage').html($this.data('promotioncode'));
@@ -3845,10 +3851,10 @@ function HideSeeMore(seemoreName) {
     //Ask Start
     function ask_addMessage() {
         $.ajax({
-            url: '/askshopping',
-            type: 'POST',
-            data: $('#form-askQuestion').serialize()
-        })
+                url: '/askshopping',
+                type: 'POST',
+                data: $('#form-askQuestion').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     window.location.href = data.redirectUrl;
@@ -3901,10 +3907,10 @@ function HideSeeMore(seemoreName) {
             return;
         }
         $.ajax({
-            url: '/subscribe',
-            type: 'post',
-            data: $('#subscribe').serialize()
-        })
+                url: '/subscribe',
+                type: 'post',
+                data: $('#subscribe').serialize()
+            })
             .done(function (data) {
                 if (data.success) {
                     $('.redeem-leftWrapper').addClass('hidden');
