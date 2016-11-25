@@ -132,7 +132,7 @@ function HideSeeMore(seemoreName) {
              if($('#logged-user').length <= 0 && $('.login-container').length <=0 ){
                  if (!sessionStorage.getItem('afterTime')){
                      var date = new Date();
-                     var afterTime =  (date.getTime()+10*1000);
+                     var afterTime =  (date.getTime()+2 * 60 * 1000);
                      sessionStorage.setItem('afterTime', afterTime);
                      date.setTime(afterTime);
                      document.cookie = "motifAted=1; expires="+date.toUTCString();
