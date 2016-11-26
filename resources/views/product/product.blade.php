@@ -76,7 +76,7 @@
                                     @if(!empty($image['video_path']))
                                         <!-- 判断是否是视频 -->
                                             <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter"
-                                                 id="btn-startPlayer" data-playerid="7n-dIXlyQ3M">
+                                                 id="btn-startPlayer" data-playerid="{{$image['video_path']}}">
                                                 <div class="play-content">
                                                     <img class="btn-productPlayer"
                                                          src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
