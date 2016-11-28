@@ -3023,6 +3023,8 @@ function HideSeeMore(seemoreName) {
 
     // Shopping List start
 
+    // 获取url 地址中的锚点值（搜索条件）
+    var SortById;
     // 判断 商品个数
     try {
         $(function () {
@@ -3030,6 +3032,32 @@ function HideSeeMore(seemoreName) {
             $('.productList-seeMore').show();
             if (ProductListNum < 32) {
                 HideSeeMore('.productList-seeMore');
+            }
+
+            SortById = location.hash.substring(1);
+            // 判断 SortById 是否在 搜索列表中
+            var IsSearchItem = false;
+            $.each($('[data-search]'), function (index, val) {
+                if ($(this).data('search') === parseInt(SortById)) {
+                    IsSearchItem = true;
+                    return false;
+                }
+            });
+            if (!IsSearchItem) {
+                SortById = '';
+            }
+            if (SortById != '') {
+                $('#productList-container').data('searchid', SortById);
+                $('#productList-container').data('pagenum', 0);
+                $('#productList-container').data('loading', 'false');
+
+                var $SearchItem = $('[data-search=' + SortById + ']');
+                var SearchName = $SearchItem.data('searchtext');
+                $('#searchDropdown').html(SearchName);
+                $('.dropdown-item').removeClass('active');
+                $SearchItem.addClass('active');
+
+                getProductList(2);
             }
         })
     } catch (e) {
@@ -3075,7 +3103,11 @@ function HideSeeMore(seemoreName) {
         var search = $('#productList-container').data('searchid');
         var url = '';
         if (search === 0) {
-            url = '/products';
+            if (SortById != '') {
+                url = '/products?extra_kv=sea:' + SortById;
+            } else {
+                url = '/products';
+            }
         } else {
             url = '/products?extra_kv=sea:' + search;
         }
