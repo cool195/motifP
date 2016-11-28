@@ -27,6 +27,10 @@
         });
         console.log('GA.Click-oncheckout');
     }
+
+    var content_ids = [@foreach($accountList['showSkus'] as $key => $product) @if(0 == $key)'{{$product['spu']}}' @else , '{{$product['spu']}}' @endif @endforeach];
+    var totalPrice = "{{ number_format($accountList['pay_amount'] / 100, 2)}}";
+
 </script>
 
 <!-- 内容 -->
