@@ -89,23 +89,6 @@ class DesignerController extends BaseController
             'id' => $id,
         );
         $result['product'] = $this->request('designer', $params);
-        $product = $result['product'];
-        foreach ($product['data']['infos'] as $value) {
-            if ($value['type'] == 'product' && isset($value['spus'])) {
-                $_spu = $value['spus'][0];
-                break;
-            }
-        }
-
-        if (isset($_spu) && $product['data']['spuInfos'][$_spu]['spuBase']['sale_type'] == 1 && isset($product['data']['spuInfos'][$_spu]['skuPrice']['skuPromotion']) && $product['data']['spuInfos'][$_spu]['spuBase']['isPutOn'] == 1 && $product['data']['spuInfos'][$_spu]['stockStatus'] == 'YES') {
-            $params = array(
-                'cmd' => 'productdetail',
-                'spu' => $_spu
-            );
-            $pre_product = $this->request('product', $params);
-            $result['pre_product'] = $pre_product;
-
-        }
 
         //设计师商品
         $params = array(
@@ -123,7 +106,7 @@ class DesignerController extends BaseController
         }
         $maidian['utm_medium'] = $request->get('utm_medium');
         $maidian['utm_source'] = $request->get('utm_source');
-        return View('designer.show', ['maidian' => $maidian, 'pre_product' => $pre_product['data'], 'designer' => $result['data'], 'productAll' => $result['productAll'], 'product' => $result['product']['data'], 'followList' => $this->followList()]);
+        return View('designer.show', ['maidian' => $maidian,'designer' => $result['data'], 'productAll' => $result['productAll'], 'product' => $result['product']['data'], 'followList' => $this->followList()]);
     }
 
     public function following(Request $request)

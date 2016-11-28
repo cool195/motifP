@@ -155,98 +155,48 @@
             </div>
         </div>
 
-        <!-- 设计师预售信息 LIMITED EDITION -->
-        @if(!empty($pre_product) && $designer['designer_id']!=99)
-            @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0 || !empty($pre_product['spuStock']))
-                <div class="box-shadow bg-white m-t-20x p-x-20x">
-                    <div class="helveBold text-left p-y-15x font-size-md">LIMITED EDITION</div>
-                    @if($pre_product['isPutOn'] !=1)
-                        <hr class="hr-base m-a-0">
-                        <div class="p-y-15x">
-                            <div class="">
-                                <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
-                                     srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
-                                     alt="">
-                                <span class="text-primary font-size-base p-l-5x">Sold Out</span>
-                            </div>
+        {{--设计师预售信息 LIMITED EDITION--}}
+        @if($designer['prompt_info']['datePrompt'])
+            <div class="box-shadow bg-white m-t-20x p-x-20x">
+                <div class="helveBold text-left p-y-15x font-size-md">{{$designer['prompt_info']['datePrompt']['title']}}</div>
+                <div class="p-y-15x">
+                    @if($designer['prompt_info']['datePrompt']['endDate'] > time()*1000)
+                        <div class="limited-content limited-data"
+                             data-begintime="{{$designer['prompt_info']['datePrompt']['startDate']}}"
+                             data-endtime="{{$designer['prompt_info']['datePrompt']['endDate']}}"
+                             data-lefttime="{{$designer['prompt_info']['datePrompt']['endDate']-time()*1000}}">
+                            <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
+                                 alt="">
+                            <span class="text-primary font-size-base p-l-5x">Orders Close In <span
+                                        class="time_show"></span></span>
                         </div>
-                        <hr class="hr-base m-a-0">
-                        <div class="p-y-15x">
-                            <div class="">
-                                <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
-                                     srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
-                                     alt="">
-                                <span class="text-primary font-size-base p-l-5x">Orders Closed</span>
-                            </div>
+                        <div class="p-t-10x">
+                            <progress class="progress progress-primary" id="limited-progress" value="" max="10000">0%
+                            </progress>
                         </div>
                     @else
-                        @if(!empty($pre_product['spuStock']))
-                            <hr class="hr-base m-a-0">
-                            <div class="p-y-15x">
-                                <div class="">
-                                    <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
-                                         srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
-                                         alt="">
-                                <span class="text-primary font-size-base p-l-5x">
-                                    @if(($pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']) > 0)
-                                        Only {{$pre_product['spuStock']['stock_qtty'] - $pre_product['spuStock']['saled_qtty']}}
-                                        Left
-                                    @else
-                                        Sold Out
-                                    @endif
-                                </span>
-                                </div>
-                            </div>
-                        @endif
-
-                        @if($pre_product['skuPrice']['skuPromotion']['remain_time'] >= 0)
-                            <hr class="hr-base m-a-0">
-                            @if($pre_product['skuPrice']['skuPromotion']['remain_time']>0)
-                                <div class="p-y-15x">
-                                    <div class="limited-content limited-data"
-                                         data-begintime="{{$pre_product['skuPrice']['skuPromotion']['start_time']}}"
-                                         data-endtime="{{$pre_product['skuPrice']['skuPromotion']['end_time']}}"
-                                         data-lefttime="@if($pre_product['skuPrice']['skuPromotion']['remain_time']>0){{$pre_product['skuPrice']['skuPromotion']['remain_time']}}@else{{'0'}}@endif">
-                                        <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
-                                             srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
-                                             alt="">
-                                        <span class="text-primary font-size-base p-l-5x">Orders Close In <span
-                                                    class="time_show"></span></span>
-                                    </div>
-                                    <div class="p-t-10x">
-                                        <progress class="progress progress-primary" id="limited-progress" value=""
-                                                  max="10000">0%
-                                        </progress>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="p-y-15x">
-                                    <div class="">
-                                        <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
-                                             srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
-                                             alt="">
-                                        <span class="text-primary font-size-base p-l-5x">Orders Closed</span>
-                                    </div>
-                                </div>
-                            @endif
-                        @endif
+                        <div class="limited-content">
+                            <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
+                                 srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
+                                 alt="">
+                            <span class="text-primary font-size-base p-l-5x">Orders Closed</span>
+                        </div>
                     @endif
                 </div>
-            @endif
+            </div>
         @endif
-    <!-- 设计师预售信息 PREORDER -->
-        @if($designer['designer_id']!=103)
-            @foreach($pre_product['skuPrice']['skuPromotion']['pre_exp_descs'] as $value)
-                <div class="box-shadow bg-white m-t-20x p-x-20x">
-                    <div class="helveBold text-left p-y-15x font-size-md">{{$value['desc_title']}}</div>
-                    <hr class="hr-base m-a-0">
-                    <div class="p-y-15x">
-                        <div class="text-primary font-size-base">
-                            {{$value['desc_value']}}
-                        </div>
+        {{--设计师预售信息 PREORDER--}}
+        @if($designer['prompt_info']['textPrompt'])
+            <div class="box-shadow bg-white m-t-20x p-x-20x">
+                <div class="helveBold text-left p-y-15x font-size-md">{{$designer['prompt_info']['textPrompt']['title']}}</div>
+                <hr class="hr-base m-a-0">
+                <div class="p-y-15x">
+                    <div class="text-primary font-size-base">
+                        {{$designer['prompt_info']['textPrompt']['content']}}
                     </div>
                 </div>
-            @endforeach
+            </div>
         @endif
 
     <!-- 设计师预售 -->
