@@ -40,6 +40,12 @@ class DailyController extends BaseController
         return View('daily.index', ['list' => $result['data']['list'], 'banner' => $banner['data']]);
     }
 
+    public function banner(Request $request)
+    {
+        $banner = $this->request("banner", ['cmd' => 'bannerList']);
+        return $banner;
+    }
+
     /**
      * 显示
      *

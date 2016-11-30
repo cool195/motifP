@@ -310,6 +310,7 @@ Route::get('/cassandra', 'NetworkRedsController@index');
 
 Route::get('/test', 'PageController@test');
 
+Route::get('/banner', 'DailyController@banner');
 
 
 
