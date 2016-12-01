@@ -307,7 +307,7 @@ Route::get('error',function (){
 //网红落地路由
 Route::get('/rae', 'NetworkRedsController@index');
 Route::get('/cassandra', 'NetworkRedsController@index');
-
+Route::get('/melodee', 'NetworkRedsController@index');
 Route::get('/test', 'PageController@test');
 
 Route::get('/banner', 'DailyController@banner');

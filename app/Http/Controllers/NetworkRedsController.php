@@ -24,6 +24,10 @@ class NetworkRedsController extends BaseController
                 $designerUrl = '/designer/99';
                 $designerID = '99';
                 break;
+            case 'melodee':
+                $designerUrl = '/designer/104';
+                $designerID = '104';
+                break;
         }
 
         $designerUrl = ($this->isMobile() ? 'http://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_medium ? '?utm_medium=' . $utm_medium . '&utm_source=' . $utm_source : '');
