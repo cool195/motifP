@@ -47,7 +47,7 @@
             <div class="row flex flex-alignCenter">
                 <div class="col-md-6">
                     <i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm p-l-10x"></i>
-                    <span class="text-main font-size-base p-l-15x sanBold text-red">Use our free app for 20% off your first purchase!</span>
+                    <span class="text-main font-size-base p-l-15x sanBold text-red">USE OUR FREE APP FOR 20% OFF YOUR FIRST PURCHASE!</span>
                 </div>
                 <div class="col-md-6 text-right">
                     <a href="https://itunes.apple.com/us/app/id1125850409" target="_blank"
