@@ -59,7 +59,7 @@
 <script type="text/javascript">
 
     {{--var url = "{!! $designerUrl !!}";--}}
-            window.location.href = "{{$designerUrl}}";
+            window.location.href = "{!! $designerUrl !!}";
 
     {{--var Agent = navigator.userAgent;--}}
     {{--if (/iPhone/i.test(Agent)) {--}}
