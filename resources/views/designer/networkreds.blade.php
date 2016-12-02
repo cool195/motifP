@@ -58,23 +58,23 @@
 
 <script type="text/javascript">
 
-    var url = "{!! $designerUrl !!}";
+    {{--var url = "{!! $designerUrl !!}";--}}
+            window.location.href = "{{$designerUrl}}";
 
-
-    var Agent = navigator.userAgent;
-    if (/iPhone/i.test(Agent)) {
-        window.location.href = "motif://o.c?a=url&url="+encodeURIComponent(url);
-        setTimeout(function () {
-            window.location.href = url;
-        }, 2000);
-    } else if (/Android/i.test(Agent) || /Linux/i.test(Agent)) {
-        window.location.href = "motif://o.c?a=url&url="+encodeURIComponent(url);
-        setTimeout(function () {
-            window.location.href = url;
-        }, 2000);
-    } else {
-        window.location.href = url;
-    }
+    {{--var Agent = navigator.userAgent;--}}
+    {{--if (/iPhone/i.test(Agent)) {--}}
+        {{--window.location.href = "motif://o.c?a=url&url="+encodeURIComponent(url);--}}
+        {{--setTimeout(function () {--}}
+            {{--window.location.href = url;--}}
+        {{--}, 2000);--}}
+    {{--} else if (/Android/i.test(Agent) || /Linux/i.test(Agent)) {--}}
+        {{--window.location.href = "motif://o.c?a=url&url="+encodeURIComponent(url);--}}
+        {{--setTimeout(function () {--}}
+            {{--window.location.href = url;--}}
+        {{--}, 2000);--}}
+    {{--} else {--}}
+        {{--window.location.href = url;--}}
+    {{--}--}}
 
 </script>
 </body>
