@@ -78,8 +78,7 @@
 <section class="m-t-40x" id="gaProductClick">
 @inject('wishlist', 'App\Http\Controllers\UserController')
 <!-- 新版设计师详情页 -->
-    <div class="topic-wrap"
-         data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=page.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"PC","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{Session::get('user.uuid')}}"}'>
+    <div class="topic-wrap">
         <!-- 设计师信息 -->
         <div class="box-shadow bg-white">
             <!-- 设计师头图 -->
@@ -389,6 +388,8 @@
 
     </div>
 </section>
+
+<img src='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=page.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":2,"skipId":"{{$designer['designer_id']}}","expid":"0","version":"1.0.1","ver":"9.2","src":"PC","utm_medium":"{{$maidian['utm_medium']}}","utm_source":"{{$maidian['utm_source']}}","mdeviceid":"{{Session::get('user.uuid')}}"}' hidden>
 
 <!-- 视频播放 -->
 <div class="remodal modal-content remodal-lg player-media" data-remodal-id="playermodal" id="playermodalDialog">
