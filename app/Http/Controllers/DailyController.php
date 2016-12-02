@@ -66,6 +66,14 @@ class DailyController extends BaseController
         if ($request->input('ajax')) {
             return $result;
         }
+
+        //设置topic分享主图
+        foreach ($result['data']['infos'] as $value){
+            if($value['imgPath']){
+                $result['data']['mainImg'] = $value['imgPath'];
+                break;
+            }
+        }
         return View('daily.topic', ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => true]);
     }
 
