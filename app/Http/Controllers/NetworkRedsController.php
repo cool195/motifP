@@ -13,7 +13,7 @@ class NetworkRedsController extends BaseController
         $designerUrl = '/designer';
         //$queryString = $request->getQueryString();
         $ref = urlencode($request->header('referer'));
-        $utm_medium = $request->get('utm_medium');
+        $utm_medium = $request->get('utm_medium',$request->get('utm_campaign'));
         $utm_source = $request->get('utm_source',$ref);
         switch ($request->path()) {
             case 'cassandra':
