@@ -63,10 +63,7 @@ class DailyController extends BaseController
         if (empty($result['data'])) {
             abort(404);
         }
-        if ($request->input('ajax')) {
-            return $result;
-        }
-
+        
         //设置topic分享主图
         foreach ($result['data']['infos'] as $value){
             if($value['imgPath']){
@@ -74,6 +71,11 @@ class DailyController extends BaseController
                 break;
             }
         }
+        if ($request->input('ajax')) {
+            return $result;
+        }
+
+
         return View('daily.topic', ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => true]);
     }
 
