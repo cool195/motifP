@@ -57,5 +57,5 @@ return [
     'PAYPAL_MODE' => $paypalmode,
     'SELF_URL' => $selfUrl,
     'CLK_URL' => $clkUrl,
-    'V' => '?v=1.62',
+    'V' => '?v=1.63',
 ];

@@ -38,6 +38,6 @@ gulp.task('js', function() {
 
 // 默认任务
 gulp.task('default', function(){
-    gulp.start('css');
+    gulp.start('js');
     //gulp.start('js','css');
 });
