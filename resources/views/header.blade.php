@@ -41,15 +41,16 @@
 <body>
 @if(!isset($CartCheck))
     {{--下载提示--}}
-    <div class="download-info" hidden>
+    <div class="download-info p-y-10x">
         <div class="container">
-            <div class="row flex flex-alignCenter">
+            <div class="row text-white flex flex-alignCenter">
                 <div class="col-md-6">
-                    <i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm p-l-10x"></i>
-                    <span class="text-main font-size-base p-l-15x sanBold text-red">USE OUR FREE APP FOR 20% OFF YOUR FIRST PURCHASE!</span>
+                    {{--<i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm p-l-10x"></i>--}}
+                    <span>ORDER BY DEC 16<sup>TH</sup> TO RECEIVE BY DEC 24<sup>TH</sup></span>
                 </div>
                 <div class="col-md-6 text-right">
-                    <a href="https://itunes.apple.com/us/app/id1125850409" target="_blank"
+                    <span>FREE SHIPPING TO 30+ COUNTRIES + EASY RETURNS</span>
+                   {{-- <a href="https://itunes.apple.com/us/app/id1125850409" target="_blank"
                        class="btn btn-black m-r-20x p-x-10x p-y-5x">
                         <img class="img-fluid m-x-auto"
                              src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png{{config('runtime.V')}}"
@@ -60,7 +61,7 @@
                         <img class="img-fluid m-x-auto"
                              src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png{{config('runtime.V')}}"
                              srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png{{config('runtime.V')}} 3x">
-                    </a>
+                    </a>--}}
                 </div>
             </div>
         </div>

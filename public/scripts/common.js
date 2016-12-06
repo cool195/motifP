@@ -100,7 +100,7 @@ function HideSeeMore(seemoreName) {
     }
 
     // download 是否显示
-    try {
+    /*try {
         $(function () {
             var $downloadInfo = $('.download-info');
             $downloadInfo.click(function (e) {
@@ -123,7 +123,7 @@ function HideSeeMore(seemoreName) {
     $('.btn-closeDownload').on('click', function () {
         setCookie('pcdownloadingApp', 'true');
         $('.download-info').remove();
-    });
+    });*/
 
 
     // 订阅窗口显示

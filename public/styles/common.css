@@ -1596,11 +1596,11 @@ footer .text-Copyright{
  }
 
 .download-info{
-  background-color: #e9ebf0;
-  padding: 6px 0;
+  background-color: #6d91ff;
+  letter-spacing: 1px;
 }
-.download-info:hover{
-  cursor: pointer;
+sup{
+  top: -0.3em;
 }
 .motif-download-up{
   background-color: #eceef2;
