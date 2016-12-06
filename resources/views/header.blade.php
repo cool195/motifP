@@ -39,7 +39,7 @@
     @endif
 </head>
 <body>
-@if(!isset($CartCheck))
+{{--@if(!isset($CartCheck))--}}
     {{--下载提示--}}
     <div class="download-info p-y-10x">
         <div class="container">
@@ -66,7 +66,7 @@
             </div>
         </div>
     </div>
-@endif
+{{--@endif--}}
 <!-- 头部 -->
 <header class="fix box-shadow">
     <div class="container">
