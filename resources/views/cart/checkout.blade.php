@@ -4,29 +4,30 @@
     window.dataLayer = window.dataLayer || [];
     // 支付埋点
     function onCheckout() {
-        dataLayer.push({
-            'event': 'checkout',
-            'ecommerce': {
-                'checkout': {
-                    'actionField': {'step': 1, 'option': 'CheckOut'},
-                    'products': [
-                            @foreach($accountList['showSkus'] as $showSku)
-                        {
-                            'name': '{{$showSku['main_title']}}',
-                            'id': '{{$showSku['spu']}}',
-                            'price': '{{ number_format(($showSku['sale_price'] / 100), 2) }}',
-                            'brand': 'Motif PC',
-                            'category': '',
-                            'variant': '',
-                            'quantity': '{{$showSku['sale_qtty']}}'
-                        },
-                        @endforeach
-                    ]
-                }
-            }
-        });
         console.log('GA.Click-oncheckout');
     }
+
+    dataLayer.push({
+        'event': 'checkout',
+        'ecommerce': {
+            'checkout': {
+                'actionField': {'step': 1, 'option': 'CheckOut'},
+                'products': [
+                        @foreach($accountList['showSkus'] as $showSku)
+                    {
+                        'name': '{{$showSku['main_title']}}',
+                        'id': '{{$showSku['spu']}}',
+                        'price': '{{ number_format(($showSku['sale_price'] / 100), 2) }}',
+                        'brand': 'Motif PC',
+                        'category': '',
+                        'variant': '',
+                        'quantity': '{{$showSku['sale_qtty']}}'
+                    },
+                    @endforeach
+                ]
+            }
+        }
+    });
 
     var content_ids = [@foreach($accountList['showSkus'] as $key => $product) @if(0 == $key)'{{$product['spu']}}' @else , '{{$product['spu']}}' @endif @endforeach];
     var totalPrice = "{{ number_format($accountList['pay_amount'] / 100, 2)}}";
