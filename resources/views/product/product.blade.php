@@ -6,24 +6,39 @@
 <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
     // 推荐商品埋点
+    {{--dataLayer.push({--}}
+        {{--'ecommerce': {--}}
+            {{--'currencyCode': 'EUR',                       // Local currency is optional.--}}
+            {{--'impressions': [--}}
+                    {{--@foreach($recommended['list'] as $product)--}}
+                {{--{--}}
+                    {{--'name': '{{$product['main_title']}}',       // Name or ID is required.--}}
+                    {{--'id': '{{$product['spu']}}',--}}
+                    {{--'price': '{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}',--}}
+                    {{--'brand': 'Motif PC',--}}
+                    {{--'list': '{{'shopping detail_'.$data['main_title'].'_'.$data['spu']}}',--}}
+                    {{--'position': 1--}}
+                {{--},--}}
+                {{--@endforeach--}}
+            {{--]--}}
+        {{--}--}}
+    {{--});--}}
+    // 商品详情
     dataLayer.push({
         'ecommerce': {
-            'currencyCode': 'EUR',                       // Local currency is optional.
-            'impressions': [
-                    @foreach($recommended['list'] as $product)
-                {
-                    'name': '{{$product['main_title']}}',       // Name or ID is required.
-                    'id': '{{$product['spu']}}',
-                    'price': '{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}',
-                    'brand': 'Motif PC',
-                    'list': '{{'shopping detail_'.$data['main_title'].'_'.$data['spu']}}',
-                    'position': 1
-                },
-                @endforeach
-            ]
+            'detail': {
+                'actionField': {'list': '{{'shopping Detail_'.$data['main_title'].'_'.$data['spu']}}'},
+                'products': [{
+                    'name': '{{$data['main_title']}}',
+                    'id': '{{ $data['spu'] }}',
+                    'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
+                    'brand': 'Motif',
+                    'category': '',
+                    'variant': ''
+                }]
+            }
         }
     });
-
     // shopping detail 加入购物车
     function onAddToCart() {
         var quantity = document.getElementById('addToCart-quantity').value;
