@@ -1,5 +1,5 @@
 
-@include('header', ['title' => ""])
+@include('header', ['page' => ""])
 
 <section class="m-y-40x">
     <div class="container text-center p-y-40x">
