@@ -161,5 +161,30 @@
     @{{ /each }}
 </template>
 
-@include('footer')
+{{--@include('footer')--}}
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bigNoodle font-size-lg">Connect with us</div>
+                <div>
+                    <a href="https://www.facebook.com/motifme" target="_blank" class="btn btn-share btn-circle m-r-20x">
+                        <i class="iconfont icon-facebook footer-icon"></i>
+                    </a>
+                    <a href="https://www.instagram.com/motifme/" target="_blank" class="btn btn-share btn-circle m-r-20x">
+                        <i class="iconfont icon-instagram1 footer-icon"></i>
+                    </a>
+                    <a href="https://www.pinterest.com/motifme/" target="_blank" class="btn btn-share btn-circle m-r-20x">
+                        <i class="iconfont icon-pinterest1 footer-icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>
 
