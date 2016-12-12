@@ -730,8 +730,8 @@ body {
   font-family: "AvenirNext-Regular";
   font-size: 1rem;
   line-height: 1.5;
-  color: #36405b;
-  background-color: #f6f7fa;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 @media screen and (max-width: 1460px) {
@@ -797,7 +797,7 @@ blockquote {
 }
 
 a {
-  color: #36405b;
+  color: #000000;
   text-decoration: none;
 }
 
