@@ -41,53 +41,35 @@
 <body>
 {{--@if(!isset($CartCheck))--}}
     {{--下载提示--}}
-    <div class="download-info p-y-10x">
+    <div class="download-info p-t-40x p-b-10x">
         <div class="container">
-            <div class="row text-white flex flex-alignCenter">
+            <div class="row text-white avenirMedium">
                 <div class="col-md-6">
-                    {{--<i class="iconfont icon-cross text-primary btn-closeDownload icon-size-xm p-l-10x"></i>--}}
-                    <span>ORDER BY DEC 16<sup>TH</sup> TO RECEIVE BY DEC 24<sup>TH</sup></span>
+                    <span>ORDER BY DEC 10 TO RECEIVE BY DEC 24</span>
                 </div>
                 <div class="col-md-6 text-right">
-                    <span>FREE SHIPPING TO 30+ COUNTRIES + EASY RETURNS</span>
-                   {{-- <a href="https://itunes.apple.com/us/app/id1125850409" target="_blank"
-                       class="btn btn-black m-r-20x p-x-10x p-y-5x">
-                        <img class="img-fluid m-x-auto"
-                             src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png{{config('runtime.V')}}"
-                             srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png{{config('runtime.V')}} 3x">
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=me.motif.motif" target="_blank"
-                       class="btn btn-black p-x-10x p-y-5x">
-                        <img class="img-fluid m-x-auto"
-                             src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png{{config('runtime.V')}}"
-                             srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png{{config('runtime.V')}} 3x">
-                    </a>--}}
+                    <span>FREE SHIPPING TO 30+ COUNTRIES</span>
                 </div>
             </div>
         </div>
     </div>
 {{--@endif--}}
 <!-- 头部 -->
-<header class="fix box-shadow">
-    <div class="container">
+<header class="box-shadow" style="position: relative">
+    <div class="container bigNoodle font-size-lg">
         <nav class="navbar-left">
             <ul class="nav navbar-primary clearfix">
-                <li class="nav-item nav-logo"><a href="/daily">
-                        <img class="img-fluid"
-                             src="{{config('runtime.Image_URL')}}/images/logo/logo.png{{config('runtime.V')}}"
-                             alt="logo"
-                             srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x"></a>
-                </li>
+
                 <li class="nav-item"><a
-                            class="nav-link border-b p-x-10x sanBold @if(isset($page) && 'daily' == $page) active @endif"
-                            href="/daily">DAILY</a></li>
+                            class="nav-link border-b p-x-10x @if(isset($page) && 'daily' == $page) active @endif"
+                            href="/daily">TRENDING</a></li>
                 <li class="nav-item"><a
-                            class="nav-link border-b p-x-10x sanBold @if(isset($page) && 'designer' == $page) active @endif"
-                            href="/designer">DESIGNERS</a></li>
+                            class="nav-link border-b p-x-10x @if(isset($page) && 'designer' == $page) active @endif"
+                            href="/designer">COLLECTIONS</a></li>
                 <li class="nav-item {{$page}} @if('shopping' != $page) shop-dropdown @endif">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
                     <a href="/shopping"
-                       class="nav-link border-b p-x-10x sanBold @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) @endif>SHOP</a>
+                       class="nav-link border-b p-x-10x @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) @endif>SHOP</a>
                     <ul class="dropdown-menu dropdown-nav-hover shop-dropdownMenu">
                         @foreach($Category->getShoppingCategoryList() as $category)
                             <li class="dropdown-item @if('shopping' == $page && $cid == $category['category_id']) active @endif">
@@ -98,12 +80,20 @@
                 </li>
             </ul>
         </nav>
+        <div class="logo">
+            <a href="/daily">
+                <img class="img-fluid"
+                     src="{{config('runtime.Image_URL')}}/images/logo/logo.png{{config('runtime.V')}}"
+                     alt="logo"
+                     srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x">
+            </a>
+        </div>
         <nav class="navbar-right">
             <ul class="nav navbar-primary clearfix">
                 @if(Session::has('user'))
                     <li class="nav-item p-x-10x header-img" id="logged-user">
                         <a href="/user/changeprofile"
-                           class="nav-link name sanBold">{{Session::get('user.nickname')}}</a>
+                           class="nav-link name bigNoodle">{{Session::get('user.nickname')}}</a>
                         <!--个人中心下拉框-->
                         <div class="dropdown-img">
                             <span class="triangle-up"></span>
@@ -124,7 +114,7 @@
 
                     <!-- get off -->
                     <li class="nav-item p-x-10x">
-                        <a href="/invitefriends" class="helveBold text-red nav-link">GET $20 OFF</a>
+                        <a href="/invitefriends" class="text-green">GET 15% OFF</a>
                     </li>
 
                     <!-- 收藏商品 -->
@@ -157,8 +147,7 @@
                     </li>
                 @else
                     <li class="nav-item p-x-10x"><a class="nav-link" href="/login">SIGN IN</a></li>
-                    <li class="nav-item p-x-10x"><a class="nav-link sanBold text-red" href="/invitefriends">GET $20
-                            OFF</a></li>
+                    <li class="nav-item p-x-10x"><a class="nav-link text-green" href="/invitefriends">GET 15% OFF</a></li>
                     <li class="nav-item p-l-20x p-r-0">
                         <a href="/wish">
                             <div class="nav-shoppingCart flex flex-alignCenter">

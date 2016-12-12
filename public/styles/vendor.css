@@ -727,7 +727,7 @@ html {
 }
 
 body {
-  font-family: "sanfranciscodisplay";
+  font-family: "AvenirNext-Regular";
   font-size: 1rem;
   line-height: 1.5;
   color: #36405b;
@@ -802,7 +802,7 @@ a {
 }
 
 a:hover {
-  color: #6d91ff;
+  color: #46d594;
 }
 
 a:focus {
@@ -3526,7 +3526,7 @@ fieldset[disabled] a.btn {
 }
 
 .btn-link:focus, .btn-link:hover {
-  color: #6d91ff;
+  color: #46d594;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -3732,7 +3732,7 @@ input[type="button"].btn-block {
 }
 
 .dropdown-item.active a {
-  color: #6d91ff;
+  color: #46d594;
 }
 
 .dropdown-item.disabled, .dropdown-item.disabled:focus, .dropdown-item.disabled:hover {
@@ -4184,6 +4184,7 @@ input[type="button"].btn-block {
 .input-group-btn:last-child > .btn-group:hover {
   z-index: 3;
 }
+/*
 
 .c-input {
   position: relative;
@@ -4307,6 +4308,7 @@ input[type="button"].btn-block {
   height: 26px;
   min-height: 26px;
 }
+*/
 
 .file {
   position: relative;
@@ -4368,10 +4370,10 @@ input[type="button"].btn-block {
   list-style: none;
 }
 .nav-link.border-b{
-  border-bottom: 2px solid #fff;
+  border-bottom: 3px solid #fff;
 }
 .nav-link.border-b.active,.nav-link.border-b:hover{
-  border-bottom: 2px solid #6d91ff;
+  border-bottom: 3px solid #46d593;
   cursor: pointer;
 }
 .nav-link {
@@ -4469,7 +4471,7 @@ input[type="button"].btn-block {
 .navbar-primary .nav-item {
   display: block;
   float: left;
-  padding: 0rem 2rem;
+  padding-right: 2rem;
 }
 
 .navbar-primary .nav-logo {
@@ -4477,10 +4479,10 @@ input[type="button"].btn-block {
   padding-left: 1rem;
 }
 
-.navbar-primary .nav-link.active,
+/*.navbar-primary .nav-link.active,
 .navbar-primary .nav-item.open .nav-link {
-  color: #6d91ff;
-}
+  color: #46d593;
+}*/
 
 .navbar-primary .nav-link {
   line-height: 58px;
@@ -6784,7 +6786,9 @@ a.text-white:focus, a.text-white:hover {
 a.text-link:focus, a.text-link:hover {
   color: #3a6bff;
 }
-
+.text-green {
+  color: #46d593 !important;
+}
 .text-red {
   color: #ff553e !important;
 }
@@ -6805,7 +6809,7 @@ a.text-red:focus, a.text-red:hover {
   font-size: 1.375rem;
 }
 
-.font-size-lg {
+.font-size-lg {  /* 20px */
   font-size: 1.25rem;
 }
 
@@ -7523,12 +7527,7 @@ a.bg-red:focus, a.bg-red:hover {
   src: url("../../fonts/iconfont.eot?v=1.0") format("embedded-opentype"), url("../../fonts/iconfont.woff?v=1.0") format("woff"), url("../../fonts/iconfont.ttf?v=1.0") format("truetype"), url("../../fonts/iconfont.svg?v=1.0") format("svg");
   /* iOS 4.1- */
 }
-@font-face {
-  font-family: "BigNoodleTitling";
-  src: url("../../fonts/big_noodle_titling.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
+
 @font-face {
   font-family: "OpenSansRegular";
   src: url("../../fonts/OpenSans-Regular.ttf") format("truetype");
@@ -7536,6 +7535,40 @@ a.bg-red:focus, a.bg-red:hover {
   font-style: normal;
 }
 
+/* NEW */
+
+@font-face {
+  font-family: "AvenirNext-Regular";
+  src: url("../../fonts/AvenirNextLTPro-Regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AvenirNext-Bold";
+  src: url("../../fonts/AvenirNextLTPro-Bold.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AvenirNext-Medium";
+  src: url("../../fonts/AvenirLTStd-Medium.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "BigNoodleTitling";
+  src: url("../../fonts/big_noodle_titling.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "BigNoodleTitling-Oblique";
+  src: url("../../fonts/big_noodle_titling_oblique.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 .iconfont {
   display: inline-block;
   font-family: "iconfont" !important;

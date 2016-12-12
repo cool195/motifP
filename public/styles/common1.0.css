@@ -1,72 +1,4 @@
 @charset "UTF-8";
-/* common css */
-.avenirRegular{
-  font-family: "AvenirNext-Regular";
-}
-.avenirMedium{
-  font-family: "AvenirNext-Medium";
-}
-.avenirBold{
-  font-family: "AvenirNext-Bold";
-}
-.bigNoodle {
-  font-family: "BigNoodleTitling";
-  letter-spacing: 1px;
-}
-.bigNoodleOblique{
-  font-family: "BigNoodleTitling-Oblique";
-}
-
-/* header */
-.download-info{
-  background-color: #000;
-  letter-spacing: 1px;
-  padding-top: 4.3rem;
-}
-.logo{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* footer */
-
-
-
-
-a:focus,input:focus {
-  outline: none !important;
-}
-header {
-  background-color: #ffffff;
-}
-
-footer {
-  background-color: #171a2b;
-  padding: 1.875rem 0;
-}
-
-footer .text-Copyright{
-  opacity: .6;
-}
-/*.helve {
-  font-family: "HelveticaCondensed";
-}
-
-.helveBold {
-  font-family: "HelveticaCondensed bold";
-}
-
-.sanBold {
-  font-family: "sanfranciscodisplay bold";
-}
-
-.openSans {
-  font-family: "OpenSansRegular";
-}*/
-
-
 
 
 select {
@@ -79,7 +11,9 @@ select {
 }
 select::-ms-expand { display: none; }
 
-
+a:focus,input:focus {
+  outline: none !important;
+}
 .hover-blue:hover {
   color: #6d91ff;
 }
@@ -96,7 +30,18 @@ select::-ms-expand { display: none; }
   border-bottom: 30px solid #fff;
 }
 
+header {
+  background-color: #ffffff;
+}
 
+footer {
+  background-color: #171a2b;
+  padding: 1.875rem 0;
+}
+
+footer .text-Copyright{
+  opacity: .6;
+}
 
 .login-footer {
   background-color: #ffffff;
@@ -123,7 +68,23 @@ select::-ms-expand { display: none; }
   padding-top: 20px;
 }
 
+.helve {
+  font-family: "HelveticaCondensed";
+}
 
+.helveBold {
+  font-family: "HelveticaCondensed bold";
+}
+
+.sanBold {
+  font-family: "sanfranciscodisplay bold";
+}
+.bigNoodle {
+  font-family: "BigNoodleTitling";
+}
+.openSans {
+  font-family: "OpenSansRegular";
+}
 .img-border-white {
   border: 2px solid #fff;
   box-shadow: 0px 4px 10px 0px rgba(94, 109, 148, 0.3);
@@ -1636,7 +1597,10 @@ select::-ms-expand { display: none; }
    opacity: .9;
  }
 
-
+.download-info{
+  background-color: #6d91ff;
+  letter-spacing: 1px;
+}
 sup{
   top: -0.3em;
 }
