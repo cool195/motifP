@@ -803,6 +803,7 @@ a {
 
 a:hover {
   color: #46d594;
+  cursor: pointer;
 }
 
 a:focus {
@@ -3680,6 +3681,9 @@ input[type="button"].btn-block {
   border-top: 0;
   border-bottom: 0.3em solid;
 }
+.dropdown-menu{
+  display: none;
+}
 /*
 .dropdown-menu {
   position: absolute;
@@ -3719,7 +3723,7 @@ input[type="button"].btn-block {
   background: none;
   border: 0;
 }
-
+box-shadow
 .dropdown-item a {
   padding: 5px 20px;
   display: block;

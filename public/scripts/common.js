@@ -125,6 +125,14 @@ function HideSeeMore(seemoreName) {
         $('.download-info').remove();
     });*/
 
+    $('.shop-dropdown').hover(function () {
+        $(this).find('.dropdown-menu').addClass('open');
+        $('.main-header').addClass('box-shadow2');
+    }, function(){
+        $(this).find('.dropdown-menu').removeClass('open');
+        $('.main-header').removeClass('box-shadow2');
+    });
+
 
     // 订阅窗口显示
     try {
