@@ -53,6 +53,27 @@ footer {
 footer .text-Copyright{
   opacity: .6;
 }
+
+footer .btn-search{
+  border-radius: 0;
+  padding: 0.1875rem .675rem;
+  width: 20%;
+}
+
+footer .input-search{
+  padding: 0.4rem 0.75rem;
+  border: solid 1px #000;
+  width: 70%;
+}
+
+footer .footer-row > div{
+  padding-top: 3rem;
+}
+
+footer .verticalHr{
+  border-right: solid 1px #848484;
+  min-height: 15rem;
+}
 /*.helve {
   font-family: "HelveticaCondensed";
 }

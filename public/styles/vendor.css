@@ -5566,7 +5566,7 @@ a.label:focus, a.label:hover {
 .list-group-item {
   position: relative;
   display: block;
-  padding: .25rem 0;
+  padding: 0;
   margin-bottom: -1px;
 }
 
@@ -7835,7 +7835,7 @@ a.bg-red:focus, a.bg-red:hover {
 .icon-blog:before { content: "\e646"; }
 .icon-car:before { content: "\e696"; }
 .footer-icon{
-  font-size: 24px;
+  font-size: 36px;
 }
 .designer-item .icon-youtube1{
   font-size: 1.7rem;

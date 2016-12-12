@@ -1,86 +1,49 @@
 <footer>
-    <div class="container p-x-40x">
-        <div class="text-center m-b-40x p-t-10x">
-            <a href="/daily"><img class=""
-                                  src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png{{config('runtime.V')}}"
-                                  alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/logo-white@2x.png 2x"></a>
-        </div>
-        <div class="row">
-            <div class="col-md-3 col-xs-6">
-                <div class="list-group text-white m-b-20x">
-                    <div class="sanBold font-size-sm p-b-20x">Motif</div>
-                    <a class="list-group-item font-size-xs" href="/aboutmotif">About Motif</a>
-                    <a class="list-group-item font-size-xs" href="/privacynotice">Privacy Notice</a>
-                    <a class="list-group-item font-size-xs" href="/termsconditions">Terms & Conditions</a>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <div class="list-group text-white m-b-20x">
-                    <div class="sanBold font-size-sm m-b-20x">Help & Service</div>
-                    <a class="list-group-item font-size-xs text-white" href="/contactus">Contact Us</a>
-                    <a class="list-group-item font-size-xs text-white" href="/faq">FAQ</a>
-                    {{--<a class="list-group-item font-size-xs text-white" href="/payments">Payments</a>--}}
-                    <a class="list-group-item font-size-xs text-white" href="/service/23?template=1">Shipping & Returns</a>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <div class="list-group text-white m-b-20x">
-                    <div class="sanBold font-size-sm m-b-20x">Download</div>
-                    <div class="list-group-item">
-                        <a href="https://itunes.apple.com/us/app/id1125850409" target="_blank" class="btn btn-black">
-                            <img class="img-fluid m-x-auto"
-                                 src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png{{config('runtime.V')}}"
-                                 srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png{{config('runtime.V')}} 3x">
+    <div class="container">
+            <div class="row footer-row">
+                <div class="col-md-3 verticalHr">
+                    <div class="bigNoodle font-size-lx m-b-5x">CONNECT WITH US</div>
+                    <div>
+                        <a href="https://www.facebook.com/motifme" target="_blank" class="p-r-10x text-primary">
+                            <i class="iconfont icon-facebook footer-icon"></i>
                         </a>
-                    </div>
-                    <div class="list-group-item">
-                        <a href="https://play.google.com/store/apps/details?id=me.motif.motif" target="_blank" class="btn btn-black">
-                            <img class="img-fluid m-x-auto"
-                                 src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png{{config('runtime.V')}}"
-                                 srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png{{config('runtime.V')}} 3x">
+                        <a href="https://www.instagram.com/motifme/" target="_blank" class="p-r-10x text-primary">
+                            <i class="iconfont icon-instagram1 footer-icon"></i>
+                        </a>
+                        <a href="https://www.pinterest.com/motifme/" target="_blank" class="p-r-10x text-primary">
+                            <i class="iconfont icon-pinterest1 footer-icon"></i>
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <div class="list-group text-white m-b-20x">
-                    <div class="sanBold font-size-sm m-b-20x">Follow Us</div>
-                    <a href="https://www.facebook.com/motifme" target="_blank" class="btn btn-share btn-circle m-r-20x">
-                        <i class="iconfont icon-facebook1 footer-icon"></i>
-                    </a>
-                    <a href="https://www.instagram.com/motifme/" target="_blank" class="btn btn-share btn-circle m-r-20x">
-                        <i class="iconfont icon-instagram1 footer-icon"></i>
-                    </a>
-                    <a href="https://www.pinterest.com/motifme/" target="_blank" class="btn btn-share btn-circle m-r-20x">
-                        <i class="iconfont icon-pinterest1 footer-icon"></i>
-                    </a>
+                <div class="col-md-3 p-l-40x">
+                    <div class="bigNoodle font-size-lx m-b-5x">MOTIF</div>
+                    <ul class="list-group">
+                        <li class="list-group-item font-size-sm"><a href="/aboutmotif">OUR STORY</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/">IN THE PRESS</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/">AFFILIATE PROGRAM</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <div class="bigNoodle font-size-lx m-b-5x">HELP</div>
+                    <ul class="list-group">
+                        <li class="list-group-item font-size-sm"><a href="/aboutmotif">CONTACT US</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/faq">FAQ</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/">SHIPPING POLICY</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/">RETURNS</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/termsconditions">TERMS & CONDITIONS</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/privacynotice">PRIVACY NOTICE</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-right">
+                        <input class="contrlo-lg text-primary input-search font-size-sm" placeholder="Looking for something specific?" type="text">
+                        <a class="btn btn-primary bigNoodle font-size-lx btn-search">SEARCH</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="p-y-10x text-center">
-            <div class="sanBold font-size-sm m-b-20x text-white">Payment Accepted</div>
-            <div>
-                <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypal-43.png"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypal-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-paypal-43@3x.png{{config('runtime.V')}} 3x">
-                <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-43.png"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-43@3x.png{{config('runtime.V')}} 3x">
-                <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-43.png"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-43@3x.png{{config('runtime.V')}} 3x">
-                <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-american-43.png"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-american-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-american-43@3x.png{{config('runtime.V')}} 3x">
-                <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-43.png"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-visa-43@3x.png{{config('runtime.V')}} 3x">
-            </div>
-        </div>
-        <div class="p-t-10x m-t-10x text-center text-white font-size-xs text-Copyright">Copyright © 2016 Motif Group
-            LLC. All rights reserved.
-        </div>
-    </div>
+
     @if(!isset($CartCheck))
     <!-- 固定 弹框订阅 -->
         <div class="redeem-fixed p-y-10x p-x-20x">GET 15% OFF YOUR FIRST ORDER!</div>
