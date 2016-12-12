@@ -4479,15 +4479,6 @@ input[type="button"].btn-block {
   padding-left: 1rem;
 }
 
-/*.navbar-primary .nav-link.active,
-.navbar-primary .nav-item.open .nav-link {
-  color: #46d593;
-}*/
-
-.navbar-primary .nav-link {
-  line-height: 58px;
-}
-
 .nav-stacked .nav-item {
   display: block;
   float: none;

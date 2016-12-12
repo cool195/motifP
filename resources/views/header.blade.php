@@ -40,8 +40,7 @@
 </head>
 <body>
 {{--@if(!isset($CartCheck))--}}
-    {{--下载提示--}}
-    <div class="download-info p-t-40x p-b-10x">
+    <div class="download-info p-t-40x p-b-15x">
         <div class="container">
             <div class="row text-white avenirMedium">
                 <div class="col-md-6">
@@ -56,10 +55,9 @@
 {{--@endif--}}
 <!-- 头部 -->
 <header class="box-shadow" style="position: relative">
-    <div class="container bigNoodle font-size-lg">
+    <div class="container bigNoodle font-size-lg p-t-30x">
         <nav class="navbar-left">
             <ul class="nav navbar-primary clearfix">
-
                 <li class="nav-item"><a
                             class="nav-link border-b p-x-10x @if(isset($page) && 'daily' == $page) active @endif"
                             href="/daily">TRENDING</a></li>
@@ -83,9 +81,9 @@
         <div class="logo">
             <a href="/daily">
                 <img class="img-fluid"
-                     src="{{config('runtime.Image_URL')}}/images/logo/logo.png{{config('runtime.V')}}"
-                     alt="logo"
-                     srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x">
+                     src="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}}"
+                     alt="logo">
+                {{--srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x"--}}
             </a>
         </div>
         <nav class="navbar-right">
