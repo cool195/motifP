@@ -54,8 +54,8 @@
     </div>
 {{--@endif--}}
 <!-- 头部 -->
-<header class="box-shadow" style="position: relative">
-    <div class="container bigNoodle font-size-lg p-t-30x">
+<header class="main-header">
+    <div class="container bigNoodle font-size-lx p-t-30x">
         <nav class="navbar-left">
             <ul class="nav navbar-primary clearfix">
                 <li class="nav-item"><a
@@ -67,14 +67,19 @@
                 <li class="nav-item {{$page}} @if('shopping' != $page) shop-dropdown @endif">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
                     <a href="/shopping"
-                       class="nav-link border-b p-x-10x @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) @endif>SHOP</a>
-                    <ul class="dropdown-menu dropdown-nav-hover shop-dropdownMenu">
-                        @foreach($Category->getShoppingCategoryList() as $category)
-                            <li class="dropdown-item @if('shopping' == $page && $cid == $category['category_id']) active @endif">
-                                <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}</a>
-                            </li>
-                        @endforeach
-                    </ul>
+                       class="nav-link p-x-10x @if('shopping' == $page) active @endif" @if(!$Shopping) @endif>SHOP</a>
+                    <div class="dropdown-menu p-t-20x p-l-10x">
+                        <div class="pull-left">SHOP ALL</div>
+                        <ul class="figure">
+                            <li>SHOP BY CATEGORY</li>
+                            @foreach($Category->getShoppingCategoryList() as $category)
+                                <li class="dropdown-item font-size-md avenirRegular @if('shopping' == $page && $cid == $category['category_id']) active @endif">
+                                    <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+
                 </li>
             </ul>
         </nav>
@@ -117,52 +122,44 @@
 
                     <!-- 收藏商品 -->
                     <li class="nav-item p-l-20x p-r-0">
-                        <a href="/wish">
-                            <div class="nav-shoppingCart flex flex-alignCenter">
+                        <a href="/wish" class="p-t-5x flex flex-alignCenter">
                                 <i class="iconfont icon-like font-size-lxx text-primary"></i>
                                 @if(Session::get('user.nickname'))
                                     {{--收藏商品数量 注入服务--}}
                                     @inject('wishlist', 'App\Http\Controllers\UserController')
-                                    <span class="p-l-5x text-link headerWish"
+                                    <span class="p-l-5x text-link avenirRegular font-size-sm headerWish"
                                           data-num="{{count($wishlist->wishlist())}}">{{count($wishlist->wishlist())}}</span>
                                 @endif
-
-                            </div>
                         </a>
                     </li>
 
                     <!-- 购物车商品 -->
                     <li class="nav-item p-l-20x p-r-10x">
-                        <a href="/cart">
-                            <div class="nav-shoppingCart flex flex-alignCenter">
+                        <a href="/cart" class="p-t-5x flex flex-alignCenter">
                                 <i class="iconfont icon-iconshoppingbag font-size-lxx text-primary"></i>
                                 {{--购物车数量 注入服务--}}
                                 @inject('Cart', 'App\Http\Controllers\CartController')
-                                <span class="p-l-5x text-link headerCart"
+                                <span class="p-l-5x text-link avenirRegular font-size-sm headerCart"
                                       data-num="{{$Cart->getCartAmount()['data']['skusAmout']}}">{{$Cart->getCartAmount()['data']['skusAmout']}}</span>
-                            </div>
+
                         </a>
                     </li>
                 @else
                     <li class="nav-item p-x-10x"><a class="nav-link" href="/login">SIGN IN</a></li>
                     <li class="nav-item p-x-10x"><a class="nav-link text-green" href="/invitefriends">GET 15% OFF</a></li>
                     <li class="nav-item p-l-20x p-r-0">
-                        <a href="/wish">
-                            <div class="nav-shoppingCart flex flex-alignCenter">
+                        <a href="/wish" class="p-t-5x flex flex-alignCenter">
                                 <i class="iconfont icon-like font-size-lxx text-primary"></i>
-                                <span class="p-l-5x text-link">0</span>
-                            </div>
+                                <span class="p-l-5x text-link avenirRegular font-size-sm">0</span>
                         </a>
                     </li>
                     <li class="nav-item p-l-20x p-r-10x">
-                        <a href="/cart">
-                            <div class="nav-shoppingCart flex flex-alignCenter">
+                        <a href="/cart" class="p-t-5x flex flex-alignCenter">
                                 <i class="iconfont icon-iconshoppingbag font-size-lxx text-primary"></i>
                                 {{--购物车数量 注入服务--}}
                                 @inject('Cart', 'App\Http\Controllers\CartController')
-                                <span class="p-l-5x text-link headerCart"
+                                <span class="p-l-5x text-link avenirRegular font-size-sm headerCart"
                                       data-num="{{$Cart->getCartAmount()['data']['skusAmout']}}">{{$Cart->getCartAmount()['data']['skusAmout']}}</span>
-                            </div>
                         </a>
                     </li>
                 @endif

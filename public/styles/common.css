@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /* common css */
+ul,li,ol{ list-style: none; }
 .avenirRegular{
   font-family: "AvenirNext-Regular";
 }
@@ -18,6 +19,11 @@
 }
 
 /* header */
+.main-header{
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+}
 .download-info{
   background-color: #000;
   letter-spacing: 1px;
@@ -25,12 +31,32 @@
 }
 .logo{
   position: absolute;
-  top: 50%;
+  top: 13px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
 }
 .nav-item>a{
   padding-bottom: 1.75rem;
+}
+.navbar-primary .nav-link.text-green{
+  text-decoration: underline;
+}
+.shop-dropdown{
+  position: relative;
+}
+.shop-dropdown:hover .dropdown-menu{
+  display: block;
+}
+
+.shop-dropdown .dropdown-menu {
+  display: none;
+  min-width: 100%;
+  background-color: #fff;
+  /*box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);*/
+  margin-top: -5px;
+}
+.shop-dropdown .dropdown-menu .dropdown-item.active,.shop-dropdown .dropdown-menu .dropdown-item:hover{
+  /*font-family: "AvenirNext-Bold";*/
 }
 
 /* footer */
@@ -1107,7 +1133,7 @@ select::-ms-expand { display: none; }
   text-align: right;
 }
 
-/*个人中心下拉框*/
+/*个人中心下拉框
 .shop-dropdown{
   position: relative;
 }
@@ -1133,7 +1159,7 @@ select::-ms-expand { display: none; }
   color: #6d91ff;
   border-left: 2px solid #6d91ff;
 }
-
+*/
 .header-img {
   position: relative;
 }
