@@ -57,11 +57,13 @@ ul,li,ol{ list-style: none; }
 .shop-dropdown .dropdown-menu.open{
   display: block;
 }
+
+.body-container{
+  padding-top: 6rem;
+}
+
+
 /* footer */
-
-
-
-
 a:focus,input:focus {
   outline: none !important;
 }

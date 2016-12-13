@@ -1,7 +1,7 @@
 <!-- banner -->
 @include('header', ['title' => 'Exclusive Accessory Designs From Your Favorite Instagrammers & YouTubers', 'page' => 'daily'])
 @if(!empty($banner))
-    <section>
+    <section class="body-container">
         <div class="banner-container bannerSwiper-container" id="dailyIndex" data-show="true">
             <div class="swiper-wrapper">
                 @foreach($banner as $value)
