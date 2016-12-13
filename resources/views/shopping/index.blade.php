@@ -199,7 +199,7 @@
                 @{{ /if }}
             </div>
             
-            <div class="text-center bigNoodle font-size-llxx text-truncate p-x-20x">@{{ $value.main_title }}</div>
+            <div class="text-center font-size-md text-truncate p-x-20x">@{{ $value.main_title }}</div>
             <div class="text-center">
                 @{{ if $value.skuPrice.sale_price != $value.skuPrice.price }}
                     <span class="font-size-md p-r-5x">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
