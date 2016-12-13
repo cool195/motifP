@@ -63,16 +63,14 @@
 </script>
 
 <!-- 内容 -->
-<section style="margin-top: 1px;">
-    <div class="bg-white product-category">
+<section style="margin-top: 96px;">
+    <div class="bg-inverse product-category">
         <div class="container">
             <nav class="nav navbar-nav">
                 <ul class="nav flex flex-alignCenter flex-justifyCenter">
                     @foreach($categories as $category)
-                        <li class="text-center category-item p-x-30x p-y-10x @if($cid == $category['category_id']) active @endif">
-                            <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}
-                                <span class="triangle-up"></span>
-                            </a>
+                        <li class="text-center bigNoodle font-size-lx category-item p-x-30x p-y-10x @if($cid == $category['category_id']) active @endif">
+                            <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}</a>
                         </li>
                     @endforeach
                 </ul>

@@ -67,7 +67,7 @@
                 <li class="nav-item {{$page}} @if('shopping' != $page) shop-dropdown @endif">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
                     <a href="/shopping"
-                       class="nav-link p-x-10x @if('shopping' == $page) active @endif" @if(!$Shopping) @endif>SHOP</a>
+                       class="nav-link p-x-10x @if('shopping' == $page) border-b active @endif" @if(!$Shopping) @endif>SHOP</a>
                     <div class="dropdown-menu p-t-20x p-l-10x">
                         <div class="pull-left">SHOP ALL</div>
                         <ul class="figure">

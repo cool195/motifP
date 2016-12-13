@@ -937,60 +937,13 @@ select::-ms-expand { display: none; }
   width: 100%;
 }
 
-.product-category {
-  box-shadow: 0px 2px 7px rgba(196, 200, 211, 0.5);
-}
-.category-item{
-  position: relative;
-}
 .category-item a{
   display: inline-block;
+  color: #fff;
 }
-.category-item .triangle-up{
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  display: none;
+.category-item.active a{
+  text-decoration: underline;
 }
-.category-item.active .triangle-up,.category-item:hover .triangle-up{
-  display: block;
-}
-.category-item.active a,.category-item:hover a{
-  color: #6d91ff;
-  cursor: pointer;
-}
-/*.category-item {
-  text-align: center;
-  color: #36405b;
-  opacity: .6;
-  font-size: .875rem;
-  min-width: 5.5rem;
-  -webkit-transition: all 150ms ease;
-  transition: all 150ms ease;
-}
-
-.category-item img {
-  width: 2.3rem;
-  height: 2.3rem;
-  -webkit-transition: all 150ms ease;
-  transition: all 150ms ease;
-}
-
-.category-item.active, .category-item:hover {
-  color: #36405b;
-  border-bottom: 4px solid #36405b;
-  opacity: 1;
-  font-size: 1rem;
-}
-
-.category-item.active img, .category-item:hover img {
-  -webkit-transform: scale(1.06, 1.06);
-          transform: scale(1.06, 1.06);
-  -webkit-transition: all 150ms ease;
-  transition: all 150ms ease;
-}*/
 
 /* 设计师详情 预售样式 begin */
 .designer-img{
