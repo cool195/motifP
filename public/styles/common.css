@@ -1401,7 +1401,7 @@ select::-ms-expand { display: none; }
   z-index: 1000;
 }
 .limited-sign{
-  height: 45px;
+  height: 2.5rem;
 }
 .presale-sign {
   text-align: center;

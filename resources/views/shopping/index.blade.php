@@ -78,7 +78,7 @@
         </div>
     </div>
     <!-- 商品列表 -->
-    <div class="container m-t-20x m-b-40x" id="productList-container" data-categoryid="{{$cid}}" data-pagenum="1" data-loading="false" data-searchid="0">
+    <div class="container m-t-20x m-b-20x" id="productList-container" data-categoryid="{{$cid}}" data-pagenum="1" data-loading="false" data-searchid="0">
         <!-- sort by -->
         {{--<div class="m-b-20x text-right">
             <span class="sanBold p-r-15x">Sort By:</span>
@@ -145,9 +145,9 @@
             </div>
             @endforeach
         </div>
-        <div class="text-center m-y-30x seeMore-info">
+        <div class="text-center m-y-10x seeMore-info">
             <div class="productList-seeMore" style="display: none">
-                <div class="btn btn-gray btn-lg btn-380 btn-seeMore">VIEW MORE</div>
+                <div class="btn btn-gray btn-380 btn-seeMore bigNoodle font-size-lx">VIEW MORE</div>
             </div>
             <div class="loading product-loading" style="display: none">
                 <div class="loader">
