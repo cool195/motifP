@@ -73,7 +73,7 @@
                         <ul class="figure">
                             <li>SHOP BY CATEGORY</li>
                             @foreach($Category->getShoppingCategoryList() as $category)
-                                <li class="dropdown-item font-size-md avenirRegular @if('shopping' == $page && $cid == $category['category_id']) active @endif">
+                                <li class="font-size-md avenirRegular @if('shopping' == $page && $cid == $category['category_id']) active @endif">
                                     <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}</a>
                                 </li>
                             @endforeach
