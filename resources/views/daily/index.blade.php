@@ -2,7 +2,7 @@
 @include('header', ['title' => 'Exclusive Accessory Designs From Your Favorite Instagrammers & YouTubers', 'page' => 'daily'])
 @if(!empty($banner))
     <section class="body-container">
-        <div class="banner-container bannerSwiper-container" id="dailyIndex" data-show="true">
+        <div class="container banner-container bannerSwiper-container" id="dailyIndex" data-show="true">
             <div class="swiper-wrapper">
                 @foreach($banner as $value)
                     <div class="swiper-slide">
@@ -27,11 +27,11 @@
 <div class="clearfix"></div>
 
 <!-- 列表内容 -->
-<div class="container m-y-40x" role="main" id="dailyList-container" data-pagenum="1" data-loading="false">
+<div class="container m-y-15x" role="main" id="dailyList-container" data-pagenum="0" data-loading="false">
     @if(!empty($list))
-        <ul class="tiles-wrap animated daily-content" id="daily-wookmark">
+        <ul class="tiles-wrap animated daily-content m-b-0" id="daily-wookmark">
             @foreach($list as $daily)
-                {{--<li class="isHidden">--}}
+                <li class="isHidden">
                 <li>
                     @if(3 == $daily['type'])
                         <div class="daily-item">
@@ -63,11 +63,12 @@
                         <div class="daily-item player-media">
                             <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":"{{$daily['skipId']}}","sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
                                data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":"{{$daily['skipId']}}","sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
-                               href="@if(1 == $daily['skipType'])/detail/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@elseif(4 == $daily['skipType'])/shopping/@else{{""}}@endif{{ $daily['skipId'] }}">
+                               href="@if(1 == $daily['skipType'])/detail/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@elseif(4 == $daily['skipType'])/shopping/@else{{""}}@endif{{ $daily['skipId'] }}"
+                               class="daily-img">
                                 <img data-original="{{config('runtime.CDN_URL')}}/n3/{{$daily['imgPath']}}"
                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                      class="img-fluid img-daily img-lazy"
-                                     style="width: 252px; height: {{252/$daily['weight']*$daily['height']}}px">
+                                     style="width: 100%;" data-weight="{{$daily['weight']}}" data-height="{{$daily['height']}}">
                             </a>
                             @if(!empty($daily['title'] || !empty($daily['subTitle'])))
                                 <div class="daily-info p-a-10x text-left">
@@ -95,9 +96,9 @@
         </ul>
     @endif
     <div class="clearfix"></div>
-    <div class="text-center m-y-30x seeMore-info">
+    <div class="text-center p-y-10x seeMore-info">
         <div class="dailyList-seeMore" style="display: none;">
-            <a class="btn btn-gray btn-lg btn-380 btn-seeMore-dailyList">VIEW MORE</a>
+            <a class="btn btn-gray btn-380 btn-seeMore-dailyList bigNoodle font-size-lx">VIEW MORE</a>
         </div>
         <div class="loading daily-loading" style="display: none">
             <div class="loader"></div>
@@ -140,11 +141,12 @@
         <div class="daily-item">
             <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
                data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
-               href="@{{if $value.skipType == 1}}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4}}/shopping/@{{ else }}@{{ /if }}@{{ $value.skipId }}">
+               href="@{{if $value.skipType == 1}}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4}}/shopping/@{{ else }}@{{ /if }}@{{ $value.skipId }}"
+               class="daily-img">
                 <img data-original="{{config('runtime.CDN_URL')}}/n3/@{{ $value.imgPath }}"
                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                      class="img-fluid img-daily img-lazy"
-                     style="width: 252px; height: @{{ 252/$value.weight * $value.height }}px">
+                     style="width: 100%;" data-weight="@{{$value.weight}}" data-height="@{{$value.height}}">
             </a>
 
             @{{ if undefined !== ( $value.title || $value.subTitle ) }}

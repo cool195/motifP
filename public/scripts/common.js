@@ -3315,7 +3315,7 @@ function HideSeeMore(seemoreName) {
                         container: $('#daily-wookmark'),
                         align: 'center',
                         offset: 0,
-                        itemWidth: 272
+                        itemWidth: '33%'
                     });
                     loadingHide('.daily-loading', '.dailyList-seeMore');
 
@@ -3323,6 +3323,8 @@ function HideSeeMore(seemoreName) {
                     if (dailyNum < Size) {
                         HideSeeMore('.dailyList-seeMore');
                     }
+
+                    initDailyImgH();
                 });
 
                 // 图片延迟加载
@@ -3356,6 +3358,29 @@ function HideSeeMore(seemoreName) {
         } catch (e) {
         }
     });
+
+    // daily 图片高度
+    $(function(){
+        if($('#dailyIndex').length > 0){
+            initDailyImgH();
+        }
+    });
+    window.onresize = function(){
+        if($('#dailyIndex').length > 0){
+            initDailyImgH();
+        }
+    }
+    function initDailyImgH(){
+        var ImgWidth=$('.img-daily').width();
+        $('.img-daily').each(function(){
+            var $this=$(this),
+                ImgWeight=$this.data('weight'),
+                ImgHeight=$this.data('height'),
+                ImgH=(ImgWidth/ImgWeight)*ImgHeight;
+            $this.css('height',ImgH);
+        });
+    }
+
 
     // Daily List end
 
@@ -3960,6 +3985,7 @@ function HideSeeMore(seemoreName) {
                 }
             });
     });
+
 })(jQuery, Swiper);
 
 
@@ -3992,7 +4018,7 @@ if ($('#dailyIndex').data('show')) {
                     container: $('#daily-wookmark'),
                     align: 'center',
                     offset: 0,
-                    itemWidth: 272
+                    itemWidth: '33%'
                 });
 
                 var dailyNum = $('#daily-wookmark li').length;
@@ -4015,7 +4041,7 @@ window.onload = function () {
             container: $('#daily-wookmark'),
             align: 'center',
             offset: 0,
-            itemWidth: 272
+            itemWidth: '33%'
         });
     } catch (e) {
     }
