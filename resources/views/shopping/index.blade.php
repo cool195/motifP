@@ -63,13 +63,13 @@
 </script>
 
 <!-- 内容 -->
-<section style="margin-top: 96px;">
+<section class="body-container">
     <div class="bg-inverse product-category">
         <div class="container">
             <nav class="nav navbar-nav">
                 <ul class="nav flex flex-alignCenter flex-justifyCenter">
                     @foreach($categories as $category)
-                        <li class="text-center bigNoodle font-size-lx category-item p-x-30x p-y-10x @if($cid == $category['category_id']) active @endif">
+                        <li class="text-center bigNoodle font-size-md category-item p-x-30x p-y-10x @if($cid == $category['category_id']) active @endif">
                             <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}</a>
                         </li>
                     @endforeach
@@ -80,7 +80,7 @@
     <!-- 商品列表 -->
     <div class="container m-t-20x m-b-40x" id="productList-container" data-categoryid="{{$cid}}" data-pagenum="1" data-loading="false" data-searchid="0">
         <!-- sort by -->
-        <div class="m-b-20x text-right">
+        {{--<div class="m-b-20x text-right">
             <span class="sanBold p-r-15x">Sort By:</span>
             <div class="dropdown sortBy-dropdown">
                 <button class="btn btn-sortBy dropdown-toggle" type="button" id="searchDropdown">
@@ -93,7 +93,7 @@
                     @endforeach
                 </div>
             </div>
-        </div>
+        </div>--}}
 
         <div class="row">
             @foreach($productAll['list'] as $product)
@@ -115,22 +115,29 @@
                             <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$product['spu']}}"></i></span>
                         @endif
 
-                        @if(1 == $product['sale_type'])
+                        {{--@if(1 == $product['sale_type'])
                             <!--预售标志-->
                             <div class="presale-sign newPresale-sign">
-                                {{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}
+                                --}}{{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}{{--
                                 <a href="/detail/{{$product['spu']}}" data-clk="{{$product['clk']}}" class="newPresale-text helveBold font-size-xs text-primary">Limited Edition</a>
                             </div>
-                        @endif
+                        @endif--}}
                     </div>
-                    <div class="price-caption helveBold">
-                        <div class="text-center font-size-md text-main text-truncate p-x-20x">{{$product['main_title']}}</div>
+                    <div class="price-caption">
+                        <!--预售-->
+                        <div class="text-center bigNoodle font-size-llxx text-truncate p-x-20x limited-sign">
+                            @if(1 == $product['sale_type'])
+                            <span>LIMITED EDITION</span>
+                            @endif
+                        </div>
+
+                        <div class="text-center font-size-md text-truncate p-x-20x">{{$product['main_title']}}</div>
                         <div class="text-center">
                             @if($product['skuPrice']['skuPromotion']['promot_price'] != $product['skuPrice']['skuPromotion']['price'])
-                                <span class="font-size-md text-main p-r-5x text-red">${{ number_format(($product['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
-                                <span class="font-size-base text-common text-throughLine">${{ number_format(($product['skuPrice']['skuPromotion']['price'] / 100), 2) }}</span>
+                                <span class="font-size-md p-r-5x">${{ number_format(($product['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
+                                <span class="font-size-md text-green text-throughLine">${{ number_format(($product['skuPrice']['skuPromotion']['price'] / 100), 2) }}</span>
                             @else
-                                <span class="font-size-md text-main p-r-5x">${{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}</span>
+                                <span class="font-size-md p-r-5x">${{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}</span>
                             @endif
                         </div>
                     </div>
@@ -173,25 +180,32 @@
             @else
                 <span class="product-heart btn-heart"><i class="iconfont font-size-lxx btn-wish" data-actionspu="@{{ $value.spu }}"></i></span>
             @endif
-            @{{ if 1 == $value.sale_type }}
+           {{-- @{{ if 1 == $value.sale_type }}
                 <!--预售标志-->
                 <div class="presale-sign newPresale-sign">
-                    {{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}
+                    --}}{{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}{{--
                     <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                        data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
                        data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}"
                        class="newPresale-text helveBold font-size-xs text-primary text-primary">Limited Edition</a>
                 </div>
-            @{{ /if }}
+            @{{ /if }}--}}
         </div>
-        <div class="price-caption helveBold">
-            <div class="text-center font-size-md text-main text-truncate p-x-20x">@{{ $value.main_title }}</div>
+        <div class="price-caption">
+            <!--预售-->
+            <div class="text-center bigNoodle font-size-llxx text-truncate p-x-20x limited-sign">
+                @{{ if 1 == $value.sale_type }}
+                    <span>LIMITED EDITION</span>
+                @{{ /if }}
+            </div>
+            
+            <div class="text-center bigNoodle font-size-llxx text-truncate p-x-20x">@{{ $value.main_title }}</div>
             <div class="text-center">
                 @{{ if $value.skuPrice.sale_price != $value.skuPrice.price }}
-                    <span class="font-size-md text-main p-r-5x text-red">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
-                    <span class="font-size-base text-common text-throughLine">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
+                    <span class="font-size-md p-r-5x">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
+                    <span class="font-size-md text-green text-throughLine">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
                 @{{ else }}
-                    <span class="font-size-md text-main p-r-5x">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
+                    <span class="font-size-md p-r-5x">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
                 @{{ /if }}
             </div>
         </div>

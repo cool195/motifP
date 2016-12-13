@@ -214,7 +214,7 @@ select::-ms-expand { display: none; }
 }
 
 .btn-wish:after {
-  content: "\e60d";
+  content: "\e69b";
 }
 
 .btn-wish.active {
@@ -224,11 +224,11 @@ select::-ms-expand { display: none; }
           animation-duration: 300ms;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
-  color: #f83a3a;
+  color: #000;
 }
 
 .btn-wish.active:after {
-  content: "\e60d";
+  content: "\e69e";
 }
 
 .btn-detailWish:hover {
@@ -397,11 +397,11 @@ select::-ms-expand { display: none; }
 }
 
 .product-heart {
-  color: #7f7f7f;
+  color: #000;
 }
 
 .product-heart.active {
-  color: #f83a3a;
+  color: #000;
 }
 
 .product-heart:hover {
@@ -418,14 +418,14 @@ select::-ms-expand { display: none; }
 .productList-item {
   border-radius: 0.375rem;
   overflow: hidden;
-  box-shadow: 0px 0px 8px rgba(196, 200, 211, 0.2);
+  /*box-shadow: 0px 0px 8px rgba(196, 200, 211, 0.2);*/
   margin-bottom: 20px;
   position: relative;
 }
-
+/*
 .productList-item:hover .btn-heart {
   opacity: 1;
-}
+}*/
 .productList-item:hover .productImg-hover{
   display: block;
 }
@@ -441,9 +441,6 @@ select::-ms-expand { display: none; }
   visibility: hidden;
 }
 
-.productList-item:hover {
-  box-shadow: 0px 0px 8px rgba(196, 200, 211, 0.8);
-}
 
 .bg-soldout {
   position: absolute;
@@ -474,7 +471,6 @@ select::-ms-expand { display: none; }
   position: absolute;
   right: 10px;
   top: 10px;
-  opacity: 0;
 }
 
 .productList-item .price-caption {
@@ -1398,7 +1394,9 @@ select::-ms-expand { display: none; }
   left: 20px;
   z-index: 1000;
 }
-
+.limited-sign{
+  height: 45px;
+}
 .presale-sign {
   text-align: center;
   position: absolute;
