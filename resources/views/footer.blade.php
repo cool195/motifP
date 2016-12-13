@@ -5,13 +5,13 @@
                     <div class="bigNoodle font-size-lx m-b-5x">CONNECT WITH US</div>
                     <div>
                         <a href="https://www.facebook.com/motifme" target="_blank" class="p-r-10x text-primary">
-                            <i class="iconfont icon-facebook footer-icon"></i>
+                            <i class="iconfont icon-facebook2 footer-icon"></i>
                         </a>
                         <a href="https://www.instagram.com/motifme/" target="_blank" class="p-r-10x text-primary">
-                            <i class="iconfont icon-instagram1 footer-icon"></i>
+                            <i class="iconfont icon-ins2 footer-icon"></i>
                         </a>
                         <a href="https://www.pinterest.com/motifme/" target="_blank" class="p-r-10x text-primary">
-                            <i class="iconfont icon-pinterest1 footer-icon"></i>
+                            <i class="iconfont icon-pin2 footer-icon"></i>
                         </a>
                     </div>
                 </div>

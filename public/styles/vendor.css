@@ -7838,6 +7838,13 @@ a.bg-red:focus, a.bg-red:hover {
 .icon-youtube1:before { content: "\e645"; }
 .icon-blog:before { content: "\e646"; }
 .icon-car:before { content: "\e696"; }
+.icon-delete:before { content: "\e697"; }
+.icon-facebook2:before { content: "\e698"; }
+.icon-pin2:before { content: "\e699"; }
+.icon-ins2:before { content: "\e69a"; }
+.icon-heart2:before { content: "\e69b"; }
+.icon-shop2:before { content: "\e69c"; }
+.icon-search:before { content: "\e69d"; }
 .footer-icon{
   font-size: 36px;
 }

@@ -147,18 +147,23 @@
                 @else
                     <li class="nav-item p-x-10x"><a class="nav-link" href="/login">SIGN IN</a></li>
                     <li class="nav-item p-x-10x"><a class="nav-link text-green" href="/invitefriends">GET 15% OFF</a></li>
-                    <li class="nav-item p-l-20x p-r-0">
+                    <li class="nav-item p-l-10x p-r-0">
                         <a href="/wish" class="p-t-5x flex flex-alignCenter">
-                                <i class="iconfont icon-like font-size-lxx text-primary"></i>
-                                <span class="p-l-5x text-link avenirRegular font-size-sm">0</span>
+                            <i class="iconfont icon-search font-size-lxx text-primary"></i>
                         </a>
                     </li>
-                    <li class="nav-item p-l-20x p-r-10x">
+                    <li class="nav-item p-l-15x p-r-0">
+                        <a href="/wish" class="p-t-5x flex flex-alignCenter">
+                                <i class="iconfont icon-heart2 font-size-lxx text-primary"></i>
+                                <span class="text-link avenirRegular font-size-sm">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item p-l-15x p-r-10x">
                         <a href="/cart" class="p-t-5x flex flex-alignCenter">
-                                <i class="iconfont icon-iconshoppingbag font-size-lxx text-primary"></i>
+                                <i class="iconfont icon-shop2 font-size-lxx text-primary"></i>
                                 {{--购物车数量 注入服务--}}
                                 @inject('Cart', 'App\Http\Controllers\CartController')
-                                <span class="p-l-5x text-link avenirRegular font-size-sm headerCart"
+                                <span class="text-link avenirRegular font-size-sm headerCart"
                                       data-num="{{$Cart->getCartAmount()['data']['skusAmout']}}">{{$Cart->getCartAmount()['data']['skusAmout']}}</span>
                         </a>
                     </li>
