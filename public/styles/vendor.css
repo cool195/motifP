@@ -3685,20 +3685,20 @@ input[type="button"].btn-block {
 
 .sortBy-dropdown {
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: 0;
+  right: 0;
   z-index: 1000;
   display: none;
   float: left;
   min-width: 160px;
-  padding: 5px 0 10px 0;
-  font-size: 1rem;
+  /*padding: 5px 0 10px 0;*/
+  /*font-size: 1rem;*/
   color: #000000;
   text-align: left;
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  /*box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);*/
 }
 
 .dropdown-divider {
@@ -6794,6 +6794,9 @@ a.text-red:focus, a.text-red:hover {
 
 .font-size-llxx { /* 30px */
   font-size: 1.875rem;
+}
+.font-size-llx {
+  font-size: 1.625rem;  /* 26px */
 }
 
 .font-size-lxx {

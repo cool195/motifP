@@ -78,22 +78,23 @@
         </div>
     </div>
     <!-- 商品列表 -->
-    <div class="container m-t-20x m-b-20x" id="productList-container" data-categoryid="{{$cid}}" data-pagenum="1" data-loading="false" data-searchid="0">
+    <div class="container m-t-20x m-b-20x product-container" id="productList-container" data-categoryid="{{$cid}}" data-pagenum="1" data-loading="false" data-searchid="0">
+        <div class="text-center bigNoodle font-size-llx p-y-10x">ALL JEWELRY</div>
         <!-- sort by -->
-        {{--<div class="m-b-20x text-right">
-            <span class="sanBold p-r-15x">Sort By:</span>
+        <div class="m-b-20x text-right">
+            {{--<span class="sanBold p-r-15x">Sort By:</span>--}}
             <div class="dropdown sortBy-dropdown">
-                <button class="btn btn-sortBy dropdown-toggle" type="button" id="searchDropdown">
-                    Featured
+                <button class="btn btn-sortBy avenirMedium iconfont" type="button" id="searchDropdown">
+                    SORT BY
                 </button>
-                <div class="dropdown-menu sortBy-menu p-t-15x">
+                <div class="dropdown-menu sortBy-menu font-size-sm p-t-15x">
                     <li class="dropdown-item active" data-search="0" data-searchtext="Featured">Featured</li>
                     @foreach($search['list'] as $key => $value)
                         <li class="dropdown-item" data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">{{$value['attr_label']}}</li>
                     @endforeach
                 </div>
             </div>
-        </div>--}}
+        </div>
 
         <div class="row">
             @foreach($productAll['list'] as $product)
@@ -123,15 +124,15 @@
                             </div>
                         @endif--}}
                     </div>
-                    <div class="price-caption">
+                    <div class="price-caption text-center">
                         <!--预售-->
-                        <div class="text-center bigNoodle font-size-llxx text-truncate p-x-20x limited-sign">
-                            @if(1 == $product['sale_type'])
+                        @if(1 == $product['sale_type'])
+                        <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
                             <span>LIMITED EDITION</span>
-                            @endif
                         </div>
+                        @endif
 
-                        <div class="text-center font-size-md text-truncate p-x-20x">{{$product['main_title']}}</div>
+                        <div class="font-size-md text-truncate p-x-20x">{{$product['main_title']}}</div>
                         <div class="text-center">
                             @if($product['skuPrice']['skuPromotion']['promot_price'] != $product['skuPrice']['skuPromotion']['price'])
                                 <span class="font-size-md p-r-5x">${{ number_format(($product['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
@@ -191,15 +192,15 @@
                 </div>
             @{{ /if }}--}}
         </div>
-        <div class="price-caption">
+        <div class="price-caption text-center">
             <!--预售-->
-            <div class="text-center bigNoodle font-size-llxx text-truncate p-x-20x limited-sign">
-                @{{ if 1 == $value.sale_type }}
-                    <span>LIMITED EDITION</span>
-                @{{ /if }}
+            @{{ if 1 == $value.sale_type }}
+            <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
+                <span>LIMITED EDITION</span>
             </div>
+            @{{ /if }}
             
-            <div class="text-center bigNoodle font-size-llxx text-truncate p-x-20x">@{{ $value.main_title }}</div>
+            <div class="font-size-md text-truncate p-x-20x">@{{ $value.main_title }}</div>
             <div class="text-center">
                 @{{ if $value.skuPrice.sale_price != $value.skuPrice.price }}
                     <span class="font-size-md p-r-5x">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
