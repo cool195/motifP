@@ -1214,7 +1214,12 @@ select::-ms-expand { display: none; }
   right: 13px;
   top: -7px;
 }
-
+.topic-minWidth{
+  max-width: 48.75rem;
+  margin: 0 auto;
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
 .topic-wrap {
   max-width: 55.125rem; /*882px*/
   margin: 0 auto;
@@ -1565,7 +1570,7 @@ select::-ms-expand { display: none; }
 }
 .hotspot-image {
   position: relative;
-  display: inline-block;
+  /*display: inline-block;*/
 }
 
 .hotspot-spot {

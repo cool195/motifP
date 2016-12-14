@@ -6747,7 +6747,6 @@ a.text-main:focus, a.text-main:hover {
 a.text-primary:focus, a.text-primary:hover {
   color: #23293b;
 }
-
 .text-common {
   color: #d3d7e1 !important;
 }
@@ -6789,7 +6788,9 @@ a.text-link:focus, a.text-link:hover {
 a.text-red:focus, a.text-red:hover {
   color: #ff280b;
 }
-
+.font-size-big{
+  font-size: 3rem; /* 48px */
+}
 .font-size-llxx { /* 30px */
   font-size: 1.875rem;
 }
