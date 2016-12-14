@@ -124,15 +124,15 @@
                             </div>
                         @endif--}}
                     </div>
-                    <div class="price-caption">
+                    <div class="price-caption text-center">
                         <!--预售-->
-                        <div class="text-center bigNoodle font-size-llxx text-truncate p-x-20x limited-sign">
-                            @if(1 == $product['sale_type'])
+                        @if(1 == $product['sale_type'])
+                        <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
                             <span>LIMITED EDITION</span>
-                            @endif
                         </div>
+                        @endif
 
-                        <div class="text-center font-size-md text-truncate p-x-20x">{{$product['main_title']}}</div>
+                        <div class="font-size-md text-truncate p-x-20x">{{$product['main_title']}}</div>
                         <div class="text-center">
                             @if($product['skuPrice']['skuPromotion']['promot_price'] != $product['skuPrice']['skuPromotion']['price'])
                                 <span class="font-size-md p-r-5x">${{ number_format(($product['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
@@ -192,15 +192,15 @@
                 </div>
             @{{ /if }}--}}
         </div>
-        <div class="price-caption">
+        <div class="price-caption text-center">
             <!--预售-->
-            <div class="text-center bigNoodle font-size-llxx text-truncate p-x-20x limited-sign">
-                @{{ if 1 == $value.sale_type }}
-                    <span>LIMITED EDITION</span>
-                @{{ /if }}
+            @{{ if 1 == $value.sale_type }}
+            <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
+                <span>LIMITED EDITION</span>
             </div>
+            @{{ /if }}
             
-            <div class="text-center font-size-md text-truncate p-x-20x">@{{ $value.main_title }}</div>
+            <div class="font-size-md text-truncate p-x-20x">@{{ $value.main_title }}</div>
             <div class="text-center">
                 @{{ if $value.skuPrice.sale_price != $value.skuPrice.price }}
                     <span class="font-size-md p-r-5x">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
