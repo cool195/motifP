@@ -283,11 +283,14 @@
                                                     </div>
                                                     <div class="price-caption text-center">
                                                         <!--预售-->
-                                                        {{--@if(1 == $product['sale_type'])--}}
-                                                        <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
-                                                            <span>LIMITED EDITION</span>
-                                                        </div>
-                                                        {{--@endif--}}
+                                                        @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
+                                                            @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                                            @else
+                                                                <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
+                                                                    <span>LIMITED EDITION</span>
+                                                                </div>
+                                                            @endif
+                                                        @endif
 
                                                         <div class="font-size-md text-truncate p-x-20x">
                                                             {{$product['spuInfos'][$spu]['spuBase']['main_title']}}
