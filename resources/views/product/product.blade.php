@@ -71,9 +71,9 @@
     <div class="container">
         <!-- 面包屑 地址 -->
         <div class="p-y-15x">
-            <a href="/shopping" class="text-productmMenu">Shop</a>
-            / <a href="/shopping/{{$data['category_id']}}" class="text-productmMenu">{{$data['category_name']}}</a>
-            / <a href="/detail/{{$data['spu']}}" class="text-productmMenu">{{$data['main_title']}}</a></div>
+            <a href="/shopping" class="text-productmMenu font-size-sm">Shop</a>
+            / <a href="/shopping/{{$data['category_id']}}" class="text-productmMenu font-size-sm">{{$data['category_name']}}</a>
+            / <a href="/detail/{{$data['spu']}}" class="text-productmMenu1 font-size-sm">{{$data['main_title']}}</a></div>
         <div class="row">
             <div class="col-lg-7 col-md-7">
                 <div class="smallImg-list">

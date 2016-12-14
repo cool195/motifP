@@ -222,7 +222,10 @@ select::-ms-expand { display: none; }
 
 
 .text-productmMenu{
-  color: #7f7f7f;
+  color: #000000;
+}
+.text-productmMenu1{
+  color: #a7a9ac;
 }
 
 .btn-wish:hover {
