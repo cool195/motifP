@@ -2305,10 +2305,10 @@ pre code {
   padding: 0.25rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  background-color: #f6f7fa;
+  background-color: #ffffff;
   background-image: none;
-  border: 1px solid #dddde1;
-  border-radius: 0.5rem;
+  border: 1px solid #000000;
+  /*border-radius: 0.5rem;*/
 }
 
 .form-control::-ms-expand {
@@ -3701,6 +3701,17 @@ input[type="button"].btn-block {
   /*box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);*/
 }
 
+.productAttr-dropdown {
+  top: 0;
+  z-index: 1;
+  float: left;
+  color: #000000;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+}
+
 .dropdown-divider {
   height: 1px;
   margin: 0.3125rem 0;
@@ -3993,26 +4004,23 @@ input[type="button"].btn-block {
 
 .btn-cartCount {
   color: #000000;
-  background-color: #f3f3f4;
   border-color: transparent;
+  padding: 0.375rem;
 }
 
 .btn-cartCount:hover {
   color: #000000;
-  background-color: #e6e6e8;
   border-color: transparent;
 }
 
 .btn-cartCount:focus, .btn-cartCount.focus {
   color: #000000;
-  background-color: #e6e6e8;
   border-color: transparent;
 }
 
 .btn-cartCount:active, .btn-cartCount.active,
 .open > .btn-cartCount.dropdown-toggle {
   color: #000000;
-  background-color: #e6e6e8;
   border-color: transparent;
   background-image: none;
 }
@@ -4022,17 +4030,14 @@ input[type="button"].btn-block {
 .open > .btn-cartCount.dropdown-toggle:focus,
 .open > .btn-cartCount.dropdown-toggle.focus {
   color: #000000;
-  background-color: #dedee0;
   border-color: transparent;
 }
 
 .btn-cartCount.disabled:focus, .btn-cartCount.disabled.focus, .btn-cartCount:disabled:focus, .btn-cartCount:disabled.focus {
-  background-color: #f3f3f4;
   border-color: transparent;
 }
 
 .btn-cartCount.disabled:hover, .btn-cartCount:disabled:hover {
-  background-color: #f3f3f4;
   border-color: transparent;
 }
 

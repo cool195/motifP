@@ -251,7 +251,7 @@ function HideSeeMore(seemoreName) {
     // 初始化商品图片列表 Swiper
     try {
         // 设计师 产品列表
-        var swiper = new Swiper('.swiper-container', {
+        var swiper = new Swiper('.swiper-productImgList', {
             pagination: '.swiper-pagination',
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
@@ -260,6 +260,16 @@ function HideSeeMore(seemoreName) {
             freeModeMomentumRatio: .5,
             direction: 'vertical'
         });
+
+        var swiper = new Swiper('.swiper-alsolikeList', {
+            pagination: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            freeMode: true,
+            slidesPerView: 'auto',
+            freeModeMomentumRatio: .5
+        });
+
 
         // daily 页面 banner 轮播
         var swiper1 = new Swiper('.bannerSwiper-container', {
@@ -274,6 +284,13 @@ function HideSeeMore(seemoreName) {
         });
     } catch (e) {
     }
+
+    // 排序
+    $('.productAttr-dropdown').hover(function () {
+        $(this).addClass('open');
+    }, function () {
+        $(this).removeClass('open');
+    });
 
     // designerList 判断设计师商品个数
     function swiperBtnHover() {

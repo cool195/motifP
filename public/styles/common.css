@@ -427,16 +427,116 @@ select::-ms-expand { display: none; }
   border: solid 3px #000000;
 }
 
+.productAttr-item{
+  position: relative;
+}
+
+.productAttr-dropdown.open{
+  position: absolute;
+  box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.5);
+  padding-bottom: .875rem;
+  z-index: 2;
+}
+
+.productAttr-dropdown.open .btn-sortBy::after{
+  content: "\e635"; /*向上箭头*/
+}
+
+.btn-productAttr{
+  background-color: #ffffff;
+  text-align: left;
+  padding: 0 .5rem;
+  font-family: 'iconfont','avenirRegular';
+}
+
+.productAttr-menu{
+  width: 100%;
+}
+
+.productAttr-menu .dropdown-item{
+  padding: .18rem 1rem;
+}
+.productAttr-menu .dropdown-item.active{
+  font-family: "AvenirNext-Bold";
+  color: #000;
+}
+.productAttr-menu .dropdown-item:hover{
+  font-family: "AvenirNext-Bold";
+  cursor: pointer;
+  color: #000;
+}
+
+.btn-productAttr:after{
+  content: "\e621"; /*向下箭头*/
+  padding-left: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.productAttr-dropdown.open .btn-productAttr::after{
+  content: "\e635"; /*向上箭头*/
+}
+
+.sizeGuide{
+  position: absolute;
+  left: 250px;
+  top: 3px;
+}
+
+.btn-addToBag{
+  padding: .125rem 1rem;
+  background-color: #46d593;
+  color: #fff;
+}
+.btn-addToBag:hover{
+  background-color: #46d593;
+  color: #fff;
+}
+
+.product-description{
+  background-color: #f7f7f7;
+}
+
+.swiper-alsolikeList{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.swiper-alsolikeList .swiper-slide{
+  width: auto;
+  height: auto;
+}
+
+.swiper-alsolikeList .swiper-button-prev, .swiper-alsolikeList .swiper-button-next{
+  background: none;
+  border-radius: 0;
+  font-size: 3.5rem;
+  top: 22%;
+  width: auto;
+  height: auto;
+  background: #ffffff;
+  padding-top: 15px;
+}
+
+.swiper-alsolikeList .swiper-button-prev{
+  left: -22px;
+}
+
+.swiper-alsolikeList .swiper-button-next{
+  right: -22px;
+}
+
 .option-item > div {
   float: left;
 }
 
 .input-engraving {
   max-width: 320px;
+  border-radius: 0;
 }
 
 .icon-checkcircle.active {
-  color: #6d91ff !important;
+  color: #46d593 !important;
 }
 
 .product-heart {
