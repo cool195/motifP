@@ -59,7 +59,28 @@ ul,li,ol{ list-style: none; }
 .body-container{
   padding-top: 6rem;
 }
-
+.header-search{
+  position: relative;
+}
+.btn-search .iconfont:before{
+  content: "\e69d";
+}
+.btn-search.active .iconfont:before{
+  content: "\e69f";
+}
+.search-bar{
+  position: absolute;
+  right: 0;
+  top: 35px;
+  white-space: nowrap;
+  border-bottom: 2px solid #aaaaab;
+  display: none;
+}
+.search-bar>input{
+  border: none;
+  padding: 0;
+  min-width: 12.5rem;
+}
 
 /* footer */
 a:focus,input:focus {

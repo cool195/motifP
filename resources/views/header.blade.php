@@ -119,15 +119,21 @@
                     <li class="nav-item p-x-10x">
                         <a href="/invitefriends" class="text-green">GET 15% OFF</a>
                     </li>
-                    <li class="nav-item p-l-10x p-r-0">
-                        <a href="/wish" class="p-t-5x flex flex-alignCenter">
-                            <i class="iconfont icon-search font-size-lxx text-primary"></i>
+                    <!-- 搜索 -->
+                    <li class="nav-item p-l-10x p-r-0 header-search">
+                        <a href="javascript:void(0)" class="p-t-5x flex flex-alignCenter btn-search">
+                            {{--<i class="iconfont icon-search font-size-lxx"></i>--}}
+                            <i class="iconfont font-size-lxx"></i>
                         </a>
+                        <div class="avenirRegular font-size-sm search-bar">
+                            <input type="text" placeholder="Search Motif">
+                            <a href="#"><i class="iconfont icon-search font-size-lxx"></i></a>
+                        </div>
                     </li>
                     <!-- 收藏商品 -->
                     <li class="nav-item p-l-15x p-r-0">
                         <a href="/wish" class="p-t-5x flex flex-alignCenter">
-                                <i class="iconfont icon-heart2 font-size-lxx text-primary"></i>
+                                <i class="iconfont icon-heart2 font-size-lxx"></i>
                                 @if(Session::get('user.nickname'))
                                     {{--收藏商品数量 注入服务--}}
                                     @inject('wishlist', 'App\Http\Controllers\UserController')
@@ -140,7 +146,7 @@
                     <!-- 购物车商品 -->
                     <li class="nav-item p-l-15x p-r-10x">
                         <a href="/cart" class="p-t-5x flex flex-alignCenter">
-                                <i class="iconfont icon-shop2 font-size-lxx text-primary"></i>
+                                <i class="iconfont icon-shop2 font-size-lxx"></i>
                                 {{--购物车数量 注入服务--}}
                                 @inject('Cart', 'App\Http\Controllers\CartController')
                                 <span class="text-link avenirRegular font-size-sm headerCart"
@@ -153,18 +159,18 @@
                     <li class="nav-item p-x-10x"><a class="nav-link text-green" href="/invitefriends">GET 15% OFF</a></li>
                     <li class="nav-item p-l-10x p-r-0">
                         <a href="/wish" class="p-t-5x flex flex-alignCenter">
-                            <i class="iconfont icon-search font-size-lxx text-primary"></i>
+                            <i class="iconfont icon-search font-size-lxx"></i>
                         </a>
                     </li>
                     <li class="nav-item p-l-15x p-r-0">
                         <a href="/wish" class="p-t-5x flex flex-alignCenter">
-                                <i class="iconfont icon-heart2 font-size-lxx text-primary"></i>
+                                <i class="iconfont icon-heart2 font-size-lxx"></i>
                                 <span class="text-link avenirRegular font-size-sm">0</span>
                         </a>
                     </li>
                     <li class="nav-item p-l-15x p-r-10x">
                         <a href="/cart" class="p-t-5x flex flex-alignCenter">
-                                <i class="iconfont icon-shop2 font-size-lxx text-primary"></i>
+                                <i class="iconfont icon-shop2 font-size-lxx"></i>
                                 {{--购物车数量 注入服务--}}
                                 @inject('Cart', 'App\Http\Controllers\CartController')
                                 <span class="text-link avenirRegular font-size-sm headerCart"

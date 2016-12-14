@@ -7847,6 +7847,9 @@ a.bg-red:focus, a.bg-red:hover {
 .icon-heart2:before { content: "\e69b"; }
 .icon-shop2:before { content: "\e69c"; }
 .icon-search:before { content: "\e69d"; }
+.icon-close:before {
+  content: "\e69f";
+}
 .footer-icon{
   font-size: 36px;
 }

@@ -36,7 +36,7 @@
 
 <!-- designer list 模版 -->
 <template id="tpl-designerList-even">
-   
+
 </template>
 
 <template id="tpl-designerList-odd">
