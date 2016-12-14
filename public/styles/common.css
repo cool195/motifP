@@ -459,9 +459,7 @@ select::-ms-expand { display: none; }
 }
 
 .productList-item {
-  border-radius: 0.375rem;
   overflow: hidden;
-  /*box-shadow: 0px 0px 8px rgba(196, 200, 211, 0.2);*/
   margin-bottom: 2.3rem;
   position: relative;
 }
@@ -994,6 +992,8 @@ select::-ms-expand { display: none; }
 }
 .designer-basicInfo{
   position: relative;
+  max-width: 48.75rem;
+  margin: 0 auto;
 }
 .designer-basicInfo .designer-headImg{
   position: absolute;
@@ -1077,6 +1077,8 @@ select::-ms-expand { display: none; }
   font-size: 0;
   max-width: 48.75rem;/*780px*/
   margin: 0 auto;
+  padding-left: 8rem;
+  padding-right: 8rem;
 }
 .designerDetail-goods .goods-item{
   float: none !important;
