@@ -22,7 +22,7 @@ ul,li,ol{ list-style: none; }
 .main-header{
   position: absolute;
   width: 100%;
-  z-index: 9;
+  z-index: 1001;
 }
 .download-info{
   background-color: #000;
@@ -231,7 +231,7 @@ select::-ms-expand { display: none; }
 }
 
 .btn-detailWish:after {
-  content: "\e60d";
+  content: "\e69b";
 }
 
 .btn-detailWish.active {
@@ -241,11 +241,11 @@ select::-ms-expand { display: none; }
   animation-duration: 300ms;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  color: #f83a3a;
+  color: #000000;
 }
 
 .btn-detailWish.active:after {
-  content: "\e60d";
+  content: "\e69e";
 }
 
 @-webkit-keyframes wishheart {
@@ -361,23 +361,56 @@ select::-ms-expand { display: none; }
   width: 100%;
 }
 
-
+.smallImg-list{
+  width: 17%;
+  float: left;
+}
+.bigImg-list{
+  width: 82%;
+  float: left;
+}
 
 .product-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #171a2b;
+  font-size: 1rem;
+  color: #000000;
 }
 
 .product-price {
-  font-size: 1.875rem;
+  font-size: 1rem;
 }
 
 .productImg-list .productImg-item {
   position: relative;
   display: block;
   float: left;
-  width: 112px;
+  width: 92px;
+  height: 92px;
+}
+
+.productImg-list .productImg-item .img-thumbnail{
+  border: none;
+}
+.productImg-list .productImg-item .img-thumbnail.active{
+  border: solid 1px #727272;
+}
+
+.swiper-productImgList{
+  height: 500px;
+  position: relative;
+}
+
+.swiper-productImgList .swiper-button-prev{
+  top:30px;
+  position: absolute;
+  left: 30px;
+  transform: rotate(90deg);
+}
+.swiper-productImgList .swiper-button-next{
+  bottom: 10px;
+  position: absolute;
+  top: inherit;
+  left: 30px;
+  transform: rotate(90deg);
 }
 
 .swiper-button-prev, .swiper-button-next {
@@ -388,6 +421,10 @@ select::-ms-expand { display: none; }
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.3);
   top: 60%;
+}
+
+#productImg{
+  border: solid 3px #000000;
 }
 
 .option-item > div {
@@ -1396,9 +1433,15 @@ select::-ms-expand { display: none; }
 }
 
 #productImg .presale-sign {
-  top: 20px;
-  left: 20px;
+  top: 0px;
+  left: 0px;
   z-index: 1000;
+}
+#productImg .newPresale-text{
+  background-color: #000000;
+  color: #ffffff;
+  font-size:1.5rem;
+  font-style: normal;
 }
 .limited-sign{
   height: 2.5rem;
@@ -1833,6 +1876,13 @@ sup{
   height: 30px;
 }
 
+#productDetail-wish{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1000;
+}
+
 #productDetail-wish:hover{
   cursor: pointer;
 }
@@ -1876,6 +1926,15 @@ sup{
   }
   .loginFooter-contactUs {
     margin-bottom: 0 !important;
+  }
+
+  .smallImg-list{
+    width: 20%;
+    float: left;
+  }
+  .bigImg-list{
+    width: 75%;
+    float: left;
   }
 }
 

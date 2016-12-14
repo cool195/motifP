@@ -67,7 +67,7 @@
     var totalPrice = '{{number_format(($data['skuPrice']['sale_price'] / 100), 2)}}';
 </script>
 <!-- 内容 -->
-<section class="">
+<section class="body-container">
     <div class="container">
         <!-- 面包屑 地址 -->
         <div class="p-y-15x">
@@ -75,55 +75,13 @@
             / <a href="/shopping/{{$data['category_id']}}" class="text-productmMenu">{{$data['category_name']}}</a>
             / <a href="/detail/{{$data['spu']}}" class="text-productmMenu">{{$data['main_title']}}</a></div>
         <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="p-a-20x box-shadow bg-white" id="productImg">
-                    <div class="product-bigImg gallery">
-                        @if(isset($data['productImages']))
-                            @foreach($data['productImages'] as $key => $image)
-                                @if(0 == $key)
-                                    <li style="display:block; width: 100%; position: relative;">
-                                        <a href="{{config('runtime.CDN_URL')}}/n0/{{$image['img_path']}}"
-                                           class="jqzoom" rel="gal1" title="triumph" id="jqzoom">
-                                            <img class="img-fluid product-bigImg img-lazy"
-                                                 src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png"
-                                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}">
-                                        </a>
-                                    @if(!empty($image['video_path']))
-                                        <!-- 判断是否是视频 -->
-                                            <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter"
-                                                 id="btn-startPlayer" data-playerid="{{$image['video_path']}}">
-                                                <div class="play-content">
-                                                    <img class="btn-productPlayer"
-                                                         src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
-                                                         alt=""
-                                                         style="width: 45px;">
-                                                </div>
-                                            </div>
-                                    @endif
-                                    <!-- 视频播放 -->
-                                        <div class="bg-productDetailPlayer flex flex-alignCenter flex-justifyCenter">
-                                            <div class="play-content" style="width: 100%">
-                                                <div id="ytplayer" class="ytplayer" data-playid=""></div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @else
-                                    <li style="display:none">
-                                        <a title="" class="imgmore"
-                                           href="{{config('runtime.CDN_URL')}}/n0/{{$image['img_path']}}"><img
-                                                    src="{{config('runtime.CDN_URL')}}/n4/{{$image['img_path']}}"></a>
-                                    </li>
-                                @endif
-                            @endforeach
-                        @endif
-                    </div>
-                    <div class="clearfix"></div>
-
-                    <div class="swiper-container">
-                        <div class="productImg-list p-t-20x swiper-wrapper">
+            <div class="col-lg-7 col-md-7">
+                <div class="smallImg-list">
+                    <div class="swiper-container swiper-productImgList">
+                        <div class="productImg-list swiper-wrapper">
                             @if(isset($data['productImages']))
                                 @foreach($data['productImages'] as $key => $image)
-                                    <div class="productImg-item swiper-slide m-r-10x">
+                                    <div class="productImg-item swiper-slide">
                                         <a href="javascript:void(0);" class="product-smallImg"
                                            rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$image['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$image['img_path']."'}"}}">
                                             <!-- 视频 -->
@@ -144,7 +102,7 @@
                                                 <img class="img-thumbnail small-img img-lazy @if(0 == $key) active @endif"
                                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png"
                                                      data-original="{{config('runtime.CDN_URL')}}/n3/{{$image['img_path']}}"
-                                                     width="110" height="110" alt="{{ $data['main_title'] }}"
+                                                     width="88" height="88" alt="{{ $data['main_title'] }}"
                                                      data-idplay="false" data-playid="">
                                             @endif
                                         </a>
@@ -157,66 +115,119 @@
                         <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i>
                         </div>
                     </div>
-                    @if(1 == $data['sale_type'])
-                        {{--预售标志--}}
-                        <div class="presale-sign">
-                            <span class="newPresale-text helveBold font-size-base p-x-10x text-primary text-primary">Limited Edition</span>
-                        </div>
-                    @endif
                 </div>
-                @inject('wishlist', 'App\Http\Controllers\UserController')
-                <div class="flex flex-alignCenter m-y-20x p-l-5x" id="productDetail-wish">
-                    <span class="font-size-md sanBold">Add to wishlist</span>
-                    <span class="product-heart p-t-5x p-l-10x">
-                        @if(Session::has('user'))
-                            <i class="iconfont btn-detailWish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
-                               data-spu="{{$data['spu']}}"></i>
-                        @else
-                            <i class="iconfont btn-detailWish font-size-lxx" data-actionspu="{{$data['spu']}}"></i>
+                <div class="bigImg-list">
+                    <div class="bg-white" id="productImg">
+                        <div class="product-bigImg gallery">
+                            @if(isset($data['productImages']))
+                                @foreach($data['productImages'] as $key => $image)
+                                    @if(0 == $key)
+                                        <li style="display:block; width: 100%; position: relative;">
+                                            <a href="{{config('runtime.CDN_URL')}}/n0/{{$image['img_path']}}"
+                                               class="jqzoom" rel="gal1" title="triumph" id="jqzoom">
+                                                <img class="img-fluid product-bigImg img-lazy"
+                                                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@750.png"
+                                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{$image['img_path']}}">
+                                            </a>
+                                        @if(!empty($image['video_path']))
+                                            <!-- 判断是否是视频 -->
+                                                <div class="bg-productPlayer flex flex-alignCenter flex-justifyCenter"
+                                                     id="btn-startPlayer" data-playerid="{{$image['video_path']}}">
+                                                    <div class="play-content">
+                                                        <img class="btn-productPlayer"
+                                                             src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
+                                                             alt=""
+                                                             style="width: 45px;">
+                                                    </div>
+                                                </div>
+                                        @endif
+                                        <!-- 视频播放 -->
+                                            <div class="bg-productDetailPlayer flex flex-alignCenter flex-justifyCenter">
+                                                <div class="play-content" style="width: 100%">
+                                                    <div id="ytplayer" class="ytplayer" data-playid=""></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @else
+                                        <li style="display:none">
+                                            <a title="" class="imgmore"
+                                               href="{{config('runtime.CDN_URL')}}/n0/{{$image['img_path']}}"><img
+                                                        src="{{config('runtime.CDN_URL')}}/n4/{{$image['img_path']}}"></a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            @endif
+                        </div>
+                        <div class="clearfix"></div>
+
+                        @if(1 == $data['sale_type'])
+                            {{--预售标志--}}
+                            <div class="presale-sign">
+                                <span class="newPresale-text bigNoodle p-x-20x">Limited Edition</span>
+                            </div>
                         @endif
-                    </span>
+
+                        <!-- wish -->
+                        @inject('wishlist', 'App\Http\Controllers\UserController')
+                        <div class="flex flex-alignCenter" id="productDetail-wish">
+                            {{--<span class="font-size-md sanBold">Add to wishlist</span>--}}
+                        <span class="product-heart">
+                            @if(Session::has('user'))
+                                <i class="iconfont btn-detailWish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
+                                   data-spu="{{$data['spu']}}"></i>
+                            @else
+                                <i class="iconfont btn-detailWish font-size-lxx" data-actionspu="{{$data['spu']}}"></i>
+                            @endif
+                        </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="box-shadow bg-white">
-                    <div class="p-x-20x p-t-20x">
+
+
+            <div class="col-lg-5 col-md-5">
+                <div class="bg-white">
+                    <div class="p-l-20x">
                         <div class="">
-                            <span class="product-title helveBold">{{ $data['main_title'] }}</span>
+                            <span class="product-title avenirBold">{{ $data['main_title'] }}</span>
                         </div>
                         <!-- 设计师名称 -->
                         @if(isset($data['designer']))
-                            <div class="p-t-5x p-b-10x">
-                                {{--<span class="sanBold font-size-md p-l-5x p-r-20x">Designer:</span>--}}
-                                <a href="/designer/{{$data['designer']['designer_id']}}"><span>{{ $data['designer']['designer_name'] }}</span></a>
+                            <div class="">
+                                <a class="font-size-sm" href="/designer/{{$data['designer']['designer_id']}}"><span>{{ $data['designer']['designer_name'] }}</span></a>
                             </div>
                         @endif
                         <div class="product-price">
                             @if(isset($data['skuPrice']['skuPromotion']) && ($data['skuPrice']['skuPromotion']['promot_price']<$data['skuPrice']['skuPromotion']['price']))
-                                <span class="sanBold p-r-10x text-primary newPrice text-red">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
-                                <span class="sanBold font-size-lxx text-common text-throughLine oldPrice">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
+                                <span class="avenirMedium p-r-5x text-primary newPrice">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
+                                <span class="avenirMedium font-size-sm text-common text-throughLine oldPrice">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
                             @else
-                                <span class="sanBold p-r-10x text-primary newPrice">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
+                                <span class="avenirMedium p-r-10x text-primary newPrice">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                             @endif
                         </div>
                         @if($data['prompt_words'] || $data['skuPrice']['skuPromotion']['promo_words'])
-                            <div class="p-y-5x">
-                                <div class="font-size-md">{{ $data['skuPrice']['skuPromotion']['promo_words'] }}</div>
+                            <div class="">
+                                <div class="font-size-sm">{{ $data['skuPrice']['skuPromotion']['promo_words'] }}</div>
                                 <div>{{$data['prompt_words']}}</div>
                             </div>
                         @endif
-                        <hr class="hr-base">
+                        {{--<hr class="hr-base">--}}
                         <input hidden id="jsonStr" value="{{$jsonResult}}">
                         @if(!empty($data['spuAttrs']))
                             <input hidden id="productsku">
                             @foreach($data['spuAttrs'] as $spuAttr)
-                                <fieldset class="text-left m-b-20x">
-                                    <div class="text-primary font-size-md flex">
+                                <fieldset class="text-left m-t-10x">
+                                    <div class="text-primary font-size-sm flex">
                                         <span class="p-r-20x">{{$spuAttr['attr_type_value']}}:</span>
+
+                                        <span>
+                                            下拉框
+                                        </span>
+
                                         <span class="warning-info flex flex-alignCenter text-warning off"
                                               id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
                                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                            <span class="font-size-base">{{'Please select '.$spuAttr['attr_type_value']}}
-                                                !</span>
+                                            <span class="font-size-base">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
                                         </span>
                                     </div>
                                     <div class="m-l-15x">

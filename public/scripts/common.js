@@ -257,7 +257,8 @@ function HideSeeMore(seemoreName) {
             prevButton: '.swiper-button-prev',
             freeMode: true,
             slidesPerView: 'auto',
-            freeModeMomentumRatio: .5
+            freeModeMomentumRatio: .5,
+            direction: 'vertical'
         });
 
         // daily 页面 banner 轮播
