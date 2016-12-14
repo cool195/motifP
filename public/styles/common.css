@@ -59,7 +59,28 @@ ul,li,ol{ list-style: none; }
 .body-container{
   padding-top: 6rem;
 }
-
+.header-search{
+  position: relative;
+}
+.btn-search .iconfont:before{
+  content: "\e69d";
+}
+.btn-search.active .iconfont:before{
+  content: "\e69f";
+}
+.search-bar{
+  position: absolute;
+  right: 0;
+  top: 35px;
+  white-space: nowrap;
+  border-bottom: 2px solid #aaaaab;
+  display: none;
+}
+.search-bar>input{
+  border: none;
+  padding: 0;
+  min-width: 12.5rem;
+}
 
 /* footer */
 a:focus,input:focus {
@@ -291,7 +312,7 @@ select::-ms-expand { display: none; }
   cursor: pointer;
   text-align: center;
   opacity: 1;
-  width: 33%;
+  width: 33.3%;
   padding: 12.5px;
 }
 
@@ -559,9 +580,7 @@ select::-ms-expand { display: none; }
 }
 
 .productList-item {
-  border-radius: 0.375rem;
   overflow: hidden;
-  /*box-shadow: 0px 0px 8px rgba(196, 200, 211, 0.2);*/
   margin-bottom: 2.3rem;
   position: relative;
 }
@@ -1086,7 +1105,17 @@ select::-ms-expand { display: none; }
 .category-item.active a{
   text-decoration: underline;
 }
-
+/* 设计师列表 */
+.designer-wrap{
+  padding: 0;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.designer-wrap .designer-item{
+  float: left;
+  width: 33.3%;
+  padding: 12.5px;
+}
 /* 设计师详情 预售样式 begin */
 .designer-img img{ width: 100%;}
 .designer-img{
@@ -1094,6 +1123,8 @@ select::-ms-expand { display: none; }
 }
 .designer-basicInfo{
   position: relative;
+  max-width: 48.75rem;
+  margin: 0 auto;
 }
 .designer-basicInfo .designer-headImg{
   position: absolute;
@@ -1177,6 +1208,8 @@ select::-ms-expand { display: none; }
   font-size: 0;
   max-width: 48.75rem;/*780px*/
   margin: 0 auto;
+  padding-left: 8rem;
+  padding-right: 8rem;
 }
 .designerDetail-goods .goods-item{
   float: none !important;
@@ -1312,7 +1345,12 @@ select::-ms-expand { display: none; }
   right: 13px;
   top: -7px;
 }
-
+.topic-minWidth{
+  max-width: 48.75rem;
+  margin: 0 auto;
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
 .topic-wrap {
   max-width: 55.125rem; /*882px*/
   margin: 0 auto;
@@ -1663,7 +1701,7 @@ select::-ms-expand { display: none; }
 }
 .hotspot-image {
   position: relative;
-  display: inline-block;
+  /*display: inline-block;*/
 }
 
 .hotspot-spot {

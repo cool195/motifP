@@ -125,12 +125,26 @@ function HideSeeMore(seemoreName) {
         $('.download-info').remove();
     });*/
 
+    // header
     $('.shop-dropdown').hover(function () {
         $(this).find('.dropdown-menu').addClass('open');
         $('.main-header').addClass('box-shadow2');
     }, function(){
         $(this).find('.dropdown-menu').removeClass('open');
         $('.main-header').removeClass('box-shadow2');
+    });
+    //    header - 搜索功能
+    $('.btn-search').on('click', function () {
+        if ( $(this).hasClass('active') ){
+            $('.search-bar').hide();
+
+            $(this).removeClass('active');
+        }else {
+
+            $('.search-bar').show();
+
+            $(this).addClass('active');
+        }
     });
 
 
