@@ -144,7 +144,8 @@
 @if (env('APP_ENV') == 'production')
 <script src="{{config('runtime.CLK_URL')}}/wl.js"></script>
 <!-- Google Tag Manager -->
-<script>(function (w, d, s, l, i) {
+<script>
+    (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({
             'gtm.start': new Date().getTime(), event: 'gtm.js'
@@ -164,7 +165,7 @@
             height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
-
+ga('set', 'userId', "{{$_COOKIE['uid']}}");
 @endif
 </body>
 </html>
