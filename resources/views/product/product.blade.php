@@ -219,7 +219,8 @@
                                     <div class="text-primary font-size-sm flex">
                                         <span class="p-r-20x">{{$spuAttr['attr_type_value']}}:</span>
 
-                                        <!-- 下拉选 属性 -->
+                                        <!-- 下拉选 属 性 -->
+                                        @if($spuAttr['attr_select_flag'])
                                         <span class="productAttr">
                                             <div class="dropdown productAttr-dropdown ">
                                                 <button class="btn btn-productAttr font-size-sm" type="button">
@@ -254,18 +255,23 @@
                                                 <span class="font-size-sm">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
                                             </span>
                                         </span>
+                                        @endif
+                                        <!--  下拉选 属性 -->
 
                                         <!-- 框选 属性 -->
+                                        @if(!$spuAttr['attr_select_flag'])
                                         <span class="warning-info flex flex-alignCenter text-warning off"
                                               id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
                                                 <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
                                                 <span class="font-size-sm">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
                                         </span>
+                                        @endif
 
                                     </div>
 
 
                                     <!-- 框选 属性 -->
+                                    @if(!$spuAttr['attr_select_flag'])
                                     <div class="">
                                         <div class="option-item">
                                             @foreach($spuAttr['skuAttrValues'] as $skuAttrValue )
@@ -292,6 +298,8 @@
                                             @endif
                                         </div>
                                     </div>
+                                    @endif
+                                    <!-- 框选 属性-->
 
 
                                 </fieldset>
