@@ -6792,6 +6792,10 @@ a.text-red:focus, a.text-red:hover {
 .font-size-big{
   font-size: 3rem; /* 48px */
 }
+.font-size-llxxx { /* 45px */
+  font-size: 2.8125rem;
+}
+
 .font-size-llxx { /* 30px */
   font-size: 1.875rem;
 }
@@ -7135,7 +7139,9 @@ a.bg-red:focus, a.bg-red:hover {
   margin-top: 2.5rem !important;
   margin-bottom: 2.5rem !important;
 }
-
+.m-t-50x {
+  margin-top: 3.125rem !important;
+}
 .p-a-0 {
   padding: 0 0 !important;
 }

@@ -46,7 +46,7 @@
 {{--@endif--}}
 
 <!-- 内容 -->
-<section class="m-t-40x">
+<section class="body-container m-t-40x">
     <div class="container">
         @if(empty($cart['showSkus']))
             {{--空购物车 提示信息--}}
@@ -56,44 +56,21 @@
                 <a href="/daily" class="btn btn-primary btn-lg btn-320">SHOP NOW</a>
             </div>
         @else
-            <h4 class="helveBold text-main p-l-10x">My Bag</h4>
-
-            <!-- 价格悬浮条 -->
-            <div class="bg-white p-y-10x m-t-20x p-x-20x">
-                <div class="text-right font-size-md">
-                    @if(!empty($cart['showSkus']))
-                        <span class="total_sku_qtty">Items ({{$cart['total_sku_qtty'] }}):</span>
-                        <span class="sanBold total_amount">${{number_format($cart['total_amount'] /100, 2)}}</span>
-                        <span class="p-x-20x text-common">|</span>
-
-                        @if($cart['vas_amount'] > 0)
-                            <span>Additional Services:</span>
-                            <span class="sanBold vas_amount">${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
-                            <span class="p-x-20x text-common">|</span>
-                        @endif
-                        <span>Bag Subtotal:</span>
-                        <span class="sanBold pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span>
-                        @if(Session::get('user.pin'))
-                            <a href="/cart/ordercheckout"
-                               data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-                               class="m-l-30x btn btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
-                                To Checkout</a>
-                        @else
-                            <a href="/login"
-                               class="m-l-30x btn btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
-                                To Checkout</a>
-                        @endif
-                    @endif
-                </div>
-            </div>
-
             {{--My Bag List--}}
-            <div class="box-shadow bg-white m-t-20x">
-                <div class="sanBold font-size-md p-x-20x p-y-15x">In Bag</div>
-                <hr class="hr-base m-a-0">
+            <div class="bg-white">
+                <h4 class="text-center bigNoodle font-size-llxxx">In Bag</h4>
+                <hr class="hr-black">
+                <div class="p-t-20x">
+                    <div class="row font-size-sm">
+                        <div class="col-md-7">ITEM</div>
+                        <div class="col-md-1">PRICE</div>
+                        <div class="col-md-4"><div class="p-l-40x">QUANTITY</div></div>
+                    </div>
+                    <hr class="hr-black m-t-0">
+                </div>
                 <div class="p-x-20x">
                     @foreach($cart['showSkus'] as $k=>$showSku)
-                        <div class="p-y-20x border-bottom" id="{{'csku'.$showSku['sku']}}">
+                        <div class="p-y-20x" id="{{'csku'.$showSku['sku']}}">
                             <div class="row flex flex-alignCenter cartProduct-item">
                                 <div class="col-md-4 media">
                                     <a class="media-left" href="/detail/{{$showSku['spu']}}">
@@ -102,7 +79,7 @@
                                              data-original="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}"
                                              width="120" height="120" alt="">
                                     </a>
-                                    <div class="media-body cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
+                                    <div class="media-body cart-product-title font-size-md">{{  $showSku['main_title'] }}</div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="p-l-15x">
@@ -119,8 +96,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-1">
-                                    <div class="p-l-20x">
-                                        <div class="font-size-md text-primary {{'skuprice'.$k}}">
+                                    <div class="p-l-5x">
+                                        <div class="font-size-md {{'skuprice'.$k}}">
                                             ${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
                                     </div>
                                 </div>
@@ -158,22 +135,31 @@
                                 @endif
                             </div>
                             <div class="warning-info flex flex-alignCenter text-warning @if(0 != $showSku['stock_status'] && 2 != $showSku['stock_status'] && 1 == $showSku['isPutOn']) off @endif">
-                                <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                <span class="font-size-base">{{$showSku['prompt_info']}}</span>
+                                <i class="iconfont icon-caveat p-r-5x"></i>
+                                <span class="font-size-sm">{{$showSku['prompt_info']}}</span>
                             </div>
                         </div>
                     @endforeach
                 </div>
             </div>
         @endif
+            <hr class="hr-black">
         {{--Saved List--}}
         @if($save['showSkus'])
-            <div class="box-shadow bg-white m-t-20x">
-                <div class="sanBold font-size-md p-x-20x p-y-15x">Saved</div>
-                <hr class="hr-base m-a-0">
-                <div class="p-x-20x border-bottom">
+            <div class="m-t-40x p-t-20x">
+                <h4 class="text-center bigNoodle font-size-llxxx">Saved</h4>
+                <hr class="hr-black">
+                <div class="p-t-20x">
+                    <div class="row font-size-sm">
+                        <div class="col-md-7">ITEM</div>
+                        <div class="col-md-1">PRICE</div>
+                    </div>
+                    <hr class="hr-black m-t-0">
+                </div>
+
+                <div class="p-x-20x">
                     @foreach($save['showSkus'] as $showSku)
-                        <div class="row p-y-20x flex flex-alignCenter cartProduct-item border-bottom"
+                        <div class="row p-y-20x flex flex-alignCenter cartProduct-item"
                              id="{{'csku'.$showSku['sku']}}">
                             <div class="col-md-4 media">
                                 <a class="media-left" href="/detail/{{$showSku['spu']}}">
@@ -182,11 +168,11 @@
                                          data-original="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}"
                                          width="120" height="120" alt="">
                                 </a>
-                                <div class="media-body cart-product-title font-size-md text-main">{{  $showSku['main_title'] }}</div>
+                                <div class="media-body cart-product-title font-size-md">{{  $showSku['main_title'] }}</div>
                                 @if(0 == $showSku['stock_status'] || 2 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-10x">
-                                        <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                        <span class="font-size-base">{{$showSku['prompt_info']}}</span>
+                                        <i class="iconfont icon-caveat p-r-5x"></i>
+                                        <span class="font-size-sm">{{$showSku['prompt_info']}}</span>
                                     </div>
                                 @endif
                             </div>
@@ -205,8 +191,8 @@
                                 </div>
                             </div>
                             <div class="col-md-1">
-                                <div class="p-l-20x">
-                                    <div class="font-size-md text-primary">
+                                <div class="p-l-5x">
+                                    <div class="font-size-md">
                                         ${{number_format(($showSku['sale_price'] / 100), 2)}}</div>
                                 </div>
                             </div>
@@ -233,43 +219,40 @@
                     @endforeach
                 </div>
             </div>
+            <hr class="hr-black">
         @endif
+    </div>
+    <hr class="hr-black m-t-50x">
+    <div class="container">
         @if(!empty($cart['showSkus']))
-            {{--购物袋总价--}}
-            <div class="box-shadow bg-white m-t-20x">
-                <div class="p-a-20x font-size-md">
-                    <div class="text-right"><span class="total_sku_qtty">Items ({{$cart['total_sku_qtty'] }}):</span><span
-                                class="sanBold cart-price total_amount"
-                        >${{number_format($cart['total_amount'] /100, 2)}}</span></div>
-                    @if($cart['vas_amount'] > 0)
-                        <div class="text-right"><span>Additional Services:</span><span
-                                    class="sanBold cart-price vas_amount"
-                            >${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
-                        </div>
+            <div class="bg-white m-y-20x p-x-20x">
+                <div class="text-right font-size-md">
+                    @if(!empty($cart['showSkus']))
+                        <span class="avenirBold total_sku_qtty">Items ({{$cart['total_sku_qtty'] }}):</span>
+                        <span class="total_amount">${{number_format($cart['total_amount'] /100, 2)}}</span>
+                        @if($cart['vas_amount'] > 0)
+                            <span class="m-l-30x avenirBold">Additional Services:</span>
+                            <span class="vas_amount">${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
+                        @endif
+                        <span class="m-l-30x avenirBold">Bag Subtotal:</span>
+                        <span class="pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span>
+                        @if(Session::get('user.pin'))
+                            <a href="/cart/ordercheckout"
+                               data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
+                               class="m-l-30x bigNoodle font-size-llx p-y-5x p-x-20x btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
+                                To Checkout</a>
+                        @else
+                            <a href="/login"
+                               class="m-l-30x bigNoodle font-size-llx p-y-5x p-x-20x btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
+                                To Checkout</a>
+                        @endif
                     @endif
-                    <div class="text-right"><span>Bag Subtotal:</span><span
-                                class="sanBold cart-price pay_amount"
-                        >${{ number_format($cart['pay_amount'] / 100, 2)}}</span></div>
                 </div>
             </div>
         @endif
-        {{--提交按钮--}}
-        <div class="p-y-40x text-right">
-            @if(!empty($cart['showSkus']))
-                @if(Session::get('user.pin'))
-                    <a href="/cart/ordercheckout"
-                       data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-                       class="btn btn-block btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
-                        To Checkout</a>
-                @else
-                    <a href="/login"
-                       class="btn btn-block btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
-                        To Checkout</a>
-                @endif
-            @endif
-        </div>
     </div>
 </section>
+
 
 <!-- 删除确认框 -->
 <div class="remodal modal-content remodal-md" data-remodal-id="cartmodal" id="modalDialog" data-action="" data-id=""
