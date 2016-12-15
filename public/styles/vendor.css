@@ -2694,7 +2694,7 @@ input[type="checkbox"].disabled {
 
 .btn.disabled, .btn:disabled {
   cursor: not-allowed;
-  opacity: .65;
+  opacity: .55;
 }
 
 a.btn.disabled,
@@ -2976,10 +2976,9 @@ fieldset[disabled] a.btn {
   color: #000000;
   background-color: #ffffff;
   border-color: #000000;
-  border-radius: 1.25rem !important;
-  font-size: 1rem !important;
-  padding: .625rem 1rem;
-  min-width: 4.25rem;
+  font-size: 12px !important;
+  padding: .1875rem .5rem;
+  min-width: 4rem;
 }
 
 .btn-itemProperty:hover {
@@ -2997,8 +2996,8 @@ fieldset[disabled] a.btn {
 .btn-itemProperty:active, .btn-itemProperty.active,
 .open > .btn-itemProperty.dropdown-toggle {
   color: #ffffff;
-  background-color: #6d91ff;
-  border-color: #6d91ff;
+  background-color: #000000;
+  border-color: #000000;
   box-shadow: none;
   background-image: none;
 }

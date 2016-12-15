@@ -424,17 +424,21 @@ select::-ms-expand { display: none; }
 }
 
 .swiper-productImgList .swiper-button-prev{
-  top:30px;
+  top:15px;
   position: absolute;
-  left: 30px;
+  left: 40px;
   transform: rotate(90deg);
+  background: none;
+  font-size: 2rem;
 }
 .swiper-productImgList .swiper-button-next{
   bottom: 10px;
   position: absolute;
   top: inherit;
-  left: 30px;
+  left: 40px;
   transform: rotate(90deg);
+  background: none;
+  font-size: 2rem;
 }
 
 .swiper-button-prev, .swiper-button-next {

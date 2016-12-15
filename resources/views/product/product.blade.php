@@ -110,9 +110,8 @@
                                 @endforeach
                             @endif
                         </div>
-                        <div class="swiper-button-next"><i
-                                    class="iconfont icon-arrow-right font-size-lg text-white"></i></div>
-                        <div class="swiper-button-prev"><i class="iconfont icon-arrow-left font-size-lg text-white"></i>
+                        <div class="swiper-button-next"><i class="iconfont icon-arrow-right"></i></div>
+                        <div class="swiper-button-prev"><i class="iconfont icon-arrow-left"></i>
                         </div>
                     </div>
                 </div>
@@ -220,6 +219,7 @@
                                     <div class="text-primary font-size-sm flex">
                                         <span class="p-r-20x">{{$spuAttr['attr_type_value']}}:</span>
 
+                                        <!-- 下拉选 属性 -->
                                         <span class="productAttr">
                                             <div class="dropdown productAttr-dropdown ">
                                                 <button class="btn btn-productAttr font-size-sm" type="button">
@@ -254,37 +254,44 @@
                                                 <span class="font-size-sm">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
                                             </span>
                                         </span>
+
+                                        <!-- 框选 属性 -->
+                                        <span class="warning-info flex flex-alignCenter text-warning off"
+                                              id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
+                                                <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
+                                                <span class="font-size-sm">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
+                                        </span>
+
                                     </div>
 
 
-
-                                    {{--<div class="m-l-15x">--}}
-                                        {{--<div class="option-item">--}}
-                                            {{--@foreach($spuAttr['skuAttrValues'] as $skuAttrValue )--}}
-                                                {{--<div class="p-y-5x p-r-10x">--}}
-                                                    {{--@if(!empty($skuAttrValue['skus']))--}}
-                                                        {{--<a href="javascript:;" class="btn btn-itemProperty btn-sm"--}}
-                                                           {{--@if($skuAttrValue['img_path'])--}}
-                                                           {{--rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$skuAttrValue['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$skuAttrValue['img_path']."'}"}}"--}}
-                                                           {{--@endif--}}
-                                                           {{--id="{{'skutype'.$skuAttrValue['attr_value_id']}}"--}}
-                                                           {{--data-type="{{'attr_type'.$spuAttr['attr_type']}}"--}}
-                                                           {{--data-attr-type="{{$spuAttr['attr_type']}}"--}}
-                                                           {{--data-attr-value-id="{{$skuAttrValue['attr_value_id']}}"--}}
-                                                           {{--data-id="{{'skutype'.$skuAttrValue['attr_value_id']}}">{{$skuAttrValue['attr_value']}}--}}
-                                                        {{--</a>--}}
-                                                    {{--@else--}}
-                                                        {{--<div class="btn btn-itemProperty btn-sm disabled">{{$skuAttrValue['attr_value']}}</div>--}}
-                                                    {{--@endif--}}
-                                                {{--</div>--}}
-                                            {{--@endforeach--}}
-                                            {{--@if(in_array($spuAttr['attr_type_value'],array('Ring Size','Women Size','Men Size')))--}}
-                                                {{--<div class="p-y-10x p-r-10x"><a class="text-underLine" target="_blank"--}}
-                                                                                {{--href="{{'/service/24?template=1'}}">Size--}}
-                                                        {{--Guide</a></div>--}}
-                                            {{--@endif--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
+                                    <!-- 框选 属性 -->
+                                    <div class="">
+                                        <div class="option-item">
+                                            @foreach($spuAttr['skuAttrValues'] as $skuAttrValue )
+                                                <div class="p-y-5x p-r-10x">
+                                                    @if(!empty($skuAttrValue['skus']))
+                                                        <a href="javascript:;" class="btn btn-itemProperty"
+                                                           @if($skuAttrValue['img_path'])
+                                                           rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$skuAttrValue['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$skuAttrValue['img_path']."'}"}}"
+                                                           @endif
+                                                           id="{{'skutype'.$skuAttrValue['attr_value_id']}}"
+                                                           data-type="{{'attr_type'.$spuAttr['attr_type']}}"
+                                                           data-attr-type="{{$spuAttr['attr_type']}}"
+                                                           data-attr-value-id="{{$skuAttrValue['attr_value_id']}}"
+                                                           data-id="{{'skutype'.$skuAttrValue['attr_value_id']}}">{{$skuAttrValue['attr_value']}}
+                                                        </a>
+                                                    @else
+                                                        <div class="btn btn-itemProperty disabled">{{$skuAttrValue['attr_value']}}</div>
+                                                    @endif
+                                                </div>
+                                            @endforeach
+                                            @if(in_array($spuAttr['attr_type_value'],array('Ring Size','Women Size','Men Size')))
+                                                <div class="p-y-10x p-r-10x font-size-sm"><a class="sizeGuide" target="_blank"
+                                                                                href="{{'/service/24?template=1'}}">Size Guide</a></div>
+                                            @endif
+                                        </div>
+                                    </div>
 
 
                                 </fieldset>
