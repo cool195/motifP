@@ -31,16 +31,6 @@ class ProductController extends BaseController
             }
             $result['data']['category_name'] = $categoryName;
 
-            foreach($result['data']['spuAttrs'] as &$spuAttr){
-                $spuAttr['attr_select_flag'] = true;
-                foreach($spuAttr['skuAttrValues'] as $skuAttrValue){
-                    if(isset($skuAttrValue['img_path']) && $skuAttrValue['img_path'] != ''){
-                        $spuAttr['attr_select_flag'] = false;
-                        break;
-                    }
-                }
-            }
-
         }
 
 
