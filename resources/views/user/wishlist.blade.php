@@ -1,6 +1,6 @@
 @include('header', ['title' => 'Wishlist'])
         <!-- 内容 -->
-<section class="m-y-40x">
+<section class="body-container m-y-30x">
     <div class="container">
         <div class="myHome-content">
             <!-- 左侧菜单 -->
@@ -18,6 +18,8 @@
                     </div>
                 @endif
                 <div class="rightContent" id="wishList-container" data-pagenum="1" data-loading="false">
+                    <div class="bigNoodle text-center leftMeun-title">MY WISHLIST</div>
+                    <hr class="hr-black m-t-0">
                     <!-- WishList content -->
                     <ul class="tiles-wrap wishlist-wrap animated row" id="wishlist-wookmark">
                         <!-- 商品 -->
@@ -35,14 +37,14 @@
                                                 <i class="iconfont btn-wish font-size-lxx active" data-spu="{{$wish['spu']}}"></i>
                                             </span>
                                         </div>
-                                        <div class="price-caption helveBold">
-                                            <div class="text-center font-size-md text-primary text-truncate p-x-20x">{{$wish['main_title']}}</div>
+                                        <div class="price-caption">
+                                            <div class="text-center font-size-md text-truncate p-x-20x">{{$wish['main_title']}}</div>
                                             <div class="text-center">
                                                 @if($wish['skuPrice']['sale_price'] !== $wish['skuPrice']['price'])
-                                                    <span class="font-size-md text-primary p-r-5x text-red">${{ number_format(($wish['skuPrice']['sale_price'] / 100), 2) }}</span>
-                                                    <span class="font-size-base text-common text-throughLine">${{ number_format(($wish['skuPrice']['price'] / 100), 2) }}</span>
+                                                    <span class="font-size-md p-r-5x">${{ number_format(($wish['skuPrice']['sale_price'] / 100), 2) }}</span>
+                                                    <span class="font-size-md text-green text-throughLine">${{ number_format(($wish['skuPrice']['price'] / 100), 2) }}</span>
                                                 @else
-                                                    <span class="font-size-md text-primary p-r-5x">${{ number_format(($wish['skuPrice']['sale_price'] / 100), 2) }}</span>
+                                                    <span class="font-size-md p-r-5x">${{ number_format(($wish['skuPrice']['sale_price'] / 100), 2) }}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -81,12 +83,12 @@
                     <i class="iconfont btn-wish btn-wishing font-size-lxx active" data-spu="@{{ $value.spu }}"></i>
                 </span>
             </div>
-            <div class="price-caption helveBold">
-                <div class="text-center font-size-md text-primary text-truncate p-x-20x">@{{ $value.main_title }}</div>
+            <div class="price-caption">
+                <div class="text-center font-size-md text-truncate p-x-20x">@{{ $value.main_title }}</div>
                 <div class="text-center">
                     @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
-                        <span class="font-size-md text-main p-r-5x text-red">@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
-                        <span class="font-size-base text-common text-throughLine">@{{ ($value.skuPrice.price/100).toFixed(2) }}</span>
+                        <span class="font-size-md text-main p-r-5x">@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
+                        <span class="font-size-md text-green text-throughLine">@{{ ($value.skuPrice.price/100).toFixed(2) }}</span>
                     @{{ else }}
                         <span class="font-size-md text-main p-r-5x">@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
                     @{{ /if }}

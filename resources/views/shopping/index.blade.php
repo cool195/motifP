@@ -79,7 +79,13 @@
     </div>
     <!-- 商品列表 -->
     <div class="container m-t-20x m-b-20x product-container" id="productList-container" data-categoryid="{{$cid}}" data-pagenum="1" data-loading="false" data-searchid="0">
-        <div class="text-center bigNoodle font-size-llx p-y-10x">ALL JEWELRY</div>
+        @foreach($categories as $category)
+        @if($cid == $category['category_id'])
+        <div class="text-center bigNoodle font-size-llx p-y-10x">
+            <span>{{$category['category_name']}}</span>
+        </div>
+        @endif
+        @endforeach
         <!-- sort by -->
         <div class="m-b-20x text-right">
             {{--<span class="sanBold p-r-15x">Sort By:</span>--}}

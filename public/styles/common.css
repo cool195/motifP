@@ -1102,11 +1102,12 @@ select::-ms-expand { display: none; }
 }
 
 .category-item a{
-  display: inline-block;
+  /*display: inline-block;*/
   color: #fff;
 }
 .category-item.active a{
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+  border-bottom: 1px solid #fff;
 }
 /* 设计师列表 */
 .designer-wrap{
@@ -1222,29 +1223,28 @@ select::-ms-expand { display: none; }
   min-width: 100%;
   min-height: 100%;
   overflow: hidden;
-  padding: .5rem;
+  /*padding: .5rem;*/
 }
-
+.leftMeun-title{
+  font-size: 2.4rem;
+  text-transform: uppercase;
+}
 .leftMeun {
   float: left;
   width: 240px;
   height: 100%;
+  text-transform: uppercase;
 }
-
 .leftMeun .nav-item {
-  border-left: 4px solid #ffffff;
+  padding-bottom: 3px;
 }
 
 .leftMeun .nav-item a {
-  color: #36405b;
+  font-family: "AvenirNext-Regular";
 }
-
-.leftMeun .nav-item.active, .leftMeun .nav-item:hover {
-  border-left: 4px solid #6d91ff;
-}
-
 .leftMeun .nav-item.active a, .leftMeun .nav-item:hover a {
-  color: #6d91ff;
+  font-family: "AvenirNext-Medium";
+  color: #000;
 }
 
 .right {
