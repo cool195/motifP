@@ -324,15 +324,13 @@ function HideSeeMore(seemoreName) {
                 $btnPrev = $(this).siblings('.swiper-button-prev');
             $btnNext.hide();
             $btnPrev.hide();
-            $(this).parent().hover(function () {
-                if (itemNum > 3) {
+                if (itemNum > 6) {
                     $btnNext.show();
                     $btnPrev.show();
+                } else {
+                    $btnNext.hide();
+                    $btnPrev.hide();
                 }
-            }, function () {
-                $btnNext.hide();
-                $btnPrev.hide();
-            });
         })
     }
 

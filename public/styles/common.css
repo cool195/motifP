@@ -419,7 +419,7 @@ select::-ms-expand { display: none; }
 }
 
 .swiper-productImgList{
-  height: 500px;
+  height: 34.125rem;
   position: relative;
 }
 
@@ -2076,6 +2076,10 @@ sup{
   .bigImg-list{
     width: 75%;
     float: left;
+  }
+
+  .swiper-productImgList{
+    height: 29rem;
   }
 }
 
