@@ -47,7 +47,7 @@
 
 <!-- 内容 -->
 <section class="body-container m-t-40x">
-    <div class="container">
+    <div class="container content-maxWidth">
         @if(empty($cart['showSkus']))
             {{--空购物车 提示信息--}}
             <div class="empty-content shopbag-content">

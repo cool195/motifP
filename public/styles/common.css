@@ -17,7 +17,12 @@ ul,li,ol{ list-style: none; }
 .bigNoodleOblique{
   font-family: "BigNoodleTitling-Oblique";
 }
-
+.uppercase{
+  text-transform: uppercase;
+}
+.content-maxWidth{
+  max-width: 982px;
+}
 /* header */
 .main-header{
   position: absolute;
@@ -146,10 +151,9 @@ select {
   -moz-appearance:none;
   -webkit-appearance:none;
   padding-right: 14px !important;
-  background: url("/images/icon/arrow.png") no-repeat #f6f7fa 97% center !important
+  background: url("/images/icon/arrow.png") no-repeat #fff 97% center !important
 }
 select::-ms-expand { display: none; }
-
 
 .hover-blue:hover {
   color: #6d91ff;
@@ -573,7 +577,9 @@ select::-ms-expand { display: none; }
   max-width: 320px;
   border-radius: 0;
 }
-
+.icon-checkcircle:hover{
+  cursor: pointer;
+}
 .icon-checkcircle.active {
   color: #46d593 !important;
 }
@@ -687,7 +693,7 @@ select::-ms-expand { display: none; }
   display: inline-block;
   text-align: left;
   min-width: 75px;
-  margin-left: 25px;
+  margin-left: 20px;
 }
 
 .btn-toCheckout {
@@ -829,7 +835,8 @@ select::-ms-expand { display: none; }
 .choose-item {
   position: relative;
   overflow: hidden;
-  border: 1px solid #dddde1;
+  border: 1px solid #7f7f7f;
+  color: #7f7f7f;
 }
 
 .choose-item .bg-address {
@@ -868,7 +875,7 @@ select::-ms-expand { display: none; }
   right: -3.75rem;
   width: 6.5rem;
   height: 6.5rem;
-  background: #36405b;
+  background: #000;
   color: #fff;
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
@@ -904,8 +911,9 @@ select::-ms-expand { display: none; }
 }
 
 .choose-item:hover, .choose-item.active {
-  border: 1px solid #36405b;
+  border: 1px solid #000;
   cursor: pointer;
+  color: #000;
 }
 
 .choose-item:hover .bg-address, .choose-item.active .bg-address {

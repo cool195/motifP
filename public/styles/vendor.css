@@ -2702,6 +2702,17 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 
+.btn-green {
+  color: #fff;
+  background-color: rgba(70, 213, 147, 1);
+}
+
+.btn-green:hover {
+  color: #fff;
+  background-color: rgba(70, 213, 147, .9);
+}
+
+
 .btn-primary {
   color: #fff;
   background-color: #000000;
@@ -3544,7 +3555,7 @@ fieldset[disabled] a.btn {
 }
 
 .btn-md {
-  padding: 0.625rem 1.25rem;
+  padding: 0.45rem 1.25rem;
   font-size: 1rem;
   line-height: 1;
 }
