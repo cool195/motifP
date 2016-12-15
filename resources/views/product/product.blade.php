@@ -184,7 +184,7 @@
             </div>
 
 
-            <div class="col-lg-5 col-md-5">
+            <div class="col-lg-5 col-md-5" id="productInfo">
                 <div class="bg-white">
                     <div class="p-l-20x">
                         <div class="">
