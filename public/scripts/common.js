@@ -3052,6 +3052,7 @@ function HideSeeMore(seemoreName) {
             zoomXOffset = 35;
         }
         var ProductDetailImg_width = $('#productImg').width() + zoomXOffset;
+        var ProductZoomImg_width= $('#productInfo').width();
         jQuery_1_6(function () {
             jQuery_1_6('#jqzoom').jqzoom({
                 zoomType: 'standard',
@@ -3060,8 +3061,8 @@ function HideSeeMore(seemoreName) {
                 lens: true,
                 preloadImages: false,
                 alwaysOn: false,
-                zoomWidth: ProductDetailImg_width,
-                zoomHeight: ProductDetailImg_width
+                zoomWidth: ProductZoomImg_width,
+                zoomHeight: ProductZoomImg_width
             });
         });
     }

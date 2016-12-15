@@ -184,7 +184,7 @@
             </div>
 
 
-            <div class="col-lg-5 col-md-5">
+            <div class="col-lg-5 col-md-5" id="productInfo">
                 <div class="bg-white">
                     <div class="p-l-20x">
                         <div class="">
@@ -215,45 +215,48 @@
                         @if(!empty($data['spuAttrs']))
                             <input hidden id="productsku">
                             @foreach($data['spuAttrs'] as $spuAttr)
-                                <fieldset class="text-left m-t-15x m-b-30x productAttr-item">
+                                <fieldset class="text-left m-t-15x m-b-15x productAttr-item">
                                     <div class="text-primary font-size-sm flex">
                                         <span class="p-r-20x">{{$spuAttr['attr_type_value']}}:</span>
 
-                                        <!-- 下拉选 属性 -->
-                                        <span class="productAttr">
-                                            <div class="dropdown productAttr-dropdown ">
-                                                <button class="btn btn-productAttr font-size-sm" type="button">
-                                                    Select {{$spuAttr['attr_type_value']}}
-                                                </button>
-                                                <div class="dropdown-menu productAttr-menu font-size-sm p-t-5x">
-                                                    @foreach($spuAttr['skuAttrValues'] as $skuAttrValue )
-                                                        @if(!empty($skuAttrValue['skus']))
-                                                            <a href="javascript:;" class="dropdown-item"
-                                                               @if($skuAttrValue['img_path'])
-                                                               rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$skuAttrValue['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$skuAttrValue['img_path']."'}"}}"
-                                                               @endif
-                                                               id="{{'skutype'.$skuAttrValue['attr_value_id']}}"
-                                                               data-type="{{'attr_type'.$spuAttr['attr_type']}}"
-                                                               data-attr-type="{{$spuAttr['attr_type']}}"
-                                                               data-attr-value-id="{{$skuAttrValue['attr_value_id']}}"
-                                                               data-id="{{'skutype'.$skuAttrValue['attr_value_id']}}">{{$skuAttrValue['attr_value']}}
-                                                            </a>
-                                                        @else
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            </div>
+                                        <!-- 下拉选 属 性 -->
+                                        {{--@if($spuAttr['attr_select_flag'])--}}
+                                        {{--<span class="productAttr">--}}
+                                            {{--<div class="dropdown productAttr-dropdown ">--}}
+                                                {{--<button class="btn btn-productAttr font-size-sm" type="button">--}}
+                                                    {{--Select {{$spuAttr['attr_type_value']}}--}}
+                                                {{--</button>--}}
+                                                {{--<div class="dropdown-menu productAttr-menu font-size-sm p-t-5x">--}}
+                                                    {{--@foreach($spuAttr['skuAttrValues'] as $skuAttrValue )--}}
+                                                        {{--@if(!empty($skuAttrValue['skus']))--}}
+                                                            {{--<a href="javascript:;" class="dropdown-item"--}}
+                                                               {{--@if($skuAttrValue['img_path'])--}}
+                                                               {{--rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$skuAttrValue['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$skuAttrValue['img_path']."'}"}}"--}}
+                                                               {{--@endif--}}
+                                                               {{--id="{{'skutype'.$skuAttrValue['attr_value_id']}}"--}}
+                                                               {{--data-type="{{'attr_type'.$spuAttr['attr_type']}}"--}}
+                                                               {{--data-attr-type="{{$spuAttr['attr_type']}}"--}}
+                                                               {{--data-attr-value-id="{{$skuAttrValue['attr_value_id']}}"--}}
+                                                               {{--data-id="{{'skutype'.$skuAttrValue['attr_value_id']}}">{{$skuAttrValue['attr_value']}}--}}
+                                                            {{--</a>--}}
+                                                        {{--@else--}}
+                                                        {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
 
-                                            @if(in_array($spuAttr['attr_type_value'],array('Ring Size','Women Size','Men Size')))
-                                                <a class="sizeGuide p-l-10x" target="_blank" href="{{'/service/24?template=1'}}">Size Guide</a>
-                                            @endif
+                                            {{--@if(in_array($spuAttr['attr_type_value'],array('Ring Size','Women Size','Men Size')))--}}
+                                                {{--<a class="sizeGuide p-l-10x" target="_blank" href="{{'/service/24?template=1'}}">Size Guide</a>--}}
+                                            {{--@endif--}}
 
-                                            <span class="warning-info flex flex-alignCenter text-warning off"
-                                                  id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
-                                                <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
-                                                <span class="font-size-sm">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
-                                            </span>
-                                        </span>
+                                            {{--<span class="warning-info flex flex-alignCenter text-warning off"--}}
+                                                  {{--id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">--}}
+                                                {{--<i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>--}}
+                                                {{--<span class="font-size-sm">{{'Please select '.$spuAttr['attr_type_value']}}!</span>--}}
+                                            {{--</span>--}}
+                                        {{--</span>--}}
+                                        {{--@endif--}}
+                                        <!--  下拉选 属性 -->
 
                                         <!-- 框选 属性 -->
                                         <span class="warning-info flex flex-alignCenter text-warning off"
@@ -261,9 +264,7 @@
                                                 <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
                                                 <span class="font-size-sm">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
                                         </span>
-
                                     </div>
-
 
                                     <!-- 框选 属性 -->
                                     <div class="">
@@ -292,6 +293,7 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <!-- 框选 属性-->
 
 
                                 </fieldset>
