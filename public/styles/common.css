@@ -501,10 +501,21 @@ select::-ms-expand { display: none; }
   content: "\e635"; /*向上箭头*/
 }
 
-.sizeGuide{
+.productAttr{
+  position: relative;
+}
+
+.productAttr .warning-info{
   position: absolute;
-  left: 250px;
-  top: 3px;
+  top: 1.25rem;
+  left: .5rem;
+  width: 15rem;
+}
+
+.sizeGuide{
+  top: 0px;
+  width: 5rem;
+  color: #848484;
 }
 
 .btn-addToBag{

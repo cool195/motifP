@@ -220,7 +220,7 @@
                                     <div class="text-primary font-size-sm flex">
                                         <span class="p-r-20x">{{$spuAttr['attr_type_value']}}:</span>
 
-                                        <span class="">
+                                        <span class="productAttr">
                                             <div class="dropdown productAttr-dropdown ">
                                                 <button class="btn btn-productAttr font-size-sm" type="button">
                                                     Select {{$spuAttr['attr_type_value']}}
@@ -245,14 +245,14 @@
                                             </div>
 
                                             @if(in_array($spuAttr['attr_type_value'],array('Ring Size','Women Size','Men Size')))
-                                                <a class="text-common sizeGuide" target="_blank" href="{{'/service/24?template=1'}}">Size Guide</a>
+                                                <a class="sizeGuide p-l-10x" target="_blank" href="{{'/service/24?template=1'}}">Size Guide</a>
                                             @endif
-                                        </span>
 
-                                        <span class="warning-info flex flex-alignCenter text-warning off"
-                                              id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
-                                            <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
-                                            <span class="font-size-sm">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
+                                            <span class="warning-info flex flex-alignCenter text-warning off"
+                                                  id="{{'p_a_w'.$spuAttr['attr_type']}}" data-sel="0">
+                                                <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
+                                                <span class="font-size-sm">{{'Please select '.$spuAttr['attr_type_value']}}!</span>
+                                            </span>
                                         </span>
                                     </div>
 
@@ -304,8 +304,8 @@
                                             <i class="iconfont icon-checkcircle text-primary font-size-lg"></i>
                                         </div>
                                         <span class="warning-info flex flex-alignCenter text-warning off">
-                                            <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
-                                            <span class="font-size-base">Invalid character</span>
+                                            <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
+                                            <span class="font-size-sm">Invalid character</span>
                                         </span>
                                     </div>
                                 </fieldset>
@@ -326,8 +326,8 @@
                                     </div>
                                 </div>
                                 <span class="warning-info flex flex-alignCenter text-warning off">
-                                    <strong><i class="iconfont icon-caveat icon-size-md"></i></strong>
-                                    <span class="font-size-base">Invalid character</span>
+                                    <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
+                                    <span class="font-size-sm">Invalid character</span>
                                 </span>
                             </div>
                         </fieldset>

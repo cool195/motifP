@@ -301,8 +301,18 @@ function HideSeeMore(seemoreName) {
 
     // 排序
     $('.productAttr-dropdown').hover(function () {
+        var DropdownW = $(this).width(),
+            $SizeGuide = $(this).siblings('.sizeGuide');
+        if($SizeGuide.length >0){
+            $SizeGuide.css({'left':DropdownW,'position':'absolute'});
+        }
         $(this).addClass('open');
     }, function () {
+        var DropdownW = $(this).width(),
+            $SizeGuide = $(this).siblings('.sizeGuide');
+        if($SizeGuide.length >0){
+            $SizeGuide.css({'left':0,'position':'inherit'});
+        }
         $(this).removeClass('open');
     });
 
