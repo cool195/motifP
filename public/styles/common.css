@@ -1657,26 +1657,31 @@ select::-ms-expand { display: none; }
 
 .addCode-input {
   width: 100%;
-  max-width: 25rem;
+  max-width: 36.25rem;
 }
 
 .addPromotion-content{
   min-height: auto!important;
 }
-
+.promotion-item:hover{
+  cursor: pointer;
+}
 .promotion-item {
-  border: 2px solid #36405b;
-  border-radius: 5px;
+  border: 2px solid #7f7f7f;
+  color: #7f7f7f;
   position: relative;
   overflow: hidden;
 }
-
+.promotion-item.active .p-left {
+  border-right: 2px dashed #000;
+}
 .promotion-item .p-left {
-  border-right: 1px dashed #5e667c;
+  border-right: 2px dashed #7f7f7f;
 }
 
 .promotion-item.active {
-  border: 2px solid #6d91ff;
+  border: 2px solid #000;
+  color: #000;
 }
 
 .promotionCode-Primary{
@@ -1689,7 +1694,7 @@ select::-ms-expand { display: none; }
   left: -3.75rem;
   width: 6.5rem;
   height: 6.5rem;
-  background: #6d91ff;
+  background: #000;
   color: #fff;
   -webkit-transform: rotate(225deg);
   transform: rotate(225deg);
@@ -1996,7 +2001,7 @@ sup{
 }
 .billingTxt{
   display: inline-block;
-  max-width: 250px;
+  max-width: 65%;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

@@ -157,7 +157,7 @@
                     <div class="flex flex-alignCenter flex-fullJustified">
                         <span class="font-size-md avenirMedium p-l-20x">Shipping Address</span>
                         <span class="pull-right">
-                            <a class="btn-primary font-size-lg btn-md bigNoodle btn-addNewAddress">
+                            <a class="btn btn-baseSize btn-primary font-size-llx bigNoodle btn-addNewAddress">
                                 + Add New Address
                             </a>
                         </span>
@@ -167,7 +167,7 @@
                     </div>
 
                     <div class="text-right p-t-10x">
-                        <a href="javascript:;" class="btn btn-green font-size-lg uppercase btn-md bigNoodle btnAddrShowHide">Continue</a>
+                        <a href="javascript:;" class="btn btn-baseSize btn-green font-size-llx uppercase bigNoodle btnAddrShowHide">Continue</a>
                     </div>
                 </div>
                 {{--添加\修改 地址--}}
@@ -176,7 +176,7 @@
                         <span class="font-size-md avenirMedium address-text">Add Shipping Address</span>
                         <span class="font-size-md pull-right">
                             <i class="isDefault iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
-                            <a class="p-l-10x" href="javascript:;">Default</a>
+                            <span class="p-l-10x">Default</span>
                         </span>
                     </div>
                     <div class="row p-t-30x">
@@ -289,7 +289,7 @@
             <hr class="hr-black m-a-0">
             <div class="showHide-body method-content">
                 <!-- 选择 物流方式 -->
-                <div class="p-x-20x p-t-20x">
+                <div class="p-l-20x p-t-20x">
                     <div class="row p-x-20x checkout-method">
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
@@ -323,7 +323,7 @@
                         @endforeach
                     </div>
                     <div class="text-right"><a href="javascript:void(0);" id="smsubmit"
-                                               class="btn btn-green btn-md bigNoodle font-size-lg">Continue</a></div>
+                                               class="btn btn-baseSize font-size-llx btn-green bigNoodle">Continue</a></div>
                 </div>
             </div>
         </div>
@@ -396,13 +396,13 @@
             <hr class="hr-black m-a-0">
             <div class="showHide-body payment-content">
                 <!--选择支付方式-->
-                <div class="p-a-20x select-payment">
-                    <span class="font-size-md">Select Payment Method</span>
-                    <div class="row p-x-10x p-t-20x payment-list">
+                <div class="p-t-20x select-payment">
+                    <span class="avenirMedium p-l-20x font-size-md">Select Payment Method</span>
+                    <div class="row p-x-10x p-t-5x payment-list">
                         @foreach($paylist['data']['list'] as $list)
                             @if(isset($list['creditCards']))
                                 @foreach($list['creditCards'] as $card)
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 p-x-0">
                                         <div class="p-a-10x">
                                             <div class="card-item choose-item p-a-20x @if($card['card_id'] == Session::get('user.checkout.paywith.withCard.card_id')) active @endif"
                                                  data-cardtype="{{ $card['card_type'] }}"
@@ -426,7 +426,7 @@
                                                         @endif
                                                     </span>
 
-                                                    <span class="uppercase avenirBold font-size-md font-size-lx">{{  $card['card_number'] }}</span>
+                                                    <span class="avenirMedium billingTxt font-size-lg">{{  $card['card_number'] }}</span>
                                                 </div>
                                                 <div class="m-t-20x flex">
                                                     <span class="payLeft-minW">Exp:{{$card['month']}}
@@ -439,7 +439,7 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                <div class="col-md-6">
+                                <div class="col-md-6 p-x-0">
                                     <div class="p-a-10x">
                                         <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard" data-method="{{$list['pay_method']}}">
                                             <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-card.png"
@@ -450,7 +450,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="col-md-6">
+                                <div class="col-md-6 p-x-0">
                                     <div class="p-a-10x">
                                         <div class="card-item choose-item flex flex-alignCenter p-x-20x @if($list['pay_type'] == Session::get('user.checkout.paywith.pay_type')) active @endif"
                                              data-cardtype="paypal" data-cardnum="PayPal" data-cardid="PayPal"
@@ -467,22 +467,22 @@
                         @endforeach
                     </div>
                     <div class="text-right p-t-10x">
-                        <a href="javascript:void(0);" class="btn btn-primary btn-md"
+                        <a href="javascript:void(0);" class="btn btn-baseSize btn-green font-size-llx uppercase bigNoodle"
                            id="btnPaymentShowHide">Continue</a>
                     </div>
                 </div>
                 <!--添加卡-->
-                <div class="p-a-20x add-newCard disabled">
+                <div class="p-t-20x p-l-20x add-newCard disabled">
                     <div class="inline">
-                        <span class="font-size-md uppercase avenirBold font-size-md">Add New Credit Card</span>
+                        <span class="avenirMedium font-size-md">Add New Credit Card</span>
                         {{--<span class="font-size-md pull-right">
                             <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg active"></i>
                             <span class="p-l-5x">Make Primary</span>
                         </span>--}}
                     </div>
 
-                    <div class="p-a-20x">
-                        <div>We Accept:
+                    <div class="">
+                        <div class="p-t-10x p-l-20x">We Accept:
                             <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32.png"
                                  srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@3x.png{{config('runtime.V')}} 3x"
                                  class="m-l-10x" id="img-mastercard" data-type="MasterCard">
@@ -497,7 +497,7 @@
                                  class="m-l-20x" id="img-amex" data-type="AmericanExpress">
                         </div>
                         <div class="card-wrapper" style="display: none;"></div>
-                        <div class="row p-t-20x">
+                        <div class="row p-t-20x p-l-20x">
                             <form action="" id="addCard-container">
                                 <input name="card_type" type="hidden">
 
@@ -651,8 +651,8 @@
                         </div>
                         <div class="text-right">
                             <a href="javascript:void(0);" id="card-addAddress-cancel"
-                               class="btn btn-secondary btn-md m-r-10x">Cancel</a>
-                            <a href="javascript:void(0);" id="btn-addNewCard" class="btn btn-primary btn-md">Continue</a>
+                               class="btn btn-baseSize font-size-llx btn-primary bigNoodle m-r-10x">Cancel</a>
+                            <a href="javascript:void(0);" id="btn-addNewCard" class="btn btn-baseSize font-size-llx btn-green bigNoodle">Continue</a>
                             <div class="warning-info text-warning p-t-10x addCard-warning off">
                                 <i class="iconfont icon-caveat icon-size-md"></i>
                                 <span class="font-size-base">Add Card Error!</span>
@@ -676,38 +676,36 @@
                 </span>
             </div>
             <hr class="hr-black m-a-0">
-            <div class="showHide-body p-x-20x p-b-20x">
+            <div class="showHide-body">
                 <!--新增促销码-->
-                <div class="p-a-20x addPromotionCode disabled">
-                    <div class="goback-toAdd"><i class="iconfont icon-arrow-left font-size-lg p-r-10x"></i></div>
+                <div class="addPromotionCode disabled">
+                    <div class="goback-toAdd p-l-20x p-t-20x"><i class="iconfont icon-arrow-left font-size-lg p-r-10x"></i></div>
                     <div class="invite-content addPromotion-content">
-                        <p class="helveBold font-size-llxx m-t-40x">Add New Promotion Code</p>
-                        <div class="addCode-input m-t-20x text-left">
-                            <input type="text" class="form-control contrlo-lg text-primary m-b-10x" name="cps" value=""
+                        <p class="bigNoodle font-size-llxxx m-y-20x">Add New Promotion Code</p>
+                        <div class="addCode-input text-left">
+                            <input type="text" class="form-control contrlo-lg text-primary m-b-5x" name="cps" value=""
                                    placeholder="Enter Your Promotion Code Here">
-                                    <span class="warning-info text-warning off">
+                                    <span class="warning-info flex flex-alignCenter text-warning off">
                                         <i class="iconfont icon-caveat p-r-5x"></i>
                                         <span class="font-size-base invalidText"></span>
                                     </span>
                         </div>
 
                         <div class="text-center m-t-30x">
-                            <div class="btn btn-primary btn-lg btn-200 coupon-apply disabled">Apply</div>
+                            <div class="btn btn-baseSize btn-green font-size-llx bigNoodle coupon-apply disabled">Apply</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Coupons and Promotions-->
-                <div class="p-a-20x showPromotionCode">
+                <div class="p-t-20x showPromotionCode">
                     <div class="flex flex-alignCenter flex-fullJustified">
                         <span class="font-size-md uppercase avenirBold font-size-md"></span>
-                        <span class="font-size-md pull-right">
-                            <div class="btn btn-secondary btn-md btn-addNewCode"><i
-                                        class="iconfont icon-add font-size-md p-r-5x"></i>Add New Promotion Code
-                            </div>
+                        <span class="pull-right">
+                            <div class="btn btn-md btn-black bigNoodle font-size-lg btn-addNewCode">+ Add New Promotion Code</div>
                         </span>
                     </div>
-                    <div class="row p-x-10x p-t-20x coupon-list">
+                    <div class="row p-t-20x coupon-list">
 
                     </div>
                 </div>
@@ -725,11 +723,11 @@
                 </span>
             </div>
             <hr class="hr-black m-a-0">
-            <div class="showHide-body p-x-20x p-b-20x">
-                <div class="p-x-20x p-b-20x">
+            <div class="showHide-body">
+                <div class="p-y-20x p-x-40x">
                     <textarea name="cremark" class="form-control" cols="30" rows="4"></textarea>
                 </div>
-                <div class="text-right"><a href="javascript:;" id="crsubmit" class="btn btn-primary btn-md">Save</a>
+                <div class="text-right"><a href="javascript:;" id="crsubmit" class="btn btn-green btn-baseSize bigNoodle font-size-llx">Save</a>
                 </div>
             </div>
         </div>
@@ -783,7 +781,7 @@
         <!-- 提交按钮 -->
         <div class="text-right">
             <a data-clks='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-               class="p-y-10x p-x-30x btn-toCheckout" id="placeOrder" data-with="Worldpay">Place Order</a>
+               class="btn btn-baseSize btn-green font-size-llx uppercase bigNoodle btn-toCheckout" id="placeOrder" data-with="Worldpay">Place Order</a>
             {{--<a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Oceanpay">Pay
                 with Credit Card</a>
             <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay
@@ -956,17 +954,17 @@
 <template id="tpl-coupon">
     @{{ each list }}
     <div class="col-md-6">
-        <div class="m-a-10x">
-            <div class="row promotion-item checkoutPromotion-item flex flex-alignCenter @{{ if $value.usable == true }} codeItem @{{ /if }} @{{ if $value.selected == 1 }} active @{{ /if }}"
+        <div class="m-y-10x">
+            <div class="promotion-item checkoutPromotion-item flex flex-alignCenter @{{ if $value.usable == true }} codeItem @{{ /if }} @{{ if $value.selected == 1 }} active @{{ /if }}"
                  data-promotioncode="@{{ $value.cp_title }}" data-bindid="@{{ $value.bind_id }}">
                 <div class="col-md-8">
-                    <div class="text-right p-left p-r-15x p-y-10x">
-                        <div class="helveBold font-size-sm">@{{ $value.prompt_words }}</div>
-                        <span class="font-size-sm">Expire: @{{ $value.expiry_time }}</span>
+                    <div class="text-right p-left p-r-15x p-y-30x font-size-md">
+                        <div>@{{ $value.prompt_words }}</div>
+                        <span>Expire: @{{ $value.expiry_time }}</span>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="font-size-lx text-left helveBold">@{{ $value.cp_title }}</div>
+                    <div class="font-size-llxx text-left avenirBold">@{{ $value.cp_title }}</div>
                 </div>
                 <div class="promotionCode-Primary"><i class="iconfont icon-check font-size-lg"></i></div>
                 @{{ if $value.usable == false }}

@@ -3889,6 +3889,7 @@ function HideSeeMore(seemoreName) {
         }
     });
     $('input[name="cps"]').on('keyup', function (e) {
+        $('.addCode-input .warning-info').addClass('off');
         if ($(this).val() === '') {
             $('.coupon-apply').addClass('disabled');
         } else {
