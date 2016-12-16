@@ -97,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-            @else
+        @else
                 <div class="designer-img"><img class="img-fluid"
                                                src="{{config('runtime.CDN_URL')}}/n0/{{$designer['img_video_path']}}">
                 </div>

@@ -29,7 +29,7 @@
 
     <div class="text-center m-y-30x seeMore-info">
         <div class="designerList-seeMore" style="display: none;">
-            <a class="btn btn-gray btn-lg btn-380" href="javascript:void(0)">VIEW MORE</a>
+            <a class="btn btn-gray btn-380 bigNoodle font-size-lx" href="javascript:void(0)">VIEW MORE</a>
         </div>
         <div class="loading designer-loading" style="display: none">
             <div class="loader"></div>

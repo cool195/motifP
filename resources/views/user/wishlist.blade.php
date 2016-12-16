@@ -56,7 +56,7 @@
                     @if(!empty($data['list']))
                         <div class="text-center m-y-30x seeMore-info">
                             <div class="wishList-seeMore" style="display: none;">
-                                <a class="btn btn-gray btn-lg btn-380 btn-seeMore-wishList" href="javascript:void(0)">VIEW MORE</a>
+                                <a class="btn btn-gray btn-380 bigNoodle font-size-lx btn-seeMore-wishList" href="javascript:void(0)">VIEW MORE</a>
                             </div>
                             <div class="loading wish-loading" style="display: none">
                                 <div class="loader"></div>
