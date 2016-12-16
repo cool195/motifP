@@ -63,7 +63,7 @@ class ShoppingController extends BaseController
     {
         if (Session::get('user.pin')) {
 
-            $value = Cache::remember(Session::get('user.pin') . 'wishlist',60,function () {
+            $value = Cache::remember(Session::get('user.pin') . $_COOKIE['uid'] . 'wishlist', 60, function () {
                 $params = array(
                     'cmd' => 'list',
                     'num' => 1,
