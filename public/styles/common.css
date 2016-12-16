@@ -1183,7 +1183,7 @@ select::-ms-expand { display: none; }
 }
 
 /* 设计师详情 预售样式 end */
-
+/*
 .designer-item {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -1239,7 +1239,7 @@ select::-ms-expand { display: none; }
 .designerDetail-goods {
   text-align: center;
   font-size: 0;
-  max-width: 48.75rem;/*780px*/
+  max-width: 48.75rem;!*780px*!
   margin: 0 auto;
   padding-left: 8rem;
   padding-right: 8rem;
@@ -1247,7 +1247,7 @@ select::-ms-expand { display: none; }
 .designerDetail-goods .goods-item{
   float: none !important;
   display: inline-block !important;
-}
+}*/
 .myHome-content {
   min-width: 100%;
   min-height: 100%;

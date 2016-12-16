@@ -2866,15 +2866,12 @@ function HideSeeMore(seemoreName) {
                             onProductClick();
                         }
 
-
                         $.ajax({
                             url: $this.data('clk'),
                             type: "GET"
                         });
                         //    window.open($this.data('link'));
-
-
-                    })
+                    });
 
                     // 视频区域高度
                     var MediaScale = 9 / 16;
@@ -2921,14 +2918,9 @@ function HideSeeMore(seemoreName) {
 
     // 渲染 html 模版
     function designer_appendDesignerList(designerList) {
-        var number = $('.designerList-item').length;
-        if (number % 2 === 0) {
-            var tplHtml = template('tpl-designerList-even', designerList);
-        } else {
-            var tplHtml = template('tpl-designerList-odd', designerList);
-        }
+        var tplHtml = template('tpl-designerList', designerList);
         var stageCache = $.parseHTML(tplHtml);
-        $('#designerContainer').append(stageCache);
+        $('#designerContainer').find('.row').append(stageCache);
     }
 
     // 点击查看更多 designer 信息
