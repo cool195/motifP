@@ -410,7 +410,7 @@ html.remodal-is-locked {
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: sans-serif;
+  font-family: "AvenirNext-Regular";
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -3701,15 +3701,13 @@ input[type="button"].btn-block {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 160px;
-  /*padding: 5px 0 10px 0;*/
-  /*font-size: 1rem;*/
+  min-width: 180px;
   color: #000000;
   text-align: left;
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
-  /*box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);*/
+  text-transform: uppercase;
 }
 
 .productAttr-dropdown {
@@ -4437,7 +4435,7 @@ input[type="button"].btn-block {
 .nav-tabs .nav-link {
   display: block;
   padding: 0.5em 1em;
-  font-family: "sanfranciscodisplay bold";
+  /*font-family: "sanfranciscodisplay bold";*/
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
@@ -6018,7 +6016,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "sanfranciscodisplay";
+  /*font-family: "sanfranciscodisplay";*/
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6118,7 +6116,7 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: "sanfranciscodisplay";
+  /*font-family: "sanfranciscodisplay";*/
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7518,6 +7516,7 @@ a.bg-red:focus, a.bg-red:hover {
 .inline {
   display: inline;
 }
+/*
 
 @font-face {
   font-family: "sanfranciscodisplay";
@@ -7546,6 +7545,7 @@ a.bg-red:focus, a.bg-red:hover {
   font-weight: normal;
   font-style: normal;
 }
+*/
 
 @font-face {
   font-family: "iconfont";
@@ -7555,12 +7555,12 @@ a.bg-red:focus, a.bg-red:hover {
   /* iOS 4.1- */
 }
 
-@font-face {
+/*@font-face {
   font-family: "OpenSansRegular";
   src: url("../../fonts/OpenSans-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
-}
+}*/
 
 /* NEW */
 
