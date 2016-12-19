@@ -23,7 +23,7 @@
                 <li class="nav-item @if('Orders' == $title || 'Order Detail' == $title) active @endif">
                     <a href="/order/orderlist">
                         {{--<i class="iconfont icon-book font-size-lg p-r-10x"></i>--}}
-                        <span class="font-size-md">Order history</span>
+                        <span class="font-size-md">Orders</span>
                     </a>
                 </li>
                 <li class="nav-item @if('wishlist' == $title) active @endif ">
@@ -36,25 +36,43 @@
                         <span class="font-size-md">Following</span>
                     </a>
                 </li>
-                <li class="nav-item" >
-                    <a href="/invitefriends">
-                        <span class="font-size-md">Invite Friends</span>
-
-                    </a>
-                </li>
                 <li class="nav-item @if('promotions' ==  $title) active @endif" >
                     <a href="/promocode">
                         <span class="font-size-md">Promotions</span>
                     </a>
                 </li>
-                <li class="nav-item @if('promotions' ==  $title) active @endif" >
-                    <a href="##">
-                        <span class="font-size-md">account settings</span>
+                <li class="nav-item">
+                    <a href="/invitefriends">
+                        <span class="font-size-md">Invite Friends</span>
                     </a>
                 </li>
-                <li class="nav-item @if('Shipping Address' == $title) active @endif" >
+                {{--下半部分导航--}}
+
+                <li class="nav-item m-t-30x @if('Change Profile' == $title) active @endif">
+                    <a href="/user/changeprofile">
+                            <span class="font-size-md">Change Profile</span>
+                    </a>
+                </li>
+                @if(1 == Session::get('user.login_type'))
+                    <li class="nav-item @if('Change Password' == $title) active @endif">
+                        <a href="/user/changepassword">
+                                <span class="font-size-md">Change Password</span>
+                        </a>
+                    </li>
+                @endif
+                <li class="nav-item @if('Payment Method' == $title) active @endif">
+                    <a href="/user/payment">
+                            <span class="font-size-md">Payment Method</span>
+                    </a>
+                </li>
+                <li class="nav-item @if('Shipping Address' == $title) active @endif">
                     <a href="/user/shippingaddress">
-                        <span class="font-size-md">shopping address</span>
+                            <span class="font-size-md">Shipping Address</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/signout">
+                            <span class="font-size-md">Sign Out</span>
                     </a>
                 </li>
 
