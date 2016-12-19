@@ -1823,6 +1823,10 @@ sup{
   cursor: pointer;
 }
 
+.aboutUs-content h2{
+  font-size: 2.75rem;
+}
+
 @media screen and (min-width: 1280px) {
   .banner-container {
     max-width: 1280px;

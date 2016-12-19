@@ -33,6 +33,36 @@
 
         </div>
     </div>
+
+    {{--<div class="content-wrap aboutUs-content">--}}
+        {{--<h1 class="helveBold text-main font-size-lxx m-b-20x m-x-20x">About Motif</h1>--}}
+        {{--<div class="bg-white content box-shadow p-x-40x">--}}
+            {{--<div class="m-x-40x p-x-10x text-center p-t-20x m-t-5x">--}}
+                {{--<h2 class="helveBold text-main">WELCOME TO THE FUTURE OF FASHION</h2>--}}
+                {{--<p>What happens when you give the world's most creative designers and top fashion bloggers<br> the power to create their own fashion collections?</p>--}}
+                {{--<img class="img-fluid p-t-15x" src="/images/banner/banner.png" alt="">--}}
+            {{--</div>--}}
+
+            {{--<div class="m-x-40x p-x-10x text-center p-t-30x m-t-30x">--}}
+                {{--<h2 class="helveBold text-main">WORLD CLASS CREATIVITY</h2>--}}
+                {{--<p>What happens when you give the world's most creative designers and top fashion<br> bloggers the power to create their own fashion collections?</p>--}}
+                {{--<img class="img-fluid p-t-15x" src="/images/banner/banner.png" alt="">--}}
+            {{--</div>--}}
+
+            {{--<div class="m-x-40x p-x-10x text-center p-t-30x m-t-30x">--}}
+                {{--<h2 class="helveBold text-main">WORLD CLASS CREATIVITY</h2>--}}
+                {{--<p>What happens when you give the world's most creative designers and top fashion<br> bloggers the power to create their own fashion collections?</p>--}}
+                {{--<img class="img-fluid p-t-15x" src="/images/banner/banner.png" alt="">--}}
+            {{--</div>--}}
+
+            {{--<div class="m-x-40x p-x-10x text-center p-t-30x m-t-30x">--}}
+                {{--<h2 class="helveBold text-main">WORLD CLASS CREATIVITY</h2>--}}
+                {{--<p>What happens when you give the world's most creative designers and top fashion<br> bloggers the power to create their own fashion collections?</p>--}}
+                {{--<img class="img-fluid p-t-15x" src="/images/banner/banner.png" alt="">--}}
+            {{--</div>--}}
+            {{--<div class="p-y-20x"></div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 </div>
 
 @include('footer')
