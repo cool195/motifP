@@ -63,12 +63,12 @@
                 <div class="p-t-20x">
                     <div class="row font-size-sm">
                         <div class="col-md-7">ITEM</div>
-                        <div class="col-md-1">PRICE</div>
-                        <div class="col-md-4"><div class="p-l-40x">QUANTITY</div></div>
+                        <div class="col-md-1 p-l-15x">PRICE</div>
+                        <div class="col-md-4"><div class="p-l-40x m-l-10x">QUANTITY</div></div>
                     </div>
-                    <hr class="hr-black m-t-0">
+                    <hr class="hr-gray m-t-0">
                 </div>
-                <div class="p-x-20x">
+                <div class="">
                     @foreach($cart['showSkus'] as $k=>$showSku)
                         <div class="p-y-20x" id="{{'csku'.$showSku['sku']}}">
                             <div class="row flex flex-alignCenter cartProduct-item">
@@ -118,7 +118,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2">
-                                    <div class="p-l-40x m-l-10x">
+                                    <div class="p-l-30x m-l-10x">
                                         @if(Session::get('user.pin'))
                                             <a class="btn-block cartManage" data-action="save"
                                                data-sku="{{$showSku['sku']}}" href="javascript:;">Save for Later</a><br>
@@ -143,7 +143,7 @@
                 </div>
             </div>
         @endif
-            <hr class="hr-black">
+            <hr class="hr-gray">
         {{--Saved List--}}
         @if($save['showSkus'])
             <div class="m-t-40x p-t-20x">
@@ -152,12 +152,12 @@
                 <div class="p-t-20x">
                     <div class="row font-size-sm">
                         <div class="col-md-7">ITEM</div>
-                        <div class="col-md-1">PRICE</div>
+                        <div class="col-md-1 p-l-15x">PRICE</div>
                     </div>
-                    <hr class="hr-black m-t-0">
+                    <hr class="hr-gray m-t-0">
                 </div>
 
-                <div class="p-x-20x">
+                <div class="">
                     @foreach($save['showSkus'] as $showSku)
                         <div class="row p-y-20x flex flex-alignCenter cartProduct-item"
                              id="{{'csku'.$showSku['sku']}}">
@@ -200,7 +200,7 @@
                                 &nbsp;
                             </div>
                             <div class="col-md-2">
-                                <div class="p-l-40x m-l-10x">
+                                <div class="p-l-30x m-l-10x">
                                     @if(0 == $showSku['stock_status'] || 1 != $showSku['isPutOn'])
                                         Listing Ended
                                     @else
@@ -219,7 +219,7 @@
                     @endforeach
                 </div>
             </div>
-            <hr class="hr-black">
+            <hr class="hr-gray">
         @endif
     </div>
     <hr class="hr-black m-t-50x">
@@ -239,11 +239,11 @@
                         @if(Session::get('user.pin'))
                             <a href="/cart/ordercheckout"
                                data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-                               class="m-l-30x bigNoodle font-size-llx p-y-5x p-x-20x btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
+                               class="m-l-30x bigNoodle font-size-llx btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
                                 To Checkout</a>
                         @else
                             <a href="/login"
-                               class="m-l-30x bigNoodle font-size-llx p-y-5x p-x-20x btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
+                               class="m-l-30x bigNoodle font-size-llx btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
                                 To Checkout</a>
                         @endif
                     @endif
