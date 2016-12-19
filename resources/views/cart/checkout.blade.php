@@ -46,9 +46,9 @@
                     <div class="col-md-1 text-center">PRICE</div>
                     <div class="col-md-2 text-center"><div class="p-l-40x">QUANTITY</div></div>
                 </div>
-                <hr class="hr-black m-t-0">
+                <hr class="hr-gray m-t-0">
             </div>
-        <div class="p-x-20x">
+        <div class="">
                 @foreach($accountList['showSkus'] as $showSku)
                     <div class="checkout-Item p-y-20x">
                         <div class="media">
@@ -121,7 +121,7 @@
                     {{--@endif--}}
                 @endforeach
         </div>
-        <hr class="hr-black p-b-20x">
+        <hr class="hr-gray p-b-20x">
 
         {{--Shipping Address--}}
         {{--Address 注入服务--}}
