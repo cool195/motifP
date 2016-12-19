@@ -12,7 +12,7 @@
                     <!--wishlist为空时显示-->
                     <div class="rightContent">
                         <div class="empty-content">
-                            <i class="iconfont icon-like"></i>
+                            {{--<i class="iconfont icon-like"></i>--}}
                             <p class="helveBold font-size-llxx m-t-40x">Your wishlist is empty!</p>
                         </div>
                     </div>

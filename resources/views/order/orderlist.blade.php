@@ -1,7 +1,7 @@
 @include('header', ['title' => 'Orders'])
 
 <!-- 内容 -->
-<section class="m-y-40x">
+<section class="body-container m-y-30x">
     <div class="container">
         <div class="myHome-content">
             @include('user.left', ['title' => 'Orders'])
@@ -17,6 +17,8 @@
                                 <a href="/daily" class="btn btn-primary btn-lg btn-320">SHOP NOW</a>
                             </div>
                         @else
+                            <div class="bigNoodle text-center leftMeun-title">MY ORDERS</div>
+                            <hr class="hr-black m-t-0">
                             @foreach($data['list'] as $order)
                                 @foreach($order['subOrderList'] as $subOrder)
                                     @if($subOrder['status_code'] != 11)
