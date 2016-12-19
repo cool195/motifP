@@ -1,7 +1,7 @@
 
 @include('header', ['title' => 'Following'])
 <!-- 内容 -->
-<section class="m-y-40x" id="designerUser" data-show="true">
+<section class="body-container m-y-30x" id="designerUser" data-show="true">
     <div class="container">
         <div class="myHome-content">
             <!-- 左侧菜单 -->
@@ -19,6 +19,8 @@
                     </div>
                 @endif
                 <div class="rightContent" id="followList-container" data-pagenum="1" data-loading="false">
+                    <div class="bigNoodle text-center leftMeun-title">MY FOLLOWING</div>
+                    <hr class="hr-black m-t-0">
                     <!-- Following List -->
                     <div class="row">
                         @if(!empty($data['list']))

@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li class="nav-item @if('promotions' ==  $title) active @endif" >
-                    <a href="/promocode">
+                    <a href="##">
                         <span class="font-size-md">account settings</span>
                     </a>
                 </li>

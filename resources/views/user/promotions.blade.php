@@ -1,11 +1,10 @@
 @include('header',['title'=>'promotions'])
 
 <!-- 内容 -->
-<section class="m-y-40x">
+<section class="body-container m-y-30x">
     <div class="container" id="userpromotions" data-status="true">
         <div class="myHome-content">
             @include('user.left', ['title' => 'promotions'])
-
             <div class="right">
                 <div class="rightContent">
                     <!-- Promotions -->
