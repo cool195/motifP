@@ -16,55 +16,52 @@
                             <p class="helveBold font-size-llxx m-t-40x">Your wishlist is empty!</p>
                         </div>
                     </div>
-                @endif
+                @else
                 <div class="rightContent" id="wishList-container" data-pagenum="1" data-loading="false">
                     <div class="bigNoodle text-center leftMeun-title">MY WISHLIST</div>
                     <hr class="hr-black m-t-0">
                     <!-- WishList content -->
                     <ul class="tiles-wrap wishlist-wrap animated row" id="wishlist-wookmark">
                         <!-- 商品 -->
-                        @if(!empty($data['list']))
-                            @foreach($data['list'] as $wish)
-                                <li>
-                                    <div class="productList-item wishlist-item">
-                                        <div class="image-container">
-                                            <a href="/detail/{{$wish['spu']}}">
-                                                <img src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{ $wish['main_image_url'] }}" alt="{{ $wish['main_title'] }}" class="img-fluid img-lazy">
-                                                <div class="bg-heart"></div>
-                                            </a>
-                                            <span class="product-heart btn-heart">
-                                                <i class="iconfont btn-wish font-size-lxx active" data-spu="{{$wish['spu']}}"></i>
-                                            </span>
-                                        </div>
-                                        <div class="price-caption">
-                                            <div class="text-center font-size-md text-truncate p-x-20x">{{$wish['main_title']}}</div>
-                                            <div class="text-center">
-                                                @if($wish['skuPrice']['sale_price'] !== $wish['skuPrice']['price'])
-                                                    <span class="font-size-md p-r-5x">${{ number_format(($wish['skuPrice']['sale_price'] / 100), 2) }}</span>
-                                                    <span class="font-size-md text-green text-throughLine">${{ number_format(($wish['skuPrice']['price'] / 100), 2) }}</span>
-                                                @else
-                                                    <span class="font-size-md p-r-5x">${{ number_format(($wish['skuPrice']['sale_price'] / 100), 2) }}</span>
-                                                @endif
-                                            </div>
+                        @foreach($data['list'] as $wish)
+                            <li>
+                                <div class="productList-item wishlist-item">
+                                    <div class="image-container">
+                                        <a href="/detail/{{$wish['spu']}}">
+                                            <img src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
+                                                 data-original="{{config('runtime.CDN_URL')}}/n1/{{ $wish['main_image_url'] }}" alt="{{ $wish['main_title'] }}" class="img-fluid img-lazy">
+                                            <div class="bg-heart"></div>
+                                        </a>
+                                        <span class="product-heart btn-heart">
+                                            <i class="iconfont btn-wish font-size-lxx active" data-spu="{{$wish['spu']}}"></i>
+                                        </span>
+                                    </div>
+                                    <div class="price-caption">
+                                        <div class="text-center font-size-md text-truncate p-x-20x">{{$wish['main_title']}}</div>
+                                        <div class="text-center">
+                                            @if($wish['skuPrice']['sale_price'] !== $wish['skuPrice']['price'])
+                                                <span class="font-size-md p-r-5x">${{ number_format(($wish['skuPrice']['sale_price'] / 100), 2) }}</span>
+                                                <span class="font-size-md text-green text-throughLine">${{ number_format(($wish['skuPrice']['price'] / 100), 2) }}</span>
+                                            @else
+                                                <span class="font-size-md p-r-5x">${{ number_format(($wish['skuPrice']['sale_price'] / 100), 2) }}</span>
+                                            @endif
                                         </div>
                                     </div>
-                                </li>
-                            @endforeach
-                        @endif
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
-                    @if(!empty($data['list']))
-                        <div class="text-center m-y-30x seeMore-info">
-                            <div class="wishList-seeMore" style="display: none;">
-                                <a class="btn btn-gray btn-380 bigNoodle font-size-lx btn-seeMore-wishList" href="javascript:void(0)">VIEW MORE</a>
-                            </div>
-                            <div class="loading wish-loading" style="display: none">
-                                <div class="loader"></div>
-                                <div class="text-center p-l-15x">Loading...</div>
-                            </div>
+                    <div class="text-center m-y-30x seeMore-info">
+                        <div class="wishList-seeMore" style="display: none;">
+                            <a class="btn btn-gray btn-380 bigNoodle font-size-lx btn-seeMore-wishList" href="javascript:void(0)">VIEW MORE</a>
                         </div>
-                    @endif
+                        <div class="loading wish-loading" style="display: none">
+                            <div class="loader"></div>
+                            <div class="text-center p-l-15x">Loading...</div>
+                        </div>
+                    </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
