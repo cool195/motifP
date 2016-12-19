@@ -17,10 +17,10 @@ class PcGuideMiddleware
     {
         if($this->isMobile())
         {
-            return redirect('http://m.motif.me'.$request->getRequestUri());
+            return redirect('https://m.motif.me'.$request->getRequestUri());
         }else{
             if($_SERVER['HTTP_HOST'] != 'www.motif.me' && env('APP_ENV') == 'production'){
-                return redirect('http://www.motif.me'.$request->getRequestUri());
+                return redirect('https://www.motif.me'.$request->getRequestUri());
             }else{
                 return $next($request);
             }
