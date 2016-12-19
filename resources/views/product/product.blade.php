@@ -426,7 +426,7 @@
                         <div class="swiper-wrapper">
                                 @foreach($recommended['list'] as $k=>$list)
                                         <div class="productImg-item swiper-slide">
-                                            <a href="#" >
+                                            <a href="/detail/{{$list['spu']}}" data-impr="{{$list['impr']}}" data-clk="{{$list['clk']}}">
                                                 <img class="small-img img-lazy"
                                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png"
                                                      data-original="{{config('runtime.CDN_URL')}}/n2/{{ $list['main_image_url']}}"
@@ -555,8 +555,7 @@
      data-spu="">
     <div class="text-center font-size-md m-y-10x">Added Failled</div>
 </div>
-<img src='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }},"expid":0,"version":"1.0.1","src":"PC"}&ref={{$_SERVER['HTTP_REFERER']}}'
-     hidden>
+<img src='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }},"expid":0,"version":"1.0.1","src":"PC"}&ref={{$_SERVER['HTTP_REFERER']}}' hidden>
 
 <!-- footer start -->
 @include('footer')
