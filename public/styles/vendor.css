@@ -7490,6 +7490,12 @@ a.bg-red:focus, a.bg-red:hover {
           align-items: center;
 }
 
+.flex-alignEnd {
+  -webkit-box-align: end;
+    -ms-flex-align: end;
+      align-items: flex-end;
+}
+
 .flex-fullJustified {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
