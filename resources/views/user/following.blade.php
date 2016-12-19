@@ -40,7 +40,7 @@
                                             <div class="btn btn-gray bigNoodle font-size-lxx p-x-20x btn-follow active"
                                                data-did="{{$follow['userId']}}">Following</div>
                                         </div>
-                                        <div class="m-t-15x followText-Info" data-designerid="{{$follow['userId']}}">cgdsvfc edsbfjrshf ewdsfgbwrfdj esfb rbh bfhr efberf edfhbh ebfrjhbf ewhfbr {{ $follow['description'] }}</div>
+                                        <div class="m-t-15x followText-Info" data-designerid="{{$follow['userId']}}">{{ $follow['description'] }}</div>
                                         {{--<div class="p-t-15x">
                                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
                                             <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
@@ -86,7 +86,7 @@
             <div class="p-t-15x">
                 <div class="btn btn-gray bigNoodle font-size-llx p-x-20x btn-follow active" data-did="@{{ $value.userId }}">Following</div>
             </div>
-            <div class="m-t-15x followText-Info" data-designerid="@{{ value.userId }}>@{{ $value.description }}</div>
+            <div class="m-t-15x followText-Info" data-designerid="@{{ value.userId }}">@{{ $value.description }}</div>
             {{--<div class="p-t-15x">
                 <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
                 <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
@@ -96,4 +96,5 @@
     </div>
     @{{ /each }}
 </template>
+
 @include('footer')

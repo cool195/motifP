@@ -41,7 +41,7 @@ function HideSeeMore(seemoreName) {
                     var lastStr = str;
                 }
                 if ($(this).data('designerid') != '') {
-                    str = lastStr + '... <a class="text-link" href="/designer/' + $(this).data('designerid') + '">View More</a>';
+                    str = lastStr + '... <a class="text-green" href="/designer/' + $(this).data('designerid') + '">View More</a>';
                 } else {
                     str = lastStr + '...';
                 }
@@ -3690,7 +3690,7 @@ function HideSeeMore(seemoreName) {
                 HideSeeMore('.followList-seeMore');
             }
         })
-        SubstringText('.followText-Info', 140);
+        SubstringText('.followText-Info', 128);
     } catch (e) {
     }
 
