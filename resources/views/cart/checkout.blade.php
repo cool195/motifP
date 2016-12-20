@@ -261,9 +261,9 @@
                     </div>
                     <div class="text-right">
                         <a href="javascript:void(0);" id="addAddress-cancel"
-                           class="btn btn-green btn-md m-r-10x font-size-lg bigNoodle">Cancel</a>
+                           class="btn btn-primary btn-md m-r-10x font-size-lg bigNoodle">Cancel</a>
                         <a href="javascript:void(0);" id="addAddress"
-                           class="btn btn-primary btn-md bigNoodle font-size-lg address-save">Save</a>
+                           class="btn btn-green btn-md bigNoodle font-size-lg address-save">Save</a>
                     </div>
                 </div>
             </div>
