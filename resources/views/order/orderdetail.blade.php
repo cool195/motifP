@@ -1,6 +1,6 @@
 @include('header', ['title' => 'Order Detail'])
 
-<section class="m-y-40x">
+<section class="body-container m-y-40x">
     <div class="container">
         <div class="myHome-content">
 
@@ -10,15 +10,16 @@
             <div class="right">
                 <div class="rightContent">
                     <!-- Order Detail -->
-                    <div class="p-t-5x p-b-10x">
-                        <a href="/order/orderlist">
+                    <div class="text-center return-orderList">
+                        <a href="/order/orderlist" class="btn-returnOrderList">
                             <strong><i class="iconfont icon-arrow-left font-size-lx p-x-15x"></i></strong>
-                            <span class="helveBold font-size-lxx">Order Detail</span>
                         </a>
+                        <span class="bigNoodle leftMeun-title">ORDER DETAILS</span>
                     </div>
+                    <hr class="hr-black m-t-0">
 
-                    <div class="box-shadow bg-white m-b-20x">
-                        <div class="p-x-20x p-y-15x">
+                    <div class="bg-white m-b-20x">
+                        <div class="p-b-15x p-t-5x font-size-sm">
                             <div>
                                 <span class="orderDetail-title">Order Date</span>
                                 <span>{{ date("M d, Y" ,strtotime($data['create_time'])) }}</span>
@@ -34,21 +35,20 @@
                         </div>
                     </div>
 
-                    <div class="box-shadow bg-white m-b-20x order-item">
-                        <span class="horn @if(in_array($data['status_code'], array(11))) horn-red
-                                            @elseif(in_array($data['status_code'], array(12, 14, 15, 16, 24))) horn-orange
-                                            @elseif(in_array($data['status_code'], array(17, 18))) horn-green
-                                            @elseif(in_array($data['status_code'], array(19, 20))) horn-blue
-                                            @elseif(25 == $data['status_code']) horn-lightblue
-                                            @elseif(in_array($data['status_code'], array(21, 22, 23, 27))) horn-gray
-                                            @else horn-orange
-                                            @endif">
-                        </span>
-                        <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
+                    <div class="bg-white m-b-20x order-item">
+                        <div class="p-t-15x p-b-10x flex flex-alignEnd flex-fullJustified">
                             <div>
-                                <h5 class="sanBold font-size-md">{{ $data['status_info'] }}
-                                    : {{ date("M d, Y" ,strtotime($data['update_time'])) }}</h5>
-                                <p class="m-b-0 p-t-5x">{{ $data['status_explain'] }}</p>
+                                <h5 class="avenirBold font-size-md">
+                                    <span class="m-r-5x horn @if(in_array($subOrder['status_code'], array(11))) horn-red
+                                                        @elseif(in_array($subOrder['status_code'], array(12, 14, 15, 16, 24))) horn-orange
+                                                        @elseif(in_array($subOrder['status_code'], array(17, 18))) horn-green
+                                                        @elseif(in_array($subOrder['status_code'], array(19, 20))) horn-blue
+                                                        @elseif(25 == $subOrder['status_code']) horn-lightblue
+                                                        @elseif(in_array($subOrder['status_code'], array(21, 22, 23, 27))) horn-gray
+                                                        @else horn-orange
+                                                        @endif"></span>
+                                    {{ $data['status_info'] }} : {{ date("M d, Y" ,strtotime($data['update_time'])) }}</h5>
+                                <p class="orderList-explain m-b-0 p-t-5x font-size-sm">{{ $data['status_explain'] }}</p>
                             </div>
 
                             <!-- 被取消的订单 -->
@@ -59,8 +59,8 @@
                                 </span>
                             @endif
                         </div>
-                        <hr class="hr-base m-a-0">
-                        <div class="p-x-20x">
+                        <hr class="hr-black m-a-0">
+                        <div class="">
                             @foreach($data['lineOrderList'] as $lineOrder)
                                 <div class="checkout-Item border-bottom p-y-20x">
                                     <div class="media">
@@ -75,7 +75,7 @@
                                         <div class="media-body no-border">
                                             <div class="row flex flex-alignCenter">
                                                 <div class="col-md-3">
-                                                    <div class="font-size-md text-main p-l-20x">{{ $lineOrder['main_title'] }}</div>
+                                                    <div class="font-size-base text-main p-l-20x">{{ $lineOrder['main_title'] }}</div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     @if(isset($lineOrder['attrValues']))
@@ -132,19 +132,20 @@
                                 </div>
                             @endforeach
                         </div>
+                        <hr class="hr-black m-a-0">
                         <!-- Track order 物流-->
                         @if(isset($data['logistics_info_url']))
                             <hr class="hr-base m-a-0">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <div class="p-y-20x p-l-20x">Shipping carrier: <span>{{$data['logistics_comany']}}</span></div>
+                                    <div class="p-y-10x avenirMedium">Shipping carrier: <span>{{$data['logistics_comany']}}</span></div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="p-y-20x p-l-20x">Tracking number: <span>{{$data['shipping_no']}}</span></div>
+                                    <div class="p-y-10x p-l-20x avenirMedium">Tracking number: <span>{{$data['shipping_no']}}</span></div>
                                 </div>
                                 <div class="col-md-3">
                                     <a target="_blank" href="{{$data['logistics_info_url']}}">
-                                        <div class="p-r-20x p-y-15x flex flex-alignCenter flex-rightJustify">
+                                        <div class="p-r-5x p-y-5x flex flex-alignCenter flex-rightJustify avenirMedium">
                                             <span class="p-r-10x"><i class="iconfont icon-car font-size-llxx"></i></span>
                                             <span class="sanBold p-r-10x">Track order</span>
                                     <span><strong><i
@@ -154,12 +155,12 @@
                                 </div>
                             </div>
                         @endif
-
                     </div>
-                    <div class="box-shadow bg-white m-b-20x">
-                        <div class="p-a-20x">
-                            <div class="media">
-                                <div class="media-left sanBold orderInfo-title">Shipping to</div>
+
+                    <div class="bg-white m-b-20x">
+                        <div class="p-t-20x">
+                            <div class="media p-t-15x">
+                                <div class="media-left avenirBold orderInfo-title">SHIP TO</div>
                                 <div class="media-right">
                                     {{ $data['userAddr']['name'] }}<br>
                                     {{ $data['userAddr']['detail_address1'] }}<br>
@@ -171,16 +172,16 @@
                                     @if(!empty($data['userAddr']['telephone'])) {{ $data['userAddr']['telephone'] }} @endif
                                 </div>
                             </div>
-                            <hr class="hr-base">
-                            <div class="media">
-                                <div class="media-left sanBold orderInfo-title">Shipping</div>
+                            <hr class="hr-black m-t-0 m-b-20x">
+                            <div class="media p-t-15x">
+                                <div class="media-left avenirBold orderInfo-title">SHIPPING METHOD</div>
                                 <div class="media-right">{{  $data['logistics_name'] }}
                                     ${{number_format(($data['logistics_price'] / 100), 2)}}</div>
                             </div>
+                            <hr class="hr-black m-t-0 m-b-20x">
                             @if(!in_array($data['status_code'], array(11, 21, 27)))
-                                <hr class="hr-base">
-                                <div class="media">
-                                    <div class="media-left sanBold orderInfo-title">Paid with</div>
+                                <div class="media p-t-15x">
+                                    <div class="media-left avenirBold orderInfo-title">PAY WITH</div>
                                     <div class="media-right">
                                         @if($data['payinfo']['pay_type']=="PayPalNative")
                                             <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypallogo-43.png"
@@ -200,24 +201,25 @@
                                                  srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-32@3x.png{{config('runtime.V')}} 3x"
                                                  class="pay-img pay-jcb @if($data['payinfo']['card_type'] == "JCB") active @endif">
                                         @endif
-                                        <span class="p-l-10x">{{$data['payinfo']['show_name']}}</span>
+                                        <span class="p-l-10x">{{$data['payinfo']['show_name']}}Paypal</span>
                                     </div>
                                 </div>
+                            <hr class="hr-black m-t-0 m-b-20x">
                             @endif
                             @if(!empty($data['order_remark']))
-                                <hr class="hr-base">
-                                <div class="media">
-                                    <div class="media-left sanBold orderInfo-title">Special Request</div>
+                                <div class="media p-t-15x">
+                                    <div class="media-left avenirBold orderInfo-title">SPECIAL REQUEST</div>
                                     <div class="media-right">
                                         {{$data['order_remark']}}
                                     </div>
                                 </div>
+                            <hr class="hr-black m-t-0 m-b-20x">
                             @endif
                         </div>
                     </div>
 
-                    <div class="box-shadow bg-white m-t-20x">
-                        <div class="p-a-20x font-size-md">
+                    <div class="bg-white avenirMedium">
+                        <div class="p-b-20x font-size-md">
                             {{--数量--}}
                             <div class="text-right">
                                 <span>Items({{$data['item_qtty']}}):</span>
@@ -261,18 +263,17 @@
                         </div>
                     </div>
 
-                    <div class="p-t-30x">
-                        <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="text-left">Contact
-                            Customer Service</a>
+                    <div class="text-right">
+                        <a href="/askshopping?skiptype=2&id={{$data['sub_order_no']}}" class="btn btn-200 bigNoodle font-size-lxx btn-green">CONTACT SERVICE</a>
                         <!-- 未支付订单 支付按钮 -->
-                        <div class="text-right">
-                            @if( 11 == $data['status_code'])
-                                <a href="/payagain/{{  $data['sub_order_no'] }}/0"
-                                   class="btn btn-primary btn-lg btn-200 m-r-20x">Pay with Credit Card</a>
-                                <a href="/payagain/{{  $data['sub_order_no'] }}/1"
-                                   class="btn btn-primary btn-lg btn-200">Pay with Paypal</a>
-                            @endif
+                        @if( 11 == $data['status_code'])
+                        <div class="text-right m-t-20x">
+                            <a href="/payagain/{{  $data['sub_order_no'] }}/0"
+                               class="btn btn-primary btn-150 m-r-20x bigNoodle font-size-lxx">CREDIT CART</a>
+                            <a href="/payagain/{{  $data['sub_order_no'] }}/1"
+                               class="btn btn-primary btn-150 bigNoodle font-size-lxx">PAYPAL</a>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -751,6 +751,16 @@ select::-ms-expand { display: none; }
   padding-left: .75rem;
 }
 
+.return-orderList{
+  position: relative;
+}
+
+.btn-returnOrderList{
+  position: absolute;
+  left: 0px;
+  top: 30%;
+}
+
 /*.horn {*/
   /*display: inline-block;*/
   /*position: absolute;*/
@@ -1330,8 +1340,9 @@ select::-ms-expand { display: none; }
 }
 
 .orderInfo-title {
-  min-width: 12.5rem;
-  vertical-align: top;
+  min-width: 15rem;
+  vertical-align: bottom;
+  font-size: 1.125rem;
 }
 
 .changeName-title {

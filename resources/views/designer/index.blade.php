@@ -42,7 +42,7 @@
 <!-- designer list 模版 -->
 <template id="tpl-designerList">
     @{{ each list as value }}
-    @{{ if 2 == value.designer_type }})
+    @{{ if 2 == value.designer_type }}
         <div class="col-md-12 m-b-30x designer-item">
             <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
                data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'

@@ -37,7 +37,7 @@
                                                                     {{$subOrder['status_info']}} : {{ date("M d, Y" ,strtotime($subOrder['create_time'])) }}</h5>
                                                                 <p class="orderList-explain m-b-0 p-t-5x font-size-sm">{{ $subOrder['status_explain'] }}</p>
                                                             </div>
-                                                        <span class="text-right btn-orderDetail">
+                                                        <span class="text-right btn-orderDetail p-r-5x">
                                                             <a class="text-gray font-size-sm" href="/order/orderdetail/{{  $subOrder['order_no'] }}">view details</a>
                                                         </span>
                                                         </div>
@@ -192,7 +192,7 @@
                     @{{ value.status_info }} : @{{ value.format_create_time }}</h5>
                 <p class="orderList-explain m-b-0 p-t-5x font-size-sm">@{{ value.status_explain }}</p>
             </div>
-            <span class="text-right btn-orderDetail">
+            <span class="text-right btn-orderDetail p-r-5x">
                 <a class="text-gray font-size-sm" href="/order/orderdetail/@{{ value.order_no }}">view details</a>
             </span>
         </div>
