@@ -8,8 +8,10 @@
             @inject('Address', 'App\Http\Controllers\AddressController')
             <div class="right">
                 <div class="rightContent">
+                    <div class="bigNoodle text-center leftMeun-title">shipping address</div>
+                    <hr class="hr-black m-t-0">
                     <!-- Address -->
-                    <div class="box-shadow bg-white mH">
+                    <div class="bg-white mH">
                         <div class="address-content">
                             <!-- 添加地址 -->
                             {{--Shipping Address--}}
@@ -18,7 +20,7 @@
                             {{--*/ $address = $Address->index() /*--}}
                             <div class="p-a-20x add-address @if(!empty($address['data']['list'])) disabled @endif">
                                 <div class="inline">
-                                    <span class="font-size-md address-text"></span>
+                                    <span class="font-size-md avenirMedium address-text"></span>
                                     <span class="font-size-md pull-right">
                                         <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
                                         <span class="p-l-5x">Default</span>
@@ -107,9 +109,9 @@
                                         <div class="col-md-1"></div>
                                     </form>
                                 </div>
-                                <div class="text-right">
-                                    <a href="javascript:void(0)" id="addAddress-cancel" class="font-size-md p-r-30x hover-blue">Cancel</a>
-                                    <a href="javascript:void(0)" id="addAddress" class="btn btn-primary btn-lg btn-200 address-save">Save</a>
+                                <div class="text-center m-t-20x">
+                                    <div id="addAddress-cancel" class="btn btn-baseSize font-size-llx btn-primary bigNoodle m-r-20x">Cancel</div>
+                                    <div id="addAddress" class="btn btn-baseSize font-size-llx btn-green bigNoodle address-save">Save</div>
                                 </div>
                             </div>
 
@@ -117,9 +119,9 @@
                             {{--Shipping Address--}}
                             <div class="p-a-20x select-address @if(empty($address['data']['list'])) disabled @endif">
                                 <div class="flex flex-alignCenter flex-fullJustified">
-                                    <span class="font-size-md">Shipping Address</span>
+                                    <span class="font-size-md avenirMedium">Shipping Address</span>
                                     <span class="font-size-md pull-right">
-                                        <a class="btn btn-secondary btn-md btn-addNewAddress" href="javascript:void(0)"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address</a>
+                                        <a class="btn btn-secondary btn-md btn-addNewAddress" href="javascript:void(0)">+ Add New Address</a>
                                     </span>
                                 </div>
                                 <div class="row p-x-10x p-t-20x address-list" id="addressList-info">

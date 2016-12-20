@@ -215,7 +215,7 @@
                                                            placeholder="Street 2 (optional)">
                                                 </div>
                                             </div>
-                                            <div class="col-md-1"></div>
+                                            <div class="col-md-2"></div>
                                             <div class="col-md-5">
                                                 <div class="m-b-20x">
                                                     <input type="text" name="city" data-optional="false" data-inputrole="city"
@@ -258,7 +258,6 @@
                                                            value="@if(empty($address['data']['list'])){{'1'}}@else{{'0'}}@endif">
                                                 </div>
                                             </div>
-                                            <div class="col-md-1"></div>
                                         </form>
                                     </div>
                                     <div class="text-center m-t-20x">
