@@ -18,8 +18,8 @@
                     <div class="bg-white mH">
                         <div class="payment-content">
                             <!--选择支付方式-->
-                            <div class="p-a-20x select-payment">
-                                <div class="row p-x-10x p-t-20x payment-list">
+                            <div class="select-payment">
+                                <div class="row p-t-20x payment-list">
                                     @foreach($paylist['data']['list'] as $list)
                                         @if(isset($list['creditCards']))
                                             @foreach($list['creditCards'] as $card)
@@ -46,13 +46,13 @@
                                                                              srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-52@3x.png{{config('runtime.V')}} 3x">
                                                                     @endif
                                                                 </span>
-                                                                <span class="sanBold font-size-md">{{  $card['card_number'] }}</span>
+                                                                <span class="avenirMedium billingTxt font-size-lg">{{  $card['card_number'] }}</span>
                                                             </div>
                                                             <div class="m-t-10x flex">
                                                                 <span class="payLeft-minW">Exp:{{$card['month']}} /{{$card['year']}}</span>
                                                                 <span class="billingTxt">Billing:{{$card['detail_address1']}} {{$card['detail_address2']}} {{$card['city']}} {{$card['state']}} {{$card['country']}}</span>
                                                             </div>
-                                                            <div class="btn-deleteCard btn-edit font-size-md hover-blue" data-cardid="{{$card['card_id']}}">Delete</div>
+                                                            <div class="btn-deleteCard btn-edit font-size-md hover-green" data-cardid="{{$card['card_id']}}">Delete</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,19 +88,12 @@
                                 {{--</div>--}}
                             </div>
                             <!--添加卡-->
-                            <div class="p-a-20x add-newCard disabled">
-                                <div class="inline">
-                                    <span class="font-size-md sanBold">Payment Method</span>
-                                    {{--<span class="font-size-md pull-right">--}}
-                                        {{--<i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg active"></i>--}}
-                                        {{--<span class="p-l-5x">Make Primary</span>--}}
-                                    {{--</span>--}}
-                                </div>
+                            <div class="add-newCard disabled">
 
-                                <div class="p-y-10x font-size-md">Add New Credit Card</div>
+                                <div class="p-t-20x p-b-10x font-size-md avenirBold">Add New Credit Card</div>
 
-                                <div class="p-a-20x">
-                                    <div>We Accept:
+                                <div class="p-a-10x">
+                                    <div class="p-t-10x p-l-20x">We Accept:
                                         <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32.png"
                                              srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@3x.png{{config('runtime.V')}} 3x"
                                              class="m-l-10x" id="img-mastercard" data-type="MasterCard">
@@ -115,7 +108,7 @@
                                              class="m-l-20x" id="img-amex" data-type="AmericanExpress">
                                     </div>
                                     <div class="card-wrapper" style="display: none;"></div>
-                                    <div class="row p-t-20x">
+                                    <div class="row p-t-20x p-l-20x">
                                         <form action="" id="addCard-container">
                                             <input name="card_type" type="hidden">
 
@@ -162,7 +155,7 @@
                                                 {{$defaultAddr = $Address->getUserDefaultAddr()['data']}}
                                             @endif
                                             <div class="card-message">
-                                                <div class="sanBold def-name">{{$defaultAddr['name']}}</div>
+                                                <div class="avenirMedium def-name">{{$defaultAddr['name']}}</div>
                                                 <div class="def-city">{{$defaultAddr['city']}}</div>
                                                 <div class="def-zip">{{$defaultAddr['zip']}}</div>
                                                 <div class="def-state">{{$defaultAddr['state']}}</div>
@@ -189,7 +182,7 @@
                                         <form id="card-addAddressForm">
                                             <div class="col-md-5">
                                                 <input type="hidden" name="email" value="{{Session::get('user.login_email')}}">
-                                                <div class="p-l-20x m-b-20x">
+                                                <div class="m-b-20x">
                                                     <input type="text" name="name" data-optional="false" data-inputrole="name"
                                                            class="form-control contrlo-lg text-primary card-name"
                                                            placeholder="Full name">
@@ -198,7 +191,7 @@
                                                         <span class="font-size-base">Please enter your name !</span>
                                                     </div>
                                                 </div>
-                                                <div class="p-l-20x m-b-20x">
+                                                <div class="m-b-20x">
                                                     <input type="text" name="tel" data-optional="false" data-inputrole="phone"
                                                            class="form-control contrlo-lg text-primary card-tel"
                                                            placeholder="Phone">
@@ -207,7 +200,7 @@
                                                         <span class="font-size-base">Please enter your phone !</span>
                                                     </div>
                                                 </div>
-                                                <div class="p-l-20x m-b-20x">
+                                                <div class="m-b-20x">
                                                     <input type="text" name="addr1" data-optional="false" data-inputrole="street"
                                                            class="form-control contrlo-lg text-primary card-addr1"
                                                            placeholder="Street 1">
@@ -216,7 +209,7 @@
                                                         <span class="font-size-base">Please enter your street !</span>
                                                     </div>
                                                 </div>
-                                                <div class="p-l-20x m-b-20x">
+                                                <div class="m-b-20x">
                                                     <input type="text" name="addr2"
                                                            class="form-control contrlo-lg text-primary card-addr2"
                                                            placeholder="Street 2 (optional)">
@@ -224,7 +217,7 @@
                                             </div>
                                             <div class="col-md-1"></div>
                                             <div class="col-md-5">
-                                                <div class="p-l-20x m-b-20x">
+                                                <div class="m-b-20x">
                                                     <input type="text" name="city" data-optional="false" data-inputrole="city"
                                                            class="form-control contrlo-lg text-primary card-city"
                                                            placeholder="City">
@@ -233,7 +226,7 @@
                                                         <span class="font-size-base">Please enter your city !</span>
                                                     </div>
                                                 </div>
-                                                <div class="p-l-20x m-b-20x">
+                                                <div class="m-b-20x">
                                                     <select name="country" class="form-control contrlo-lg card-selectCountry">
                                                         @foreach($Address->getCountry(1) as $value)
                                                             <option value="{{$value['country_name_en']}}"
@@ -245,11 +238,11 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="p-l-20x m-b-20x state-info">
+                                                <div class="m-b-20x state-info">
                                                      <input type="text" name="state" class="form-control contrlo-lg text-primary"
                                                             placeholder="State">
                                                 </div>
-                                                <div class="p-l-20x m-b-20x">
+                                                <div class="m-b-20x">
                                                     <input type="text" name="zip" id="zip" data-optional="false"
                                                            data-inputrole="zip code"
                                                            class="form-control contrlo-lg text-primary card-zip"
@@ -268,10 +261,10 @@
                                             <div class="col-md-1"></div>
                                         </form>
                                     </div>
-                                    <div class="text-right">
+                                    <div class="text-center m-t-20x">
                                         <a href="javascript:void(0);" id="card-addAddress-cancel"
-                                           class="font-size-md p-r-30x hover-blue">Cancel</a>
-                                        <a href="javascript:void(0);" id="btn-addNewCard" class="btn btn-primary btn-md">Save</a>
+                                           class="btn btn-baseSize font-size-llx btn-primary bigNoodle m-r-20x">Cancel</a>
+                                        <a href="javascript:void(0);" id="btn-addNewCard" class="btn btn-baseSize font-size-llx btn-green bigNoodle">Save</a>
                                         <div class="warning-info text-warning p-t-10x addCard-warning off">
                                             <i class="iconfont icon-caveat icon-size-md"></i>
                                             <span class="font-size-base">Add Card Error!</span>
@@ -295,7 +288,7 @@
 
 <!-- 删除地址 确认框 -->
 <div class="remodal modal-content remodal-md p-a-0" data-remodal-id="paymentmodal-modal" data-cardid="">
-    <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Payment?</div>
+    <div class="avenirMedium text-center font-size-md p-a-15x">Remove Items from Your Payment?</div>
     <hr class="hr-common m-a-0">
     <div class="text-center dialog-info">Are you sure you want to remove this item?</div>
     <hr class="hr-common m-a-0">
@@ -333,13 +326,13 @@
                         @{{ /if }}
                     </span>
 
-                    <span class="sanBold font-size-md">@{{ $value.card_number }}</span>
+                    <span class="avenirMedium billingTxt font-size-lg">@{{ $value.card_number }}</span>
                 </div>
                 <div class="m-t-10x flex">
                     <span class="payLeft-minW">Exp:@{{ $value.month }}/@{{ $value.year }}</span>
                     <span class="billingTxt">@{{ $value.detail_address1 }} @{{ $value.detail_address2 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }}</span>
                 </div>
-                <div class="btn-deleteCard btn-edit font-size-md hover-blue" data-cardid="@{{ $value.card_id }}">Delete</div>
+                <div class="btn-deleteCard btn-edit font-size-md hover-green" data-cardid="@{{ $value.card_id }}">Delete</div>
             </div>
         </div>
     </div>
@@ -387,13 +380,13 @@
                         @{{ /if }}
                     </span>
 
-                    <span class="sanBold font-size-md">@{{ $value.card_number }}</span>
+                    <span class="avenirMedium font-size-md">@{{ $value.card_number }}</span>
                 </div>
                 <div class="m-t-10x flex">
                     <span class="payLeft-minW">Exp:@{{ $value.month }}/@{{ $value.year }}</span>
                     <span class="billingTxt">@{{ $value.detail_address1 }} @{{ $value.detail_address2 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }}</span>
                 </div>
-                <div class="btn-deleteCard btn-edit font-size-md hover-blue" data-cardid="@{{ $value.card_id }}">Delete</div>
+                <div class="btn-deleteCard btn-edit font-size-md hover-green" data-cardid="@{{ $value.card_id }}">Delete</div>
             </div>
         </div>
     </div>

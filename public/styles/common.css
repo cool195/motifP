@@ -155,8 +155,8 @@ select {
 }
 select::-ms-expand { display: none; }
 
-.hover-blue:hover {
-  color: #6d91ff;
+.hover-green:hover {
+  color: #46d593;
 }
 /*cart 横幅*/
 .active-banner{
@@ -2026,11 +2026,11 @@ sup{
   text-align: right;
 }
 .addCreditCard:hover{
-  color: #6d91ff;
-  border: 1px solid #6d91ff;
+  color: #46d593;
+  border: 1px solid #46d593;
 }
 .addCreditCard:hover .icon-add{
-  color: #6d91ff;
+  color: #46d593;
 }
 .billingTxt{
   display: inline-block;
