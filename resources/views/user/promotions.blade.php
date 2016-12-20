@@ -8,15 +8,17 @@
             <div class="right">
                 <div class="rightContent">
                     <!-- Promotions -->
-                    <div class="box-shadow bg-white promotion-content">
+                    <div class="bg-white promotion-content">
+                        <div class="bigNoodle text-center leftMeun-title">Promotions</div>
+                        <hr class="hr-black m-t-0">
                         <!--新增促销码-->
-                        <div class="p-a-20x addPromotionCode disabled">
-                            <a href="#" class="goback-toAdd"><i class="iconfont icon-arrow-left font-size-lg p-r-10x"></i></a>
+                        <div class="p-y-20x addPromotionCode disabled">
+                            <a href="javascript:void(0)" class="goback-toAdd"><i class="iconfont icon-arrow-left font-size-lx"></i></a>
                             <div class="empty-content">
                                 <i class="iconfont icon-ticket"></i>
-                                <p class="helveBold font-size-llxx m-t-40x">Add New Promotions</p>
-                                <div class="addCode-input m-t-40x text-left">
-                                    <input type="text" class="form-control contrlo-lg text-primary m-b-10x" name="cps" value="" placeholder="Enter Your Promotions Code Here">
+                                <p class="font-size-llxx bigNoodle m-t-40x">Add New Promotions</p>
+                                <div class="addCode-input text-left">
+                                    <input type="text" class="form-control contrlo-lg text-primary m-b-5x" name="cps" value="" placeholder="Enter Your Promotions Code Here">
                                     <!--error-->
                                     <span class="warning-info text-warning off">
                                         <i class="iconfont icon-caveat p-r-5x"></i>
@@ -25,20 +27,20 @@
                                 </div>
 
                                 <div class="text-center m-t-30x">
-                                    <div class="btn btn-primary btn-lg btn-200 coupon-apply disabled">Apply</div>
+                                    <div class="btn btn-baseSize btn-black font-size-llx bigNoodle coupon-apply disabled">APPLY</div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Coupons and Promotions-->
-                        <div class="p-a-20x showPromotionCode">
+                        <div class="p-t-20x p-b-40x p-x-5x showPromotionCode">
                             <div class="flex flex-alignCenter flex-fullJustified">
-                                <span class="font-size-md sanBold">Coupons and Promotions</span>
+                                <span class="font-size-md avenirBold">COUPONS AND PROMOTIONS</span>
                                 <span class="font-size-md pull-right">
-                                    <div class="btn btn-secondary btn-md btn-addNewCode"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Promotion Code</div>
+                                    <a class="btn-addNewCode">+ Add New Promotion Code</a>
                                 </span>
                             </div>
-                            <div class="row p-x-10x p-t-20x coupon-list">
+                            <div class="row coupon-list p-t-10x">
 
                             </div>
                         </div>
@@ -52,16 +54,16 @@
 <template id="tpl-coupon">
     @{{ each list }}
     <div class="col-md-6">
-        <div class="m-a-10x">
-            <div class="row promotion-item flex flex-alignCenter">
+        <div class="p-a-10x p-y-15x">
+            <div class="row promotion-item flex flex-alignCenter active">
                 <div class="col-md-8">
-                    <div class="text-right p-left p-r-15x p-y-15x">
-                        <div class="helveBold font-size-sm">@{{ $value.prompt_words }}</div>
-                        <span class="font-size-sm">Expire: @{{ $value.expiry_time }}</span>
+                    <div class="text-right p-left p-r-15x p-y-30x font-size-md">
+                        <div>@{{ $value.prompt_words }}</div>
+                        <span>Expire: @{{ $value.expiry_time }}</span>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="font-size-lx text-left helveBold">@{{ $value.cp_title }}</div>
+                    <div class="font-size-llxx text-left avenirBold">@{{ $value.cp_title }}</div>
                 </div>
             </div>
         </div>
