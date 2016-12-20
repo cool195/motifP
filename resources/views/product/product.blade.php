@@ -199,7 +199,7 @@
                         <div class="product-price">
                             @if(isset($data['skuPrice']['skuPromotion']) && ($data['skuPrice']['skuPromotion']['promot_price']<$data['skuPrice']['skuPromotion']['price']))
                                 <span class="avenirMedium p-r-5x text-primary newPrice">${{ number_format(($data['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
-                                <span class="avenirMedium font-size-sm text-common text-throughLine oldPrice">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
+                                <span class="avenirMedium font-size-sm text-green text-throughLine oldPrice">${{ number_format(($data['skuPrice']['skuPromotion']['price'] /100), 2) }}</span>
                             @else
                                 <span class="avenirMedium p-r-10x text-primary newPrice">${{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}</span>
                             @endif
@@ -529,7 +529,7 @@
                             {{--<div class="text-center">--}}
                                 {{--@if($list['skuPrice']['sale_price'] != $list['skuPrice']['price'])--}}
                                     {{--<span class="font-size-md text-primary p-r-5x text-red">${{ number_format(($list['skuPrice']['sale_price'] / 100), 2) }}</span>--}}
-                                    {{--<span class="font-size-base text-common text-throughLine">${{ number_format(($list['skuPrice']['price'] / 100), 2) }}</span>--}}
+                                    {{--<span class="font-size-base text-green text-throughLine">${{ number_format(($list['skuPrice']['price'] / 100), 2) }}</span>--}}
                                 {{--@else--}}
                                     {{--<span class="font-size-md text-primary p-r-5x">${{ number_format(($list['skuPrice']['sale_price'] / 100), 2) }}</span>--}}
                                 {{--@endif--}}
