@@ -93,7 +93,7 @@
                                 <div class="p-t-20x p-b-10x font-size-md avenirBold">Add New Credit Card</div>
 
                                 <div class="p-a-10x">
-                                    <div class="p-t-10x p-l-20x">We Accept:
+                                    <div class="p-t-10x p-l-15x">We Accept:
                                         <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32.png"
                                              srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@3x.png{{config('runtime.V')}} 3x"
                                              class="m-l-10x" id="img-mastercard" data-type="MasterCard">
@@ -108,7 +108,7 @@
                                              class="m-l-20x" id="img-amex" data-type="AmericanExpress">
                                     </div>
                                     <div class="card-wrapper" style="display: none;"></div>
-                                    <div class="row p-t-20x p-l-20x">
+                                    <div class="row p-t-20x p-l-15x">
                                         <form action="" id="addCard-container">
                                             <input name="card_type" type="hidden">
 
