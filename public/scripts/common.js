@@ -321,16 +321,28 @@ function HideSeeMore(seemoreName) {
         $('.productImg-list').each(function () {
             var itemNum = $(this).children('.productImg-item').length,
                 $btnNext = $(this).siblings('.swiper-button-next'),
-                $btnPrev = $(this).siblings('.swiper-button-prev');
+                $btnPrev = $(this).siblings('.swiper-button-prev'),
+                productImgListH=$('.swiper-productImgList').height();
             $btnNext.hide();
             $btnPrev.hide();
-                if (itemNum > 6) {
-                    $btnNext.show();
-                    $btnPrev.show();
+                if(productImgListH > 450 ){
+                    if (itemNum > 6) {
+                        $btnNext.show();
+                        $btnPrev.show();
+                    } else {
+                        $btnNext.hide();
+                        $btnPrev.hide();
+                    }
                 } else {
-                    $btnNext.hide();
-                    $btnPrev.hide();
+                    if (itemNum > 4) {
+                        $btnNext.show();
+                        $btnPrev.show();
+                    } else {
+                        $btnNext.hide();
+                        $btnPrev.hide();
+                    }
                 }
+
         })
     }
 
