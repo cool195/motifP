@@ -14,7 +14,7 @@
                             <div class="empty-content">
                                 <div class="m-b-20x p-b-5x"><i class="iconfont icon-book"></i></div>
                                 <p class="text-primary m-b-20x p-b-20x font-size-llxx">No Orders Found</p>
-                                <a href="/daily" class="btn btn-primary btn-lg btn-320">SHOP NOW</a>
+                                <a href="/daily" class="btn btn-primary p-y-5x btn-320 bigNoodle font-size-lxx">SHOP NOW</a>
                             </div>
                         @else
                             <div class="bigNoodle text-center leftMeun-title">MY ORDERS</div>
@@ -117,7 +117,7 @@
                                                             @endforeach
                                                         </div>
                                                         <hr class="hr-black m-a-0">
-                                                        <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
+                                                        <div class="p-r-5x p-y-15x flex flex-alignCenter flex-fullJustified">
                                                             <div class="avenirMedium">
                                                                 Order # {{$subOrder['order_no']}}
                                                             </div>
@@ -128,9 +128,9 @@
                                                         </div>
                                                         @if($subOrder['logistics_info_url'])
                                                             {{--订单物流信息 begin--}}
-                                                <hr class="hr-base m-a-0">
+                                                {{--<hr class="hr-base m-a-0">--}}
                                                 <a target="_blank" href="{{$subOrder['logistics_info_url']}}">
-                                                    <div class="p-x-20x p-y-15x flex flex-alignCenter flex-rightJustify">
+                                                    <div class="p-b-10x p-r-5x flex flex-alignCenter flex-rightJustify">
                                                         <span class="p-r-10x"><i
                                                                     class="iconfont icon-car font-size-llxx"></i></span>
                                                         <span class="sanBold p-r-10x">Track order</span>
@@ -141,13 +141,11 @@
                                                 {{--订单物流信息 end --}}
                                             @endif
                                             @if( 11 == $subOrder['status_code'])
-                                                <hr class="hr-base m-a-0">
-                                                <div class="text-right p-a-20x">
+                                                <div class="text-right p-b-10x">
                                                     <a href="/payagain/{{  $subOrder['order_no'] }}/0"
-                                                       class="btn btn-primary btn-lg btn-200 m-r-20x">Pay with Credit
-                                                        Card</a>
+                                                       class="btn btn-primary btn-150 m-r-20x bigNoodle font-size-lxx">CREDIT CART</a>
                                                     <a href="/payagain/{{  $subOrder['order_no'] }}/1"
-                                                       class="btn btn-primary btn-lg btn-200">Pay with Paypal</a>
+                                                       class="btn btn-primary btn-150 bigNoodle font-size-lxx">PAYPAL</a>
                                                 </div>
                                             @endif
                                         </div>
@@ -267,7 +265,7 @@
             @{{ /each  }}
         </div>
         <hr class="hr-black m-a-0">
-        <div class="p-x-20x p-y-15x flex flex-alignCenter flex-fullJustified">
+        <div class="p-r-5x p-y-15x flex flex-alignCenter flex-fullJustified">
             <div class="avenirMedium">
                 Order # @{{ value.order_no }}
             </div>
@@ -277,9 +275,9 @@
             </span>
         </div>
         @{{ if value.logistics_info_url }}
-            <hr class="hr-base m-a-0">
+            {{--<hr class="hr-base m-a-0">--}}
             <a target="_blank" href="@{{value.logistics_info_url}}">
-                <div class="p-x-20x p-y-15x flex flex-alignCenter flex-rightJustify">
+                <div class="p-b-10x p-r-5x flex flex-alignCenter flex-rightJustify">
                                                         <span class="p-r-10x"><i
                                                                     class="iconfont icon-car font-size-llxx"></i></span>
                     <span class="sanBold p-r-10x">Track order</span>
@@ -290,11 +288,9 @@
         @{{ /if }}
     @{{ if value.status_code == 11 }}
     <!-- 订单未支付 支付按钮 -->
-        <hr class="hr-base m-a-0">
-        <div class="text-right p-a-20x">
-            <a href="/payagain/@{{  $value.order_no }}/0" class="btn btn-primary btn-lg btn-200 m-r-20x">Pay with Credit
-                Card</a>
-            <a href="/payagain/@{{  $value.order_no }}/1" class="btn btn-primary btn-lg btn-200">Pay with Paypal</a>
+        <div class="text-right p-b-10x">
+            <a href="/payagain/@{{  $value.order_no }}/0" class="btn btn-primary btn-150 m-r-20x bigNoodle font-size-lxx">CREDIT CART</a>
+            <a href="/payagain/@{{  $value.order_no }}/1" class="btn btn-primary btn-150 bigNoodle font-size-lxx">PAYPAL</a>
         </div>
         @{{ /if }}
 
