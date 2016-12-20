@@ -73,7 +73,7 @@
                             @if(!empty($daily['title'] || !empty($daily['subTitle'])))
                                 <div class="daily-info p-a-10x text-left">
                                     <div>
-                                        <h6 class="text-main helveBold font-size-md m-b-5x">{{$daily['title']}}</h6>
+                                        <h6 class="text-main avenirMedium font-size-md m-b-5x">{{$daily['title']}}</h6>
                                         <p class="text-primary m-b-0">{{ $daily['subTitle'] }}</p>
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@
                             {{--<div class="flex flex-alignCenter">--}}
                             {{--<img src="{{config('runtime.Image_URL')}}/images/daily/daily.jpg" class="img-circle" width="30" height="30">--}}
                             {{--<span class="p-l-15x">--}}
-                            {{--<h6 class="text-main font-size-sm helveBold">Street Art</h6>--}}
+                            {{--<h6 class="text-main font-size-sm avenirMedium">Street Art</h6>--}}
                             {{--<a class="text-primary font-size-sm" href="#">facebook.com</a>--}}
                             {{--</span>--}}
                             {{--</div>--}}
@@ -152,7 +152,7 @@
             @{{ if undefined !== ( $value.title || $value.subTitle ) }}
             <div class="daily-info p-a-10x text-left">
                 <div>
-                    <h6 class="text-main helveBold font-size-md m-b-5x">@{{ $value.title }}</h6>
+                    <h6 class="text-main avenirMedium font-size-md m-b-5x">@{{ $value.title }}</h6>
                     <p class="text-primary m-b-0">@{{ $value.subTitle }}</p>
                 </div>
             </div>
