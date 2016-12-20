@@ -10,7 +10,7 @@
             <p class="p-y-20x font-size-md">They get $20 off, and you will too after their first purchase.
                 <a href="/saleinfo" class="text-green text-underLine">Details</a></p>
             <div class="flex flex-alignCenter">
-                <span class="avenirBold font-size-md p-r-15x">Invite Code:</span>
+                <span class="avenirBold font-size-md p-r-15x">INVITE CODE:</span>
                 <div class="m-r-30x">
                     <div class="input-group invite-input">
                         <div class="form-control" id="inviteCode" aria-describedby="btn-copy">{{$code}}</div>

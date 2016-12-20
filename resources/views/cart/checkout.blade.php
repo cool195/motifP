@@ -869,7 +869,7 @@
                         @{{ /if }}
                     </span>
 
-                    <span class="uppercase avenirBold font-size-md font-size-lx">@{{ $value.card_number }}</span>
+                    <span class="avenirMedium billingTxt font-size-lg">@{{ $value.card_number }}</span>
                 </div>
                 <div class="m-t-20x flex">
                     <span class="payLeft-minW">Exp:@{{ $value.month }}/@{{ $value.year }}</span>
@@ -924,7 +924,7 @@
                         @{{ /if }}
                     </span>
 
-                    <span class="uppercase avenirBold font-size-md font-size-lx">@{{ $value.card_number }}</span>
+                    <span class="avenirMedium billingTxt font-size-lg">@{{ $value.card_number }}</span>
                 </div>
                 <div class="m-t-20x flex">
                     <span class="payLeft-minW">Exp:@{{ $value.month }}/@{{ $value.year }}</span>
