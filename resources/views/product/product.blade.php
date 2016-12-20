@@ -362,6 +362,9 @@
                                 <div class="text-primary font-size-base m-b-10x preorder-title">
                                     <div class="avenirMedium">{{$value['desc_title']}}</div>
                                 </div>
+                                <div class="font-size-md">
+                                    <span class="stock-qtty font-size-sm">{{$value['desc_value']}}</span>
+                                </div>
                             @endforeach
 
                             @if($data['isPutOn'] !=1)
