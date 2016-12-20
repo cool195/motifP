@@ -1455,7 +1455,7 @@ select::-ms-expand { display: none; }
 }
 
 .empty-content {
-  min-height: 38rem;
+  min-height: 31rem;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1681,19 +1681,21 @@ select::-ms-expand { display: none; }
   cursor: pointer;
   background-color: #6c91ff;
 }
+/*
 
 .promotion-content {
   min-height: 45.6rem;
 }
+*/
 
 .addCode-input {
   width: 100%;
   max-width: 36.25rem;
 }
-
+/*
 .addPromotion-content{
   min-height: auto!important;
-}
+}*/
 .promotion-item:hover{
   cursor: pointer;
 }
@@ -1783,7 +1785,7 @@ select::-ms-expand { display: none; }
   z-index: 200;
 }
 .invite-content.minh{
-  min-height: 35rem;
+  min-height: 23rem;
 }
 .invite-content {
   text-align: center;
@@ -1811,7 +1813,7 @@ select::-ms-expand { display: none; }
 }
 
 .invite-input #inviteCode {
-  padding: 0.55rem 0.75rem;
+  padding: 0.45rem 0.75rem;
   min-width: 110px;
 }
 

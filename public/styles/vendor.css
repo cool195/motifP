@@ -3216,7 +3216,7 @@ fieldset[disabled] a.btn {
   background-color: #848484;
   border-color: #848484;
 }
-
+/*
 .btn-shareFacebook {
   color: #ffffff;
   background-color: #39579b;
@@ -3306,7 +3306,7 @@ fieldset[disabled] a.btn {
   background-color: #089ff5;
   border-color: #089ff5;
 }
-
+*/
 .btn-shareGoogle {
   color: #ffffff;
   background-color: #e54b38;
@@ -4114,11 +4114,11 @@ input[type="button"].btn-block {
   font-size: 1rem;
   font-weight: normal;
   line-height: 1;
-  color: #6d91ff;
+  color: #fff;
   text-align: center;
-  background-color: #d3d7e1;
+  background-color: #000;
   border: 1px solid #000000;
-  border-radius: 0.5rem;
+  /*border-radius: 0.5rem;*/
 }
 
 .input-group-addon.form-control-sm,

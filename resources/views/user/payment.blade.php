@@ -1,7 +1,7 @@
 @include('header')
 
         <!-- 内容 -->
-<section class="m-y-40x">
+<section class="body-container m-y-30x">
     <div class="container" data-status="true">
         <div class="myHome-content">
             @include('user.left', ['title' => 'Payment Method'])
@@ -12,12 +12,13 @@
             {{$paylist = $Wordpay->getPayList()}}
             <div class="right">
                 <div class="rightContent">
+                    <div class="bigNoodle text-center leftMeun-title">Payment Method</div>
+                    <hr class="hr-black m-t-0">
                     <!-- Address -->
-                    <div class="box-shadow bg-white mH">
+                    <div class="bg-white mH">
                         <div class="payment-content">
                             <!--选择支付方式-->
                             <div class="p-a-20x select-payment">
-                                <span class="font-size-md sanBold">Payment Method</span>
                                 <div class="row p-x-10x p-t-20x payment-list">
                                     @foreach($paylist['data']['list'] as $list)
                                         @if(isset($list['creditCards']))
