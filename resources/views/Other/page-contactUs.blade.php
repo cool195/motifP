@@ -3,7 +3,7 @@
 <section class="body-container m-y-30x">
     <div class="container">
         <div class="myHome-content">
-            @include('Other.page-left')
+            @include('Other.page-left', ['title' => 'contactus'])
             <div class="right">
                 <div class="rightContent">
                     <div class="bigNoodle text-center leftMeun-title uppercase">contact us</div>
