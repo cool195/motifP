@@ -379,7 +379,7 @@
                         @{{ /if }}
                     </span>
 
-                    <span class="avenirMedium font-size-md">@{{ $value.card_number }}</span>
+                    <span class="avenirMedium billingTxt font-size-md">@{{ $value.card_number }}</span>
                 </div>
                 <div class="m-t-10x flex">
                     <span class="payLeft-minW">Exp:@{{ $value.month }}/@{{ $value.year }}</span>
