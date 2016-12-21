@@ -3968,7 +3968,7 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
                 if (data.success) {
-                    window.location.href = data.redirectUrl;
+                   window.location.href = data.redirectUrl;
                 }
             })
     }
@@ -3977,6 +3977,35 @@ function HideSeeMore(seemoreName) {
         ask_addMessage();
     });
     //Ask End
+
+    //contact us #start
+    $('#contact-submit').on('click', function(){
+        var id = $('.contact-id').val(),
+            type = $('.contact-type').val(),
+            email = $('.contact-email').val(),
+            firstName = $('.contact-firstname').val(),
+            lastName = $('.contact-lastname').val(),
+            orderNum = $('.contact-ordernum').val(),
+            con = $('.contact-content').val();
+        var content = 'First Name:' + firstName + '~' + 'Last Name:' + lastName + '~' + 'Order Number:' + orderNum + 'Tell US' + con;
+
+        console.log(email);
+        $.ajax({
+            url: '/askshopping',
+            type: 'POST',
+            data: {
+                id: id,
+                skiptype: type,
+                email: email,
+                content: content
+            }
+        }).done(function(data){
+            console.log(data)
+            console.log(content)
+
+        })
+    });
+    //contact us #end
 
 
     // invite Friends begin
