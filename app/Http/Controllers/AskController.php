@@ -44,6 +44,8 @@ class AskController extends BaseController
             $params['orderno'] = $request->input('id');
             $params['stype'] = 1;
             $urlStr = '/order/orderdetail/';
+        } elseif( $request->input('skiptype') == 1){
+            $params['stype'] = 1;
         }
 
         $result = $this->request("feedback", $params);
@@ -54,6 +56,7 @@ class AskController extends BaseController
         $result['redirectUrl'] = $urlStr . $request->input('id');
         return $result;
     }
+
 }
 
 ?>
