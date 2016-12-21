@@ -5,7 +5,7 @@
         <div class="myHome-content">
             <!-- 左侧菜单 -->
             @include('user.left', ['title' => 'wishlist'])
-            <!-- 左右侧内容 -->
+            <!-- 右侧内容 -->
 
             <div class="right">
                 @if(empty($data['list']))

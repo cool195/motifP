@@ -18,9 +18,9 @@
                 <div class="col-md-3 p-l-40x">
                     <div class="bigNoodle font-size-lx m-b-5x">MOTIF</div>
                     <ul class="list-group">
-                        <li class="list-group-item font-size-sm"><a href="/aboutmotif">OUR STORY</a></li>
-                        <li class="list-group-item font-size-sm"><a href="/">IN THE PRESS</a></li>
-                        <li class="list-group-item font-size-sm"><a href="/">AFFILIATE PROGRAM</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/aboutmotif">ABOUT MOTIF</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/privacynotice">PRIVACY NOTICE</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/termsconditions">TERMS & CONDITIONS</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2">
@@ -28,16 +28,13 @@
                     <ul class="list-group">
                         <li class="list-group-item font-size-sm"><a href="/contactus">CONTACT US</a></li>
                         <li class="list-group-item font-size-sm"><a href="/faq">FAQ</a></li>
-                        <li class="list-group-item font-size-sm"><a href="/privacypolicy">SHIPPING POLICY</a></li>
-                        <li class="list-group-item font-size-sm"><a href="/">RETURNS</a></li>
-                        <li class="list-group-item font-size-sm"><a href="/termsconditions">TERMS & CONDITIONS</a></li>
-                        <li class="list-group-item font-size-sm"><a href="/privacynotice">PRIVACY NOTICE</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/service/23?template=1">SHIPPING & RETURNS</a></li>
 
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <div class="text-right">
-                        <input class="contrlo-lg text-primary input-search font-size-sm" placeholder="Looking for something specific?" type="text">
+                        <input class="text-primary input-search font-size-sm" placeholder="Looking for something specific?" type="text">
                         <a class="btn btn-primary bigNoodle font-size-lx btn-search">SEARCH</a>
                     </div>
                 </div>
