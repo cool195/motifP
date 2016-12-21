@@ -300,6 +300,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function() {
     Route::get('/askshopping', 'AskController@show');
 
     Route::post('/askshopping', 'AskController@install');
+
 });
 
 Route::get('error',function (){
