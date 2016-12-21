@@ -10,8 +10,6 @@
                     <hr class="hr-black m-t-0">
                     <div class="row">
                         <form class="form m-t-40x">
-                            <input type="hidden" class="form-control contact-id" name="id" value="{{$id}}">
-                            <input type="hidden" class="form-control contact-type" name="skiptype" value="{{$skiptype}}">
                             <div class="col-md-6 m-b-20x">
                                 <label class="contact-label font-size-sm">first name</label>
                                 <input type="text" name="firstname" class="form-control contact-firstname">
