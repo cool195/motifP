@@ -1286,9 +1286,6 @@ select::-ms-expand { display: none; }
   overflow: hidden;
   /*padding: .5rem;*/
 }
-.static-tit{
-  line-height: 26px;
-}
 .contact-label{
   margin-bottom: 0;
   text-transform: uppercase;

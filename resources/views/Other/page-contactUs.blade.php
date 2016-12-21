@@ -1,15 +1,12 @@
 @include('header', ['title' => 'Contact Us'])
 <!-- 内容 -->
-<section class="body-container m-y-20x">
+<section class="body-container m-y-30x">
     <div class="container">
         <div class="myHome-content">
             @include('Other.page-left')
             <div class="right">
                 <div class="rightContent">
-                    <div class="text-center static-tit">LET'S BE<br>
-                        <span class="bigNoodle text-center leftMeun-title">FRIENDS</span>
-                    </div>
-
+                    <div class="bigNoodle text-center leftMeun-title uppercase">contact us</div>
                     <hr class="hr-black m-t-0">
                     <div class="row">
                         <form class="form m-t-40x">
