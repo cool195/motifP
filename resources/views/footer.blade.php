@@ -26,9 +26,9 @@
                 <div class="col-md-2">
                     <div class="bigNoodle font-size-lx m-b-5x">HELP</div>
                     <ul class="list-group">
-                        <li class="list-group-item font-size-sm"><a href="/aboutmotif">CONTACT US</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/contactus">CONTACT US</a></li>
                         <li class="list-group-item font-size-sm"><a href="/faq">FAQ</a></li>
-                        <li class="list-group-item font-size-sm"><a href="/">SHIPPING POLICY</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/privacypolicy">SHIPPING POLICY</a></li>
                         <li class="list-group-item font-size-sm"><a href="/">RETURNS</a></li>
                         <li class="list-group-item font-size-sm"><a href="/termsconditions">TERMS & CONDITIONS</a></li>
                         <li class="list-group-item font-size-sm"><a href="/privacynotice">PRIVACY NOTICE</a></li>
