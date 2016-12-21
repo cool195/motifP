@@ -4,7 +4,7 @@
     <div class="container">
         <div class="myHome-content">
             <!--静态页 共用左侧导航-->
-            @include('Other.page-left')
+            @include('Other.page-left', ['title' => 'aboutmotif'])
             <div class="right">
                 <div class="rightContent">
                     <div class="bigNoodle text-center leftMeun-title uppercase">about motif</div>
