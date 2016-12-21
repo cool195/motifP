@@ -976,11 +976,6 @@ select::-ms-expand { display: none; }
   display: none;
 }
 
-.login-title {
-  font-size: 3.125rem;
-  overflow: hidden;
-}
-
 /*.login-container {*/
   /*background: url("../images/login/bg-login.jpg") #ecf0ef left center no-repeat;*/
   /*padding-left: 7rem;*/
@@ -1043,6 +1038,43 @@ select::-ms-expand { display: none; }
 /*}*/
 
 /* 新登录样式 */
+.login-title {
+  /*font-size: 3.125rem;*/
+  /*overflow: hidden;*/
+  display: block;
+}
+.login-title.active {
+  border-bottom: solid 4px #000000;
+}
+
+.btn-loginFackbook{
+  background-color: #4271a4;
+  padding: .25rem 1rem;
+  line-height: 1;
+}
+
+.btn-loginGoogle{
+  background-color: #e06153;
+  padding: .25rem 1rem;
+  line-height: 1;
+}
+
+.login-info{
+  display: none;
+}
+
+.register-info{
+  display: none;
+}
+
+.login-info.active{
+  display: block;
+}
+
+.register-info.active{
+  display: block;
+}
+
 .bg-login {
   background: url("../images/login/bg-loginall.jpg") #ffffff center center no-repeat;
   min-height: 37.5rem;
@@ -1051,9 +1083,11 @@ select::-ms-expand { display: none; }
   margin-top: 5rem!important;
 }
 .login-content{
-  padding-left: 6.25rem;
-  padding-right: 6.25rem;
-  min-height: 37.5rem;
+  /*padding-left: 6.25rem;*/
+  /*padding-right: 6.25rem;*/
+  /*min-height: 37.5rem;*/
+  width: 70%;
+  margin: 0 auto;
 }
 .login-container{
   position: relative;
@@ -1078,7 +1112,8 @@ select::-ms-expand { display: none; }
 }
 
 .login-text .input-login {
-  padding: 12px 15px;
+  padding: .625rem 1rem;
+  font-size: 12px;
 }
 
 .login-text .input-clear, .login-text .input-show {
@@ -1100,8 +1135,8 @@ select::-ms-expand { display: none; }
 .login-or .hr-login {
   position: absolute;
   top: 50%;
-  left: 25%;
-  width: 50%;
+  left: 0;
+  width: 100%;
   display: block;
   z-index: 10;
   border-color: #8f9096;
@@ -1160,6 +1195,12 @@ select::-ms-expand { display: none; }
   margin: 0 auto;
   max-width: 24rem;
   width: 100%;
+}
+
+/* 弹窗 登录 注册 */
+#login-modalDialog{
+  box-shadow: 0 0 13px rgba(0,0,0,.6);
+  border-radius: 0;
 }
 
 .category-item a{

@@ -956,6 +956,9 @@ function HideSeeMore(seemoreName) {
         // 删除 card 提示框
         var DelCardModal = $('[data-remodal-id=paymentmodal-modal]').remodal(Options);
 
+        // 登录注册 弹窗
+        var LoginModal = $('[data-remodal-id=login-modal]').remodal(Options);
+
     } catch (e) {
     }
 
@@ -1989,6 +1992,19 @@ function HideSeeMore(seemoreName) {
 
 
     // Login start
+
+    $('.tab-login').on('click',function(){
+        $('.tab-login').addClass('active');
+        $('.tab-register').removeClass('active');
+        $('.login-info').addClass('active');
+        $('.register-info').removeClass('active');
+    });
+    $('.tab-register').on('click',function(){
+        $('.tab-register').addClass('active');
+        $('.tab-login').removeClass('active');
+        $('.login-info').removeClass('active');
+        $('.register-info').addClass('active');
+    });
 
     function login_signin() {
         $('[data-role="login-submit"]').addClass('disabled');
