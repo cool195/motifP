@@ -1,20 +1,15 @@
 @include('header', ['title' => 'Contact Us'])
 <!-- 内容 -->
-<section class="body-container m-y-20x">
+<section class="body-container m-y-30x">
     <div class="container">
         <div class="myHome-content">
-            @include('Other.page-left')
+            @include('Other.page-left', ['title' => 'contactus'])
             <div class="right">
                 <div class="rightContent">
-                    <div class="text-center static-tit">LET'S BE<br>
-                        <span class="bigNoodle text-center leftMeun-title">FRIENDS</span>
-                    </div>
-
+                    <div class="bigNoodle text-center leftMeun-title uppercase">contact us</div>
                     <hr class="hr-black m-t-0">
                     <div class="row">
                         <form class="form m-t-40x">
-                            <input type="hidden" class="form-control contact-id" name="id" value="{{$id}}">
-                            <input type="hidden" class="form-control contact-type" name="skiptype" value="{{$skiptype}}">
                             <div class="col-md-6 m-b-20x">
                                 <label class="contact-label font-size-sm">first name</label>
                                 <input type="text" name="firstname" class="form-control contact-firstname">
@@ -47,5 +42,24 @@
         </div>
     </div>
 </section>
+{{--
+<section class="body-container m-y-30x">
+    <div class="container">
+        <div class="myHome-content">
+            @include('Other.page-left', ['title' => 'contactus'])
+            <div class="right">
+                <div class="rightContent">
+                    <div class="bigNoodle text-center leftMeun-title uppercase">contact us</div>
+                    <hr class="hr-black m-t-0">
+                    <div class="row">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+--}}
 
 @include('footer')
