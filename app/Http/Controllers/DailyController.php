@@ -116,4 +116,9 @@ class DailyController extends BaseController
         return $result;
     }
 
+    public function home(Request $request)
+    {
+        return View('daily.home');
+    }
+
 }

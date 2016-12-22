@@ -26,7 +26,7 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::post('/subscribe', 'DailyController@subscribe');
     
-    Route::get('/home', 'DailyController@');
+    Route::get('/home', 'DailyController@home');
 
 });
 //Daily End
