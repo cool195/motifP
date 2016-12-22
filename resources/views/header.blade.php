@@ -84,7 +84,7 @@
             </ul>
         </nav>
         <div class="logo">
-            <a href="/daily">
+            <a href="/home">
                 <img class="img-fluid"
                      src="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}}"
                      alt="logo">
