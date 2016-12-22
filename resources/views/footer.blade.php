@@ -43,7 +43,7 @@
 
     @if(!isset($CartCheck))
     <!-- 固定 弹框订阅 -->
-        <div class="redeem-fixed p-y-10x p-x-20x">GET 15% OFF YOUR FIRST ORDER!</div>
+        {{--<div class="redeem-fixed p-y-10x p-x-20x">GET 15% OFF YOUR FIRST ORDER!</div>--}}
     @endif
 </footer>
 
@@ -185,7 +185,7 @@
 
 
 <!-- 邮件订阅 弹出框 -->
-<div class="remodal modal-content remodal-lg redeem-content" data-remodal-id="redeem-modal">
+{{--<div class="remodal modal-content remodal-lg redeem-content" data-remodal-id="redeem-modal">
     <div class="row m-a-0">
         <div class="col-md-6 p-a-0">
             <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_pic.png" class="img-fluid">
@@ -227,7 +227,7 @@
         </div>
 
     </div>
-</div>
+</div>--}}
 <script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/card.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
