@@ -962,8 +962,8 @@ function HideSeeMore(seemoreName) {
     } catch (e) {
     }
 
-    $('#headerGet15off').on('click',function(){
-        var Url=$(this).data('url');
+    $('.btn-loginModal').on('click',function(){
+        var Url=$(this).data('referer');
         $('[name="referer"]').val(Url);
         LoginModal.open();
     });
