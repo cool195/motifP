@@ -143,7 +143,7 @@
                              data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>
                     @else
                         <a href="javascript:void(0)" class="btn btn-gray bigNoodle font-size-llx p-x-20x btn-follow"
-                           data-actiondid="{{$designer['designer_id']}}">Follow</a>
+                           data-actiondid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow</a>
                     @endif
                 </div>
 
