@@ -17,7 +17,7 @@
                 <a href="/faq">FAQ</a>
             </li>
             <li class="nav-item @if('service' == $title) active @endif">
-                <a href="/service">Shipping & Returns</a>
+                <a href="/pservice">Shipping & Returns</a>
             </li>
         </ul>
     </nav>

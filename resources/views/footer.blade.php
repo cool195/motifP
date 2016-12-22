@@ -28,7 +28,7 @@
                     <ul class="list-group">
                         <li class="list-group-item font-size-sm"><a href="/contactus">CONTACT US</a></li>
                         <li class="list-group-item font-size-sm"><a href="/faq">FAQ</a></li>
-                        <li class="list-group-item font-size-sm"><a href="/service">SHIPPING & RETURNS</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/pservice">SHIPPING & RETURNS</a></li>
 
                     </ul>
                 </div>
