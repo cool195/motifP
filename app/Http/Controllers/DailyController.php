@@ -118,7 +118,8 @@ class DailyController extends BaseController
 
     public function home(Request $request)
     {
-        return View('daily.home');
+        $banner = $this->banner($request);
+        return View('daily.home', ['banner' => $banner['data']]);
     }
 
 }
