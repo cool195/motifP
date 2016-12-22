@@ -23,6 +23,14 @@ ul,li,ol{ list-style: none; }
 .content-maxWidth{
   max-width: 982px;
 }
+.submit-ok:before{
+  content: "\e615";
+  color: #46d593;
+  font-size: 6rem;
+}
+.contact-success{
+  display: none;
+}
 /* header */
 .main-header{
   position: absolute;

@@ -4019,10 +4019,9 @@ function HideSeeMore(seemoreName) {
                 email: email,
                 content: content
             }
-        }).done(function(data){
-            console.log(data)
-            console.log(content)
-
+        }).done(function(){
+            $('.contact-form').hide();
+            $('.contact-success').show();
         })
     });
     //contact us #end
