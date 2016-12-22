@@ -790,7 +790,9 @@ function HideSeeMore(seemoreName) {
                     }
                 })
                 .done(function (data) {
-                    window.location.href = '/login';
+                    var Url= $this.data('referer');
+                    $('[name="referer"]').val(Url);
+                    LoginModal.open();
                 })
         }
     }
@@ -825,7 +827,9 @@ function HideSeeMore(seemoreName) {
                     }
                 })
                 .done(function (data) {
-                    window.location.href = '/login';
+                    var Url= $this.data('referer');
+                    $('[name="referer"]').val(Url);
+                    LoginModal.open();
                 })
         }
 
@@ -3010,7 +3014,9 @@ function HideSeeMore(seemoreName) {
                     }
                 })
                 .done(function (data) {
-                    window.location.href = '/login';
+                    var Url= $this.data('referer');
+                    $('[name="referer"]').val(Url);
+                    LoginModal.open();
                 })
         }
 
@@ -3045,7 +3051,9 @@ function HideSeeMore(seemoreName) {
                     }
                 })
                 .done(function (data) {
-                    window.location.href = '/login';
+                    var Url= $this.data('referer');
+                    $('[name="referer"]').val(Url);
+                    LoginModal.open();
                 })
         }
     });

@@ -143,7 +143,7 @@
                              data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>
                     @else
                         <a href="javascript:void(0)" class="btn btn-gray bigNoodle font-size-llx p-x-20x btn-follow"
-                           data-actiondid="{{$designer['designer_id']}}">Follow</a>
+                           data-actiondid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow</a>
                     @endif
                 </div>
 
@@ -277,7 +277,7 @@
                                                         @else
                                                             <span class="product-heart btn-heart"><i
                                                                         class="iconfont btn-wish font-size-lxx"
-                                                                        data-actionspu="{{$spu}}"></i></span>
+                                                                        data-actionspu="{{$spu}}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
                                                         @endif
                                                     </div>
                                                     <div class="price-caption text-center">
@@ -351,7 +351,7 @@
                                         </span>
                                     @else
                                         <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"
-                                                                                 data-actionspu="{{$product['spu']}}"></i></span>
+                                                                                 data-actionspu="{{$product['spu']}}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
                                     @endif
 
                                 </div>

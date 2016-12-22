@@ -119,7 +119,7 @@
                         @if(Session::has('user'))
                             <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if($product['isWished']) active @endif" data-spu="{{$product['spu']}}"></i></span>
                         @else
-                            <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$product['spu']}}"></i></span>
+                            <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$product['spu']}}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
                         @endif
 
                         {{--@if(1 == $product['sale_type'])
@@ -185,7 +185,7 @@
             @if(Session::has('user'))
                 <span class="product-heart btn-heart"><i class="iconfont btn-wish btn-wishList font-size-lxx @{{ if $value.isWished }} active @{{ /if }}" data-spu="@{{ $value.spu }}"></i></span>
             @else
-                <span class="product-heart btn-heart"><i class="iconfont font-size-lxx btn-wish" data-actionspu="@{{ $value.spu }}"></i></span>
+                <span class="product-heart btn-heart"><i class="iconfont font-size-lxx btn-wish btn-wishList" data-actionspu="@{{ $value.spu }}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
             @endif
            {{-- @{{ if 1 == $value.sale_type }}
                 <!--预售标志-->

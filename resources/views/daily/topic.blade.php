@@ -142,7 +142,7 @@
                                                     <i class="iconfont btn-wish font-size-lxx @if(in_array($spu, $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i>
                                                 </span>
                                             @else
-                                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$spu}}"></i></span>
+                                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$spu}}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
                                             @endif
                                                 <!--预售标志-->
                                             {{--@if(1 == $topic['spuInfos'][$spu]['spuBase']['sale_type'])

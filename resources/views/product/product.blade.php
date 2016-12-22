@@ -175,7 +175,7 @@
                                 <i class="iconfont btn-detailWish font-size-lxx @if(in_array($data['spu'], $wishlist->wishlist())){{'active'}}@endif"
                                    data-spu="{{$data['spu']}}"></i>
                             @else
-                                <i class="iconfont btn-detailWish font-size-lxx" data-actionspu="{{$data['spu']}}"></i>
+                                <i class="iconfont btn-detailWish font-size-lxx" data-actionspu="{{$data['spu']}}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i>
                             @endif
                         </span>
                         </div>
