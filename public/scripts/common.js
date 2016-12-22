@@ -1998,12 +1998,14 @@ function HideSeeMore(seemoreName) {
         $('.tab-register').removeClass('active');
         $('.login-info').addClass('active');
         $('.register-info').removeClass('active');
+        $('#loginRegister-title').html('SIGN IN WITH');
     });
     $('.tab-register').on('click',function(){
         $('.tab-register').addClass('active');
         $('.tab-login').removeClass('active');
         $('.login-info').removeClass('active');
         $('.register-info').addClass('active');
+        $('#loginRegister-title').html('SIGN UP WITH');
     });
 
     function login_signin() {

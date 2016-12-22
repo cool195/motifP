@@ -1086,7 +1086,7 @@ select::-ms-expand { display: none; }
   /*padding-left: 6.25rem;*/
   /*padding-right: 6.25rem;*/
   /*min-height: 37.5rem;*/
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
 }
 .login-container{
@@ -1114,6 +1114,7 @@ select::-ms-expand { display: none; }
 .login-text .input-login {
   padding: .625rem 1rem;
   font-size: 12px;
+  border:solid 1px #e2e2e2;
 }
 
 .login-text .input-clear, .login-text .input-show {
