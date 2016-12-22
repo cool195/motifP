@@ -277,7 +277,7 @@
                                                         @else
                                                             <span class="product-heart btn-heart"><i
                                                                         class="iconfont btn-wish font-size-lxx"
-                                                                        data-actionspu="{{$spu}}"></i></span>
+                                                                        data-actionspu="{{$spu}}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
                                                         @endif
                                                     </div>
                                                     <div class="price-caption text-center">
@@ -351,7 +351,7 @@
                                         </span>
                                     @else
                                         <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"
-                                                                                 data-actionspu="{{$product['spu']}}"></i></span>
+                                                                                 data-actionspu="{{$product['spu']}}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
                                     @endif
 
                                 </div>
