@@ -74,6 +74,11 @@ class PageController extends BaseController
     {
         return view('Other.download');
     }
+    
+    public function pservice()
+    {
+        return view('Other.page-service');
+    }
 
 }
 

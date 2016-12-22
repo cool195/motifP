@@ -289,6 +289,8 @@ Route::group(['middleware' => 'pcguide'], function () {
 
     Route::get('/download', 'PageController@download');
 
+    Route::get('/pservice', 'PageController@pservice');
+
 });
 
 // Page Start
