@@ -962,6 +962,12 @@ function HideSeeMore(seemoreName) {
     } catch (e) {
     }
 
+    $('#headerGet15off').on('click',function(){
+        var Url=$(this).data('url');
+        $('[name="referer"]').val(Url);
+        LoginModal.open();
+    });
+
     //购物车修改购买数量
     $('.cupn').on('click', function (e) {
         var tObj = $(this);

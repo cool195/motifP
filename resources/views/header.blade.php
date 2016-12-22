@@ -156,7 +156,7 @@
                     </li>
                 @else
                     <li class="nav-item p-x-10x"><a class="nav-link" data-remodal-target="login-modal">SIGN IN</a></li>
-                    <li class="nav-item p-x-10x"><a class="nav-link text-green" href="/invitefriends">GET 15% OFF</a></li>
+                    <li class="nav-item p-x-10x"><a class="nav-link text-green" id="headerGet15off" data-url="/invitefriends">GET 15% OFF</a></li>
                     <li class="nav-item p-l-10x p-r-0">
                         <a href="/wish" class="p-t-5x flex flex-alignCenter">
                             <i class="iconfont icon-search font-size-lxx"></i>
