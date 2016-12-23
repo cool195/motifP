@@ -35,7 +35,7 @@
                             these Terms constitutes your acceptance of the amended Terms. </p>
                         <p>If you ever have any questions or complaints about these Terms, you
                             should
-                            immediately contact us at <a href="mailto:service@motif.me">Service@motif.me</a></p>.</p>
+                            immediately contact us at <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a></p>.</p>
 
                         <p class="avenirBold m-b-15x m-t-20x">2. USE OF OUR SERVICES</p>
                         <p>Our Services belong to us. All text, graphics, sounds, user
@@ -129,7 +129,7 @@
                             believe any pricing information is inaccurate,
                             you should notify us immediately. </p>
                         <p>For additional information about our rate(s) or price(s), please
-                            contact us at <a href="mailto:service@motif.me">Service@motif.me</a></p>.</p>
+                            contact us at <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a></p>.</p>
 
                         <p class="avenirBold m-b-15x m-t-20x">5. AUTO-BILLING</p>
                         <p>We may provide for an automatic payment plan, in which case your fees
@@ -662,7 +662,7 @@
                         <p>
                             All transactions on motif.me are processed by MOTIF GROUP HK LIMITIED
                             (address: RM 19C LOCKHART CTR 301-307 LOCKHART RD WAN CHAI HK). Reach us anytime at
-                            <a href="mailto:service@motif.me">Service@motif.me</a></p>.</p>
+                            <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a></p>.</p>
                         <p>
                             For any other type of purchases, these terms are an agreement between you and MOTIF
                             GROUP HK LIMITIED and goods and/or services will be delivered by MOTIF GROUP HK

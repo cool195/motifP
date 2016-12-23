@@ -101,7 +101,7 @@
                             interest to you. If you do not want us to use your information in this way, please
                             do not sign up for our subscription services. If you have already received emails
                             through our subscription services, and you wish to discontinue the services, you may
-                            send us an email at <a href="mailto:service@motif.me">Service@motif.me</a></p> stating your request.</p>
+                            send us an email at <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a></p> stating your request.</p>
 
                         <p class="avenirBold m-b-15x m-t-20x">4. Disclosure of Your Information</p>
                         <p>We may disclose Personal Information that we collect or you provide:</p>
@@ -154,8 +154,8 @@
                             that are California residents to request certain information regarding our
                             disclosure of Personal Information to third parties for their direct marketing
                             purposes, if applicable. To make such a request, please send an email to
-                            <a href="mailto:service@motif.me">Service@motif.me</a></p> If you believe any of the information we possess about you is
-                        incorrect, please send an email to <a href="mailto:service@motif.me">Service@motif.me</a></p>
+                            <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a></p> If you believe any of the information we possess about you is
+                        incorrect, please send an email to <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a></p>
                         </p>
 
                         <p class="avenirBold m-b-15x m-t-20x">6. Children’s Privacy</p>
@@ -203,7 +203,7 @@
                         <p class="avenirBold m-b-15x m-t-20x">10. Contact Information and Refusal to Consent</p>
                         <p>To ask questions or comment about this privacy notice and our privacy
                             practices, including reviewing and requesting changes to any of your collected
-                            Personal Information, contact us at <a href="mailto:service@motif.me">Service@motif.me</a></p>
+                            Personal Information, contact us at <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a></p>
                         </p>
                         <p>If you do not consent to the collection, use and
                             disclosure of your Personal Information, please do not provide us with Personal
