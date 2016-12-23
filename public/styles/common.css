@@ -1954,7 +1954,7 @@ sup{
 /* sort by */
 .sortBy-dropdown{
   display: inline-block;
-  min-width: 5rem;
+  min-width: 15rem;
 }
 
 .btn-sortBy{
