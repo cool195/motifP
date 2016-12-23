@@ -90,11 +90,11 @@
         <div class="m-b-20x text-right">
             {{--<span class="sanBold p-r-15x">Sort By:</span>--}}
             <div class="dropdown sortBy-dropdown">
-                <button class="btn btn-sortBy avenirMedium iconfont" type="button" id="searchDropdown">
+                <button class="btn btn-sortBy avenirMedium iconfont uppercase" type="button" id="searchDropdown">
                     SORT BY
                 </button>
                 <div class="dropdown-menu sortBy-menu font-size-sm p-t-15x">
-                    <li class="dropdown-item active" data-search="0" data-searchtext="Featured">Featured</li>
+                    <li class="dropdown-item uppercase active" data-search="0" data-searchtext="Featured">Featured</li>
                     @foreach($search['list'] as $key => $value)
                         <li class="dropdown-item" data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">{{$value['attr_label']}}</li>
                     @endforeach
