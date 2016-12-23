@@ -9,18 +9,17 @@
 
             <!-- 右侧内容 -->
             <div class="right">
-                @if(empty($data['list']))
-                    <!--following为空时显示-->
-                    <div class="rightContent">
-                        <div class="empty-content">
-                            <i class="iconfont icon-follow"></i>
-                            <p class="bigNoodle font-size-llxx m-t-40x">Your following list is empty!</p>
-                        </div>
-                    </div>
-                @endif
                 <div class="rightContent" id="followList-container" data-pagenum="1" data-loading="false">
                     <div class="bigNoodle text-center leftMeun-title">FOLLOWING</div>
                     <hr class="hr-black m-t-0">
+                    @if(empty($data['list']))
+                            <!--following为空时显示-->
+                    <div class="text-center p-x-30x p-b-30x empty-marginTop">
+                        <i class="iconfont icon-error icon-fontSize-big"></i>
+                        <p class="bigNoodle font-size-llxx m-t-40x uppercase">Your following list is empty!</p>
+                    </div>
+                    @endif
+
                     <!-- Following List -->
                     <div class="row">
                         @if(!empty($data['list']))

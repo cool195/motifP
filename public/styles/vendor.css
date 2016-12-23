@@ -6809,6 +6809,9 @@ a.text-link:focus, a.text-link:hover {
 a.text-red:focus, a.text-red:hover {
   color: #ff280b;
 }
+.icon-fontSize-big{
+  font-size: 6rem;
+}
 .font-size-big{
   font-size: 3rem; /* 48px */
 }

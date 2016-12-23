@@ -1515,8 +1515,13 @@ select::-ms-expand { display: none; }
 }
 
 .wishlist-item {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
+
+.empty-marginTop{
+  margin-top: 7rem;
+}
+/*
 
 .empty-content {
   min-height: 31rem;
@@ -1539,6 +1544,7 @@ select::-ms-expand { display: none; }
 .empty-content .iconfont {
   font-size: 6rem;
 }
+*/
 
 .shopbag-content {
   min-height: 29rem;
