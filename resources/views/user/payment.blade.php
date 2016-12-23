@@ -49,7 +49,7 @@
                                                                 <span class="avenirMedium billingTxt font-size-lg">{{  $card['card_number'] }}</span>
                                                             </div>
                                                             <div class="m-t-10x flex">
-                                                                <span class="payLeft-minW">Exp:{{$card['month']}} /{{$card['year']}}</span>
+                                                                <span class="payLeft-minW">Exp:{{$card['month']}}/{{$card['year']}}</span>
                                                                 <span class="billingTxt">Billing:{{$card['detail_address1']}} {{$card['detail_address2']}} {{$card['city']}} {{$card['state']}} {{$card['country']}}</span>
                                                             </div>
                                                             <div class="btn-deleteCard btn-edit font-size-md hover-green" data-cardid="{{$card['card_id']}}">Delete</div>
