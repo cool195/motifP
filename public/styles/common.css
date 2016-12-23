@@ -151,6 +151,10 @@ footer .verticalHr{
   border: solid 1px #000;
   min-width: 22.3rem;
 }
+#btn-subscribe{
+  height: 2.5rem;
+  margin-left: 0.5rem;
+}
 /* shopping list*/
 .product-container{
   position: relative;
@@ -2055,12 +2059,12 @@ sup{
 .subs-btnText{
   font-size: 2rem;
 }
-.subscribe-name,.subscribe-email{
+/*.subscribe-name,.subscribe-email{
   width: 100%;
   height: 40px;
   padding: 0 15px;
   border: 2px solid #ddd;
-}
+}*/
 .redeem-btn{
   background-color: #54565b;
   color: #fff;
