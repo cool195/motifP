@@ -59,6 +59,23 @@
                                 </span>
                             @endif
                         </div>
+                        <!-- Track order 物流-->
+                         @if(isset($data['logistics_info_url']))
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="p-y-10x avenirMedium font-size-sm orderList-explain">Shipping carrier: <span>{{$data['logistics_comany']}}</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-y-10x p-l-20x avenirMedium font-size-sm">Tracking number: <span>{{$data['shipping_no']}}</span></div>
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <a target="_blank" class="btn btn-primary btn-md bigNoodle font-size-lxx uppercase" href="{{$data['logistics_info_url']}}">
+                                    TRACK SHIPMENT
+                                </a>
+                            </div>
+                        </div>
+                        @endif
+
                         <hr class="hr-black m-a-0">
                         <div class="">
                             @foreach($data['lineOrderList'] as $lineOrder)
@@ -133,28 +150,6 @@
                             @endforeach
                         </div>
                         <hr class="hr-black m-a-0">
-                        <!-- Track order 物流-->
-                        @if(isset($data['logistics_info_url']))
-                            <hr class="hr-base m-a-0">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="p-y-10x avenirMedium">Shipping carrier: <span>{{$data['logistics_comany']}}</span></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="p-y-10x p-l-20x avenirMedium">Tracking number: <span>{{$data['shipping_no']}}</span></div>
-                                </div>
-                                <div class="col-md-3">
-                                    <a target="_blank" href="{{$data['logistics_info_url']}}">
-                                        <div class="p-r-5x p-y-5x flex flex-alignCenter flex-rightJustify avenirMedium">
-                                            <span class="p-r-10x"><i class="iconfont icon-car font-size-llxx"></i></span>
-                                            <span class="sanBold p-r-10x">Track order</span>
-                                    <span><strong><i
-                                                    class="iconfont icon-arrow-right font-size-base"></i></strong></span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        @endif
                     </div>
 
                     <div class="bg-white m-b-20x">
