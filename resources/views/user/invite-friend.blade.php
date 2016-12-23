@@ -14,7 +14,7 @@
                 <div class="m-r-30x">
                     <div class="input-group invite-input">
                         <div class="form-control" id="inviteCode" aria-describedby="btn-copy">{{$code}}</div>
-                        <span class="input-group-addon font-size-md copy" id="btn-copy">Copy</span>
+                        <span class="input-group-addon font-size-md copy" id="btn-copy">COPY</span>
                     </div>
                 </div>
                 <span class="btn btn-baseSize btn-green font-size-llx bigNoodle" id="btn-inviteFriend">Invite Friends</span>
