@@ -100,7 +100,7 @@
                         <!--个人中心下拉框-->
                         <div class="dropdown-img">
                             <span class="triangle-up"></span>
-                            <ul class="nav p-y-20x dropdown-nav-hover">
+                            <ul class="nav  p-t-10x p-b-20x dropdown-nav-hover">
                                 <li class="@if('Orders' == $title || 'Order Detail' == $title) active @endif"><a
                                             href="/order/orderlist">Orders</a></li>
                                 <li class="@if('wishlist' == $title) active @endif "><a href="/wish">Wishlist</a></li>
