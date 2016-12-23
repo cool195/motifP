@@ -155,7 +155,7 @@
                         </a>
                     </li>
                 @else
-                    <li class="nav-item p-x-10x"><a class="nav-link btn-loginModal" data-referer="{{$_SERVER['REQUEST_URI']}}">SIGN IN</a></li>
+                    <li class="nav-item p-x-10x"><a class="nav-link @if($title !== 'Login') btn-loginModal @endif" data-referer="{{$_SERVER['REQUEST_URI']}}">SIGN IN</a></li>
                     <li class="nav-item p-x-10x"><a class="nav-link text-green btn-loginModal"  data-referer="/invitefriends">GET 15% OFF</a></li>
                     <li class="nav-item p-l-10x p-r-0">
                         <a data-url="/wish" class="p-t-5x flex flex-alignCenter btn-loginModal">
