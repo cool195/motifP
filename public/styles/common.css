@@ -1823,8 +1823,26 @@ sup{
   cursor: pointer;
 }
 
+.aboutUs-content h1{
+  font-size: 4.75rem;
+}
+
 .aboutUs-content h2{
   font-size: 2.75rem;
+}
+
+.aboutUs-content h3{
+  font-size: 2.125rem;
+}
+
+.aboutUs-content .printer-img{
+  position: relative;
+}
+.aboutUs-content .printer-img h3{
+  position: absolute;
+  top: 4.5rem;
+  left: 2.275rem;
+  font-size: 2rem;
 }
 
 @media screen and (min-width: 1280px) {
