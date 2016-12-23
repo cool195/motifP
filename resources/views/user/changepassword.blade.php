@@ -16,7 +16,7 @@
                             <div class="p-t-40x text-center">
                                 <div class="row m-b-20x">
                                     <div class="col-xs-4 m-t-5x">
-                                        <span class="font-size-md changePwd-title avenirBold">Current Password</span>
+                                        <span class="font-size-md changePwd-title avenirBold uppercase">Current Password</span>
                                     </div>
                                     <div class="col-xs-6">
                                     <span class="changePwd-input">
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="row m-b-20x">
                                     <div class="col-xs-4 m-t-5x">
-                                        <span class="font-size-md changePwd-title avenirBold">New Password</span>
+                                        <span class="font-size-md changePwd-title avenirBold uppercase">New Password</span>
                                     </div>
                                     <div class="col-xs-6">
                                         <span class="changePwd-input">
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="row m-b-20x">
                                     <div class="col-xs-4 m-t-5x">
-                                        <span class="font-size-md changePwd-title avenirBold">Confirm New Password</span>
+                                        <span class="font-size-md changePwd-title avenirBold uppercase">Confirm New Password</span>
                                     </div>
                                     <div class="col-xs-6">
                                         <span class="changePwd-input">

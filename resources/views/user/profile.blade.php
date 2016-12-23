@@ -36,11 +36,11 @@
                             <div class="p-t-30x">
                                 <form method="" id="changeProfile">
                                     <div class="flex flex-alignCenter flex-justifyCenter m-b-20x">
-                                        <span class="avenirBold font-size-md p-r-20x changeName-title">Email</span>
+                                        <span class="avenirBold font-size-md p-r-20x changeName-title">EMAIL</span>
                                         <span class="changePwd-input">{{ Session::get('user.login_email') }}</span>
                                     </div>
                                     <div class="flex flex-alignCenter flex-justifyCenter m-b-20x">
-                                        <span class="avenirBold font-size-md p-r-20x changeName-title">Name</span>
+                                        <span class="avenirBold font-size-md p-r-20x changeName-title">NAME</span>
                                         <span class="changePwd-input">
                                             <input type="text" name="nick" class="form-control contrlo-lg text-primary"
                                                    value="{{ Session::get('user.nickname') }}">
