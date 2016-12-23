@@ -31,7 +31,6 @@
     @if(!empty($list))
         <ul class="tiles-wrap animated daily-content m-b-0" id="daily-wookmark">
             @foreach($list as $daily)
-                <li class="isHidden">
                 <li>
                     @if(3 == $daily['type'])
                         <div class="daily-item">
