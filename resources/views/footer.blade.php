@@ -165,7 +165,7 @@
                             <span class="font-size-sm">Please select size !</span>
                         </div>
                     </fieldset>
-                    <input type="hidden" name="referer" value="{{$referer}}">
+                    <input type="hidden" name="referer" value="{{$_SERVER['REQUEST_URI']}}">
                 </form>
                 <div class="p-t-15x">
                     <div class="btn btn-primary btn-block bigNoodle font-size-lxx" data-role="register-submit">Sign up</div>
