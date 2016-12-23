@@ -90,7 +90,7 @@
                             <!--添加卡-->
                             <div class="add-newCard disabled">
 
-                                <div class="p-t-20x p-b-10x font-size-md avenirBold">Add New Credit Card</div>
+                                <div class="p-t-20x p-b-10x font-size-md avenirBold uppercase">Add New Credit Card</div>
 
                                 <div class="p-a-10x">
                                     <div class="p-t-10x p-l-15x">We Accept:
@@ -394,7 +394,7 @@
         <div class="p-a-10x">
             <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard">
                 <img src="{{config('runtime.Image_URL')}}/images/payment/card-four.png" width="60">
-                <span class="font-size-lg p-l-20x">Add New Credit Card</span>
+                <span class="font-size-lg p-l-20x uppercase">Add New Credit Card</span>
                 <i class="iconfont icon-add"></i>
             </div>
         </div>

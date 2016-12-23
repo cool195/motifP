@@ -3909,6 +3909,7 @@ function HideSeeMore(seemoreName) {
                 })
                 .done(function (data) {
                     if (data.success) {
+                        $('.addCode-input>input').val('');
                         $('#pcode').data('bindid', data.data.bind_id);
                         getCoupons(1);
                         if ($('#checkoutView').data('status')) {

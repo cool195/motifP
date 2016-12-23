@@ -23,7 +23,7 @@
                                     <span class="font-size-md avenirMedium address-text"></span>
                                     <span class="font-size-md pull-right">
                                         <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
-                                        <span class="p-l-5x">Default</span>
+                                        <span class="p-l-5x uppercase avenirMedium">Default</span>
                                     </span>
                                 </div>
                                 <div class="row p-t-30x">
