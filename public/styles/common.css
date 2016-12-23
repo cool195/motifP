@@ -146,7 +146,15 @@ footer .verticalHr{
 .openSans {
   font-family: "OpenSansRegular";
 }*/
-
+.input-email{
+  padding: 1px 0.75rem;
+  border: solid 1px #000;
+  min-width: 22.3rem;
+}
+#btn-subscribe{
+  height: 2.5rem;
+  margin-left: 0.5rem;
+}
 /* shopping list*/
 .product-container{
   position: relative;
@@ -1443,17 +1451,17 @@ select::-ms-expand { display: none; }
 }
 
 .header-img .dropdown-img {
-  min-width: 160px;
+  min-width: 9.2rem;
   background-color: #ffffff;
   border-top: 2px solid #000;
-  /*box-shadow: 0px 2px 7px rgba(196, 200, 211, 0.5);*/
   position: absolute;
   top: 58px;
   right: 10px;
   z-index: 9;
   display: none;
 }
-.dropdown-nav-hover>li{
+.dropdown-nav-hover>li>a{
+  display: block;
   padding-left: 1.56rem;
 }
 .triangle-up{
@@ -1507,33 +1515,11 @@ select::-ms-expand { display: none; }
 }
 
 .wishlist-item {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
-.empty-content {
-  min-height: 31rem;
-  text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.empty-content .iconfont {
-  font-size: 6rem;
-}
-
-.shopbag-content {
-  min-height: 29rem;
+.empty-marginTop{
+  margin-top: 7rem;
 }
 
 .follow-item {
@@ -2051,12 +2037,12 @@ sup{
 .subs-btnText{
   font-size: 2rem;
 }
-.subscribe-name,.subscribe-email{
+/*.subscribe-name,.subscribe-email{
   width: 100%;
   height: 40px;
   padding: 0 15px;
   border: 2px solid #ddd;
-}
+}*/
 .redeem-btn{
   background-color: #54565b;
   color: #fff;

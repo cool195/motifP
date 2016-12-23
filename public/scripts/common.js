@@ -4058,7 +4058,36 @@ function HideSeeMore(seemoreName) {
     });
 
     //邮件订阅
-    $('.redeem-fixed').on('click', function () {
+    // 校验 email
+    $('.subscribe-email').on('keyup blur', function () {
+        if (login_validationEmail($(this))) {
+            $('#btn-subscribe').removeClass('disabled');
+        } else {
+            $('#btn-subscribe').addClass('disabled');
+        }
+    });
+
+    $('#btn-subscribe').on('click', function(){
+        if ($(this).hasClass('disabled')) {
+            return;
+        }
+        $.ajax({
+                url: '/subscribe',
+                type: 'post',
+                data: $('#subscribe').serialize()
+            })
+            .done(function (data) {
+                if (data.success) {
+                    redeemModal.open();
+                    $('.subscribe-email').val('');
+                } else {
+                    alert('error!')
+                }
+            });
+    });
+
+
+    /*$('.redeem-fixed').on('click', function () {
         redeemModal.open();
     });
     // 校验 email
@@ -4086,7 +4115,7 @@ function HideSeeMore(seemoreName) {
 
                 }
             });
-    });
+    });*/
 
 })(jQuery, Swiper);
 

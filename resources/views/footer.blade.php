@@ -40,11 +40,11 @@
                 </div>
             </div>
         </div>
-
+{{--
     @if(!isset($CartCheck))
     <!-- 固定 弹框订阅 -->
-        {{--<div class="redeem-fixed p-y-10x p-x-20x">GET 15% OFF YOUR FIRST ORDER!</div>--}}
-    @endif
+        <div class="redeem-fixed p-y-10x p-x-20x">GET 15% OFF YOUR FIRST ORDER!</div>
+    @endif--}}
 </footer>
 
 <!-- 登录注册 弹窗 -->
@@ -184,13 +184,13 @@
 </div>
 
 
-<!-- 邮件订阅 弹出框 -->
-{{--<div class="remodal modal-content remodal-lg redeem-content" data-remodal-id="redeem-modal">
+{{--<!-- 邮件订阅 弹出框 -->
+<div class="remodal modal-content remodal-lg redeem-content" data-remodal-id="redeem-modal">
     <div class="row m-a-0">
         <div class="col-md-6 p-a-0">
             <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_pic.png" class="img-fluid">
         </div>
-        <form id="subscribe" action="" method="" class="redeem-leftWrapper">
+        <form id="subscribe" action="" method="" class="redeem-leftWrapper hidden">
             <div class="col-md-6 col-xs-6">
                 <div class="p-a-30x">
                     <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
@@ -211,7 +211,7 @@
                 </div>
             </div>
         </form>
-        <div class="col-md-6 col-xs-6 redeem-rightWrapper hidden">
+        <div class="col-md-6 col-xs-6 redeem-rightWrapper">
             <div class="p-a-30x">
                 <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
                 <div class="text-left p-b-20x">

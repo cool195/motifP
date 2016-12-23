@@ -8,18 +8,17 @@
             <!-- 右侧内容 -->
 
             <div class="right">
-                @if(empty($data['list']))
-                    <!--wishlist为空时显示-->
-                    <div class="rightContent">
-                        <div class="empty-content">
-                            {{--<i class="iconfont icon-like"></i>--}}
-                            <p class="helveBold font-size-llxx m-t-40x">Your wishlist is empty!</p>
-                        </div>
-                    </div>
-                @else
                 <div class="rightContent" id="wishList-container" data-pagenum="1" data-loading="false">
                     <div class="bigNoodle text-center leftMeun-title">MY WISHLIST</div>
                     <hr class="hr-black m-t-0">
+                    @if(empty($data['list']))
+                            <!--wishlist为空时显示-->
+                        <div class="text-center p-x-30x p-b-30x empty-marginTop">
+                            <i class="iconfont icon-error icon-fontSize-big"></i>
+                            <p class="bigNoodle font-size-llxx m-t-40x uppercase">Your wishlist is empty!</p>
+                        </div>
+                    @else
+
                     <!-- WishList content -->
                     <ul class="tiles-wrap wishlist-wrap animated row" id="wishlist-wookmark">
                         <!-- 商品 -->

@@ -46,14 +46,15 @@
 {{--@endif--}}
 
 <!-- 内容 -->
-<section class="body-container m-t-40x">
+<section class="body-container m-y-30x">
     <div class="container content-maxWidth">
         @if(empty($cart['showSkus']))
             {{--空购物车 提示信息--}}
-            <div class="empty-content shopbag-content">
-                <div class="m-b-20x p-b-5x"><i class="iconfont icon-iconshoppingbag"></i></div>
-                <p class="text-primary m-b-20x p-b-20x font-size-llxx">Your bag is empty, Fill it up ! </p>
-                <a href="/daily" class="btn btn-primary btn-lg btn-320">SHOP NOW</a>
+            <div class="text-center p-t-30x">
+                {{--<div class="m-b-20x p-b-5x"><i class="iconfont icon-iconshoppingbag icon-fontSize-big"></i></div>--}}
+                <div class="m-b-10x p-b-5x"><i class="iconfont icon-shop2 icon-fontSize-big"></i></div>
+                <p class="bigNoodle font-size-llxx">Your bag is empty, Fill it up !</p>
+                <a href="/shopping" class="btn btn-primary btn-baseSize bigNoodle font-size-lxx m-b-30x">SHOP NOW</a>
             </div>
         @else
             {{--My Bag List--}}

@@ -37,17 +37,17 @@
     var content_ids = [@foreach($order['lineOrderList'] as $key => $product) @if(0 == $key)'{{$product['spu']}}' @else ,'{{$product['spu']}}' @endif @endforeach];
 </script>
 <!--订单成功主体内容-->
-<section class="m-y-40x">
+<section class="body-container m-y-40x">
     <div class="container bg-white text-center">
         <div class="order_comfirmed_content">
-            <img src="{{config('runtime.Image_URL')}}/images/icon/ok.png">
-            <h4 class="helveBold m-b-20x m-t-40x text-main">Order Confirmed</h4>
-            <p class="text-primary font-size-md">
+            <i class="iconfont m-t-40x submit-ok"></i>
+            <h4 class="bigNoodle m-b-20x m-t-40x font-size-llxx">Order Confirmed</h4>
+            <p class="font-size-md">
                 <span>A confirmation email has been sent to: </span><br>
-                <span class="sanBold">{{Session::get('user.login_email')}}</span>
+                <span class="avenirBold">{{Session::get('user.login_email')}}</span>
             </p>
-            <p>You can track
-                <a href="@if(!empty($order))/order/orderdetail/{{$order['sub_order_no']}}@else /order/orderlist @endif" class="text-link">your order</a>
+            <p class="font-size-sm">You can track
+                <a href="@if(!empty($order))/order/orderdetail/{{$order['sub_order_no']}}@else /order/orderlist @endif" class="text-green">your order</a>
                 at any time by visting the Order tab from the PROFILE menu
             </p>
         </div>
