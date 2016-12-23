@@ -1,12 +1,11 @@
 @include('header')
 
         <!--内容-->
-<div class="container">
-    <div class="content-wrap">
-
-        <h2 class="helveBold text-main font-size-lxx m-b-20x m-x-20x">Motif Referral Program</h2>
-        <div class="bg-white content box-shadow">
-            <p class="sanBold">Anyone can Refer a Friend.</p>
+<div class="container body-container m-y-30x">
+    <div class="text-center">
+        <h2 class="avenirBold font-size-lxx m-b-20x m-x-20x">Motif Referral Program</h2>
+        <div class="bg-white">
+            <p class="avenirBold">Anyone can Refer a Friend.</p>
             <p>Anyone with a registered Motif account can
                 refer a friend. You do not need to have made a purchase prior to referring. Once your referred friend
                 uses the promo code to make a qualifying purchase, the referral credit will be granted to your account.
@@ -15,7 +14,7 @@
                 the promo code's expiration. Both the referral promo code and the referral credit cannot be combined
                 with additional coupons.</p>
 
-            <p class="sanBold">Multiple referrals are welcomed! </p>
+            <p class="avenirBold">Multiple referrals are welcomed! </p>
             <p>There is no limit to how many friends
                 you may refer; however each referred friend can only use your referral code once.</p>
 
