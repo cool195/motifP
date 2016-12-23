@@ -155,15 +155,15 @@
                         </a>
                     </li>
                 @else
-                    <li class="nav-item p-x-10x"><a class="nav-link @if($title !== 'Login') btn-loginModal @endif" data-referer="{{$_SERVER['REQUEST_URI']}}">SIGN IN</a></li>
-                    <li class="nav-item p-x-10x"><a class="nav-link text-green btn-loginModal"  data-referer="/invitefriends">GET 15% OFF</a></li>
+                    <li class="nav-item p-x-10x"><a class="nav-link @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif" data-referer="{{$_SERVER['REQUEST_URI']}}">SIGN IN</a></li>
+                    <li class="nav-item p-x-10x"><a class="nav-link text-green @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif"  data-referer="/invitefriends">GET 15% OFF</a></li>
                     <li class="nav-item p-l-10x p-r-0">
-                        <a data-url="/wish" class="p-t-5x flex flex-alignCenter btn-loginModal">
+                        <a data-url="/wish" class="p-t-5x flex flex-alignCenter @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif">
                             <i class="iconfont icon-search font-size-lxx"></i>
                         </a>
                     </li>
                     <li class="nav-item p-l-15x p-r-0">
-                        <a data-referer="/wish" class="p-t-5x flex flex-alignCenter btn-loginModal">
+                        <a data-referer="/wish" class="p-t-5x flex flex-alignCenter @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif">
                                 <i class="iconfont icon-heart2 font-size-lxx"></i>
                                 <span class="text-link avenirRegular font-size-sm">0</span>
                         </a>
