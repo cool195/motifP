@@ -83,7 +83,6 @@
                                     <div class="media-body cart-product-title font-size-md">{{  $showSku['main_title'] }}</div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="p-l-15x">
                                         @if(isset($showSku['attrValues']))
                                             @foreach($showSku['attrValues'] as $key => $attrValue)
                                                 {{$attrValue['attr_type_value']}}:{{$attrValue['attr_value']}}<br>
@@ -94,7 +93,6 @@
                                                 {{ ucfirst(strtolower($vas['vas_name'])) }}:{{ $vas['user_remark'] }}
                                             @endforeach
                                         @endif
-                                    </div>
                                 </div>
                                 <div class="col-md-1">
                                     <div class="p-l-5x">
@@ -178,7 +176,6 @@
                                 @endif
                             </div>
                             <div class="col-md-3">
-                                <div class="p-l-15x">
                                     @if(isset($showSku['attrValues']))
                                         @foreach($showSku['attrValues'] as $key => $attrValue)
                                             {{$attrValue['attr_type_value']}}:{{$attrValue['attr_value']}}<br>
@@ -189,7 +186,6 @@
                                             {{ $vas['vas_name'] }}:{{ $vas['user_remark'] }}
                                         @endforeach
                                     @endif
-                                </div>
                             </div>
                             <div class="col-md-1">
                                 <div class="p-l-5x">
