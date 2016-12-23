@@ -36,6 +36,13 @@
                                         </span>
                                     </div>
                                     <div class="price-caption">
+                                        <!--预售-->
+                                        @if(1 == $wish['sale_type'])
+                                            <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
+                                                <span>LIMITED EDITION</span>
+                                            </div>
+                                        @endif
+
                                         <div class="text-center font-size-md text-truncate p-x-20x">{{$wish['main_title']}}</div>
                                         <div class="text-center">
                                             @if($wish['skuPrice']['sale_price'] !== $wish['skuPrice']['price'])
@@ -80,6 +87,12 @@
                 </span>
             </div>
             <div class="price-caption">
+                <!--预售-->
+                @{{ if 1 === $value.sale_type }}
+                    <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
+                        <span>LIMITED EDITION</span>
+                    </div>
+                @{{ /if }}
                 <div class="text-center font-size-md text-truncate p-x-20x">@{{ $value.main_title }}</div>
                 <div class="text-center">
                     @{{ if $value.skuPrice.sale_price !== $value.skuPrice.price }}
