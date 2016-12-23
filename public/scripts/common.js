@@ -731,9 +731,9 @@ function HideSeeMore(seemoreName) {
 
     var CheckNum = 0
     $('.icon-checkcircle').on('click', function () {
-        if (CheckNum === 0 && $(this).hasClass('active')) {
-            CheckNum = 0;
-        } else {
+        //if (CheckNum === 0 && $(this).hasClass('active')) {
+        //    CheckNum = 0;
+        //} else {
             $(this).toggleClass('active');
             $(this).parents('.flex-alignCenter').siblings('.warning-info').addClass('off');
             if ($(this).hasClass('active')) {
@@ -744,8 +744,8 @@ function HideSeeMore(seemoreName) {
                 $(this).siblings('.input-engraving').addClass('disabled');
                 $(this).siblings('.input-engraving').attr({disabled: "disabled"})
             }
-            CheckNum++;
-        }
+        //    CheckNum++;
+        //}
     });
 
     // 点击 "心" 关注商品

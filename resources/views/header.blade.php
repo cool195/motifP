@@ -69,7 +69,7 @@
                     <a href="/shopping"
                        class="nav-link p-x-10x @if('shopping' == $page) border-b active @endif" @if(!$Shopping) @endif>SHOP</a>
                     <div class="dropdown-menu p-t-20x p-l-10x">
-                        <div class="pull-left">SHOP ALL</div>
+                        <div class="pull-left"><a href="/shopping">SHOP ALL</a></div>
                         <ul class="figure">
                             <li>SHOP BY CATEGORY</li>
                             @foreach($Category->getShoppingCategoryList() as $category)

@@ -54,7 +54,7 @@
                             <!-- 被取消的订单 -->
                             @if(in_array($data['status_code'], array(21, 22, 23)))
                                 <span>
-                                    <a id="buyAgain" class="btn btn-primary btn-md" href="javascript:void(0)"
+                                    <a id="buyAgain" class="btn btn-primary btn-md bigNoodle font-size-lxx uppercase" href="javascript:void(0)"
                                        data-orderList="{{json_encode($data['lineOrderList'])}}">Buy Again</a>
                                 </span>
                             @endif
