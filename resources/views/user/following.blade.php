@@ -40,11 +40,6 @@
                                                data-did="{{$follow['userId']}}">Following</div>
                                         </div>
                                         <div class="m-t-15x followText-Info" data-designerid="{{$follow['userId']}}">{{ $follow['description'] }}</div>
-                                        {{--<div class="p-t-15x">
-                                            <a href="#" class="m-r-20x"><img src="/images/icon/icon-fac.png"></a>
-                                            <a href="#" class="m-r-20x"><img src="/images/icon/icon-pin.png"></a>
-                                            <a href="#" class="m-r-20x"><img src="/images/icon/icon-ins.png"></a>
-                                        </div>--}}
                                     </div>
                                 </div>
                             @endforeach
