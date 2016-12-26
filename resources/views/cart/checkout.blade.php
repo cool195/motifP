@@ -543,7 +543,7 @@
                                     {{$defaultAddr = $Address->getUserDefaultAddr()['data']}}
                                 @endif
                                 <div class="card-message">
-                                    <div class="uppercase avenirBold font-size-md def-name">{{$defaultAddr['name']}}</div>
+                                    <div class="avenirMedium font-size-md def-name">{{$defaultAddr['name']}}</div>
                                     <div class="def-city">{{$defaultAddr['city']}}</div>
                                     <div class="def-zip">{{$defaultAddr['zip']}}</div>
                                     <div class="def-state">{{$defaultAddr['state']}}</div>

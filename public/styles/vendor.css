@@ -6822,6 +6822,10 @@ a.text-red:focus, a.text-red:hover {
 .font-size-llxx { /* 30px */
   font-size: 1.875rem;
 }
+.font-size-lllx {
+  font-size: 1.625rem;  /* 28px */
+}
+
 .font-size-llx {
   font-size: 1.625rem;  /* 26px */
 }
@@ -7888,6 +7892,8 @@ a.bg-red:focus, a.bg-red:hover {
 .icon-close:before {
   content: "\e69f";
 }
+.icon-shoplight:before { content: "\e6a0"; }
+
 .footer-icon{
   font-size: 36px;
 }
