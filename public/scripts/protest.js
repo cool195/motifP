@@ -13,7 +13,6 @@ var product_arrayTemp_click = [];
 
 $('.btn-itemProperty').on('click', function() {
     var ItemType = $(this).data('type')
-    console.log(ItemType);
     if(ItemType !== '' && !$(this).hasClass('disabled')) {
         if($(this).hasClass('active')) {
             $(this).removeClass('active')
@@ -44,7 +43,7 @@ function product_getNowClickArray(attr_type, attr_value_id, status) {
                 if( attr_value_id == spuAttrs[i].skuAttrValues[j].attr_value_id) {
                     //todo
                     !status ? nowClickArray = spuAttrs[i].skuAttrValues[j].skus : product_arrayTemp_click['key' + attr_type] = nowClickArray = spuAttrs[i].skuAttrValues[j].skus;
-                    //console.log(product_arrayTemp_click);
+                    console.log(product_arrayTemp_click);
                     break;
                 }
             }
@@ -56,16 +55,17 @@ function product_getNowClickArray(attr_type, attr_value_id, status) {
 
 function product_onclickStatic(nowClickArray, nowAttrType, clickStatus) {
     var lastSku = product_setLastSku();
+    console.log(lastSku);
     for (var i = 0; i < spuAttrs.length; i++) {
         if(nowAttrType != spuAttrs[i].attr_type){
+            //var _tempArr = nowClickArray;
+            var _tempArr = product_getOtherIntersectionSku(spuAttrs[i].attr_type, nowClickArray);
+            if($('#p_a_w' + spuAttrs[i].attr_type).data('sel') == 0) {
+                _tempArr = lastSku;
+            }
             for (var j = 0; j < spuAttrs[i].skuAttrValues.length; j++){
                 var is = false;
                 for(var k = 0; k < spuAttrs[i].skuAttrValues[j].skus.length; k++){
-                    $('#skutype' + spuAttrs[i].skuAttrValues[j].attr_value_id).removeClass('disabled');
-                    var _tempArr = nowClickArray;
-                    if($('#p_a_w' + spuAttrs[i].attr_type).data('sel') == 0) {
-                        _tempArr = lastSku;
-                    }
                     if( _tempArr.indexOf(spuAttrs[i].skuAttrValues[j].skus[k]) >= 0) {
                         //找到交集,结束循环
                         if($('#skutype' + spuAttrs[i].skuAttrValues[j].attr_value_id).hasClass('disabled')) {
@@ -77,10 +77,9 @@ function product_onclickStatic(nowClickArray, nowAttrType, clickStatus) {
                 }
 
                 if(!is){
-                    clickStatus ? $('#skutype' + spuAttrs[i].skuAttrValues[j].attr_value_id).addClass('disabled') : $('#skutype' + spuAttrs[i].skuAttrValues[j].attr_value_id).removeClass('disabled');
+                   clickStatus ? $('#skutype' + spuAttrs[i].skuAttrValues[j].attr_value_id).addClass('disabled') : $('#skutype' + spuAttrs[i].skuAttrValues[j].attr_value_id).removeClass('disabled');
                 }
             }
-
         }
     }
 }
@@ -98,6 +97,20 @@ function product_setLastSku(){
     }
     //console.log(product_lastSkuArray);
     return product_lastSkuArray;
+}
+
+function product_getOtherIntersectionSku(nowAttrType, nowClickArray){
+    //var product_otherIntersectionArray = product_arrayTemp_click['key' + nowAttrType];
+    var product_otherIntersectionArray = nowClickArray;
+    for (var key in product_arrayTemp_click) {
+        if(('key' + nowAttrType) == key){
+            continue
+        }
+        product_otherIntersectionArray = product_array_intersection(product_otherIntersectionArray, product_arrayTemp_click[key]);
+    }
+    console.log(product_otherIntersectionArray);
+    return product_otherIntersectionArray;
+
 }
 
 //获取两个数组的所有交集
