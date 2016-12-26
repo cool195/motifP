@@ -286,18 +286,15 @@
 </div>
 
 <!-- 删除地址 确认框 -->
-<div class="remodal modal-content remodal-md p-a-0" data-remodal-id="paymentmodal-modal" data-cardid="">
-    <div class="avenirMedium text-center font-size-md p-a-15x">Remove Items from Your Payment?</div>
-    <hr class="hr-common m-a-0">
-    <div class="text-center dialog-info">Are you sure you want to remove this item?</div>
-    <hr class="hr-common m-a-0">
+<div class="remodal remodal-md p-a-40x" data-remodal-id="paymentmodal-modal" data-cardid="">
+    <div class="bigNoodle text-center font-size-lllx uppercase">Remove Items from Your Payment?</div>
+    <div class="text-center font-size-sm p-t-20x p-b-40x m-b-10x">Are you sure you want to remove this item?</div>
     <div class="row">
         <div class="col-md-6">
-            <div class="m-y-20x m-l-20x"><a href="javascript:;" class="btn btn-block btn-secondary btn-lg delPaymentCard">Remove</a></div>
+            <div class="btn btn-secondary btn-baseSize bigNoodle font-size-llx delPaymentCard">Remove</div>
         </div>
         <div class="col-md-6">
-            <div class="m-y-20x m-r-20x"><a href="javascript:;" class="btn btn-block btn-primary btn-lg" data-remodal-action="close">Cancel</a>
-            </div>
+            <div class="btn btn-primary btn-baseSize bigNoodle font-size-llx" data-remodal-action="close">Cancel</div>
         </div>
     </div>
 </div>

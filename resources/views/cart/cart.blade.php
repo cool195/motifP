@@ -249,22 +249,16 @@
 
 
 <!-- 删除确认框 -->
-<div class="remodal modal-content remodal-md" data-remodal-id="cartmodal" id="modalDialog" data-action="" data-id=""
+<div class="remodal remodal-md p-a-40x" data-remodal-id="cartmodal" id="modalDialog" data-action="" data-id=""
      data-sku="">
-    <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Bag?</div>
-    <hr class="hr-common m-a-0">
-    <div class="text-center dialog-info">Are you sure you want to remove this item?</div>
-    <hr class="hr-common m-a-0">
-    <div class="row m-a-0">
+    <div class="bigNoodle text-center font-size-lllx uppercase">Remove Items from Your Bag?</div>
+    <div class="text-center p-t-20x p-b-40x m-b-10x font-size-sm">Are you sure you want to remove this item?</div>
+    <div class="row">
         <div class="col-md-6">
-            <div class="m-y-20x m-l-20x">
-                <a href="javascript:;" class="btn btn-block btn-secondary btn-lg delCartM">Remove</a>
-            </div>
+            <div class="btn btn-secondary btn-baseSize bigNoodle font-size-llx delCartM">Remove</div>
         </div>
         <div class="col-md-6">
-            <div class="m-y-20x m-r-20x"><a href="javascript:;" class="btn btn-block btn-primary btn-lg"
-                                            data-remodal-action="close">Cancel</a>
-            </div>
+            <div class="btn btn-primary btn-baseSize bigNoodle font-size-llx" data-remodal-action="close">Cancel</div>
         </div>
     </div>
 </div>
