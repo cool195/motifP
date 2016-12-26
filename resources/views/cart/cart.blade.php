@@ -50,9 +50,12 @@
     <div class="container content-maxWidth">
         @if(empty($cart['showSkus']))
             {{--空购物车 提示信息--}}
-            <div class="text-center p-t-30x">
+            <h4 class="text-center bigNoodle font-size-llxxx">In Bag</h4>
+            <hr class="hr-black">
+            <div class="text-center p-t-40x">
+                <div class="p-a-10x"></div>
                 {{--<div class="m-b-20x p-b-5x"><i class="iconfont icon-iconshoppingbag icon-fontSize-big"></i></div>--}}
-                <div class="m-b-10x p-b-5x"><i class="iconfont icon-shop2 icon-fontSize-big"></i></div>
+                <div class="m-b-10x p-b-5x"><i class="iconfont icon-shoplight icon-fontSize-big"></i></div>
                 <p class="bigNoodle font-size-llxx">Your bag is empty, Fill it up !</p>
                 <a href="/shopping" class="btn btn-primary btn-baseSize bigNoodle font-size-lxx m-b-30x">SHOP NOW</a>
             </div>
@@ -246,7 +249,6 @@
         @endif
     </div>
 </section>
-
 
 <!-- 删除确认框 -->
 <div class="remodal remodal-md p-a-40x" data-remodal-id="cartmodal" id="modalDialog" data-action="" data-id=""
