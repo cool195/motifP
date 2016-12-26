@@ -7888,6 +7888,8 @@ a.bg-red:focus, a.bg-red:hover {
 .icon-close:before {
   content: "\e69f";
 }
+.icon-shoplight:before { content: "\e6a0"; }
+
 .footer-icon{
   font-size: 36px;
 }
