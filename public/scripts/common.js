@@ -1607,7 +1607,7 @@ function HideSeeMore(seemoreName) {
                 data: {
                     aid: $('#defaultAddr').data('aid'),
                     bindid: $('#pcode').data('bindid') == undefined ? '' : $('#pcode').data('bindid'),
-                    remark: $('input[name="cremark"]').val(),
+                    remark: $('textarea[name="cremark"]').val(),
                     stype: $('input[name="shippingMethod"]:checked').val(),
                     paym: paym
                 }
