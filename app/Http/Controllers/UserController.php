@@ -473,6 +473,9 @@ class UserController extends BaseController
 
     public function forgetpwd()
     {
+        if(Session::has('user')){
+            return redirect('/daily');
+        }
         return view('user.forgetpwd');
     }
 
