@@ -125,10 +125,12 @@
                             {{--<i class="iconfont icon-search font-size-lxx"></i>--}}
                             <i class="iconfont font-size-lxx"></i>
                         </a>
-                        <div class="avenirRegular font-size-sm search-bar">
-                            <input type="text" placeholder="Search Motif">
-                            <a href="#"><i class="iconfont icon-search font-size-lxx"></i></a>
-                        </div>
+                        <form class="form" method="post" name="searchFrom" action="/search">
+                            <div class="avenirRegular font-size-sm search-bar">
+                                <input type="text" name="kw" placeholder="Search Motif">
+                                <button class="btn bg-white" type="submit"><i class="iconfont icon-search font-size-lxx"></i></button>
+                            </div>
+                        </form>
                     </li>
                     <!-- 收藏商品 -->
                     <li class="nav-item p-l-15x p-r-0">

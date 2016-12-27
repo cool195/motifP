@@ -77,80 +77,14 @@
             </nav>
         </div>
     </div>
+
     <!-- 商品列表 -->
-    <div class="container m-t-20x m-b-20x product-container" id="productList-container" data-categoryid="{{$cid}}" data-pagenum="1" data-loading="false" data-searchid="0">
-        @foreach($categories as $category)
-        @if($cid == $category['category_id'])
+    <div class="container m-t-20x m-b-20x product-container" id="searchList-container" data-pagenum="0" data-loading="false" data-searchid="0">
         <div class="text-center bigNoodle font-size-llx p-y-10x">
-            <span>{{$category['category_name']}}</span>
+            <span>SEARCH RESULTS FOR 'test'</span>
         </div>
-        @endif
-        @endforeach
-        <!-- sort by -->
-        <div class="m-b-20x text-right">
-            {{--<span class="sanBold p-r-15x">Sort By:</span>--}}
-            <div class="dropdown sortBy-dropdown">
-                <button class="btn btn-sortBy avenirMedium iconfont uppercase" type="button" id="searchDropdown">
-                    SORT BY
-                </button>
-                <div class="dropdown-menu sortBy-menu font-size-sm p-t-15x">
-                    <li class="dropdown-item uppercase active" data-search="0" data-searchtext="Featured">Featured</li>
-                    @foreach($search['list'] as $key => $value)
-                        <li class="dropdown-item" data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">{{$value['attr_label']}}</li>
-                    @endforeach
-                </div>
-            </div>
-        </div>
+        <div class="row" id="search-list">
 
-        <div class="row">
-            @foreach($productAll['list'] as $product)
-            <div class="col-md-3 col-xs-6">
-                <div class="productList-item">
-                    <div class="image-container">
-                        <a href="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
-                           data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}"
-                           data-price="{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}">
-                            <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n2/{{$product['main_image_url']}}" alt="{{$product['main_title']}}">
-                            @if($product['image_paths'][0])
-                                <img class="img-fluid productImg-hover" src="{{config('runtime.CDN_URL')}}/n2/{{$product['image_paths'][0]}}" alt="{{$product['main_title']}}">
-                            @endif
-                            <div class="bg-heart"></div>
-                        </a>
-                        @if(Session::has('user'))
-                            <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if($product['isWished']) active @endif" data-spu="{{$product['spu']}}"></i></span>
-                        @else
-                            <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$product['spu']}}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
-                        @endif
-
-                        {{--@if(1 == $product['sale_type'])
-                            <!--预售标志-->
-                            <div class="presale-sign newPresale-sign">
-                                --}}{{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}{{--
-                                <a href="/detail/{{$product['spu']}}" data-clk="{{$product['clk']}}" class="newPresale-text helveBold font-size-xs text-primary">Limited Edition</a>
-                            </div>
-                        @endif--}}
-                    </div>
-                    <div class="price-caption text-center">
-                        <!--预售-->
-                        @if(1 == $product['sale_type'])
-                        <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
-                            <span>LIMITED EDITION</span>
-                        </div>
-                        @endif
-
-                        <div class="font-size-md text-truncate p-x-20x">{{$product['main_title']}}</div>
-                        <div class="text-center">
-                            @if($product['skuPrice']['skuPromotion']['promot_price'] != $product['skuPrice']['skuPromotion']['price'])
-                                <span class="font-size-md p-r-5x">${{ number_format(($product['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
-                                <span class="font-size-md text-green text-throughLine">${{ number_format(($product['skuPrice']['skuPromotion']['price'] / 100), 2) }}</span>
-                            @else
-                                <span class="font-size-md p-r-5x">${{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}</span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
         </div>
         <div class="text-center m-y-10x seeMore-info">
             <div class="productList-seeMore" style="display: none">
@@ -187,16 +121,6 @@
             @else
                 <span class="product-heart btn-heart"><i class="iconfont font-size-lxx btn-wish btn-wishList" data-actionspu="@{{ $value.spu }}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
             @endif
-           {{-- @{{ if 1 == $value.sale_type }}
-                <!--预售标志-->
-                <div class="presale-sign newPresale-sign">
-                    --}}{{--<div class="img-clock"><img class="img-circle" src="/images/icon/sale-clock.png"></div>--}}{{--
-                    <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
-                       data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
-                       data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}"
-                       class="newPresale-text helveBold font-size-xs text-primary text-primary">Limited Edition</a>
-                </div>
-            @{{ /if }}--}}
         </div>
         <div class="price-caption text-center">
             <!--预售-->
