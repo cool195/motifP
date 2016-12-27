@@ -549,14 +549,14 @@
 
 
 <!-- 购买成功提示 -->
-<div class="remodal modal-content remodal-xs" data-remodal-id="additem-modal" id="addItem-modalDialog" data-spu="">
-    <div class="text-center font-size-md m-y-10x">Item Added</div>
+<div class="remodal remodal-xs" data-remodal-id="additem-modal" id="addItem-modalDialog" data-spu="">
+    <div class="text-center font-size-llx m-y-10x bigNoodle">Item Added</div>
 </div>
 
 <!-- 购买失败提示 -->
-<div class="remodal modal-content remodal-xs" data-remodal-id="additemfail-modal" id="addItemFail-modalDialog"
+<div class="remodal remodal-xs" data-remodal-id="additemfail-modal" id="addItemFail-modalDialog"
      data-spu="">
-    <div class="text-center font-size-md m-y-10x">Added Failled</div>
+    <div class="text-center font-size-llx m-y-10x bigNoodle">Added Failled</div>
 </div>
 <img src='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=pv.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"spu":{{$data['spu']}},"main_sku":{{$data['skuPrice']['sku']}},"price":{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }},"expid":0,"version":"1.0.1","src":"PC"}&ref={{$_SERVER['HTTP_REFERER']}}' hidden>
 

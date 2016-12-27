@@ -457,25 +457,58 @@ function HideSeeMore(seemoreName) {
                     $('#p_a_w' + $(this).data('attr-type')).addClass('off')
                 }
             }
-
-            product_onclickStatic(product_onSkuClick($(this).attr('data-attr-type'), $(this).attr('data-attr-value-id'), $(this).hasClass('active')), $(this).attr('data-attr-type'), $(this).hasClass('active'));
+            var nowClickArray = product_getNowClickArray($(this).attr('data-attr-type'), $(this).attr('data-attr-value-id'), $(this).hasClass('active'));
+            product_onclickStatic(nowClickArray, $(this).attr('data-attr-type'), $(this).hasClass('active'));
 
         }
     });
 
     //将当前点击的SKU数组添加到要进行计算的总数组中
-    function product_onSkuClick(attr_type, attr_value_id, status) {
+    function product_getNowClickArray(attr_type, attr_value_id, status) {
         var nowClickArray = []
         for (var i = 0; i < spuAttrs.length; i++) {
             if (attr_type == spuAttrs[i].attr_type) {
                 for (var y = 0; y < spuAttrs[i].skuAttrValues.length; y++) {
                     if (attr_value_id == spuAttrs[i].skuAttrValues[y].attr_value_id) {
                         !status ? nowClickArray = spuAttrs[i].skuAttrValues[y].skus : product_arrayTemp_click['key' + attr_type] = nowClickArray = spuAttrs[i].skuAttrValues[y].skus;
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+        return nowClickArray;
+    }
+
+    //操作后的可用状态
+    function product_onclickStatic(nowClickArray, nowAT, clickStatus) {
+        var lastSku = product_setLastSku();
+        for (var i = 0; i < spuAttrs.length; i++) {
+            if (nowAT != spuAttrs[i].attr_type) {
+                var _tempArr = product_getOtherIntersectionSku(spuAttrs[i].attr_type, nowClickArray);
+                if ($('#p_a_w' + spuAttrs[i].attr_type).data('sel') == 0) {
+                    _tempArr = lastSku;
+                }
+                for (var y = 0; y < spuAttrs[i].skuAttrValues.length; y++) {
+                    var is = false;
+                    for (var x = 0; x < spuAttrs[i].skuAttrValues[y].skus.length; x++) {
+                        //$('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
+                        if (_tempArr.indexOf(spuAttrs[i].skuAttrValues[y].skus[x]) >= 0) {
+                            //找到交集,结束循环
+                            if ($('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).hasClass('disabled')) {
+                                $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
+                            }
+                            is = true;
+                            break;
+                        }
+                    }
+
+                    if (!is) {
+                        clickStatus ? $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).addClass('disabled') : $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
                     }
                 }
             }
         }
-        return nowClickArray;
     }
 
     //设置被选中属性后的SKU交集数组
@@ -499,36 +532,34 @@ function HideSeeMore(seemoreName) {
         return product_lastSkuArray;
     }
 
-    //操作后的可用状态
-    function product_onclickStatic(nowClickArray, nowAT, clickStatus) {
-        var lastSku = product_setLastSku();
-        for (var i = 0; i < spuAttrs.length; i++) {
-            if (nowAT != spuAttrs[i].attr_type) {
-                for (var y = 0; y < spuAttrs[i].skuAttrValues.length; y++) {
-                    var is = false;
-                    for (var x = 0; x < spuAttrs[i].skuAttrValues[y].skus.length; x++) {
-                        $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
-                        var _tempArr = nowClickArray;
-                        if ($('#p_a_w' + spuAttrs[i].attr_type).data('sel') == 0) {
-                            _tempArr = lastSku;
-                        }
-                        if (_tempArr.indexOf(spuAttrs[i].skuAttrValues[y].skus[x]) >= 0) {
-                            //找到交集,结束循环
-                            if ($('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).hasClass('disabled')) {
-                                $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
-                            }
-                            is = true;
-                            break;
-                        }
-                    }
+    function product_getOtherIntersectionSku(nowAttrType, nowClickArray){
+        //var product_otherIntersectionArray = product_arrayTemp_click['key' + nowAttrType];
+        var product_otherIntersectionArray = nowClickArray;
+        for (var key in product_arrayTemp_click) {
+            if(('key' + nowAttrType) == key){
+                continue
+            }
+            product_otherIntersectionArray = product_array_intersection(product_otherIntersectionArray, product_arrayTemp_click[key]);
+        }
+        return product_otherIntersectionArray;
 
-                    if (!is) {
-                        clickStatus ? $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).addClass('disabled') : $('#skutype' + spuAttrs[i].skuAttrValues[y].attr_value_id).removeClass('disabled');
-                    }
+    }
+
+    //获取两个数组的所有交集
+    function product_array_intersection(a, b) {
+        var result = [];
+        for (var i = 0; i < b.length; i++) {
+            var temp = b[i];
+            for (var j = 0; j < a.length; j++) {
+                if (temp === a[j]) {
+                    result.push(temp);
+                    break;
                 }
             }
         }
+        return product_array_remove_repeat(result);
     }
+
 
     //去重
     function product_array_remove_repeat(a) {
@@ -549,20 +580,7 @@ function HideSeeMore(seemoreName) {
         return r;
     }
 
-    //获取两个数组的所有交集
-    function product_array_intersection(a, b) {
-        var result = [];
-        for (var i = 0; i < b.length; i++) {
-            var temp = b[i];
-            for (var j = 0; j < a.length; j++) {
-                if (temp === a[j]) {
-                    result.push(temp);
-                    break;
-                }
-            }
-        }
-        return product_array_remove_repeat(result);
-    }
+
 
     //sku库存临时缓存
     var product_cache_skuQty = []

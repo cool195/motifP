@@ -74,7 +74,6 @@ function product_getNowClickArray(attr_type, attr_value_id, status) {
 
 function product_onclickStatic(nowClickArray, nowAttrType, clickStatus) {
     var lastSku = product_setLastSku();
-    console.log(lastSku);
     for (var i = 0; i < spuAttrs.length; i++) {
         if(nowAttrType != spuAttrs[i].attr_type){
             for (var j = 0; j < spuAttrs[i].skuAttrValues.length; j++){
