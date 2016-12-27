@@ -201,6 +201,16 @@
                                 </div>
                             <hr class="hr-black m-t-0 m-b-20x">
                             @endif
+
+                            <!-- promotion code -->
+                            <div class="media p-t-15x">
+                                <div class="media-left avenirBold orderInfo-title">PROMOTION CODE</div>
+                                <div class="media-right">
+                                    code
+                                </div>
+                            </div>
+                            <hr class="hr-black m-t-0 m-b-20x">
+
                             @if(!empty($data['order_remark']))
                                 <div class="media p-t-15x">
                                     <div class="media-left avenirBold orderInfo-title">SPECIAL REQUEST</div>
@@ -210,6 +220,7 @@
                                 </div>
                             <hr class="hr-black m-t-0 m-b-20x">
                             @endif
+
                         </div>
                     </div>
 
