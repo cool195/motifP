@@ -79,11 +79,52 @@
     </div>
 
     <!-- 商品列表 -->
-    <div class="container m-t-20x m-b-20x product-container" id="searchList-container" data-pagenum="0" data-loading="false" data-searchid="0">
+    <div class="container m-t-20x m-b-20x product-container" id="searchList-container" data-pagenum="1" data-loading="false" data-searchid="0">
         <div class="text-center bigNoodle font-size-llx p-y-10x">
             <span>SEARCH RESULTS FOR 'test'</span>
         </div>
         <div class="row" id="search-list">
+
+            @foreach($productAll['list'] as $product)
+                <div class="col-md-3 col-xs-6">
+                    <div class="productList-item">
+                        <div class="image-container">
+                            <a href="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
+                               data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}"
+                               data-price="{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}">
+                                <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n2/{{$product['main_image_url']}}" alt="{{$product['main_title']}}">
+                                @if($product['image_paths'][0])
+                                    <img class="img-fluid productImg-hover" src="{{config('runtime.CDN_URL')}}/n2/{{$product['image_paths'][0]}}" alt="{{$product['main_title']}}">
+                                @endif
+                                <div class="bg-heart"></div>
+                            </a>
+                            @if(Session::has('user'))
+                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx @if($product['isWished']) active @endif" data-spu="{{$product['spu']}}"></i></span>
+                            @else
+                                <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx" data-actionspu="{{$product['spu']}}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
+                            @endif
+                        </div>
+                        <div class="price-caption text-center">
+                            <!--预售-->
+                            @if(1 == $product['sale_type'])
+                                <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
+                                    <span>LIMITED EDITION</span>
+                                </div>
+                            @endif
+
+                            <div class="font-size-md text-truncate p-x-20x">{{$product['main_title']}}</div>
+                            <div class="text-center">
+                                @if($product['skuPrice']['skuPromotion']['promot_price'] != $product['skuPrice']['skuPromotion']['price'])
+                                    <span class="font-size-md p-r-5x">${{ number_format(($product['skuPrice']['skuPromotion']['promot_price'] / 100), 2) }}</span>
+                                    <span class="font-size-md text-green text-throughLine">${{ number_format(($product['skuPrice']['skuPromotion']['price'] / 100), 2) }}</span>
+                                @else
+                                    <span class="font-size-md p-r-5x">${{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
 
         </div>
         <div class="text-center m-y-10x seeMore-info">
