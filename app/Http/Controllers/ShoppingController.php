@@ -94,4 +94,24 @@ class ShoppingController extends BaseController
         $result = $this->request('stock', $params);
         return $result;
     }
+
+    public function searchProductByKeyword(Request $request)
+    {
+        $params = array(
+            'cmd' => 'search',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'page' => $request->input('page'),
+            'limit' => $request->input('limit'),
+            'kw' => $request->input('kw'),
+            'uuid' => $_COOKIE['uid']
+        );
+        $result = $this->request('search', $params);
+        return $result;
+    }
+
+    public function search(Request $request)
+    {
+        return view('shopping.search');
+    }
 }
