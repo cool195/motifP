@@ -9,16 +9,16 @@
                 <div class="rightContent">
                     <div class="orderList" id="orderListContainer" data-pagenum="1" data-loading="false">
                         <!-- Order List -->
-                    @if(empty($data['list']))
-                        <!-- 空订单列表 提示信息 -->
-                            <div class="empty-content">
-                                <div class="m-b-20x p-b-5x"><i class="iconfont icon-book"></i></div>
-                                <p class="text-primary m-b-20x p-b-20x font-size-llxx">No Orders Found</p>
+                        <div class="bigNoodle text-center leftMeun-title">MY ORDERS</div>
+                        <hr class="hr-black m-t-0">
+                       @if(empty($data['list']))
+                            <!-- 空订单列表 提示信息 -->
+                            <div class="text-center p-x-30x p-b-30x empty-marginTop">
+                                <i class="iconfont icon-error icon-fontSize-big"></i>
+                                <p class="bigNoodle font-size-llxx m-t-40x uppercase">No Orders Found!</p>
                                 <a href="/daily" class="btn btn-primary p-y-5x btn-320 bigNoodle font-size-lxx">SHOP NOW</a>
                             </div>
                         @else
-                            <div class="bigNoodle text-center leftMeun-title">MY ORDERS</div>
-                            <hr class="hr-black m-t-0">
                             @foreach($data['list'] as $order)
                                 @foreach($order['subOrderList'] as $subOrder)
                                     @if($subOrder['status_code'] != 11)
