@@ -3752,7 +3752,7 @@ function HideSeeMore(seemoreName) {
                 HideSeeMore('.followList-seeMore');
             }
         })
-        SubstringText('.followText-Info', 114);
+        SubstringText('.followText-Info', 98);
     } catch (e) {
     }
 
