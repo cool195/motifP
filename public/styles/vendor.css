@@ -3712,7 +3712,7 @@ input[type="button"].btn-block {
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 
 .productAttr-dropdown {
