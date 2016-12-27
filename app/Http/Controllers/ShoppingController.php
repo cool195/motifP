@@ -95,23 +95,34 @@ class ShoppingController extends BaseController
         return $result;
     }
 
-    public function searchProductByKeyword(Request $request)
+    public function search(Request $request)
     {
         $params = array(
             'cmd' => 'search',
             'pin' => Session::get('user.pin'),
             'token' => Session::get('user.token'),
-            'page' => $request->input('page'),
-            'limit' => $request->input('limit'),
+            'page' => $request->input('page', 1),
+            'limit' => $request->input('limit', 16),
             'kw' => $request->input('kw'),
             'uuid' => $_COOKIE['uid']
         );
+
+        $categories = $this->getShoppingCategoryList();
         $result = $this->request('search', $params);
-        return $result;
+        if($result['success']){
+            $wishlist = $this->wishlist();
+            foreach($result['data']['list'] as &$value){
+                $value['spuBase']['isWished'] = 0;
+                if(in_array($value['spuBase']['spu'], $wishlist)){
+                    $value['spuBase']['isWished'] = 1;
+                }
+            }
+        }
+        if($request->input('ajax')) {
+            return $result;
+        }
+
+        return view('shopping.search', ['productAll'=>$result['data'], 'categories'=>$categories]);
     }
 
-    public function search(Request $request)
-    {
-        return view('shopping.search');
-    }
 }
