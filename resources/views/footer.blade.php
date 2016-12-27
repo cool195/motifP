@@ -179,7 +179,7 @@
 
 <div id="top">
     <div class="btn btn-top btn-circle p-a-5x">
-        <i class="iconfont icon-top font-size-lx text-white"></i>
+        <i class="iconfont icon-up"></i>
     </div>
 </div>
 

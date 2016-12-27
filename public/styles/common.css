@@ -1919,13 +1919,15 @@ select::-ms-expand { display: none; }
   opacity: 1;
 }
 
-#top .btn-top{
-  background-color:#000;
+#top .icon-up{
+  background-color:#fff;
   border-radius:50%;
+  font-size: 2.875rem;
+  border: solid 1px #c2c2c2;
 }
 
-#top .btn-top:hover{
-   opacity: .9;
+#top .icon-up:hover{
+   opacity: .8;
  }
 
 

@@ -7893,6 +7893,9 @@ a.bg-red:focus, a.bg-red:hover {
   content: "\e69f";
 }
 .icon-shoplight:before { content: "\e6a0"; }
+.icon-uplight:before { content: "\e6a3"; }
+.icon-o:before { content: "\e6a4"; }
+.icon-up:before { content: "\e6a5"; }
 
 .footer-icon{
   font-size: 36px;
