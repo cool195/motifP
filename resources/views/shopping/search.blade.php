@@ -81,7 +81,7 @@
     <!-- 商品列表 -->
     <div class="container m-t-20x m-b-20x product-container" id="searchList-container" data-pagenum="1" data-loading="false" data-searchid="0">
         <div class="text-center bigNoodle font-size-llx p-y-10x">
-            <span>SEARCH RESULTS FOR 'test'</span>
+            <span>SEARCH RESULTS FOR {{$kw}}</span>
         </div>
         <div class="row" id="search-list">
 
@@ -127,6 +127,7 @@
             @endforeach
 
         </div>
+        <input type="hidden" value="{{$kw}}">
         <div class="text-center m-y-10x seeMore-info">
             <div class="productList-seeMore" style="display: none">
                 <div class="btn btn-gray btn-380 btn-seeMore bigNoodle font-size-lx">VIEW MORE</div>

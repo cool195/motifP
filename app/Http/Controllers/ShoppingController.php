@@ -122,7 +122,7 @@ class ShoppingController extends BaseController
             return $result;
         }
 
-        return view('shopping.search', ['productAll'=>$result['data'], 'categories'=>$categories]);
+        return view('shopping.search', ['productAll'=>$result['data'], 'categories'=>$categories, 'kw'=>$request->input('kw')]);
     }
 
 }
