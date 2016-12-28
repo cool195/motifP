@@ -1189,7 +1189,11 @@ function HideSeeMore(seemoreName) {
                             getAddressList();
                             var Aid = data.data.receiving_id;
                             setTimeout(function () {
-                                if ($('.card-message') && $('div[data-aid = "' + Aid + '"]').hasClass('active')) {
+                                if ($('.card-message')) {
+
+                                    $('.address-item').removeClass('active');
+                                    $('div[data-aid = "' + Aid + '"]').addClass('active');
+
                                     $('.card-message .def-name').html(data.data.name);
                                     $('.card-message .def-city').html(data.data.city);
                                     $('.card-message .def-zip').html(data.data.zip);
@@ -1206,7 +1210,7 @@ function HideSeeMore(seemoreName) {
                                         type: 'get'
                                     })
                                 }
-                            }, 1000);
+                            }, 100);
 
                         }
                     })
@@ -1228,24 +1232,30 @@ function HideSeeMore(seemoreName) {
                             $('.add-address').addClass('disabled');
                             $('#addAddressForm').find('input[type="text"]').val('');
                             getAddressList();
-                            if ($('.card-message') && $('div[data-aid = "' + Aid + '"]').hasClass('active')) {
-                                $('.card-message .def-name').html(data.data.name);
-                                $('.card-message .def-city').html(data.data.city);
-                                $('.card-message .def-zip').html(data.data.zip);
-                                $('.card-message .def-state').html(data.data.state);
+                            setTimeout(function () {
+                                if ($('.card-message')) {
 
-                                $('.card-message .def-tel').val(data.data.telephone);
-                                $('.card-message .def-addr1').val(data.data.detail_address1);
-                                $('.card-message .def-addr2').val(data.data.detail_address2);
-                                $('.card-message .def-country').val(data.data.country);
+                                    $('.address-item').removeClass('active');
+                                    $('div[data-aid = "' + Aid + '"]').addClass('active');
 
-                                $('#defaultAddr').html(data.data.name + " " + data.data.detail_address1 + " " + data.data.city + " " + data.data.state + " " + data.data.country + " " + data.data.zip);
+                                    $('.card-message .def-name').html(data.data.name);
+                                    $('.card-message .def-city').html(data.data.city);
+                                    $('.card-message .def-zip').html(data.data.zip);
+                                    $('.card-message .def-state').html(data.data.state);
 
-                                $.ajax({
-                                    url: '/wordpay/selAddr/' + Aid,
-                                    type: 'get'
-                                })
-                            }
+                                    $('.card-message .def-tel').val(data.data.telephone);
+                                    $('.card-message .def-addr1').val(data.data.detail_address1);
+                                    $('.card-message .def-addr2').val(data.data.detail_address2);
+                                    $('.card-message .def-country').val(data.data.country);
+
+                                    $('#defaultAddr').html(data.data.name + " " + data.data.detail_address1 + " " + data.data.city + " " + data.data.state + " " + data.data.country + " " + data.data.zip);
+
+                                    $.ajax({
+                                        url: '/wordpay/selAddr/' + Aid,
+                                        type: 'get'
+                                    })
+                                }
+                            }, 100);
                         }
                     })
             }
