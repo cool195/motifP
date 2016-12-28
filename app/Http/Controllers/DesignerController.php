@@ -19,7 +19,7 @@ class DesignerController extends BaseController
             'cmd' => 'designerinfolist',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'size' => $request->input('size', 10),
+            'size' => $request->input('size', 12),
             'start' => $request->input('start', 1),
         );
 
