@@ -2886,7 +2886,7 @@ function HideSeeMore(seemoreName) {
     function designer_getDesignerList() {
         var $DesignerContainer = $('#designerContainer'),
             Start = $DesignerContainer.data('start'),
-            Size = 10;
+            Size = 12;
         // 判断是否还有数据要加载
         if (Start === -1) {
             return;
