@@ -163,9 +163,27 @@ class WordpayController extends BaseController
         return $result['data']['list'];
     }
 
-    public function selShip($type)
+    public function selShip(Request $request)
     {
-        $shippingMethods = $this->getShippingMethod();
+        if (Session::has('user.checkout.address.receiving_id')) {
+            $result['data'] = Session::get('user.checkout.address');
+        } else {
+            //获取默认地址
+            $params = array(
+                'cmd' => 'gdefault',
+                'uuid' => $_COOKIE['uid'],
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+            );
+            $result = $this->request('useraddr', $params);
+        }
+
+        $country = $result['data']['country_name_sn'];
+        $type = $request->input('type');
+        $price = $request->input('price');
+
+        $shippingMethods = $this->getShippingMethod($country, $price);
+
         Session::forget('user.checkout.selship');
         foreach ($shippingMethods as $value) {
             if ($value['logistics_type'] == $type) {

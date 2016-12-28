@@ -148,7 +148,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::post('/wordpay/delCard', 'WordpayController@delCreditCard');
 
-    Route::get('/wordpay/selship/{type}', 'WordpayController@selShip');
+    Route::get('/wordpay/selship', 'WordpayController@selShip');
 
     Route::get('/wordpay/paywith/{type}/{cardid}', 'WordpayController@paywith');
 
@@ -325,6 +325,7 @@ Route::get('/test', 'PageController@test');
 
 Route::get('/banner', 'DailyController@banner');
 
+Route::get('/testSession', 'WordpayController@test');
 
 
 
