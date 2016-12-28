@@ -6861,7 +6861,9 @@ a.text-red:focus, a.text-red:hover {
 .font-size-xxs {
   font-size: 0.625rem;
 }
-
+.bg-transparent{
+  background: transparent;
+}
 .bg-inverse {
   color: #fff;
   background-color: #000000;

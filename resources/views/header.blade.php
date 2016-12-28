@@ -129,7 +129,7 @@
                             <div class="avenirRegular font-size-sm search-bar">
                                 <input type="text" name="kw" placeholder="Search Motif">
                                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                                <button class="btn bg-white" type="submit"><i class="iconfont icon-search font-size-lxx"></i></button>
+                                <button class="btn bg-transparent" type="submit"><i class="iconfont icon-search font-size-lxx"></i></button>
                             </div>
                         </form>
                     </li>

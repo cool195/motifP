@@ -142,7 +142,6 @@ function HideSeeMore(seemoreName) {
         }else {
 
             $('.search-bar').show();
-
             $(this).addClass('active');
         }
     });
