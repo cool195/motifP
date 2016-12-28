@@ -146,6 +146,13 @@ footer .verticalHr{
 .openSans {
   font-family: "OpenSansRegular";
 }*/
+.cartInfo-bar{
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+}
 .input-email{
   padding: 1px 0.75rem;
   border: solid 1px #000;
@@ -1913,6 +1920,7 @@ select::-ms-expand { display: none; }
   opacity: 0;
   -webkit-transition: opacity 500ms linear;
   transition: opacity 500ms linear;
+  z-index: 99;
 }
 
 #top.active{

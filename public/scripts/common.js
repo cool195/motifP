@@ -146,6 +146,17 @@ function HideSeeMore(seemoreName) {
         }
     });
 
+    // 购物车悬浮
+    if ($('.cartInfo-bar').length > 0){
+        $(function() {
+            $('.cartInfo-bar').scrollFix({
+                startTop:'body',
+                bottom: '0',
+                endPos : 'footer',
+                zIndex : 9
+            });
+        });
+    }
 
     // 订阅窗口显示
     try {

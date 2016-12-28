@@ -118,12 +118,12 @@
                             <!-- 选择地址 -->
                             {{--Shipping Address--}}
                             <div class="p-a-20x select-address @if(empty($address['data']['list'])) disabled @endif">
-                                <div class="flex flex-alignCenter flex-fullJustified">
-                                    <span class="font-size-md avenirMedium">Shipping Address</span>
-                                    <span class="font-size-md pull-right">
-                                        <a class="btn btn-secondary btn-md btn-addNewAddress" href="javascript:void(0)">+ Add New Address</a>
-                                    </span>
-                                </div>
+                                {{--<div class="flex flex-fullJustified">--}}
+                                    {{--<span class="font-size-md avenirMedium">Shipping Address</span>--}}
+                                    <div class="text-right p-r-20x">
+                                        <a class="btn font-size-lx p-x-10x btn-secondary bigNoodle uppercase btn-addNewAddress">+ Add New Address</a>
+                                    </div>
+                                {{--</div>--}}
                                 <div class="row p-x-10x p-t-20x address-list" id="addressList-info">
                                     @foreach($address['data']['list'] as $value)
                                     <div class="col-md-6">

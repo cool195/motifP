@@ -47,7 +47,7 @@
 
 <!-- 内容 -->
 <section class="body-container m-y-30x">
-    <div class="container content-maxWidth">
+    <div class="container content-maxWidth m-b-50x">
         @if(empty($cart['showSkus']))
             {{--空购物车 提示信息--}}
             <h4 class="text-center bigNoodle font-size-llxxx">In Bag</h4>
@@ -222,32 +222,34 @@
             <hr class="hr-gray">
         @endif
     </div>
-    <hr class="hr-black m-t-50x">
-    <div class="container">
-        @if(!empty($cart['showSkus']))
-            <div class="bg-white m-y-20x p-x-20x">
-                <div class="text-right font-size-md">
-                    @if(!empty($cart['showSkus']))
-                        <span class="avenirBold total_sku_qtty">Items ({{$cart['total_sku_qtty'] }}):</span>
-                        <span class="total_amount">${{number_format($cart['total_amount'] /100, 2)}}</span>
-                        @if($cart['vas_amount'] > 0)
-                            <span class="m-l-30x avenirBold">Additional Services:</span>
-                            <span class="vas_amount">${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
-                        @endif
-                        <span class="m-l-30x avenirBold">Bag Subtotal:</span>
-                        <span class="pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span>
-                        @if(Session::get('user.pin'))
-                            <a href="/cart/ordercheckout"
-                               data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-                               class="m-l-30x bigNoodle font-size-llx btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed To Checkout</a>
-                        @else
-                            <a class="m-l-30x bigNoodle font-size-llx btn-toCheckout btn-loginModal @if($cart['pay_amount'] <= 0) disabled @endif" data-referer="/cart/ordercheckout">Proceed To Checkout</a>
-                        @endif
-                    @endif
+    @if(!empty($cart['showSkus']))
+    <div class="cartInfo-bar bg-white">
+        <hr class="hr-black">
+        <div class="container">
+                <div class="m-y-20x p-x-20x">
+                    <div class="text-right font-size-md">
+                            <span class="avenirBold total_sku_qtty">Items ({{$cart['total_sku_qtty'] }}):</span>
+                            <span class="total_amount">${{number_format($cart['total_amount'] /100, 2)}}</span>
+                            @if($cart['vas_amount'] > 0)
+                                <span class="m-l-30x avenirBold">Additional Services:</span>
+                                <span class="vas_amount">${{ number_format($cart['vas_amount'] / 100, 2) }}</span>
+                            @endif
+                            <span class="m-l-30x avenirBold">Bag Subtotal:</span>
+                            <span class="pay_amount">${{ number_format($cart['pay_amount'] / 100, 2)}}</span>
+                            @if(Session::get('user.pin'))
+                                <a href="/cart/ordercheckout"
+                                   data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
+                                   class="m-l-30x bigNoodle font-size-llx btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed To Checkout</a>
+                            @else
+                                <a class="m-l-30x bigNoodle font-size-llx btn-toCheckout btn-loginModal @if($cart['pay_amount'] <= 0) disabled @endif" data-referer="/cart/ordercheckout">Proceed To Checkout</a>
+                            @endif
+
+                    </div>
                 </div>
-            </div>
-        @endif
+        </div>
     </div>
+    @endif
+
 </section>
 
 <!-- 删除确认框 -->
