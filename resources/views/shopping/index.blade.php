@@ -105,7 +105,7 @@
         <div class="row">
             @foreach($productAll['list'] as $product)
             <div class="col-md-3 col-xs-6">
-                <div class="productList-item">
+                <div class="productList-item product-item">
                     <div class="image-container">
                         <a href="/detail/{{$product['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
                            data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}"
