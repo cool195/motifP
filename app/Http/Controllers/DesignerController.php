@@ -34,6 +34,7 @@ class DesignerController extends BaseController
                 }
                 $list['spus'] = implode('_', $spus);
             }
+            $list['seo_tag'] = implode(',', $list['seo_label']);
 //            if (isset($list['describe']) && strlen($list['describe']) > 300) {
 //                $list['describe'] = mb_substr($list['describe'], 0, 300);
 //                $list['describe'] = $list['describe'] . "...";
@@ -83,6 +84,7 @@ class DesignerController extends BaseController
         if (empty($result['data'])) {
             abort(404);
         }
+        $result['data']['seo_tag'] = implode(',', $result['data']['seo_label']);
         //设计师商品动态模版
         $params = array(
             'cmd' => 'dmodel',

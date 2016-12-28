@@ -39,12 +39,11 @@
                                     <div id="{{$daily['videoId']}}" class="ytplayer"
                                          data-playid="{{$daily['videoId']}}"></div>
                                     <div class="bg-player">
-                                        <img class="img-fluid bg-img"
-                                             src="{{config('runtime.CDN_URL')}}/n1/{{$daily['imgPath']}}" alt="">
+                                        <img class="img-fluid bg-img" src="{{config('runtime.CDN_URL')}}/n1/{{$daily['imgPath']}}" alt="">
                                         <div class="btn-beginPlayer designer-beginPlayer">
                                             <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
                                                  srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
-                                                 alt="" width="50" height="50">
+                                                 alt="{{$daily['seo_tag']}}" width="50" height="50">
                                         </div>
                                     </div>
                                     <div class="btn-morePlayer" hidden>
@@ -66,7 +65,7 @@
                                class="daily-img">
                                 <img data-original="{{config('runtime.CDN_URL')}}/n3/{{$daily['imgPath']}}"
                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                                     class="img-fluid img-daily img-lazy"
+                                     class="img-fluid img-daily img-lazy" alt="{{$daily['seo_tag']}}"
                                      style="width: 100%;" data-weight="{{$daily['weight']}}" data-height="{{$daily['height']}}">
                             </a>
                             @if(!empty($daily['title'] || !empty($daily['subTitle'])))
@@ -120,7 +119,7 @@
                         <div class="btn-beginPlayer designer-beginPlayer">
                             <img src="{{config('runtime.Image_URL')}}/images/daily/icon-player.png"
                                  srcset="{{config('runtime.Image_URL')}}/images/daily/icon-player@2x.png 2x,{{config('runtime.Image_URL')}}/images/daily/icon-player@3x.png 3x"
-                                 alt="" width="50" height="50">
+                                 alt="@{{ $value.seo_tag }}" width="50" height="50">
                         </div>
                     </div>
                     <div class="btn-morePlayer" hidden>
@@ -144,7 +143,7 @@
                class="daily-img">
                 <img data-original="{{config('runtime.CDN_URL')}}/n3/@{{ $value.imgPath }}"
                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
-                     class="img-fluid img-daily img-lazy"
+                     class="img-fluid img-daily img-lazy" alt="@{{ $value.seo_tag }}"
                      style="width: 100%;" data-weight="@{{$value.weight}}" data-height="@{{$value.height}}">
             </a>
 

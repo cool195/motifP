@@ -29,6 +29,7 @@ class DailyController extends BaseController
                 $WH = explode('X', $pathArr[3]);
                 $value['weight'] = $WH[0];
                 $value['height'] = $WH[1];
+                $value['seo_tag'] = implode(',', $value['seo_label']);
             }
         }
         if ($request->input('ajax')) {

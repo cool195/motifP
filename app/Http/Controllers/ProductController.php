@@ -30,7 +30,6 @@ class ProductController extends BaseController
                 }
             }
             $result['data']['category_name'] = $categoryName;
-
         }
 
 
@@ -134,7 +133,7 @@ class ProductController extends BaseController
             if (1 == $result['data']['sale_type']) {
                 $result['data']['sale_status'] = $this->getSaleStatus($result['data']);
             }
-
+            $result['data']['seo_tag'] = implode(',', $result['data']['seo_label']);
         }
         return $result;
     }
