@@ -34,8 +34,11 @@
                 </div>
                 <div class="col-md-4">
                     <div class="text-right">
-                        <input class="text-primary input-search font-size-sm" placeholder="Looking for something specific?" type="text">
-                        <a class="btn btn-primary bigNoodle font-size-lx btn-search">SEARCH</a>
+                    <form class="form" method="post" name="searchFrom" action="/search">
+                        <input class="text-primary input-search font-size-sm" name="kw" placeholder="Looking for something specific?" type="text">
+                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                        <button class="btn btn-primary bigNoodle font-size-lx btn-footerSearch" type="submit">SEARCH</button>
+                    </form>
                     </div>
                 </div>
             </div>

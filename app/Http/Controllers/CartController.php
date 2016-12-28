@@ -67,9 +67,22 @@ class CartController extends BaseController
 
         $_accountList = $this->getCartAccountList($request, -1, "", "", $result['data']['receiving_id']);
         $logisticsList = $this->getLogisticsList($result['data']['country_name_sn'], $_accountList['data']['total_amount'] + $_accountList['data']['vas_amount']);
-        if (!Session::get('user.checkout.selship')) {
-            Session::put('user.checkout.selship', $logisticsList['data']['list'][0]);
+
+        if (!Session::has('user.checkout.selship')) {
+            Session::put('user.checkout.selship', current($logisticsList['data']['list']));
+        }else{
+            $logisticsFlag = false;
+            foreach ($logisticsList['data']['list'] as $value) {
+                if ($value['logistics_type'] == Session::get('user.checkout.selship.logistics_type')) {
+                    $logisticsFlag = true;
+                    break;
+                }
+            }
+            if(!$logisticsFlag){
+                Session::put('user.checkout.selship', current($logisticsList['data']['list']));
+            }
         }
+
         $accountList = $this->getCartAccountList($request, Session::get('user.checkout.selship.logistics_type'), "", "", $result['data']['receiving_id']);
         if (empty($accountList['data'])) {
             return redirect('cart');

@@ -94,6 +94,10 @@ ul,li,ol{ list-style: none; }
   padding: 0;
   min-width: 12.5rem;
 }
+.search-bar > button{
+  line-height: 1!important;
+  padding-bottom: 0;
+}
 
 /* footer */
 a:focus,input:focus {
@@ -112,7 +116,7 @@ footer .text-Copyright{
   opacity: .6;
 }
 
-footer .btn-search{
+footer .btn-footerSearch{
   border-radius: 0;
   padding: .25rem .75rem;
 }

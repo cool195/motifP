@@ -81,13 +81,12 @@
     <!-- 商品列表 -->
     <div class="container m-t-20x m-b-20x product-container" id="searchList-container" data-pagenum="1" data-loading="false" data-searchid="0">
         <div class="text-center bigNoodle font-size-llx p-y-10x">
-            <span>SEARCH RESULTS FOR {{$kw}}</span>
+            <span>SEARCH RESULTS FOR '{{$kw}}'</span>
         </div>
-        <div class="row" id="search-list">
-
+        <div class="row">
             @foreach($productAll['list'] as $product)
                 <div class="col-md-3 col-xs-6">
-                    <div class="productList-item">
+                    <div class="productList-item search-item">
                         <div class="image-container">
                             <a href="/detail/{{$product['spuBase']['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
                                data-spu="{{$product['spuBase']['spu']}}" data-title="{{$product['spuBase']['main_title']}}"
@@ -127,10 +126,10 @@
             @endforeach
 
         </div>
-        <input type="hidden" value="{{$kw}}">
+        <input type="hidden" name="keyword" value="{{$kw}}">
         <div class="text-center m-y-10x seeMore-info">
-            <div class="productList-seeMore" style="display: none">
-                <div class="btn btn-gray btn-380 btn-seeMore bigNoodle font-size-lx">VIEW MORE</div>
+            <div class="searchList-seeMore" style="display: none">
+                <div class="btn btn-gray btn-380 btn-seeSearchMore bigNoodle font-size-lx">VIEW MORE</div>
             </div>
             <div class="loading product-loading" style="display: none">
                 <div class="loader">
@@ -146,37 +145,37 @@
 <div class="col-md-3 col-xs-6">
     <div class="productList-item">
         <div class="image-container">
-            <a href="/detail/@{{ $value.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
-               data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
+            <a href="/detail/@{{ $value.spuBase.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
+               data-spu="@{{ $value.spuBase.spu }}" data-title="@{{ $value.spuBase.main_title }}"
                data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
-                <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ $value.main_image_url }}"
-                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="@{{ $value.main_title }}">
-                @{{ each $value.image_paths as value index }}
-                    @{{ if 0 == index }}
-                    <img class="img-fluid productImg-hover" src="{{config('runtime.CDN_URL')}}/n2/@{{ value }}" alt="@{{ $value.main_title }}">
-                    @{{ /if }}
-                @{{ /each }}
+                <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ $value.spuBase.main_image_url }}"
+                     src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="@{{ $value.spuBase.main_title }}">
+                {{--@{{ each $value.image_paths as value index }}--}}
+                    {{--@{{ if 0 == index }}--}}
+                    {{--<img class="img-fluid productImg-hover" src="{{config('runtime.CDN_URL')}}/n2/@{{ value }}" alt="@{{ $value.spuBase.main_title }}">--}}
+                    {{--@{{ /if }}--}}
+                {{--@{{ /each }}--}}
                 <div class="bg-heart"></div>
             </a>
             @if(Session::has('user'))
-                <span class="product-heart btn-heart"><i class="iconfont btn-wish btn-wishList font-size-lxx @{{ if $value.isWished }} active @{{ /if }}" data-spu="@{{ $value.spu }}"></i></span>
+                <span class="product-heart btn-heart"><i class="iconfont btn-wish btn-wishList font-size-lxx @{{ if $value.spuBase.isWished }} active @{{ /if }}" data-spu="@{{ $value.spuBase.spu }}"></i></span>
             @else
-                <span class="product-heart btn-heart"><i class="iconfont font-size-lxx btn-wish btn-wishList" data-actionspu="@{{ $value.spu }}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
+                <span class="product-heart btn-heart"><i class="iconfont font-size-lxx btn-wish btn-wishList" data-actionspu="@{{ $value.spuBase.spu }}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
             @endif
         </div>
         <div class="price-caption text-center">
             <!--预售-->
-            @{{ if 1 == $value.sale_type }}
+            @{{ if 1 == $value.spuBase.sale_type }}
             <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
                 <span>LIMITED EDITION</span>
             </div>
             @{{ /if }}
             
-            <div class="font-size-md text-truncate p-x-20x">@{{ $value.main_title }}</div>
+            <div class="font-size-md text-truncate p-x-20x">@{{ $value.spuBase.main_title }}</div>
             <div class="text-center">
                 @{{ if $value.skuPrice.sale_price != $value.skuPrice.price }}
                     <span class="font-size-md p-r-5x">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
-                    <span class="font-size-md text-green text-throughLine">$@{{ ($value.skuPrice.skuPromotion.price/100).toFixed(2) }}</span>
+                    <span class="font-size-md text-green text-throughLine">$@{{ ($value.skuPrice.price/100).toFixed(2) }}</span>
                 @{{ else }}
                     <span class="font-size-md p-r-5x">$@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}</span>
                 @{{ /if }}
