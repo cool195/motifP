@@ -40,13 +40,13 @@
         }
     });
     clipboard.on('success', function(e) {
-        $('#btn-copy').html('Code Copied');
+        $('#btn-copy').html('CODE COPIED');
         setTimeout(function () {
-            $('#btn-copy').html('Copy');
+            $('#btn-copy').html('COPY');
         }, 1500);
     });
     clipboard.on('error', function(e) {
-        $('#btn-copy').html('Copy');
+        $('#btn-copy').html('COPY');
     });
 
 </script>
