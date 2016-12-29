@@ -32,6 +32,26 @@
         });
     }
 
+    function sendCartToKlaviyo(){
+        var _learnq = _learnq || [];
+        _learnq.push(['track', 'Proceed to Checkout', {
+            'value' : totalPrice ,
+            'ItemNames' : [@foreach($cart['showSkus'] as $key => $product) @if(0 == $key)'{{$product['main_title']}}' @else , '{{$product['main_title']}}' @endif @endforeach],
+            'Items' : [
+                @foreach($cart['showSkus'] as $key => $product)
+                {
+                    'SPU' : '{{$product['spu']}}',
+                    'Name' : '{{$product['main_title']}}',
+                    'Quantity' : '{{$product['sale_qtty']}}',
+                    'ItemPrice' : '{{number_format($product['sale_price'] / 100, 2)}}',
+                    'ProductURL' : 'https://www.motif.me{{ $_SERVER['REQUEST_URI'] }}',
+                    'ImageURL' : '{{$product['main_image_Url']}}'
+                },
+                @endforeach
+            ]
+        }]);
+    }
+
     var content_ids = [@foreach($cart['showSkus'] as $key => $product) @if(0 == $key)'{{$product['spu']}}' @else , '{{$product['spu']}}' @endif @endforeach];
     var totalPrice = "{{ number_format($cart['pay_amount'] / 100, 2)}}";
 </script>
@@ -76,7 +96,7 @@
                         @if(Session::get('user.pin'))
                             <a href="/cart/ordercheckout"
                                data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-                               class="m-l-30x btn btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
+                               class="m-l-30x btn btn-primary btn-lg btn-toCheckout cartKlaviyo @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
                                 To Checkout</a>
                         @else
                             <a href="/login"
@@ -259,7 +279,7 @@
                 @if(Session::get('user.pin'))
                     <a href="/cart/ordercheckout"
                        data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-                       class="btn btn-block btn-primary btn-lg btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
+                       class="btn btn-block btn-primary btn-lg btn-toCheckout cartKlaviyo @if($cart['pay_amount'] <= 0) disabled @endif">Proceed
                         To Checkout</a>
                 @else
                     <a href="/login"
@@ -291,12 +311,6 @@
         </div>
     </div>
 </div>
-<script>
-    var _learnq = _learnq || [];
-    _learnq.push(['track', 'Add to Bag Successfully', {
-        'Total Price' : totalPrice ,
-        'Items Purchased' : [@foreach($cart['showSkus'] as $key => $product) @if(0 == $key)'{{$product['main_title']}}' @else , '{{$product['main_title']}}' @endif @endforeach]
-    }]);
-</script>
+
 
 @include('footer')

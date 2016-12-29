@@ -29,6 +29,26 @@
         }
     });
 
+    function sendCheckoutToKlaviyo(){
+        var _learnq = _learnq || [];
+        _learnq.push(['track', 'Checkout Successfully', {
+            'value' : totalPrice ,
+            'ItemNames' : [@foreach($accountList['showSkus'] as $key => $product) @if(0 == $key)'{{$product['main_title']}}' @else , '{{$product['main_title']}}' @endif @endforeach],
+            'Items' : [
+                    @foreach($accountList['showSkus'] as $key => $product)
+                {
+                    'SPU' : '{{$product['spu']}}',
+                    'Name' : '{{$product['main_title']}}',
+                    'Quantity' : '{{$product['sale_qtty']}}',
+                    'ItemPrice' : '{{number_format($product['sale_price'] / 100, 2)}}',
+                    'ProductURL' : 'https://www.motif.me{{ $_SERVER['REQUEST_URI'] }}',
+                    'ImageURL' : '{{$product['main_image_Url']}}'
+                },
+                @endforeach
+            ]
+        }]);
+    }
+
     var content_ids = [@foreach($accountList['showSkus'] as $key => $product) @if(0 == $key)'{{$product['spu']}}' @else , '{{$product['spu']}}' @endif @endforeach];
     var totalPrice = "{{ number_format($accountList['pay_amount'] / 100, 2)}}";
 
