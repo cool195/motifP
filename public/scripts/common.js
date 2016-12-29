@@ -3006,16 +3006,16 @@ function HideSeeMore(seemoreName) {
     }
 
     // 点击查看更多 designer 信息
-    $('.designerList-seeMore').on('click', function () {
-        $('img.img-lazy').each(function () {
-            var Src = $(this).attr('src'),
-                Original = $(this).attr('data-original');
-            if (Src === Original) {
-                $(this).removeClass('img-lazy');
-            }
-        });
-        designer_getDesignerList();
-    });
+    //$('.designerList-seeMore').on('click', function () {
+    //    $('img.img-lazy').each(function () {
+    //        var Src = $(this).attr('src'),
+    //            Original = $(this).attr('data-original');
+    //        if (Src === Original) {
+    //            $(this).removeClass('img-lazy');
+    //        }
+    //    });
+    //    designer_getDesignerList();
+    //});
 
     $('.btn-follow').on('click', function () {
         var $this = $(this);
@@ -3192,15 +3192,62 @@ function HideSeeMore(seemoreName) {
     }
 
     // 点击 查看更多商品
-    $('.btn-seeMore').on('click', function () {
-        $('img.img-lazy').each(function () {
-            var Src = $(this).attr('src'),
-                Original = $(this).attr('data-original');
-            if (Src === Original) {
-                $(this).removeClass('img-lazy');
+    //$('.btn-seeMore').on('click', function () {
+    //    $('img.img-lazy').each(function () {
+    //        var Src = $(this).attr('src'),
+    //            Original = $(this).attr('data-original');
+    //        if (Src === Original) {
+    //            $(this).removeClass('img-lazy');
+    //        }
+    //    });
+    //    getProductList(1);
+    //});
+
+    // 滚动 查看更多
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            $('img.img-lazy').each(function () {
+                var Src = $(this).attr('src'),
+                    Original = $(this).attr('data-original');
+                if (Src === Original) {
+                    $(this).removeClass('img-lazy');
+                }
+            });
+
+            var scrollCurrent = window.pageYOffset,
+                scrollMax = $(document).height() - $(window).height();
+            // 当页面在底部区域时, 触发加载事件
+            if (scrollCurrent !== scrollMax && scrollMax <= 300 + scrollCurrent) {
+                // shopping list
+                if($('#productList-container').length >0){
+                    getProductList(1);
+                }
+                // designer list
+                if($('#designerContainer').length >0){
+                    designer_getDesignerList();
+                }
+                // daily list
+                if($('#dailyList-container').length >0){
+                    getDailyList();
+                }
+                // search list
+                if($('#searchList-container').length >0){
+                    getSearchList();
+                }
+                // wishlist
+                if($('#wishList-container').length >0){
+                    getWishList();
+                }
+                // follow list
+                if($('#followList-container').length >0){
+                    getFollowList();
+                }
+                // order list
+                if($('#orderListContainer').length >0){
+                    getOrderList();
+                }
             }
         });
-        getProductList(1);
     });
 
     // ajax 得到 product list
@@ -3361,16 +3408,16 @@ function HideSeeMore(seemoreName) {
     }
 
     // 点击 查看更多商品
-    $('.btn-seeSearchMore').on('click', function () {
-        $('img.img-lazy').each(function () {
-            var Src = $(this).attr('src'),
-                Original = $(this).attr('data-original');
-            if (Src === Original) {
-                $(this).removeClass('img-lazy');
-            }
-        });
-        getSearchList();
-    });
+    //$('.btn-seeSearchMore').on('click', function () {
+    //    $('img.img-lazy').each(function () {
+    //        var Src = $(this).attr('src'),
+    //            Original = $(this).attr('data-original');
+    //        if (Src === Original) {
+    //            $(this).removeClass('img-lazy');
+    //        }
+    //    });
+    //    getSearchList();
+    //});
 
     function getSearchList() {
         //  $SearchListontainer 列表容器
@@ -3478,16 +3525,16 @@ function HideSeeMore(seemoreName) {
     // Daily List start
 
     //点击 查看更多商品
-    $('.btn-seeMore-dailyList').on('click', function () {
-        $('img.img-lazy').each(function () {
-            var Src = $(this).attr('src'),
-                Original = $(this).attr('data-original');
-            if (Src === Original) {
-                $(this).removeClass('img-lazy');
-            }
-        });
-        getDailyList();
-    });
+    //$('.btn-seeMore-dailyList').on('click', function () {
+    //    $('img.img-lazy').each(function () {
+    //        var Src = $(this).attr('src'),
+    //            Original = $(this).attr('data-original');
+    //        if (Src === Original) {
+    //            $(this).removeClass('img-lazy');
+    //        }
+    //    });
+    //    getDailyList();
+    //});
 
     // ajax 得到 daily List
     function getDailyList() {
@@ -3637,9 +3684,9 @@ function HideSeeMore(seemoreName) {
     // 判断 order list 第一次加载订单数
     try {
         $(function () {
-            var OrderListNum = $('#orderListContainer .box-shadow').length;
+            var OrderListNum = $('#orderListContainer .order-item').length;
             $('.orderList-seeMore').show();
-            if (OrderListNum < 10) {
+            if (OrderListNum < 8) {
                 HideSeeMore('.orderList-seeMore');
             }
         })
@@ -3647,9 +3694,9 @@ function HideSeeMore(seemoreName) {
     }
 
     // 点击 查看更多 订单
-    $('.orderList-seeMore').on('click', function () {
-        getOrderList();
-    });
+    //$('.orderList-seeMore').on('click', function () {
+    //    getOrderList();
+    //});
 
     // ajax 得到 order list
     function getOrderList() {
@@ -3699,6 +3746,12 @@ function HideSeeMore(seemoreName) {
                 if (data.data.list.length < Size) {
                     HideSeeMore('.orderList-seeMore');
                 }
+
+                // 图片延迟加载
+                $('img.img-lazy').lazyload({
+                    threshold: 200,
+                    effect: 'fadeIn'
+                })
             }
         }).always(function () {
             $OrderListContainer.data('loading', false);
@@ -3789,9 +3842,9 @@ function HideSeeMore(seemoreName) {
     }
 
     //点击查看更多商品
-    $('.btn-seeMore-wishList').on('click', function () {
-        getWishList();
-    });
+    //$('.btn-seeMore-wishList').on('click', function () {
+    //    getWishList();
+    //});
 
     //ajax 得到 wish List
     function getWishList() {
@@ -3908,16 +3961,16 @@ function HideSeeMore(seemoreName) {
     } catch (e) {
     }
 
-    $('.btn-seeMore-follow').on('click', function () {
-        $('img.img-lazy').each(function () {
-            var Src = $(this).attr('src'),
-                Original = $(this).attr('data.original');
-            if (Src === Original) {
-                $(this).removeClass('img-lazy');
-            }
-        });
-        getFollowList();
-    });
+    //$('.btn-seeMore-follow').on('click', function () {
+    //    $('img.img-lazy').each(function () {
+    //        var Src = $(this).attr('src'),
+    //            Original = $(this).attr('data.original');
+    //        if (Src === Original) {
+    //            $(this).removeClass('img-lazy');
+    //        }
+    //    });
+    //    getFollowList();
+    //});
 
     //ajax 得到 Following List
     function getFollowList() {
