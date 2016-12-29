@@ -7894,7 +7894,7 @@ a.bg-red:focus, a.bg-red:hover {
 .icon-close:before {
   content: "\e69f";
 }
-.icon-shoplight:before { content: "\e6a0"; }
+.icon-shoplight:before { content: "\e6a2"; }
 .icon-uplight:before { content: "\e6a3"; }
 .icon-o:before { content: "\e6a4"; }
 .icon-up:before { content: "\e6a5"; }
