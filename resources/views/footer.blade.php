@@ -168,7 +168,22 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <script>
-    var login_email = '{{Session::get('user.login_email')}}'
+    var _learnq = _learnq || [];
+
+    _learnq.push(['account', 'ESvdYS']);
+
+    @if(Session::has('user'))
+    _learnq.push(['identify', {
+        // Change the line below to dynamically print the user's email.
+        '$email' : '{{Session::get('user.login_email')}}'
+    }]);
+    @endif
+
+    (function () {
+        var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+        b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+        var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+    })();
 </script>
 
 
