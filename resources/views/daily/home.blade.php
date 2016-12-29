@@ -4,11 +4,13 @@
     <div class="container">
             @if(!empty($banner))
                 @foreach($banner as $value)
+                    @if(0 == $value['banner_show_type'])
                         <a href="@if(1 == $value['banner_skip_type'])/detail/@elseif(2==$value['banner_skip_type'])/designer/@elseif(3==$value['banner_skip_type'])/topic/@elseif(4 == $value['banner_skip_type'])/shopping/@endif{{ $value['banner_skip'] }}">
                             <img class="img-fluid img-lazy"
                                  data-original="{{config('runtime.CDN_URL').'/n0/'.$value['img_path']}}"
                                  src="{{env('CDN_Static')}}/images/product/bg-banner@1280.png" alt="">
                         </a>
+                    @endif
                 @endforeach
             @endif
         <div class="bg-common p-y-40x">
