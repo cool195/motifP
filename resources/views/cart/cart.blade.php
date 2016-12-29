@@ -292,6 +292,7 @@
     </div>
 </div>
 <script>
+    var _learnq = _learnq || [];
     _learnq.push(['track', 'Add to Bag Successfully', {
         'Total Price' : totalPrice ,
         'Items Purchased' : [@foreach($cart['showSkus'] as $key => $product) @if(0 == $key)'{{$product['main_title']}}' @else , '{{$product['main_title']}}' @endif @endforeach]
