@@ -96,7 +96,7 @@
                 @if(Session::has('user'))
                     <li class="nav-item p-x-10x header-img" id="logged-user">
                         <a href="/user/changeprofile"
-                           class="nav-link name bigNoodle">{{Session::get('user.nickname')}}</a>
+                           class="nav-link name bigNoodle text-right">{{Session::get('user.nickname')}}</a>
                         <!--个人中心下拉框-->
                         <div class="dropdown-img">
                             <span class="triangle-up"></span>
