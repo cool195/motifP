@@ -3381,6 +3381,7 @@ function HideSeeMore(seemoreName) {
         $('#searchDropdown').html(SearchName);
         $('.dropdown-item').removeClass('active');
         $(this).addClass('active');
+        $('.sortBy-dropdown').removeClass('open');
 
         var CurrentSearch = $('#productList-container').data('searchid');
         if (SearchId != CurrentSearch) {
