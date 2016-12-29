@@ -15,14 +15,14 @@
                         </div>
                         <div class="p-t-20x">
                             <div class="font-size-md avenirBold">For Non-Personalized items</div>
-                            <img class="img-fluid" src="https://image.motif.me/n2/topic/motif/6418/1796X540/67cef8d5447cbb8101a696767cc7ecd5.jpg">
+                            <img class="img-fluid" src="https://image.motif.me/n0/topic/motif/6418/1796X540/67cef8d5447cbb8101a696767cc7ecd5.jpg">
                         </div>
                         <div class="p-t-20x">
                             <div class="font-size-md avenirBold">For Personalized items</div>
-                            <img class="img-fluid" src="https://image.motif.me/n2/topic/motif/6418/1784X551/e247ba046fde2f5eb4693ca08e742a2f.jpg">
+                            <img class="img-fluid" src="https://image.motif.me/n0/topic/motif/6418/1784X551/e247ba046fde2f5eb4693ca08e742a2f.jpg">
                             <p class="font-size-sm p-t-10x">Note: For countries beside the US, Canada and Australia, Registered Airmail may take up to 22 business days to arrive due to local dispatch or other reasons. Motif makes every attempt to deliver your items within the specified time; however, we are not responsible for any failure to deliver within that time. If you need your package to arrive by a specific date, we strongly recommend you use expedited shipping which is much faster and guaranteed.</p>
                             <p class="font-size-sm">Motif delivers to the following countries:</p>
-                            <img class="img-fluid" src="https://image.motif.me/n2/topic/motif/6338/2568X2116/378aaf753d07ce3312bad7fd11654a99.jpg">
+                            <img class="img-fluid" src="https://image.motif.me/n0/topic/motif/6338/2568X2116/378aaf753d07ce3312bad7fd11654a99.jpg">
                             <p class="font-size-sm p-t-15x">If you are not in the country listed above, please contact our customer service at <a href="mailto:service@motif.me" class="text-underLine">service@motif.me</a></p>
                         </div>
                         <div class="p-t-20x">

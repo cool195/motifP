@@ -5,11 +5,13 @@
         <div class="container banner-container bannerSwiper-container" id="dailyIndex" data-show="true">
             <div class="swiper-wrapper">
                 @foreach($banner as $value)
+                    @if(1 == $value['banner_show_type'])
                     <div class="swiper-slide">
                         <a href="@if(1 == $value['banner_skip_type'])/detail/@elseif(2==$value['banner_skip_type'])/designer/@elseif(3==$value['banner_skip_type'])/topic/@elseif(4 == $value['banner_skip_type'])/shopping/@endif{{ $value['banner_skip'] }}">
                             <img src="{{config('runtime.CDN_URL').'/n0/'.$value['img_path']}}" alt="">
                         </a>
                     </div>
+                    @endif
                 @endforeach
             </div>
             <div class="container banner-container">
