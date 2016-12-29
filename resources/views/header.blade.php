@@ -40,14 +40,14 @@
 </head>
 <body>
 {{--@if(!isset($CartCheck))--}}
-    <div class="download-info p-t-40x p-b-15x">
+    <div class="download-info p-t-20x p-b-15x">
         <div class="container">
             <div class="row text-white avenirMedium">
                 <div class="col-md-6">
-                    <span>ORDER BY DEC 10 TO RECEIVE BY DEC 24</span>
-                </div>
-                <div class="col-md-6 text-right">
                     <span>FREE SHIPPING TO 30+ COUNTRIES</span>
+                </div>
+                <div class="col-md-6 text-right uppercase">
+                    <span>20% Off Your First In App Purchas</span>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
 {{--@endif--}}
 <!-- 头部 -->
 <header class="main-header">
-    <div class="container bigNoodle font-size-lx p-t-30x">
+    <div class="container bigNoodle font-size-lx">
         <nav class="navbar-left">
             <ul class="nav navbar-primary clearfix">
                 <li class="nav-item"><a
@@ -86,9 +86,9 @@
         <div class="logo">
             <a href="/">
                 <img class="img-fluid"
-                     src="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}}"
+                     src="{{config('runtime.Image_URL')}}/images/logo/motif-logo.png{{config('runtime.V')}}"
                      alt="logo">
-                {{--srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x"--}}
+                {{--srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo.png{{config('runtime.V')}} 2x"--}}
             </a>
         </div>
         <nav class="navbar-right">

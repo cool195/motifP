@@ -16,7 +16,7 @@
     <div class="container p-t-40x">
         <div class="row m-t-40x p-t-10x">
             <div class="col-lg-6 col-md-6">
-                <img src="/images/logo/motif-logo@3x.png" alt="">
+                <img src="/images/logo/motif-logo.png" alt="">
                 <div class="text-left helve font-size-llxx text-main p-y-40x">
                     Exclusive Fashion Accessories<br/>
                     Designed by the World’s Top Fashion Bloggers,<br/>

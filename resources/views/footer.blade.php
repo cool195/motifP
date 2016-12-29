@@ -57,10 +57,10 @@
         <div class="login-content p-y-20x">
             <div class="row">
                 <div class="col-md-6">
-                    <a class="bigNoodle login-title font-size-lxx active tab-login">LOGIN</a>
+                    <a class="bigNoodle login-title font-size-lxx active tab-login">SIGN IN</a>
                 </div>
                 <div class="col-md-6">
-                    <a class="bigNoodle login-title font-size-lxx tab-register">REGISTER</a>
+                    <a class="bigNoodle login-title font-size-lxx tab-register">SIGN UP</a>
                 </div>
             </div>
 

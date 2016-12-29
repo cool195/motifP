@@ -35,7 +35,7 @@ ul,li,ol{ list-style: none; }
 .main-header{
   position: absolute;
   width: 100%;
-  z-index: 1001;
+  z-index: 1000;
 }
 .download-info{
   background-color: #000;
@@ -49,7 +49,7 @@ ul,li,ol{ list-style: none; }
   transform: translate(-50%, 0);
 }
 .nav-item>a{
-  padding-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
 }
 .navbar-primary .nav-item .text-green{
   text-decoration: underline;
@@ -62,7 +62,7 @@ ul,li,ol{ list-style: none; }
   min-width: 100%;
   background-color: #fff;
   margin-top: -5px;
-  margin-bottom: 7.5rem;
+  margin-bottom: 3rem;
 }
 
 .shop-dropdown .dropdown-menu.open{
@@ -1425,34 +1425,9 @@ select::-ms-expand { display: none; }
   min-width: 6rem;
   text-align: right;
 }
-
-/*个人中心下拉框
-.shop-dropdown{
-  position: relative;
+.main-header .navbar-left,.main-header .navbar-right{
+  padding-top: 2.1rem !important;
 }
-.shop-dropdown:hover .shop-dropdownMenu{
-  display: block;
-}
-
-.dropdown-nav-hover li {
-  padding: 3px 0 3px 0;
-}
-
-.dropdown-nav-hover li a {
-  border-left: 2px solid #ffffff;
-  padding: 5px 0 0 15px;
-  display: block;
-}
-
-.dropdown-nav-hover li a:hover {
-  border-left: 2px solid #6d91ff;
-}
-
-.dropdown-nav-hover li.active a {
-  color: #6d91ff;
-  border-left: 2px solid #6d91ff;
-}
-*/
 .header-img {
   position: relative;
 }

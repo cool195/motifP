@@ -22,7 +22,7 @@
             <ul class="nav navbar-primary">
                 <li class="nav-item nav-logo">
                     <a href="/daily">
-                        <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png{{config('runtime.V')}}" alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x">
+                        <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png{{config('runtime.V')}}" alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo.png{{config('runtime.V')}} 2x">
                     </a>
                 </li>
             </ul>
