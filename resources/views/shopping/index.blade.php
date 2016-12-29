@@ -90,7 +90,7 @@
         <div class="m-b-20x text-right">
             {{--<span class="sanBold p-r-15x">Sort By:</span>--}}
             <div class="dropdown sortBy-dropdown">
-                <button class="btn btn-sortBy avenirMedium iconfont uppercase" type="button" id="searchDropdown">
+                <button class="btn btn-sortBy avenirMedium uppercase" type="button" id="searchDropdown">
                     SORT BY
                 </button>
                 <div class="dropdown-menu sortBy-menu font-size-sm p-t-15x">
