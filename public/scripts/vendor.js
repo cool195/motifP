@@ -21936,10 +21936,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				} else if (ScrollTop >= endfix) {
 					obj.addClass(opts.baseClassName).css({
 						"z-index": zIndex,
-						"position": "absolute",
-						"top": endfix - parentOffsetTop + optsTop,
+						"position": "relative",
+						"top": 0,
 						'bottom': '',
-						"left": selfLeft - parentOffsetLeft,
+						"left": 0,
 						"width": objWidth
 					});
 					placeholder.css({
