@@ -4241,16 +4241,20 @@ function HideSeeMore(seemoreName) {
             firstName = $('.contact-firstname').val(),
             lastName = $('.contact-lastname').val(),
             orderNum = $('.contact-ordernum').val(),
-            con = $('.contact-content').val();
+            con = $('.contact-content').val(),
+            type = $('.contact-type').val(),
+            stype = $('.contact-stype').val();
         var content = 'First Name:' + firstName + '~' + 'Last Name:' + lastName + '~' + 'Order Number:' + orderNum + 'Tell US:' + con;
 
         console.log(email);
         $.ajax({
-            url: '/askshopping',
+            url: '/askshoppings',
             type: 'POST',
             data: {
                 email: email,
-                content: content
+                content: content,
+                type: type,
+                stype: stype
             }
         }).done(function(){
             $('.contact-form').hide();

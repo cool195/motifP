@@ -44,10 +44,28 @@ class AskController extends BaseController
             $params['orderno'] = $request->input('id');
             $params['stype'] = 1;
             $urlStr = '/order/orderdetail/';
-        } elseif( $request->input('skiptype') == 1){
-            $params['stype'] = 1;
         }
 
+        $result = $this->request("feedback", $params);
+        if($result['success']){
+            $result['redirectUrl'] = $urlStr . $request->input('id');
+            Session::forget('referer');
+        }
+        $result['redirectUrl'] = $urlStr . $request->input('id');
+        return $result;
+    }
+
+    public function installs(Request $request)
+    {
+        $params = array(
+            'cmd' => 'support',
+            'content' => $request->input('content'),
+            'email' => $request->input('email'),
+            'pin' => Session::get('user.pin'),
+            'type' => $request->input('type'),
+            'stype' => $request->input('stype')
+        );
+        $urlStr = '';
         $result = $this->request("feedback", $params);
         if($result['success']){
             $result['redirectUrl'] = $urlStr . $request->input('id');

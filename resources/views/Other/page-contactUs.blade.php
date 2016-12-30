@@ -33,6 +33,8 @@
                             <div class="col-md-12">
                                 <div class="btn btn-primary btn-block font-size-llxx bigNoodle" id="contact-submit">SUBMIT</div>
                             </div>
+                            <input type="hidden" name="type" class="contact-type" value="{{$type}}">
+                            <input type="hidden" name="stype"  class="contact-stype" value="{{$stype}}">
                         </form>
                     </div>
 
