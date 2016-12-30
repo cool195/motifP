@@ -159,7 +159,7 @@ function HideSeeMore(seemoreName) {
     }
 
     // 订阅窗口显示
-    try {
+    /*try {
         $(function () {
             if ($('#logged-user').length <= 0 && $('.login-container').length <= 0) {
                 if (!sessionStorage.getItem('afterTime')) {
@@ -185,7 +185,7 @@ function HideSeeMore(seemoreName) {
     // 关闭订阅窗口
     $('.redeem-close').on('click', function () {
         setCookieTwo('userShow2016', 'true', 7 * 24 * 60 * 60 * 1000);
-    });
+    });*/
 
 
     // 全局 loading
@@ -4284,16 +4284,23 @@ function HideSeeMore(seemoreName) {
 
     //邮件订阅
     // 校验 email
-    $('.subscribe-email').on('keyup blur', function () {
+    /*$('.subscribe-email').on('keyup blur', function () {
         if (login_validationEmail($(this))) {
             $('#btn-subscribe').removeClass('disabled');
         } else {
             $('#btn-subscribe').addClass('disabled');
         }
-    });
+    });*/
+
+    $('.subscribe-email').on('focus', function () {
+            $(this).parent().siblings('.warning-info').addClass('off');
+     });
 
     $('#btn-subscribe').on('click', function(){
         if ($(this).hasClass('disabled')) {
+            return;
+        }
+        if (!login_validationEmail($('.subscribe-email'))){
             return;
         }
         $.ajax({

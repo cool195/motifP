@@ -1440,6 +1440,7 @@ select::-ms-expand { display: none; }
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  padding-bottom: 1.2rem !important;
 }
 .header-img .dropdown-img {
   min-width: 9.2rem;

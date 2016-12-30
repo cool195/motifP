@@ -27,7 +27,6 @@
                         </span>
                     </form>
                     <div class="btn btn-primary p-x-10x bigNoodle font-size-lxx m-b-5x" id="btn-subscribe">SIGN ME UP</div>
-
             </div>
         </div>
     </div>
@@ -50,7 +49,7 @@
                     </div>
                 </div>
                 <div class="subs-btnText bigNoodle m-b-10x redeem-code">MOTIFATED15</div>
-                <a href="javascript:;" class="subs-btnText bigNoodle redeem-btn"  data-remodal-action="close">SHOW ME THE GOODS</a>
+                <a href="javascript:void(0);" class="subs-btnText bigNoodle redeem-btn"  data-remodal-action="close">SHOW ME THE GOODS</a>
             </div>
         </div>
 
