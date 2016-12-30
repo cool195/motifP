@@ -74,6 +74,7 @@ ul,li,ol{ list-style: none; }
 }
 .header-search{
   position: relative;
+  cursor: pointer;
 }
 /*.btn-search .iconfont:before{
   content: "\e69d";
@@ -91,7 +92,7 @@ ul,li,ol{ list-style: none; }
 }
 .search-bar>input{
   /*border: none;*/
-  padding: 5px;
+  padding: 8px;
   min-width: 15rem;
   height: 2rem;
 }
