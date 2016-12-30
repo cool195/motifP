@@ -2,12 +2,11 @@
 <html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
-    <title>{{$title or 'Exclusive Fashion Accessories Designed by the World’s Top Fashion Bloggers, Instagrammers and Digital Influencers'}} @if('daily' != $page)
-            | MOTIF @endif</title>
+    <title>@if('daily' != $page) MOTIF | @endif{{$title or 'Exclusive Fashion Accessories Designed by the World’s Top Fashion Bloggers, Instagrammers and Digital Influencers'}} </title>
     <meta property="og:image"
           content="{{$ogimage or config('runtime.Image_URL').'/images/logo/logo.png'}}{{config('runtime.V')}}">
     <meta name="description"
-          content="{{$description or 'Your style is unique and cutting edge - your fashion should be too.Exclusive, limited edition accessories designed by the world’s top fashion bloggers, Instagrammers and digital influencers.'}}">
+          content="@if('daily' != $page) MOTIF | @endif{{$description or 'Your style is unique and cutting edge - your fashion should be too.Exclusive, limited edition accessories designed by the world’s top fashion bloggers, Instagrammers and digital influencers.'}}">
     <meta name="keywords"
           content="{{$keywords or 'fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy'}}">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -85,10 +84,8 @@
         </nav>
         <div class="logo">
             <a href="/">
-                <img class="img-fluid"
-                     src="{{config('runtime.Image_URL')}}/images/logo/motif-logo.png{{config('runtime.V')}}"
-                     alt="logo"
-                     srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@2x.png{{config('runtime.V')}} 2x">
+                <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/motif-logo.png{{config('runtime.V')}}"
+                     alt="Motif" srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@2x.png{{config('runtime.V')}} 2x">
             </a>
         </div>
         <nav class="navbar-right">
