@@ -148,9 +148,7 @@ function HideSeeMore(seemoreName) {
 
     $('.searchForm').keydown(function (e) {
         var event = event || e;
-        console.log(event.keyCode)
         if (event.keyCode === 13) {
-            console.log('true')
             $(".search-submit").trigger("click");
             event.stopPropagation();
         }
