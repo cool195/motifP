@@ -27,7 +27,7 @@ class PageController extends BaseController
     //contactUs
     public function contactUs()
     {
-        return View('Other.page-contactUs', ['skiptype'=>1]);
+        return View('Other.page-contactUs', ['type'=>3, 'stype'=>1]);
     }
 
     public function description()
