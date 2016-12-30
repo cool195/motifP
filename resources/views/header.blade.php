@@ -94,7 +94,7 @@
         <nav class="navbar-right">
             <ul class="nav navbar-primary clearfix">
                 @if(Session::has('user'))
-                    <li class="nav-item p-x-10x header-img" id="logged-user">
+                    <li class="nav-item p-x-10x header-img searchBeforeEle" id="logged-user">
                         <a href="/user/changeprofile"
                            class="nav-link name bigNoodle text-right">{{Session::get('user.nickname')}}</a>
                         <!--个人中心下拉框-->
@@ -116,20 +116,20 @@
                     </li>
 
                     <!-- get off -->
-                    <li class="nav-item p-x-10x">
+                    <li class="nav-item p-x-10x searchBeforeEle">
                         <a href="/invitefriends" class="text-green">GET 15% OFF</a>
                     </li>
                     <!-- 搜索 -->
                     <li class="nav-item p-l-10x p-r-0 header-search">
-                        <a href="javascript:void(0)" class="p-t-5x flex flex-alignCenter btn-search">
-                            {{--<i class="iconfont icon-search font-size-lxx"></i>--}}
-                            <i class="iconfont font-size-lxx"></i>
-                        </a>
-                        <form class="form" method="post" name="searchFrom" action="/search">
+                        <div class="p-t-5x flex flex-alignCenter btn-search">
+                            <i class="iconfont icon-search font-size-lxx"></i>
+                            {{--<i class="iconfont font-size-lxx"></i>--}}
+                        </div>
+                        <form class="form searchForm" method="post" name="searchFrom" action="/search">
                             <div class="avenirRegular font-size-sm search-bar">
                                 <input type="text" name="kw" placeholder="Search Motif">
                                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                                <button class="btn bg-transparent" type="submit"><i class="iconfont icon-search font-size-lxx"></i></button>
+                                <button class="btn bg-transparent search-submit" type="submit"></button>
                             </div>
                         </form>
                     </li>
@@ -158,21 +158,22 @@
                         </a>
                     </li>
                 @else
-                    <li class="nav-item p-x-10x"><a class="nav-link @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif" data-referer="{{$_SERVER['REQUEST_URI']}}">SIGN IN</a></li>
-                    <li class="nav-item p-x-10x"><a class="nav-link text-green @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif"  data-referer="/invitefriends">GET 15% OFF</a></li>
+                    <li class="nav-item p-x-10x searchBeforeEle"><a class="nav-link @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif" data-referer="{{$_SERVER['REQUEST_URI']}}">SIGN IN</a></li>
+                    <li class="nav-item p-x-10x searchBeforeEle"><a class="nav-link text-green @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif"  data-referer="/invitefriends">GET 15% OFF</a></li>
                     <!-- 搜索 -->
                     <li class="nav-item p-l-10x p-r-0 header-search">
-                        <a href="javascript:void(0)" class="p-t-5x flex flex-alignCenter btn-search">
-                            {{--<i class="iconfont icon-search font-size-lxx"></i>--}}
-                            <i class="iconfont font-size-lxx"></i>
-                        </a>
-                        <form class="form" method="post" name="searchFrom" action="/search">
+                        <div class="p-t-5x flex flex-alignCenter btn-search">
+                            <i class="iconfont icon-search font-size-lxx"></i>
+                            {{--<i class="iconfont font-size-lxx"></i>--}}
+                        </div>
+                        <form class="form searchForm" method="post" name="searchFrom" action="/search">
                             <div class="avenirRegular font-size-sm search-bar">
                                 <input type="text" name="kw" placeholder="Search Motif">
                                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                                <button class="btn bg-transparent" type="submit"><i class="iconfont icon-search font-size-lxx"></i></button>
+                                <button class="btn bg-transparent search-submit" type="submit"></button>
                             </div>
                         </form>
+
                     </li>
                     <li class="nav-item p-l-15x p-r-0">
                         <a data-referer="/wish" class="p-t-5x flex flex-alignCenter @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif">
