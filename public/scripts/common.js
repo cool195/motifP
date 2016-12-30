@@ -136,15 +136,30 @@ function HideSeeMore(seemoreName) {
     //    header - 搜索功能
     $('.btn-search').on('click', function () {
         if ( $(this).hasClass('active') ){
-            $('.search-bar').hide();
-
+            $('.search-bar').fadeOut();
             $(this).removeClass('active');
         }else {
+            $('.search-bar').fadeIn();
+            $('.searchBeforeEle').hide();
 
-            $('.search-bar').show();
             $(this).addClass('active');
         }
     });
+
+    $('.search-bar>input[name="kw"]').on('blur', function(){
+        $('.search-bar').fadeOut();
+        $('.searchBeforeEle').fadeIn();
+    });
+
+    $('.searchForm').keyup(function (e) {
+        var event = event || e;
+        if (event.keyCode == "13") {
+            $(".search-submit").trigger("click");
+        }
+    });
+
+
+
 
     // 购物车悬浮
     if ($('.cartInfo-bar').length > 0){
