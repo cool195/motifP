@@ -77,7 +77,7 @@
                         <div class="p-y-20x" id="{{'csku'.$showSku['sku']}}">
                             <div class="row flex flex-alignCenter cartProduct-item">
                                 <div class="col-md-4 media">
-                                    <a class="media-left" href="/detail/{{$showSku['spu']}}">
+                                    <a class="media-left" href="/detail/{{$showSku['spu']}}/{{$showSku['main_title']}}">
                                         <img class="img-lazy"
                                              src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                              data-original="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}"
@@ -164,7 +164,7 @@
                         <div class="row p-y-20x flex flex-alignCenter cartProduct-item"
                              id="{{'csku'.$showSku['sku']}}">
                             <div class="col-md-4 media">
-                                <a class="media-left" href="/detail/{{$showSku['spu']}}">
+                                <a class="media-left" href="/detail/{{$showSku['spu']}}/{{  $showSku['main_title'] }}">
                                     <img class="img-lazy"
                                          src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                          data-original="{{config('runtime.CDN_URL')}}/n3/{{ $showSku['main_image_url'] }}"

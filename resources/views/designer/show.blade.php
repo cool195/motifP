@@ -239,7 +239,7 @@
                                             <div class="col-xs-6">
                                                 <div class="productList-item">
                                                     <div class="image-container">
-                                                        <a href="/detail/{{$spu}}"
+                                                        <a href="/detail/{{$spu}}/{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
                                                            data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.400001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"PC"}'
                                                            data-spu="{{$spu}}"
                                                            data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
@@ -324,7 +324,7 @@
                             <div class="productList-item">
                                 <div class="image-container">
                                     <a data-impr="{{ $product['impr'] }}" data-clk="{{ $product['clk'] }}"
-                                       href="/detail/{{$product['spu']}}" data-spu="{{$product['spu']}}"
+                                       href="/detail/{{$product['spu']}}/{{$product['main_title']}}" data-spu="{{$product['spu']}}"
                                        data-title="{{$product['main_title']}}"
                                        data-price="{{number_format($product['skuPrice']['sale_price']/100,2)}}">
                                         <img class="img-fluid img-lazy figure"

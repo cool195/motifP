@@ -7,7 +7,18 @@ use Cache;
 
 class ProductController extends BaseController
 {
-    public function product(Request $request, $spu)
+    //seo商品详情302永久重定向
+    public function detail(Request $request, $spu)
+    {
+        $result = $this->getProductDetail($spu);
+        if ($request->input('ajax')) {
+            return $result;
+        }
+        $url = "/detail/".$spu."/".$result['data']['main_title'];
+        return redirect($url);
+    }
+
+    public function product(Request $request, $spu, $title = "")
     {
         $result = $this->getProductDetail($spu);
 
@@ -31,8 +42,6 @@ class ProductController extends BaseController
             }
             $result['data']['category_name'] = $categoryName;
         }
-
-
 
         if ($request->input('ajax')) {
             return $result;

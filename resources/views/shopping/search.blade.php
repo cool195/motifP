@@ -88,7 +88,7 @@
                 <div class="col-md-3 col-xs-6">
                     <div class="productList-item search-item">
                         <div class="image-container">
-                            <a href="/detail/{{$product['spuBase']['spu']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
+                            <a href="/detail/{{$product['spuBase']['spu']}}/{{$product['spuBase']['main_title']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
                                data-spu="{{$product['spuBase']['spu']}}" data-title="{{$product['spuBase']['main_title']}}"
                                data-price="{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}">
                                 <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n2/{{$product['spuBase']['main_image_url']}}" alt="{{$product['spuBase']['main_title']}}">
@@ -145,7 +145,7 @@
 <div class="col-md-3 col-xs-6">
     <div class="productList-item">
         <div class="image-container">
-            <a href="/detail/@{{ $value.spuBase.spu }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
+            <a href="/detail/@{{ $value.spuBase.spu }}/@{{ $value.spuBase.main_title }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                data-spu="@{{ $value.spuBase.spu }}" data-title="@{{ $value.spuBase.main_title }}"
                data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
                 <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ $value.spuBase.main_image_url }}"
