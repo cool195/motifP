@@ -85,7 +85,8 @@
         <div class="logo">
             <a href="/">
                 <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/motif-logo.png{{config('runtime.V')}}"
-                     alt="Motif" srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@2x.png{{config('runtime.V')}} 2x">
+                     alt="Motif" >
+                {{--srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@2x.png{{config('runtime.V')}} 2x"--}}
             </a>
         </div>
         <nav class="navbar-right">
