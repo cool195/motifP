@@ -20,7 +20,12 @@
                             </div>
                             <div class="col-md-6 m-b-20x">
                                 <label class="contact-label font-size-sm">email</label>
-                                <input type="text" name="email" class="form-control contact-email" value="{{Session::get('user.login_email')}}">
+                                <div><input type="text" name="email" class="form-control contact-email" value="{{Session::get('user.login_email')}}"></div>
+                                <span class="warning-info flex flex-alignCenter text-warning p-t-5x off">
+                                    <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
+                                    <span class="font-size-base"></span>
+                                </span>
+
                             </div>
                             <div class="col-md-6 m-b-20x">
                                 <label class="contact-label font-size-sm">order no.(optional)</label>

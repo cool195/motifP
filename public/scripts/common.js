@@ -4245,7 +4245,14 @@ function HideSeeMore(seemoreName) {
     //Ask End
 
     //contact us #start
+    $('.contact-email').on('focus', function () {
+        $(this).parent().siblings('.warning-info').addClass('off');
+    });
+
     $('#contact-submit').on('click', function(){
+        if (!login_validationEmail($('.contact-email'))){
+            return;
+        }
         var email = $('.contact-email').val(),
             firstName = $('.contact-firstname').val(),
             lastName = $('.contact-lastname').val(),
@@ -4253,7 +4260,7 @@ function HideSeeMore(seemoreName) {
             con = $('.contact-content').val(),
             type = $('.contact-type').val(),
             stype = $('.contact-stype').val();
-        var content = 'First Name:' + firstName + '~' + 'Last Name:' + lastName + '~' + 'Order Number:' + orderNum + 'Tell US:' + con;
+        var content = 'First Name:' + firstName + '~' + 'Last Name:' + lastName + '~' + 'Order Number:' + orderNum + '~' +'Tell US:' + con;
 
         console.log(email);
         $.ajax({
