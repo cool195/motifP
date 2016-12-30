@@ -4329,6 +4329,7 @@ function HideSeeMore(seemoreName) {
                 data: $('#subscribe').serialize()
             })
             .done(function (data) {
+                console.log(data.success)
                 if (data.success) {
                     redeemModal.open();
                     $('.subscribe-email').val('');
