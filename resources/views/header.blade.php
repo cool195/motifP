@@ -82,13 +82,12 @@
                 </li>
             </ul>
         </nav>
-        <div class="logo">
-            <a href="/">
-                <H1><img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/motif-logo.png{{config('runtime.V')}}"
-                     alt="Motif" ></H1>
-                {{--srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@2x.png{{config('runtime.V')}} 2x"--}}
-            </a>
-        </div>
+        <h1 class="logo">
+                <a href="/">
+                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/motif-logo.png{{config('runtime.V')}}"
+                                 alt="Motif" srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@2x.png{{config('runtime.V')}} 2x">
+                </a>
+        </h1>
         <nav class="navbar-right">
             <ul class="nav navbar-primary clearfix">
                 @if(Session::has('user'))
