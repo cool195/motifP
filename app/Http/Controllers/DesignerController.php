@@ -38,29 +38,28 @@ class DesignerController extends BaseController
                 $list['spus'] = implode('_', $spus);
             }
             $list['seo_tag'] = implode(',', $list['seo_label']);
-            if(2 == $list['designer_type']){
+            if (2 == $list['designer_type']) {
                 $networkReds[] = $list;
-            }else{
+            } else {
                 $designers[] = $list;
             }
         }
+
         foreach($result['data']['list'] as $key => &$list){
             if($key % 4 == 0 ){
                 if(!empty($networkReds)){
-                    $list[] = array_shift($networkReds);
+                    $list = array_shift($networkReds);
                 }else{
-                    $list[] = array_shift($designers);
+                    $list = array_shift($designers);
                 }
             }else{
                 if(!empty($designers)){
-                    $list[] = array_shift($designers);
+                    $list = array_shift($designers);
                 }else{
-                    $list[] = array_shift($networkReds);
+                    $list = array_shift($networkReds);
                 }
             }
         }
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($designers, "\n"), 3, '/tmp/myerror.log');
 
         if ($request->input('ajax')) {
             return $result;
