@@ -40,18 +40,8 @@
         }
     });
 
-    function sendProductDedailToKlaviyo() {
-        var _learnq = _learnq || [];
-        _learnq.push(['track', 'Add to Bag Successfully', {
-            'SPU' : '{{$data['spu']}}',
-            'Name' : '{{$data['main_title']}}',
-            'productUrl' : '{{config('runtime.CDN_URL')}}/n0/{{ $data['main_image_url'] }}',
-            'Url': 'https://www.motif.me{{ $_SERVER['REQUEST_URI'] }}',
-            'ItemPrice' : '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
-            'Categories' : '{{ $data['category_name'] }}',
-            'Brand' : 'Motif PC'
-        }]);
-    }
+
+
     // shopping detail 加入购物车
     function onAddToCart() {
         var quantity = document.getElementById('addToCart-quantity').value;
@@ -505,7 +495,6 @@
             //CompareAtPrice: {{ product.compare_at_price }} // If you have a compare at price. You could also include this for a sale or special price.
         }
     }]);
-
 </script>
 
 <!-- 购买成功提示 -->
@@ -539,3 +528,23 @@
     @{{ /if }}
     @{{ /each }}
 </template>
+
+
+<script>
+    var _learnq = _learnq || [];
+    var trackAddToBag = function () {
+        _learnq.push(['track', 'Add to Bag Successfully', {
+            'SPU' : '{{$data['spu']}}',
+            'Name' : '{{$data['main_title']}}',
+            'productUrl' : '{{config('runtime.CDN_URL')}}/n0/{{ $data['main_image_url'] }}',
+            'Url': 'https://www.motif.me{{ $_SERVER['REQUEST_URI'] }}',
+            'ItemPrice' : '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
+            'Categories' : '{{ $data['category_name'] }}',
+            'Brand' : 'Motif PC'
+        }]);
+    };
+
+    @if(Session::has('user'))
+       $('#userEmail').val('{{Session::get('user.login_email')}}');
+    @endif
+</script>

@@ -623,7 +623,9 @@ function HideSeeMore(seemoreName) {
                 .done(function (data) {
                     $('#productAddBag').removeClass('disabled');
                     if (data.success) {
-                        sendProductDedailToKlaviyo();
+
+                        sendTrackAddToBag();
+
                         // 弹出 成功添加购物车 提示
                         AddItemModal.open();
                         setTimeout(function () {
@@ -644,6 +646,16 @@ function HideSeeMore(seemoreName) {
                 });
         }
     });
+
+    // 添加购物车埋点 --- KLAVIYO
+    function sendTrackAddToBag(){
+        var email=$('#userEmail').val();
+        var _learnq = _learnq || [];
+        _learnq.push(['identify', {
+            '$email' : email
+        }]);
+        trackAddToBag();
+    }
 
     // 属性验证
     function pSelAttr() {
@@ -1062,9 +1074,22 @@ function HideSeeMore(seemoreName) {
         return true;
     }
 
-    $('.cartKlaviyo').on('click', function(){
-        sendCartToKlaviyo();
-    })
+    $('.btn-toCheckout').on('click', function(){
+        alert('ok');
+        sendTrackProceedToCheckout();
+        //window.location.href = '';
+    });
+
+    // 去往支付埋点 --- KLAVIYO
+    function sendTrackProceedToCheckout(){
+        var email=$('#userEmail').val();
+        var _learnq = _learnq || [];
+        _learnq.push(['identify', {
+            '$email' : email
+        }]);
+        trackProceedToCheckout();
+    }
+
     // Shopping Cart end
 
     // Checkout Start

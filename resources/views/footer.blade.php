@@ -138,43 +138,33 @@
 
     </div>
 </div>
+<input type="text" id="userEmail" value="" hidden>
 <script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/card.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>
 @if (env('APP_ENV') == 'production')
 <script src="{{config('runtime.CLK_URL')}}/wl.js"></script>
+
 <!-- Google Tag Manager -->
-<script>
-    (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({
-            'gtm.start': new Date().getTime(), event: 'gtm.js'
-        });
-        var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-K9J99M');
-</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K9J99M');</script>
 <!-- End Google Tag Manager -->
 
 <!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9J99M"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9J99M"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
 
 <script>
     var _learnq = _learnq || [];
-
     _learnq.push(['account', 'ESvdYS']);
 
     @if(Session::has('user'))
     _learnq.push(['identify', {
-        // Change the line below to dynamically print the user's email.
         '$email' : '{{Session::get('user.login_email')}}'
     }]);
     @endif
@@ -184,9 +174,8 @@
         b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
         var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
     })();
+
 </script>
-
-
 @endif
 </body>
 </html>

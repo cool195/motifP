@@ -101,3 +101,24 @@
     });
 
 </script>
+
+<script>
+    var _learnq = _learnq || [];
+    _learnq.push(['track', 'Checkout Successfully', {
+        'event_id': '{{ $order['sub_order_no'] }}',
+        'value' : '{{ number_format($order['total_amount'] / 100, 2) }}' ,
+        'ItemNames' : [@foreach($order['lineOrderList'] as $lineOrder) '{{ $lineOrder['main_title'] }}' @endforeach],
+        'Items' : [
+                @foreach($order['lineOrderList'] as $lineOrder)
+            {
+                'SPU' : '{{ $lineOrder['spu'] }}',
+                'Name' : '{{ $lineOrder['main_title'] }}',
+                'Quantity' : '{{ $lineOrder['sale_qtty'] }}',
+                'ItemPrice' : '{{ number_format($lineOrder['sale_price'] / 100, 2) }}',
+                'ProductURL' : '',
+                'ImageURL' : ''
+            },
+            @endforeach
+        ]
+    }]);
+</script>
