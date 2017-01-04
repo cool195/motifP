@@ -3410,7 +3410,8 @@ function HideSeeMore(seemoreName) {
             var SearchListNum = $('.search-item').length;
             $('.searchList-seeMore').show();
             if (SearchListNum < 16) {
-                HideSeeMore('.searchList-seeMore');
+                //HideSeeMore('.searchList-seeMore');
+                $('.searchList-seeMore').parent('.seeMore-info').remove();
             }
         })
     }catch (e) {
