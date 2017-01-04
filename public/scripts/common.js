@@ -1075,9 +1075,7 @@ function HideSeeMore(seemoreName) {
     }
 
     $('.btn-toCheckout').on('click', function(){
-        alert('ok');
         sendTrackProceedToCheckout();
-        //window.location.href = '';
     });
 
     // 去往支付埋点 --- KLAVIYO
