@@ -25,7 +25,10 @@ class DesignerController extends BaseController
 
         $data = $this->request('designer', $params);
         $result = $this->getDesignerFollowedStatus($data);
-        foreach ($result['data']['list'] as &$list) {
+
+        $networkReds = array();
+        $designers = array();
+        foreach ($result['data']['list'] as $key => &$list) {
             $list['spus'] = "";
             if (isset($list['products'])) {
                 $spus = array();
@@ -35,11 +38,30 @@ class DesignerController extends BaseController
                 $list['spus'] = implode('_', $spus);
             }
             $list['seo_tag'] = implode(',', $list['seo_label']);
-//            if (isset($list['describe']) && strlen($list['describe']) > 300) {
-//                $list['describe'] = mb_substr($list['describe'], 0, 300);
-//                $list['describe'] = $list['describe'] . "...";
-//            }
+            if(2 == $list['designer_type']){
+                $networkReds[] = $list;
+            }else{
+                $designers[] = $list;
+            }
         }
+        foreach($result['data']['list'] as $key => &$list){
+            if($key % 4 == 0 ){
+                if(!empty($networkReds)){
+                    $list[] = array_shift($networkReds);
+                }else{
+                    $list[] = array_shift($designers);
+                }
+            }else{
+                if(!empty($designers)){
+                    $list[] = array_shift($designers);
+                }else{
+                    $list[] = array_shift($networkReds);
+                }
+            }
+        }
+        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($designers, "\n"), 3, '/tmp/myerror.log');
+
         if ($request->input('ajax')) {
             return $result;
         }
