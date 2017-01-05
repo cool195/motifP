@@ -45,8 +45,8 @@
                 <div class="col-md-6">
                     <span>FREE SHIPPING TO 30+ COUNTRIES</span>
                 </div>
-                <div class="col-md-6 text-right uppercase">
-                    <span>20% Off Your First In App Purchas</span>
+                <div class="col-md-6 text-right">
+                    <span>20% OFF YOUR FIRST IN APP PURCHASE</span>
                 </div>
             </div>
         </div>
@@ -72,9 +72,11 @@
                         <ul class="figure">
                             <li>SHOP BY CATEGORY</li>
                             @foreach($Category->getShoppingCategoryList() as $category)
+                                @if( $category['category_id'] !== 0)
                                 <li class="font-size-md avenirRegular @if('shopping' == $page && $cid == $category['category_id']) active @endif">
                                     <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}</a>
                                 </li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>

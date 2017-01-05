@@ -160,9 +160,9 @@ footer .verticalHr{
   z-index: 9;
 }
 .input-email{
-  padding: 1px 0.75rem;
   border: solid 1px #000;
   min-width: 22.3rem;
+  height: 2.5rem;
 }
 #btn-subscribe{
   height: 2.5rem;
@@ -486,10 +486,10 @@ select::-ms-expand { display: none; }
   background: rgba(0, 0, 0, 0.3);
   top: 60%;
 }
-
+/*
 #productImg{
   border: solid 3px #000000;
-}
+}*/
 
 .productAttr-item{
   position: relative;

@@ -20,13 +20,13 @@
                     </div>
 
                     <form id="subscribe" action="" method="" class="m-l-30x">
-                        <div><input name="email" class="text-primary input-email font-size-lxx subscribe-email" placeholder="Enter email" type="text"></div>
+                        <div><input name="email" class="text-primary input-email font-size-md p-a-5x subscribe-email" placeholder="Enter email" type="text"></div>
                         <span class="warning-info flex flex-alignCenter text-warning p-t-5x off">
                             <i class="iconfont icon-caveat icon-size-md p-r-5x"></i>
                             <span class="font-size-base"></span>
                         </span>
                     </form>
-                    <div class="btn btn-primary p-x-10x bigNoodle font-size-lxx m-b-5x" id="btn-subscribe">SIGN ME UP</div>
+                    <div class="btn btn-primary p-x-10x bigNoodle font-size-lxx" id="btn-subscribe">SIGN ME UP</div>
             </div>
         </div>
     </div>

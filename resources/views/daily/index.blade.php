@@ -14,7 +14,7 @@
                     @endif
                 @endforeach
             </div>
-            <div class="container banner-container">
+            {{--<div class="container banner-container">
                 <!-- banner 按钮 -->
                 <div class="swiper-button-next">
                     <i class="iconfont icon-arrow-right text-white"></i>
@@ -22,7 +22,7 @@
                 <div class="swiper-button-prev">
                     <i class="iconfont icon-arrow-left text-white"></i>
                 </div>
-            </div>
+            </div>--}}
         </div>
     </section>
 @endif
