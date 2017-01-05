@@ -76,6 +76,7 @@ class DesignerController extends BaseController
         if (-1 == $rstart) {
             $redResult['data']['list'] = array();
             $redResult['data']['start'] = -1;
+            $redResult['success'] = true;
             $redCount = 0;
         } else {
             $redParams = array(
@@ -113,6 +114,7 @@ class DesignerController extends BaseController
         if (-1 == $dstart) {
             $designerResult['data']['list'] = array();
             $designerResult['data']['start'] = -1;
+            $designerResult['success'] = true;
             $designerCount = 0;
         } else {
             $designerParams = array(
