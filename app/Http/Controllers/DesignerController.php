@@ -69,58 +69,76 @@ class DesignerController extends BaseController
 
     public function index(Request $request)
     {
-        $redParams = array(
-            'cmd' => 'designerinfolist',
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-            'dtype' => 2,
-            //'size' => $request->input('size', 3),
-            'size' => $request->input('rsize', 3),
-            'start' => $request->input('rstart', 1),
-        );
 
-        $redData = $this->request('designer', $redParams);
-        $redResult = $this->getDesignerFollowedStatus($redData);
+        $rstart = $request->input('rstart', 1);
+        $redResult = array();
+        $redCount = 0;
+        if (-1 == $rstart) {
+            $redResult['data']['list'] = array();
+            $redResult['data']['start'] = -1;
+            $redCount = 0;
+        } else {
+            $redParams = array(
+                'cmd' => 'designerinfolist',
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+                'dtype' => 2,
+                //'size' => $request->input('size', 3),
+                'size' => $request->input('rsize', 3),
+                'start' => $request->input('rstart', 1),
+            );
 
-        $redCount = count($redResult['data']['list']);
-        if(!empty($redResult['data']['list'])) {
-            foreach ($redResult['data']['list'] as $key => &$list) {
-                $list['spus'] = "";
-                if (isset($list['products'])) {
-                    $spus = array();
-                    foreach ($list['products'] as $product) {
-                        $spus[] = $product['spu'];
+            $redData = $this->request('designer', $redParams);
+            $redResult = $this->getDesignerFollowedStatus($redData);
+
+            $redCount = count($redResult['data']['list']);
+            if (!empty($redResult['data']['list'])) {
+                foreach ($redResult['data']['list'] as $key => &$list) {
+                    $list['spus'] = "";
+                    if (isset($list['products'])) {
+                        $spus = array();
+                        foreach ($list['products'] as $product) {
+                            $spus[] = $product['spu'];
+                        }
+                        $list['spus'] = implode('_', $spus);
                     }
-                    $list['spus'] = implode('_', $spus);
+                    $list['seo_tag'] = implode(',', $list['seo_label']);
                 }
-                $list['seo_tag'] = implode(',', $list['seo_label']);
             }
         }
 
+        $dstart = $request->input('dstart', 1);
+        $designerResult = array();
+        $designerCount = 0;
+        if (-1 == $dstart) {
+            $designerResult['data']['list'] = array();
+            $designerResult['data']['start'] = -1;
+            $designerCount = 0;
+        } else {
+            $designerParams = array(
+                'cmd' => 'designerinfolist',
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+                'dtype' => 1,
+                'size' => $request->input('dsize', 9),
+                'start' => $request->input('dstart', 1),
+            );
+            $designerData = $this->request('designer', $designerParams);
+            $designerResult = $this->getDesignerFollowedStatus($designerData);
 
-        $designerParams = array(
-            'cmd' => 'designerinfolist',
-            'token' => Session::get('user.token'),
-            'pin' => Session::get('user.pin'),
-            'dtype' => 1,
-            'size' => $request->input('dsize', 9),
-            'start' => $request->input('dstart', 1),
-        );
-        $designerData = $this->request('designer', $designerParams);
-        $designerResult = $this->getDesignerFollowedStatus($designerData);
-
-        $designerCount  = count($designerResult['data']['list']);
-        if(!empty($designerResult['data']['list'])) {
-            foreach ($designerResult['data']['list'] as $key => &$list) {
-                $list['spus'] = "";
-                if (isset($list['products'])) {
-                    $spus = array();
-                    foreach ($list['products'] as $product) {
-                        $spus[] = $product['spu'];
+            $designerCount = count($designerResult['data']['list']);
+            if (!empty($designerResult['data']['list'])) {
+                foreach ($designerResult['data']['list'] as $key => &$list) {
+                    $list['spus'] = "";
+                    if (isset($list['products'])) {
+                        $spus = array();
+                        foreach ($list['products'] as $product) {
+                            $spus[] = $product['spu'];
+                        }
+                        $list['spus'] = implode('_', $spus);
                     }
-                    $list['spus'] = implode('_', $spus);
+                    $list['seo_tag'] = implode(',', $list['seo_label']);
                 }
-                $list['seo_tag'] = implode(',', $list['seo_label']);
             }
         }
 
@@ -132,15 +150,18 @@ class DesignerController extends BaseController
         $result['rsize'] = $redCount;
         $result['data']['list'] = array();
 
+        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($redResult, "\n"), 3, '/tmp/myerror.log');
+
         for($i = 0; $i < $designerCount + $redCount; $i++){
             if($i % 4 == 0 ){
-                if(!empty($redResult['data']['list'])){
+                if($redCount !== 0){
                     $result['data']['list'][] = array_shift($redResult['data']['list']);
                 }else{
                     $result['data']['list'][] = array_shift($designerResult['data']['list']);
                 }
             }else{
-                if(!empty($designerResult['data']['list'])){
+                if($designerCount !== 0){
                     $result['data']['list'][] = array_shift($designerResult['data']['list']);
                 }else{
                     $result['data']['list'][] = array_shift($redResult['data']['list']);

@@ -1,5 +1,5 @@
 
-@include('header', ['title' => 'Designer', 'page' => 'designer'])
+@include('header', ['title' => 'collections', 'page' => 'designer'])
 {{--内容--}}
 <section class="body-container" id="designerIndex" data-show="true">
     {{--设计师列表--}}
