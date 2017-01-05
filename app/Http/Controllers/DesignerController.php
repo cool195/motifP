@@ -152,21 +152,22 @@ class DesignerController extends BaseController
         $result['rsize'] = $redCount;
         $result['data']['list'] = array();
 
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($redResult, "\n"), 3, '/tmp/myerror.log');
-
         for($i = 0; $i < $designerCount + $redCount; $i++){
             if($i % 4 == 0 ){
                 if($redCount !== 0){
                     $result['data']['list'][] = array_shift($redResult['data']['list']);
-                }else{
-                    $result['data']['list'][] = array_shift($designerResult['data']['list']);
+                }else {
+                    if ($designerCount !== 0) {
+                        $result['data']['list'][] = array_shift($designerResult['data']['list']);
+                    }
                 }
             }else{
                 if($designerCount !== 0){
                     $result['data']['list'][] = array_shift($designerResult['data']['list']);
                 }else{
-                    $result['data']['list'][] = array_shift($redResult['data']['list']);
+                    if($redCount !== 0) {
+                        $result['data']['list'][] = array_shift($redResult['data']['list']);
+                    }
                 }
             }
         }
