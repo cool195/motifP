@@ -2379,6 +2379,7 @@ function HideSeeMore(seemoreName) {
             })
             .done(function (data) {
                 if (data.success) {
+                    trackRegister();
                     window.location.href = data.redirectUrl;
                 } else {
                     $('.register-pw').parent().siblings('.warning-info').removeClass('off');
@@ -2388,6 +2389,15 @@ function HideSeeMore(seemoreName) {
             .always(function () {
                 $('[data-role="register-submit"]').removeClass('disabled');
             });
+    }
+
+    // 注册埋点 --- KLAVIYO
+    function trackRegister(Email){
+        var _learnq = _learnq || [];
+        _learnq.push(['identify', {
+            '$email' : Email
+        }]);
+        userKlaviyoRegister();
     }
 
     $('.register-nick').on('keyup blur', function () {
