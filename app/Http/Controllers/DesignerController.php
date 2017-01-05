@@ -154,18 +154,18 @@ class DesignerController extends BaseController
 
         for($i = 0; $i < $designerCount + $redCount; $i++){
             if($i % 4 == 0 ){
-                if($redCount !== 0){
+                if(count($redResult['data']['list']) !== 0){
                     $result['data']['list'][] = array_shift($redResult['data']['list']);
                 }else {
-                    if ($designerCount !== 0) {
+                    if (count($designerResult['data']['list']) !== 0) {
                         $result['data']['list'][] = array_shift($designerResult['data']['list']);
                     }
                 }
             }else{
-                if($designerCount !== 0){
+                if(count($designerResult['data']['list']) !== 0){
                     $result['data']['list'][] = array_shift($designerResult['data']['list']);
                 }else{
-                    if($redCount !== 0) {
+                    if(count($redResult['data']['list']) !== 0) {
                         $result['data']['list'][] = array_shift($redResult['data']['list']);
                     }
                 }
