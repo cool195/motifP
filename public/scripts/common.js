@@ -2904,10 +2904,18 @@ function HideSeeMore(seemoreName) {
     // ajax 加载 设计师信息
     function designer_getDesignerList() {
         var $DesignerContainer = $('#designerContainer'),
-            Start = $DesignerContainer.data('start'),
-            Size = 12;
+            //Start = $DesignerContainer.data('start'),
+            //Size = 12;
+            dStart = $DesignerContainer.data('dstart'),
+            rStart = $DesignerContainer.data('rstart'),
+            rsize = 3,
+            dsize = 9;
+
         // 判断是否还有数据要加载
-        if (Start === -1) {
+        /*if (Start === -1) {
+            return;
+        }*/
+        if(rStart === -1 && dStart === -1){
             return;
         }
 
@@ -2922,14 +2930,20 @@ function HideSeeMore(seemoreName) {
         $.ajax({
                 url: '/designer',
                 data: {
-                    start: Start,
-                    size: Size,
+                    //start: Start,
+                    //size: Size,
+                    dstart: dStart,
+                    rstart: rStart,
+                    dsize: dsize,
+                    rsize: rsize,
                     ajax: 1
                 }
             })
             .done(function (data) {
                 if (data.data === null || data.data === '' || data.data.list === null || data.data.list === '' || data.data.list.length === 0) {
-                    $DesignerContainer.data('start', -1);
+                    //$DesignerContainer.data('start', -1);
+                    $DesignerContainer.data('dstart', -1);
+                    $DesignerContainer.data('rstart', -1);
                     HideSeeMore('.designerList-seeMore');
                     loadingAndSeemoreHide('.designer-loading', '.designerList-seeMore');
                 } else {
@@ -2938,15 +2952,34 @@ function HideSeeMore(seemoreName) {
                     // 判断当前页是否是最后一页
                     // CurrentSize 当前页显示条数
                     // StartNum 下一页开始条数
-                    var CurrentSize = data.data.list.length,
-                        StartNum = data.data.start;
-                    if (CurrentSize < Size) {
+                    var //CurrentSize = data.data.list.length,
+                        //StartNum = data.data.start;
+                        currentDsize = data.dsize,
+                        currentRsize = data.rsize,
+                        dStartNum = data.dstart,
+                        rStartNum = data.rstart;
+                    /*if (CurrentSize < Size) {
                         $DesignerContainer.data('start', -1);
                     } else {
                         $DesignerContainer.data('start', StartNum);
+                    }*/
+                    if (currentDsize < dsize) {
+                        $DesignerContainer.data('dstart', -1);
+                    } else {
+                        $DesignerContainer.data('dstart', dStartNum);
                     }
 
-                    if (data.data.list.length < Size) {
+                    if (currentRsize < rsize){
+                        $DesignerContainer.data('rstart', -1);
+                    } else {
+                        $DesignerContainer.data('rstart', rStartNum);
+                    }
+
+                    /*if (data.data.list.length < Size) {
+                        HideSeeMore('.designerList-seeMore');
+                    }*/
+
+                    if (currentDsize < dsize && currentRsize < rsize){
                         HideSeeMore('.designerList-seeMore');
                     }
 

@@ -13,7 +13,7 @@ class DesignerController extends BaseController
      *
      * @return Response
      */
-    public function index(Request $request)
+    /*public function index(Request $request)
     {
         $params = array(
             'cmd' => 'designerinfolist',
@@ -65,6 +65,93 @@ class DesignerController extends BaseController
             return $result;
         }
         return view('designer.index', ['list' => $result['data']['list'], 'start' => $result['data']['start']]);
+    }*/
+
+    public function index(Request $request)
+    {
+        $redParams = array(
+            'cmd' => 'designerinfolist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'dtype' => 2,
+            //'size' => $request->input('size', 3),
+            'size' => $request->input('rsize', 3),
+            'start' => $request->input('rstart', 1),
+        );
+
+        $redData = $this->request('designer', $redParams);
+        $redResult = $this->getDesignerFollowedStatus($redData);
+
+        $redCount = count($redResult['data']['list']);
+        if(!empty($redResult['data']['list'])) {
+            foreach ($redResult['data']['list'] as $key => &$list) {
+                $list['spus'] = "";
+                if (isset($list['products'])) {
+                    $spus = array();
+                    foreach ($list['products'] as $product) {
+                        $spus[] = $product['spu'];
+                    }
+                    $list['spus'] = implode('_', $spus);
+                }
+                $list['seo_tag'] = implode(',', $list['seo_label']);
+            }
+        }
+
+
+        $designerParams = array(
+            'cmd' => 'designerinfolist',
+            'token' => Session::get('user.token'),
+            'pin' => Session::get('user.pin'),
+            'dtype' => 1,
+            'size' => $request->input('dsize', 9),
+            'start' => $request->input('dstart', 1),
+        );
+        $designerData = $this->request('designer', $designerParams);
+        $designerResult = $this->getDesignerFollowedStatus($designerData);
+
+        $designerCount  = count($designerResult['data']['list']);
+        if(!empty($designerResult['data']['list'])) {
+            foreach ($designerResult['data']['list'] as $key => &$list) {
+                $list['spus'] = "";
+                if (isset($list['products'])) {
+                    $spus = array();
+                    foreach ($list['products'] as $product) {
+                        $spus[] = $product['spu'];
+                    }
+                    $list['spus'] = implode('_', $spus);
+                }
+                $list['seo_tag'] = implode(',', $list['seo_label']);
+            }
+        }
+
+        $result = array();
+        $result['success'] = $designerResult['success'] && $redResult['success'];
+        $result['dstart'] = $designerResult['data']['start'];
+        $result['rstart'] = $redResult['data']['start'];
+        $result['dsize'] = $designerCount;
+        $result['rsize'] = $redCount;
+        $result['data']['list'] = array();
+
+        for($i = 0; $i < $designerCount + $redCount; $i++){
+            if($i % 4 == 0 ){
+                if(!empty($redResult['data']['list'])){
+                    $result['data']['list'][] = array_shift($redResult['data']['list']);
+                }else{
+                    $result['data']['list'][] = array_shift($designerResult['data']['list']);
+                }
+            }else{
+                if(!empty($designerResult['data']['list'])){
+                    $result['data']['list'][] = array_shift($designerResult['data']['list']);
+                }else{
+                    $result['data']['list'][] = array_shift($redResult['data']['list']);
+                }
+            }
+        }
+
+        if ($request->input('ajax')) {
+            return $result;
+        }
+        return view('designer.index', ['list' => $result['data']['list'], 'dstart' => $result['dstart'],'rstart' => $result['rstart']]);
     }
 
     private function getDesignerFollowedStatus(Array $result)

@@ -3,7 +3,7 @@
 {{--内容--}}
 <section class="body-container" id="designerIndex" data-show="true">
     {{--设计师列表--}}
-    <div id="designerContainer" class="container m-b-40x" data-start="{{$start}}" data-loading="false">
+    <div id="designerContainer" class="container m-b-40x" data-dstart="{{$dstart}}" data-rstart="{{$rstart}}" data-loading="false">
         <div class="row">
         @foreach($list as $key => $designer)
                 @if(2 == $designer['designer_type'])
