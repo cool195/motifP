@@ -116,7 +116,7 @@
                     </div>
                 </div>
                 <div class="bigImg-list">
-                    <div class="bg-white" id="productImg">
+                    <div class="bg-white  @if(1 == $data['sale_type']) productImg-border  @endif" id="productImg" >
                         <div class="product-bigImg gallery">
                             @if(isset($data['productImages']))
                                 @foreach($data['productImages'] as $key => $image)

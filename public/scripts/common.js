@@ -2300,7 +2300,7 @@ function HideSeeMore(seemoreName) {
 
             },
             function (error) {
-                alert("something went wrong and we can't sign you in right now. please try again");
+                //alert("something went wrong and we can't sign you in right now. please try again");
                 window.location.reload();
             });
     }
@@ -4367,7 +4367,7 @@ function HideSeeMore(seemoreName) {
                     redeemModal.open();
                     $('.subscribe-email').val('');
                 } else {
-                    alert('error!')
+                    //alert('error!')
                 }
             });
     });

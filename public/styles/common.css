@@ -35,7 +35,7 @@ ul,li,ol{ list-style: none; }
 .main-header{
   position: absolute;
   width: 100%;
-  z-index: 10000;
+  z-index: 1000;
 }
 .download-info{
   background-color: #000;
@@ -486,10 +486,9 @@ select::-ms-expand { display: none; }
   background: rgba(0, 0, 0, 0.3);
   top: 60%;
 }
-/*
-#productImg{
+.productImg-border{
   border: solid 3px #000000;
-}*/
+}
 
 .productAttr-item{
   position: relative;
@@ -1698,7 +1697,7 @@ select::-ms-expand { display: none; }
 #productImg .presale-sign {
   top: 0px;
   left: 0px;
-  z-index: 1000;
+  z-index: 99;
 }
 #productImg .newPresale-text{
   background-color: #000000;
@@ -2139,7 +2138,7 @@ sup{
   position: absolute;
   right: 10px;
   top: 10px;
-  z-index: 1000;
+  z-index: 99;
 }
 
 #productDetail-wish:hover{
