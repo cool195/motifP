@@ -35,7 +35,7 @@ ul,li,ol{ list-style: none; }
 .main-header{
   position: absolute;
   width: 100%;
-  z-index: 1000;
+  z-index: 10000;
 }
 .download-info{
   background-color: #000;
