@@ -18,11 +18,12 @@ class BaseController extends Controller
             setcookie('uid', md5($_SERVER['HTTP_USER_AGENT'] . time() . rand(1, 1000)), time() + 86400 * 300, '/');
         }
 
-        if(empty($_COOKIE['gauserid']))
-        {
-            if (Session::has('user')) {
-                setcookie('gauserid', Session::get('user.uuid'), '/');
-            } else {
+        if(Session::has('user')){
+            if(Session::get('user.uuid') !== $_COOKIE['gauserid']){
+                setcookie('gauserid', Session::get('user.uuid'), time() + 86400 * 300, '/');
+            }
+        }else{
+            if(empty($_COOKIE['gauserid'])){
                 setcookie('gauserid', md5($_SERVER['HTTP_USER_AGENT'] . time() . rand(1, 1000)), time() + 86400 * 300, '/');
             }
         }
