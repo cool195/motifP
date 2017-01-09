@@ -47,7 +47,7 @@
                                                                 <div class="checkout-Item p-y-10x border-bottom">
                                                                     <div class="media">
                                                                         <div class="media-left m-r-15x">
-                                                                            <a href="/detail/{{$lineOrder['spu']}}/{{ $lineOrder['main_title'] }}">
+                                                                            <a href="/detail/{{$lineOrder['seo_link']}}">
                                                                                 <img class="img-lazy img-fluid"
                                                                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{ $lineOrder['img_path'] }}"
@@ -202,7 +202,7 @@
             <div class="checkout-Item p-y-10x border-bottom">
                 <div class="media">
                     <div class="media-left m-r-15x">
-                        <a href="/detail/@{{ $value.spu }}/@{{ $value.main_title }}">
+                        <a href="/detail/@{{ $value.seo_link}}">
                             <img class="img-lazy img-fluid"
                                  src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                  data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.img_path }}"

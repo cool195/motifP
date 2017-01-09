@@ -26,7 +26,7 @@
                             <li>
                                 <div class="productList-item wishlist-item">
                                     <div class="image-container">
-                                        <a href="/detail/{{$wish['spu']}}">
+                                        <a href="/detail/{{$wish['seo_link']}}">
                                             <img src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{ $wish['main_image_url'] }}" alt="{{ $wish['main_title'] }}" class="img-fluid img-lazy">
                                             <div class="bg-heart"></div>
@@ -78,7 +78,7 @@
     <li class="isHidden">
         <div class="productList-item wishlist-item">
             <div class="image-container">
-                <a href="/detail/@{{ $value.spu }}">
+                <a href="/detail/@{{ $value.seo_link }}">
                     <img src="{{config('runtime.CDN_URL')}}/n1/@{{ $value.main_image_url }}" alt="@{{ $value.main_title }}" class="img-fluid">
                     <div class="bg-heart"></div>
                 </a>

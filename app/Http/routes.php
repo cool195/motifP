@@ -79,9 +79,9 @@ Route::group(['middleware' => 'pcguide'], function() {
 
 
 //Product Start
-Route::get('/detail/{spu}', 'ProductController@detail')->middleware(['pcguide'])->where(['spu' => '[0-9]+']);
+//Route::get('/detail/{spu}', 'ProductController@detail')->middleware(['pcguide'])->where(['spu' => '[0-9]+']);
 
-Route::get('/detail/{spu}/{title}', 'ProductController@product')->middleware(['pcguide'])->where(['spu' => '[0-9]+']);
+Route::get('/detail/{spuTitle}', 'ProductController@product')->middleware(['pcguide']);
 
 Route::get('/protest/{spu}', 'ProductController@protest')->middleware(['pcguide'])->where(['spu' => '[0-9]+']);
 

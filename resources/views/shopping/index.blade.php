@@ -107,7 +107,7 @@
             <div class="col-md-3 col-xs-6">
                 <div class="productList-item product-item">
                     <div class="image-container">
-                        <a href="/detail/{{$product['spu']}}/{{$product['main_title']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
+                        <a href="/detail/{{$product['seo_link']}}" data-impr="{{$product['impr']}}" data-clk="{{$product['clk']}}"
                            data-spu="{{$product['spu']}}" data-title="{{$product['main_title']}}"
                            data-price="{{ number_format(($product['skuPrice']['sale_price'] / 100), 2) }}">
                             <img class="img-fluid img-lazy" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" data-original="{{config('runtime.CDN_URL')}}/n2/{{$product['main_image_url']}}" alt="{{$product['main_title']}}">
@@ -170,7 +170,7 @@
 <div class="col-md-3 col-xs-6">
     <div class="productList-item">
         <div class="image-container">
-            <a href="/detail/@{{ $value.spu }}/@{{ $value.main_title }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
+            <a href="/detail/@{{ $value.seo_link }}" data-impr="@{{ $value.impr }}" data-clk="@{{ $value.clk }}"
                data-spu="@{{ $value.spu }}" data-title="@{{ $value.main_title }}"
                data-price="@{{ ($value.skuPrice.sale_price/100).toFixed(2) }}">
                 <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ $value.main_image_url }}"

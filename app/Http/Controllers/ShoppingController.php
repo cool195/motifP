@@ -52,6 +52,11 @@ class ShoppingController extends BaseController
                 if(in_array($value['spu'], $wishlist)){
                     $value['isWished'] = 1;
                 }
+
+                $titleArray = explode(" ", $value['main_title']);
+                $titleArray[] = $value['spu'];
+                $value['seo_link'] = implode("-", $titleArray);
+
                 $list[] = $value;
             }
             $result['data']['list'] = $list;
@@ -116,6 +121,11 @@ class ShoppingController extends BaseController
                 if(in_array($value['spuBase']['spu'], $wishlist)){
                     $value['spuBase']['isWished'] = 1;
                 }
+
+                $titleArray = explode(" ", $value['spuBase']['main_title']);
+                $titleArray[] = $value['spuBase']['spu'];
+                $value['spuBase']['seo_link'] = implode("-", $titleArray);
+
             }
         }
         if($request->input('ajax')) {

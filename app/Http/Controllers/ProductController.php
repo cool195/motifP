@@ -8,7 +8,7 @@ use Cache;
 class ProductController extends BaseController
 {
     //seo商品详情302永久重定向
-    public function detail(Request $request, $spu)
+ /*   public function detail(Request $request, $spu)
     {
         $result = $this->getProductDetail($spu);
         if ($request->input('ajax')) {
@@ -16,12 +16,19 @@ class ProductController extends BaseController
         }
         $url = "/detail/".$spu."/".$result['data']['main_title'];
         return redirect($url);
-    }
+    }*/
 
-    public function product(Request $request, $spu, $title = "")
+    public function product(Request $request, $spuTitle)
     {
+        $spu = "";
+        if(is_numeric($spuTitle)){
+            $spu = $spuTitle;
+        }else{
+            $titleArray = explode("-", $spuTitle);
+            end($titleArray);
+            $spu = current($titleArray);
+        }
         $result = $this->getProductDetail($spu);
-
 
         if ($result['success'] == false) {
             abort(404);
@@ -123,6 +130,13 @@ class ProductController extends BaseController
         );
         $params['cid'] = isset($cid) ? $cid : -1;
         $result = $this->request("rec", $params);
+        if($result['success']){
+            foreach($result['data']['list'] as &$product){
+                $titleArray = explode(" ", $product['main_title']);
+                $titleArray[] = $product['spu'];
+                $product['seo_link'] = implode("-", $titleArray);
+            }
+        }
         return $result;
     }
 
@@ -143,6 +157,10 @@ class ProductController extends BaseController
                 $result['data']['sale_status'] = $this->getSaleStatus($result['data']);
             }
             $result['data']['seo_tag'] = implode(',', $result['data']['seo_label']);
+
+            $titleArray = explode(" ", $result['data']['main_title']);
+            $titleArray[] = $result['data']['spu'];
+            $result['data']['seo_link'] = implode("-", $titleArray);
         }
         return $result;
     }

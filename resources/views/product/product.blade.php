@@ -73,7 +73,7 @@
         <div class="p-y-15x">
             <a href="/shopping" class="text-productmMenu font-size-sm">Shop</a>
             <span class="font-size-xs">></span> <a href="/shopping/{{$data['category_id']}}" class="text-productmMenu font-size-sm">{{$data['category_name']}}</a>
-            <span class="font-size-xs">></span> <a href="/detail/{{$data['spu']}}" class="text-productmMenu1 font-size-sm">{{$data['main_title']}}</a></div>
+            <span class="font-size-xs">></span> <a href="/detail/{{$data['seo_link']}}" class="text-productmMenu1 font-size-sm">{{$data['main_title']}}</a></div>
         <div class="row">
             <div class="col-lg-7 col-md-7">
                 <div class="smallImg-list">
@@ -429,7 +429,7 @@
                         <div class="swiper-wrapper">
                                 @foreach($recommended['list'] as $k=>$list)
                                         <div class="productImg-item swiper-slide">
-                                            <a href="/detail/{{$list['spu']}}" data-impr="{{$list['impr']}}" data-clk="{{$list['clk']}}">
+                                            <a href="/detail/{{$list['seo_link']}}" data-impr="{{$list['impr']}}" data-clk="{{$list['clk']}}">
                                                 <img class="small-img img-lazy"
                                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@140.png"
                                                      data-original="{{config('runtime.CDN_URL')}}/n2/{{ $list['main_image_url']}}"
