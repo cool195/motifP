@@ -11,13 +11,13 @@
                     <img class="img-fluid" src="/images/guide/Creators.jpg" alt="">
                 </div>
                 <div class="col-lg-6 col-md-6 text-center p-l-0">
-                    <h3 class="bigNoodle text-main">INSERT SNAPPY HEADLINE HERE</h3>
+                    <h3 class="bigNoodle text-main">EXCLUSIVE GEMS FROM YOUR FAVORITE GURUS</h3>
                     <p class="text-main p-t-20x font-size-base">At Motif, we work with the world's top online fashion<br> influencers and the most talented artists and designers to<br> create gorgeous, limited edition collections.</p>
                 </div>
             </div>
             <div class="row flex flex-alignCenter">
                 <div class="col-lg-6 col-md-6 text-center p-r-0">
-                    <h3 class="bigNoodle text-main">HOW? A MIX OF NEW TECHNOLOGY<br> AND TRADITIONAL CRAFTSMANSHIP</h3>
+                    <h3 class="bigNoodle text-main">MARRYING NEW TECHNOLOGY WITH<br> TRADITIONAL CRAFTSMANSHIP</h3>
                     <p class="text-main p-t-20x font-size-base">We only work with a handful of trusted workshops, that keep up<br> the ancient traditions of craftsmanship and care. Their decades of<br> experience and use of precious, high quality materials means we<br> can offer you unique pieces you’ll love. </p>
                 </div>
                 <div class="col-lg-6 col-md-6 p-l-0">
@@ -26,7 +26,7 @@
             </div>
             <div class="printer-img">
                 <img class="img-fluid" src="/images/guide/Printer.jpg" alt="">
-                <h3 class="bigNoodle text-main text-center">WITH CUTTING EDGE DESIGN TECHNOLOGY LIKE 3D PRINTING, WE CAN WORK WITH<br> OUR PARTNERS TO BRING THEIR IDEAS AND THE NEWEST TRENDS TO LIFE IN<br> HOURS INSTEAD OF MONTHS.</h3>
+                {{--<h3 class="bigNoodle text-main text-center">WITH CUTTING EDGE DESIGN TECHNOLOGY LIKE 3D PRINTING, WE CAN WORK WITH<br> OUR PARTNERS TO BRING THEIR IDEAS AND THE NEWEST TRENDS TO LIFE IN<br> HOURS INSTEAD OF MONTHS.</h3>--}}
             </div>
             <div class="row flex flex-alignCenter">
                 <div class="col-lg-6 col-md-6 p-r-0">
