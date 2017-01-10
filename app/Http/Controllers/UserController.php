@@ -265,6 +265,13 @@ class UserController extends BaseController
             'token' => Session::get('user.token')
         );
         $result = $this->request('wishlist', $params);
+        if($result['success']){
+            foreach($result['data']['list'] as &$product){
+                $titleArray = explode(" ", $product['main_title']);
+                $titleArray[] = $product['spu'];
+                $product['seo_link'] = implode("-", $titleArray);
+            }
+        }
         if ($request->input('ajax')) {
             return $result;
         }

@@ -223,6 +223,13 @@ class DesignerController extends BaseController
             'id' => $id,
         );
         $result['product'] = $this->request('designer', $params);
+        if(!empty($result['product']['data']['spuInfos'])){
+            foreach($result['product']['data']['spuInfos'] as &$product){
+                $titleArray = explode(" ", $product['spuBase']['main_title']);
+                $titleArray[] = $product['spuBase']['spu'];
+                $product['spuBase']['seo_link'] = implode("-", $titleArray);
+            }
+        }
 
         //设计师商品
         $params = array(

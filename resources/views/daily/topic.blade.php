@@ -131,7 +131,7 @@
                                     <div class="productList-item">
                                         <div class="image-container">
                                             <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
-                                               href="/detail/{{$spu}}/{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
+                                               href="/detail/{{$topic['spuInfos'][$spu]['spuBase']['seo_link']}}" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                 <img class="img-fluid img-lazy figure"
                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"

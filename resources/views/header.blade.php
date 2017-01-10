@@ -41,7 +41,7 @@
 {{--@if(!isset($CartCheck))--}}
     <div class="download-info p-t-20x p-b-15x">
         <div class="container">
-            <div class="row text-white avenirMedium">
+            <div class="row text-white avenirMedium font-size-sm">
                 <div class="col-md-6">
                     <span>FREE SHIPPING TO 30+ COUNTRIES</span>
                 </div>

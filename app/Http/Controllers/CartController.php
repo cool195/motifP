@@ -37,6 +37,14 @@ class CartController extends BaseController
                     'operate' => json_encode($cartCache)
                 );
                 $cartList = $this->request('cart', $params);
+                if($cartList['success']){
+                    foreach($cartList['data']['showSkus'] as &$product){
+                        $titleArray = explode(" ", $product['main_title']);
+                        $titleArray[] = $product['spu'];
+                        $product['seo_link'] = implode("-", $titleArray);
+                    }
+                }
+
             }
             return view('cart.cart', ['CartCheck' => true, 'cart' => $cartList['data'], 'config' => $config['data']['cart_checkout_top_notification']]);
         }
@@ -133,6 +141,13 @@ class CartController extends BaseController
                 'pin' => Session::get('user.pin'),
             );
             $result = $this->request('cart', $params);
+            if($result['success']){
+                foreach($result['data']['showSkus'] as &$product){
+                    $titleArray = explode(" ", $product['main_title']);
+                    $titleArray[] = $product['spu'];
+                    $product['seo_link'] = implode("-", $titleArray);
+                }
+            }
             return $result;
         } else {
             $cartCache = Cache::get('CartCache' . $_COOKIE['uid']);
@@ -143,13 +158,20 @@ class CartController extends BaseController
                     'operate' => json_encode($cartCache)
                 );
 
-                return $this->request('cart', $params);
+                $result = $this->request('cart', $params);
+                if($result['success']){
+                    foreach($result['data']['showSkus'] as &$product){
+                        $titleArray = explode(" ", $product['main_title']);
+                        $titleArray[] = $product['spu'];
+                        $product['seo_link'] = implode("-", $titleArray);
+                    }
+                }
+                return $result;
             }else{
                 return array('success'=>true,'data'=>array());
             }
 
         }
-
     }
 
     public function getCartSaveList()
@@ -160,6 +182,13 @@ class CartController extends BaseController
             'pin' => Session::get('user.pin'),
         );
         $result = $this->request('cart', $params);
+        if($result['success']){
+            foreach($result['data']['showSkus'] as &$product){
+                $titleArray = explode(" ", $product['main_title']);
+                $titleArray[] = $product['spu'];
+                $product['seo_link'] = implode("-", $titleArray);
+            }
+        }
         return $result;
     }
 
