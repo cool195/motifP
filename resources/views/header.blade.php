@@ -46,7 +46,7 @@
                     <span>FREE SHIPPING TO 30+ COUNTRIES</span>
                 </div>
                 <div class="col-md-6 text-right">
-                    <span>20% OFF YOUR FIRST IN APP PURCHASE</span>
+                    <a href="/download" class="text-downloadApp">20% OFF YOUR FIRST IN APP PURCHASE</a>
                 </div>
             </div>
         </div>
