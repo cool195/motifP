@@ -39,7 +39,7 @@
             </div>
             <div class="row flex flex-alignCenter">
                 <div class="col-lg-6 col-md-6 text-center p-r-0">
-                    <h3 class="bigNoodle text-main">EVERY DAY, THERE'S SOMETHING UNIQUE AND RARE<br> THAT YOU CAN'T FIND ANYWHERE ELSE</h3>
+                    <h3 class="bigNoodle text-main">EVERY DAY, THERE'S SOMETHING UNIQUE AND<br> RARE THAT YOU CAN'T FIND ANYWHERE ELSE</h3>
                     <p class="text-main p-t-20x font-size-base">Download our app or register to be the first to find out about our<br> latest collections and exclusive deals.</p>
                     <div class="p-t-20x">
                         <a href="https://itunes.apple.com/us/app/id1125850409" target="_blank" class="btn btn-black m-r-30x">
