@@ -72,6 +72,13 @@ class DailyController extends BaseController
                 break;
             }
         }
+
+        foreach($result['data']['spuInfos'] as &$product){
+            $titleArray = explode(" ", $product['spuBase']['main_title']);
+            $titleArray[] = $product['spuBase']['spu'];
+            $product['spuBase']['seo_link'] = implode("-", $titleArray);
+        }
+
         if ($request->input('ajax')) {
             return $result;
         }
