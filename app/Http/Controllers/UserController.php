@@ -74,7 +74,7 @@ class UserController extends BaseController
     public function signout()
     {
         Session::forget('user');
-        return redirect('/login');
+        return redirect('/');
     }
 
     public function reset(Request $request)
@@ -265,6 +265,13 @@ class UserController extends BaseController
             'token' => Session::get('user.token')
         );
         $result = $this->request('wishlist', $params);
+        if($result['success']){
+            foreach($result['data']['list'] as &$product){
+                $titleArray = explode(" ", $product['main_title']);
+                $titleArray[] = $product['spu'];
+                $product['seo_link'] = implode("-", $titleArray);
+            }
+        }
         if ($request->input('ajax')) {
             return $result;
         }
@@ -473,6 +480,9 @@ class UserController extends BaseController
 
     public function forgetpwd()
     {
+        if(Session::has('user')){
+            return redirect('/daily');
+        }
         return view('user.forgetpwd');
     }
 

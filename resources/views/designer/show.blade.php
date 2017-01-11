@@ -1,4 +1,4 @@
-@include('header',['title'=>$designer['nickname'],'description'=>$designer['describe'],'ogimage'=>config('runtime.CDN_URL').'/n2/'.$designer['img_video_path'],'page'=>'designer'])
+@include('header',['title'=>$designer['seo_tag'],'description'=>$designer['describe'],'ogimage'=>config('runtime.CDN_URL').'/n2/'.$designer['img_video_path'],'page'=>'designer'])
 <input type="text" id="productClick-name" value="name" hidden>
 <input type="text" id="productClick-spu" value="1" hidden>
 <input type="text" id="productClick-price" value="1" hidden>
@@ -75,12 +75,12 @@
 </script>
 
 <!-- 内容 -->
-<section class="m-t-40x" id="gaProductClick">
+<section class="body-container m-t-40x" id="gaProductClick">
 @inject('wishlist', 'App\Http\Controllers\UserController')
 <!-- 新版设计师详情页 -->
     <div class="topic-wrap">
         <!-- 设计师信息 -->
-        <div class="box-shadow bg-white">
+        <div class="bg-white">
             <!-- 设计师头图 -->
         @if(isset($designer['detailVideoPath']))
             <!-- 视频 -->
@@ -97,9 +97,9 @@
                         </div>
                     </div>
                 </div>
-            @else
+        @else
                 <div class="designer-img"><img class="img-fluid"
-                                               src="{{config('runtime.CDN_URL')}}/n1/{{$designer['img_video_path']}}">
+                                               src="{{config('runtime.CDN_URL')}}/n0/{{$designer['img_video_path']}}">
                 </div>
         @endif
 
@@ -107,26 +107,11 @@
             <div class="text-center p-b-20x p-t-20x designer-basicInfo">
                 <div class="m-b-10x designer-headImg">
                 </div>
-                <div class="flex flex-alignCenter flex-fullJustified p-x-20x">
-                    <div class="font-size-md helveBold">{{$designer['nickname']}}</div>
-                    <div class="">
-                        @if(Session::has('user'))
-                            <div class="btn btn-gray btn-sm p-x-20x btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
-                                 data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>
-                        @else
-                            <a href="javascript:void(0)" class="btn btn-gray btn-sm p-x-20x btn-follow"
-                               data-actiondid="{{$designer['designer_id']}}">Follow</a>
-                        @endif
-                    </div>
+                <div class="p-x-20x">
+                    <div class="bigNoodle font-size-llx">{{$designer['nickname']}}</div>
                 </div>
-
-
-                <div class="p-t-20x p-x-20x text-left">
-                    <p class="m-b-0">{{$designer['describe']}}</p>
-                </div>
-
                 @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
-                    <div class="p-t-20x p-x-20x font-size-lxx text-left">
+                    <div class="p-t-20x p-x-20x font-size-llxx">
                         @endif
                         @if(!empty($designer['instagram_link']))
                             <a href="{{$designer['instagram_link']}}" target="_blank" class="m-r-20x"><i
@@ -151,13 +136,29 @@
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                     </div>
                 @endif
+
+                <div class="p-t-20x">
+                    @if(Session::has('user'))
+                        <div class="btn btn-gray p-x-20x bigNoodle font-size-llx btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
+                             data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>
+                    @else
+                        <a href="javascript:void(0)" class="btn btn-gray bigNoodle font-size-llx p-x-20x btn-follow"
+                           data-actiondid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow</a>
+                    @endif
+                </div>
+
+                <div class="p-t-20x p-x-20x">
+                    <p class="m-b-0 font-size-sm">{{$designer['describe']}}</p>
+                </div>
+
+
             </div>
         </div>
 
         {{--设计师预售信息 LIMITED EDITION--}}
         @if($designer['prompt_info']['datePrompt'])
-            <div class="box-shadow bg-white m-t-20x p-x-20x">
-                <div class="helveBold text-left p-y-15x font-size-md">{{$designer['prompt_info']['datePrompt']['title']}}</div>
+            <div class="bg-white m-t-20x p-x-20x">
+                <div class="bigNoodle p-y-15x font-size-md">{{$designer['prompt_info']['datePrompt']['title']}}</div>
                 <div class="p-y-15x">
                     @if($designer['prompt_info']['datePrompt']['endDate'] > time()*1000)
                         <div class="limited-content limited-data"
@@ -167,7 +168,7 @@
                             <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
                                  srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
                                  alt="">
-                            <span class="text-primary font-size-base p-l-5x">Orders Close In <span
+                            <span class="font-size-base p-l-5x">Orders Close In <span
                                         class="time_show"></span></span>
                         </div>
                         <div class="p-t-10x">
@@ -179,7 +180,7 @@
                             <img src="{{config('runtime.Image_URL')}}/images/icon/icon-limited.png"
                                  srcset="{{config('runtime.Image_URL')}}/images/icon/icon-limited@2x.png 2x, {{config('runtime.Image_URL')}}/images/icon/icon-limited@3x.png 3x"
                                  alt="">
-                            <span class="text-primary font-size-base p-l-5x">Orders Closed</span>
+                            <span class="font-size-base p-l-5x">Orders Closed</span>
                         </div>
                     @endif
                 </div>
@@ -187,13 +188,11 @@
         @endif
         {{--设计师预售信息 PREORDER--}}
         @if($designer['prompt_info']['textPrompt'])
-            <div class="box-shadow bg-white m-t-20x p-x-20x">
-                <div class="helveBold text-left p-y-15x font-size-md">{{$designer['prompt_info']['textPrompt']['title']}}</div>
+            <div class="bg-white m-t-20x p-x-20x">
+                <div class="bigNoodle p-y-15x font-size-md">{{$designer['prompt_info']['textPrompt']['title']}}</div>
                 <hr class="hr-base m-a-0">
                 <div class="p-y-15x">
-                    <div class="text-primary font-size-base">
-                        {{$designer['prompt_info']['textPrompt']['content']}}
-                    </div>
+                    {{$designer['prompt_info']['textPrompt']['content']}}
                 </div>
             </div>
         @endif
@@ -221,7 +220,7 @@
                     @elseif($value['type']=='title')
                         <!--标题-->
                             <div class="p-x-20x p-t-20x m-b-20x text-center">
-                                <h2 class="helveBold font-size-lxx">{{$value['value']}}</h2>
+                                <h2 class="bigNoodle font-size-lxx">{{$value['value']}}</h2>
                             </div>
                     @elseif($value['type'] == 'boxline')
                         <!--分割线-->
@@ -234,13 +233,13 @@
                     @elseif($value['type'] == 'product')
                         @if(isset($value['spus']) && !empty($value['spus']))
                             <!--设计师 商品-->
-                                <div class="p-t-20x bg-body">
+                                <div class="p-t-20x">
                                     <div class="row designerDetail-goods">
                                         @foreach($value['spus'] as $key => $spu)
                                             <div class="col-xs-6">
                                                 <div class="productList-item">
                                                     <div class="image-container">
-                                                        <a href="/detail/{{$spu}}"
+                                                        <a href="/detail/{{$product['spuInfos'][$spu]['spuBase']['seo_link']}}"
                                                            data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.400001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"PC"}'
                                                            data-spu="{{$spu}}"
                                                            data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
@@ -250,23 +249,22 @@
                                                                  data-original="{{config('runtime.CDN_URL')}}/n1/{{$product['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                                  alt="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}">
 
-                                                            <!--预售标志-->
                                                             @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
                                                                 @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
                                                                     <div class="bg-soldout">
-                                                                        <span class="text helve font-size-sm">SOLD OUT</span>
+                                                                        <span class="text bigNoodle font-size-sm">SOLD OUT</span>
                                                                     </div>
                                                                 @else
                                                                 <!--预售标志-->
-                                                                    <div class="presale-sign newPresale-sign">
+                                                                    {{--<div class="presale-sign newPresale-sign">
                                                                         <a href="/detail/{{$spu}}"
                                                                            data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.400001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","expid":0,"index":{{$key}},"version":"1.0.1","ver":"9.2","src":"PC"}'
                                                                            data-spu="{{$spu}}"
                                                                            data-title="{{$product['spuInfos'][$spu]['spuBase']['main_title']}}"
                                                                            data-price="{{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}"
-                                                                           class="newPresale-text helveBold font-size-xs text-primary">Limited
+                                                                           class="newPresale-text bigNoodle font-size-xs">Limited
                                                                             Edition</a>
-                                                                    </div>
+                                                                    </div>--}}
                                                                 @endif
                                                             @endif
                                                         </a>
@@ -279,19 +277,29 @@
                                                         @else
                                                             <span class="product-heart btn-heart"><i
                                                                         class="iconfont btn-wish font-size-lxx"
-                                                                        data-actionspu="{{$spu}}"></i></span>
+                                                                        data-actionspu="{{$spu}}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
                                                         @endif
                                                     </div>
-                                                    <div class="price-caption helveBold">
-                                                        <div class="text-center font-size-md text-primary text-truncate p-x-20x">
+                                                    <div class="price-caption text-center">
+                                                        <!--预售-->
+                                                        @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
+                                                            @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                                            @else
+                                                                <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
+                                                                    <span>LIMITED EDITION</span>
+                                                                </div>
+                                                            @endif
+                                                        @endif
+
+                                                        <div class="font-size-md text-truncate p-x-20x">
                                                             {{$product['spuInfos'][$spu]['spuBase']['main_title']}}
                                                         </div>
                                                         <div class="text-center">
                                                             @if($product['spuInfos'][$spu]['skuPrice']['sale_price'] != $product['spuInfos'][$spu]['skuPrice']['price'])
-                                                                <span class="font-size-md text-primary p-r-5x text-red">${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
-                                                                <span class="font-size-base text-common text-throughLine">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
+                                                                <span class="font-size-md p-r-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
+                                                                <span class="font-size-base text-green text-throughLine">${{number_format($product['spuInfos'][$spu]['skuPrice']['price']/100,2)}}</span>
                                                             @else
-                                                                <span class="font-size-md text-primary p-r-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
+                                                                <span class="font-size-md p-r-5x">${{number_format($product['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}</span>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -309,7 +317,7 @@
 
     <!-- 设计师商品 -->
         <div class="m-t-20x">
-            <div class="row">
+            <div class="row designerDetail-goods">
                 @if(isset($productAll['data']['list']))
                     @foreach($productAll['data']['list'] as $product)
                         <div class="col-xs-6">
@@ -324,17 +332,17 @@
                                              alt="{{$product['main_title']}}"
                                              src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png">
                                     </a>
-                                    <!--预售标志-->
+                                   {{-- <!--预售标志-->
                                     @if(1 == $product['sale_type'])
                                         <div class="presale-sign">
                                             <a data-impr="{{ $product['impr'] }}" data-clk="{{ $product['clk'] }}"
                                                href="/detail/{{$product['spu']}}" data-spu="{{$product['spu']}}"
                                                data-title="{{$product['main_title']}}"
                                                data-price="{{number_format($product['skuPrice']['sale_price']/100,2)}}"
-                                               class="newPresale-text helveBold font-size-xs text-primary">Limited
+                                               class="newPresale-text bigNoodle font-size-xs">Limited
                                                 Edition</a>
                                         </div>
-                                    @endif
+                                    @endif--}}
 
                                     @if(Session::has('user'))
                                         <span class="product-heart btn-heart">
@@ -343,20 +351,30 @@
                                         </span>
                                     @else
                                         <span class="product-heart btn-heart"><i class="iconfont btn-wish font-size-lxx"
-                                                                                 data-actionspu="{{$product['spu']}}"></i></span>
+                                                                                 data-actionspu="{{$product['spu']}}" data-referer="{{$_SERVER['REQUEST_URI']}}"></i></span>
                                     @endif
 
                                 </div>
-                                <div class="price-caption helveBold">
-                                    <div class="text-center font-size-md text-primary text-truncate p-x-20x">
+                                <div class="price-caption text-center">
+                                    <!--预售-->
+                                    @if(1 == $product['spuInfos'][$spu]['spuBase']['sale_type'])
+                                        @if($product['spuInfos'][$spu]['stockStatus']=='NO' || $product['spuInfos'][$spu]['spuBase']['isPutOn']==0)
+                                        @else
+                                            <div class="bigNoodle font-size-llxx text-truncate p-x-20x">
+                                                <span>LIMITED EDITION</span>
+                                            </div>
+                                        @endif
+                                     @endif
+
+                                    <div class="font-size-md text-truncate p-x-20x">
                                         {{ $product['main_title'] }}
                                     </div>
                                     <div class="text-center">
                                         @if($product['skuPrice']['sale_price'] != $product['skuPrice']['price'])
-                                            <span class="font-size-md text-primary p-r-5x text-red">${{number_format($product['skuPrice']['sale_price']/100,2)}}</span>
-                                            <span class="font-size-base text-common text-throughLine">${{number_format($product['skuPrice']['price']/100,2)}}</span>
+                                            <span class="font-size-md p-r-5x">${{number_format($product['skuPrice']['sale_price']/100,2)}}</span>
+                                            <span class="font-size-base text-green text-throughLine">${{number_format($product['skuPrice']['price']/100,2)}}</span>
                                         @else
-                                            <span class="font-size-md text-primary p-r-5x">${{number_format($product['skuPrice']['sale_price']/100,2)}}</span>
+                                            <span class="font-size-md p-r-5x">${{number_format($product['skuPrice']['sale_price']/100,2)}}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -368,8 +386,8 @@
         </div>
 
         <!-- 99 设计师 尾部 follow -->
-        @if($designer['designer_id']==99)
-            <div class="font-size-base text-primary p-y-15x p-x-15x m-b-10x">
+        {{--@if($designer['designer_id']==99)
+            <div class="font-size-base p-y-15x p-x-15x m-b-10x">
                 <div class="text-center">
                     <div>Love this collection? Follow Rae on our free app for early access to shop future collections.
                     </div>
@@ -384,7 +402,7 @@
                     </div>
                 </div>
             </div>
-        @endif
+        @endif--}}
 
     </div>
 </section>

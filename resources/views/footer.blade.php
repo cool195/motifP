@@ -1,106 +1,199 @@
 <footer>
-    <div class="container p-x-40x">
-        <div class="text-center m-b-40x p-t-10x">
-            <a href="/daily"><img class=""
-                                  src="{{config('runtime.Image_URL')}}/images/logo/logo-white.png{{config('runtime.V')}}"
-                                  alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/logo-white@2x.png 2x"></a>
-        </div>
-        <div class="row">
-            <div class="col-md-3 col-xs-6">
-                <div class="list-group text-white m-b-20x">
-                    <div class="sanBold font-size-sm p-b-20x">Motif</div>
-                    <a class="list-group-item font-size-xs" href="/aboutmotif">About Motif</a>
-                    <a class="list-group-item font-size-xs" href="/privacynotice">Privacy Notice</a>
-                    <a class="list-group-item font-size-xs" href="/termsconditions">Terms & Conditions</a>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <div class="list-group text-white m-b-20x">
-                    <div class="sanBold font-size-sm m-b-20x">Help & Service</div>
-                    <a class="list-group-item font-size-xs text-white" href="/contactus">Contact Us</a>
-                    <a class="list-group-item font-size-xs text-white" href="/faq">FAQ</a>
-                    {{--<a class="list-group-item font-size-xs text-white" href="/payments">Payments</a>--}}
-                    <a class="list-group-item font-size-xs text-white" href="/service/23?template=1">Shipping & Returns</a>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <div class="list-group text-white m-b-20x">
-                    <div class="sanBold font-size-sm m-b-20x">Download</div>
-                    <div class="list-group-item">
-                        <a href="https://itunes.apple.com/us/app/id1125850409" target="_blank" class="btn btn-black">
-                            <img class="img-fluid m-x-auto"
-                                 src="{{config('runtime.Image_URL')}}/images/icon/icon-appStore.png{{config('runtime.V')}}"
-                                 srcset="{{config('runtime.Image_URL')}}/images/icon/icon-appStore@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-appStore@3x.png{{config('runtime.V')}} 3x">
+    <div class="container">
+            <div class="row footer-row">
+                <div class="col-md-3 verticalHr">
+                    <div class="bigNoodle font-size-lx m-b-5x">CONNECT WITH US</div>
+                    <div>
+                        <a href="https://www.facebook.com/motifme" target="_blank" class="p-r-10x text-primary">
+                            <i class="iconfont icon-facebook2 footer-icon"></i>
                         </a>
-                    </div>
-                    <div class="list-group-item">
-                        <a href="https://play.google.com/store/apps/details?id=me.motif.motif" target="_blank" class="btn btn-black">
-                            <img class="img-fluid m-x-auto"
-                                 src="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay.png{{config('runtime.V')}}"
-                                 srcset="{{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/icon/icon-googlePlay@3x.png{{config('runtime.V')}} 3x">
+                        <a href="https://www.instagram.com/motifme/" target="_blank" class="p-r-10x text-primary">
+                            <i class="iconfont icon-ins2 footer-icon"></i>
+                        </a>
+                        <a href="https://www.pinterest.com/motifme/" target="_blank" class="p-r-10x text-primary">
+                            <i class="iconfont icon-pin2 footer-icon"></i>
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <div class="list-group text-white m-b-20x">
-                    <div class="sanBold font-size-sm m-b-20x">Follow Us</div>
-                    <a href="https://www.facebook.com/motifme" target="_blank" class="btn btn-share btn-circle m-r-20x">
-                        <i class="iconfont icon-facebook1 footer-icon"></i>
-                    </a>
-                    <a href="https://www.instagram.com/motifme/" target="_blank" class="btn btn-share btn-circle m-r-20x">
-                        <i class="iconfont icon-instagram1 footer-icon"></i>
-                    </a>
-                    <a href="https://www.pinterest.com/motifme/" target="_blank" class="btn btn-share btn-circle m-r-20x">
-                        <i class="iconfont icon-pinterest1 footer-icon"></i>
-                    </a>
+                <div class="col-md-3 p-l-40x">
+                    <div class="bigNoodle font-size-lx m-b-5x">MOTIF</div>
+                    <ul class="list-group">
+                        <li class="list-group-item font-size-sm"><a href="/aboutmotif">ABOUT MOTIF</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/privacynotice">PRIVACY NOTICE</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/termsconditions">TERMS & CONDITIONS</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <div class="bigNoodle font-size-lx m-b-5x">HELP</div>
+                    <ul class="list-group">
+                        <li class="list-group-item font-size-sm"><a href="/contactus">CONTACT US</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/faq">FAQ</a></li>
+                        <li class="list-group-item font-size-sm"><a href="/pservice">SHIPPING & RETURNS</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-right">
+                    <form class="form" method="post" name="searchFrom" action="/search">
+                        <input class="text-primary input-search font-size-sm" name="kw" placeholder="Looking for something specific?" type="text">
+                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                        <button class="btn btn-primary bigNoodle font-size-lx btn-footerSearch" type="submit">SEARCH</button>
+                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="p-y-10x text-center">
-            <div class="sanBold font-size-sm m-b-20x text-white">Payment Accepted</div>
-            <div>
-                <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-paypal-43.png"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-paypal-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-paypal-43@3x.png{{config('runtime.V')}} 3x">
-                <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-43.png"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-43@3x.png{{config('runtime.V')}} 3x">
-                <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-43.png"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-jcb-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-jcb-43@3x.png{{config('runtime.V')}} 3x">
-                <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-american-43.png"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-american-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-american-43@3x.png{{config('runtime.V')}} 3x">
-                <img class="m-x-10x"
-                     src="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-43.png"
-                     srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-visa-43@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-visa-43@3x.png{{config('runtime.V')}} 3x">
-            </div>
-        </div>
-        <div class="p-t-10x m-t-10x text-center text-white font-size-xs text-Copyright">Copyright © 2016 Motif Group
-            LLC. All rights reserved.
-        </div>
-    </div>
+{{--
     @if(!isset($CartCheck))
     <!-- 固定 弹框订阅 -->
         <div class="redeem-fixed p-y-10x p-x-20x">GET 15% OFF YOUR FIRST ORDER!</div>
-    @endif
+    @endif--}}
 </footer>
+
+<!-- 登录注册 弹窗 -->
+<div class="remodal modal-content remodal-md" data-remodal-id="login-modal" id="login-modalDialog">
+    <div class="p-a-10x">
+        <div class="text-right"><a href="javascript:void(0)" data-remodal-action="close"><i class="iconfont icon-close font-size-lxx"></i></a></div>
+        <div class="login-content p-y-20x">
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="bigNoodle login-title font-size-lxx active tab-login">SIGN IN</a>
+                </div>
+                <div class="col-md-6">
+                    <a class="bigNoodle login-title font-size-lxx tab-register">SIGN UP</a>
+                </div>
+            </div>
+
+            <!-- 登录信息 -->
+
+            <div class="bigNoodle font-size-llx p-t-30x" id="loginRegister-title">SIGN IN WITH</div>
+
+            <div class="row p-t-10x">
+                <div class="col-md-6">
+                    <a class="btn btn-block font-size-lxx text-white btn-loginFackbook" id="facebookLogin"><i class="iconfont icon-facebook2 font-size-lx p-r-5x"></i><span class="bigNoodle">FACEBOOK</span></a>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn btn-block font-size-lxx text-white btn-loginGoogle" id="googleLogin"><i class="iconfont icon-google-o font-size-lx p-r-5x"></i><span class="bigNoodle">GOOGLE</span></a>
+                </div>
+            </div>
+
+            <div class="login-info active">
+                <div class="avenirMedium font-size-xs p-t-10x m-b-40x">Don’t have an account? <a href="javascript:void(0)" class="text-green tab-register">Sign up</a></div>
+
+                <div class="text-center login-or">
+                    <hr class="hr-login m-a-0">
+                    <span class="p-x-5x bigNoodle font-size-lxx">or</span>
+                </div>
+
+                <div class="bigNoodle font-size-llx p-t-5x">SIGN IN WITH EMAIL</div>
+
+                <form id="login">
+                    <fieldset class="p-t-15x login-text">
+                        <div class="login-text">
+                            <input type="text"
+                                   class="input-login form-control text-primary login-email"
+                                   name="email" placeholder="EMAIL">
+                            <i class="iconfont icon-delete font-size-lg input-clear text-common hidden"></i>
+                        </div>
+                        <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
+                            <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
+                            <span class="font-size-sm">Please select size !</span>
+                        </div>
+                    </fieldset>
+                    <fieldset class="p-t-15x login-text">
+                        <div class="login-text">
+                            <input type="password"
+                                   class="input-login form-control text-primary login-pw" name="pw"
+                                   placeholder="PASSWORD">
+                            <i class="iconfont icon-show font-size-lg input-show text-common off"></i>
+                        </div>
+                        <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
+                            <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
+                            <span class="font-size-sm">Please select size !</span>
+                        </div>
+                    </fieldset>
+                    <input type="hidden" name="referer" value="{{$_SERVER['REQUEST_URI']}}">
+                </form>
+
+                <div class="p-t-15x">
+                    <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
+                        <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
+                        <span class="font-size-sm">Please select size !</span>
+                    </div>
+                    <div class="btn btn-primary btn-block bigNoodle font-size-lxx" data-role="login-submit">Sign in</div>
+                </div>
+
+                <div class="avenirMedium font-size-xs p-t-10x"><a href="/forgetpassword" class="text-green">Forget your password?</a></div>
+            </div>
+
+            <!-- 注册信息 -->
+            <div class="register-info">
+                <div class="avenirMedium font-size-xs p-t-10x m-b-40x">Already have an account? <a href="javascript:void(0)" class="text-green tab-login">Sign in</a></div>
+
+                <div class="text-center login-or">
+                    <hr class="hr-login m-a-0">
+                    <span class="p-x-5x bigNoodle font-size-lxx">or</span>
+                </div>
+
+                <div class="bigNoodle font-size-llx p-t-5x">SIGN UP WITH EMAIL</div>
+
+                <form id="register">
+                    <fieldset class="p-t-15x login-text">
+                        <div class="login-text">
+                            <input type="text" class="input-login form-control text-primary register-nick" name="nick" placeholder="NAME">
+                            <i class="iconfont icon-delete font-size-lg input-clear text-common hidden"></i>
+                        </div>
+                        <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
+                            <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
+                            <span class="font-size-sm">Please select size !</span>
+                        </div>
+                    </fieldset>
+                    <fieldset class="p-t-15x login-text">
+                        <div class="login-text">
+                            <input type="text" class="input-login form-control text-primary register-email" name="email" placeholder="EMAIL ADDRESS">
+                            <i class="iconfont icon-delete font-size-lg input-clear text-common hidden"></i>
+                        </div>
+                        <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
+                            <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
+                            <span class="font-size-sm">Please select size !</span>
+                        </div>
+                    </fieldset>
+                    <fieldset class="p-t-15x login-text">
+                        <div class="login-text">
+                            <input type="password" class="input-login form-control text-primary register-pw" name="pw" placeholder="PASSWORD">
+                            <i class="iconfont icon-show font-size-lg input-show text-common off"></i>
+                        </div>
+                        <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
+                            <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
+                            <span class="font-size-sm">Please select size !</span>
+                        </div>
+                    </fieldset>
+                    <input type="hidden" name="referer" value="{{$_SERVER['REQUEST_URI']}}">
+                </form>
+                <div class="p-t-15x">
+                    <div class="btn btn-primary btn-block bigNoodle font-size-lxx" data-role="register-submit">Sign up</div>
+                </div>
+
+                <div class="avenirMedium font-size-xs p-t-10x">By registering, you’ve accepted our <a href="/termsconditions" class="text-green">Terms & Conditions</a></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="top">
     <div class="btn btn-top btn-circle p-a-5x">
-        <i class="iconfont icon-top font-size-lx text-white"></i>
+        <i class="iconfont icon-up"></i>
     </div>
 </div>
 
 
-<!-- 邮件订阅 弹出框 -->
+{{--<!-- 邮件订阅 弹出框 -->
 <div class="remodal modal-content remodal-lg redeem-content" data-remodal-id="redeem-modal">
     <div class="row m-a-0">
         <div class="col-md-6 p-a-0">
             <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_pic.png" class="img-fluid">
         </div>
-        <form id="subscribe" action="" method="" class="redeem-leftWrapper">
+        <form id="subscribe" action="" method="" class="redeem-leftWrapper hidden">
             <div class="col-md-6 col-xs-6">
                 <div class="p-a-30x">
                     <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
@@ -121,7 +214,7 @@
                 </div>
             </div>
         </form>
-        <div class="col-md-6 col-xs-6 redeem-rightWrapper hidden">
+        <div class="col-md-6 col-xs-6 redeem-rightWrapper">
             <div class="p-a-30x">
                 <i class="iconfont icon-cross font-size-xs redeem-close" data-remodal-action="close"></i>
                 <div class="text-left p-b-20x">
@@ -137,8 +230,8 @@
         </div>
 
     </div>
-</div>
 <input type="text" id="userEmail" value="" hidden>
+</div>--}}
 <script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/card.js{{config('runtime.V')}}"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>

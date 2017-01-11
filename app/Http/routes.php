@@ -14,7 +14,7 @@
 //Daily Start
 Route::group(['middleware' => 'pcguide'], function() {
 
-    Route::get('/', 'DailyController@index');
+    Route::get('/', 'DailyController@home');
 
     Route::get('/daily', 'DailyController@index');
 
@@ -61,6 +61,10 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::post('/checkStock', 'ShoppingController@checkStock');
 
+    Route::post('/search', 'ShoppingController@search');
+
+    Route::get('/search', 'ShoppingController@search');
+
     //未登录添加购物车
     Route::get('/cart/amount', 'CartController@getCartAmount');
     Route::get('/cart', 'CartController@cart');
@@ -75,7 +79,10 @@ Route::group(['middleware' => 'pcguide'], function() {
 
 
 //Product Start
-Route::get('/detail/{spu}', 'ProductController@product')->middleware(['pcguide'])->where(['spu' => '[0-9]+']);
+//Route::get('/detail/{spu}', 'ProductController@detail')->middleware(['pcguide'])->where(['spu' => '[0-9]+']);
+
+Route::get('/detail/{spuTitle}', 'ProductController@product')->middleware(['pcguide']);
+
 //Product End
 
 
@@ -138,7 +145,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function () {
 
     Route::post('/wordpay/delCard', 'WordpayController@delCreditCard');
 
-    Route::get('/wordpay/selship/{type}', 'WordpayController@selShip');
+    Route::get('/wordpay/selship', 'WordpayController@selShip');
 
     Route::get('/wordpay/paywith/{type}/{cardid}', 'WordpayController@paywith');
 
@@ -285,6 +292,8 @@ Route::group(['middleware' => 'pcguide'], function () {
 
     Route::get('/download', 'PageController@download');
 
+    Route::get('/pservice', 'PageController@pservice');
+
 });
 
 // Page Start
@@ -296,6 +305,9 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function() {
     Route::get('/askshopping', 'AskController@show');
 
     Route::post('/askshopping', 'AskController@install');
+
+    Route::post('/askshoppings', 'AskController@installs');
+
 });
 
 Route::get('error',function (){
@@ -312,6 +324,7 @@ Route::get('/test', 'PageController@test');
 
 Route::get('/banner', 'DailyController@banner');
 
+Route::get('/testSession', 'WordpayController@test');
 
 
 

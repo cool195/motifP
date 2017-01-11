@@ -55,17 +55,22 @@
 </script>
 
 <!-- 内容 -->
-<section class="m-t-40x" id="GACheckout">
-    <div class="container" id="checkoutView" data-status="true">
-        <h4 class="helveBold text-main p-l-10x">Checkout</h4>
-
+<section class="body-container m-t-40x" id="GACheckout">
+    <div class="container content-maxWidth" id="checkoutView" data-status="true">
+        <h4 class="text-center bigNoodle font-size-llxxx">Checkout</h4>
+        <hr class="hr-black">
         <!-- Checkout Product Item -->
-        <div class="box-shadow bg-white m-t-20x">
-            <div class="sanBold font-size-md p-x-20x p-y-15x">Items</div>
-            <hr class="hr-base m-a-0">
-            <div class="p-x-20x">
+        <div class="p-t-20x">
+                <div class="row font-size-sm">
+                    <div class="col-md-7">ITEM</div>
+                    <div class="col-md-1 text-center">PRICE</div>
+                    <div class="col-md-2 text-center"><div class="p-l-40x">QUANTITY</div></div>
+                </div>
+                <hr class="hr-gray m-t-0">
+            </div>
+        <div class="">
                 @foreach($accountList['showSkus'] as $showSku)
-                    <div class="checkout-Item border-bottom p-y-20x">
+                    <div class="checkout-Item p-y-20x">
                         <div class="media">
                             <div class="media-left m-r-15x">
                                 <img class="" src="{{config('runtime.CDN_URL')}}/n1/{{$showSku['main_image_url']}}"
@@ -74,7 +79,7 @@
                             <div class="media-body @if(empty($showSku['showVASes'])) no-border @endif">
                                 <div class="row flex flex-alignCenter">
                                     <div class="col-md-3">
-                                        <div class="font-size-md text-main p-l-20x">{{ $showSku['main_title'] }}</div>
+                                        <div class="font-size-md p-l-20x">{{ $showSku['main_title'] }}</div>
                                     </div>
                                     <div class="col-md-3">
                                         @if(isset($showSku['attrValues']))
@@ -131,21 +136,21 @@
                     </div>
                     {{--预售--}}
                     {{--@if(1 == $showSku['sale_type'] && isset($showSku['skuPromotion']['ship_desc']))--}}
-                    {{--<div class="presale-checkout text-white font-size-md p-a-10x bg-red sanBold">PREORDER: Expected to ship--}}
+                    {{--<div class="presale-checkout text-white font-size-md p-a-10x bg-red uppercase avenirBold font-size-md">PREORDER: Expected to ship--}}
                     {{--on {{$showSku['skuPromotion']['ship_desc']}}</div>--}}
                     {{--@endif--}}
                 @endforeach
-            </div>
         </div>
+        <hr class="hr-gray p-b-20x">
 
         {{--Shipping Address--}}
         {{--Address 注入服务--}}
         @inject('Address', 'App\Http\Controllers\AddressController')
         {{--*/ $address = $Address->index() /*--}}
-        <div class="box-shadow bg-white m-t-20x" id="addrlength" data-addrlength ="{{ count($address['data']['list']) }}">
-            <div class="font-size-md p-x-20x p-y-15x btn-showHide @if(empty($address['data']['list'])){{'active'}}@endif"
+        <div class="bg-white m-t-40x" id="addrlength" data-addrlength ="{{ count($address['data']['list']) }}">
+            <div class="font-size-md btn-showHide @if(empty($address['data']['list'])){{'active'}}@endif"
                  id="addrShowHide">
-                <span class="sanBold">Ship to</span>
+                <span class="uppercase avenirBold font-size-md">Ship to</span>
                 <span class="pull-right showHide-simpleInfo">
                     @if(Session::has('user.checkout.address'))
                         {{$value = Session::get('user.checkout.address')}}
@@ -165,30 +170,33 @@
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
-            <hr class="hr-common m-a-0">
+            <hr class="hr-black m-a-0">
             <div class="showHide-body address-content @if(empty($address['data']['list'])){{'active'}}@endif">
                 {{--选择地址--}}
-                <div class="p-a-20x select-address @if(empty($address['data']['list'])){{'disabled'}}@endif">
+                <div class="m-y-20x select-address @if(empty($address['data']['list'])){{'disabled'}}@endif">
                     <div class="flex flex-alignCenter flex-fullJustified">
-                        <span class="font-size-md">Shipping Address</span>
-                        <span class="font-size-md pull-right">
-                            <div class="btn btn-secondary btn-md btn-addNewAddress" href="#">
-                                <i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address
-                            </div>
+                        <span class="font-size-md avenirMedium p-l-20x">Shipping Address</span>
+                        <span class="pull-right">
+                            <a class="btn btn-baseSize btn-primary font-size-llx bigNoodle btn-addNewAddress">
+                                + Add New Address
+                            </a>
                         </span>
                     </div>
-                    <div class="row p-x-10x p-t-20x address-list"></div>
+                    <div class="m-x-0">
+                        <div class="row p-t-10x address-list"></div>
+                    </div>
+
                     <div class="text-right p-t-10x">
-                        <a href="javascript:;" class="btn btn-primary btn-md btnAddrShowHide">Continue</a>
+                        <a href="javascript:;" class="btn btn-baseSize btn-green font-size-llx uppercase bigNoodle btnAddrShowHide">Continue</a>
                     </div>
                 </div>
                 {{--添加\修改 地址--}}
                 <div class="p-a-20x add-address @if(!empty($address['data']['list'])){{'disabled'}}@endif">
                     <div class="inline">
-                        <span class="font-size-md address-text">Add Shipping Address</span>
+                        <span class="font-size-md avenirMedium address-text">Add Shipping Address</span>
                         <span class="font-size-md pull-right">
                             <i class="isDefault iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
-                            <a class="p-l-10x" href="javascript:;">Default</a>
+                            <span class="p-l-10x">Default</span>
                         </span>
                     </div>
                     <div class="row p-t-30x">
@@ -196,7 +204,7 @@
                             <div class="col-md-5">
                                 <input type="hidden" name="email" class="address-email"
                                        value="{{Session::get('user.login_email')}}">
-                                <div class="p-l-20x m-b-20x">
+                                <div class="m-b-20x">
                                     <input type="text" name="name"
                                            class="form-control contrlo-lg text-primary address-name"
                                            placeholder="Full name">
@@ -205,7 +213,7 @@
                                         <span class="font-size-base">Please enter your name !</span>
                                     </div>
                                 </div>
-                                <div class="p-l-20x m-b-20x">
+                                <div class="m-b-20x">
                                     <input type="text" name="tel"
                                            class="form-control contrlo-lg text-primary address-phone"
                                            placeholder="Phone">
@@ -214,7 +222,7 @@
                                         <span class="font-size-base">Please enter your Phone !</span>
                                     </div>
                                 </div>
-                                <div class="p-l-20x m-b-20x">
+                                <div class="m-b-20x">
                                     <input type="text" name="addr1"
                                            class="form-control contrlo-lg text-primary address-addr1"
                                            placeholder="Street 1">
@@ -223,15 +231,15 @@
                                         <span class="font-size-base">Please enter your street !</span>
                                     </div>
                                 </div>
-                                <div class="p-l-20x m-b-20x">
+                                <div class="m-b-20x">
                                     <input type="text" name="addr2"
                                            class="form-control contrlo-lg text-primary address-addr2"
                                            placeholder="Street 2 (optional)">
                                 </div>
                             </div>
-                            <div class="col-md-1"></div>
+                            <div class="col-md-2"></div>
                             <div class="col-md-5">
-                                <div class="p-l-20x m-b-20x">
+                                <div class="m-b-20x">
                                     <input type="text" name="city"
                                            class="form-control contrlo-lg text-primary address-city" placeholder="City">
                                     <div class="warning-info flex flex-alignCenter text-warning p-t-5x off">
@@ -239,7 +247,7 @@
                                         <span class="font-size-base">Please enter your city !</span>
                                     </div>
                                 </div>
-                                <div class="p-l-20x m-b-20x">
+                                <div class="m-b-20x">
                                     <select name="country" class="form-control contrlo-lg select-country">
                                         @foreach($Address->getCountry(0) as $value)
                                             <option value="{{$value['country_name_en']}}"
@@ -250,11 +258,11 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="p-l-20x m-b-20x state-info">
+                                <div class="m-b-20x state-info">
                                     <input type="text" name="state" class="form-control contrlo-lg text-primary"
                                            placeholder="State">
                                 </div>
-                                <div class="p-l-20x m-b-20x">
+                                <div class="m-b-20x">
                                     <input type="text" name="zip" id="zip"
                                            class="form-control contrlo-lg text-primary address-zipcode"
                                            placeholder="Zip Code">
@@ -269,23 +277,22 @@
                                            value="@if(empty($address['data']['list'])){{'1'}}@else{{'0'}}@endif">
                                 </div>
                             </div>
-                            <div class="col-md-1"></div>
                         </form>
                     </div>
                     <div class="text-right">
                         <a href="javascript:void(0);" id="addAddress-cancel"
-                           class="btn btn-secondary btn-md m-r-10x">Cancel</a>
+                           class="btn btn-primary btn-md m-r-10x font-size-lg bigNoodle">Cancel</a>
                         <a href="javascript:void(0);" id="addAddress"
-                           class="btn btn-primary btn-md address-save">Save</a>
+                           class="btn btn-green btn-md bigNoodle font-size-lg address-save">Save</a>
                     </div>
                 </div>
             </div>
         </div>
 
         {{--Shipping Method--}}
-        <div class="box-shadow bg-white m-t-20x">
-            <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="smShowHide">
-                <span class="sanBold">Shipping Method</span>
+        <div class="bg-white m-t-40x">
+            <div class="font-size-md btn-showHide" id="smShowHide">
+                <span class="uppercase avenirBold font-size-md">Shipping Method</span>
                 <span class="pull-right showHide-simpleInfo">
                     @if(Session::has('user.checkout.selship'))
                         <span class="shippingMethodShow">{{Session::get('user.checkout.selship.logistics_name')}} @if(Session::get('user.checkout.selship.pay_price')>0)
@@ -299,11 +306,11 @@
                     @endif
                 </span>
             </div>
-            <hr class="hr-common m-a-0">
+            <hr class="hr-black m-a-0">
             <div class="showHide-body method-content">
                 <!-- 选择 物流方式 -->
-                <div class="p-a-20x">
-                    <div class="row p-x-20x p-t-20x checkout-method">
+                <div class="p-l-20x p-t-20x">
+                    <div class="row p-x-20x checkout-method">
                         @foreach($logisticsList['list'] as $k=>$list)
                             <div class="col-md-6 p-b-10x">
                                 @if(Session::has('user.checkout.selship'))
@@ -336,17 +343,17 @@
                         @endforeach
                     </div>
                     <div class="text-right"><a href="javascript:void(0);" id="smsubmit"
-                                               class="btn btn-primary btn-md">Continue</a></div>
+                                               class="btn btn-baseSize font-size-llx btn-green bigNoodle">Continue</a></div>
                 </div>
             </div>
         </div>
 
         {{--Payment Method--}}
-        <div class="box-shadow bg-white m-t-20x active">
+        <div class="bg-white m-t-40x active">
             @inject('Wordpay', 'App\Http\Controllers\WordpayController')
             {{$paylist = $Wordpay->getPayList()}}
-            <div class="font-size-md p-x-20x p-y-15x btn-showHide" id="pmShowHide">
-                <span class="sanBold">Payment Method</span>
+            <div class="font-size-md btn-showHide" id="pmShowHide">
+                <span class="uppercase avenirBold font-size-md">Payment Method</span>
                 <span class="pull-right showHide-simpleInfo">
                     @if(Session::has('user.checkout.paywith'))
                         @if(Session::has('user.checkout.paywith.withCard'))
@@ -406,16 +413,16 @@
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
-            <hr class="hr-common m-a-0">
+            <hr class="hr-black m-a-0">
             <div class="showHide-body payment-content">
                 <!--选择支付方式-->
-                <div class="p-a-20x select-payment">
-                    <span class="font-size-md">Select Payment Method</span>
-                    <div class="row p-x-10x p-t-20x payment-list">
+                <div class="p-t-20x select-payment">
+                    <span class="avenirMedium p-l-20x font-size-md">Select Payment Method</span>
+                    <div class="row p-x-10x p-t-5x payment-list">
                         @foreach($paylist['data']['list'] as $list)
                             @if(isset($list['creditCards']))
                                 @foreach($list['creditCards'] as $card)
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 p-x-0">
                                         <div class="p-a-10x">
                                             <div class="card-item choose-item p-a-20x @if($card['card_id'] == Session::get('user.checkout.paywith.withCard.card_id')) active @endif"
                                                  data-cardtype="{{ $card['card_type'] }}"
@@ -439,11 +446,10 @@
                                                         @endif
                                                     </span>
 
-                                                    <span class="sanBold font-size-lx">{{  $card['card_number'] }}</span>
+                                                    <span class="avenirMedium billingTxt font-size-lg">{{  $card['card_number'] }}</span>
                                                 </div>
                                                 <div class="m-t-20x flex">
-                                                    <span class="payLeft-minW">Exp:{{$card['month']}}
-                                                        /{{$card['year']}}</span>
+                                                    <span class="payLeft-minW">Exp:{{$card['month']}}/{{$card['year']}}</span>
                                                     <span class="billingTxt">Billing:{{$card['detail_address1']}} {{$card['detail_address2']}} {{$card['city']}} {{$card['state']}} {{$card['country']}}</span>
                                                 </div>
                                                 <div class="btn-addPrimary"><i
@@ -452,7 +458,7 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                <div class="col-md-6">
+                                <div class="col-md-6 p-x-0">
                                     <div class="p-a-10x">
                                         <div class="choose-item flex flex-alignCenter flex-fullJustified p-x-20x addCreditCard" data-method="{{$list['pay_method']}}">
                                             <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-card.png"
@@ -463,7 +469,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="col-md-6">
+                                <div class="col-md-6 p-x-0">
                                     <div class="p-a-10x">
                                         <div class="card-item choose-item flex flex-alignCenter p-x-20x @if($list['pay_type'] == Session::get('user.checkout.paywith.pay_type')) active @endif"
                                              data-cardtype="paypal" data-cardnum="PayPal" data-cardid="PayPal"
@@ -480,22 +486,22 @@
                         @endforeach
                     </div>
                     <div class="text-right p-t-10x">
-                        <a href="javascript:void(0);" class="btn btn-primary btn-md"
+                        <a href="javascript:void(0);" class="btn btn-baseSize btn-green font-size-llx uppercase bigNoodle"
                            id="btnPaymentShowHide">Continue</a>
                     </div>
                 </div>
                 <!--添加卡-->
-                <div class="p-a-20x add-newCard disabled">
+                <div class="p-t-20x p-l-20x add-newCard disabled">
                     <div class="inline">
-                        <span class="font-size-md sanBold">Add New Credit Card</span>
+                        <span class="avenirMedium font-size-md">Add New Credit Card</span>
                         {{--<span class="font-size-md pull-right">
                             <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg active"></i>
                             <span class="p-l-5x">Make Primary</span>
                         </span>--}}
                     </div>
 
-                    <div class="p-a-20x">
-                        <div>We Accept:
+                    <div class="">
+                        <div class="p-t-10x p-l-20x">We Accept:
                             <img src="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32.png"
                                  srcset="{{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@2x.png{{config('runtime.V')}} 2x, {{config('runtime.Image_URL')}}/images/payment/payicon-mastercard-32@3x.png{{config('runtime.V')}} 3x"
                                  class="m-l-10x" id="img-mastercard" data-type="MasterCard">
@@ -510,7 +516,7 @@
                                  class="m-l-20x" id="img-amex" data-type="AmericanExpress">
                         </div>
                         <div class="card-wrapper" style="display: none;"></div>
-                        <div class="row p-t-20x">
+                        <div class="row p-t-20x p-l-20x">
                             <form action="" id="addCard-container">
                                 <input name="card_type" type="hidden">
 
@@ -557,7 +563,7 @@
                                     {{$defaultAddr = $Address->getUserDefaultAddr()['data']}}
                                 @endif
                                 <div class="card-message">
-                                    <div class="sanBold def-name">{{$defaultAddr['name']}}</div>
+                                    <div class="avenirMedium font-size-md def-name">{{$defaultAddr['name']}}</div>
                                     <div class="def-city">{{$defaultAddr['city']}}</div>
                                     <div class="def-zip">{{$defaultAddr['zip']}}</div>
                                     <div class="def-state">{{$defaultAddr['state']}}</div>
@@ -584,7 +590,7 @@
                             <form id="card-addAddressForm">
                                 <div class="col-md-5">
                                     <input type="hidden" name="email" value="{{Session::get('user.login_email')}}">
-                                    <div class="p-l-20x m-b-20x">
+                                    <div class="m-b-20x">
                                         <input type="text" name="name" data-optional="false" data-inputrole="name"
                                                class="form-control contrlo-lg text-primary card-name"
                                                placeholder="Full name">
@@ -593,7 +599,7 @@
                                             <span class="font-size-base">Please enter your name !</span>
                                         </div>
                                     </div>
-                                    <div class="p-l-20x m-b-20x">
+                                    <div class="m-b-20x">
                                         <input type="text" name="tel" data-optional="false" data-inputrole="phone"
                                                class="form-control contrlo-lg text-primary card-tel"
                                                placeholder="Phone">
@@ -602,7 +608,7 @@
                                             <span class="font-size-base">Please enter your phone !</span>
                                         </div>
                                     </div>
-                                    <div class="p-l-20x m-b-20x">
+                                    <div class="m-b-20x">
                                         <input type="text" name="addr1" data-optional="false" data-inputrole="street"
                                                class="form-control contrlo-lg text-primary card-addr1"
                                                placeholder="Street 1">
@@ -611,15 +617,15 @@
                                             <span class="font-size-base">Please enter your street !</span>
                                         </div>
                                     </div>
-                                    <div class="p-l-20x m-b-20x">
+                                    <div class="m-b-20x">
                                         <input type="text" name="addr2"
                                                class="form-control contrlo-lg text-primary card-addr2"
                                                placeholder="Street 2 (optional)">
                                     </div>
                                 </div>
-                                <div class="col-md-1"></div>
+                                <div class="col-md-2"></div>
                                 <div class="col-md-5">
-                                    <div class="p-l-20x m-b-20x">
+                                    <div class="m-b-20x">
                                         <input type="text" name="city" data-optional="false" data-inputrole="city"
                                                class="form-control contrlo-lg text-primary card-city"
                                                placeholder="City">
@@ -628,7 +634,7 @@
                                             <span class="font-size-base">Please enter your city !</span>
                                         </div>
                                     </div>
-                                    <div class="p-l-20x m-b-20x">
+                                    <div class="m-b-20x">
                                         <select name="country" class="form-control contrlo-lg card-selectCountry">
                                             @foreach($Address->getCountry(1) as $value)
                                                 <option value="{{$value['country_name_en']}}"
@@ -640,11 +646,11 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="p-l-20x m-b-20x state-info">
+                                    <div class="m-b-20x state-info">
                                         {{-- <input type="text" name="state" class="form-control contrlo-lg text-primary"
                                                 placeholder="State">--}}
                                     </div>
-                                    <div class="p-l-20x m-b-20x">
+                                    <div class="m-b-20x">
                                         <input type="text" name="zip" id="zip" data-optional="false"
                                                data-inputrole="zip code"
                                                class="form-control contrlo-lg text-primary card-zip"
@@ -660,13 +666,12 @@
                                                value="@if(empty($address['data']['list'])){{'1'}}@else{{'0'}}@endif">
                                     </div>
                                 </div>
-                                <div class="col-md-1"></div>
                             </form>
                         </div>
                         <div class="text-right">
                             <a href="javascript:void(0);" id="card-addAddress-cancel"
-                               class="btn btn-secondary btn-md m-r-10x">Cancel</a>
-                            <a href="javascript:void(0);" id="btn-addNewCard" class="btn btn-primary btn-md">Continue</a>
+                               class="btn btn-baseSize font-size-llx btn-primary bigNoodle m-r-10x">Cancel</a>
+                            <a href="javascript:void(0);" id="btn-addNewCard" class="btn btn-baseSize font-size-llx btn-green bigNoodle">Continue</a>
                             <div class="warning-info text-warning p-t-10x addCard-warning off">
                                 <i class="iconfont icon-caveat icon-size-md"></i>
                                 <span class="font-size-base">Add Card Error!</span>
@@ -680,48 +685,46 @@
         </div>
 
         {{--Promotion Code--}}
-        <div class="box-shadow bg-white m-t-20x" id="pcode"
+        <div class="bg-white m-t-40x" id="pcode"
              data-bindid="@if(Session::has('user.checkout.couponInfo')){{Session::get('user.checkout.couponInfo.bind_id')}}@else{{$accountList['cp_bind_id']}}@endif">
-            <div class="p-x-20x p-y-15x font-size-md btn-showHide" id="">
-                <span class="sanBold">Promotion Code</span>
+            <div class="font-size-md btn-showHide" id="">
+                <span class="uppercase avenirBold font-size-md">Promotion Code</span>
                 <span class="pull-right showHide-simpleInfo">
                     <span id="codemessage"></span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
-            <hr class="hr-common m-a-0">
-            <div class="showHide-body p-x-20x p-b-20x">
+            <hr class="hr-black m-a-0">
+            <div class="showHide-body">
                 <!--新增促销码-->
-                <div class="p-a-20x addPromotionCode disabled">
-                    <div class="goback-toAdd"><i class="iconfont icon-arrow-left font-size-lg p-r-10x"></i></div>
+                <div class="addPromotionCode disabled">
+                    <div class="goback-toAdd p-l-20x p-t-20x"><i class="iconfont icon-arrow-left font-size-lg p-r-10x"></i></div>
                     <div class="invite-content addPromotion-content">
-                        <p class="helveBold font-size-llxx m-t-40x">Add New Promotion Code</p>
-                        <div class="addCode-input m-t-20x text-left">
-                            <input type="text" class="form-control contrlo-lg text-primary m-b-10x" name="cps" value=""
+                        <p class="bigNoodle font-size-llxxx m-y-20x">Add New Promotion Code</p>
+                        <div class="addCode-input text-left">
+                            <input type="text" class="form-control contrlo-lg text-primary m-b-5x" name="cps" value=""
                                    placeholder="Enter Your Promotion Code Here">
-                                    <span class="warning-info text-warning off">
+                                    <span class="warning-info flex flex-alignCenter text-warning off">
                                         <i class="iconfont icon-caveat p-r-5x"></i>
                                         <span class="font-size-base invalidText"></span>
                                     </span>
                         </div>
 
                         <div class="text-center m-t-30x">
-                            <div class="btn btn-primary btn-lg btn-200 coupon-apply disabled">Apply</div>
+                            <div class="btn btn-baseSize btn-green font-size-llx bigNoodle coupon-apply disabled">Apply</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Coupons and Promotions-->
-                <div class="p-a-20x showPromotionCode">
+                <div class="p-t-20x showPromotionCode">
                     <div class="flex flex-alignCenter flex-fullJustified">
-                        <span class="font-size-md sanBold"></span>
-                        <span class="font-size-md pull-right">
-                            <div class="btn btn-secondary btn-md btn-addNewCode"><i
-                                        class="iconfont icon-add font-size-md p-r-5x"></i>Add New Promotion Code
-                            </div>
+                        <span class="font-size-md uppercase avenirBold font-size-md"></span>
+                        <span class="pull-right">
+                            <div class="btn btn-md btn-black bigNoodle font-size-lg btn-addNewCode">+ Add New Promotion Code</div>
                         </span>
                     </div>
-                    <div class="row p-x-10x p-t-20x coupon-list">
+                    <div class="row p-t-20x coupon-list">
 
                     </div>
                 </div>
@@ -730,78 +733,79 @@
 
 
         <!-- Special Request (optional) -->
-        <div class="box-shadow bg-white m-t-20x">
-            <div class="p-x-20x p-y-15x font-size-md btn-showHide" id="crShowHide">
-                <span class="sanBold">Special Request (optional)</span>
+        <div class="bg-white m-t-40x">
+            <div class="font-size-md btn-showHide" id="crShowHide">
+                <span class="uppercase avenirBold font-size-md">Special Request (optional)</span>
                 <span class="pull-right showHide-simpleInfo">
                     <span id="srmessage"></span>
                     <a class="p-l-40x">Edit</a>
                 </span>
             </div>
-            <div class="showHide-body p-x-20x p-b-20x">
-                <div class="p-x-20x p-b-20x">
+            <hr class="hr-black m-a-0">
+            <div class="showHide-body">
+                <div class="p-y-20x p-x-40x">
                     <textarea name="cremark" class="form-control" cols="30" rows="4"></textarea>
                 </div>
-                <div class="text-right"><a href="javascript:;" id="crsubmit" class="btn btn-primary btn-md">Save</a>
+                <div class="text-right"><a href="javascript:;" id="crsubmit" class="btn btn-green btn-baseSize bigNoodle font-size-llx">Save</a>
                 </div>
             </div>
         </div>
 
         <!-- 结算总价 -->
-        <div class="box-shadow bg-white m-t-20x checkoutInfo"
+        <div class="bg-white m-t-40x checkoutInfo"
              data-price="{{$accountList['total_amount']+$accountList['vas_amount']}}">
-            <div class="p-a-20x font-size-md">
+            <div class="m-b-20x font-size-md">
                 {{--数量--}}
                 <div class="text-right">
-                    <span>Items ({{$accountList['total_sku_qtty']}}):</span>
-                    <span class="sanBold cart-price">${{number_format(($accountList['total_amount'] / 100), 2)}}</span>
+                    <span class="avenirMedium">Items ({{$accountList['total_sku_qtty']}}):</span>
+                    <span class="font-size-md cart-price">${{number_format(($accountList['total_amount'] / 100), 2)}}</span>
                 </div>
                 {{--增值服务--}}
                 @if($accountList['vas_amount'] > 0)
                     <div class="text-right @if($accountList['vas_amount'] > 0) @endif">
-                        <span>Additional services:</span>
-                        <span class="sanBold cart-price">${{ number_format(($accountList['vas_amount'] / 100), 2) }}</span>
+                        <span class="avenirMedium">Additional services:</span>
+                        <span class="font-size-md cart-price">${{ number_format(($accountList['vas_amount'] / 100), 2) }}</span>
                     </div>
                 @endif
                 {{--优惠--}}
                 <div class="text-right promotion-code cps_amountShow @if($accountList['cps_amount'] <= 0) hidden @endif">
-                    <span>Promotion code:</span>
-                    <span class="sanBold cart-price cps_amount">-${{number_format(($accountList['cps_amount'] / 100), 2)}}</span>
+                    <span class="avenirMedium">Promotion code:</span>
+                    <span class="font-size-md cart-price cps_amount">-${{number_format(($accountList['cps_amount'] / 100), 2)}}</span>
                 </div>
                 {{--折扣--}}
                 @if($accountList['promot_discount_amount'] > 0)
                     <div class="text-right">
-                        <span>Discount</span>
-                        <span class="sanBold cart-price">-${{number_format(($accountList['promot_discount_amount'] / 100), 2)}}</span>
+                        <span class="avenirMedium">Discount</span>
+                        <span class="font-size-md cart-price">-${{number_format(($accountList['promot_discount_amount'] / 100), 2)}}</span>
                     </div>
                 @endif
                 {{--收税提示--}}
                 <div class="text-right promotion-code tax_amountShow @if($accountList['tax_amount'] <= 0) hidden @endif">
-                    <span>Sales tax:</span>
-                    <span class="sanBold cart-price tax_amount">${{number_format(($accountList['tax_amount'] / 100), 2)}}</span>
+                    <span class="avenirMedium">Sales tax:</span>
+                    <span class="font-size-md cart-price tax_amount">${{number_format(($accountList['tax_amount'] / 100), 2)}}</span>
                 </div>
                 {{--地址服务--}}
                 <div class="text-right">
-                    <span>Shipping and handling:</span>
-                    <span class="sanBold cart-price freight_amount">@if(0 == $accountList['freight_amount']) Free @else
+                    <span class="avenirMedium">Shipping and handling:</span>
+                    <span class="font-size-md cart-price freight_amount">@if(0 == $accountList['freight_amount']) Free @else
                             ${{ number_format(($accountList['freight_amount'] / 100), 2)}} @endif</span>
                 </div>
                 {{--结算价--}}
-                <div class="text-right ">
-                    <span>Order Total:</span>
-                    <span class="sanBold cart-price pay_amount">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
+                <div class="text-right">
+                    <span class="avenirMedium">Order Total:</span>
+                    <span class="font-size-md cart-price pay_amount">${{ number_format(($accountList['pay_amount']) / 100, 2) }}</span>
                 </div>
             </div>
         </div>
         <!-- 提交按钮 -->
-        <div class="p-y-20x text-right">
-            <div data-clks='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-               class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" id="placeOrder" data-with="Worldpay">Place Order</div>
+        <div class="text-right">
+            <a data-clks='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"placeorder","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
+               class="btn btn-baseSize btn-green font-size-llx uppercase bigNoodle btn-toCheckout" id="placeOrder" data-with="Worldpay">Place Order</a>
             {{--<a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout m-r-40x" data-with="Oceanpay">Pay
                 with Credit Card</a>
             <a href="javascript:;" class="btn btn-block btn-primary btn-lg btn-toCheckout" data-with="PayPalNative">Pay
                 with PayPal</a>--}}
-            <div class="checkoutWarning p-y-10x text-warning m-r-40x" hidden>
+            <div class="checkoutWarning p-y-10x text-warning" hidden>
                 <i class="iconfont icon-caveat icon-size-md"></i>
                 <span class="font-size-base"></span>
             </div>
@@ -816,10 +820,10 @@
 
 <!-- 移除商品弹框 -->
 <div class="remodal modal-content remodal-md" data-remodal-id="modal" id="modalDialog" data-spu="">
-    <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Bag?</div>
-    <hr class="hr-common m-a-0">
+    <div class="uppercase avenirBold font-size-md text-center font-size-md p-a-15x">Remove Items from Your Bag?</div>
+    <hr class="hr-black m-a-0">
     <div class="text-center dialog-info">Are you sure you want to remove this item?</div>
-    <hr class="hr-common m-a-0">
+    <hr class="hr-black m-a-0">
     <div class="row">
         <div class="col-md  -6">
             <div class="m-y-20x m-l-20x"><a href="#" class="btn btn-block btn-secondary btn-lg">Remove</a></div>
@@ -833,9 +837,9 @@
 <!-- address 模版 -->
 <template id="tpl-address">
     @{{ each list }}
-    <div class="col-md-6">
+    <div class="col-md-6 p-x-0">
         <div class="p-a-10x">
-            <div class="address-item choose-item p-x-20x p-y-15x @{{ if $value.isSel == 0 || $value.isSel == 1 }}  @{{ if $value.isSel == 1 }} active  @{{ /if }} @{{ else }} @{{ if $value.isDefault == 1 }} active @{{ /if }} @{{ /if }}"
+            <div class="address-item choose-item p-x-20x p-y-10x @{{ if $value.isSel == 0 || $value.isSel == 1 }}  @{{ if $value.isSel == 1 }} active  @{{ /if }} @{{ else }} @{{ if $value.isDefault == 1 }} active @{{ /if }} @{{ /if }}"
                  data-info="@{{ $value.name }} @{{ $value.detail_address1 }} @{{ $value.city }} @{{ $value.state }} @{{ $value.country }} @{{ $value.zip }}"
                  data-csn="@{{ $value.country_name_sn }}" data-aid="@{{ $value.receiving_id }}"
                  data-name="@{{ $value.name }}" data-city="@{{ $value.city }}"
@@ -884,7 +888,7 @@
                         @{{ /if }}
                     </span>
 
-                    <span class="sanBold font-size-lx">@{{ $value.card_number }}</span>
+                    <span class="avenirMedium billingTxt font-size-lg">@{{ $value.card_number }}</span>
                 </div>
                 <div class="m-t-20x flex">
                     <span class="payLeft-minW">Exp:@{{ $value.month }}/@{{ $value.year }}</span>
@@ -939,7 +943,7 @@
                         @{{ /if }}
                     </span>
 
-                    <span class="sanBold font-size-lx">@{{ $value.card_number }}</span>
+                    <span class="avenirMedium billingTxt font-size-lg">@{{ $value.card_number }}</span>
                 </div>
                 <div class="m-t-20x flex">
                     <span class="payLeft-minW">Exp:@{{ $value.month }}/@{{ $value.year }}</span>
@@ -969,17 +973,17 @@
 <template id="tpl-coupon">
     @{{ each list }}
     <div class="col-md-6">
-        <div class="m-a-10x">
-            <div class="row promotion-item checkoutPromotion-item flex flex-alignCenter @{{ if $value.usable == true }} codeItem @{{ /if }} @{{ if $value.selected == 1 }} active @{{ /if }}"
+        <div class="m-y-10x">
+            <div class="promotion-item checkoutPromotion-item flex flex-alignCenter @{{ if $value.usable == true }} codeItem @{{ /if }} @{{ if $value.selected == 1 }} active @{{ /if }}"
                  data-promotioncode="@{{ $value.cp_title }}" data-bindid="@{{ $value.bind_id }}">
                 <div class="col-md-8">
-                    <div class="text-right p-left p-r-15x p-y-15x">
-                        <div class="helveBold font-size-sm">@{{ $value.prompt_words }}</div>
-                        <span class="font-size-sm">Expire: @{{ $value.expiry_time }}</span>
+                    <div class="text-right p-left p-r-15x p-y-30x font-size-md">
+                        <div>@{{ $value.prompt_words }}</div>
+                        <span>Expire: @{{ $value.expiry_time }}</span>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="font-size-lx text-left helveBold">@{{ $value.cp_title }}</div>
+                    <div class="font-size-llxx text-left avenirBold">@{{ $value.cp_title }}</div>
                 </div>
                 <div class="promotionCode-Primary"><i class="iconfont icon-check font-size-lg"></i></div>
                 @{{ if $value.usable == false }}

@@ -2,12 +2,11 @@
 <html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
-    <title>{{$title or 'Exclusive Fashion Accessories Designed by the World’s Top Fashion Bloggers, Instagrammers and Digital Influencers'}} @if('daily' != $page)
-            | MOTIF @endif</title>
+    <title>@if('daily' != $page) MOTIF | @endif{{$title or 'Exclusive Fashion Accessories Designed by the World’s Top Fashion Bloggers, Instagrammers and Digital Influencers'}} </title>
     <meta property="og:image"
           content="{{$ogimage or config('runtime.Image_URL').'/images/logo/logo.png'}}{{config('runtime.V')}}">
     <meta name="description"
-          content="{{$description or 'Your style is unique and cutting edge - your fashion should be too.Exclusive, limited edition accessories designed by the world’s top fashion bloggers, Instagrammers and digital influencers.'}}">
+          content="@if('daily' != $page) MOTIF | @endif{{$description or 'Your style is unique and cutting edge - your fashion should be too.Exclusive, limited edition accessories designed by the world’s top fashion bloggers, Instagrammers and digital influencers.'}}">
     <meta name="keywords"
           content="{{$keywords or 'fashion,style,shop,accessory,jewelry,watch,blogger,Instagram,designer,limited,edition,ecommerce,buy'}}">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -40,47 +39,69 @@
 </head>
 <body>
 
+{{--@if(!isset($CartCheck))--}}
+    <div class="download-info p-t-20x p-b-15x">
+        <div class="container">
+            <div class="row text-white avenirMedium font-size-sm">
+                <div class="col-md-6">
+                    <span>FREE SHIPPING TO 30+ COUNTRIES</span>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/download" class="text-downloadApp">20% OFF YOUR FIRST IN APP PURCHASE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{{--@endif--}}
+
 <!-- 头部 -->
-<header class="fix box-shadow">
-    <div class="container">
+<header class="main-header">
+    <div class="container bigNoodle font-size-lx">
         <nav class="navbar-left">
             <ul class="nav navbar-primary clearfix">
-                <li class="nav-item nav-logo"><a href="/daily">
-                        <img class="img-fluid"
-                             src="{{config('runtime.Image_URL')}}/images/logo/logo.png{{config('runtime.V')}}"
-                             alt="logo"
-                             srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@3x.png{{config('runtime.V')}} 2x"></a>
-                </li>
                 <li class="nav-item"><a
-                            class="nav-link border-b p-x-10x sanBold @if(isset($page) && 'daily' == $page) active @endif"
-                            href="/daily">DAILY</a></li>
+                            class="nav-link border-b p-x-10x @if(isset($page) && 'daily' == $page) active @endif"
+                            href="/daily">TRENDING</a></li>
                 <li class="nav-item"><a
-                            class="nav-link border-b p-x-10x sanBold @if(isset($page) && 'designer' == $page) active @endif"
-                            href="/designer">DESIGNERS</a></li>
+                            class="nav-link border-b p-x-10x @if(isset($page) && 'designer' == $page) active @endif"
+                            href="/designer">COLLECTIONS</a></li>
                 <li class="nav-item {{$page}} @if('shopping' != $page) shop-dropdown @endif">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
                     <a href="/shopping"
-                       class="nav-link border-b p-x-10x sanBold @if('shopping' == $page) active @else dropdown-toggle @endif" @if(!$Shopping) @endif>SHOP</a>
-                    <ul class="dropdown-menu dropdown-nav-hover shop-dropdownMenu">
-                        @foreach($Category->getShoppingCategoryList() as $category)
-                            <li class="dropdown-item @if('shopping' == $page && $cid == $category['category_id']) active @endif">
-                                <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}</a>
-                            </li>
-                        @endforeach
-                    </ul>
+                       class="nav-link p-x-10x @if('shopping' == $page) border-b active @endif" @if(!$Shopping) @endif>SHOP</a>
+                    <div class="dropdown-menu p-t-20x p-l-10x">
+                        <div class="pull-left"><a href="/shopping">SHOP ALL</a></div>
+                        <ul class="figure">
+                            <li>SHOP BY CATEGORY</li>
+                            @foreach($Category->getShoppingCategoryList() as $category)
+                                @if( $category['category_id'] !== 0)
+                                <li class="font-size-md avenirRegular @if('shopping' == $page && $cid == $category['category_id']) active @endif">
+                                    <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}</a>
+                                </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+
                 </li>
             </ul>
         </nav>
+        <h1 class="logo">
+                <a href="/">
+                    <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/motif-logo.png{{config('runtime.V')}}"
+                                 alt="Motif" srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo@2x.png{{config('runtime.V')}} 2x">
+                </a>
+        </h1>
         <nav class="navbar-right">
             <ul class="nav navbar-primary clearfix">
                 @if(Session::has('user'))
-                    <li class="nav-item p-x-10x header-img" id="logged-user">
+                    <li class="nav-item p-x-10x header-img searchBeforeEle" id="logged-user">
                         <a href="/user/changeprofile"
-                           class="nav-link name sanBold">{{Session::get('user.nickname')}}</a>
+                           class="nav-link name bigNoodle text-right">{{Session::get('user.nickname')}}</a>
                         <!--个人中心下拉框-->
                         <div class="dropdown-img">
                             <span class="triangle-up"></span>
-                            <ul class="nav p-t-5x p-b-10x dropdown-nav-hover">
+                            <ul class="nav  p-t-10x p-b-20x dropdown-nav-hover">
                                 <li class="@if('Orders' == $title || 'Order Detail' == $title) active @endif"><a
                                             href="/order/orderlist">Orders</a></li>
                                 <li class="@if('wishlist' == $title) active @endif "><a href="/wish">Wishlist</a></li>
@@ -96,59 +117,78 @@
                     </li>
 
                     <!-- get off -->
-                    <li class="nav-item p-x-10x">
-                        <a href="/invitefriends" class="helveBold text-red nav-link">GET $20 OFF</a>
+                    <li class="nav-item p-x-10x searchBeforeEle">
+                        <a href="/invitefriends" class="text-green">GET 15% OFF</a>
                     </li>
-
+                    <!-- 搜索 -->
+                    <li class="nav-item p-l-10x p-r-0 header-search">
+                        <div class="p-t-5x flex flex-alignCenter btn-search">
+                            <i class="iconfont icon-search font-size-lxx"></i>
+                            {{--<i class="iconfont font-size-lxx"></i>--}}
+                        </div>
+                        <form class="form searchForm" method="post" name="searchFrom" action="/search">
+                            <div class="avenirRegular font-size-sm search-bar">
+                                <input type="text" name="kw" placeholder="Search Motif">
+                                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                <button class="btn bg-transparent search-submit" type="submit"></button>
+                            </div>
+                        </form>
+                    </li>
                     <!-- 收藏商品 -->
-                    <li class="nav-item p-l-20x p-r-0">
-                        <a href="/wish">
-                            <div class="nav-shoppingCart flex flex-alignCenter">
-                                <i class="iconfont icon-like font-size-lxx text-primary"></i>
+                    <li class="nav-item p-l-15x p-r-0">
+                        <a href="/wish" class="p-t-5x flex flex-alignCenter">
+                                <i class="iconfont icon-heart2 font-size-lxx"></i>
                                 @if(Session::get('user.nickname'))
                                     {{--收藏商品数量 注入服务--}}
                                     @inject('wishlist', 'App\Http\Controllers\UserController')
-                                    <span class="p-l-5x text-link headerWish"
+                                    <span class="text-link avenirRegular font-size-sm headerWish"
                                           data-num="{{count($wishlist->wishlist())}}">{{count($wishlist->wishlist())}}</span>
                                 @endif
-
-                            </div>
                         </a>
                     </li>
 
                     <!-- 购物车商品 -->
-                    <li class="nav-item p-l-20x p-r-10x">
-                        <a href="/cart">
-                            <div class="nav-shoppingCart flex flex-alignCenter">
-                                <i class="iconfont icon-iconshoppingbag font-size-lxx text-primary"></i>
+                    <li class="nav-item p-l-15x p-r-10x">
+                        <a href="/cart" class="p-t-5x flex flex-alignCenter">
+                                <i class="iconfont icon-shop2 font-size-lxx"></i>
                                 {{--购物车数量 注入服务--}}
                                 @inject('Cart', 'App\Http\Controllers\CartController')
-                                <span class="p-l-5x text-link headerCart"
+                                <span class="text-link avenirRegular font-size-sm headerCart"
                                       data-num="{{$Cart->getCartAmount()['data']['skusAmout']}}">{{$Cart->getCartAmount()['data']['skusAmout']}}</span>
-                            </div>
+
                         </a>
                     </li>
                 @else
-                    <li class="nav-item p-x-10x"><a class="nav-link" href="/login">SIGN IN</a></li>
-                    <li class="nav-item p-x-10x"><a class="nav-link sanBold text-red" href="/invitefriends">GET $20
-                            OFF</a></li>
-                    <li class="nav-item p-l-20x p-r-0">
-                        <a href="/wish">
-                            <div class="nav-shoppingCart flex flex-alignCenter">
-                                <i class="iconfont icon-like font-size-lxx text-primary"></i>
-                                <span class="p-l-5x text-link">0</span>
+                    <li class="nav-item p-x-10x searchBeforeEle"><a class="nav-link @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif" data-referer="{{$_SERVER['REQUEST_URI']}}">SIGN IN</a></li>
+                    <li class="nav-item p-x-10x searchBeforeEle"><a class="nav-link text-green @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif"  data-referer="/invitefriends">GET 15% OFF</a></li>
+                    <!-- 搜索 -->
+                    <li class="nav-item p-l-10x p-r-0 header-search">
+                        <div class="p-t-5x flex flex-alignCenter btn-search">
+                            <i class="iconfont icon-search font-size-lxx"></i>
+                            {{--<i class="iconfont font-size-lxx"></i>--}}
+                        </div>
+                        <form class="form searchForm" method="post" name="searchFrom" action="/search">
+                            <div class="avenirRegular font-size-sm search-bar">
+                                <input type="text" name="kw" placeholder="Search Motif">
+                                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                <button class="btn bg-transparent search-submit" type="submit"></button>
                             </div>
+                        </form>
+
+                    </li>
+                    <li class="nav-item p-l-15x p-r-0">
+                        <a data-referer="/wish" class="p-t-5x flex flex-alignCenter @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif">
+                                <i class="iconfont icon-heart2 font-size-lxx"></i>
+                                <span class="text-link avenirRegular font-size-sm">0</span>
                         </a>
                     </li>
-                    <li class="nav-item p-l-20x p-r-10x">
-                        <a href="/cart">
-                            <div class="nav-shoppingCart flex flex-alignCenter">
-                                <i class="iconfont icon-iconshoppingbag font-size-lxx text-primary"></i>
+                    <li class="nav-item p-l-15x p-r-10x">
+                        <a href="/cart" class="p-t-5x flex flex-alignCenter">
+                                <i class="iconfont icon-shop2 font-size-lxx"></i>
                                 {{--购物车数量 注入服务--}}
                                 @inject('Cart', 'App\Http\Controllers\CartController')
-                                <span class="p-l-5x text-link headerCart"
+                                <span class="text-link avenirRegular font-size-sm headerCart"
                                       data-num="{{$Cart->getCartAmount()['data']['skusAmout']}}">{{$Cart->getCartAmount()['data']['skusAmout']}}</span>
-                            </div>
                         </a>
                     </li>
                 @endif

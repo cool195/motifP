@@ -13,19 +13,22 @@ class DesignerController extends BaseController
      *
      * @return Response
      */
-    public function index(Request $request)
+    /*public function index(Request $request)
     {
         $params = array(
             'cmd' => 'designerinfolist',
             'token' => Session::get('user.token'),
             'pin' => Session::get('user.pin'),
-            'size' => $request->input('size', 10),
+            'size' => $request->input('size', 12),
             'start' => $request->input('start', 1),
         );
 
         $data = $this->request('designer', $params);
         $result = $this->getDesignerFollowedStatus($data);
-        foreach ($result['data']['list'] as &$list) {
+
+        $networkReds = array();
+        $designers = array();
+        foreach ($result['data']['list'] as $key => &$list) {
             $list['spus'] = "";
             if (isset($list['products'])) {
                 $spus = array();
@@ -34,15 +37,145 @@ class DesignerController extends BaseController
                 }
                 $list['spus'] = implode('_', $spus);
             }
-//            if (isset($list['describe']) && strlen($list['describe']) > 300) {
-//                $list['describe'] = mb_substr($list['describe'], 0, 300);
-//                $list['describe'] = $list['describe'] . "...";
-//            }
+            $list['seo_tag'] = implode(',', $list['seo_label']);
+            if (2 == $list['designer_type']) {
+                $networkReds[] = $list;
+            } else {
+                $designers[] = $list;
+            }
         }
+
+        foreach($result['data']['list'] as $key => &$list){
+            if($key % 4 == 0 ){
+                if(!empty($networkReds)){
+                    $list = array_shift($networkReds);
+                }else{
+                    $list = array_shift($designers);
+                }
+            }else{
+                if(!empty($designers)){
+                    $list = array_shift($designers);
+                }else{
+                    $list = array_shift($networkReds);
+                }
+            }
+        }
+
         if ($request->input('ajax')) {
             return $result;
         }
         return view('designer.index', ['list' => $result['data']['list'], 'start' => $result['data']['start']]);
+    }*/
+
+    public function index(Request $request)
+    {
+
+        $rstart = $request->input('rstart', 1);
+        $redResult = array();
+        $redCount = 0;
+        if (-1 == $rstart) {
+            $redResult['data']['list'] = array();
+            $redResult['data']['start'] = -1;
+            $redResult['success'] = true;
+            $redCount = 0;
+        } else {
+            $redParams = array(
+                'cmd' => 'designerinfolist',
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+                'dtype' => 2,
+                //'size' => $request->input('size', 3),
+                'size' => $request->input('rsize', 3),
+                'start' => $request->input('rstart', 1),
+            );
+
+            $redData = $this->request('designer', $redParams);
+            $redResult = $this->getDesignerFollowedStatus($redData);
+
+            $redCount = count($redResult['data']['list']);
+            if (!empty($redResult['data']['list'])) {
+                foreach ($redResult['data']['list'] as $key => &$list) {
+                    $list['spus'] = "";
+                    if (isset($list['products'])) {
+                        $spus = array();
+                        foreach ($list['products'] as $product) {
+                            $spus[] = $product['spu'];
+                        }
+                        $list['spus'] = implode('_', $spus);
+                    }
+                    $list['seo_tag'] = implode(',', $list['seo_label']);
+                }
+            }
+        }
+
+        $dstart = $request->input('dstart', 1);
+        $designerResult = array();
+        $designerCount = 0;
+        if (-1 == $dstart) {
+            $designerResult['data']['list'] = array();
+            $designerResult['data']['start'] = -1;
+            $designerResult['success'] = true;
+            $designerCount = 0;
+        } else {
+            $designerParams = array(
+                'cmd' => 'designerinfolist',
+                'token' => Session::get('user.token'),
+                'pin' => Session::get('user.pin'),
+                'dtype' => 1,
+                'size' => $request->input('dsize', 9),
+                'start' => $request->input('dstart', 1),
+            );
+            $designerData = $this->request('designer', $designerParams);
+            $designerResult = $this->getDesignerFollowedStatus($designerData);
+
+            $designerCount = count($designerResult['data']['list']);
+            if (!empty($designerResult['data']['list'])) {
+                foreach ($designerResult['data']['list'] as $key => &$list) {
+                    $list['spus'] = "";
+                    if (isset($list['products'])) {
+                        $spus = array();
+                        foreach ($list['products'] as $product) {
+                            $spus[] = $product['spu'];
+                        }
+                        $list['spus'] = implode('_', $spus);
+                    }
+                    $list['seo_tag'] = implode(',', $list['seo_label']);
+                }
+            }
+        }
+
+        $result = array();
+        $result['success'] = $designerResult['success'] && $redResult['success'];
+        $result['dstart'] = $designerResult['data']['start'];
+        $result['rstart'] = $redResult['data']['start'];
+        $result['dsize'] = $designerCount;
+        $result['rsize'] = $redCount;
+        $result['data']['list'] = array();
+
+        for($i = 0; $i < $designerCount + $redCount; $i++){
+            if($i % 4 == 0 ){
+                if(count($redResult['data']['list']) !== 0){
+                    $result['data']['list'][] = array_shift($redResult['data']['list']);
+                }else {
+                    if (count($designerResult['data']['list']) !== 0) {
+                        $result['data']['list'][] = array_shift($designerResult['data']['list']);
+                    }
+                }
+            }else{
+                if(count($designerResult['data']['list']) !== 0){
+                    $result['data']['list'][] = array_shift($designerResult['data']['list']);
+                }else{
+                    if(count($redResult['data']['list']) !== 0) {
+                        $result['data']['list'][] = array_shift($redResult['data']['list']);
+                    }
+                }
+            }
+        }
+
+        if ($request->input('ajax')) {
+            return $result;
+        }
+        return view('designer.index', ['list' => $result['data']['list'], 'dstart' => $result['dstart'],'rstart' => $result['rstart']]);
     }
 
     private function getDesignerFollowedStatus(Array $result)
@@ -83,12 +216,20 @@ class DesignerController extends BaseController
         if (empty($result['data'])) {
             abort(404);
         }
+        $result['data']['seo_tag'] = implode(',', $result['data']['seo_label']);
         //设计师商品动态模版
         $params = array(
             'cmd' => 'dmodel',
             'id' => $id,
         );
         $result['product'] = $this->request('designer', $params);
+        if(!empty($result['product']['data']['spuInfos'])){
+            foreach($result['product']['data']['spuInfos'] as &$product){
+                $titleArray = explode(" ", $product['spuBase']['main_title']);
+                $titleArray[] = $product['spuBase']['spu'];
+                $product['spuBase']['seo_link'] = implode("-", $titleArray);
+            }
+        }
 
         //设计师商品
         $params = array(

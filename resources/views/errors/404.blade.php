@@ -1,5 +1,5 @@
 
-@include('header', ['page' => ""])
+@include('header', ['page' => "404", 'title'=>'Page Not Found 404 error'])
 
 <section class="m-y-40x">
     <div class="container text-center p-y-40x">

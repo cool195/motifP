@@ -29,6 +29,7 @@ class DailyController extends BaseController
                 $WH = explode('X', $pathArr[3]);
                 $value['weight'] = $WH[0];
                 $value['height'] = $WH[1];
+                $value['seo_tag'] = implode(',', $value['seo_label']);
             }
         }
         if ($request->input('ajax')) {
@@ -71,6 +72,13 @@ class DailyController extends BaseController
                 break;
             }
         }
+
+        foreach($result['data']['spuInfos'] as &$product){
+            $titleArray = explode(" ", $product['spuBase']['main_title']);
+            $titleArray[] = $product['spuBase']['spu'];
+            $product['spuBase']['seo_link'] = implode("-", $titleArray);
+        }
+
         if ($request->input('ajax')) {
             return $result;
         }
@@ -114,6 +122,12 @@ class DailyController extends BaseController
         $result = array();
         $result['success'] = $success;
         return $result;
+    }
+
+    public function home(Request $request)
+    {
+        $banner = $this->banner($request);
+        return View('daily.home', ['banner' => $banner['data']]);
     }
 
 }

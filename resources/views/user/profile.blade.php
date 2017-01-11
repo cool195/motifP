@@ -1,18 +1,20 @@
 @include('header', ['title' => 'Change Profile'])
 
 <!-- 内容 -->
-<section class="m-y-40x">
+<section class="body-container m-y-30x">
     <div class="container">
         <div class="myHome-content">
             @include('user.left', ['title' => 'Change Profile'])
             <div class="right">
                 <div class="rightContent">
+                    <div class="bigNoodle text-center leftMeun-title">change profile</div>
+                    <hr class="hr-black m-t-0">
+
                     <!-- Change Password -->
-                    <div class="box-shadow bg-white mH">
+                    <div class="bg-white mH">
                         <div class="p-t-30x p-x-30x">
                             <!-- 头像、用户名 -->
-                            <div class="p-x-20x p-t-20x text-center">
-
+                            {{--<div class="p-x-20x p-t-20x text-center">
                                 <div class="text-center profile-info">
                                     <a href="javascript:;" class="head-file img-border-white-4x">
                                         <img class="img-circle img-lazy"
@@ -29,16 +31,16 @@
                                 </div>
                                 <div class="font-size-md p-y-10x font-size-md">Replace Profile Picture</div>
                                 <hr class="hr-base m-x-20x">
-                            </div>
+                            </div>--}}
                             <!-- 修改 用户名 -->
                             <div class="p-t-30x">
                                 <form method="" id="changeProfile">
                                     <div class="flex flex-alignCenter flex-justifyCenter m-b-20x">
-                                        <span class="sanBold font-size-md p-r-20x changeName-title">Email</span>
+                                        <span class="avenirBold font-size-md p-r-20x changeName-title">EMAIL</span>
                                         <span class="changePwd-input">{{ Session::get('user.login_email') }}</span>
                                     </div>
                                     <div class="flex flex-alignCenter flex-justifyCenter m-b-20x">
-                                        <span class="sanBold font-size-md p-r-20x changeName-title">Name</span>
+                                        <span class="avenirBold font-size-md p-r-20x changeName-title">NAME</span>
                                         <span class="changePwd-input">
                                             <input type="text" name="nick" class="form-control contrlo-lg text-primary"
                                                    value="{{ Session::get('user.nickname') }}">
@@ -47,9 +49,9 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="text-right p-x-30x p-y-10x">
+                        <div class="text-center">
                             {{--<a href="javascript:void(0)" class="text-primary font-size-md p-r-30x">Cancel</a>--}}
-                            <a href="javascript:void(0)" class="btn btn-primary btn-lg btn-200 profile-save disabled">Save</a>
+                            <a href="javascript:void(0)" class="btn btn-baseSize btn-primary font-size-llx bigNoodle profile-save disabled">Save</a>
                         </div>
                     </div>
                 </div>

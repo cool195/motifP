@@ -54,6 +54,27 @@ class AskController extends BaseController
         $result['redirectUrl'] = $urlStr . $request->input('id');
         return $result;
     }
+
+    public function installs(Request $request)
+    {
+        $params = array(
+            'cmd' => 'support',
+            'content' => $request->input('content'),
+            'email' => $request->input('email'),
+            'pin' => Session::get('user.pin'),
+            'type' => $request->input('type'),
+            'stype' => $request->input('stype')
+        );
+        $urlStr = '';
+        $result = $this->request("feedback", $params);
+        if($result['success']){
+            $result['redirectUrl'] = $urlStr . $request->input('id');
+            Session::forget('referer');
+        }
+        $result['redirectUrl'] = $urlStr . $request->input('id');
+        return $result;
+    }
+
 }
 
 ?>

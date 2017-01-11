@@ -1,11 +1,10 @@
 @include('header', ['title' => 'About Motif'])
 
-<!--内容-->
-<div class="container">
-    <div class="content-wrap aboutUs-content">
+<section class="body-container m-y-10x">
+    <div class="content-wrap aboutUs-content p-t-30x">
         <h1 class="bigNoodle text-main text-center m-b-40x">NBD. JUST CHANGING THE FACE OF FASHION</h1>
 
-        <div class="container">
+        <div class="container p-t-20x">
             <div class="row flex flex-alignCenter">
                 <div class="col-lg-6 col-md-6 p-r-0">
                     <img class="img-fluid" src="/images/guide/Creators.jpg" alt="">
@@ -42,11 +41,11 @@
                     <h3 class="bigNoodle text-main">EVERY DAY, THERE'S SOMETHING UNIQUE AND<br> RARE THAT YOU CAN'T FIND ANYWHERE ELSE</h3>
                     <p class="text-main p-t-20x font-size-base">Download our app or register to be the first to find out about our<br> latest collections and exclusive deals.</p>
                     <div class="p-t-20x">
-                        <a href="https://itunes.apple.com/us/app/id1125850409" target="_blank" class="btn btn-black m-r-30x">
-                            <img class="img-fluid m-x-auto" src="/images/icon/icon-appStore@2x.png" srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x" width="120">
+                        <a href="https://itunes.apple.com/us/app/id1125850409" target="_blank" class="btn btn-black btn-download m-r-30x">
+                            <img class="" src="/images/icon/icon-appStore@2x.png" srcset="/images/icon/icon-appStore@2x.png 2x, /images/icon/icon-appStore@3x.png 3x" width="120">
                         </a>
-                        <a href="https://play.google.com/store/apps/details?id=me.motif.motif" target="_blank" class="btn btn-black m-l-30x">
-                            <img class="img-fluid m-x-auto" src="/images/icon/icon-googlePlay@2x.png" srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x" width="120">
+                        <a href="https://play.google.com/store/apps/details?id=me.motif.motif" target="_blank" class="btn btn-black btn-download m-l-30x">
+                            <img class="" src="/images/icon/icon-googlePlay@2x.png" srcset="/images/icon/icon-googlePlay@2x.png 2x, /images/icon/icon-googlePlay@3x.png 3x" width="120">
                         </a>
                     </div>
                 </div>
@@ -57,6 +56,9 @@
 
         </div>
     </div>
-</div>
+
+</section>
+<!--内容-->
+
 
 @include('footer')

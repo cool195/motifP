@@ -52,6 +52,11 @@ class ShoppingController extends BaseController
                 if(in_array($value['spu'], $wishlist)){
                     $value['isWished'] = 1;
                 }
+
+                $titleArray = explode(" ", $value['main_title']);
+                $titleArray[] = $value['spu'];
+                $value['seo_link'] = implode("-", $titleArray);
+
                 $list[] = $value;
             }
             $result['data']['list'] = $list;
@@ -62,7 +67,6 @@ class ShoppingController extends BaseController
     private function wishlist()
     {
         if (Session::get('user.pin')) {
-
             $value = Cache::remember(Session::get('user.pin') . $_COOKIE['uid'] . 'wishlist', 60, function () {
                 $params = array(
                     'cmd' => 'list',
@@ -94,4 +98,40 @@ class ShoppingController extends BaseController
         $result = $this->request('stock', $params);
         return $result;
     }
+
+    public function search(Request $request)
+    {
+        $params = array(
+            'cmd' => 'search',
+            'pin' => Session::get('user.pin'),
+            'token' => Session::get('user.token'),
+            'page' => $request->input('page', 1),
+            'limit' => $request->input('limit', 16),
+            'kw' => $request->input('kw'),
+            'uuid' => $_COOKIE['uid']
+        );
+
+        $categories = $this->getShoppingCategoryList();
+        $result = $this->request('search', $params);
+        if($result['success']){
+            $wishlist = $this->wishlist();
+            foreach($result['data']['list'] as &$value){
+                $value['spuBase']['isWished'] = 0;
+                if(in_array($value['spuBase']['spu'], $wishlist)){
+                    $value['spuBase']['isWished'] = 1;
+                }
+
+                $titleArray = explode(" ", $value['spuBase']['main_title']);
+                $titleArray[] = $value['spuBase']['spu'];
+                $value['spuBase']['seo_link'] = implode("-", $titleArray);
+
+            }
+        }
+        if($request->input('ajax')) {
+            return $result;
+        }
+
+        return view('shopping.search', ['productAll'=>$result['data'], 'categories'=>$categories, 'kw'=>$request->input('kw')]);
+    }
+
 }

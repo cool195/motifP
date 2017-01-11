@@ -1,15 +1,17 @@
 @include('header')
 
         <!-- 内容 -->
-<section class="m-y-40x">
+<section class="body-container m-y-30x">
     <div class="container" id="addressView" data-status="true">
         <div class="myHome-content">
             @include('user.left', ['title' => 'Shipping Address'])
             @inject('Address', 'App\Http\Controllers\AddressController')
             <div class="right">
                 <div class="rightContent">
+                    <div class="bigNoodle text-center leftMeun-title">shipping address</div>
+                    <hr class="hr-black m-t-0">
                     <!-- Address -->
-                    <div class="box-shadow bg-white mH">
+                    <div class="bg-white mH">
                         <div class="address-content">
                             <!-- 添加地址 -->
                             {{--Shipping Address--}}
@@ -18,10 +20,10 @@
                             {{--*/ $address = $Address->index() /*--}}
                             <div class="p-a-20x add-address @if(!empty($address['data']['list'])) disabled @endif">
                                 <div class="inline">
-                                    <span class="font-size-md address-text"></span>
+                                    <span class="font-size-md avenirMedium address-text"></span>
                                     <span class="font-size-md pull-right">
                                         <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
-                                        <span class="p-l-5x">Default</span>
+                                        <span class="p-l-5x uppercase avenirMedium">Default</span>
                                     </span>
                                 </div>
                                 <div class="row p-t-30x">
@@ -107,21 +109,21 @@
                                         <div class="col-md-1"></div>
                                     </form>
                                 </div>
-                                <div class="text-right">
-                                    <a href="javascript:void(0)" id="addAddress-cancel" class="font-size-md p-r-30x hover-blue">Cancel</a>
-                                    <a href="javascript:void(0)" id="addAddress" class="btn btn-primary btn-lg btn-200 address-save">Save</a>
+                                <div class="text-center m-t-20x">
+                                    <div id="addAddress-cancel" class="btn btn-baseSize font-size-llx btn-primary bigNoodle m-r-20x">Cancel</div>
+                                    <div id="addAddress" class="btn btn-baseSize font-size-llx btn-green bigNoodle address-save">Save</div>
                                 </div>
                             </div>
 
                             <!-- 选择地址 -->
                             {{--Shipping Address--}}
                             <div class="p-a-20x select-address @if(empty($address['data']['list'])) disabled @endif">
-                                <div class="flex flex-alignCenter flex-fullJustified">
-                                    <span class="font-size-md">Shipping Address</span>
-                                    <span class="font-size-md pull-right">
-                                        <a class="btn btn-secondary btn-md btn-addNewAddress" href="javascript:void(0)"><i class="iconfont icon-add font-size-md p-r-5x"></i>Add New Address</a>
-                                    </span>
-                                </div>
+                                {{--<div class="flex flex-fullJustified">--}}
+                                    {{--<span class="font-size-md avenirMedium">Shipping Address</span>--}}
+                                    <div class="text-right p-r-20x">
+                                        <a class="btn font-size-lx p-x-10x btn-secondary bigNoodle uppercase btn-addNewAddress">+ Add New Address</a>
+                                    </div>
+                                {{--</div>--}}
                                 <div class="row p-x-10x p-t-20x address-list" id="addressList-info">
                                     @foreach($address['data']['list'] as $value)
                                     <div class="col-md-6">
@@ -159,18 +161,15 @@
 </section>
 
 <!-- 删除地址 确认框 -->
-<div class="remodal modal-content remodal-md p-a-0" data-remodal-id="addressmodal-modal" data-addressid="">
-    <div class="sanBold text-center font-size-md p-a-15x">Remove Items from Your Address?</div>
-    <hr class="hr-common m-a-0">
-    <div class="text-center dialog-info">Are you sure you want to remove this item?</div>
-    <hr class="hr-common m-a-0">
+<div class="remodal remodal-md p-a-40x" data-remodal-id="addressmodal-modal" data-addressid="">
+    <div class="bigNoodle text-center font-size-lllx uppercase">Remove Items from Your Address?</div>
+    <div class="text-center p-t-20x p-b-40x m-b-10x font-size-sm">Are you sure you want to remove this item?</div>
     <div class="row">
         <div class="col-md-6">
-            <div class="m-y-20x m-l-20x"><a href="javascript:;" class="btn btn-block btn-secondary btn-lg delAddress">Remove</a></div>
+            <div class="btn btn-secondary btn-baseSize bigNoodle font-size-llx delAddress">Remove</div>
         </div>
         <div class="col-md-6">
-            <div class="m-y-20x m-r-20x"><a href="javascript:;" class="btn btn-block btn-primary btn-lg" data-remodal-action="close">Cancel</a>
-            </div>
+            <div class="btn btn-primary btn-baseSize bigNoodle font-size-llx" data-remodal-action="close">Cancel</div>
         </div>
     </div>
 </div>

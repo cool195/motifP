@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 class PageController extends BaseController
 {
 
@@ -26,7 +27,7 @@ class PageController extends BaseController
     //contactUs
     public function contactUs()
     {
-        return View('Other.page-contactUs');
+        return View('Other.page-contactUs', ['type'=>3, 'stype'=>1]);
     }
 
     public function description()
@@ -72,6 +73,11 @@ class PageController extends BaseController
     public function download()
     {
         return view('Other.download');
+    }
+    
+    public function pservice()
+    {
+        return view('Other.page-service');
     }
 
 }
