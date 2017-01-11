@@ -1154,6 +1154,7 @@ function HideSeeMore(seemoreName) {
                     } else {
                         $('#csku' + sku).remove();
                         cart_update_info();
+                        location.reload();
                     }
                 }
                 CartModal.close();
