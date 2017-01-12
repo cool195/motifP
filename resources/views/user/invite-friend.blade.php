@@ -3,7 +3,7 @@
 <!-- invite friend -->
 <section class="body-container m-y-30x">
     <div class="container content-maxWidth">
-        <div class="bigNoodle text-center leftMeun-title">inevite friends</div>
+        <div class="bigNoodle text-center leftMeun-title">Invite Friends</div>
         <hr class="hr-black m-t-0">
         <div class="invite-content minh">
             <div class="invite-title bigNoodle">Share Motif with your friends</div>
