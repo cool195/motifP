@@ -1482,7 +1482,7 @@ select::-ms-expand { display: none; }
   top: -7px;
 }
 .topic-minWidth{
-  max-width: 48.75rem;
+  max-width: 50.75rem;
   margin: 0 auto;
   padding-left: 8rem;
   padding-right: 8rem;

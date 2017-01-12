@@ -233,7 +233,7 @@
                     @elseif($value['type'] == 'product')
                         @if(isset($value['spus']) && !empty($value['spus']))
                             <!--设计师 商品-->
-                                <div class="p-t-20x">
+                                <div class="p-t-20x topic-minWidth">
                                     <div class="row designerDetail-goods">
                                         @foreach($value['spus'] as $key => $spu)
                                             <div class="col-xs-6">
@@ -316,7 +316,7 @@
         @endif
 
     <!-- 设计师商品 -->
-        <div class="m-t-20x">
+        <div class="m-t-20x topic-minWidth">
             <div class="row designerDetail-goods">
                 @if(isset($productAll['data']['list']))
                     @foreach($productAll['data']['list'] as $product)
