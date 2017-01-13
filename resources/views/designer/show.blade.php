@@ -108,10 +108,10 @@
                 <div class="m-b-10x designer-headImg">
                 </div>
                 <div class="p-x-20x">
-                    <div class="bigNoodle font-size-llx">{{$designer['nickname']}}</div>
+                    <div class="bigNoodle font-size-lllxx">{{$designer['nickname']}}</div>
                 </div>
                 @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
-                    <div class="p-t-20x p-x-20x font-size-llxx">
+                    <div class="p-t-10x p-x-20x font-size-llxx">
                         @endif
                         @if(!empty($designer['instagram_link']))
                             <a href="{{$designer['instagram_link']}}" target="_blank" class="m-r-20x"><i
@@ -137,12 +137,12 @@
                     </div>
                 @endif
 
-                <div class="p-t-20x">
+                <div class="p-t-10x">
                     @if(Session::has('user'))
-                        <div class="btn btn-gray p-x-20x bigNoodle font-size-llx btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
+                        <div class="btn btn-gray p-x-20x bigNoodle font-size-lx btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
                              data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>
                     @else
-                        <a href="javascript:void(0)" class="btn btn-gray bigNoodle font-size-llx p-x-20x btn-follow"
+                        <a href="javascript:void(0)" class="btn btn-gray bigNoodle font-size-lx p-x-20x btn-follow"
                            data-actiondid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow</a>
                     @endif
                 </div>

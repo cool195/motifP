@@ -6818,12 +6818,15 @@ a.text-red:focus, a.text-red:hover {
 .font-size-llxxx { /* 45px */
   font-size: 2.8125rem;
 }
+.font-size-lllxx { /* 36px */
+  font-size: 2.25rem;
+}
 
 .font-size-llxx { /* 30px */
   font-size: 1.875rem;
 }
 .font-size-lllx {
-  font-size: 1.625rem;  /* 28px */
+  font-size: 1.75rem;  /* 28px */
 }
 
 .font-size-llx {
