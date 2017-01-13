@@ -242,6 +242,8 @@ class DesignerController extends BaseController
         );
         $result['productAll'] = $this->request('rec', $params);
 
+        $result = $this->pregDesignerUrl($result);
+
         if ($request->input('ajax')) {
             return $result;
         }
@@ -249,6 +251,37 @@ class DesignerController extends BaseController
         $maidian['utm_source'] = $request->get('utm_source');
         return View('designer.show', ['maidian' => $maidian,'designer' => $result['data'], 'productAll' => $result['productAll'], 'product' => $result['product']['data'], 'followList' => $this->followList()]);
     }
+
+
+    private function pregDesignerUrl($result)
+    {
+        if(!empty($result['data']['instagram_link'])){
+            $result['data']['instagram_link'] = $this->pregUrl($result['data']['instagram_link']);
+        }
+        if(!empty($data['data']['facebook_link'])){
+            $result['data']['facebook_link'] = $this->pregUrl($result['data']['facebook_link']);
+        }
+        if(!empty($result['data']['youtube_link'])){
+            $result['data']['youtube_link'] = $this->pregUrl($result['data']['youtube_link']);
+        }
+        if(!empty($result['data']['blog_link'])){
+            $result['data']['blog_link'] = $this->pregUrl($result['data']['blog_link']);
+        }
+        if(!empty($result['data']['snapchat_link'])){
+            $result['data']['snapchat_link'] = $this->pregUrl($result['data']['snapchat_link']);
+        }
+        return $result;
+    }
+
+    private function pregUrl($url)
+    {
+        $preg = '/^http:/';
+        if(!preg_match($preg, $url)){
+            $url = '//'.$url;
+        }
+        return $url;
+    }
+
 
     public function following(Request $request)
     {
