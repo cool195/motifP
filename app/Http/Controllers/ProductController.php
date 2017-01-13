@@ -21,14 +21,33 @@ class ProductController extends BaseController
     public function product(Request $request, $spuTitle)
     {
         $spu = "";
+        $result = array();
         if(is_numeric($spuTitle)){
-            $spu = $spuTitle;
+            $result = $this->getProductDetail($spuTitle);
+            if ($request->input('ajax')) {
+                return $result;
+            }
+            $params = $request->all();
+            $url = "/detail/".$result['data']['seo_link'];
+            if(!empty($params)){
+                $url = "/detail/".$result['data']['seo_link']."?".http_build_query($params);
+            }
+            return redirect($url);
         }else{
             $titleArray = explode("-", $spuTitle);
             end($titleArray);
             $spu = current($titleArray);
+            $result = $this->getProductDetail($spu);
+            if($spuTitle !== $result['data']['seo_link']){
+                $params = $request->all();
+                $url = "/detail/".$result['data']['seo_link'];
+                if(!empty($params)){
+                    $url = "/detail/".$result['data']['seo_link']."?".http_build_query($params);
+                }
+                return redirect($url);
+            }
         }
-        $result = $this->getProductDetail($spu);
+
 
         if ($result['success'] == false) {
             abort(404);
