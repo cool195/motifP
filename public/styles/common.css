@@ -240,6 +240,7 @@ select::-ms-expand { display: none; }
 .error-text{
   font-size: 9rem;
   padding-top: 4rem;
+  line-height: 11rem;
 }
 
 .img-border-white {
