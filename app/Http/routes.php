@@ -320,6 +320,8 @@ Route::get('error',function (){
 Route::get('/rae', 'NetworkRedsController@index');
 Route::get('/cassandra', 'NetworkRedsController@index');
 Route::get('/melodee', 'NetworkRedsController@index');
+Route::get('/fashionbyday', 'NetworkRedsController@index');
+
 Route::get('/test', 'PageController@test');
 
 Route::get('/banner', 'DailyController@banner');
