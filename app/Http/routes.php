@@ -328,6 +328,9 @@ Route::get('/banner', 'DailyController@banner');
 
 Route::get('/testSession', 'WordpayController@test');
 
+//此路由必须放最后一个
+Route::get('/{dsearch}', 'NetworkRedsController@dsearch');
+
 
 
 

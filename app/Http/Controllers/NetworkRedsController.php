@@ -41,6 +41,32 @@ class NetworkRedsController extends BaseController
         return View('designer.networkreds', ['designerUrl' => $designerUrl]);
     }
 
+    public function dsearch(Request $request, $dsearch)
+    {
+        $designerUrl = '/designer';
+        $designerID = 0;
+        $ref = urlencode($request->header('referer'));
+        $utm_medium = $request->get('utm_medium', $request->get('utm_campaign'));
+        $utm_source = $request->get('utm_source', $ref);
+        $params = array(
+            'cmd' => 'dsearch',
+            'nickname' => $dsearch
+        );
+        $result = $this->request('designer', $params);
+        if($result['success']){
+            $designerUrl = '/designer/'.$result['data']['designer_id'];
+            $designerID = $result['data']['designer_id'];
+        }else{
+            abort(404);
+        }
+
+        $designerUrl = ($this->isMobile() ? 'https://m.motif.me' : 'https://www.motif.me') . $designerUrl . ($utm_source ? '?utm_medium=' . $utm_medium . '&utm_source=' . $utm_source : '');
+
+        $clk = 'https://clk.motif.me/log.gif?t=route.600001&m=PC_M2016-1&pin=' . Session::get('user.pin') . '&uuid=' . $_COOKIE['uid'] . '&ref=' . $ref . '&v={"DesignerName":"' . $request->path() . '","designerID":"' . $designerID . '","utm_medium":"' . $utm_medium . '","utm_source":"' . $utm_source . '"}';
+        file_get_contents($clk);
+        return View('designer.networkreds', ['designerUrl' => $designerUrl]);
+    }
+
 
     private function isMobile()
     {
