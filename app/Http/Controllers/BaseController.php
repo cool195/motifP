@@ -19,8 +19,12 @@ class BaseController extends Controller
         }
 
         if(Session::has('user')){
-            if(Session::get('user.pin') !== $_COOKIE['gauserid']){
-                setcookie('gauserid', Session::get('user.pin'), time() + 86400 * 300, '/');
+            if(Cache::has(Session::get('user.token'))){
+                if(Session::get('user.pin') !== $_COOKIE['gauserid']){
+                    setcookie('gauserid', Session::get('user.pin'), time() + 86400 * 300, '/');
+                }
+            }else{
+                Session::forget('user');
             }
         }
         else{

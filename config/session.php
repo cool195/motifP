@@ -28,8 +28,8 @@ return [
     | to immediately expire on the browser closing, set that option.
     |
     */
-
-    'lifetime' => 43200,
+    
+    'lifetime' => 21600,//15天,最高一个月
 
     'expire_on_close' => false,
 
