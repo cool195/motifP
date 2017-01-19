@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Cache;
+use Cache;
 use Log;
 
 class AuthController extends BaseController
@@ -43,6 +43,8 @@ class AuthController extends BaseController
             $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
+            Cache::forget($result['data']['token']);
+            Cache::put($result['data']['token'], $result['data'], ($result['data']['tokenTtl'] / 60));
             if ($_COOKIE['wishSpu']) {
                 $this->addWishProduct($_COOKIE['wishSpu']);
             } elseif($_COOKIE['followDid']){
@@ -77,6 +79,8 @@ class AuthController extends BaseController
             $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
+            Cache::forget($result['data']['token']);
+            Cache::put($result['data']['token'], $result['data'], ($result['data']['tokenTtl'] / 60));
             if ($_COOKIE['wishSpu']) {
                 $this->addWishProduct($_COOKIE['wishSpu']);
             } elseif($_COOKIE['followDid']){
