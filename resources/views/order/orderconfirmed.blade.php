@@ -87,6 +87,8 @@
 
 
 <img src='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=order.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"orderno":"{{$order['sub_order_no']}}","expid":0,"version":"1.0.1","src":"PC"}' hidden>
+<img src="@if(!empty($order))https://shareasale.com/sale.cfm?amount={{ number_format($order['total_amount'] / 100, 2) }}&tracking={{ $order['sub_order_no'] }}&transtype=sale&merchantID=69783 @endif" width="1" height="1" hidden>
+
 @include('footer')
 <script src="{{config('runtime.Image_URL')}}/scripts/clipboard.min.js"></script>
 <script type="text/javascript">
@@ -110,8 +112,9 @@
 <script>
     var _learnq = _learnq || [];
     _learnq.push(['track', 'Checkout Successfully', {
-        'event_id': '{{ $order['sub_order_no'] }}',
-        'value' : '{{ number_format($order['total_amount'] / 100, 2) }}' ,
+        'EventId': '{{ $order['sub_order_no'] }}',
+        'Value' : '{{ number_format($order['total_amount'] / 100, 2) }}',
+        'Brand' : 'Motif PC',
         'ItemNames' : [@foreach($order['lineOrderList'] as $lineOrder) '{{ $lineOrder['main_title'] }}' @endforeach],
         'Items' : [
                 @foreach($order['lineOrderList'] as $lineOrder)
@@ -120,8 +123,7 @@
                 'Name' : '{{ $lineOrder['main_title'] }}',
                 'Quantity' : '{{ $lineOrder['sale_qtty'] }}',
                 'ItemPrice' : '{{ number_format($lineOrder['sale_price'] / 100, 2) }}',
-                'ProductURL' : '',
-                'ImageURL' : ''
+                'ProductURL' : 'https://www.motif.me/detail/{{$lineOrder['main_title']}}-{{$lineOrder['spu']}}'
             },
             @endforeach
         ]

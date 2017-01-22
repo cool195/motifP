@@ -558,11 +558,8 @@
         Categories: '{{ $data['category_name'] }}', // The list of categories is an array of strings.
         ImageUrl: '{{config('runtime.CDN_URL')}}/n0/{{ $data['main_image_url'] }}',
         Url: 'https://www.motif.me{{ $_SERVER['REQUEST_URI'] }}',
-        Metadata: {
-            Brand: 'Motif PC',
-            Price: '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}'
-            //CompareAtPrice: {{ product.compare_at_price }} // If you have a compare at price. You could also include this for a sale or special price.
-        }
+        Brand: 'Motif PC',
+        Price: '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}'
     }]);
 </script>
 
@@ -604,7 +601,7 @@
         _learnq.push(['track', 'Add to Bag Successfully', {
             'SPU' : '{{$data['spu']}}',
             'Name' : '{{$data['main_title']}}',
-            'productUrl' : '{{config('runtime.CDN_URL')}}/n0/{{ $data['main_image_url'] }}',
+            'ImageUrl' : '{{config('runtime.CDN_URL')}}/n0/{{ $data['main_image_url'] }}',
             'Url': 'https://www.motif.me{{ $_SERVER['REQUEST_URI'] }}',
             'ItemPrice' : '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
             'Categories' : '{{ $data['category_name'] }}',

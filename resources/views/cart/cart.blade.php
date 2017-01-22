@@ -276,6 +276,7 @@
         _learnq.push(['track', 'Proceed to Checkout', {
             'value' : totalPrice ,
             'ItemNames' : [@foreach($cart['showSkus'] as $key => $product) @if(0 == $key)'{{$product['main_title']}}' @else , '{{$product['main_title']}}' @endif @endforeach],
+            'Brand' : 'Motif PC',
             'Items' : [
                     @foreach($cart['showSkus'] as $key => $product)
                 {
@@ -283,8 +284,8 @@
                     'Name' : '{{$product['main_title']}}',
                     'Quantity' : '{{$product['sale_qtty']}}',
                     'ItemPrice' : '{{number_format($product['sale_price'] / 100, 2)}}',
-                    'ProductURL' : 'https://www.motif.me{{ $_SERVER['REQUEST_URI'] }}',
-                    'ImageURL' : '{{$product['main_image_Url']}}'
+                    'ProductURL' : 'https://www.motif.me/detail/{{$product['main_title']}}-{{$product['spu']}}',
+                    'ImageURL' : '{{config('runtime.CDN_URL')}}/n2/{{$product['main_image_url']}}'
                 },
                 @endforeach
             ]
