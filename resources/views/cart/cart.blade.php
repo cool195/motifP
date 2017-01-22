@@ -239,9 +239,9 @@
                             @if(Session::get('user.pin'))
                                 <a href="/cart/ordercheckout"
                                    data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=check.100002&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&ref=&v={"skipType":"processedcheckout","skipId":"","version":"1.0.1","ver":"9.2","src":"PC"}'
-                                   class="m-l-30x bigNoodle font-size-llx btn-toCheckout @if($cart['pay_amount'] <= 0) disabled @endif">Proceed To Checkout</a>
+                                   class="m-l-30x bigNoodle font-size-llx btn-toCheckout cartKlaviyo  @if($cart['pay_amount'] <= 0) disabled @endif">Proceed To Checkout</a>
                             @else
-                                <a class="m-l-30x bigNoodle font-size-llx btn-toCheckout btn-loginModal @if($cart['pay_amount'] <= 0) disabled @endif" data-referer="/cart/ordercheckout">Proceed To Checkout</a>
+                                <a class="m-l-30x bigNoodle font-size-llx btn-toCheckout btn-loginModal cartKlaviyo @if($cart['pay_amount'] <= 0) disabled @endif" data-referer="/cart/ordercheckout">Proceed To Checkout</a>
                             @endif
 
                     </div>

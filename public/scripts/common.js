@@ -1185,7 +1185,7 @@ function HideSeeMore(seemoreName) {
         return true;
     }
 
-    $('.btn-toCheckout').on('click', function(){
+    $('.cartKlaviyo').on('click', function(){
         sendTrackProceedToCheckout();
     });
 
