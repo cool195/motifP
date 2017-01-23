@@ -87,7 +87,7 @@
 
 
 <img src='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=order.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::get('user.uuid')}}&v={"orderno":"{{$order['sub_order_no']}}","expid":0,"version":"1.0.1","src":"PC"}' hidden>
-<img src="@if(!empty($order))https://shareasale.com/sale.cfm?amount={{ number_format($order['payinfo']['pay_amount'] / 100, 2) }}&tracking={{ $order['sub_order_no'] }}&transtype=sale&merchantID=69783 @endif" width="1" height="1" hidden>
+<img src="@if(!empty($order))https://shareasale.com/sale.cfm?amount={{ number_format($order['pay_amount'] / 100, 2) }}&tracking={{ $order['sub_order_no'] }}&transtype=sale&merchantID=69783 @endif" width="1" height="1" hidden>
 
 @include('footer')
 <script src="{{config('runtime.Image_URL')}}/scripts/clipboard.min.js"></script>
