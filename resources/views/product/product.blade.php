@@ -33,7 +33,7 @@
                     'id': '{{ $data['spu'] }}',
                     'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
                     'brand': 'Motif',
-                    'category': '',
+                    'category': '{{$data['category_name']}}',
                     'variant': ''
                 }]
             }
@@ -55,7 +55,7 @@
                         'id': '{{ $data['spu'] }}',
                         'price': '{{ number_format(($data['skuPrice']['sale_price'] / 100), 2) }}',
                         'brand': 'Motif PC',
-                        'category': '',
+                        'category': '{{$data['category_name']}}',
                         'variant': '',
                         'quantity': quantity
                     }]
