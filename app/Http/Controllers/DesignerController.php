@@ -275,9 +275,9 @@ class DesignerController extends BaseController
 
     private function pregUrl($url)
     {
-        $preg = '/^http:/';
+        $preg = '/^http/';
         if(!preg_match($preg, $url)){
-            $url = '//'.$url;
+            $url = 'http://'.$url;
         }
         return $url;
     }
