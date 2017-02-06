@@ -137,7 +137,7 @@
                     </div>
                 @endif
 
-                @if($designer['designer_id']==103)
+                @if($designer['designer_id']==114)
                     <div class="p-t-20x font-size-lx">
                         Follow Michaela to be notified when<br> this collection is available
                     </div>
