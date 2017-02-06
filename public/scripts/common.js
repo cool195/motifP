@@ -2308,7 +2308,8 @@ function HideSeeMore(seemoreName) {
                             email: profile.getEmail(),
                             id: profile.getId(),
                             name: profile.getName(),
-                            avatar: profile.getImageUrl()
+                            avatar: profile.getImageUrl(),
+                            referer: $('[name="referer"]').val()
                         }
                     })
                     .done(function (data) {
@@ -2410,12 +2411,14 @@ function HideSeeMore(seemoreName) {
 
                         if (data.status) {
                             response.email = data.data.email;
+                            response.referer = $('[name="referer"]').val();
                             loginSuccess(response);
                         } else {
                             window.location.href = '/addFacebookEmail?id=' + response.id + '&name=' + response.name;
                         }
                     })
             } else {
+                response.referer = $('[name="referer"]').val();
                 loginSuccess(response);
             }
 
@@ -2430,7 +2433,8 @@ function HideSeeMore(seemoreName) {
                     email: response.email,
                     id: response.id,
                     name: response.name,
-                    avatar: response.picture.data.url
+                    avatar: response.picture.data.url,
+                    referer: response.referer
                 }
             })
             .done(function (data) {

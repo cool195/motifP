@@ -233,6 +233,7 @@
 <input type="text" id="userEmail" value="" hidden>
 </div>--}}
 <script src="{{config('runtime.Image_URL')}}/scripts/vendor.js{{config('runtime.V')}}"></script>
+<script src="https://apis.google.com/js/api:client.js"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/card.js{{config('runtime.V')}}"></script>
 <script src="https://apis.google.com/js/api:client.js"></script>
 <script src="{{config('runtime.Image_URL')}}/scripts/common.js{{config('runtime.V')}}"></script>

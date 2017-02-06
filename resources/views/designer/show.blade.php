@@ -137,7 +137,13 @@
                     </div>
                 @endif
 
-                <div class="p-t-10x">
+                @if($designer['designer_id']==114)
+                    <div class="p-t-20x font-size-lx">
+                        Follow Michaela to be notified when<br> this collection is available
+                    </div>
+                @endif
+
+                <div class="p-t-20x">
                     @if(Session::has('user'))
                         <div class="btn btn-gray p-x-20x bigNoodle font-size-lx btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
                              data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>

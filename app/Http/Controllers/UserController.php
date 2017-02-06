@@ -34,6 +34,11 @@ class UserController extends BaseController
             Session::put('user', $result['data']);
             Cache::forget($result['data']['token']);
             Cache::put($result['data']['token'], $result['data'], ($result['data']['tokenTtl'] / 60));
+            if ($_COOKIE['wishSpu']) {
+                $this->addWishProduct($_COOKIE['wishSpu']);
+            } elseif ($_COOKIE['followDid']) {
+                $this->addFollowDesigner($_COOKIE['followDid']);
+            }
             $this->mergeCartSkus();
             $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'login')) ? $request->input('referer') : "/daily";
         } else {

@@ -40,7 +40,8 @@ class AuthController extends BaseController
         Log::info($params);
         $result = $this->request("user", $params);
         if ($result['success']) {
-            $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
+            //$result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
+            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
             Cache::forget($result['data']['token']);
@@ -76,7 +77,8 @@ class AuthController extends BaseController
         Log::info($params);
         $result = $this->request("user", $params);
         if ($result['success']) {
-            $result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
+            //$result['redirectUrl'] = Session::get('redirectUrl') ? Session::get('redirectUrl') : "/daily";
+            $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
             Session::forget('user');
             Session::put('user', $result['data']);
             Cache::forget($result['data']['token']);
