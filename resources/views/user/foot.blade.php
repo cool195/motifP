@@ -50,3 +50,13 @@
 </script>
 @endif
 
+<script>
+    var _learnq = _learnq || [];
+    var userKlaviyoRegister = function () {
+        var Email= $('input[name="email"]').val();
+        _learnq.push(['track', 'Register', {
+            'email' : Email
+        }]);
+    };
+</script>
+
