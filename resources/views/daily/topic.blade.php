@@ -74,7 +74,7 @@
                         <div class="topic-minWidth">
                             <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
                                 <div class="p-t-20x m-b-20x text-center">
-                                    <h2 class="bigNoodle font-size-big">{{ $value['value'] }}</h2>
+                                    <h2 class="font-size-llxx"><strong>{{ $value['value'] }}</strong></h2>
                                 </div>
                             </a>
                         </div>
