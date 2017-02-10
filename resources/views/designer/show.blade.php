@@ -388,6 +388,27 @@
                         </div>
                     @endforeach
                 @endif
+                @if($designer['designer_id']==114)
+                    <div class="text-center p-b-20x p-t-20x designer-basicInfo">
+                        <div class="m-b-10x designer-headImg">
+                        </div>
+
+                        <div class="p-t-20x font-size-lx">
+                            Follow Michaela to be notified when<br> this collection is available
+                        </div>
+                        <div class="p-t-20x">
+                            @if(Session::has('user'))
+                                <div class="btn btn-gray p-x-20x bigNoodle font-size-lx btn-follow @if(in_array($designer['designer_id'], $followList)) active @endif"
+                                     data-did="{{$designer['designer_id']}}">@if(in_array($designer['designer_id'], $followList)){{'Following'}}@else{{'Follow'}}@endif</div>
+                            @else
+                                <a href="javascript:void(0)" class="btn btn-gray bigNoodle font-size-lx p-x-20x btn-follow"
+                                   data-actiondid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow</a>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+
+
             </div>
         </div>
 
