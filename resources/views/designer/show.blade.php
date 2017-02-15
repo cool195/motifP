@@ -117,23 +117,23 @@
                     <div class="p-t-10x p-x-20x font-size-llxx">
                         @endif
                         @if(!empty($designer['instagram_link']))
-                            <a href="{{$designer['instagram_link']}}" target="_blank" class="m-r-20x"><i
+                            <a href="{{$designer['instagram_link']}}" target="_blank" class="m-x-10x"><i
                                         class="iconfont icon-instagram1"></i></a>
                         @endif
                         @if(!empty($designer['snapchat_link']))
-                            <a href="{{$designer['snapchat_link']}}" target="_blank" class="m-r-20x"><i
+                            <a href="{{$designer['snapchat_link']}}" target="_blank" class="m-x-10x"><i
                                         class="iconfont icon-snapchat"></i></a>
                         @endif
                         @if(!empty($designer['youtube_link']))
-                            <a href="{{$designer['youtube_link']}}" target="_blank" class="m-r-20x"><i
+                            <a href="{{$designer['youtube_link']}}" target="_blank" class="m-x-10x"><i
                                         class="iconfont icon-youtube1"></i></a>
                         @endif
                         @if(!empty($designer['facebook_link']))
-                            <a href="{{$designer['facebook_link']}}" target="_blank" class="m-r-20x"><i
+                            <a href="{{$designer['facebook_link']}}" target="_blank" class="m-x-10x"><i
                                         class="iconfont icon-facebook1"></i></a>
                         @endif
                         @if(!empty($designer['blog_link']))
-                            <a href="{{$designer['blog_link']}}" target="_blank" class="m-r-20x"><i
+                            <a href="{{$designer['blog_link']}}" target="_blank" class="m-x-10x"><i
                                         class="iconfont icon-blog"></i></a>
                         @endif
                         @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
