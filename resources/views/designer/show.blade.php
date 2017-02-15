@@ -110,6 +110,9 @@
                 <div class="p-x-20x">
                     <div class="bigNoodle font-size-lllxx">{{$designer['nickname']}}</div>
                 </div>
+                <div class="p-t-20x p-x-20x">
+                    <p class="m-b-0 font-size-sm">{{$designer['describe']}}</p>
+                </div>
                 @if(!empty($designer['instagram_link']) || !empty($designer['snapchat_link']) || !empty($designer['youtube_link']) || !empty($designer['facebook_link']) || !empty($designer['blog_link']))
                     <div class="p-t-10x p-x-20x font-size-llxx">
                         @endif
@@ -146,11 +149,6 @@
                            data-actiondid="{{$designer['designer_id']}}" data-referer="{{$_SERVER['REQUEST_URI']}}">Follow</a>
                     @endif
                 </div>
-
-                <div class="p-t-20x p-x-20x">
-                    <p class="m-b-0 font-size-sm">{{$designer['describe']}}</p>
-                </div>
-
 
             </div>
         </div>
