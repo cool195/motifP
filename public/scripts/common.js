@@ -2381,6 +2381,10 @@ function HideSeeMore(seemoreName) {
         FB.init({
             appId: '270298046670851',
             cookie: true, // enable cookies to allow the server to access
+           //status: false,
+            //logging: false,
+            //frictionlsessRequests: true,
+            //oauth: true,
             // the session
             xfbml: true, // parse social plugins on this page
             version: 'v2.6' // use version 2.2
@@ -2402,7 +2406,7 @@ function HideSeeMore(seemoreName) {
     // successful.  See statusChangeCallback() for when this call is made.
     function loginFacebook() {
         FB.api('/me', 'GET', {fields: 'id,name,picture.width(750).height(750),email'}, function (response) {
-            if (response.email == '' || response == undefined) {
+            if (response.email == '' || response.email == undefined) {
                 $.ajax({
                         url: '/facebookstatus/' + response.id,
                         type: 'get'
