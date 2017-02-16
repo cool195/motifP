@@ -90,6 +90,8 @@ class AuthController extends BaseController
             }
             $this->mergeCartSkus();
         }
+        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
+        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         return $result;
     }
 
