@@ -2380,13 +2380,13 @@ function HideSeeMore(seemoreName) {
     window.fbAsyncInit = function () {
         FB.init({
             appId: '270298046670851',
-            cookie: true, // enable cookies to allow the server to access
-           //status: false,
-            //logging: false,
-            //frictionlsessRequests: true,
-            //oauth: true,
+            cookie: false, // enable cookies to allow the server to access
+            status: false,
+            xfbml: false, // parse social plugins on this page
+            logging: false,
+            frictionlsessRequests: true,
+            oauth: true,
             // the session
-            xfbml: true, // parse social plugins on this page
             version: 'v2.6' // use version 2.2
         });
 
