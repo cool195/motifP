@@ -296,7 +296,15 @@ Route::group(['middleware' => 'pcguide'], function () {
 
 });
 
-// Page Start
+// Page End
+
+//Sns Start
+Route::get('/sendsnsmessage', 'SnsController@sendMessage');
+
+Route::get('/updatemessagestatus', 'SnsController@updateMessageStatus');
+
+
+//Sns End
 
 
 // Ask Start
@@ -309,6 +317,7 @@ Route::group(['middleware' => ['loginCheck', 'pcguide']], function() {
     Route::post('/askshoppings', 'AskController@installs');
 
 });
+
 
 Route::get('error',function (){
     abort(404);
