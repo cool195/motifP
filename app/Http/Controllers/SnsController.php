@@ -18,6 +18,18 @@ Class SnsController extends BaseController
     {
         $params = array();
         if(Session::has('user')){
+            $update = array(
+                'cmd' => 'update',
+                'uuid' => Session::get('user.uuid'),
+                'pin' => Session::get('user.pin'),
+                'version' => '1.0',
+                'src' => 'PC',
+                'devtoken' => Session::get('user.pin'),
+                'operate' => 2,
+                'isblock' => 0
+            );
+            $this->request("sns", $update);
+
             $params['cmd'] = "list";
             $params['pin'] = Session::get('user.pin');
         }else{
