@@ -3,88 +3,100 @@
 'use strict';
 
 
-// chrome notification  start
-function notify(title, content) {
-/*
-    if(!title && !content){
-        title = "桌面提醒";
-        content = "您看到此条信息桌面提醒设置成功";
-    }*/
-    var iconUrl = "/images/logo/notif_motif.jpg";
-    //var iconUrl = "http://i.stack.imgur.com/dmHl0.png";
 
-    //判断当前的浏览器是否支持开启桌面通知
-    if (window.webkitNotifications) {
-        //chrome老版本   用户之前已经允许本站的桌面通知  0: 允许
-        if (webkitNotifications.checkPermission() == 0) {
-            // 实例化webkitNotifications对象
-            var notif = window.webkitNotifications.createNotification(iconUrl, title, content);
-            notif.show();
-        } else {
-            // 在浏览器的信息栏弹出一个是否允许桌面通知的提醒
-            webkitNotifications.requestPermission();
-        }
-    } // chrome26 +
-    else if(window.Notification){
-        // 判断是否有权限
-        if (Notification.permission === "granted") {
-            new Notification(title, {
-                "icon": iconUrl,
-                "body": content
-            });
-        }
-        //如果没权限，则请求权限
-        else if (Notification.permission !== 'denied') {
-            Notification.requestPermission(function(status) {
-                // Whatever the user answers, we make sure we store the information
-                if (!('permission' in Notification)) {
-                    Notification.permission = status;
+$(function(){
+    // chrome notification  start
+    function notify(title, content, notifUrl) {
+        /*
+         if(!title && !content){
+         title = "桌面提醒";
+         content = "您看到此条信息桌面提醒设置成功";
+         }*/
+        var iconUrl = "/images/logo/notif_motif.jpg";
+        //var iconUrl = "http://i.stack.imgur.com/dmHl0.png";
+
+        //判断当前的浏览器是否支持开启桌面通知
+        if (window.webkitNotifications) {
+            //chrome老版本   用户之前已经允许本站的桌面通知  0: 允许
+            if (webkitNotifications.checkPermission() == 0) {
+                // 实例化webkitNotifications对象
+                var notif = window.webkitNotifications.createNotification(iconUrl, title, content);
+                notif.show();
+            } else {
+                // 在浏览器的信息栏弹出一个是否允许桌面通知的提醒
+                webkitNotifications.requestPermission();
+            }
+        } // chrome26 +
+        else if(window.Notification){
+            // 判断是否有权限
+            if (Notification.permission === "granted") {
+                var n = new Notification(title, {
+                    "icon": iconUrl,
+                    "body": content
+                });
+                n.onclick = function () {
+                    window.open(notifUrl);
                 }
-                //如果接受请求
-                if (status === "granted") {
-                    new Notification(title, {
-                        "icon": iconUrl,
-                        "body": content
-                    });
-                }
-            });
-        }
-    }
-}
+            }
+            //如果没权限，则请求权限
+            else if (Notification.permission !== 'denied') {
+                Notification.requestPermission(function(status) {
+                    // Whatever the user answers, we make sure we store the information
+                    if (!('permission' in Notification)) {
+                        Notification.permission = status;
+                    }
+                    //如果接受请求
+                    if (status === "granted") {
+                        var n = new Notification(title, {
+                            "icon": iconUrl,
+                            "body": content
+                        });
+                        n.onclick = function () {
+                            window.open(notifUrl);
+                        }
 
-$.ajax({
-    type: 'GET',
-    url:'/sendsnsmessage'
-}).done(function(data){
-    var notifList = data.data.list;
-
-    if (notifList.length !== 0) {
-        var cache_notifId = localStorage.getItem('notif_id');
-        var new_notif = notifList[0];
-
-        var notif_tit = new_notif.title;
-        var notif_content = new_notif.content;
-        var notif_id = new_notif.id;
-
-        // 缓存中没有id ,或者 id不等于最新id, 或者最近的消息的状态是1(未读)
-        if (( !cache_notifId || (cache_notifId != notif_id) ) && new_notif.status_code === 1) {
-            notify(notif_tit, notif_content);
-            $.ajax({
-                type: 'GET',
-                url: '/updatemessagestatus',
-                data: {
-                    id: notif_id,
-                    status: 2
-                }
-            }).done(function (data) {
-                console.log(data);
-                if (!data.success) {
-                    localStorage.setItem('notif_id', notif_id)
-                }
-            })
+                    }
+                });
+            }
         }
     }
-});
+
+    $.ajax({
+        type: 'GET',
+        url:'/sendsnsmessage'
+    }).done(function(data){
+        var notifList = data.data.list;
+
+        if (notifList.length !== 0) {
+            var cache_notifId = localStorage.getItem('notif_id');
+            var new_notif = notifList[0];
+
+            var notif_tit = new_notif.title;
+            var notif_content = new_notif.content;
+            var notif_id = new_notif.id;
+            var notif_url = new_notif.landing_page;
+
+            // 缓存中没有id ,或者 id不等于最新id, 或者最近的消息的状态是1(未读)
+            if (( !cache_notifId || (cache_notifId != notif_id) ) && new_notif.status_code === 1) {
+                notify(notif_tit, notif_content, notif_url);
+                $.ajax({
+                    type: 'GET',
+                    url: '/updatemessagestatus',
+                    data: {
+                        id: notif_id,
+                        status: 2
+                    }
+                }).done(function (data) {
+                    console.log(data);
+                    if (!data.success) {
+                        localStorage.setItem('notif_id', notif_id)
+                    }
+                })
+            }
+        }
+    });
+})
+
 
 
 // chrome notification  end
