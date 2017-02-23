@@ -52,7 +52,7 @@ Class SnsController extends BaseController
         parse_str($urlArr['query'], $parr);
         switch($parr['a']){
             case 'pd':
-                $url = "/detail/".$parr['spu'];
+                $url = "https://www.motif.me/detail/".$parr['spu'];
                 break;
             case 'url';
                 $url = $parr['url'];
@@ -61,28 +61,28 @@ Class SnsController extends BaseController
                 $url = $parr['url'];
                 break;
             case 'daily';
-                $url = '/daily';
+                $url = 'https://www.motif.me/daily';
                 break;
             case 'designerlist';
-                $url = '/designer';
+                $url = 'https://www.motif.me/designer';
                 break;
             case 'shoppinglist';
-                $url = '/shopping'.$parr['cid'];
+                $url = 'https://www.motif.me/shopping'.$parr['cid'];
                 break;
             case 'orderlist';
-                $url = '/order/orderlist';
+                $url = 'https://www.motif.me/order/orderlist';
                 break;
             case 'cart';
-                $url = '/cart';
+                $url = 'https://www.motif.me/cart';
                 break;
             case 'login';
-                $url = '/login';
+                $url = 'https://www.motif.me/login';
                 break;
             case 'register';
-                $url = '/register';
+                $url = 'https://www.motif.me/register';
                 break;
             case 'orderdetail';
-                $url = '/order/orderdetail/'. $parr['id'];
+                $url = 'https://www.motif.me/order/orderdetail/'. $parr['id'];
         }
         return $url;
     }
