@@ -38,7 +38,53 @@ Class SnsController extends BaseController
             $params['ts'] = time();
         }
         $result = $this->request("sns", $params);
+        if($result['success']){
+            foreach($result['data']['list'] as &$list){
+                $list['landing_page'] = $this->urlTransfer($list['landing_page']);
+            }
+        }
         return $result;
+    }
+
+    public function urlTransfer($url)
+    {
+        $urlArr = parse_url($url);
+        parse_str($urlArr['query'], $parr);
+        switch($parr['a']){
+            case 'pd':
+                $url = "/detail/".$parr['spu'];
+                break;
+            case 'url';
+                $url = $parr['url'];
+                break;
+            case 'outurl';
+                $url = $parr['url'];
+                break;
+            case 'daily';
+                $url = '/daily';
+                break;
+            case 'designerlist';
+                $url = '/designer';
+                break;
+            case 'shoppinglist';
+                $url = '/shopping'.$parr['cid'];
+                break;
+            case 'orderlist';
+                $url = '/order/orderlist';
+                break;
+            case 'cart';
+                $url = '/cart';
+                break;
+            case 'login';
+                $url = '/login';
+                break;
+            case 'register';
+                $url = '/register';
+                break;
+            case 'orderdetail';
+                $url = '/order/orderdetail/'. $parr['id'];
+        }
+        return $url;
     }
 
     public function updateMessageStatus(Request $request)
