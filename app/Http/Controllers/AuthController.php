@@ -117,8 +117,6 @@ class AuthController extends BaseController
         );
         $result = $this->request("user", $params);
         $result['status'] = $result['data']['email'] ? true : false;
-        error_log(print_r("------------------\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         return $result;
     }
 
