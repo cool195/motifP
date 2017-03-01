@@ -192,12 +192,7 @@ class WordpayController extends BaseController
             }
         }
     }
-
-    public function test()
-    {
-        return Session::get('user');
-    }
-
+    
     private function getCouponInfo()
     {
         $params = array(

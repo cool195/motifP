@@ -335,7 +335,7 @@ Route::get('/test', 'PageController@test');
 
 Route::get('/banner', 'DailyController@banner');
 
-Route::get('/testSession', 'WordpayController@test');
+Route::get('/empowered', 'DailyController@empowered');
 
 //此路由必须放最后一个
 Route::get('/{dsearch}', 'NetworkRedsController@dsearch');

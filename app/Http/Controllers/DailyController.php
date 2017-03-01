@@ -130,4 +130,9 @@ class DailyController extends BaseController
         return View('daily.home', ['banner' => $banner['data']]);
     }
 
+    public function empowered()
+    {
+        return redirect('/topic/280');
+    }
+
 }
