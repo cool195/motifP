@@ -11,7 +11,7 @@
                 Your requested URL was not found<br>
                 You may want to
             </p>
-            <a href="/daily" class="btn btn-green font-size-llx bigNoodle btn-300">Go Home</a>
+            <a href="/trending" class="btn btn-green font-size-llx bigNoodle btn-300">Go Home</a>
         </div>
     </div>
 </section>

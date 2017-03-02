@@ -27,7 +27,7 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="follow-item text-center p-a-40x">
                                         <div class="m-b-10x">
-                                            <a href="/designer/{{$follow['userId']}}">
+                                            <a href="/collection/{{$follow['userId']}}">
                                                 <img class="img-circle img-lazy"
                                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{$follow['avatar']}}"
@@ -69,7 +69,7 @@
     <div class="col-md-6 col-xs-12">
         <div class="follow-item text-center p-a-40x">
             <div class="m-b-10x">
-                <a href="/designer/@{{ $value.userId }}">
+                <a href="/collection/@{{ $value.userId }}">
                     <img class="img-circle img-lazy"
                          src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
                          data-original="{{config('runtime.CDN_URL')}}/n1/@{{ $value.avatar }}"

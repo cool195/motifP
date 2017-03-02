@@ -70,7 +70,7 @@
                 <ul class="nav flex flex-alignCenter flex-justifyCenter">
                     @foreach($categories as $category)
                         <li class="text-center avenirRegular uppercase font-size-sm category-item p-x-30x p-y-10x @if($cid == $category['category_id']) active @endif">
-                            <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}</a>
+                            <a href="{{$category['category_id']==0 ? '/shop' : '/shop/'.$category['category_id']}}">{{$category['category_name']}}</a>
                         </li>
                     @endforeach
                 </ul>

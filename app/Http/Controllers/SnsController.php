@@ -61,13 +61,13 @@ Class SnsController extends BaseController
                 $url = $parr['url'];
                 break;
             case 'daily';
-                $url = 'https://www.motif.me/daily';
+                $url = 'https://www.motif.me/trending';
                 break;
             case 'designerlist';
-                $url = 'https://www.motif.me/designer';
+                $url = 'https://www.motif.me/collection';
                 break;
             case 'shoppinglist';
-                $url = 'https://www.motif.me/shopping'.$parr['cid'];
+                $url = 'https://www.motif.me/shop'.$parr['cid'];
                 break;
             case 'orderlist';
                 $url = 'https://www.motif.me/order/orderlist';

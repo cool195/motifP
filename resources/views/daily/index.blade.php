@@ -7,7 +7,7 @@
                 @foreach($banner as $value)
                     @if(1 == $value['banner_show_type'])
                     <div class="swiper-slide">
-                        <a href="@if(1 == $value['banner_skip_type'])/detail/@elseif(2==$value['banner_skip_type'])/designer/@elseif(3==$value['banner_skip_type'])/topic/@elseif(4 == $value['banner_skip_type'])/shopping/@endif{{ $value['banner_skip'] }}">
+                        <a href="@if(1 == $value['banner_skip_type'])/detail/@elseif(2==$value['banner_skip_type'])/collection/@elseif(3==$value['banner_skip_type'])/topic/@elseif(4 == $value['banner_skip_type'])/shop/@endif{{ $value['banner_skip'] }}">
                             <img src="{{config('runtime.CDN_URL').'/n0/'.$value['img_path']}}" alt="">
                         </a>
                     </div>
@@ -52,7 +52,7 @@
                                         <a class="text-white font-size-xs video-formore"
                                            data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"type":"{{$daily['type']}}","skipType":{{$daily['skipType']}},"skipId":"{{$daily['skipId']}}","sortNo":{{$daily['sortNo']}},"expid":"0","index":1,"version":"1.0.1","src":"PC"}'
                                            data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"type":"{{$daily['type']}}","skipType":{{$daily['skipType']}},"skipId":"{{$daily['skipId']}}","sortNo":{{$daily['sortNo']}},"expid":"0","index":1,"version":"1.0.1","src":"PC"}'
-                                           href="@if(1 == $daily['skipType'])/detail/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@elseif(4==$daily['skipType'])/shopping/@else{{""}}@endif{{ $daily['skipId'] }}">
+                                           href="@if(1 == $daily['skipType'])/detail/@elseif(2==$daily['skipType'])/collection/@elseif(3==$daily['skipType'])/topic/@elseif(4==$daily['skipType'])/shop/@else{{""}}@endif{{ $daily['skipId'] }}">
                                             <strong>Click for More</strong>
                                         </a>
                                     </div>
@@ -63,7 +63,7 @@
                         <div class="daily-item player-media">
                             <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":"{{$daily['skipId']}}","sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
                                data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"type":{{$daily['type']}},"skipType":{{$daily['skipType']}},"skipId":"{{$daily['skipId']}}","sortNo":{{$daily['sortNo']}},"expid":0,"index":1,"version":"1.0.1","src":"PC"}'
-                               href="@if(1 == $daily['skipType'])/detail/@elseif(2==$daily['skipType'])/designer/@elseif(3==$daily['skipType'])/topic/@elseif(4 == $daily['skipType'])/shopping/@else{{""}}@endif{{ $daily['skipId'] }}"
+                               href="@if(1 == $daily['skipType'])/detail/@elseif(2==$daily['skipType'])/collection/@elseif(3==$daily['skipType'])/topic/@elseif(4 == $daily['skipType'])/shop/@else{{""}}@endif{{ $daily['skipId'] }}"
                                class="daily-img">
                                 <img data-original="{{config('runtime.CDN_URL')}}/n3/{{$daily['imgPath']}}"
                                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"
@@ -128,7 +128,7 @@
                         <a class="text-white font-size-xs video-formore"
                            data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","type":"@{{ $value.type }}","imgtexttype":"@{{ $value.imgtextType }}","skiptype":"@{{ $value.skipType }}","skipid":"@{{ $value.skipId }}","sortno":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
                            data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","type":"@{{ $value.type }}","imgtexttype":"@{{ $value.imgtextType }}","skiptype":"@{{ $value.skipType }}","skipid":"@{{ $value.skipId }}","sortno":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"pc"}'
-                           href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shopping/@{{ else }}@{{ /if }}@{{ $value.skipId }}"><strong>Click for More</strong></a>
+                           href="@{{ if $value.skipType == 1 }}/detail/@{{ else if $value.skipType == 2 }}/collection/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4 }}/shop/@{{ else }}@{{ /if }}@{{ $value.skipId }}"><strong>Click for More</strong></a>
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@
         <div class="daily-item">
             <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"0","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
                data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.100001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":"1","type":"@{{ $value.type }}","skipType":"@{{ $value.skipType }}","skipId":"@{{ $value.skipId }}","sortNo":"@{{ $value.sortNo }}","expid":0,"index": 1,"version":"1.0.1", "ver":"9.2", "src":"PC"}'
-               href="@{{if $value.skipType == 1}}/detail/@{{ else if $value.skipType == 2 }}/designer/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4}}/shopping/@{{ else }}@{{ /if }}@{{ $value.skipId }}"
+               href="@{{if $value.skipType == 1}}/detail/@{{ else if $value.skipType == 2 }}/collection/@{{ else if $value.skipType == 3 }}/topic/@{{ else if $value.skipType == 4}}/shop/@{{ else }}@{{ /if }}@{{ $value.skipId }}"
                class="daily-img">
                 <img data-original="{{config('runtime.CDN_URL')}}/n3/@{{ $value.imgPath }}"
                      src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png"

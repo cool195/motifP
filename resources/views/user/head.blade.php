@@ -21,7 +21,7 @@
         <nav class="navbar-left">
             <ul class="nav navbar-primary">
                 <li class="nav-item nav-logo">
-                    <a href="/daily">
+                    <a href="/trending">
                         <img class="img-fluid" src="{{config('runtime.Image_URL')}}/images/logo/logo.png{{config('runtime.V')}}" alt="logo" srcset="{{config('runtime.Image_URL')}}/images/logo/motif-logo.png{{config('runtime.V')}} 2x">
                     </a>
                 </li>

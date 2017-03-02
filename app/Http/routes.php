@@ -16,9 +16,9 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::get('/', 'DailyController@home');
 
-    Route::get('/daily', 'DailyController@index');
+    Route::get('/trending', 'DailyController@index');
 
-    Route::get('/topic/{id}', 'DailyController@show')->where(['id' => '[0-9]+']);//专题动态模版
+    Route::get('/topic/{id}', 'DailyController@show');//专题动态模版
 
     Route::get('/service/{id}', 'DailyController@service')->where(['id' => '[0-9]+']);//商品详情服务动态模版
 
@@ -31,9 +31,9 @@ Route::group(['middleware' => 'pcguide'], function() {
 
 
 //Designer Start
-Route::get('/designer', 'DesignerController@index')->middleware(['pcguide']);
+Route::get('/collection', 'DesignerController@index')->middleware(['pcguide']);
 
-Route::get('/designer/{id}', 'DesignerController@show')->middleware(['pcguide'])->where(['id' => '[0-9]+']);
+Route::get('/collection/{id}', 'DesignerController@show')->middleware(['pcguide']);
 
 Route::group(['middleware' => ['pcguide', 'loginCheck']], function () {
 
@@ -51,9 +51,9 @@ Route::group(['middleware' => ['pcguide', 'loginCheck']], function () {
 //Shopping Start
 Route::group(['middleware' => 'pcguide'], function() {
 
-    Route::get('/shopping', 'ShoppingController@index');
+    Route::get('/shop', 'ShoppingController@index');
 
-    Route::get('/shopping/{cid}', 'ShoppingController@index')->where(['cid' => '[0-9]+']);
+    Route::get('/shop/{cid}', 'ShoppingController@index')->where(['cid' => '[0-9]+']);
 
     Route::get('/category', 'ShoppingController@getShoppingCategoryList');
 

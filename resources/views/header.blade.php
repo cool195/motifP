@@ -61,22 +61,22 @@
             <ul class="nav navbar-primary clearfix">
                 <li class="nav-item"><a
                             class="nav-link border-b p-x-10x @if(isset($page) && 'daily' == $page) active @endif"
-                            href="/daily">TRENDING</a></li>
+                            href="/trending">TRENDING</a></li>
                 <li class="nav-item"><a
                             class="nav-link border-b p-x-10x @if(isset($page) && 'designer' == $page) active @endif"
-                            href="/designer">COLLECTIONS</a></li>
+                            href="/collection">COLLECTIONS</a></li>
                 <li class="nav-item {{$page}} @if('shopping' != $page) shop-dropdown @endif">
                     @inject('Category', 'App\Http\Controllers\ShoppingController')
-                    <a href="/shopping"
+                    <a href="/shop"
                        class="nav-link p-x-10x @if('shopping' == $page) border-b active @endif" @if(!$Shopping) @endif>SHOP</a>
                     <div class="dropdown-menu p-t-20x p-l-10x">
-                        <div class="pull-left"><a href="/shopping">SHOP ALL</a></div>
+                        <div class="pull-left"><a href="/shop">SHOP ALL</a></div>
                         <ul class="figure">
                             <li>SHOP BY CATEGORY</li>
                             @foreach($Category->getShoppingCategoryList() as $category)
                                 @if( $category['category_id'] !== 0)
                                 <li class="font-size-md avenirRegular @if('shopping' == $page && $cid == $category['category_id']) active @endif">
-                                    <a href="{{$category['category_id']==0 ? '/shopping' : '/shopping/'.$category['category_id']}}">{{$category['category_name']}}</a>
+                                    <a href="{{$category['category_id']==0 ? '/shop' : '/shop/'.$category['category_id']}}">{{$category['category_name']}}</a>
                                 </li>
                                 @endif
                             @endforeach

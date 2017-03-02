@@ -53,8 +53,17 @@ class DailyController extends BaseController
      * @param int $id
      * @return Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, $idTitle)
     {
+        $id = "";
+        $params = array();
+        if(!is_numeric($idTitle)){
+            $titleArray = explode("-", $idTitle);
+            end($titleArray);
+            $id = current($titleArray);
+        }else{
+            $id = $idTitle;
+        }
         $params = array(
             'cmd' => 'topic',
             'id' => $id
@@ -79,10 +88,21 @@ class DailyController extends BaseController
             $product['spuBase']['seo_link'] = implode("-", $titleArray);
         }
 
+        $titleArray = explode(" ", $result['data']['title']);
+        $titleArray[] = $id;
+        $result['data']['seo_link'] = implode("-", $titleArray);
+
         if ($request->input('ajax')) {
             return $result;
         }
-
+        if(is_numeric($idTitle)) {
+            $params = $request->all();
+            $url = "/topic/" . $result['data']['seo_link'];
+            if (!empty($params)) {
+                $url = "/topic/" . $result['data']['seo_link'] . "?" . http_build_query($params);
+            }
+            return redirect($url);
+        }
 
         return View('daily.topic', ['topic' => $result['data'], 'topicID' => $id, 'shareFlag' => true]);
     }

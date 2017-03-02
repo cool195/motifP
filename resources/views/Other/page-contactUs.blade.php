@@ -48,7 +48,7 @@
                         <i class="iconfont m-t-40x submit-ok"></i>
                         <div class="uppercase bigNoodle font-size-llxx m-y-10x">thank you!</div>
                         <p class="font-size-sm">Your submission is received and we will contact you soon.</p>
-                        <a href="/daily" class="btn btn-primary btn-baseSize bigNoodle font-size-lxx m-t-10x">BACK TO HOME</a>
+                        <a href="/trending" class="btn btn-primary btn-baseSize bigNoodle font-size-lxx m-t-10x">BACK TO HOME</a>
                     </div>
                 </div>
             </div>

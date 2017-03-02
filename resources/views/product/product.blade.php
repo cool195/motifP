@@ -74,8 +74,8 @@
     <div class="container">
         <!-- 面包屑 地址 -->
         <div class="p-y-15x">
-            <a href="/shopping" class="text-productmMenu font-size-sm">Shop</a>
-            <span class="font-size-xs">></span> <a href="/shopping/{{$data['category_id']}}" class="text-productmMenu font-size-sm">{{$data['category_name']}}</a>
+            <a href="/shop" class="text-productmMenu font-size-sm">Shop</a>
+            <span class="font-size-xs">></span> <a href="/shop/{{$data['category_id']}}" class="text-productmMenu font-size-sm">{{$data['category_name']}}</a>
             <span class="font-size-xs">></span> <a href="/detail/{{$data['seo_link']}}" class="text-productmMenu1 font-size-sm">{{$data['main_title']}}</a></div>
         <div class="row">
             <div class="col-lg-7 col-md-7">
@@ -196,7 +196,7 @@
                         <!-- 设计师名称 -->
                         @if(isset($data['designer']))
                             <div class="">
-                                <a class="font-size-sm" href="/designer/{{$data['designer']['designer_id']}}"><span>{{ $data['designer']['designer_name'] }}</span></a>
+                                <a class="font-size-sm" href="/collection/{{$data['designer']['designer_id']}}"><span>{{ $data['designer']['designer_name'] }}</span></a>
                             </div>
                         @endif
                         <div class="product-price">

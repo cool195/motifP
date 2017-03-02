@@ -16,7 +16,7 @@
                             <div class="text-center p-x-30x p-b-30x empty-marginTop">
                                 <i class="iconfont icon-error icon-fontSize-big"></i>
                                 <p class="bigNoodle font-size-llxx m-t-40x uppercase">No Orders Found!</p>
-                                <a href="/daily" class="btn btn-primary p-y-5x btn-320 bigNoodle font-size-lxx">SHOP NOW</a>
+                                <a href="/trending" class="btn btn-primary p-y-5x btn-320 bigNoodle font-size-lxx">SHOP NOW</a>
                             </div>
                         @else
                             @foreach($data['list'] as $order)

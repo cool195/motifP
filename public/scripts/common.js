@@ -141,7 +141,7 @@ function HideSeeMore(seemoreName) {
                     var lastStr = str;
                 }
                 if ($(this).data('designerid') != '') {
-                    str = lastStr + '... <a class="text-green" href="/designer/' + $(this).data('designerid') + '">View More</a>';
+                    str = lastStr + '... <a class="text-green" href="/collection/' + $(this).data('designerid') + '">View More</a>';
                 } else {
                     str = lastStr + '...';
                 }
@@ -3075,7 +3075,7 @@ function HideSeeMore(seemoreName) {
         // 加载动画loading 显示
         loadingShow('.designer-loading', '.designerList-seeMore');
         $.ajax({
-                url: '/designer',
+                url: '/collection',
                 data: {
                     //start: Start,
                     //size: Size,
@@ -3750,7 +3750,7 @@ function HideSeeMore(seemoreName) {
         loadingShow('.daily-loading', '.dailyList-seeMore');
         //参数：pagesize 页面大小， pagenum,当前页面 ， ajax:1必传
         $.ajax({
-            url: '/daily',
+            url: '/trending',
             data: {
                 pagesize: Size,
                 pagenum: PageNum,

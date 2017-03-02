@@ -10,7 +10,7 @@
                     <div class="col-md-12 m-b-30x designer-item">
                         <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
                            data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
-                           href="/designer/{{ $designer['designerId'] }}">
+                           href="/collection/{{ $designer['designerId'] }}">
                             <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n0/{{$designer['pc_img_path']}}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="{{ $designer['seo_tag'] }}" style="max-height: 23rem">
                         </a>
                     </div>
@@ -18,7 +18,7 @@
                     <div class="col-md-4 m-b-30x designer-item">
                             <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
                                data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
-                               href="/designer/{{ $designer['designerId'] }}">
+                               href="/collection/{{ $designer['designerId'] }}">
                                 <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/{{$designer['pc_img_path']}}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="{{ $designer['seo_tag'] }}">
                             </a>
                     </div>
@@ -46,7 +46,7 @@
         <div class="col-md-12 m-b-30x designer-item">
             <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
                data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
-               href="/designer/@{{ value.designerId }}">
+               href="/collection/@{{ value.designerId }}">
                 <img class="img-fluid img-lazy" data-original="{{config('runtime.CDN_URL')}}/n0/@{{ value.pc_img_path }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="@{{ value.seo_tag }}" style="max-height: 23rem">
             </a>
         </div>
@@ -54,7 +54,7 @@
         <div class="col-md-4 m-b-30x designer-item">
                 <a data-impr='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":0,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
                    data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=designer.200001&m=PC_M2016-1&pin={{ Session::get('user.pin') }}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":2,"skipId":"{{$designer['designerId']}}","expid":0,"version":"1.0.1","src":"PC"}'
-                   href="/designer/@{{ value.designerId }}">
+                   href="/collection/@{{ value.designerId }}">
                     <img class="img-fluid product-bigImg img-lazy" data-original="{{config('runtime.CDN_URL')}}/n2/@{{ value.pc_img_path }}" src="{{config('runtime.Image_URL')}}/images/product/bg-product@336.png" alt="@{{ value.seo_tag }}">
                 </a>
         </div>

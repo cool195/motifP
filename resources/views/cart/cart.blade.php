@@ -39,7 +39,7 @@
 {{--@if($config)--}}
     {{--<div class="active-banner p-y-10x text-center">--}}
         {{--<span class="sanBold font-size-md">{{$config}}</span>--}}
-        {{--<a href="/daily">--}}
+        {{--<a href="/trending">--}}
             {{--<div class="btn btn-100 btn-share btn-md m-l-20x text-link">SHOP NOW</div>--}}
         {{--</a>--}}
     {{--</div>--}}
@@ -57,7 +57,7 @@
                 {{--<div class="m-b-20x p-b-5x"><i class="iconfont icon-iconshoppingbag icon-fontSize-big"></i></div>--}}
                 <div class="m-b-10x p-b-5x"><i class="iconfont icon-shoplight icon-fontSize-big"></i></div>
                 <p class="bigNoodle font-size-llxx">Your bag is empty, Fill it up !</p>
-                <a href="/shopping" class="btn btn-primary btn-baseSize bigNoodle font-size-lxx m-b-30x">SHOP NOW</a>
+                <a href="/shop" class="btn btn-primary btn-baseSize bigNoodle font-size-lxx m-b-30x">SHOP NOW</a>
             </div>
         @else
             {{--My Bag List--}}

@@ -72,7 +72,7 @@
                         </div>
                     @else
                         <div class="topic-minWidth">
-                            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/collection/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shop#@endif{{$value['skipId']}}">
                                 <div class="p-t-20x m-b-20x text-center">
                                     <h2 class="font-size-llxx"><strong>{{ $value['value'] }}</strong></h2>
                                 </div>
@@ -90,7 +90,7 @@
 
                     @else
                         <div class="topic-minWidth text-center">
-                            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                            <a href="@if($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/collection/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shop#@endif{{$value['skipId']}}">
                                 <div class="m-y-20x topic-minWidth">
                                     <p class="m-b-0 font-size-base">{{ $value['value'] }}</p>
                                 </div>
@@ -115,7 +115,7 @@
                 <hr class="hr-base m-x-20x m-y-0">
                 @elseif($value['type'] == 'banner')
                 <!--图 banner-->
-                <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/collection/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shop#@endif{{$value['skipId']}}">
                     <div class="p-y-0 text-center figure" style="width: 100%;">
                         <img class="img-fluid img-lazy figure" data-original="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     </div>
@@ -183,7 +183,7 @@
                     </div>
                     @else
                         @if($value['style'] =='box-vertical')
-                                <a class="text-center figure" style="width: 100%;" href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/designer/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shopping#@endif{{$value['skipId']}}">
+                                <a class="text-center figure" style="width: 100%;" href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/collection/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shop#@endif{{$value['skipId']}}">
                                     <img class="img-fluid img-lazy figure"
                                          data-original="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}"
                                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
@@ -231,13 +231,13 @@
                         url = '/detail/';
                         break;
                     case '2':
-                        url = '/designer/';
+                        url = '/collection/';
                         break;
                     case '3':
                         url = '/topic/';
                         break;
                     case '4':
-                        url = '/shopping/';
+                        url = '/shop/';
                         break;
                 }
                 url += value.skipId;
