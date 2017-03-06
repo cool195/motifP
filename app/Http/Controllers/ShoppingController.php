@@ -12,7 +12,7 @@ class ShoppingController extends BaseController
     {
         $cid = 0;
         $categories = $this->getShoppingCategoryList();
-        if(is_numeric($cidTitle)){
+        if(is_numeric($cidTitle) && $cidTitle !=0){
             $url = '/shop';
             foreach($categories as $category){
                 if($cidTitle == $category['category_id']){
