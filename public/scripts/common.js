@@ -881,6 +881,9 @@ function HideSeeMore(seemoreName) {
 
     var CheckNum = 0
     $('.icon-checkcircle').on('click', function () {
+        if($(this).hasClass('disabled')){
+            return;
+        }
         //if (CheckNum === 0 && $(this).hasClass('active')) {
         //    CheckNum = 0;
         //} else {

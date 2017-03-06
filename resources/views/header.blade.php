@@ -160,7 +160,7 @@
                     </li>
                 @else
                     <li class="nav-item p-x-10x searchBeforeEle"><a class="nav-link @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif" data-referer="{{$_SERVER['REQUEST_URI']}}">SIGN IN</a></li>
-                    <li class="nav-item p-x-10x searchBeforeEle"><a class="nav-link text-green @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif"  data-referer="/invitefriends">GET 15% OFF</a></li>
+                    <li class="nav-item p-x-10x searchBeforeEle"><a class="nav-link text-green @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif"  data-referer="/invitefriends">GET 20% OFF</a></li>
                     <!-- 搜索 -->
                     <li class="nav-item p-l-10x p-r-0 header-search">
                         <div class="p-t-5x flex flex-alignCenter btn-search">

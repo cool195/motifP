@@ -195,7 +195,7 @@
                     <div class="inline">
                         <span class="font-size-md avenirMedium address-text">Add Shipping Address</span>
                         <span class="font-size-md pull-right">
-                            <i class="isDefault iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
+                            <i class="isDefault iconfont icon-checkcircle btn-makePrimary text-primary font-size-lg @if(empty($address['data']['list'])){{'active disabled'}}@endif"></i>
                             <span class="p-l-10x">Default</span>
                         </span>
                     </div>
