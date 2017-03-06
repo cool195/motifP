@@ -1,4 +1,4 @@
-@include('header',['title'=>"I'm giving you $20 to spend on Motif! Use code '{$code}' with your first purchase. Enjoy!",'ogimage'=>config('runtime.Image_URL').'/images/banner/invite.jpg'])
+@include('header',['title'=>"I'm giving you 20% to spend on Motif! Use code '{$code}' with your first purchase. Enjoy!",'ogimage'=>config('runtime.Image_URL').'/images/banner/invite.jpg'])
 
 <!-- invite -->
 <section>
