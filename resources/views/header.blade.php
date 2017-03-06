@@ -118,7 +118,7 @@
 
                     <!-- get off -->
                     <li class="nav-item p-x-10x searchBeforeEle">
-                        <a href="/invitefriends" class="text-green">GET 15% OFF</a>
+                        <a href="/invitefriends" class="text-green">GET 20% OFF</a>
                     </li>
                     <!-- 搜索 -->
                     <li class="nav-item p-l-10x p-r-0 header-search">
