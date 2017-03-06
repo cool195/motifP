@@ -626,7 +626,9 @@ select::-ms-expand { display: none; }
 .icon-checkcircle.active {
   color: #46d593 !important;
 }
-
+.check_opacity{
+  opacity: .7;
+}
 .product-heart {
   color: #000;
 }
