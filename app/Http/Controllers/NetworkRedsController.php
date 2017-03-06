@@ -17,19 +17,23 @@ class NetworkRedsController extends BaseController
         $utm_source = $request->get('utm_source',$ref);
         switch ($request->path()) {
             case 'cassandra':
-                $designerUrl = '/designer/103';
+                $designerUrl = '/collection/103';
                 $designerID = '103';
                 break;
             case 'rae':
-                $designerUrl = '/designer/99';
+                $designerUrl = '/collection/99';
                 $designerID = '99';
                 break;
             case 'melodee':
-                $designerUrl = '/designer/104';
+                $designerUrl = '/collection/104';
                 $designerID = '104';
                 break;
+            case 'lavendascloset':
+                $designerUrl = '/collection/117';
+                $designerID = '117';
+                break;
             case 'fashionbyday':
-                $designerUrl = '/designer/112';
+                $designerUrl = '/collection/112';
                 $designerID = '112';
                 break;
         }

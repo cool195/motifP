@@ -53,7 +53,7 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::get('/shop', 'ShoppingController@index');
 
-    Route::get('/shop/{cid}', 'ShoppingController@index')->where(['cid' => '[0-9]+']);
+    Route::get('/shop/{cid}', 'ShoppingController@index');
 
     Route::get('/category', 'ShoppingController@getShoppingCategoryList');
 
@@ -330,6 +330,7 @@ Route::get('/rae', 'NetworkRedsController@index');
 Route::get('/cassandra', 'NetworkRedsController@index');
 Route::get('/melodee', 'NetworkRedsController@index');
 Route::get('/fashionbyday', 'NetworkRedsController@index');
+Route::get('/lavendascloset', 'NetworkRedsController@index');
 
 Route::get('/test', 'PageController@test');
 

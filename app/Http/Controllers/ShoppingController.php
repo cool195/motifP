@@ -8,8 +8,24 @@ use Illuminate\Support\Facades\Cache;
 
 class ShoppingController extends BaseController
 {
-    public function index(Request $request, $cid = 0)
+    public function index(Request $request, $cidTitle = 0)
     {
+        $cid = 0;
+        $categories = $this->getShoppingCategoryList();
+        if(is_numeric($cidTitle)){
+            $url = '/shop';
+            foreach($categories as $category){
+                if($cidTitle == $category['category_id']){
+                    $url = '/shop/'.$category['seo_link'];
+                }
+            }
+            return redirect($url);
+        }else{
+            $titleArray = explode("-", $cidTitle);
+            end($titleArray);
+            $cid = current($titleArray);
+        }
+
         $categories = $this->getShoppingCategoryList();
         $productAll = $this->getShoppingProductList($request, $cid);
         $search = $this->request('sea', ['cmd' => 'list']);
@@ -22,6 +38,11 @@ class ShoppingController extends BaseController
             'cmd' => 'categorylist',
         );
         $result = $this->request('product', $params);
+        if($result['success']){
+            foreach($result['data']['list'] as &$list){
+                $list['seo_link'] = $list['category_name'].'-'.$list['category_id'];
+            }
+        }
         return $result['data']['list'];
     }
 
