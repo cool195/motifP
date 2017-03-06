@@ -16,6 +16,8 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::get('/', 'DailyController@home');
 
+    Route::get('/daily', 'DailyController@index');
+
     Route::get('/trending', 'DailyController@index');
 
     Route::get('/topic/{id}', 'DailyController@show');//专题动态模版
@@ -33,7 +35,11 @@ Route::group(['middleware' => 'pcguide'], function() {
 //Designer Start
 Route::get('/collection', 'DesignerController@index')->middleware(['pcguide']);
 
+Route::get('/designer', 'DesignerController@designer')->middleware(['pcguide']);
+
 Route::get('/collection/{id}', 'DesignerController@show')->middleware(['pcguide']);
+
+Route::get('/designer/{id}', 'DesignerController@show')->middleware(['pcguide']);
 
 Route::group(['middleware' => ['pcguide', 'loginCheck']], function () {
 
@@ -51,9 +57,13 @@ Route::group(['middleware' => ['pcguide', 'loginCheck']], function () {
 //Shopping Start
 Route::group(['middleware' => 'pcguide'], function() {
 
+    Route::get('/shopping', 'ShoppingController@index');
+
     Route::get('/shop', 'ShoppingController@index');
 
     Route::get('/shop/{cid}', 'ShoppingController@index');
+
+    Route::get('/shopping/{cid}', 'ShoppingController@index');
 
     Route::get('/category', 'ShoppingController@getShoppingCategoryList');
 

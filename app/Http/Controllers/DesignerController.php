@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Cache;
 
 class DesignerController extends BaseController
 {
+
+    public function designer()
+    {
+        return redirect('/collection');
+    }
     /**
      * 显示列表.
      *
