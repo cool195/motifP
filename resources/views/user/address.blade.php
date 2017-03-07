@@ -22,7 +22,7 @@
                                 <div class="inline">
                                     <span class="font-size-md avenirMedium address-text"></span>
                                     <span class="font-size-md pull-right">
-                                        <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg @if(empty($address['data']['list'])){{'active'}}@endif"></i>
+                                        <i class="isDefault iconfont icon-checkcircle hover-blue font-size-lg @if(empty($address['data']['list'])){{'active disabled check_opacity'}}@endif"></i>
                                         <span class="p-l-5x uppercase avenirMedium">Default</span>
                                     </span>
                                 </div>
