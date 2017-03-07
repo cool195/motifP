@@ -1534,6 +1534,7 @@ function HideSeeMore(seemoreName) {
                 $('.isDefault').removeClass('active');
                 $('.isDefault').removeClass('disabled');
                 $('.isDefault').removeClass('check_opacity');
+                
             }
             // 添加地址
             //初始化 修改地址 from 表单
