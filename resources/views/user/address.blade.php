@@ -5,7 +5,6 @@
     <div class="container" id="addressView" data-status="true">
         <div class="myHome-content">
             @include('user.left', ['title' => 'Shipping Address'])
-            @inject('Address', 'App\Http\Controllers\AddressController')
             <div class="right">
                 <div class="rightContent">
                     <div class="bigNoodle text-center leftMeun-title">shipping address</div>

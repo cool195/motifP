@@ -1527,9 +1527,13 @@ function HideSeeMore(seemoreName) {
         if (AddressId === '' || AddressId === undefined) {
             if ($('.address-item').length <= 0) {
                 $('.isDefault').addClass('active');
+                $('.isDefault').addClass('disabled');
+                $('.isDefault').addClass('check_opacity');
                 CheckNum = 0;
             } else {
                 $('.isDefault').removeClass('active');
+                $('.isDefault').removeClass('disabled');
+                $('.isDefault').removeClass('check_opacity');
             }
             // 添加地址
             //初始化 修改地址 from 表单
@@ -1571,8 +1575,12 @@ function HideSeeMore(seemoreName) {
 
                     if (data.isDefault == 1) {
                         $('.isDefault').addClass('active');
+                        $('.isDefault').addClass('disabled');
+                        $('.isDefault').addClass('check_opacity');
                     } else {
                         $('.isDefault').removeClass('active');
+                        $('.isDefault').removeClass('disabled');
+                        $('.isDefault').removeClass('check_opacity');
                     }
                     $('.address-save').removeClass('disabled');
 
