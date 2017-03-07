@@ -136,12 +136,12 @@
                                                      data-original="{{config('runtime.CDN_URL')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                      alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
+                                                    @if(0 == $topic['spuInfos'][$spu]['spuBase']['isPutOn'])
+                                                        <div class="bg-soldout">
+                                                            <span class="text bigNoodle font-size-sm">SOLD OUT</span>
+                                                        </div>
+                                                    @endif
                                             </a>
-                                            @if(0 == $topic['spuInfos'][$spu]['spuBase']['isPutOn'])
-                                            <div class="bg-soldout">
-                                                <span class="text bigNoodle font-size-sm">SOLD OUT</span>
-                                            </div>
-                                            @endif
                                             @if(Session::has('user'))
                                                 <span class="product-heart btn-heart">
                                                     <i class="iconfont btn-wish font-size-lxx @if(in_array($spu, $wishlist->wishlist())) active @endif" data-spu="{{$spu}}"></i>
