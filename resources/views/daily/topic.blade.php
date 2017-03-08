@@ -102,7 +102,7 @@
                 <div class="m-t-20x">
                     <div class="hotspot-image"
                          data-hotspot='@foreach($value['squas'] as $v){{'{"beginX":'.$v['startX'].',"beginY":'.$v['startY'].',"skipId":"'.$v['skipId'].'","skipType":"'.$v['skipType'].'","endX":'.$v['endX'].',"endY":'.$v['endY'].'},'}}@endforeach'>
-                        <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}">
+                        <img class="img-fluid" src="{{config('runtime.CDN_URL')}}/n0/{{$value['imgPath']}}">
                     </div>
                 </div>
                 {{--@elseif($value['type'] == 'multilink')--}}
@@ -117,7 +117,7 @@
                 <!--图 banner-->
                 <a href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/collection/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shop#@endif{{$value['skipId']}}">
                     <div class="p-y-0 text-center figure" style="width: 100%;">
-                        <img class="img-fluid img-lazy figure" data-original="{{config('runtime.CDN_URL')}}/n1/{{ $value['imgPath'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
+                        <img class="img-fluid img-lazy figure" data-original="{{config('runtime.CDN_URL')}}/n0/{{ $value['imgPath'] }}" src="{{env('CDN_Static')}}/images/product/bg-product@750.png">
                     </div>
                 </a>
 
@@ -133,7 +133,7 @@
                                             <a data-clk='{{config('runtime.CLK_URL')}}/log.gif?time={{time()}}&t=daily.200001&m=PC_M2016-1&pin={{Session::get('user.pin')}}&uuid={{Session::has('user') ? Session::get('user.uuid') : $_COOKIE['uid']}}&v={"action":1,"skipType":1,"skipId":"{{$spu}}","topicId":{{$topicID}},"expid":0,"ver":"1.0.1","src":"PC"}'
                                                href="/detail/{{$topic['spuInfos'][$spu]['spuBase']['seo_link']}}" data-spu="{{$spu}}" data-title="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}" data-price="{{number_format($topic['spuInfos'][$spu]['skuPrice']['sale_price']/100,2)}}">
                                                 <img class="img-fluid img-lazy figure"
-                                                     data-original="{{config('runtime.CDN_URL')}}/n1/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
+                                                     data-original="{{config('runtime.CDN_URL')}}/n0/{{$topic['spuInfos'][$spu]['spuBase']['main_image_url']}}"
                                                      src="{{env('CDN_Static')}}/images/product/bg-product@336.png"
                                                      alt="{{$topic['spuInfos'][$spu]['spuBase']['main_title']}}">
                                                     @if($topic['spuInfos'][$spu]['spuBase']['isPutOn'] != 1)
@@ -190,7 +190,7 @@
                         @if($value['style'] =='box-vertical')
                                 <a class="text-center figure" style="width: 100%;" href="@if(!isset($value['skipId']))javascript:;@elseif($value['skipType']=='1')/detail/@elseif($value['skipType']=='2')/collection/@elseif($value['skipType']=='3')/topic/@elseif($value['skipType']=='4')/shop#@endif{{$value['skipId']}}">
                                     <img class="img-fluid img-lazy figure"
-                                         data-original="{{config('runtime.CDN_URL')}}/n1/{{$value['imgPath']}}"
+                                         data-original="{{config('runtime.CDN_URL')}}/n0/{{$value['imgPath']}}"
                                          src="{{env('CDN_Static')}}/images/product/bg-product@750.png" alt="">
                                 </a>
                         @endif
