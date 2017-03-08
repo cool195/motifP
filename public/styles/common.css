@@ -159,7 +159,7 @@ footer .verticalHr{
 
 .openSans {
   font-family: "OpenSansRegular";
-}*/
+}
 .cartInfo-bar{
   position: fixed;
   bottom: 0;
@@ -167,6 +167,7 @@ footer .verticalHr{
   width: 100%;
   z-index: 9;
 }
+*/
 .input-email{
   border: solid 1px #000;
   min-width: 22.3rem;
