@@ -24,6 +24,13 @@ class ShoppingController extends BaseController
             $titleArray = explode("-", $cidTitle);
             end($titleArray);
             $cid = current($titleArray);
+            foreach($categories as $category){
+                if($cid == $category['category_id']){
+                    if($cidTitle != $category['seo_link']){
+                        return redirect('/shop/'.$category['seo_link']);
+                    }
+                }
+            }
         }
 
         $categories = $this->getShoppingCategoryList();
