@@ -56,7 +56,6 @@ class UserController extends BaseController
 
     public function signin(Request $request)
     {
-        error_log(print_r("11111111\n", "\n"), 3, '/tmp/myerror.log');
         $params = array(
             'cmd' => "login",
             'uuid' => $_COOKIE['uid'],
@@ -64,10 +63,7 @@ class UserController extends BaseController
             'pw' => md5($request->input('pw')),
             'token' => self::Token,
         );
-        error_log(print_r("22222222222\n", "\n"), 3, '/tmp/myerror.log');
         $result = $this->request('user', $params);
-        error_log(print_r("333333333\n", "\n"), 3, '/tmp/myerror.log');
-        error_log(print_r($result, "\n"), 3, '/tmp/myerror.log');
         if ($result['success']) {
             $result['redirectUrl'] = ($request->input('referer') && !strstr($request->input('referer'), 'register')) ? $request->input('referer') : "/daily";
             Session::forget('user');
@@ -81,7 +77,6 @@ class UserController extends BaseController
             }
             $this->mergeCartSkus();
         }
-        error_log(print_r("444444444\n", "\n"), 3, '/tmp/myerror.log');
         return $result;
     }
 

@@ -351,6 +351,20 @@ Route::get('/empowered', 'DailyController@empowered');
 //此路由必须放最后一个
 Route::get('/{dsearch}', 'NetworkRedsController@dsearch');
 
+//手动404
+Route::get('/{title1}/{title2}',function(){
+    abort(404);
+});
+
+Route::get('/{title1}/{title2}/{title3}',function(){
+    abort(404);
+});
+
+Route::get('/{title1}/{title2}/{title3}/{title4}',function(){
+    abort(404);
+});
+//end 手动404
+
 
 
 
