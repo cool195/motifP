@@ -94,7 +94,7 @@
                     SORT BY
                 </button>
                 <div class="dropdown-menu sortBy-menu font-size-sm p-t-15x">
-                    <li class="dropdown-item uppercase active" data-search="0" data-searchtext="Featured">Featured</li>
+                    <li class="dropdown-item active" data-search="0" data-searchtext="Featured">Featured</li>
                     @foreach($search['list'] as $key => $value)
                         <li class="dropdown-item" data-search="{{$value['attr_id']}}" data-searchtext="{{$value['attr_label']}}">{{$value['attr_label']}}</li>
                     @endforeach
@@ -154,7 +154,7 @@
         </div>
         <div class="text-center m-y-10x seeMore-info">
             <div class="productList-seeMore" style="display: none">
-                <div class="btn btn-gray btn-380 btn-seeMore bigNoodle font-size-lx">VIEW MORE</div>
+                {{--<div class="btn btn-gray btn-380 btn-seeMore bigNoodle font-size-lx">VIEW MORE</div>--}}
             </div>
             <div class="loading product-loading" style="display: none">
                 <div class="loader">
