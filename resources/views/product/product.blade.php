@@ -479,10 +479,8 @@
             <div class="col-lg-4">
                 <div class=" p-a-20x">
                     <div class="text-center font-size-md avenirBold">INTERNATIONAL SHIPPING</div>
-                    <div class="p-t-10x text-center">We offer Free Shipping to over 30+ countries, with free upgrade to
-                        Expedited
-                        Shipping on orders over $79. <a target="_blank" href="{{'/service/23?template=1'}}"
-                                                        class="text-underLine">Learn more</a>.
+                    <div class="p-t-10x text-center">We offer Free Shipping to over 30+ countries.
+                        <a target="_blank" href="{{'/service/23?template=1'}}" class="text-underLine">Learn more</a>.
                     </div>
                 </div>
             </div>
