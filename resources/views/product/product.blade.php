@@ -125,6 +125,7 @@
                         <div class="product-bigImg gallery">
                             @if(isset($data['productImages']))
                                 @foreach($data['productImages'] as $key => $image)
+                                    @if($image['useness_type'] != 7)
                                     @if(0 == $key)
                                         <li style="display:block; width: 100%; position: relative;">
                                             <a href="{{config('runtime.CDN_URL')}}/n0/{{$image['img_path']}}"
@@ -158,6 +159,7 @@
                                                href="{{config('runtime.CDN_URL')}}/n0/{{$image['img_path']}}"><img
                                                         src="{{config('runtime.CDN_URL')}}/n4/{{$image['img_path']}}"></a>
                                         </li>
+                                    @endif
                                     @endif
                                 @endforeach
                             @endif

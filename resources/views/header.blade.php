@@ -46,9 +46,9 @@
                 <div class="col-md-6">
                     <span>FREE SHIPPING TO 30+ COUNTRIES</span>
                 </div>
-                <div class="col-md-6 text-right">
+                {{--<div class="col-md-6 text-right">
                     <a href="/download" class="text-downloadApp">20% OFF YOUR FIRST IN APP PURCHASE</a>
-                </div>
+                </div>--}}
             </div>
         </div>
     </div>
