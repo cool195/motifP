@@ -84,6 +84,7 @@
                         <div class="productImg-list swiper-wrapper">
                             @if(isset($data['productImages']))
                                 @foreach($data['productImages'] as $key => $image)
+                                    @if($image['useness_type'] != 7)
                                     <div class="productImg-item swiper-slide">
                                         <a href="javascript:void(0);" class="product-smallImg"
                                            rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$image['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$image['img_path']."'}"}}">
@@ -110,6 +111,7 @@
                                             @endif
                                         </a>
                                     </div>
+                                    @endif
                                 @endforeach
                             @endif
                         </div>
