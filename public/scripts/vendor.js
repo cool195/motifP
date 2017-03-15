@@ -20587,7 +20587,7 @@ jQuery_1_6 = jQuery;
             thumb_preload[i].src = thumb_options.largeimage;
             i++;
           }
-          $(this).mouseover(function (e) {
+          $(this).click(function (e) {
             if ($(this).hasClass('zoomThumbActive')) {
               return false;
             }
