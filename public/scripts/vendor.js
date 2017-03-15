@@ -20567,7 +20567,7 @@ jQuery_1_6 = jQuery;
         var i = 0;
         //binding click event on thumbnails
         var thumblist = new Array();
-        thumblist = $('a').filter(function () {
+        thumblist = $('.product-smallImg').filter(function () {
           var regex = new RegExp("gallery[\\s]*:[\\s]*'" + $.trim(el.rel) + "'", "i");
           var rel = $(this).attr('rel');
           if (regex.test(rel)) {
@@ -20587,7 +20587,7 @@ jQuery_1_6 = jQuery;
             thumb_preload[i].src = thumb_options.largeimage;
             i++;
           }
-          $(this).click(function (e) {
+          $(this).mouseover(function (e) {
             if ($(this).hasClass('zoomThumbActive')) {
               return false;
             }
@@ -20599,6 +20599,40 @@ jQuery_1_6 = jQuery;
             return false;
           });
         });
+
+		  var thumblistClick = new Array();
+		  thumblistClick = $('.option-item a').filter(function () {
+			  var regex = new RegExp("gallery[\\s]*:[\\s]*'" + $.trim(el.rel) + "'", "i");
+			  var rel = $(this).attr('rel');
+			  if (regex.test(rel)) {
+				  return this;
+			  }
+		  });
+		  if (thumblistClick.length > 0) {
+			  //getting the first to the last
+			  var first = thumblistClick.splice(0, 1);
+			  thumblistClick.push(first);
+		  }
+		  thumblistClick.each(function () {
+			  //preloading thumbs
+			  if (settings.preloadImages) {
+				  var thumb_options = $.extend({}, eval("(" + $.trim($(this).attr('rel')) + ")"));
+				  thumb_preload[i] = new Image();
+				  thumb_preload[i].src = thumb_options.largeimage;
+				  i++;
+			  }
+			  $(this).click(function (e) {
+				  if ($(this).hasClass('zoomThumbActive')) {
+					  return false;
+				  }
+				  thumblistClick.each(function () {
+					  $(this).removeClass('zoomThumbActive');
+				  });
+				  e.preventDefault();
+				  obj.swapimage(this);
+				  return false;
+			  });
+		  });
       },
       load: function load() {
         if (el.largeimageloaded == false && el.largeimageloading == false) {

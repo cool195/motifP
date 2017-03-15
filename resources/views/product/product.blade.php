@@ -274,34 +274,30 @@
                                     </div>
 
                                     <!-- 框选 属性 -->
-                                    <div class="">
-                                        <div class="option-item">
-                                            @foreach($spuAttr['skuAttrValues'] as $skuAttrValue )
-                                                <div class="p-y-5x p-r-10x">
-                                                    @if(!empty($skuAttrValue['skus']))
-                                                        <a href="javascript:;" class="btn btn-itemProperty"
-                                                           @if($skuAttrValue['img_path'])
-                                                           rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$skuAttrValue['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$skuAttrValue['img_path']."'}"}}"
-                                                           @endif
-                                                           id="{{'skutype'.$skuAttrValue['attr_value_id']}}"
-                                                           data-type="{{'attr_type'.$spuAttr['attr_type']}}"
-                                                           data-attr-type="{{$spuAttr['attr_type']}}"
-                                                           data-attr-value-id="{{$skuAttrValue['attr_value_id']}}"
-                                                           data-id="{{'skutype'.$skuAttrValue['attr_value_id']}}">{{$skuAttrValue['attr_value']}}
-                                                        </a>
-                                                    @else
-                                                        <div class="btn btn-itemProperty disabled">{{$skuAttrValue['attr_value']}}</div>
-                                                    @endif
-                                                </div>
-                                            @endforeach
-                                            @if(in_array($spuAttr['attr_type_value'],array('Ring Size','Women Size','Men Size')))
-                                                <div class="p-y-10x p-r-10x font-size-sm"><a class="sizeGuide" target="_blank"
-                                                                                href="{{'/service/24?template=1'}}">Size Guide</a></div>
-                                            @endif
-                                        </div>
+                                    <div class="option-item">
+                                        @foreach($spuAttr['skuAttrValues'] as $skuAttrValue )
+                                            <div class="p-y-5x p-r-10x">
+                                                @if(!empty($skuAttrValue['skus']))
+                                                    <a href="javascript:;" class="btn btn-itemProperty"
+                                                       @if($skuAttrValue['img_path'])
+                                                       rel="{{"{gallery: 'gal1', smallimage: '".config('runtime.CDN_URL')}}/n1/{{$skuAttrValue['img_path']."',largeimage: '".config('runtime.CDN_URL')}}/n0/{{$skuAttrValue['img_path']."'}"}}"
+                                                       @endif
+                                                       id="{{'skutype'.$skuAttrValue['attr_value_id']}}"
+                                                       data-type="{{'attr_type'.$spuAttr['attr_type']}}"
+                                                       data-attr-type="{{$spuAttr['attr_type']}}"
+                                                       data-attr-value-id="{{$skuAttrValue['attr_value_id']}}"
+                                                       data-id="{{'skutype'.$skuAttrValue['attr_value_id']}}">{{$skuAttrValue['attr_value']}}
+                                                    </a>
+                                                @else
+                                                    <div class="btn btn-itemProperty disabled">{{$skuAttrValue['attr_value']}}</div>
+                                                @endif
+                                            </div>
+                                        @endforeach
+                                        @if(in_array($spuAttr['attr_type_value'],array('Ring Size','Women Size','Men Size')))
+                                            <div class="p-y-10x p-r-10x font-size-sm"><a class="sizeGuide" target="_blank"
+                                                                            href="{{'/service/24?template=1'}}">Size Guide</a></div>
+                                        @endif
                                     </div>
-                                    <!-- 框选 属性-->
-
 
                                 </fieldset>
                             @endforeach
