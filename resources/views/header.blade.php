@@ -46,9 +46,11 @@
                 <div class="col-md-6">
                     <span>FREE SHIPPING TO 30+ COUNTRIES</span>
                 </div>
-                {{--<div class="col-md-6 text-right">
-                    <a href="/download" class="text-downloadApp">20% OFF YOUR FIRST IN APP PURCHASE</a>
-                </div>--}}
+                @if(!Session::has('user'))
+                <div class="col-md-6 text-right">
+                    <a class="text-downloadApp @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif" data-referer="/promocode">GET 15% OFF YOUR FIRST ORDER ></a>
+                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -117,9 +119,9 @@
                     </li>
 
                     <!-- get off -->
-                    <li class="nav-item p-x-10x searchBeforeEle">
+                   {{-- <li class="nav-item p-x-10x searchBeforeEle">
                         <a href="/invitefriends" class="text-green">GET $20 OFF</a>
-                    </li>
+                    </li>--}}
                     <!-- 搜索 -->
                     <li class="nav-item p-l-10x p-r-0 header-search">
                         <div class="p-t-5x flex flex-alignCenter btn-search">
@@ -160,7 +162,7 @@
                     </li>
                 @else
                     <li class="nav-item p-x-10x searchBeforeEle"><a class="nav-link @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif" data-referer="{{$_SERVER['REQUEST_URI']}}">SIGN IN</a></li>
-                    <li class="nav-item p-x-10x searchBeforeEle"><a class="nav-link text-green @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif"  data-referer="/invitefriends">GET $20 OFF</a></li>
+
                     <!-- 搜索 -->
                     <li class="nav-item p-l-10x p-r-0 header-search">
                         <div class="p-t-5x flex flex-alignCenter btn-search">

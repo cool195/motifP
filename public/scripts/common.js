@@ -238,12 +238,12 @@ function HideSeeMore(seemoreName) {
     $('.btn-search').on('click', function () {
             $('.search-bar').fadeIn();
             $('.search-bar input[name="kw"]').focus();
-            $('.searchBeforeEle').hide();
+            //$('.searchBeforeEle').hide();
     });
 
     $('.search-bar>input[name="kw"]').on('blur', function(){
         $('.search-bar').fadeOut();
-        $('.searchBeforeEle').fadeIn();
+        //$('.searchBeforeEle').fadeIn();
     });
 
     $('.searchForm').keydown(function (e) {
