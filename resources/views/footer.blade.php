@@ -162,13 +162,13 @@
             <div class="p-t-10x">
                 <a class="btn btn-block text-white btn-loginFackbook" id="facebookLogin">
                     <span class="login-icon-warp"><i class="iconfont icon-facebook2 font-size-lllx"></i></span>
-                    <span class="login-other-text">Log in with Facebook</span>
+                    <span class="login-other-text avenirMedium">Log in with Facebook</span>
                 </a>
             </div>
             <div class="p-t-10x">
                 <a class="btn btn-block text-white btn-loginGoogle" id="googleLogin">
                     <span class="login-icon-warp"><i class="icon-login-google"></i></span>
-                    <span class="login-other-text">Log in with Google</span>
+                    <span class="login-other-text avenirMedium">Log in with Google</span>
                 </a>
             </div>
             <div class="avenirMedium font-size-xs p-t-10x m-b-40x login-info active">Don’t have an account? <a href="javascript:void(0)" class="text-green tab-register">Sign up</a></div>
