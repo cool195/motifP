@@ -1092,26 +1092,30 @@ select::-ms-expand { display: none; }
 
 .btn-loginFackbook{
   background-color: #4271a4;
-  padding: .5rem 1rem;
-  /*line-height: 1;*/
+  display: block;
 }
 .btn-loginFackbook .icon-facebook2{
   vertical-align: middle;
 }
 .login-icon-warp{
   display: inline-block;
-  min-width: 20%;
-  text-align: right;
+  padding: .6rem;
+}
+.btn-loginFackbook .login-icon-warp{
+  padding: 0;
 }
 .login-other-text{
   display: inline-block;
-  width: 80%;
-  text-align: left;
+  width: 75%;
+  text-align: center;
 }
 .btn-loginGoogle{
   background-color: #e06153;
-  padding: .5rem 1rem;
-  /*line-height: 1;*/
+  display: block;
+  border: 1px solid #e06153;
+}
+.btn-loginFackbook .icon-facebook2{
+  font-size: 3rem;
 }
 .icon-login-google{
   background: url('../images/icon/g-normal.png') center no-repeat;
@@ -1119,7 +1123,6 @@ select::-ms-expand { display: none; }
   vertical-align: middle;
   width: 1.56rem;
   height: 1.56rem;
-  border-radius: 2px;
 }
 .login-info{
   display: none;

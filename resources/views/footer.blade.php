@@ -160,14 +160,14 @@
             </div>
 
             <div class="p-t-10x">
-                <a class="btn btn-block text-white btn-loginFackbook" id="facebookLogin">
-                    <span class="login-icon-warp"><i class="iconfont icon-facebook2 font-size-lllx"></i></span>
+                <a class="text-white text-left btn-loginFackbook" id="facebookLogin">
+                    <span class="login-icon-warp"><i class="iconfont icon-facebook2"></i></span>
                     <span class="login-other-text avenirMedium">Log in with Facebook</span>
                 </a>
             </div>
             <div class="p-t-10x">
-                <a class="btn btn-block text-white btn-loginGoogle" id="googleLogin">
-                    <span class="login-icon-warp"><i class="icon-login-google"></i></span>
+                <a class="text-white text-left btn-loginGoogle" id="googleLogin">
+                    <span class="login-icon-warp bg-white"><i class="icon-login-google"></i></span>
                     <span class="login-other-text avenirMedium">Log in with Google</span>
                 </a>
             </div>
