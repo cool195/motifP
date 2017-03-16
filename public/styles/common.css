@@ -1092,16 +1092,35 @@ select::-ms-expand { display: none; }
 
 .btn-loginFackbook{
   background-color: #4271a4;
-  padding: .25rem 1rem;
-  line-height: 1;
+  padding: .5rem 1rem;
+  /*line-height: 1;*/
 }
-
+.btn-loginFackbook .icon-facebook2{
+  vertical-align: middle;
+}
+.login-icon-warp{
+  display: inline-block;
+  min-width: 20%;
+  text-align: right;
+}
+.login-other-text{
+  display: inline-block;
+  width: 80%;
+  text-align: left;
+}
 .btn-loginGoogle{
   background-color: #e06153;
-  padding: .25rem 1rem;
-  line-height: 1;
+  padding: .5rem 1rem;
+  /*line-height: 1;*/
 }
-
+.icon-login-google{
+  background: url('../images/icon/g-normal.png') center no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  width: 26px;
+  height: 26px;
+  border-radius: 2px;
+}
 .login-info{
   display: none;
 }

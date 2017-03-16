@@ -54,8 +54,9 @@
 <div class="remodal modal-content remodal-md" data-remodal-id="login-modal" id="login-modalDialog">
     <div class="p-a-10x">
         <div class="text-right"><a href="javascript:void(0)" data-remodal-action="close"><i class="iconfont icon-close font-size-lxx"></i></a></div>
-        <div class="login-content p-y-20x">
+        <div class="login-content">
             <div class="row">
+                <div class="col-md-12 p-t-5x p-b-15x avenirMedium">Create an account to get 15% off your first purchase!</div>
                 <div class="col-md-6">
                     <a class="bigNoodle login-title font-size-lxx active tab-login">SIGN IN</a>
                 </div>
@@ -66,27 +67,7 @@
 
             <!-- 登录信息 -->
 
-            <div class="bigNoodle font-size-llx p-t-30x" id="loginRegister-title">SIGN IN WITH</div>
-
-            <div class="row p-t-10x">
-                <div class="col-md-6">
-                    <a class="btn btn-block font-size-lxx text-white btn-loginFackbook" id="facebookLogin"><i class="iconfont icon-facebook2 font-size-lx p-r-5x"></i><span class="bigNoodle">FACEBOOK</span></a>
-                </div>
-                <div class="col-md-6">
-                    <a class="btn btn-block font-size-lxx text-white btn-loginGoogle" id="googleLogin"><i class="iconfont icon-google-o font-size-lx p-r-5x"></i><span class="bigNoodle">GOOGLE</span></a>
-                </div>
-            </div>
-
             <div class="login-info active">
-                <div class="avenirMedium font-size-xs p-t-10x m-b-40x">Don’t have an account? <a href="javascript:void(0)" class="text-green tab-register">Sign up</a></div>
-
-                <div class="text-center login-or">
-                    <hr class="hr-login m-a-0">
-                    <span class="p-x-5x bigNoodle font-size-lxx">or</span>
-                </div>
-
-                <div class="bigNoodle font-size-llx p-t-5x">SIGN IN WITH EMAIL</div>
-
                 <form id="login">
                     <fieldset class="p-t-15x login-text">
                         <div class="login-text">
@@ -114,7 +95,6 @@
                     </fieldset>
                     <input type="hidden" name="referer" value="{{$_SERVER['REQUEST_URI']}}">
                 </form>
-
                 <div class="p-t-15x">
                     <div class="warning-info off flex flex-alignCenter text-warning p-t-5x">
                         <i class="iconfont icon-caveat icon-size-sm p-r-5x"></i>
@@ -124,19 +104,16 @@
                 </div>
 
                 <div class="avenirMedium font-size-xs p-t-10x"><a href="/forgetpassword" class="text-green">Forget your password?</a></div>
+
+                <div class="text-center login-or">
+                    <hr class="hr-login m-a-0">
+                    <span class="p-x-5x font-size-lxx">or</span>
+                </div>
+                {{--<div class="bigNoodle font-size-llx p-t-30x" id="loginRegister-title">SIGN IN WITH</div>--}}
             </div>
 
             <!-- 注册信息 -->
             <div class="register-info">
-                <div class="avenirMedium font-size-xs p-t-10x m-b-40x">Already have an account? <a href="javascript:void(0)" class="text-green tab-login">Sign in</a></div>
-
-                <div class="text-center login-or">
-                    <hr class="hr-login m-a-0">
-                    <span class="p-x-5x bigNoodle font-size-lxx">or</span>
-                </div>
-
-                <div class="bigNoodle font-size-llx p-t-5x">SIGN UP WITH EMAIL</div>
-
                 <form id="register">
                     <fieldset class="p-t-15x login-text">
                         <div class="login-text">
@@ -175,7 +152,27 @@
                 </div>
 
                 <div class="avenirMedium font-size-xs p-t-10x">By registering, you’ve accepted our <a href="/termsconditions" class="text-green">Terms & Conditions</a></div>
+
+                <div class="text-center login-or">
+                    <hr class="hr-login m-a-0">
+                    <span class="p-x-5x font-size-lxx">or</span>
+                </div>
             </div>
+
+            <div class="p-t-10x">
+                <a class="btn btn-block text-white btn-loginFackbook" id="facebookLogin">
+                    <span class="login-icon-warp"><i class="iconfont icon-facebook2 font-size-lllx"></i></span>
+                    <span class="login-other-text">Log in with Facebook</span>
+                </a>
+            </div>
+            <div class="p-t-10x">
+                <a class="btn btn-block text-white btn-loginGoogle" id="googleLogin">
+                    <span class="login-icon-warp"><i class="icon-login-google"></i></span>
+                    <span class="login-other-text">Log in with Google</span>
+                </a>
+            </div>
+            <div class="avenirMedium font-size-xs p-t-10x m-b-40x login-info active">Don’t have an account? <a href="javascript:void(0)" class="text-green tab-register">Sign up</a></div>
+            <div class="avenirMedium font-size-xs p-t-10x m-b-40x register-info">Already have an account? <a href="javascript:void(0)" class="text-green tab-login">Sign in</a></div>
         </div>
     </div>
 </div>
