@@ -43,14 +43,14 @@
     <div class="download-info p-t-20x p-b-15x">
         <div class="container">
             <div class="row text-white avenirMedium font-size-sm">
-                <div class="col-md-6">
+                <div class="col-md-12 text-center">
                     <span>FREE SHIPPING TO 30+ COUNTRIES</span>
                 </div>
-                @if(!Session::has('user'))
+               {{-- @if(!Session::has('user'))
                 <div class="col-md-6 text-right">
                     <a class="text-downloadApp @if(!in_array($page, array('Login', 'Register'))) btn-loginModal @endif" data-referer="/promocode">GET 15% OFF YOUR FIRST ORDER ></a>
                 </div>
-                @endif
+                @endif--}}
             </div>
         </div>
     </div>

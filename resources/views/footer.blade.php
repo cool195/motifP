@@ -56,7 +56,7 @@
         <div class="text-right"><a href="javascript:void(0)" data-remodal-action="close"><i class="iconfont icon-close font-size-lxx"></i></a></div>
         <div class="login-content">
             <div class="row">
-                <div class="col-md-12 p-t-5x p-b-15x avenirMedium">Create an account to get 15% off your first purchase!</div>
+                {{--<div class="col-md-12 p-t-5x p-b-15x avenirMedium">Create an account to get 15% off your first purchase!</div>--}}
                 <div class="col-md-6">
                     <a class="bigNoodle login-title font-size-lxx active tab-login">SIGN IN</a>
                 </div>
