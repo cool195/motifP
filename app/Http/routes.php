@@ -75,6 +75,8 @@ Route::group(['middleware' => 'pcguide'], function() {
 
     Route::get('/search', 'ShoppingController@search');
 
+    Route::get('/producturl', 'ShoppingController@productUrl');
+
     //未登录添加购物车
     Route::get('/cart/amount', 'CartController@getCartAmount');
     Route::get('/cart', 'CartController@cart');
