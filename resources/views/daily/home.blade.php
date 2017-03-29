@@ -13,7 +13,7 @@
                     @endif
                 @endforeach
             @endif
-        <div class="bg-common p-y-40x">
+       {{-- <div class="bg-common p-y-40x">
             <div class="text-center m-y-20x flex  flex-justifyCenter">
                     <div class="bigNoodle font-size-llxx">
                         sign up for emails and get 15% off!
@@ -28,12 +28,12 @@
                     </form>
                     <div class="btn btn-primary p-x-10x bigNoodle font-size-lxx" id="btn-subscribe">SIGN ME UP</div>
             </div>
-        </div>
+        </div>--}}
     </div>
 </section>
 
 <!-- 邮件订阅 弹出框 -->
-<div class="remodal modal-content remodal-lg redeem-content" data-remodal-id="redeem-modal">
+{{--<div class="remodal modal-content remodal-lg redeem-content" data-remodal-id="redeem-modal">
     <div class="row m-a-0">
         <div class="col-md-6 p-a-0">
             <img src="{{config('runtime.Image_URL')}}/images/daily/redeem_pic.png" class="img-fluid">
@@ -54,6 +54,6 @@
         </div>
 
     </div>
-</div>
+</div>--}}
 
 @include('footer')
